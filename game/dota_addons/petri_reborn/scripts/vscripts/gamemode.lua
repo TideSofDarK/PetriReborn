@@ -88,13 +88,18 @@ function GameMode:OnHeroInGame(hero)
 
     if team == 2 then
       UTIL_Remove( hero )
-      CreateHeroForPlayer("npc_dota_hero_ancient_apparition", pID)
+      local newBuilder = CreateHeroForPlayer("npc_dota_hero_rattletrap", pID)
+
+      newBuilder:GetAbilityByIndex(0):SetLevel(1)
+      newBuilder:GetAbilityByIndex(1):SetLevel(1)
+      
+      newBuilder:SetAbilityPoints(0)
     end
 
     if team == 3 then
 
       UTIL_Remove( hero )
-      CreateHeroForPlayer("npc_dota_hero_enigma", pID)
+      CreateHeroForPlayer("npc_dota_hero_brewmaster", pID)
     end
   end
   -- These lines will create an item and add it to the player, effectively ensuring they start with the item

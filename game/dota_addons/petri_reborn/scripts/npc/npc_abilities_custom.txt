@@ -183,78 +183,88 @@
 // Dummy stuff
 //-------------------
   
+  "occupy_area"
+  {
+    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"            "backdoor_protection"
+    "MaxLevel"                      "1"
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "scripts/vscripts/abilities/occupy_area.lua"
+        "Function"    "OccupyArea"
+      }
+    }
+  }
+
   "give_permission_to_build"
   {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
     "BaseClass"           "ability_datadriven"
     "AbilityTextureName"            "backdoor_protection"
     "MaxLevel"                      "1"
   }
   
-  "barebones_empty1"
+  "builder_blink_datadriven"
   {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-  }
-  
-  "barebones_empty2"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-  }
-  
-  "barebones_empty3"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-  }
-  
-  "barebones_empty4"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-  }
-  
-  "barebones_empty5"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-  }
-  
-  "barebones_empty6"
-  {
-    // General
-    //-------------------------------------------------------------------------------------------------------------
-    //"ID"              "5343"                            // unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "MaxLevel"            "0"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
+    "BaseClass"       "ability_datadriven"
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+    "AbilityTextureName"      "antimage_blink"
+
+    "MaxLevel"               "1"
+
+    "precache"
+    {
+      "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+    }
+
+    "AbilityCastPoint"        "0.4"
+
+    "AbilityCooldown"       "5.0"
+    
+    "AbilityManaCost"       "0"
+    
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "blink_range"     "2150"
+      }
+      
+      "02"
+      {
+        "var_type"        "FIELD_INTEGER"
+        "min_blink_range"   "200"
+      }
+    }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"  "scripts/vscripts/abilities/blink.lua"
+        "Function"    "Blink"
+        "Target"    "POINT"
+      }
+
+      "FireSound"
+      {
+        "EffectName"  "Hero_Antimage.Blink_out"
+        "Target"    "CASTER"
+      }
+
+      "FireSound"
+      {
+        "EffectName"  "Hero_Antimage.Blink_in"
+        "Target"    "CASTER"
+      }
+    }
   }
 }
-

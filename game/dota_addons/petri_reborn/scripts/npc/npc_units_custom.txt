@@ -3,14 +3,14 @@
 {
   "Version" "1"
   
-  "npc_dummy_unit"
+  "npc_area_controller"
   {
     // General
     "BaseClass"         "npc_dota_base_additive"  // Class of entity of link to.
     "Model"           "models/props_teams/banner_radiant.vmdl"  // Model.
     "SoundSet"          "Creep_Good_Range"          // Name of sound set.
     "Level"           "0"
-    "UnitLabel"         "healing_ward"
+    "UnitLabel"         "area_controller"
     
     // Abilities
     //----------------------------------------------------------------
@@ -81,12 +81,14 @@
     "TeamName"          "DOTA_TEAM_GOODGUYS"      // Team name.
     "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
     "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
-    "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+    "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_COURIER"
     
     // Vision
     //----------------------------------------------------------------
     "VisionDaytimeRange"    "0"   // Range of vision during day light.
     "VisionNighttimeRange"    "0"   // Range of vision at night time.
+
+    "vscripts"                    "scripts/vscripts/area_controller.lua"
 
     // Bots
     //----------------------------------------------------------------
