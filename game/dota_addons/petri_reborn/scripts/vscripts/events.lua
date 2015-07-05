@@ -89,6 +89,16 @@ function GameMode:OnAbilityUsed(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local abilityname = keys.abilityname
+
+  if player.cursorStream ~= nil then
+    if not (string.len(abilityname) > 14 and string.sub(abilityname,1,14) == "move_to_point_") then
+      if not DontCancelBuildingGhostAbils[abilityname] then
+        player:CancelGhost()
+      else
+        print(abilityname .. " did not cancel building ghost.")
+      end
+    end
+  end
 end
 
 -- A non-player entity (necro-book, chen creep, etc) used an ability
@@ -227,6 +237,10 @@ function GameMode:OnEntityKilled( keys )
   end
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
+
+  if BuildingHelper:IsBuilding(killedUnit) then
+    killedUnit:RemoveBuilding(false)
+  end
 
   -- Put code here to handle when an entity gets killed
 end

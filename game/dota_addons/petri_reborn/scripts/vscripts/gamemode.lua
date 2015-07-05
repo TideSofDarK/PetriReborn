@@ -28,6 +28,10 @@ require('settings')
 -- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
 require('events')
 
+require('FlashUtil')
+require('buildinghelper')
+require('abilities')
+
 
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
@@ -92,7 +96,8 @@ function GameMode:OnHeroInGame(hero)
 
       newBuilder:GetAbilityByIndex(0):SetLevel(1)
       newBuilder:GetAbilityByIndex(1):SetLevel(1)
-      
+      newBuilder:GetAbilityByIndex(2):SetLevel(1)
+
       newBuilder:SetAbilityPoints(0)
     end
 
@@ -135,30 +140,8 @@ end
 -- It can be used to pre-initialize any values/tables that will be needed later
 function GameMode:InitGameMode()
   GameMode = self
-  DebugPrint('[BAREBONES] Starting to load Barebones gamemode...')
 
-  -- Call the internal function to set up the rules/behaviors specified in constants.lua
-  -- This also sets up event hooks for all event handlers in events.lua
-  -- Check out internals/gamemode to see/modify the exact code
   GameMode:_InitGameMode()
 
-  -- Commands can be registered for debugging purposes or as functions that can be called by the custom Scaleform UI
-  Convars:RegisterCommand( "command_example", Dynamic_Wrap(GameMode, 'ExampleConsoleCommand'), "A console command example", FCVAR_CHEAT )
-
-  DebugPrint('[BAREBONES] Done loading Barebones gamemode!\n\n')
-end
-
--- This is an example console command
-function GameMode:ExampleConsoleCommand()
-  print( '******* Example Console Command ***************' )
-  local cmdPlayer = Convars:GetCommandClient()
-  if cmdPlayer then
-    local playerID = cmdPlayer:GetPlayerID()
-    if playerID ~= nil and playerID ~= -1 then
-      -- Do something here for the player who called this command
-      PlayerResource:ReplaceHeroWith(playerID, "npc_dota_hero_viper", 1000, 1000)
-    end
-  end
-
-  print( '*********************************************' )
+  BuildingHelper:Init()
 end
