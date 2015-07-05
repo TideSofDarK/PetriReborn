@@ -8,5 +8,5 @@
 	"DOTA_GoodGuys"   								"КВН"
 	"DOTA_BadGuys"    								"Петры"
 	
-	"addonname"										"Петры Реборн"
+	"addon_game_name"										"Петры Реборн"
 }

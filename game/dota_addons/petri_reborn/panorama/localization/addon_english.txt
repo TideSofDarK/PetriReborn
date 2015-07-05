@@ -8,5 +8,5 @@
 	"DOTA_GoodGuys"   								"KVN"
 	"DOTA_BadGuys"    								"PETROSES"
 	
-	"addonname"										"PETRI REBORN"
+	"addon_game_name"										"PETRI REBORN"
 }
