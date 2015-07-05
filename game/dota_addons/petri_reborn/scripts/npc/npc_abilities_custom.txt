@@ -37,7 +37,7 @@
     {
       "RunScript"
       {
-        "ScriptFile"      "scripts/vscripts/abilities.lua"
+        "ScriptFile"      "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"        "build"
       }
     }
@@ -148,7 +148,7 @@
         {
           "RunScript"
           {
-            "ScriptFile"  "scripts/vscripts/abilities.lua"
+            "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
             "Function"    "builder_queue"
           }
         }
@@ -173,7 +173,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -196,7 +196,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -219,7 +219,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -242,7 +242,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -265,7 +265,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -288,7 +288,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities.lua"
+        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -325,7 +325,7 @@
         {
           "RunScript"
           {
-            "ScriptFile"  "scripts/vscripts/abilities.lua"
+            "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
             "Function"    "building_canceled"
           }
         }
