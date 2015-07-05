@@ -4,7 +4,7 @@
 {
   "Version"   "1"
 
-  "build_dark_tower"
+  "build_petri_tower_level1"
   {
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
     "BaseClass"           "ability_datadriven"
@@ -21,7 +21,7 @@
     "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
     //"CancelsBuildingGhost"      "0" //bool
     // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_dota_hero_enigma"
+    "UnitName"            "npc_petri_tower_level1"
     "AbilityCooldown"       "0"
     "AbilityGoldCost"       "10"
     // End of BuildingHelper info
