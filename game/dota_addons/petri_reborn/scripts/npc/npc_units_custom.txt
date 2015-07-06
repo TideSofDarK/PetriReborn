@@ -7,6 +7,7 @@
   {
     // General
     "BaseClass"         "npc_dota_base_additive"  // Class of entity of link to.
+    "Flags" "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
     "Model"           "models/props_teams/banner_radiant.vmdl"  // Model.
     "SoundSet"          "Creep_Good_Range"          // Name of sound set.
     "Level"           "0"
@@ -136,7 +137,7 @@
 
     // Status
     //----------------------------------------------------------------
-    "StatusHealth"        "1"     // Base health.
+    "StatusHealth"        "100"     // Base health.
     "StatusHealthRegen"     "0"     // Health regeneration rate.
     "StatusMana"        "0"     // Base mana.
     "StatusManaRegen"     "0"     // Mana regeneration rate.

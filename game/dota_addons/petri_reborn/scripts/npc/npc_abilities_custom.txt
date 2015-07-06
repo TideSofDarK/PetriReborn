@@ -1,5 +1,4 @@
 
-// Dota Abilities Override File
 "DOTAAbilities"
 {
   "Version"   "1"
@@ -12,12 +11,12 @@
     "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
     // BuildingHelper info
     "Building"            "1" //bool
-    "BuildingSize"          "3" // this is (3x64) by (3x64) units, so 9 squares.
+    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
     "BuildTime"           "2.0"
     "AbilityCastRange"        "100"
     "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "MaxScale"            "1.3"
+    "Scale"             "0.6" //bool
+    //"MaxScale"            "1.3"
     "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
     //"CancelsBuildingGhost"      "0" //bool
     // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
@@ -37,7 +36,7 @@
     {
       "RunScript"
       {
-        "ScriptFile"      "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"        "build"
       }
     }
@@ -46,8 +45,8 @@
 //-------------------
 // Dummy stuff
 //-------------------
-  
-  "occupy_area"
+
+  "give_permission_to_build"
   {
     "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
     "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -61,18 +60,10 @@
     {
       "RunScript"
       {
-        "ScriptFile"  "scripts/vscripts/abilities/occupy_area.lua"
-        "Function"    "OccupyArea"
+        "ScriptFile"  "scripts/vscripts/abilities/give_permission_to_build.lua"
+        "Function"    "GivePermissionToBuild"
       }
     }
-  }
-
-  "give_permission_to_build"
-  {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "backdoor_protection"
-    "MaxLevel"                      "1"
   }
   
   "builder_blink_datadriven"
@@ -148,7 +139,7 @@
         {
           "RunScript"
           {
-            "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+            "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
             "Function"    "builder_queue"
           }
         }
@@ -173,7 +164,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -196,7 +187,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -219,7 +210,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -242,7 +233,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -265,7 +256,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -288,7 +279,7 @@
       "RunScript"
       {
         "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"    "create_building_entity"
       }
     }
@@ -325,7 +316,7 @@
         {
           "RunScript"
           {
-            "ScriptFile"  "scripts/vscripts/abilities/bh_abilities.lua"
+            "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
             "Function"    "building_canceled"
           }
         }
