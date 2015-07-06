@@ -36,7 +36,7 @@ function build( keys )
 		-- You can build only on claimed area
 		if keys.caster.currentArea ~= nil then
 			if keys.caster.currentArea ~= keys.caster.claimedArea then
-				if keys.caster.currentArea.claimers == nil then
+				if keys.caster.currentArea.claimers == nil and keys.caster.claimedArea == nil then
 					keys.caster.currentArea.claimers = {}
 					keys.caster.currentArea.claimers[0] = keys.caster
 
@@ -59,15 +59,13 @@ function build( keys )
 					--]]
 
 					Notifications:Top(pID, {text="This area is now yours", duration=4, style={color="white"}, continue=true})
-				elseif keys.caster.currentArea.claimers[0] ~= keys.caster
-					or keys.caster.currentArea.claimers[1] ~= keys.caster then
+				elseif keys.caster.currentArea.claimers == nil or
+					(keys.caster.currentArea.claimers[0] ~= keys.caster
+					or keys.caster.currentArea.claimers[1] ~= keys.caster) then
 
-					Notifications:Top(pID, {text="You are not allowed to build here", duration=4, style={color="white"}, continue=true})
+					Notifications:Top(pID, {text="You are not allowed to build here", duration=4, style={color="white"}, continue=false})
 					
 					-- Destroy unit
-					if BuildingHelper:IsBuilding(unit) then
-					    unit:RemoveBuilding(false)
-					end
 					UTIL_Remove(unit)
 				end
 			end

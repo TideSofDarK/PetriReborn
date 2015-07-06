@@ -30,7 +30,7 @@ require('events')
 
 require('FlashUtil')
 require('buildinghelper')
-require('abilities/bh_abilities')
+require('buildings/bh_abilities')
 
 
 --[[

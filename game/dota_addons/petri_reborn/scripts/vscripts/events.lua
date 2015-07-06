@@ -238,10 +238,6 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
-  if BuildingHelper:IsBuilding(killedUnit) then
-    killedUnit:RemoveBuilding(false)
-  end
-
   -- Put code here to handle when an entity gets killed
 end
 
