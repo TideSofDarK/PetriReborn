@@ -1,3 +1,16 @@
+function InitAbilities( hero )
+  for i=0, hero:GetAbilityCount()-1 do
+    local abil = hero:GetAbilityByIndex(i)
+    if abil ~= nil then
+      if hero:IsHero() and hero:GetAbilityPoints() > 0 then
+        hero:UpgradeAbility(abil)
+      else
+        abil:SetLevel(1)
+      end
+    end
+  end
+end
+
 function DebugPrint(...)
   local spew = Convars:GetInt('barebones_spew') or -1
   if spew == -1 and BAREBONES_DEBUG_SPEW then

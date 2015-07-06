@@ -5,6 +5,7 @@
 ]]
 Debug_Rally = false
 function SetRallyPoint( event )
+	print("asd")
 	local caster = event.caster
 	local origin = caster:GetOrigin()
 	if Debug_Rally then
@@ -13,7 +14,7 @@ function SetRallyPoint( event )
 	
 	-- Need to wait one frame for the building to be properly positioned
 	Timers:CreateTimer(0.03, function()
-
+		print("asd2")
 		-- If there's an old flag, remove
 		if caster.flag then
 			caster.flag:RemoveSelf()
@@ -31,15 +32,15 @@ function SetRallyPoint( event )
 		if not event.target_points then
 			-- For the initial rally point, get point away from the building looking towards (0,0,0)
 			point = origin + forwardVec * 220
-			DebugDrawCircle(point, Vector(255,255,255), 255, 10, false, 10)
-			DebugDrawCircle(point, Vector(255,255,255), 255, 20, false, 10)
+			--DebugDrawCircle(point, Vector(255,255,255), 255, 10, false, 10)
+			--DebugDrawCircle(point, Vector(255,255,255), 255, 20, false, 10)
 
 			-- Keep track of this position so that every unit is autospawned there (avoids going around the)
 			caster.initial_spawn_position = point
 
 			-- Add item ability to change rally point
-			local item = CreateItem("item_rally", caster, caster)
-			caster:AddItem(item)
+			-- local item = CreateItem("item_rally", caster, caster)
+			-- caster:AddItem(item)
 
 		else
 			point = event.target_points[1]
@@ -48,12 +49,13 @@ function SetRallyPoint( event )
 
 		local flag_model = "models/particle/legion_duel_banner.vmdl"
 
+		caster.flag:SetAngles(0,0,0)
 		caster.flag:SetAbsOrigin(point)
 		caster.flag:SetModel(flag_model)
 		caster.flag:SetModelScale(0.7)
 		caster.flag:SetForwardVector(forwardVec)
 
-		DebugDrawLine(caster:GetAbsOrigin(), point, 255, 255, 255, false, 10)
+		-- DebugDrawLine(caster:GetAbsOrigin(), point, 255, 255, 255, false, 10)
 		if Debug_Rally then
 			print(caster:GetUnitName().." sets rally point on ",point)
 		end
@@ -64,6 +66,8 @@ end
 function MoveToRallyPoint( event )
 	local caster = event.caster
 	local target = event.target
+
+	target:SetOwner(caster:GetOwner())
 
 	if caster.flag then
 		local position = caster.flag:GetAbsOrigin()

@@ -7,20 +7,9 @@
     "SoundSet"          "0" 
     "Ability1"        "builder_blink_datadriven" 
     "Ability2"        "build_petri_tower_level1" 
-    "Ability3"        "give_permission_to_build" 
-    "Ability4"        ""
-    "Ability5"        ""
-    "Ability6"        ""
-    "Ability7"        ""
-    "Ability8"        ""
-    "Ability9"        ""
-    "Ability10"       ""
-    "Ability11"       ""
-    "Ability12"       ""
-    "Ability13"       ""
-    "Ability14"       ""
-    "Ability15"       ""
-    "Ability16"       ""
+    "Ability3"        "build_sawmill" 
+    "Ability4"        "give_permission_to_build"
+    
 
     "ArmorPhysical"       "0"                 // Physical protection.
     "MagicalResistance"       "0"                 // Magical protection (percentage).

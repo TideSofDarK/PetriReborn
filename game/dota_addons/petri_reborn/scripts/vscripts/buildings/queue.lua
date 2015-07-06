@@ -15,8 +15,8 @@ function EnqueueUnit( event )
 		ability.queue = {}
 	end
 
-	-- Queue up to 5 units max
-	if #ability.queue < 5 then
+	-- Queue up to 6 units max
+	if #ability.queue < 6 then
 
 		local ability_name = ability:GetAbilityName()
 		local item_name = "item_"..ability_name
@@ -25,7 +25,7 @@ function EnqueueUnit( event )
 
 		-- RemakeQueue
 		ability.queue = {}
-		for itemSlot = 1, 5, 1 do
+		for itemSlot = 0, 5, 1 do
 			local item = caster:GetItemInSlot( itemSlot )
 			if item ~= nil then
 				table.insert(ability.queue, item:GetEntityIndex())
@@ -82,7 +82,7 @@ function DequeueUnit( event )
 				end
 
 				-- Set not channeling if the cancelled item was the first **current** slot
-				if itemSlot == 1 then
+				if itemSlot == 0 then
 					train_ability:SetChanneling(false)
 					train_ability:EndChannel(true)
 					if Debug_Queue then
@@ -103,7 +103,7 @@ end
 -- Auxiliar function, takes all items and puts them 1 slot back
 function ReorderItems( caster, queue )
 	queue = {}
-	for itemSlot = 1, 5, 1 do
+	for itemSlot = 0, 5, 1 do
 		local item = caster:GetItemInSlot( itemSlot )
        	if item ~= nil then
        		if Debug_Queue then
@@ -175,7 +175,7 @@ function AdvanceQueue( event )
 		ability.queue = {}
 
 		-- Check the first item that contains "train" on the queue
-		for itemSlot=1,5 do
+		for itemSlot=0,5 do
 			local item = caster:GetItemInSlot(itemSlot)
 			if item ~= nil then
 

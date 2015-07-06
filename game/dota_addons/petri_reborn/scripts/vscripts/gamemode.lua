@@ -31,7 +31,7 @@ require('events')
 require('FlashUtil')
 require('buildinghelper')
 require('buildings/bh_abilities')
-
+require('buildings/rally_point')
 
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
@@ -94,9 +94,7 @@ function GameMode:OnHeroInGame(hero)
       UTIL_Remove( hero )
       local newBuilder = CreateHeroForPlayer("npc_dota_hero_rattletrap", pID)
 
-      newBuilder:GetAbilityByIndex(0):SetLevel(1)
-      newBuilder:GetAbilityByIndex(1):SetLevel(1)
-      newBuilder:GetAbilityByIndex(2):SetLevel(1)
+      InitAbilities(newBuilder)
 
       newBuilder:SetAbilityPoints(0)
     end
@@ -142,6 +140,7 @@ function GameMode:InitGameMode()
   GameMode = self
 
   GameMode:_InitGameMode()
+  SendToServerConsole( "dota_combine_models 0" )
 
   BuildingHelper:Init()
 end

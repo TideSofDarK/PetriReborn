@@ -278,7 +278,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building.blockers = gridNavBlockers
   building.buildingTable = buildingTable
   building.state = "building"
-  
 
   -- Prevent regen messing with the building spawn hp gain
   local regen = building:GetBaseHealthRegen()
