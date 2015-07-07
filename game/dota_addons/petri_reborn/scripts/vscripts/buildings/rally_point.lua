@@ -5,7 +5,6 @@
 ]]
 Debug_Rally = false
 function SetRallyPoint( event )
-	print("asd")
 	local caster = event.caster
 	local origin = caster:GetOrigin()
 	if Debug_Rally then
@@ -13,8 +12,7 @@ function SetRallyPoint( event )
 	end
 	
 	-- Need to wait one frame for the building to be properly positioned
-	Timers:CreateTimer(0.03, function()
-		print("asd2")
+	Timers:CreateTimer(0.06, function()
 		-- If there's an old flag, remove
 		if caster.flag then
 			caster.flag:RemoveSelf()
@@ -25,9 +23,9 @@ function SetRallyPoint( event )
 
 		-- Find vector towards 0,0,0 for the initial rally point
 		origin = caster:GetOrigin()
-		local forwardVec = Vector(0,0,0) - origin
+		local forwardVec = Vector(0,0,origin.z) - origin
 		forwardVec = forwardVec:Normalized()
-
+--forwardVec.z = 0
 		local point = origin
 		if not event.target_points then
 			-- For the initial rally point, get point away from the building looking towards (0,0,0)
@@ -37,23 +35,32 @@ function SetRallyPoint( event )
 
 			-- Keep track of this position so that every unit is autospawned there (avoids going around the)
 			caster.initial_spawn_position = point
-
+			
+			if caster:GetPlayerOwner().selection == caster then
+				caster.flag:SetModelScale(0.5)
+			else
+				caster.flag:SetModelScale(0)
+			end
+			
 			-- Add item ability to change rally point
 			-- local item = CreateItem("item_rally", caster, caster)
 			-- caster:AddItem(item)
-
+			
+			caster:AddAbility("set_rally_point")
+			caster:FindAbilityByName("set_rally_point"):SetLevel(1)
 		else
 			point = event.target_points[1]
+
+			caster.flag:SetModelScale(0.5)
+			--caster.flag:SetModelScale(0.5)
 			--caster.flag = nil
 		end
 
 		local flag_model = "models/particle/legion_duel_banner.vmdl"
 
-		caster.flag:SetAngles(0,0,0)
+		caster.flag:SetAngles(0,math.random(45,180),0)
 		caster.flag:SetAbsOrigin(point)
 		caster.flag:SetModel(flag_model)
-		caster.flag:SetModelScale(0.7)
-		caster.flag:SetForwardVector(forwardVec)
 
 		-- DebugDrawLine(caster:GetAbsOrigin(), point, 255, 255, 255, false, 10)
 		if Debug_Rally then

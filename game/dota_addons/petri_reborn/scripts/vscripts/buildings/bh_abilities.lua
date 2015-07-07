@@ -53,6 +53,8 @@ function build( keys )
 					end
 					--]]
 
+					--GameRules:GetGameModeEntity():SetExecuteOrderFilter(handle hFunction, handle hContext) 
+
 					Notifications:Top(pID, {text="This area is now yours", duration=4, style={color="white"}, continue=true})
 				elseif keys.caster.currentArea.claimers == nil or
 					(keys.caster.currentArea.claimers[0] ~= keys.caster

@@ -23,6 +23,8 @@ function GameMode:OnGameRulesStateChange(keys)
   local newState = GameRules:State_Get()
 end
 
+
+
 -- An NPC has spawned somewhere in game.  This includes heroes
 function GameMode:OnNPCSpawned(keys)
   DebugPrint("[BAREBONES] NPC Spawned")

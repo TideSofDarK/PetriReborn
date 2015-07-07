@@ -97,6 +97,8 @@ function GameMode:OnHeroInGame(hero)
       InitAbilities(newBuilder)
 
       newBuilder:SetAbilityPoints(0)
+
+      newBuilder:SetGold(1000, false)
     end
 
     if team == 3 then
@@ -132,7 +134,48 @@ function GameMode:OnGameInProgress()
     end)
 end
 
+function GameMode:FilterExecuteOrder( filterTable )
+    local units = filterTable["units"]
+    local order_type = filterTable["order_type"]
+    local issuer = filterTable["issuer_player_id_const"]
 
+    for n,unit_index in pairs(units) do
+        local unit = EntIndexToHScript(unit_index)
+        local ownerID = unit:GetPlayerOwnerID()
+
+        if unit:GetUnitLabel() == "building" then
+          if order_type == 1 then
+            return false
+          end
+        end
+    end
+
+    return true
+end
+
+function GameMode:OnUnitSelected(args)
+  local unit = EntIndexToHScript(tonumber(args["main_unit"]))
+
+  if unit ~= nil then
+    if unit:GetPlayerOwner().selection == nil then 
+      unit:GetPlayerOwner().selection = {}
+    end
+
+    if unit:GetPlayerOwner().selection.flag ~= nil then
+      unit:GetPlayerOwner().selection.flag:SetModelScale(0)
+    end
+
+    if unit:GetUnitLabel() == "building" then
+      if unit:HasAbility("building_queue") then
+        if unit.flag ~= nil then
+          unit.flag:SetModelScale(0.5)
+        end 
+      end
+    end
+
+    unit:GetPlayerOwner().selection = unit
+  end
+end
 
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
@@ -141,6 +184,13 @@ function GameMode:InitGameMode()
 
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
+
+  GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
+  
+
+  Timers:CreateTimer(1, function()
+    CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
+  end)
 
   BuildingHelper:Init()
 end

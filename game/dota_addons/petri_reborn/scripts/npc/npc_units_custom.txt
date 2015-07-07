@@ -75,14 +75,14 @@
         "HealthBarOffset"           "140"
         "HasInventory"              "1"
 
-        //"UnitLabel"                    "npc_sawmill"
+        "UnitLabel"                    "building"
         
         // Abilities
         //----------------------------------------------------------------
-        "AbilityLayout"             "4"
+        "AbilityLayout"             "6"
         "Ability1"                  "building_queue"
         "Ability2"                  "train_peasant"
-        "Ability3"                  "set_rally_point"
+        "Ability3"                  ""
         "Ability4"                  ""
         "Ability5"                  ""
         "Ability6"                  ""
@@ -120,6 +120,7 @@
         //----------------------------------------------------------------
         "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND" // Needed to cast Point abilities
         "MovementSpeed"             "0"
+        "MovementTurnRate"            "1.0"
         
         // Status
         //----------------------------------------------------------------
@@ -156,7 +157,6 @@
         "AbilityLayout"             "4"
         "Ability1"                  "gather_lumber"
         "Ability2"                  "return_resources"
-        "Ability3"                  "build_sawmill"
         
         // Armor
         //----------------------------------------------------------------
