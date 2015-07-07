@@ -1,0 +1,24 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/custom_variables.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/custom_variables.js" />
+  </scripts>
+
+  <Panel hittest="false" class="LumberBase">
+    <Panel hittest="false" class="LumberBase" id="LumberBase">
+
+      <Label text="#GoldVar" class="GoldText" id="GoldText">
+        <Image src="file://{images}/custom_game/custom_variables/gold.png" />
+      </Label>
+      <Label text="100" class="LumberText" id="LumberText">
+        <Image src="file://{images}/custom_game/custom_variables/lumber.png" />
+      </Label>
+      <Label text="100" class="FoodText" id="FoodText">
+        <Image src="file://{images}/custom_game/custom_variables/food.png" />
+      </Label>
+      
+    </Panel>
+  </Panel>
+</root>

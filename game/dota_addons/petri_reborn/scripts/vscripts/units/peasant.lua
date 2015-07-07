@@ -207,10 +207,9 @@ function CheckBuildingPosition( event )
 		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
 		    ParticleManager:SetParticleControl(pidx, 3, color)
 
-		    --[[ Increase Custom Resource
-			hero.lumber = hero.lumber + caster.lumber_gathered 
-    		print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
-    		FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })]]
+			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + caster.lumber_gathered 
+    		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
+    		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
 
 			caster.lumber_gathered = 0
 		end

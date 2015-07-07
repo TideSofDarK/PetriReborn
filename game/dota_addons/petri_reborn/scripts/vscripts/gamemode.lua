@@ -88,35 +88,44 @@ function GameMode:OnHeroInGame(hero)
 
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
-    local pID = hero:GetPlayerOwner()
+    local player = hero:GetPlayerOwner()
+
+    local newHero
 
     if team == 2 then
       UTIL_Remove( hero )
-      local newBuilder = CreateHeroForPlayer("npc_dota_hero_rattletrap", pID)
+      newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
-      InitAbilities(newBuilder)
+      InitAbilities(newHero)
 
-      newBuilder:SetAbilityPoints(0)
+      newHero:SetAbilityPoints(0)
 
-      newBuilder:SetGold(1000, false)
+      newHero:SetGold(1000, false)
     end
 
     if team == 3 then
 
       UTIL_Remove( hero )
-      CreateHeroForPlayer("npc_dota_hero_brewmaster", pID)
+      newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
     end
+
+    -- We don't need 'undefined' variables
+    player.lumber = 0
+    player.food = 0
+
+    --Update player's UI
+    Timers:CreateTimer(0.03,
+    function()
+      local event_data =
+      {
+          gold = newHero:GetGold(),
+          lumber = player.lumber,
+          food = player.food
+      }
+      CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+      return 0.35
+    end)
   end
-  -- These lines will create an item and add it to the player, effectively ensuring they start with the item
-  --local item = CreateItem("item_example_item", hero, hero)
-  --hero:AddItem(item)
-
-  --[[ --These lines if uncommented will replace the W ability of any hero that loads into the game
-    --with the "example_ability" ability
-
-  local abil = hero:GetAbilityByIndex(1)
-  hero:RemoveAbility(abil:GetAbilityName())
-  hero:AddAbility("example_ability")]]
 end
 
 --[[
@@ -186,8 +195,8 @@ function GameMode:InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
 
   GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
-  
 
+  -- Some creepy shit for hiding rally point
   Timers:CreateTimer(1, function()
     CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
   end)
