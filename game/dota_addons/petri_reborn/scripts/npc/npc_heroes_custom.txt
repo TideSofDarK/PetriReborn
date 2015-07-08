@@ -6,9 +6,10 @@
     "override_hero"     "npc_dota_hero_rattletrap"
     "SoundSet"          "0" 
     "Ability1"        "builder_blink_datadriven" 
-    "Ability2"        "build_petri_tent_level_1" 
+    "Ability2"        "build_petri_tent" 
     "Ability3"        "build_petri_sawmill" 
-    "Ability4"        "give_permission_to_build"
+    "Ability4"        "build_petri_gold_tower"
+    "Ability5"        "give_permission_to_build"
     
 
     "ArmorPhysical"       "0"                 // Physical protection.

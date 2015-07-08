@@ -100,7 +100,7 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:SetAbilityPoints(0)
 
-      newHero:SetGold(1000, false)
+      newHero:SetGold(2000, false)
     end
 
     if team == 3 then
@@ -112,7 +112,7 @@ function GameMode:OnHeroInGame(hero)
     -- We don't need 'undefined' variables
     player.lumber = 0
     player.food = 0
-    player.maxFood = 25
+    player.maxFood = 10
 
     --Update player's UI
     Timers:CreateTimer(0.03,
@@ -125,7 +125,7 @@ function GameMode:OnHeroInGame(hero)
           maxFood = player.maxFood
       }
       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.35
+      return 0.21
     end)
   end
 end

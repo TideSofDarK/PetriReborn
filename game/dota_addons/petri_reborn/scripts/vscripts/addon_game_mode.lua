@@ -4,6 +4,9 @@ require('internal/util')
 require('gamemode')
 
 function Precache( context )
+  
+  PrecacheResource("model", "models/props_structures/tower_good_sfm.vmdl", context)
+  
   PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)

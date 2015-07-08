@@ -3,6 +3,65 @@
 {
   "Version"   "1"
 
+  // Upgrades
+
+  "petri_upgrade_tent"
+  {
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"      "npc_petri_tent"
+    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+    "AbilityCastPoint"        "0.0"
+    
+
+    "AbilityManaCost"       "0"
+    "AbilityGoldCost"       "0"
+    "AbilityChannelTime"      "2.5"
+    "AbilityUpgradeGoldCost"    "0"
+
+    "MaxLevel"            "4"
+    
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"      "units/food_building.lua"
+        "Function"        "Upgrade"
+      }
+    }
+  }
+
+  "petri_upgrade_gold_tower"
+  {
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"      "petri_upgrade_gold_tower"
+    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+    "AbilityCastPoint"        "0.0"
+    
+    "AbilityGoldCost"       "15 30 60 100 200 500 700 900"
+
+    "AbilityManaCost"       "0"
+    
+    "AbilityChannelTime"      "3.5"
+    "AbilityUpgradeGoldCost"    "0"
+
+    "MaxLevel"            "8"
+
+    "OnChannelSucceeded"
+    {
+      "RunScript"
+      {
+        "ScriptFile"      "units/gold_tower.lua"
+        "Function"        "Upgrade"
+      }
+    }
+  }
+
+  // Train
+
   "train_peasant"
   {
     "BaseClass"                 "ability_datadriven"
@@ -91,6 +150,47 @@
     }
   }
 
+  // Build
+
+  "build_petri_gold_tower"
+  {
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"      "petri_upgrade_gold_tower"
+    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+    // BuildingHelper info
+    "Building"            "1" //bool
+    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+    "BuildTime"           "3.5"
+    "AbilityCastRange"        "100"
+    "UpdateHealth"          "1" //bool
+    "Scale"             "1" //bool
+    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+    //"CancelsBuildingGhost"      "0" //bool
+    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+    "UnitName"            "npc_petri_gold_tower"
+    "AbilityCooldown"       "0"
+    "AbilityGoldCost"       "10"
+    // End of BuildingHelper info
+
+    "AbilityCastPoint"        "0.0"
+    "MaxLevel"            "1"
+
+    // Item Info
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"       "0"
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+        "Function"        "build"
+      }
+    }
+  }
+
   "build_petri_sawmill"
   {
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -130,11 +230,11 @@
     }
   }
 
-  "build_petri_tent_level_1"
+  "build_petri_tent"
   {
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
     "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "sniper_take_aim"
+    "AbilityTextureName"      "npc_petri_tent"
     "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
     // BuildingHelper info
@@ -147,7 +247,7 @@
     "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
     //"CancelsBuildingGhost"      "0" //bool
     // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_tent_level_1"
+    "UnitName"            "npc_petri_tent"
     "AbilityCooldown"       "0"
     "AbilityGoldCost"       "0"
     // End of BuildingHelper info
@@ -206,6 +306,8 @@
       }
     }
   }
+
+  // Abilities
 
   "give_permission_to_build"
   {
@@ -298,6 +400,75 @@
       {
         "EffectName"  "Hero_Antimage.Blink_in"
         "Target"    "CASTER"
+      }
+    }
+  }
+
+  "petri_get_gold"
+  {
+    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+    "BaseClass"           "ability_datadriven"
+    "AbilityTextureName"      "alchemist_goblins_greed"
+    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+    "AbilityCastPoint"        "0.0"
+
+    "AbilityCooldown" "10 10 10 2 2 2 2 2"
+
+    "MaxLevel"            "8"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "gold"      "2 3 4 2 10 20 32 44"
+      }
+    }
+
+    "OnUpgrade"
+    {
+      "ApplyModifier"
+      {
+        "Target"       "CASTER"
+        "ModifierName" "modifier_get_gold_autocast"
+      }
+    }
+    
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"      "units/gold_tower.lua"
+        "Function"        "GetGold"
+        "gold" "%gold"
+      }
+    }
+
+    "Modifiers"
+    {
+      "modifier_get_gold_autocast"
+      {
+        "IsHidden"  "1"
+
+        "OnCreated"
+        {
+          "RunScript"
+            {
+                "ScriptFile"    "units/gold_tower.lua"
+                "Function"      "GetGoldAutocast"
+            }
+        }
+
+        "ThinkInterval" "2.05" // Bad solution
+        "OnIntervalThink"
+        {
+          "RunScript"
+            {
+                "ScriptFile"    "units/gold_tower.lua"
+                "Function"      "GetGoldAutocast"
+            }
+        }
       }
     }
   }

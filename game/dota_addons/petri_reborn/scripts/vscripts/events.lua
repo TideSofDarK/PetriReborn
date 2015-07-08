@@ -240,6 +240,10 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  if killedUnit.foodProvided ~= nil then
+    killedUnit:GetPlayerOwner().maxFood = killedUnit:GetPlayerOwner().maxFood - killedUnit.foodProvided
+  end
+
   -- Put code here to handle when an entity gets killed
 end
 

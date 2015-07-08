@@ -1,3 +1,9 @@
+function Clamp( _in, low, high )
+  if (_in < low ) then return low end
+  if (_in > high ) then return high end
+  return _in
+end
+
 function InitAbilities( hero )
   for i=0, hero:GetAbilityCount()-1 do
     local abil = hero:GetAbilityByIndex(i)
