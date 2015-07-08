@@ -2,7 +2,7 @@ function UpdateResources(args)
 {
 	$("#GoldText").text = args["gold"];
 	$("#LumberText").text = args["lumber"];
-	$("#FoodText").text = args["food"];
+	$("#FoodText").text = args["food"] + "/" + args["maxFood"];
 }
 
 (function()

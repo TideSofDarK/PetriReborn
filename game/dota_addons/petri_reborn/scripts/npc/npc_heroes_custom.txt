@@ -6,8 +6,8 @@
     "override_hero"     "npc_dota_hero_rattletrap"
     "SoundSet"          "0" 
     "Ability1"        "builder_blink_datadriven" 
-    "Ability2"        "build_petri_tower_level1" 
-    "Ability3"        "build_sawmill" 
+    "Ability2"        "build_petri_tent_level_1" 
+    "Ability3"        "build_petri_sawmill" 
     "Ability4"        "give_permission_to_build"
     
 

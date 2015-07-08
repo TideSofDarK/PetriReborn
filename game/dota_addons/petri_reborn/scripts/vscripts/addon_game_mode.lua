@@ -4,12 +4,16 @@ require('internal/util')
 require('gamemode')
 
 function Precache( context )
+  PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl", context)
+  PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
+  PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)
+  
   PrecacheResource("model", "models/particle/legion_duel_banner.vmdl", context)
-PrecacheResource("particle_folder", "particles/buildinghelper", context)
+  PrecacheResource("particle_folder", "particles/buildinghelper", context)
 
   PrecacheUnitByNameSync("npc_petri_tower_level1", context)
 
-  PrecacheUnitByNameSync("npc_sawmill", context)
+  PrecacheUnitByNameSync("npc_petri_sawmill", context)
   PrecacheUnitByNameSync("npc_peasant", context)
 
   PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)

@@ -32,9 +32,17 @@ function StartBuildingHelper( params )
     mPos[0] -= 32 * yScale * size;
     mPos[1] -= 32 * yScale * size;
 
+    var newX = mPos[0] / $( "#BuildingHelperBase").desiredlayoutwidth;
+    newX *= 1920;
+
+    var newY = mPos[1] / $( "#BuildingHelperBase").desiredlayoutheight;
+    newY *= 1080;
+
     $( "#GreenSquare").style['height'] = String(100 * (size - 1)) + "px;";
     $( "#GreenSquare").style['width'] = String(100 * (size - 1)) + "px;";
-    $( "#GreenSquare").style['margin'] = String(mPos[1]) + "px 0px 0px " + String(mPos[0]) + "px;";
+
+    $( "#GreenSquare").style['margin'] = String(newY) + "px 0px 0px " + String(newX) + "px;";
+
     $( "#GreenSquare").style['transform'] = "rotateX( 27deg);";
     $( "#GreenSquare").style['pre-transform-scale2d'] = String(yScale) + ";";
   }
@@ -67,7 +75,7 @@ function OnUpdateSelectedUnit( event )
   var mainSelected = Players.GetLocalPlayerPortraitUnit();
 
   //$.Msg( "OnUpdateSelectedUnit" );
-  $.Msg( mainSelected );
+  //$.Msg( mainSelected );
   GameEvents.SendCustomGameEventToServer( "custom_dota_player_update_selected_unit", { "player_id" : iPlayerID, 
     "main_unit" : mainSelected} );
 }

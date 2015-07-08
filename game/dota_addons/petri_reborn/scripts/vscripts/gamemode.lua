@@ -112,6 +112,7 @@ function GameMode:OnHeroInGame(hero)
     -- We don't need 'undefined' variables
     player.lumber = 0
     player.food = 0
+    player.maxFood = 25
 
     --Update player's UI
     Timers:CreateTimer(0.03,
@@ -120,7 +121,8 @@ function GameMode:OnHeroInGame(hero)
       {
           gold = newHero:GetGold(),
           lumber = player.lumber,
-          food = player.food
+          food = player.food,
+          maxFood = player.maxFood
       }
       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
       return 0.35
