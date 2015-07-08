@@ -231,12 +231,6 @@
         "RingRadius"                "100"
         //"CollisionSize"             "144"
         
-        // Building Cost Stats
-        //----------------------------------------------------------------
-        "GoldCost"                  "10"
-        "LumberCost"                "0"
-        "BuildTime"                 "60"
-        
         // Movement
         //----------------------------------------------------------------
         "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND" // Needed to cast Point abilities
@@ -306,13 +300,6 @@
         "RingRadius"                "40"
         "CollisionSize"             "16"
         "FormationRank"             "4"
-        
-        // Building Cost Stats
-        //----------------------------------------------------------------
-        "GoldCost"                  "75"
-        "LumberCost"                "0"
-        "FoodCost"                  "1"
-        "BuildTime"                 "15"
         
         // Movement
         //----------------------------------------------------------------

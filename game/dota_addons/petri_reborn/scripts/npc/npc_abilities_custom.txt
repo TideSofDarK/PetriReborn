@@ -30,6 +30,15 @@
         "Function"        "Upgrade"
       }
     }
+
+    "OnSpellStart"
+    {
+      "RunScript"
+      {
+        "ScriptFile"      "units/food_building.lua"
+        "Function"        "CheckLumber"
+      }
+    }
   }
 
   "petri_upgrade_gold_tower"
