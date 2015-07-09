@@ -4,11 +4,13 @@
 	Creates an item on the buildings inventory to consume the queue.
 ]]
 Debug_Queue = false
-function EnqueueUnit( event )
+function EnqueueUnit( event, food )
 	local caster = event.caster
 	local ability = event.ability
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
+
+	SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 
 	-- Initialize queue
 	if not ability.queue then
@@ -36,6 +38,14 @@ function EnqueueUnit( event )
  		PlayerResource:ModifyGold(player, gold_cost, false, 0)
 		FireGameEvent( 'custom_error_show', { player_ID = player, _error = "Queue is full" } )		
 	end
+end
+
+function SetOwner( event )
+	local caster = event.caster
+	local target = event.target
+
+	target.foodSpent = tonumber(event.food)
+	target:SetOwner(caster:GetOwner())
 end
 
 -- Destroys an item on the buildings inventory, refunding full cost of purchasing and reordering the queue

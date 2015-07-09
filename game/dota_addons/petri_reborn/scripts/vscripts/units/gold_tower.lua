@@ -28,28 +28,27 @@ function Upgrade ( event   )
 	local tower_level = ability:GetLevel()
 
 	if tower_level == 1 then
-
-		--caster:SetModelScale(0.4)
+		caster:SetModelScale(0.4)
 	elseif tower_level == 2 then 
-
+		caster:SetModelScale(0.5)
 		--caster:SetModel("models/props_structures/tent_dk_med")
 	elseif tower_level == 3 then
-		
+		caster:SetModelScale(0.6)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 4 then
-
+		caster:SetModelScale(0.7)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 5 then
-
+		caster:SetModelScale(0.8)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 6 then
-
+		caster:SetModelScale(0.9)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 7 then
-
+		caster:SetModelScale(1.0)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 8 then
-
+		caster:SetModelScale(1.1)
 		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	end
 

@@ -31,7 +31,7 @@ require('events')
 require('FlashUtil')
 require('buildinghelper')
 require('buildings/bh_abilities')
-require('buildings/rally_point')
+-- require('buildings/rally_point')
 
 --[[
   This function should be used to set up Async precache calls at the beginning of the gameplay.
@@ -100,7 +100,10 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:SetAbilityPoints(0)
 
-      newHero:SetGold(2000, false)
+      newHero:SetGold(0, false)
+
+      newHero:AddItemByName("item_petri_builder_blink")
+      newHero:AddItemByName("item_petri_give_permission_to_build")
     end
 
     if team == 3 then
@@ -110,7 +113,7 @@ function GameMode:OnHeroInGame(hero)
     end
 
     -- We don't need 'undefined' variables
-    player.lumber = 0
+    player.lumber = 4000
     player.food = 0
     player.maxFood = 10
 
@@ -145,24 +148,26 @@ function GameMode:OnGameInProgress()
     end)
 end
 
-function GameMode:FilterExecuteOrder( filterTable )
-    local units = filterTable["units"]
-    local order_type = filterTable["order_type"]
-    local issuer = filterTable["issuer_player_id_const"]
+-- function GameMode:FilterExecuteOrder( filterTable )
+--     local units = filterTable["units"]
+--     local order_type = filterTable["order_type"]
+--     local issuer = filterTable["issuer_player_id_const"]
 
-    for n,unit_index in pairs(units) do
-        local unit = EntIndexToHScript(unit_index)
-        local ownerID = unit:GetPlayerOwnerID()
+--     print(order_type)
 
-        if unit:GetUnitLabel() == "building" then
-          if order_type == 1 then
-            return false
-          end
-        end
-    end
+--     for n,unit_index in pairs(units) do
+--         local unit = EntIndexToHScript(unit_index)
+--         local ownerID = unit:GetPlayerOwnerID()
 
-    return true
-end
+--         if unit:GetUnitLabel() == "building" then
+--           if order_type == 1 then
+--             return false
+--           end
+--         end
+--     end
+
+--     return true
+-- end
 
 function GameMode:OnUnitSelected(args)
   local unit = EntIndexToHScript(tonumber(args["main_unit"]))
@@ -196,12 +201,14 @@ function GameMode:InitGameMode()
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
 
-  GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
+  --GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
   -- Some creepy shit for hiding rally point
   Timers:CreateTimer(1, function()
     CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
   end)
+
+  GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
 
   BuildingHelper:Init()
 end

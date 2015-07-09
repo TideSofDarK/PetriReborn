@@ -14,6 +14,9 @@ function Precache( context )
   PrecacheResource("model", "models/particle/legion_duel_banner.vmdl", context)
   PrecacheResource("particle_folder", "particles/buildinghelper", context)
 
+  PrecacheItemByNameSync("item_petri_builder_blink", context)
+  PrecacheItemByNameSync("item_petri_give_permission_to_build", context)
+
   PrecacheUnitByNameSync("npc_petri_tower_level1", context)
 
   PrecacheUnitByNameSync("npc_petri_sawmill", context)

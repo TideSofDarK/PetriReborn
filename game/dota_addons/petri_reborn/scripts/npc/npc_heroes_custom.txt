@@ -5,19 +5,23 @@
     "AbilityLayout"     "6"
     "override_hero"     "npc_dota_hero_rattletrap"
     "SoundSet"          "0" 
-    "Ability1"        "builder_blink_datadriven" 
-    "Ability2"        "build_petri_tent" 
-    "Ability3"        "build_petri_sawmill" 
-    "Ability4"        "build_petri_gold_tower"
-    "Ability5"        "give_permission_to_build"
+    "Ability1"        "build_petri_tent" 
+    "Ability2"        "build_petri_sawmill" 
+    "Ability3"        "build_petri_gold_tower"
+    "Ability4"        "gather_lumber"
+    "Ability5"        "return_resources"
     
-
     "ArmorPhysical"       "0"                 // Physical protection.
     "MagicalResistance"       "0"                 // Magical protection (percentage).
 
-    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
-    "AttackDamageMin"     "1"                   // Damage range min.
-    "AttackDamageMax"     "1"                   // Damage range max.
+    "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
+        "AttackDamageMin"           "5.0"
+        "AttackDamageMax"           "6.0"
+        "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
+        "AttackRate"                "2"
+        "AttackAnimationPoint"      "0.433"
+        "AttackAcquisitionRange"    "500"
+        "AttackRange"               "90"
 
     //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
     "AttributeBaseStrength"   "0"                   // Base strength

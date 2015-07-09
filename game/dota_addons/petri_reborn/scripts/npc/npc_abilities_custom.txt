@@ -82,6 +82,8 @@
     "AbilityGoldCost"       "8" // From "GoldCost"
     "AbilityChannelTime"      "4" // From "BuildTime"
     "AbilityUpgradeGoldCost"    "0"
+
+    "Food" "1"
     
     "OnSpellStart"
     {
@@ -89,6 +91,7 @@
       {
         "ScriptFile"  "buildings/queue.lua"
         "Function"    "EnqueueUnit"
+        "food" "1"
       }
     }
 
@@ -104,17 +107,7 @@
       "SpawnUnit"
       {
         "UnitName"    "npc_peasant"
-        "Target"
-        {
-          "Center"        "CASTER"
-          "ScriptSelectPoints"
-          {
-            "ScriptFile"    "buildings/rally_point.lua"
-            "Function"      "GetInitialRallyPoint"
-            "Target"    "CASTER"
-            "Count"     "1"
-          }
-        }
+
         "UnitCount"   "1"
         "UnitLimit"   "0"
         "GrantsGold"  "1"
@@ -131,8 +124,9 @@
 
           "RunScript"
           {
-            "ScriptFile"    "buildings/rally_point.lua"
-            "Function"      "MoveToRallyPoint"
+            "ScriptFile"    "buildings/queue.lua"
+            "Function"      "SetOwner"
+            "food" "1"
           }
         }
       }
@@ -180,7 +174,7 @@
     // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
     "UnitName"            "npc_petri_gold_tower"
     "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "10"
+    "AbilityGoldCost"       "0"
     // End of BuildingHelper info
 
     "AbilityCastPoint"        "0.0"
@@ -196,6 +190,7 @@
       {
         "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
         "Function"        "build"
+        "lumber" "2000"
       }
     }
   }
@@ -204,7 +199,7 @@
   {
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
     "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "sniper_take_aim"
+    "AbilityTextureName"      "npc_petri_sawmill"
     "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
     // BuildingHelper info
@@ -318,101 +313,6 @@
 
   // Abilities
 
-  "give_permission_to_build"
-  {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
-
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "backdoor_protection"
-    "MaxLevel"                      "1"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "scripts/vscripts/abilities/give_permission_to_build.lua"
-        "Function"    "GivePermissionToBuild"
-      }
-    }
-  }
-  
-  "set_rally_point"
-  {
-    "BaseClass"           "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "AbilityTextureName"            "backdoor_protection"
-    "MaxLevel"                      "1"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "scripts/vscripts/buildings/rally_point.lua"
-        "Function"      "SetRallyPoint"
-        "Target"    "POINT"
-      }
-    }
-  }
-
-  "builder_blink_datadriven"
-  {
-    "BaseClass"       "ability_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "AbilityTextureName"      "antimage_blink"
-
-    "MaxLevel"               "1"
-
-    "precache"
-    {
-      "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
-    }
-
-    "AbilityCastPoint"        "0.4"
-
-    "AbilityCooldown"       "5.0"
-    
-    "AbilityManaCost"       "0"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "blink_range"     "2150"
-      }
-      
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "min_blink_range"   "200"
-      }
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "scripts/vscripts/abilities/blink.lua"
-        "Function"    "Blink"
-        "Target"    "POINT"
-      }
-
-      "FireSound"
-      {
-        "EffectName"  "Hero_Antimage.Blink_out"
-        "Target"    "CASTER"
-      }
-
-      "FireSound"
-      {
-        "EffectName"  "Hero_Antimage.Blink_in"
-        "Target"    "CASTER"
-      }
-    }
-  }
-
   "petri_get_gold"
   {
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -489,16 +389,6 @@
 
     "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 
-    // Only do this once
-    "OnUpgrade"
-    {
-      "RunScript"
-      {
-        "ScriptFile"    "buildings/rally_point.lua"
-        "Function"      "SetRallyPoint"
-      }
-    }
-
     "Modifiers"
     {
       "modifier_building_queue"
@@ -542,6 +432,15 @@
 
     "AbilityCastPoint"        "0.1"
 
+    "OnUpgrade"
+    {
+      "ApplyModifier"
+      {
+        "Target"      "CASTER"
+        "ModifierName"    "modifier_ability_gather_lumber_no_col"
+      }
+    }
+
     "OnAbilityPhaseStart"
     {
       "RunScript"
@@ -553,6 +452,20 @@
 
     "Modifiers"
     {
+      "modifier_ability_gather_lumber_no_col"
+      {
+        "Passive"         "1"
+        "IsHidden"          "1"
+        "IsBuff"          "1"
+        "IsDebuff"          "0"
+        "EffectAttachType"      "follow_origin"
+        
+        "States"
+        {
+          "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
+        }
+      }
+
       "modifier_gathering_lumber"
       {
         "IsHidden"        "1"
@@ -863,46 +776,5 @@
       }
     }
   }
-
-  "bh_dummy"
-  {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"            "rubick_empty1"
-    "MaxLevel"                      "1"
-
-    "Modifiers"
-    {
-      "dummy_unit"
-      {
-        "Passive"                        "1"
-        "IsHidden"                       "1"    
-        "States"
-        {
-          "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_HEALTH_BAR"    "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NOT_ON_MINIMAP"   "MODIFIER_STATE_VALUE_ENABLED"
-        }
-      }
-
-      "building_canceled"
-      {
-        "Passive"                        "0"
-        "IsHidden"                       "1"
-        "OnOrder"
-        // Triggers on Move/Casting/Hold/Stop
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-            "Function"    "building_canceled"
-          }
-        }
-
-      } 
-    }
-  }
-
   // END OF BUILDING HELPER ABILITIES
 }

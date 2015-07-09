@@ -43,12 +43,13 @@ function BuildingHelper:Init(...)
   CustomGameEventManager:RegisterListener( "building_helper_cancel_command", function( eventSourceIndex, args )
     --get the player that sent the command
     local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
+    print("asdsad")
     if cmdPlayer then
+      ReturnLumber(cmdPlayer)
       cmdPlayer.activeBuilder:ClearQueue()
       cmdPlayer.activeBuilding = nil
       cmdPlayer.activeBuilder:Stop()
       cmdPlayer.activeBuilder.ProcessingBuilding = false
-      
     end
   end )
 
@@ -528,11 +529,11 @@ function InitializeBuilder( builder )
 
   -- Clear the build queue, the player right clicked
   function builder:ClearQueue()
-    
     if builder.work ~= nil then
       ParticleManager:DestroyParticle(builder.work.particles, true)
       if builder.work.callbacks.onConstructionCancelled ~= nil then
         builder.work.callbacks.onConstructionCancelled(work)
+        builder.work.callbacks.onConstructionCancelled = nil
       end
     end
 
@@ -542,6 +543,7 @@ function InitializeBuilder( builder )
       table.remove(builder.buildingQueue, 1)
       if work.callbacks.onConstructionCancelled ~= nil then
         work.callbacks.onConstructionCancelled(work)
+        work.callbacks.onConstructionCancelled = nil
       end
     end
   end

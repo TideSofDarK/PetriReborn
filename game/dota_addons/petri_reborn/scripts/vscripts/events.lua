@@ -244,6 +244,10 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:GetPlayerOwner().maxFood = killedUnit:GetPlayerOwner().maxFood - killedUnit.foodProvided
   end
 
+  if killedUnit.foodSpent ~= nil then
+    killedUnit:GetPlayerOwner().food = killedUnit:GetPlayerOwner().food - killedUnit.foodSpent
+  end
+
   -- Put code here to handle when an entity gets killed
 end
 

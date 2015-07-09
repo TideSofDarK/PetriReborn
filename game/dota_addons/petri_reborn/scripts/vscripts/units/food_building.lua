@@ -1,6 +1,6 @@
 function Spawn ( entityKeyValues  )
 	thisEntity.foodProvided = 0
-	Timers:CreateTimer(2.51,
+	Timers:CreateTimer(2.1,
     function()
     	thisEntity:GetPlayerOwner().maxFood = thisEntity:GetPlayerOwner().maxFood + 30
     	thisEntity.foodProvided = 30

@@ -65,6 +65,31 @@ function ToggleOffReturn( event )
 	caster.skip_order = false
 end
 
+function Spawn( t )
+	local pID = thisEntity:GetPlayerOwnerID()
+	local ability = thisEntity:FindAbilityByName("gather_lumber")
+
+	Timers:CreateTimer(0.2, function()
+		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
+		--DeepPrintTable(trees)
+		local distance = 9999
+		local closest_building = nil
+		local position = thisEntity:GetAbsOrigin()
+
+		if trees then
+			for k, v in pairs(trees) do
+				local this_distance = (position - v:GetAbsOrigin()):Length()
+
+				if this_distance < distance then
+					distance = this_distance
+					closest_building = v
+				end
+			end
+
+			thisEntity:CastAbilityOnTarget(closest_building, ability,pID)
+		end
+	end)
+end
 
 function CheckTreePosition( event )
 
@@ -148,6 +173,7 @@ function ReturnResources( event )
 	if caster.lumber_gathered and caster.lumber_gathered > 0 then
 		-- Find where to return the resources
 		local building = FindClosestResourceDeposit( caster )
+		if building == nil then return end
 		if Debug_Peasant then
 			print("Returning "..caster.lumber_gathered.." Lumber back to "..building:GetUnitName())
 		end
@@ -162,7 +188,10 @@ function ReturnResources( event )
 			end
 		end)
 
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
+		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
+		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
+
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = fixed_position, Queue = false}) 
 		caster.skip_order = true
 		caster.target_building = building
 	end
@@ -249,18 +278,20 @@ function FindClosestResourceDeposit( caster )
 	local closest_building = nil
 
 	if barracks then
-		print(table.getn(barracks))
+		-- print(table.getn(barracks))
 		if Debug_Peasant then
 			print("barrack found")
 		end
 		for _,building in pairs(barracks) do
 			-- Ensure the same owner
-			if Debug_Peasant then
+			--if Debug_Peasant then
+			print("zdanie")
 				print(building:GetPlayerOwnerID())
-			end
-			if Debug_Peasant then
+			--end
+			--if Debug_Peasant then
+			print("geroy")
 				print(caster:GetPlayerOwnerID())
-			end
+			--end
 			if building:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
 				local this_distance = (position - building:GetAbsOrigin()):Length()
 				if this_distance < distance then

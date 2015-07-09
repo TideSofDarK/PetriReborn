@@ -1,8 +1,21 @@
--- The following three functions are necessary for building helper.
+function CheckLumber(player, lumber_amount)
+	if player.lumber >= lumber_amount then
+		player.lumber = player.lumber - lumber_amount
+		player.lastSpentLumber = lumber_amount
+		return true
+	else 
+		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
+		return false
+	end
+end
 
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()
+
+	if keys.lumber ~= nil then
+		if CheckLumber(player, tonumber(keys.lumber)) == false then return end
+	end
 
 	-- Check if player has enough resources here. If he doesn't they just return this function.
 	
@@ -18,7 +31,11 @@ function build( keys )
 		-- Play construction sound
 		-- FindClearSpace for the builder
 		FindClearSpaceForUnit(keys.caster, keys.caster:GetAbsOrigin(), true)
-		-- start the building with 0 mana.
+
+		-- Very bad solution
+		-- But when construction is started there is no way of cancelling it so...
+		player.activeBuilder.work.callbacks.onConstructionCancelled = nil
+
 		unit:SetMana(0)
 	end)
 	keys:OnConstructionCompleted(function(unit)
@@ -85,6 +102,7 @@ function build( keys )
 
 	keys:OnConstructionCancelled(function( building )
 		-- This runs when a building is cancelled, building is the unit that would've been built.
+		ReturnLumber(player) print("asdsa")
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.

@@ -233,10 +233,11 @@
         
         // Movement
         //----------------------------------------------------------------
-        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_GROUND" // Needed to cast Point abilities
-        "MovementSpeed"             "0"
-        "MovementTurnRate"            "1.0"
-        
+        "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE" // Needed to cast Point abilities
+        "MovementSpeed"               "0"   
+        "MovementTurnRate"      "0.0"  
+        "HasAggressiveStance"         "0"
+
         // Status
         //----------------------------------------------------------------
         "StatusHealth"              "120"
@@ -266,6 +267,8 @@
         "ModelScale"                "0.8"
         "Level"                     "1"
         "HealthBarOffset"           "140"
+
+        "vscripts"                    "units/peasant.lua"
         
         // Abilities
         //----------------------------------------------------------------

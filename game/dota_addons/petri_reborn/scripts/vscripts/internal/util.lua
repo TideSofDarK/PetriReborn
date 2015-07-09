@@ -1,3 +1,17 @@
+function ReturnLumber(player)
+  if player.lumber ~= nil and player.lastSpentLumber ~= nil then
+    player.lumber = player.lumber + player.lastSpentLumber
+    player.lastSpentLumber = nil
+  end
+end
+
+function SpendFood( player, food_amount )
+  if player.food + food_amount <= 250 then
+    player.food = player.food + food_amount
+    -- 
+  end
+end
+
 function Clamp( _in, low, high )
   if (_in < low ) then return low end
   if (_in > high ) then return high end
