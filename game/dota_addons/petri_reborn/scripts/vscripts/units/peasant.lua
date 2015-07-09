@@ -90,15 +90,15 @@ function CheckTreePosition( event )
 	end
 end
 
-function Gather1Lumber( event )
+function Gather100Lumber( event )
 	
 	local caster = event.caster
 	local ability = event.ability
-	local max_lumber_carried = 10 --20 with upgrade
+	local max_lumber_carried = 500
 
 	local return_ability = caster:FindAbilityByName("return_resources")
 
-	caster.lumber_gathered = caster.lumber_gathered + 1
+	caster.lumber_gathered = caster.lumber_gathered + 100
 	if Debug_Peasant then
 		print("Gathered "..caster.lumber_gathered)
 	end
@@ -126,9 +126,9 @@ function Gather1Lumber( event )
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
 
-		print("PLAYER OWNER = ")
-		PrintTable(event.caster)
-		print("PLAYER OWNER = ")
+		--print("PLAYER OWNER = ")
+		--PrintTable(event.caster)
+		--print("PLAYER OWNER = ")
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
 

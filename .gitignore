@@ -13,3 +13,5 @@
 *.vcss_c
 *.vjs_c
 *.cfg
+
+*.sublime-workspace

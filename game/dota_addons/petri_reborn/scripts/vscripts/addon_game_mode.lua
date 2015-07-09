@@ -5,7 +5,7 @@ require('gamemode')
 
 function Precache( context )
   
-  PrecacheResource("model", "models/props_structures/tower_good_sfm.vmdl", context)
+  PrecacheResource("model", "models/props_structures/radiant_tower001.vmdl", context)
   
   PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
@@ -17,7 +17,7 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_builder_blink", context)
   PrecacheItemByNameSync("item_petri_give_permission_to_build", context)
 
-  PrecacheUnitByNameSync("npc_petri_tower_level1", context)
+  PrecacheUnitByNameSync("npc_petri_tower_basic", context)
 
   PrecacheUnitByNameSync("npc_petri_sawmill", context)
   PrecacheUnitByNameSync("npc_peasant", context)

@@ -208,7 +208,5 @@ function GameMode:InitGameMode()
     CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
   end)
 
-  GameRules:GetGameModeEntity():SetUnseenFogOfWarEnabled( true )
-
   BuildingHelper:Init()
 end

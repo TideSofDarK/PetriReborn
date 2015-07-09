@@ -53,7 +53,7 @@ function CheckLumber(event)
 		Timers:CreateTimer(0.06,
 	    function()
 	    	caster:InterruptChannel()
-	    	Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
+	    	Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="35px"}})
 	    end)
 	end
 end
