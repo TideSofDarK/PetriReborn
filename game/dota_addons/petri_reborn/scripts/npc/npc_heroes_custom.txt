@@ -72,12 +72,12 @@
     "AttackDamageMax"     "1"                   // Damage range max.
 
     //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
-    "AttributeBaseStrength"   "0"                   // Base strength
-    "AttributeStrengthGain"   "0"                   // Strength bonus per level.
-    "AttributeBaseIntelligence" "0"                   // Base intelligence
-    "AttributeIntelligenceGain" "0"                   // Intelligence bonus per level.
-    "AttributeBaseAgility"    "0"                   // Base agility
-    "AttributeAgilityGain"    "0"                   // Agility bonus per level.
+    "AttributeBaseStrength"   "3"                   // Base strength
+    "AttributeStrengthGain"   "0.35"                   // Strength bonus per level.
+    "AttributeBaseIntelligence" "3"                   // Base intelligence
+    "AttributeIntelligenceGain" "0.25"                   // Intelligence bonus per level.
+    "AttributeBaseAgility"    "3"                   // Base agility
+    "AttributeAgilityGain"    "0.25"                   // Agility bonus per level.
 
     "BountyXP"          "0"                 // Experience earn.
     "BountyGoldMin"       "0"                   // Gold earned min.
@@ -90,12 +90,12 @@
     "MovementSpeed"       "600"                 // Speed.
     "MovementTurnRate"      "1.0"                 // Turning rate.
 
-    "StatusHealth"        "1000"                 // Base health.
+    "StatusHealth"        "55"                 // Base health.
     "StatusHealthRegen"     "0.0"                 // Health regeneration rate.
-    "StatusMana"        "400"                   // Base mana.
-    "StatusManaRegen"     "100.0"                 // Mana regeneration rate.
+    "StatusMana"        "5"                   // Base mana.
+    "StatusManaRegen"     "1.5"                 // Mana regeneration rate.
 
-    "VisionDaytimeRange"    "1800"                  // Range of vision at night time.
-    "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
+    "VisionDaytimeRange"    "2000"                  // Range of vision at night time.
+    "VisionNighttimeRange"    "2000"                  // Range of vision at night time.
   }
 }
