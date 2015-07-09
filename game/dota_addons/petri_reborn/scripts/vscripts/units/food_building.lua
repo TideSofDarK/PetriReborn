@@ -45,23 +45,15 @@ function CheckLumber(event)
 
 	local tent_level = ability:GetLevel()
 
-	if player.lumber >= GetLumberCost(tent_level) then
-		player.lumber = player.lumber - GetLumberCost(tent_level)
+	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", tent_level-1)
+
+	if player.lumber >= lumber_cost then
+		player.lumber = player.lumber - lumber_cost
 	else 
 		Timers:CreateTimer(0.06,
 	    function()
 	    	caster:InterruptChannel()
 	    	Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
 	    end)
-	end
-end
-
-function GetLumberCost(tent_level)
-	if tent_level == 1 then
-		return 50
-	elseif tent_level == 2 then 
-		return 100
-	elseif tent_level == 3 then
-		return 250
 	end
 end

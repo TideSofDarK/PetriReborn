@@ -13,7 +13,6 @@
     "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
     "AbilityCastPoint"        "0.0"
-    
 
     "AbilityManaCost"       "0"
     "AbilityGoldCost"       "0"
@@ -21,6 +20,15 @@
     "AbilityUpgradeGoldCost"    "0"
 
     "MaxLevel"            "4"
+
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "lumber_cost"        "50 100 250"
+      }
+    }
     
     "OnChannelSucceeded"
     {
