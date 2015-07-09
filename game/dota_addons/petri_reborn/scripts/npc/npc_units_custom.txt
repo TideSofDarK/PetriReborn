@@ -275,6 +275,8 @@
         "AbilityLayout"             "4"
         "Ability1"                  "gather_lumber"
         "Ability2"                  "return_resources"
+        "Ability3"                  "petri_suicide"
+        
         
         // Armor
         //----------------------------------------------------------------

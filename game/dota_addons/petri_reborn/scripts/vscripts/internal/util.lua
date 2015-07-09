@@ -5,10 +5,20 @@ function ReturnLumber(player)
   end
 end
 
+function CheckFood( player, food_amount )
+  if player.food + food_amount <= Clamp(player.maxFood,10,250) then
+    return true
+  else
+    return false
+  end
+end
+
 function SpendFood( player, food_amount )
-  if player.food + food_amount <= 250 then
+  if player.food + food_amount <= Clamp(player.maxFood,10,250) then
     player.food = player.food + food_amount
-    -- 
+    return true
+  else
+    return false
   end
 end
 

@@ -16,8 +16,10 @@ function BuildingAutocast( event )
 	if ability:GetAutoCastState() then
 		if not IsChanneling( caster ) then
 			if ability:IsOwnersGoldEnough( player ) then
-				caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
-				print("Autocasting ",ability:GetAbilityName())
+				if CheckFood(hero,ability:GetLevelSpecialValueFor("food", 1)) == true then
+					caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
+					print("Autocasting ",ability:GetAbilityName())
+				end	
 			end
 		end
 	end	

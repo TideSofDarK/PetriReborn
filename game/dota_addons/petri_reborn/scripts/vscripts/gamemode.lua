@@ -100,7 +100,7 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:SetAbilityPoints(0)
 
-      newHero:SetGold(0, false)
+      newHero:SetGold(1000, false)
 
       newHero:AddItemByName("item_petri_builder_blink")
       newHero:AddItemByName("item_petri_give_permission_to_build")

@@ -65,32 +65,6 @@ function ToggleOffReturn( event )
 	caster.skip_order = false
 end
 
-function Spawn( t )
-	local pID = thisEntity:GetPlayerOwnerID()
-	local ability = thisEntity:FindAbilityByName("gather_lumber")
-
-	Timers:CreateTimer(0.2, function()
-		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
-		--DeepPrintTable(trees)
-		local distance = 9999
-		local closest_building = nil
-		local position = thisEntity:GetAbsOrigin()
-
-		if trees then
-			for k, v in pairs(trees) do
-				local this_distance = (position - v:GetAbsOrigin()):Length()
-
-				if this_distance < distance then
-					distance = this_distance
-					closest_building = v
-				end
-			end
-
-			thisEntity:CastAbilityOnTarget(closest_building, ability,pID)
-		end
-	end)
-end
-
 function CheckTreePosition( event )
 
 	local caster = event.caster
@@ -283,15 +257,7 @@ function FindClosestResourceDeposit( caster )
 			print("barrack found")
 		end
 		for _,building in pairs(barracks) do
-			-- Ensure the same owner
-			--if Debug_Peasant then
-			print("zdanie")
-				print(building:GetPlayerOwnerID())
-			--end
-			--if Debug_Peasant then
-			print("geroy")
-				print(caster:GetPlayerOwnerID())
-			--end
+			
 			if building:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
 				local this_distance = (position - building:GetAbsOrigin()):Length()
 				if this_distance < distance then
@@ -304,4 +270,37 @@ function FindClosestResourceDeposit( caster )
 
 	end
 
+end
+
+function Spawn( t )
+	local pID = thisEntity:GetPlayerOwnerID()
+	local ability = thisEntity:FindAbilityByName("gather_lumber")
+
+	Timers:CreateTimer(0.2, function()
+		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
+		--DeepPrintTable(trees)
+		local distance = 9999
+		local closest_building = nil
+		local position = thisEntity:GetAbsOrigin()
+
+		if trees then
+			for k, v in pairs(trees) do
+				local this_distance = (position - v:GetAbsOrigin()):Length()
+
+				if this_distance < distance then
+					distance = this_distance
+					closest_building = v
+				end
+			end
+
+			thisEntity:CastAbilityOnTarget(closest_building, ability,pID)
+		end
+	end)
+end
+
+function Suicide( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+
+	caster:Kill(ability, caster)
 end

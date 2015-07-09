@@ -10,7 +10,10 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
-	SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
+	if SpendFood(caster:GetPlayerOwner(), tonumber(event.food))== false then 
+		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="45px"}})
+		return 
+	end
 
 	-- Initialize queue
 	if not ability.queue then
@@ -43,6 +46,8 @@ end
 function SetOwner( event )
 	local caster = event.caster
 	local target = event.target
+
+	print(tonumber(event.food))
 
 	target.foodSpent = tonumber(event.food)
 	target:SetOwner(caster:GetOwner())
@@ -87,6 +92,10 @@ function DequeueUnit( event )
 	            
 	            -- Refund ability cost
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
+
+	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food", 1)
+	            caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - foodToReturn
+
 	            if Debug_Queue then
 					print("Refund ",gold_cost)
 				end
