@@ -15,3 +15,9 @@
 *.cfg
 
 *.sublime-workspace
+
+# not sure...
+# game/dota_addons/petri_reborn/scripts/npc/abilities
+# game/dota_addons/petri_reborn/scripts/npc/heroes
+# game/dota_addons/petri_reborn/scripts/npc/items
+# game/dota_addons/petri_reborn/scripts/npc/units

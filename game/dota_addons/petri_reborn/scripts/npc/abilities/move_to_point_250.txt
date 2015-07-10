@@ -1,0 +1,22 @@
+"move_to_point_250"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+  "BaseClass"           "ability_datadriven"
+  "AbilityCastPoint"        "0"
+  "AbilityCooldown"       "0"
+  "AbilityCastRange"        "250"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+  "MaxLevel"            "1"
+
+  "AbilityManaCost"       "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "Target"    "POINT"
+      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+      "Function"    "create_building_entity"
+    }
+  }
+}

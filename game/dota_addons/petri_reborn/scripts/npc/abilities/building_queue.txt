@@ -1,0 +1,37 @@
+"building_queue"
+{
+  "BaseClass"                 "ability_datadriven"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+
+  "Modifiers"
+  {
+    "modifier_building_queue"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+  
+      "ThinkInterval"  "0.03"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "buildings/queue.lua"
+          "Function"    "AdvanceQueue"
+        }
+      }
+    }
+
+    "modifier_grounded_passive"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+  
+      "States"
+      {
+        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

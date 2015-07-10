@@ -1,0 +1,27 @@
+"petri_upgrade_gold_tower"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_upgrade_gold_tower"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+  
+  "AbilityGoldCost"       "15 30 60 100 200 500 700 900"
+
+  "AbilityManaCost"       "0"
+  
+  "AbilityChannelTime"      "3.5"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "MaxLevel"            "8"
+
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/gold_tower.lua"
+      "Function"        "Upgrade"
+    }
+  }
+}

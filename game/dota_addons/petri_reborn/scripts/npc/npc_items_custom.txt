@@ -1,97 +1,95 @@
 "DOTAAbilities"
 {
-  "item_train_peasant"
-  {
-    "BaseClass"                 "item_datadriven"
-    "AbilityTextureName"      "item_train_footman"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-    "AbilityCastPoint"        "0"
-
-    "ItemDroppable"         "0"
-    "ItemPurchasable"         "0"
-    "ItemSellable"          "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "buildings/queue.lua"
-        "Function"    "DequeueUnit"
-      }
-    }
-  }
-
-  "item_petri_builder_blink"
-  {
-    "BaseClass"       "item_datadriven"
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "AbilityTextureName"      "item_blink"
-
-    "precache"
-    {
-      "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
-    }
-
-    "AbilityCastPoint"        "0.4"
-
-    "AbilityCooldown"       "5.0"
-    
-    "AbilityManaCost"       "0"
-    
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "blink_range"     "2150"
-      }
-      
-      "02"
-      {
-        "var_type"        "FIELD_INTEGER"
-        "min_blink_range"   "200"
-      }
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
-        "Function"    "Blink"
-        "Target"    "POINT"
-      }
-
-      "FireSound"
-      {
-        "EffectName"  "Hero_Antimage.Blink_out"
-        "Target"    "CASTER"
-      }
-
-      "FireSound"
-      {
-        "EffectName"  "Hero_Antimage.Blink_in"
-        "Target"    "CASTER"
-      }
-    }
-  }
-
-  "item_petri_give_permission_to_build"
-  {
-    "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
-
-    "BaseClass"           "item_datadriven"
-    "AbilityTextureName"            "rally"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
-        "Function"    "GivePermissionToBuild"
-      }
-    }
-  }
+	"item_petri_builder_blink"
+	{
+	  "BaseClass"       "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityTextureName"      "item_blink"
+	
+	  "precache"
+	  {
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+	  }
+	
+	  "AbilityCastPoint"        "0.4"
+	
+	  "AbilityCooldown"       "5.0"
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "blink_range"     "2150"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "min_blink_range"   "200"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "Function"    "Blink"
+	      "Target"    "POINT"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_out"
+	      "Target"    "CASTER"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_in"
+	      "Target"    "CASTER"
+	    }
+	  }
+	}
+	"item_petri_give_permission_to_build"
+	{
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "rally"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	}
+	"item_train_peasant"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityTextureName"      "item_train_footman"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "AbilityCastPoint"        "0"
+	
+	  "ItemDroppable"         "0"
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "buildings/queue.lua"
+	      "Function"    "DequeueUnit"
+	    }
+	  }
+	}
 }

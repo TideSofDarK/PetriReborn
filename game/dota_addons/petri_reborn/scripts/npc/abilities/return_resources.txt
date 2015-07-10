@@ -1,0 +1,58 @@
+"return_resources"
+{
+  "BaseClass"                 "ability_datadriven"
+  "AbilityTextureName"      "return_resources"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
+
+  // When the ability is active, it means there are resources left to return (else it will be hidden)
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_returning_resources"
+      "Target"    "CASTER"
+    }
+
+    "RunScript"
+    {
+      "ScriptFile"  "units/peasant.lua"
+      "Function"    "ReturnResources"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_returning_resources"
+    {
+      "IsHidden"        "0"
+      "TextureName"     "furion_sprout"
+
+      "ThinkInterval"  "0.03"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "CheckBuildingPosition"
+        }
+      }
+
+      "OnOrder"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "ToggleOffGather"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "ToggleOffReturn"
+        }
+      }   
+    }
+  }
+} 

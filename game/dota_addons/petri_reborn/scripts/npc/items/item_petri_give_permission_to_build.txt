@@ -1,0 +1,18 @@
+"item_petri_give_permission_to_build"
+{
+  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+
+  "BaseClass"           "item_datadriven"
+  "AbilityTextureName"            "rally"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+      "Function"    "GivePermissionToBuild"
+    }
+  }
+}

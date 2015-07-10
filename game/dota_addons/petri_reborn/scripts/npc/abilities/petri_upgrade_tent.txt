@@ -1,0 +1,45 @@
+// Upgrades
+
+"petri_upgrade_tent"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "npc_petri_tent"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityManaCost"       "0"
+  "AbilityGoldCost"       "0"
+  "AbilityChannelTime"      "2.5"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "MaxLevel"            "4"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "50 100 250"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/food_building.lua"
+      "Function"        "Upgrade"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/food_building.lua"
+      "Function"        "CheckLumber"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+"petri_get_gold"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "alchemist_goblins_greed"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityCooldown" "9 9 9 2 2 2 2 2"
+
+  "MaxLevel"            "8"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "gold"      "2 3 4 2 10 20 32 44"
+    }
+  }
+
+  "OnUpgrade"
+  {
+    "ApplyModifier"
+    {
+      "Target"       "CASTER"
+      "ModifierName" "modifier_get_gold_autocast"
+    }
+  }
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/gold_tower.lua"
+      "Function"        "GetGold"
+      "gold" "%gold"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_get_gold_autocast"
+    {
+      "IsHidden"  "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+          {
+              "ScriptFile"    "units/gold_tower.lua"
+              "Function"      "GetGoldAutocast"
+          }
+      }
+
+      "ThinkInterval" "2.05" // Bad solution
+      "OnIntervalThink"
+      {
+        "RunScript"
+          {
+              "ScriptFile"    "units/gold_tower.lua"
+              "Function"      "GetGoldAutocast"
+          }
+      }
+    }
+  }
+}

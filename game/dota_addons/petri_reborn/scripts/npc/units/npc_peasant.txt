@@ -1,0 +1,57 @@
+"npc_peasant"
+{
+  "BaseClass"     "npc_dota_creature"
+  "Model"      "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
+  "ModelScale"    "0.8"
+  "Level"      "1"
+  "HealthBarOffset"    "140"
+
+  "vscripts"     "units/peasant.lua"
+
+  "AbilityLayout"    "4"
+  "Ability1"     "gather_lumber"
+  "Ability2"     "return_resources"
+  "Ability3"     "petri_suicide"
+
+  "ArmorPhysical"    "0"
+  "MagicalResistance"   "0"
+
+  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackDamageMin"    "5.0"
+  "AttackDamageMax"    "6.0"
+  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+  "AttackRate"    "2"
+  "AttackAnimationPoint"  "0.433"
+  "AttackAcquisitionRange" "500"
+  "AttackRange"     "90"
+
+  "BountyGoldMin"    "20.0"
+  "BountyGoldMax"    "30.0"
+
+  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
+  "RingRadius"    "40"
+  "CollisionSize"    "16"
+  "FormationRank"    "4"
+
+  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+  "MovementSpeed"    "522"
+  "MovementTurnRate"   "0.6"
+
+  "StatusHealth"    "220"
+  "StatusHealthRegen"   "0.25"
+  "StatusMana"    "0"
+  "StatusManaRegen"    "0"
+
+  "VisionDaytimeRange"  "800"
+  "VisionNighttimeRange"  "600"
+
+  "TeamName"     "DOTA_TEAM_GOODGUYS"
+  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+  "Creature"
+  {
+    "DisableClumpingBehavior"  "1"
+  }
+}

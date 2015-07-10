@@ -1,0 +1,70 @@
+"npc_petri_sawmill"
+{
+  "BaseClass"         "npc_dota_base_additive"
+  "Model"           "models/props_structures/good_barracks_ranged002_lvl2.vmdl"
+  "ModelScale"        "0.6"
+  "Level"           "0"
+  "HealthBarOffset"       "140"
+  "HasInventory"        "1"
+
+  "UnitLabel"          "building"
+
+  // Abilities
+  //----------------------------------------------------------------
+  "AbilityLayout"       "6"
+  "Ability1"          "building_queue"
+  "Ability2"          "train_peasant"
+  "Ability3"          ""
+  "Ability4"          ""
+  "Ability5"          ""
+  "Ability6"          ""
+
+  // Armor
+  //----------------------------------------------------------------
+  "ArmorPhysical"       "5"
+  "MagicalResistance"     "0"
+
+  // Attack
+  //----------------------------------------------------------------
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+  "AttackDamageMin"       "0"
+  "AttackDamageMax"       "0"
+
+  // Bounty
+  //----------------------------------------------------------------
+  "BountyGoldMin"       "0.0"
+  "BountyGoldMax"       "0.0"
+
+  // Bounds
+  //----------------------------------------------------------------
+  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    // Hull type used for navigation/locomotion.
+  "RingRadius"        "100"
+  //"CollisionSize"       "144"
+
+  // Movement
+  //----------------------------------------------------------------
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" // Needed to cast Point abilities
+  "MovementSpeed"         "0"   
+  "MovementTurnRate"    "0.0"  
+  "HasAggressiveStance"     "0"
+
+  // Status
+  //----------------------------------------------------------------
+  "StatusHealth"        "120"
+  "StatusHealthRegen"     "0"
+  "StatusMana"        "0"
+  "StatusManaRegen"       "0"
+
+  // Vision
+  //----------------------------------------------------------------
+  "VisionDaytimeRange"    "900"
+  "VisionNighttimeRange"    "600"
+
+  // Team
+  //----------------------------------------------------------------
+  "TeamName"          "DOTA_TEAM_GOODGUYS"
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+}

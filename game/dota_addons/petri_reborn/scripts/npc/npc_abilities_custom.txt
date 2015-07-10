@@ -1,1009 +1,977 @@
-
 "DOTAAbilities"
 {
-  "Version"   "1"
-
-  // Upgrades
-
-  "petri_upgrade_tent"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "npc_petri_tent"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    "AbilityCastPoint"        "0.0"
-
-    "AbilityManaCost"       "0"
-    "AbilityGoldCost"       "0"
-    "AbilityChannelTime"      "2.5"
-    "AbilityUpgradeGoldCost"    "0"
-
-    "MaxLevel"            "4"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "lumber_cost"        "50 100 250"
-      }
-    }
-    
-    "OnChannelSucceeded"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/food_building.lua"
-        "Function"        "Upgrade"
-      }
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/food_building.lua"
-        "Function"        "CheckLumber"
-      }
-    }
-  }
-
-  "petri_upgrade_gold_tower"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "petri_upgrade_gold_tower"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    "AbilityCastPoint"        "0.0"
-    
-    "AbilityGoldCost"       "15 30 60 100 200 500 700 900"
-
-    "AbilityManaCost"       "0"
-    
-    "AbilityChannelTime"      "3.5"
-    "AbilityUpgradeGoldCost"    "0"
-
-    "MaxLevel"            "8"
-
-    "OnChannelSucceeded"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/gold_tower.lua"
-        "Function"        "Upgrade"
-      }
-    }
-  }
-
-  // Train
-
-  "train_peasant"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"      "train_knight"
-    "MaxLevel"            "1"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-
-    "AbilityGoldCost"       "8" // From "GoldCost"
-    "AbilityChannelTime"      "4" // From "BuildTime"
-    "AbilityUpgradeGoldCost"    "0"
-
-    "AbilitySpecial"
-    {
-      "01"
-      { 
-          "var_type"  "FIELD_INTEGER"
-          "food" "2"
-      }
-    }
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "buildings/queue.lua"
-        "Function"    "EnqueueUnit"
-        "food" "%food"
-      }
-    }
-
-    "OnChannelSucceeded"
-    {
-      // Consume the first item in the queue
-      "RunScript"
-      {
-        "ScriptFile"    "buildings/queue.lua"
-        "Function"      "NextQueue"
-      }
-
-      "SpawnUnit"
-      {
-        "UnitName"    "npc_peasant"
-
-        "UnitCount"   "1"
-        "UnitLimit"   "0"
-        "GrantsGold"  "1"
-        "GrantsXP"    "1"
-        "SpawnRadius" "10"
-        "OnSpawn"
-        {
-          "ApplyModifier"
-          {
-            "ModifierName"  "modifier_phased"
-            "Target"    "TARGET"
-            "Duration"    "0.03"
-          }
-
-          "RunScript"
-          {
-            "ScriptFile"    "buildings/queue.lua"
-            "Function"      "SetOwner"
-            "food" "%food"
-          }
-        }
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_building_autocast"
-      {
-        "Passive"     "1"
-        "IsHidden"      "1"
-        "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-      
-        "ThinkInterval"   "0.03"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"    "buildings/autocast.lua"
-            "Function"      "BuildingAutocast"
-          }
-        }
-      }
-    }
-  }
-
-  // Build
-
-  "build_petri_gold_tower"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "petri_upgrade_gold_tower"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    // BuildingHelper info
-    "Building"            "1" //bool
-    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-    "BuildTime"           "3.5"
-    "AbilityCastRange"        "100"
-    "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
-    //"CancelsBuildingGhost"      "0" //bool
-    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_gold_tower"
-    "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "0"
-    // End of BuildingHelper info
-
-    "AbilityCastPoint"        "0.0"
-    "MaxLevel"            "1"
-
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"        "build"
-        "lumber" "2000"
-      }
-    }
-  }
-
-  "build_petri_sawmill"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "npc_petri_sawmill"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    // BuildingHelper info
-    "Building"            "1" //bool
-    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-    "BuildTime"           "2.0"
-    "AbilityCastRange"        "100"
-    "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
-    //"CancelsBuildingGhost"      "0" //bool
-    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_sawmill"
-    "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "0"
-    // End of BuildingHelper info
-
-    "AbilityCastPoint"        "0.0"
-    "MaxLevel"            "1"
-
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"        "build"
-      }
-    }
-  }
-
-  "build_petri_tent"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "npc_petri_tent"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    // BuildingHelper info
-    "Building"            "1" //bool
-    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-    "BuildTime"           "2.0"
-    "AbilityCastRange"        "100"
-    "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
-    //"CancelsBuildingGhost"      "0" //bool
-    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_tent"
-    "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "0"
-    // End of BuildingHelper info
-
-    "AbilityCastPoint"        "0.0"
-    "MaxLevel"            "1"
-
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"        "build"
-      }
-    }
-  }
-
-  "build_petri_tower_basic"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "build_petri_tower_basic"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    // BuildingHelper info
-    "Building"            "1" //bool
-    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-    "BuildTime"           "2.0"
-    "AbilityCastRange"        "100"
-    "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
-    //"CancelsBuildingGhost"      "0" //bool
-    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_tower_basic"
-    "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "10"
-    // End of BuildingHelper info
-
-    "AbilityCastPoint"        "0.0"
-    "MaxLevel"            "1"
-
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"        "build"
-      }
-    }
-  }
-
-  "build_petri_exploration_tree"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "build_petri_exploration_tree"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    // BuildingHelper info
-    "Building"            "1" //bool
-    "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-    "BuildTime"           "10.0"
-    "AbilityCastRange"        "100"
-    "UpdateHealth"          "1" //bool
-    "Scale"             "1" //bool
-    "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
-    //"CancelsBuildingGhost"      "0" //bool
-    // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
-    "UnitName"            "npc_petri_exploration_tree"
-    "AbilityCooldown"       "0"
-    "AbilityGoldCost"       "300"
-    // End of BuildingHelper info
-
-    "AbilityCastPoint"        "0.0"
-    "MaxLevel"            "1"
-
-    // Item Info
-    //-------------------------------------------------------------------------------------------------------------
-    "AbilityManaCost"       "0"
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"        "build"
-      }
-    }
-  }
-
-  // Abilities
-
-  "petri_exploration_tree_explore"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "petri_exploration_tree_explore"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    "AbilityManaCost"       "50"
-
-    "MaxLevel"            "1"
-
-    "precache"
-    {
-      "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/exploration_tree.lua"
-        "Function"        "Explore"
-        "Target"    "POINT"
-      }
-    }
-  }
-
-  "petri_exploration_tower_explore"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "petri_exploration_tree_explore"
-
-    "AbilitySharedWithTeammates" "1"
-
-    "AbilityGoldCost"       "500"
-
-    "MaxLevel"            "1"
-
-    "precache"
-    {
-      "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
-    }
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/exploration_tower.lua"
-        "Function"        "ExploreWorld"
-      }
-    }
-  }
-
-  "petri_suicide"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "techies_suicide"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    "MaxLevel"            "1"
-
-    "precache"
-    {
-      "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
-    }
-
-    "OnSpellStart"
-    {
-      "FireEffect"
-      {
-        "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
-        "EffectAttachType"  "follow_origin"
-        "Target"            "CASTER"
-      }
-      "RunScript"
-      {
-        "ScriptFile"      "units/peasant.lua"
-        "Function"        "Suicide"
-      }
-    }
-  }
-
-  "petri_get_gold"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-    "BaseClass"           "ability_datadriven"
-    "AbilityTextureName"      "alchemist_goblins_greed"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-
-    "AbilityCastPoint"        "0.0"
-
-    "AbilityCooldown" "9 9 9 2 2 2 2 2"
-
-    "MaxLevel"            "8"
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "gold"      "2 3 4 2 10 20 32 44"
-      }
-    }
-
-    "OnUpgrade"
-    {
-      "ApplyModifier"
-      {
-        "Target"       "CASTER"
-        "ModifierName" "modifier_get_gold_autocast"
-      }
-    }
-    
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"      "units/gold_tower.lua"
-        "Function"        "GetGold"
-        "gold" "%gold"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_get_gold_autocast"
-      {
-        "IsHidden"  "1"
-
-        "OnCreated"
-        {
-          "RunScript"
-            {
-                "ScriptFile"    "units/gold_tower.lua"
-                "Function"      "GetGoldAutocast"
-            }
-        }
-
-        "ThinkInterval" "2.05" // Bad solution
-        "OnIntervalThink"
-        {
-          "RunScript"
-            {
-                "ScriptFile"    "units/gold_tower.lua"
-                "Function"      "GetGoldAutocast"
-            }
-        }
-      }
-    }
-  }
-
-  "petri_sleep"
-  {
-    "BaseClass" "ability_datadriven"
-    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
-    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
-    "AbilityTextureName" "petri_sleep"
-
-    "MaxLevel" "15"
-
-    "AbilityCastRange"        "650"
-
-    "AbilityCooldown"       "11 13 15 17 19 21 23 25 27 29 31 32 33 34 35"
-
-    "AbilityManaCost" "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" 
-
-    "precache"
-    {
-      "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
-    }
-
-    "AbilitySpecial"
-    {
-      "01"
-      {
-        "var_type"          "FIELD_INTEGER"
-        "duration"      "5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
-      }
-    }
-
-    "OnSpellStart"
-    {
-      "ApplyModifier"
-      {
-        "ModifierName"  "sleep_modifier"
-        "Target"    "TARGET"
-      }
-    }
-    
-    "Modifiers"
-    {
-      "sleep_modifier"
-      {
-        "Duration"  "%duration"
-        "IsDebuff"  "1"
-
-        "EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
-        "EffectAttachType"      "follow_overhead"
-
-        "States"
-        {
-          "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_SPECIALLY_DENIABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
-
-          "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
-        }
-      } 
-    }   
-  }
-
-  "petri_dummy_invisibility"
-  {
-    "BaseClass" "ability_datadriven"
-    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-    "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
-    "AbilityTextureName" "undying_tombstone"
-    
-    "Modifiers"
-    {
-      "unit_properties"
-      {
-        "Passive" "1"
-        
-        "States"
-        {
-          "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
-          "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
-        }
-      } 
-    }   
-  }
-
-  "building_queue"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "MaxLevel"            "1"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-
-    "Modifiers"
-    {
-      "modifier_building_queue"
-      {
-        "Passive"     "1"
-        "IsHidden"      "1"
-    
-        "ThinkInterval"  "0.03"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "buildings/queue.lua"
-            "Function"    "AdvanceQueue"
-          }
-        }
-      }
-
-      "modifier_grounded_passive"
-      {
-        "Passive"     "1"
-        "IsHidden"      "1"
-    
-        "States"
-        {
-          "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
-        }
-      }
-    }
-  }
-
-  "gather_lumber"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"      "gather_lumber"
-    "MaxLevel"            "1"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-    "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
-    "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
-
-    "AbilityCastPoint"        "0.1"
-
-    "OnUpgrade"
-    {
-      "ApplyModifier"
-      {
-        "Target"      "CASTER"
-        "ModifierName"    "modifier_ability_gather_lumber_no_col"
-      }
-    }
-
-    "OnAbilityPhaseStart"
-    {
-      "RunScript"
-      {
-        "ScriptFile"  "units/peasant.lua"
-        "Function"    "Gather"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_ability_gather_lumber_no_col"
-      {
-        "Passive"         "1"
-        "IsHidden"          "1"
-        "IsBuff"          "1"
-        "IsDebuff"          "0"
-        "EffectAttachType"      "follow_origin"
-        
-        "States"
-        {
-          "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
-        }
-      }
-
-      "modifier_gathering_lumber"
-      {
-        "IsHidden"        "1"
-          
-        "ThinkInterval"  "0.03"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "CheckTreePosition"
-          }
-        }
-
-        "OnOrder"
-        {
-          "RemoveModifier"
-          {
-            "ModifierName"  "modifier_gathering_lumber"
-            "Target"    "CASTER"
-          }
-
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "ToggleOffGather"
-          }
-        }
-        
-      }
-
-      "modifier_chopping_wood"
-      {
-        "IsHidden"        "1"
-      
-        "OverrideAnimation"   "ACT_DOTA_ATTACK"
-
-        "OnOrder"
-        {     
-          "RemoveModifier"
-          {
-            "ModifierName"  "modifier_chopping_wood"
-            "Target"    "CASTER"
-          }
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "ToggleOffGather"
-          }
-        }
-
-        "ThinkInterval"  "1.0"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "Gather100Lumber"
-          }
-
-          "ApplyModifier"
-          {
-            "ModifierName"  "modifier_chopping_wood_animation"
-            "Target"    "CASTER"
-            "Duration"    "0.87"
-          }
-        }   
-      }
-
-      "modifier_chopping_wood_animation"
-      {
-        "OverrideAnimation"     "ACT_DOTA_ATTACK"
-        "IsHidden"        "1"
-        "OnOrder"
-        {
-          "RemoveModifier"
-          {
-            "ModifierName"  "modifier_chopping_wood_animation"
-            "Target"    "CASTER"
-          }
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "ToggleOffGather"
-          }
-        }
-      }
-    }
-  }
-
-  "return_resources"
-  {
-    "BaseClass"                 "ability_datadriven"
-    "AbilityTextureName"      "return_resources"
-    "MaxLevel"            "1"
-
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
-
-    // When the ability is active, it means there are resources left to return (else it will be hidden)
-    "OnSpellStart"
-    {
-      "ApplyModifier"
-      {
-        "ModifierName"  "modifier_returning_resources"
-        "Target"    "CASTER"
-      }
-
-      "RunScript"
-      {
-        "ScriptFile"  "units/peasant.lua"
-        "Function"    "ReturnResources"
-      }
-    }
-
-    "Modifiers"
-    {
-      "modifier_returning_resources"
-      {
-        "IsHidden"        "0"
-        "TextureName"     "furion_sprout"
-
-        "ThinkInterval"  "0.03"
-        "OnIntervalThink"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "CheckBuildingPosition"
-          }
-        }
-
-        "OnOrder"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "ToggleOffGather"
-          }
-
-          "RunScript"
-          {
-            "ScriptFile"  "units/peasant.lua"
-            "Function"    "ToggleOffReturn"
-          }
-        }   
-      }
-    }
-  } 
-
-  // START OF BUILDING HELPER ABILITIES
-  "has_build_queue"
-  {
-    "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-    "BaseClass" "ability_datadriven"
-
-    "Modifiers"
-    {
-      "modifier_has_build_queue"
-      {
-        "Passive" "1"
-        "IsHidden"  "1"
-        "OnOrder"
-        {
-          "RunScript"
-          {
-            "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-            "Function"    "builder_queue"
-          }
-        }
-      }
-    }
-  }
-
-  "move_to_point_70"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "70"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-
-  "move_to_point_100"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "100"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-
-  "move_to_point_150"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "150"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-
-  "move_to_point_200"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "200"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-
-  "move_to_point_250"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "250"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-
-  "move_to_point_300"
-  {
-    "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
-    "BaseClass"           "ability_datadriven"
-    "AbilityCastPoint"        "0"
-    "AbilityCooldown"       "0"
-    "AbilityCastRange"        "300"
-    "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
-    "MaxLevel"            "1"
-
-    "AbilityManaCost"       "0"
-
-    "OnSpellStart"
-    {
-      "RunScript"
-      {
-        "Target"    "POINT"
-        "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
-        "Function"    "create_building_entity"
-      }
-    }
-  }
-  // END OF BUILDING HELPER ABILITIES
+	"building_queue"
+	{
+	  "BaseClass"                 "ability_datadriven"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	
+	  "Modifiers"
+	  {
+	    "modifier_building_queue"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "buildings/queue.lua"
+	          "Function"    "AdvanceQueue"
+	        }
+	      }
+	    }
+	
+	    "modifier_grounded_passive"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "States"
+	      {
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	"build_petri_exploration_tree"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "build_petri_exploration_tree"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "10.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_exploration_tree"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "300"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"build_petri_gold_tower"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "3.5"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_gold_tower"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "0"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	      "lumber" "2000"
+	    }
+	  }
+	}
+	"build_petri_sawmill"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "npc_petri_sawmill"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "2.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_sawmill"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "0"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"build_petri_tent"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "npc_petri_tent"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "2.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_tent"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "0"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"build_petri_tower_basic"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "build_petri_tower_basic"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "2.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_tower_basic"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "10"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  //-------------------------------------------------------------------------------------------------------------
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"gather_lumber"
+	{
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "gather_lumber"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
+	
+	  "AbilityCastPoint"        "0.1"
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_ability_gather_lumber_no_col"
+	    }
+	  }
+	
+	  "OnAbilityPhaseStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/peasant.lua"
+	      "Function"    "Gather"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_ability_gather_lumber_no_col"
+	    {
+	      "Passive"         "1"
+	      "IsHidden"          "1"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "EffectAttachType"      "follow_origin"
+	      
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
+	    "modifier_gathering_lumber"
+	    {
+	      "IsHidden"        "1"
+	        
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "CheckTreePosition"
+	        }
+	      }
+	
+	      "OnOrder"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_gathering_lumber"
+	          "Target"    "CASTER"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffGather"
+	        }
+	      }
+	      
+	    }
+	
+	    "modifier_chopping_wood"
+	    {
+	      "IsHidden"        "1"
+	    
+	      "OverrideAnimation"   "ACT_DOTA_ATTACK"
+	
+	      "OnOrder"
+	      {     
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_wood"
+	          "Target"    "CASTER"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffGather"
+	        }
+	      }
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "Gather100Lumber"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_wood_animation"
+	          "Target"    "CASTER"
+	          "Duration"    "0.87"
+	        }
+	      }   
+	    }
+	
+	    "modifier_chopping_wood_animation"
+	    {
+	      "OverrideAnimation"     "ACT_DOTA_ATTACK"
+	      "IsHidden"        "1"
+	      "OnOrder"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_wood_animation"
+	          "Target"    "CASTER"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffGather"
+	        }
+	      }
+	    }
+	  }
+	}
+	// START OF BUILDING HELPER ABILITIES
+	"has_build_queue"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "BaseClass" "ability_datadriven"
+	
+	  "Modifiers"
+	  {
+	    "modifier_has_build_queue"
+	    {
+	      "Passive" "1"
+	      "IsHidden"  "1"
+	      "OnOrder"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	          "Function"    "builder_queue"
+	        }
+	      }
+	    }
+	  }
+	}
+	"move_to_point_100"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "100"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	"move_to_point_150"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "150"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	"move_to_point_200"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "200"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	"move_to_point_250"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "250"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	"move_to_point_300"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "300"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	// END OF BUILDING HELPER ABILITIES
+	"move_to_point_70"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "70"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "Target"    "POINT"
+	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"    "create_building_entity"
+	    }
+	  }
+	}
+	"petri_dummy_invisibility"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	  "AbilityTextureName" "undying_tombstone"
+	  
+	  "Modifiers"
+	  {
+	    "unit_properties"
+	    {
+	      "Passive" "1"
+	      
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    } 
+	  }   
+	}
+	"petri_exploration_tower_explore"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	
+	  "AbilitySharedWithTeammates" "1"
+	
+	  "AbilityGoldCost"       "500"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/exploration_tower.lua"
+	      "Function"        "ExploreWorld"
+	    }
+	  }
+	}
+	"petri_exploration_tree_explore"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityManaCost"       "50"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/exploration_tree.lua"
+	      "Function"        "Explore"
+	      "Target"    "POINT"
+	    }
+	  }
+	}
+	"petri_get_gold"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown" "9 9 9 2 2 2 2 2"
+	
+	  "MaxLevel"            "8"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "gold"      "2 3 4 2 10 20 32 44"
+	    }
+	  }
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"       "CASTER"
+	      "ModifierName" "modifier_get_gold_autocast"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_tower.lua"
+	      "Function"        "GetGold"
+	      "gold" "%gold"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_get_gold_autocast"
+	    {
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	          {
+	              "ScriptFile"    "units/gold_tower.lua"
+	              "Function"      "GetGoldAutocast"
+	          }
+	      }
+	
+	      "ThinkInterval" "2.05" // Bad solution
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	          {
+	              "ScriptFile"    "units/gold_tower.lua"
+	              "Function"      "GetGoldAutocast"
+	          }
+	      }
+	    }
+	  }
+	}
+	"petri_sleep"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+	  "AbilityTextureName" "petri_sleep"
+	
+	  "MaxLevel" "15"
+	
+	  "AbilityCastRange"        "650"
+	
+	  "AbilityCooldown"       "11 13 15 17 19 21 23 25 27 29 31 32 33 34 35"
+	
+	  "AbilityManaCost" "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" 
+	
+	  "precache"
+	  {
+	    "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "duration"      "5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "sleep_modifier"
+	      "Target"    "TARGET"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "sleep_modifier"
+	    {
+	      "Duration"  "%duration"
+	      "IsDebuff"  "1"
+	
+	      "EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
+	      "EffectAttachType"      "follow_overhead"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_SPECIALLY_DENIABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
+	
+	        "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
+	      }
+	    } 
+	  }   
+	}
+	"petri_suicide"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "techies_suicide"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/peasant.lua"
+	      "Function"        "Suicide"
+	    }
+	  }
+	}
+	"petri_upgrade_gold_tower"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	  
+	  "AbilityGoldCost"       "15 30 60 100 200 500 700 900"
+	
+	  "AbilityManaCost"       "0"
+	  
+	  "AbilityChannelTime"      "3.5"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "MaxLevel"            "8"
+	
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_tower.lua"
+	      "Function"        "Upgrade"
+	    }
+	  }
+	}
+	// Upgrades
+	
+	"petri_upgrade_tent"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "npc_petri_tent"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityManaCost"       "0"
+	  "AbilityGoldCost"       "0"
+	  "AbilityChannelTime"      "2.5"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "MaxLevel"            "4"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "50 100 250"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/food_building.lua"
+	      "Function"        "Upgrade"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/food_building.lua"
+	      "Function"        "CheckLumber"
+	    }
+	  }
+	}
+	"return_resources"
+	{
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "return_resources"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
+	
+	  // When the ability is active, it means there are resources left to return (else it will be hidden)
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_returning_resources"
+	      "Target"    "CASTER"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/peasant.lua"
+	      "Function"    "ReturnResources"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_returning_resources"
+	    {
+	      "IsHidden"        "0"
+	      "TextureName"     "furion_sprout"
+	
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "CheckBuildingPosition"
+	        }
+	      }
+	
+	      "OnOrder"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffGather"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffReturn"
+	        }
+	      }   
+	    }
+	  }
+	} 
+	"train_peasant"
+	{
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "train_knight"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	
+	  "AbilityGoldCost"       "8" // From "GoldCost"
+	  "AbilityChannelTime"      "4" // From "BuildTime"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "food" "2"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "buildings/queue.lua"
+	      "Function"    "EnqueueUnit"
+	      "food" "%food"
+	    }
+	  }
+	
+	  "OnChannelSucceeded"
+	  {
+	    // Consume the first item in the queue
+	    "RunScript"
+	    {
+	      "ScriptFile"    "buildings/queue.lua"
+	      "Function"      "NextQueue"
+	    }
+	
+	    "SpawnUnit"
+	    {
+	      "UnitName"    "npc_peasant"
+	
+	      "UnitCount"   "1"
+	      "UnitLimit"   "0"
+	      "GrantsGold"  "1"
+	      "GrantsXP"    "1"
+	      "SpawnRadius" "10"
+	      "OnSpawn"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_phased"
+	          "Target"    "TARGET"
+	          "Duration"    "0.03"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"    "buildings/queue.lua"
+	          "Function"      "SetOwner"
+	          "food" "%food"
+	        }
+	      }
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_building_autocast"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	    
+	      "ThinkInterval"   "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "buildings/autocast.lua"
+	          "Function"      "BuildingAutocast"
+	        }
+	      }
+	    }
+	  }
+	}
 }

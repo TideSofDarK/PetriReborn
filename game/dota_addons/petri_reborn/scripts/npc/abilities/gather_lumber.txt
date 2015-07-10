@@ -1,0 +1,135 @@
+"gather_lumber"
+{
+  "BaseClass"                 "ability_datadriven"
+  "AbilityTextureName"      "gather_lumber"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
+
+  "AbilityCastPoint"        "0.1"
+
+  "OnUpgrade"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_ability_gather_lumber_no_col"
+    }
+  }
+
+  "OnAbilityPhaseStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/peasant.lua"
+      "Function"    "Gather"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_ability_gather_lumber_no_col"
+    {
+      "Passive"         "1"
+      "IsHidden"          "1"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "EffectAttachType"      "follow_origin"
+      
+      "States"
+      {
+        "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
+    "modifier_gathering_lumber"
+    {
+      "IsHidden"        "1"
+        
+      "ThinkInterval"  "0.03"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "CheckTreePosition"
+        }
+      }
+
+      "OnOrder"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_gathering_lumber"
+          "Target"    "CASTER"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "ToggleOffGather"
+        }
+      }
+      
+    }
+
+    "modifier_chopping_wood"
+    {
+      "IsHidden"        "1"
+    
+      "OverrideAnimation"   "ACT_DOTA_ATTACK"
+
+      "OnOrder"
+      {     
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_chopping_wood"
+          "Target"    "CASTER"
+        }
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "ToggleOffGather"
+        }
+      }
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "Gather100Lumber"
+        }
+
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_chopping_wood_animation"
+          "Target"    "CASTER"
+          "Duration"    "0.87"
+        }
+      }   
+    }
+
+    "modifier_chopping_wood_animation"
+    {
+      "OverrideAnimation"     "ACT_DOTA_ATTACK"
+      "IsHidden"        "1"
+      "OnOrder"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_chopping_wood_animation"
+          "Target"    "CASTER"
+        }
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "ToggleOffGather"
+        }
+      }
+    }
+  }
+}
