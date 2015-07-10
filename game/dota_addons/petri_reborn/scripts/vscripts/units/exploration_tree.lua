@@ -11,5 +11,5 @@ function Explore(keys)
 
 	point.z = point.z - 90000
 
-	ability:CreateVisibilityNode(point, 1000, 6)
+	ability:CreateVisibilityNode(point, 2000, 6)	
 end

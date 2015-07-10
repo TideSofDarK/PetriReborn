@@ -295,15 +295,17 @@
   "npc_petri_exploration_tower"
   {
     // General
-    "BaseClass"         "npc_dota_building"  // Class of entity of link to.
+    "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
     "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  // Model.
     "ModelScale"                "0.8"
     "Level"           "1"
+
+    "vscripts"     "units/exploration_tower.lua"
     
     // Abilities
     //----------------------------------------------------------------
     
-    //"Ability1"          ""     // Ability 1.
+    "Ability1"          "petri_exploration_tower_explore"     // Ability 1.
 
     // Armor
     //----------------------------------------------------------------
@@ -313,7 +315,6 @@
     // Attack
     //----------------------------------------------------------------
     "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"     // Type of attack - melee, ranged, etc.
-
 
     // Bounds
     //----------------------------------------------------------------
@@ -330,17 +331,16 @@
     //----------------------------------------------------------------
     "StatusHealth"        "1000"     // Base health.
     "StatusHealthRegen"     "0"     // Health regeneration rate.
-    "StatusMana"        "0"     // Base mana.
-    "StatusManaRegen"     "0"     // Mana regeneration rate.
 
     // Team
     //----------------------------------------------------------------
     "TeamName"          "DOTA_TEAM_BADGUYS"      // Team name.
+    "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
     // Vision
     //----------------------------------------------------------------
-    "VisionDaytimeRange"    "0"   // Range of vision during day light.
-    "VisionNighttimeRange"    "0"   // Range of vision at night time.
+    "VisionDaytimeRange"    "400"   // Range of vision during day light.
+    "VisionNighttimeRange"    "400"   // Range of vision at night time.
   }
 
   "npc_petri_sawmill"

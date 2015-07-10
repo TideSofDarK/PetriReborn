@@ -44,10 +44,8 @@
     "MovementSpeed"       "600"                 // Speed.
     "MovementTurnRate"      "1.0"                 // Turning rate.
 
-    "StatusHealth"        "1000"                 // Base health.
-    "StatusHealthRegen"     "0.0"                 // Health regeneration rate.
-    "StatusMana"        "400"                   // Base mana.
-    "StatusManaRegen"     "100.0"                 // Mana regeneration rate.
+    "StatusHealth"        "10"                 // Base health.
+    "StatusHealthRegen"     "0.25"                 // Health regeneration rate.
 
     "VisionDaytimeRange"    "1800"                  // Range of vision at night time.
     "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
@@ -58,16 +56,17 @@
     "AbilityLayout"     "5"
     "override_hero"     "npc_dota_hero_brewmaster"
     "SoundSet"          "0" 
-    "Ability1"        "" 
-    "Ability2"        "" 
+
+    "Ability1"        "petri_sleep" 
+    "Ability2"        "petri_exploration_tower_explore" 
     "Ability3"        "" 
     "Ability4"        ""
     "Ability5"        ""
 
-    "ArmorPhysical"       "0"                 // Physical protection.
+    "ArmorPhysical"       "1"                 // Physical protection.
     "MagicalResistance"       "0"                 // Magical protection (percentage).
 
-    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
     "AttackDamageMin"     "1"                   // Damage range min.
     "AttackDamageMax"     "1"                   // Damage range max.
 

@@ -110,6 +110,11 @@ function GameMode:OnHeroInGame(hero)
 
       UTIL_Remove( hero )
       newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
+
+      Timers:CreateTimer(0.03,
+        function()
+          CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+          end)
     end
 
     -- We don't need 'undefined' variables
@@ -172,7 +177,7 @@ end
 function GameMode:OnUnitSelected(args)
   local unit = EntIndexToHScript(tonumber(args["main_unit"]))
 
-  if unit ~= nil then
+  if unit ~= nil and unit:GetPlayerOwner() ~= nil then
     if unit:GetPlayerOwner().selection == nil then 
       unit:GetPlayerOwner().selection = {}
     end
@@ -207,6 +212,8 @@ function GameMode:InitGameMode()
   Timers:CreateTimer(1, function()
     CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
   end)
+
+  
 
   BuildingHelper:Init()
 end
