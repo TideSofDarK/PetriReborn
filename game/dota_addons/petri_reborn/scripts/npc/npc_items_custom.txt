@@ -57,7 +57,7 @@
     {
       "RunScript"
       {
-        "ScriptFile"  "scripts/vscripts/abilities/blink.lua"
+        "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
         "Function"    "Blink"
         "Target"    "POINT"
       }
@@ -89,7 +89,7 @@
     {
       "RunScript"
       {
-        "ScriptFile"  "scripts/vscripts/abilities/give_permission_to_build.lua"
+        "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
         "Function"    "GivePermissionToBuild"
       }
     }

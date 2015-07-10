@@ -10,44 +10,21 @@ if GameMode == nil then
     _G.GameMode = class({})
 end
 
--- This library allow for easily delayed/timed actions
 require('libraries/timers')
--- This library can be used for advancted physics/motion/collision of units.  See PhysicsReadme.txt for more information.
 require('libraries/physics')
--- This library can be used for advanced 3D projectile systems.
 require('libraries/projectiles')
--- This library can be used for sending panorama notifications to the UIs of players/teams/everyone
 require('libraries/notifications')
 
--- These internal libraries set up barebones's events and processes.  Feel free to inspect them/change them if you need to.
-require('internal/gamemode')
-require('internal/events')
+require('libraries/FlashUtil')
+require('libraries/buildinghelper')
+require('buildings/bh_abilities')
 
--- settings.lua is where you can specify many different properties for your game mode and is one of the core barebones files.
 require('settings')
--- events.lua is where you can specify the actions to be taken when any event occurs and is one of the core barebones files.
+require('internal/events')
 require('events')
 
-require('FlashUtil')
-require('buildinghelper')
-require('buildings/bh_abilities')
--- require('buildings/rally_point')
+require('internal/gamemode')
 
---[[
-  This function should be used to set up Async precache calls at the beginning of the gameplay.
-
-  In this function, place all of your PrecacheItemByNameAsync and PrecacheUnitByNameAsync.  These calls will be made
-  after all players have loaded in, but before they have selected their heroes. PrecacheItemByNameAsync can also
-  be used to precache dynamically-added datadriven abilities instead of items.  PrecacheUnitByNameAsync will 
-  precache the precache{} block statement of the unit and all precache{} block statements for every Ability# 
-  defined on the unit.
-
-  This function should only be called once.  If you want to/need to precache more items/abilities/units at a later
-  time, you can call the functions individually (for example if you want to precache units in a new wave of
-  holdout).
-
-  This function should generally only be used if the Precache() function in addon_game_mode.lua is not working.
-]]
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")    
   --PrecacheItemByNameAsync("item_example_item", function(...) end)

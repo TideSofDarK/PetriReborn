@@ -1,9 +1,19 @@
---[[Author: Amused/D3luxe
-	Used by: Pizzalol
-	Date: 17.12.2014.
-	Blinks the target to the target point, if the point is beyond max blink range then blink the maximum range]]
+function GivePermissionToBuild( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local caster_team = caster:GetTeamNumber()
+	local player = caster:GetPlayerOwnerID()
+	local ability = keys.ability
+	local ability_level = ability:GetLevel() - 1
+
+	if target.currentArea == caster.claimedArea then
+		if target.claimedArea == nil then
+			target.claimedArea = caster.claimedArea
+		end
+	end
+end
+
 function Blink(keys)
-	--PrintTable(keys)
 	local point = keys.target_points[1]
 	local caster = keys.caster
 	local casterPos = caster:GetAbsOrigin()
