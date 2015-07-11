@@ -1,0 +1,36 @@
+"petri_petrosyan_explore"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_exploration_tree_explore"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityManaCost"       "10 40 70 150 250"
+  "AbilityCooldown"       "35 30 25 20 15"
+
+  "MaxLevel"            "5"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "aoe_radius"          "700 1500 2200 2800 3300"
+    }
+  }
+
+  "precache"
+  {
+    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/petrosyan.lua"
+      "Function"        "Explore"
+      "Target"    "POINT"
+    }
+  }
+}

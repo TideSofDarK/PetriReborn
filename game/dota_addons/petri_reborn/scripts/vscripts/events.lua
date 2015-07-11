@@ -248,6 +248,14 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:GetPlayerOwner().food = killedUnit:GetPlayerOwner().food - killedUnit.foodSpent
   end
 
+  print(killedUnit:GetUnitName ())
+  if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") then
+    Timers:CreateTimer(0.73,
+    function()
+      CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
+    end)
+  end
+
   -- Put code here to handle when an entity gets killed
 end
 

@@ -15,36 +15,16 @@ function StartBuildingHelper( params )
     $.Schedule(0.001, StartBuildingHelper);
     var mPos = GameUI.GetCursorPosition();
 
-    var yFactor = (mPos[1] / $( "#BuildingHelperBase").desiredlayoutheight);
+    mPos[0] = mPos[0] / $( "#BuildingHelperBase").desiredlayoutwidth;
+    mPos[0] *= 1920;
 
-    var worldPos = [];
-    var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
+    mPos[1] = mPos[1] / $( "#BuildingHelperBase").desiredlayoutheight;
+    mPos[1] *= 1080;
 
-    if (GamePos[2] > 10000000) // ScreenXYToWorld returns near inf if the mouse is off screen( happens when you pan sometimes?)
-    {
-      GamePos[2] = 0;
-    }
-    worldPos[0] = Game.WorldToScreenX(GamePos[0] - 25, GamePos[1] - 25, GamePos[2]);
-    worldPos[1] = Game.WorldToScreenY(GamePos[0] - 25, GamePos[1] - 25, GamePos[2]);
-
-    var yScale = 0.57 + (mPos[1] / $( "#BuildingHelperBase").desiredlayoutheight) * 0.37 + (GamePos[2] / 256) * 0.03;
-
-    mPos[0] -= 32 * yScale * size;
-    mPos[1] -= 32 * yScale * size;
-
-    var newX = mPos[0] / $( "#BuildingHelperBase").desiredlayoutwidth;
-    newX *= 1920;
-
-    var newY = mPos[1] / $( "#BuildingHelperBase").desiredlayoutheight;
-    newY *= 1080;
-
-    $( "#GreenSquare").style['height'] = String(100 * (size - 1)) + "px;";
-    $( "#GreenSquare").style['width'] = String(100 * (size - 1)) + "px;";
-
-    $( "#GreenSquare").style['margin'] = String(newY) + "px 0px 0px " + String(newX) + "px;";
-
-    $( "#GreenSquare").style['transform'] = "rotateX( 27deg);";
-    $( "#GreenSquare").style['pre-transform-scale2d'] = String(yScale) + ";";
+    $( "#GreenSquare").style['height'] = String(100) + "px;";
+    $( "#GreenSquare").style['width'] = String(100) + "px;";
+    $( "#GreenSquare").style['margin'] = String(mPos[1] - (25 * size)) + "px 0px 0px " + String(mPos[0] - (25 * size)) + "px;";
+    $( "#GreenSquare").style['transform'] = "rotateX( 30deg );";
   }
 }
 
@@ -62,14 +42,10 @@ function SendBuildCommand( params )
 
 function SendCancelCommand( params )
 {
-  if (state === 'active') {
-    state = 'disabled'
-    $( "#GreenSquare").style['margin'] = "-100px 0px 0px 0px;"; 
-    GameEvents.SendCustomGameEventToServer( "building_helper_cancel_command", {} );
-  }
-  
+  state = 'disabled'
+  $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;"; 
+  GameEvents.SendCustomGameEventToServer( "building_helper_cancel_command", {} );
 }
-
 
 function OnUpdateSelectedUnit( event )
 {

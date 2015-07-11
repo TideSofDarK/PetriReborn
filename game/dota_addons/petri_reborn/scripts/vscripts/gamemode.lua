@@ -69,6 +69,8 @@ function GameMode:OnHeroInGame(hero)
 
     local newHero
 
+    CreateUnitByName("npc_petri_creep_bad_actor", Vector(0,0,0),true, nil,nil,DOTA_TEAM_NEUTRALS)
+
     if team == 2 then
       UTIL_Remove( hero )
       newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
@@ -88,9 +90,17 @@ function GameMode:OnHeroInGame(hero)
       UTIL_Remove( hero )
       newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
 
+      -- It's dangerous to go alone, take this
+      newHero:SetAbilityPoints(3)
+      newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
+      newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
+
+      -- Wait a bit
       Timers:CreateTimer(0.03,
         function()
           CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+          
+          newHero.spawnPosition = newHero:GetAbsOrigin()
           end)
     end
 

@@ -48,20 +48,20 @@
       "OnCreated"
       {
         "RunScript"
-          {
-              "ScriptFile"    "units/gold_tower.lua"
-              "Function"      "GetGoldAutocast"
-          }
+        {
+          "ScriptFile"    "units/gold_tower.lua"
+          "Function"      "GetGoldAutocast"
+        }
       }
 
       "ThinkInterval" "2.05" // Bad solution
       "OnIntervalThink"
       {
         "RunScript"
-          {
-              "ScriptFile"    "units/gold_tower.lua"
-              "Function"      "GetGoldAutocast"
-          }
+        {
+          "ScriptFile"    "units/gold_tower.lua"
+          "Function"      "GetGoldAutocast"
+        }
       }
     }
   }

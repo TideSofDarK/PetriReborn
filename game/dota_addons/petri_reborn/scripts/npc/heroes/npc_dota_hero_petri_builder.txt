@@ -47,4 +47,9 @@
 
   "VisionDaytimeRange"    "1800"                  // Range of vision at night time.
   "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
+
+  "Creature"
+  {
+    "DisableClumpingBehavior" "1"
+  }
 }

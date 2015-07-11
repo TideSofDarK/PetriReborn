@@ -1,7 +1,7 @@
 "npc_peasant"
 {
   "BaseClass"     "npc_dota_creature"
-  "Model"      "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
+  "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
   "HealthBarOffset"    "140"
@@ -52,6 +52,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior"  "1"
+    "DisableClumpingBehavior"  "0"
   }
 }

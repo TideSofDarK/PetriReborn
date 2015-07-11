@@ -597,6 +597,79 @@
 	    }
 	  }
 	}
+	"petri_flat_joke"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"death_prophet_carrion_swarm"
+	
+		"MaxLevel" "1"
+	
+		"precache"
+		{	
+			"particle"		"particles/petri_flat_joke.vpcf"
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"joke_damage"				"1"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"10"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_flat_joke_datadriven"
+			{
+		    "Passive"   "1"
+		    "IsHidden"  "1"
+	
+		    "OnAttackStart"
+		    {
+	        "Random"
+	        {
+	          "Chance" 	"%crit_chance"
+	          "OnSuccess"
+	          {
+			        "LinearProjectile"
+							{
+						    "Target"		 	"ATTACKER"
+						    "EffectName"     	"particles/petri_flat_joke.vpcf"
+						    "MoveSpeed"      	"1100"
+						    "StartRadius"    	"110"
+						    "EndRadius"      	"300"
+						    "StartPosition"  	"follow_origin"
+						    "FixedDistance"  	"1000"
+						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						    "HasFrontalCone" 	"1"
+						    "ProvidesVision" 	"0"
+							}     
+	          }
+	        }
+		    }
+			}
+		}
+	
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"0"
+	
+			"Damage"
+			{
+				"Target"		 "TARGET"
+				"Type"			 "DAMAGE_TYPE_MAGICAL"
+				"Damage"		 "1"
+	    }
+		}
+	}
 	"petri_get_gold"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -647,20 +720,255 @@
 	      "OnCreated"
 	      {
 	        "RunScript"
-	          {
-	              "ScriptFile"    "units/gold_tower.lua"
-	              "Function"      "GetGoldAutocast"
-	          }
+	        {
+	          "ScriptFile"    "units/gold_tower.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
 	      }
 	
 	      "ThinkInterval" "2.05" // Bad solution
 	      "OnIntervalThink"
 	      {
 	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_tower.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	    }
+	  }
+	}
+	"petri_laugh_burst"
+	{
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+	  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+	  "AbilityTextureName"      "omniknight_purification"
+	
+	  "AbilityCastRange"        "700"
+	  "AbilityCastPoint"        "0.5"
+	
+	  "AbilityCooldown"       "15.0"
+	
+	  "AbilityManaCost"       "1 2 3 4 5 6 10 15 18 25 35 50 70 85 100 125 250 400"
+	
+	  "MaxLevel"            "15"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "heal"          "10 20 35 50 75 125 200 300 500 1000 1250 1500 2000 2800 5000 7500 10000 13000"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+	    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+	    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+	    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Omniknight.Purification"
+	      "Target"    "TARGET"
+	    }
+	    
+	    "FireEffect"
+	    {
+	      "Target"      "TARGET"
+	      "EffectName"    "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	    }
+	
+	    "Heal"
+	    {
+	      "Target"    "TARGET"
+	      "HealAmount"  "%heal"
+	    }
+	  }
+	}
+	"petri_petrosyan_explore"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityManaCost"       "10 40 70 150 250"
+	  "AbilityCooldown"       "35 30 25 20 15"
+	
+	  "MaxLevel"            "5"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "aoe_radius"          "700 1500 2200 2800 3300"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/petrosyan.lua"
+	      "Function"        "Explore"
+	      "Target"    "POINT"
+	    }
+	  }
+	}
+	"petri_petrosyan_return"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "keeper_of_the_light_illuminate_end"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown" "7"
+	
+	  "MaxLevel"            "1"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/petrosyan.lua"
+	      "Function"        "Return"    
+	    }
+	  }
+	}
+	"petri_petrosyan_wind_walk"
+	{
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "AbilityTextureName"      "clinkz_wind_walk"
+	
+	  "AbilityCooldown"       "25.0"
+	
+	  "AbilityManaCost"       "1 2 3 4 5 6 7 8 10 12 14 16 20 25 30 35 40"
+	
+	  "MaxLevel"            "15"
+	  
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "duration"          "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+	      "EffectAttachType"  "attach_origin"
+	      "Target"      "CASTER"
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "Target"    "CASTER"
+	      "ModifierName"  "modifier_wind_walk_fade"
+	      "Duration"    "%fade_time"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_wind_walk_fade"
+	    {
+	      "IsHidden"      "1"
+	      "EffectName"    "particles/generic_hero_status/status_invisibility_start.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	
+	      "OnDestroy"
+	      {
+	        "ApplyModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_wind_walk"
+	          "Duration"    "%duration"
+	        }
+	        "ApplyModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_invisible"
+	          "Duration"    "%duration"
+	        }
+	      }
+	    }
+	
+	    "modifier_wind_walk"
+	    {
+	      "OnAttackLanded"
+	      {
+	        "RemoveModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_wind_walk"
+	        }
+	        "RemoveModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_invisible"
+	        }
+	      }
+	
+	      "OnAbilityExecuted"
+	      {
+	        "RemoveModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_wind_walk"
+	        }
+	        "RemoveModifier"
+	        {
+	          "Target"    "CASTER"
+	          "ModifierName"  "modifier_invisible"
+	        }
+	      }
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED" 
+	      }
+	
+	      "OnDestroy"
+	      {
+	        "RemoveModifier"
+	        {
+	          "Target"
 	          {
-	              "ScriptFile"    "units/gold_tower.lua"
-	              "Function"      "GetGoldAutocast"
+	            "Center"  "CASTER"
+	            "Flags"   "DOTA_UNIT_TARGET_FLAG_DEAD"
 	          }
+	          "ModifierName"  "modifier_invisible"
+	        }
 	      }
 	    }
 	  }
