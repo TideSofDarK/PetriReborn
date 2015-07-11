@@ -3,6 +3,7 @@
   "consumables"
   {
     "item"        "item_petri_cola"
+    "item"        "item_petri_janitor"
   }
 
   "attributes"
@@ -40,7 +41,7 @@
 
   "magics"
   {
-    "item"    "ITEM_NAME"
+    "item"    "item_petri_magic_shield"
   }
 
   "defense"
@@ -53,6 +54,9 @@
   "weapons"
   {
     "item"    "item_petri_hyperubersword"
+    "item"    "item_petri_kladenets_sword"
+    "item"    "item_petri_perfect_sword"
+    "item"    "item_petri_titan_sword"
   }
 
  // Level 4 - Orange / Orb / Artifacts

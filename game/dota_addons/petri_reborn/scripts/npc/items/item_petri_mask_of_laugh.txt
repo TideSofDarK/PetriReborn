@@ -34,20 +34,6 @@
         "Priority"    "DOTA_ORB_PRIORITY_ITEM"
       }
 
-      "OnOrbImpact"
-      {
-        "RunScript"
-        {
-          "ScriptFile"      "items/mask_of_laugh.lua"
-          "Function"        "OnOrbImpact"
-        }
-      }
-    }
-    "modifier_item_petri_mask_of_laugh_lifesteal"
-    {
-      "Passive"     "0"
-      "IsHidden"      "1"
-      
       "OnDealDamage"
       {
         "Lifesteal"

@@ -1,0 +1,94 @@
+"item_petri_magic_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1535"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_buckler"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "magic shield"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "6"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_health"      "70"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"      "7"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_magic_shield_active"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_magic_shield_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+
+    "modifier_item_petri_magic_shield_active"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_magic_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1536"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "100"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_magic_shield"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_simple_sword;item_petri_vest"
+  }
+}

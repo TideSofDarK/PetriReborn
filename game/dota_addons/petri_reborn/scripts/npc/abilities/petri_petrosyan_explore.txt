@@ -15,7 +15,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "aoe_radius"          "700 1500 2200 2800 3300"
+      "aoe_radius"          "1600 2850 3100 3250 3300"
     }
   }
 

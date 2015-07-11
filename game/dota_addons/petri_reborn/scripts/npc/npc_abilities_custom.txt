@@ -226,32 +226,6 @@
 	    }
 	  }
 	}
-	"buy_petri_janitor"
-	{
-	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "holdout_battle_rage"
-	  "MaxLevel"            "1"
-	
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-	
-	  "AbilityGoldCost"       "5"
-	
-	  "AbilitySharedWithTeammates" "1"
-	
-	  "OnSpellStart"
-	  {
-	    "SpawnUnit"
-	    {
-	      "UnitName"    "npc_janitor"
-	
-	      "UnitCount"   "1"
-	      "UnitLimit"   "10"
-	      "GrantsGold"  "1"
-	      "GrantsXP"    "1"
-	      "SpawnRadius" "10"
-	    }
-	  }
-	}
 	"gather_lumber"
 	{
 	  "BaseClass"                 "ability_datadriven"
@@ -571,7 +545,7 @@
 	    } 
 	  }   
 	}
-	"petri_exploration_tower_explore"
+	"petri_exploration_tower_explore_world"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
@@ -764,6 +738,47 @@
 	    }
 	  }
 	}
+	"petri_janitor_truesight"
+	{
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName"      "undying_tombstone"
+	
+	  "MaxLevel"            "1"
+	  
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+	      "EffectAttachType"  "attach_origin"
+	      "Target"      "CASTER"
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "Target"    "CASTER"
+	      "ModifierName"  "modifier_wind_walk_fade"
+	      "Duration"    "%fade_time"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "unit_properties"
+	    {
+	      "Passive" "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_INVISIBLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    } 
+	  } 
+	}
 	"petri_laugh_burst"
 	{
 	  "BaseClass"       "ability_datadriven"
@@ -839,7 +854,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "aoe_radius"          "700 1500 2200 2800 3300"
+	      "aoe_radius"          "1600 2850 3100 3250 3300"
 	    }
 	  }
 	

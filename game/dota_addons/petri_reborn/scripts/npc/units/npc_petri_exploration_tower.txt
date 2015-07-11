@@ -6,10 +6,7 @@
   "ModelScale"                "0.8"
   "Level"           "1"
 
-  "vscripts"     "units/exploration_tower.lua"
-
-  "Ability1"          "petri_exploration_tower_explore"
-  "Ability2"          "buy_petri_janitor"
+  "Ability1"          "petri_exploration_tower_explore_world"
 
   // Armor
   //----------------------------------------------------------------
@@ -26,7 +23,7 @@
 
   // Movement
   //----------------------------------------------------------------
-  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
   "MovementSpeed"       "0"   // Speed
   "MovementTurnRate"      "0.0"   // Turning rate.
   "FollowRange"       "0"   // Distance to keep when following

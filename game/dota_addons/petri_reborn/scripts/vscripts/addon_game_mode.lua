@@ -4,6 +4,8 @@ require('internal/util')
 require('gamemode')
 
 function Precache( context )
+  PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
+
   PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl", context)
@@ -24,6 +26,9 @@ function Precache( context )
   PrecacheResource("particle_folder", "particles/buildinghelper", context)
 
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
+
+  PrecacheItemByNameSync("item_chainmail", context)
+  PrecacheItemByNameSync("item_petri_vest", context)
 
   PrecacheItemByNameSync("item_petri_builder_blink", context)
   PrecacheItemByNameSync("item_petri_give_permission_to_build", context)

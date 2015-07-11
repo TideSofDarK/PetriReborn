@@ -6,6 +6,8 @@
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_mask_of_madness"
+
+  "AbilityCooldown"       "65"
   
   "ItemCost"            "446"
   "ItemShopTags"          "unique"
@@ -27,7 +29,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "50"
+      "bonus_all_stats"   "20"
     }
   }
 
@@ -72,18 +74,19 @@
 
     "modifier_item_petri_uber_mask_of_laugh_active"
     {
-      "Duration"                "%buff_duration"
+      "Duration"                "%invu_duration"
       "Passive"         "0"
       "IsHidden"          "0"
       "IsBuff"          "1"
       "IsDebuff"          "0"
       "IsPurgable"        "0"
-      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
       "EffectAttachType"        "PATTACH_ABSORIGIN"
           
       "States"
       {
-        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }

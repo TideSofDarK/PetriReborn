@@ -13,9 +13,9 @@
   "AbilityCastRange"        "100"
 
   "ItemCost"            "25"
-  "ItemShopTags"          "damage"
+  "ItemShopTags"        "hp"
   "ItemQuality"         "common"
-  "ItemAliases"         "hyperubersword"
+  "ItemAliases"         "cola"
 
   "AbilitySpecial"
   {

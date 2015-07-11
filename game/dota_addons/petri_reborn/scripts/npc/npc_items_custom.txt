@@ -148,9 +148,9 @@
 	  "AbilityCastRange"        "100"
 	
 	  "ItemCost"            "25"
-	  "ItemShopTags"          "damage"
+	  "ItemShopTags"        "hp"
 	  "ItemQuality"         "common"
-	  "ItemAliases"         "hyperubersword"
+	  "ItemAliases"         "cola"
 	
 	  "AbilitySpecial"
 	  {
@@ -303,6 +303,35 @@
 	    "01"            "item_petri_simple_sword;item_petri_megahammer"
 	  }
 	}
+	"item_petri_janitor"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1666"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_sobi_mask"
+	
+	  "ItemCost"            "15"
+	  "ItemShopTags"        "spec"
+	  "ItemQuality"         "common"
+	  "ItemAliases"         "janitor"
+	
+	  "AbilityCooldown"       "15.0"
+	
+	  "ItemStackable" "1"
+	
+	  "MaxLevel"            "1"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "SpawnJanitor"
+	    }
+	  }
+	}
 	"item_petri_kvn_medal"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -376,20 +405,6 @@
 	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
 	      }
 	
-	      "OnOrbImpact"
-	      {
-	        "RunScript"
-	        {
-	          "ScriptFile"      "items/mask_of_laugh.lua"
-	          "Function"        "OnOrbImpact"
-	        }
-	      }
-	    }
-	    "modifier_item_petri_mask_of_laugh_lifesteal"
-	    {
-	      "Passive"     "0"
-	      "IsHidden"      "1"
-	      
 	      "OnDealDamage"
 	      {
 	        "Lifesteal"
@@ -458,7 +473,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_strenght"    "5000"
+	      "bonus_strength"    "555"
 	    }
 	    "02"
 	    {
@@ -488,7 +503,7 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_MANA_BONUS" "%bonus_mana"
-	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_strenght"
+	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_strength"
 	
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
 	
@@ -513,6 +528,100 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_stone_of_power;item_petri_supervest"
+	  }
+	}
+	"item_petri_magic_shield"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1535"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_buckler"
+	
+	  "ItemCost"            "0"
+	  "ItemShopTags"          "armor"
+	  "ItemQuality"         "unique"
+	  "ItemAliases"         "magic shield"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_armor"      "6"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "70"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "invu_duration"      "7"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_magic_shield_active"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_magic_shield_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	      }
+	    }
+	
+	    "modifier_item_petri_magic_shield_active"
+	    {
+	      "Duration"                "%invu_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_magic_shield"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1536"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "100"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_magic_shield"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_simple_sword;item_petri_vest"
 	  }
 	}
 	"item_petri_simple_sword"
@@ -553,6 +662,180 @@
 	    }
 	  }
 	}
+	
+	"item_petri_kladenets_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1533"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_claymore"
+	
+	  "ItemCost"            "0"
+	  "ItemShopTags"          "damage"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "kladenets sword"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_damage"      "50"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_kladenets_sword_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	      }
+	    }
+	  }
+	}
+	
+	
+	"item_recipe_petri_kladenets_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1534"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "0"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_kladenets_sword"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_hyperubersword;item_petri_hyperubersword"
+	  }
+	}
+	
+	"item_petri_perfect_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1537"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_sange"
+	
+	  "ItemCost"            "0"
+	  "ItemShopTags"          "damage"
+	  "ItemQuality"         "unique"
+	  "ItemAliases"         "perfect sword"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_damage"      "110"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_kladenets_sword_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	      }
+	    }
+	  }
+	}
+	
+	
+	"item_recipe_petri_perfect_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1538"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "350"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_perfect_sword"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_kladenets_sword;item_petri_hyperubersword"
+	  }
+	}
+	
+	"item_petri_titan_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1539"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_yasha"
+	
+	  "ItemCost"            "0"
+	  "ItemShopTags"          "damage"
+	  "ItemQuality"         "unique"
+	  "ItemAliases"         "titan sword"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_damage"      "500"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_kladenets_sword_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	      }
+	    }
+	  }
+	}
+	
+	
+	"item_recipe_petri_titan_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1540"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "350"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_titan_sword"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_magic_shield;item_petri_perfect_sword"
+	  }
+	}
 	"item_petri_stone_of_power"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -572,7 +855,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_strength"    "2500"
+	      "bonus_strength"    "277"
 	    }
 	  }
 	  
@@ -599,6 +882,8 @@
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_mask_of_madness"
+	
+	  "AbilityCooldown"       "65"
 	  
 	  "ItemCost"            "446"
 	  "ItemShopTags"          "unique"
@@ -620,7 +905,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "50"
+	      "bonus_all_stats"   "20"
 	    }
 	  }
 	
@@ -665,18 +950,19 @@
 	
 	    "modifier_item_petri_uber_mask_of_laugh_active"
 	    {
-	      "Duration"                "%buff_duration"
+	      "Duration"                "%invu_duration"
 	      "Passive"         "0"
 	      "IsHidden"          "0"
 	      "IsBuff"          "1"
 	      "IsDebuff"          "0"
 	      "IsPurgable"        "0"
-	      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
 	          
 	      "States"
 	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -891,7 +1177,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "8"
+	      "bonus_all_stats"    "6"
 	    }
 	    "02"
 	    {

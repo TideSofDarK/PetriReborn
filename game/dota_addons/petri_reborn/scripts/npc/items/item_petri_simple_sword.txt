@@ -36,3 +36,177 @@
     }
   }
 }
+
+"item_petri_kladenets_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1533"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_claymore"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "damage"
+  "ItemQuality"         "component"
+  "ItemAliases"         "kladenets sword"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_damage"      "50"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_kladenets_sword_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+      }
+    }
+  }
+}
+
+
+"item_recipe_petri_kladenets_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1534"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_kladenets_sword"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_hyperubersword;item_petri_hyperubersword"
+  }
+}
+
+"item_petri_perfect_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1537"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_sange"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "damage"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "perfect sword"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_damage"      "110"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_kladenets_sword_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+      }
+    }
+  }
+}
+
+
+"item_recipe_petri_perfect_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1538"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "350"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_perfect_sword"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_kladenets_sword;item_petri_hyperubersword"
+  }
+}
+
+"item_petri_titan_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1539"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_yasha"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "damage"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "titan sword"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_damage"      "500"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_kladenets_sword_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+      }
+    }
+  }
+}
+
+
+"item_recipe_petri_titan_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1540"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "350"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_titan_sword"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_magic_shield;item_petri_perfect_sword"
+  }
+}

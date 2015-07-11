@@ -1,0 +1,26 @@
+"petri_exploration_tower_explore_world"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_exploration_tree_explore"
+
+  "AbilitySharedWithTeammates" "1"
+
+  "AbilityGoldCost"       "500"
+
+  "MaxLevel"            "1"
+
+  "precache"
+  {
+    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/exploration_tower.lua"
+      "Function"        "ExploreWorld"
+    }
+  }
+}

@@ -10,24 +10,6 @@ function Sleep(keys)
 	ability:ApplyDataDrivenModifier( caster, target, "sleep_modifier", dur)
 end
 
-function Explore(keys)
-	local point = keys.target_points[1]
-	local caster = keys.caster
-
-	local ability = keys.ability
-	local ability_level = ability:GetLevel() - 1
-
-	local particleName = "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
-
-	local radius = ability:GetLevelSpecialValueFor("aoe_radius", ability_level)
-
-	local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( particle, 0, point )
-	point.z = point.z - 90000
-
-	ability:CreateVisibilityNode(point, radius, 6)	
-end
-
 function Return( keys )
 	local caster = keys.caster
 
@@ -46,4 +28,29 @@ function Return( keys )
     end)
 
 	FindClearSpaceForUnit(caster,caster.spawnPosition,true)
+end
+
+function Explore(keys)
+	local point = keys.target_points[1]
+	local caster = keys.caster
+
+	local ability = keys.ability
+	local ability_level = ability:GetLevel() - 1
+
+	local particleName = "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+
+	local radius = ability:GetLevelSpecialValueFor("aoe_radius", ability_level)
+
+	local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
+	ParticleManager:SetParticleControl( particle, 0, point )
+	point.z = point.z - 90000
+
+	ability:CreateVisibilityNode(point, radius, 6)	
+end
+
+function SpawnJanitor( keys )
+	local caster = keys.caster
+
+	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
+	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 end

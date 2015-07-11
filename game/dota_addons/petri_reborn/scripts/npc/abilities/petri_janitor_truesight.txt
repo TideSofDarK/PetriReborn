@@ -1,0 +1,41 @@
+"petri_janitor_truesight"
+{
+  "BaseClass"       "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName"      "undying_tombstone"
+
+  "MaxLevel"            "1"
+  
+
+  "OnSpellStart"
+  {
+    "FireEffect"
+    {
+      "EffectName"    "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
+      "EffectAttachType"  "attach_origin"
+      "Target"      "CASTER"
+    }
+
+    "ApplyModifier"
+    {
+      "Target"    "CASTER"
+      "ModifierName"  "modifier_wind_walk_fade"
+      "Duration"    "%fade_time"
+    }
+  }
+
+  "Modifiers"
+  {
+    "unit_properties"
+    {
+      "Passive" "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "States"
+      {
+        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_INVISIBLE"   "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    } 
+  } 
+}

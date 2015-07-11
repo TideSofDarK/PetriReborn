@@ -1,51 +1,5 @@
 "DOTAUnits"
 {
-	"npc_janitor"
-	{
-	  "BaseClass"     "npc_dota_creature"
-	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
-	  "ModelScale"    "1.1"
-	  "Level"      "1"
-	  "HealthBarOffset"    "140"
-	
-	  "AbilityLayout"    "4"
-	  "Ability1"     "petri_janitor_truesight"
-	
-	  "ArmorPhysical"    "0"
-	  "MagicalResistance"   "0"
-	
-	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
-	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
-	
-	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
-	  "RingRadius"    "40"
-	  "CollisionSize"    "16"
-	  "FormationRank"    "4"
-	
-	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
-	  "MovementSpeed"    "600"
-	  "MovementTurnRate"   "0.6"
-	
-	  "StatusHealth"    "5"
-	  "StatusHealthRegen"   "0.05"
-	  "StatusMana"    "0"
-	  "StatusManaRegen"    "0"
-	
-	  "VisionDaytimeRange"  "800"
-	  "VisionNighttimeRange"  "600"
-	
-	  "TeamName"     "DOTA_TEAM_BADGUYS"
-	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
-	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior"  "0"
-	  }
-	}
 	"npc_peasant"
 	{
 	  "BaseClass"     "npc_dota_creature"
@@ -182,7 +136,7 @@
 	
 	  "BountyGoldMin"       "2.0"
 	  "BountyGoldMax"       "2.0"
-	  "BountyXP"          "5"  
+	  "BountyXP"          "12"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -431,10 +385,7 @@
 	  "ModelScale"                "0.8"
 	  "Level"           "1"
 	
-	  "vscripts"     "units/exploration_tower.lua"
-	
-	  "Ability1"          "petri_exploration_tower_explore"
-	  "Ability2"          "buy_petri_janitor"
+	  "Ability1"          "petri_exploration_tower_explore_world"
 	
 	  // Armor
 	  //----------------------------------------------------------------
@@ -451,7 +402,7 @@
 	
 	  // Movement
 	  //----------------------------------------------------------------
-	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     // Type of locomotion - ground, air
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     // Type of locomotion - ground, air
 	  "MovementSpeed"       "0"   // Speed
 	  "MovementTurnRate"      "0.0"   // Turning rate.
 	  "FollowRange"       "0"   // Distance to keep when following
@@ -633,6 +584,52 @@
 	  
 	  "VisionDaytimeRange"    "0"   // Range of vision during day light.
 	  "VisionNighttimeRange"    "0"   // Range of vision at night time.
+	}
+	"npc_petri_janitor"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
+	  "ModelScale"    "1.1"
+	  "Level"      "1"
+	  "HealthBarOffset"    "140"
+	
+	  "AbilityLayout"    "4"
+	  "Ability1"     "petri_janitor_truesight"
+	
+	  "ArmorPhysical"    "0"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
+	
+	  "BountyGoldMin"    "20.0"
+	  "BountyGoldMax"    "30.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
+	  "RingRadius"    "40"
+	  "CollisionSize"    "16"
+	  "FormationRank"    "4"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "600"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "5"
+	  "StatusHealthRegen"   "0.05"
+	  "StatusMana"    "0"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "800"
+	  "VisionNighttimeRange"  "600"
+	
+	  "TeamName"     "DOTA_TEAM_BADGUYS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "0"
+	  }
 	}
 	"npc_petri_sawmill"
 	{
