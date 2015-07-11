@@ -1,3 +1,11 @@
+function ReturnGold(player)
+  local playerID = player:GetPlayerID() 
+  if player.lastSpentGold ~= nil then
+    PlayerResource:ModifyGold(playerID, player.lastSpentGold,false,0)
+    player.lastSpentGold = nil
+  end
+end
+
 function ReturnLumber(player)
   if player.lumber ~= nil and player.lastSpentLumber ~= nil then
     player.lumber = player.lumber + player.lastSpentLumber
@@ -5,12 +13,19 @@ function ReturnLumber(player)
   end
 end
 
-function CheckFood( player, food_amount )
-  if player.food + food_amount <= Clamp(player.maxFood,10,250) then
+function CheckLumber(player, lumber_amount)
+  if player.lumber >= lumber_amount then
+    player.lumber = player.lumber - lumber_amount
+    player.lastSpentLumber = lumber_amount
     return true
-  else
+  else 
+    Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
     return false
   end
+end
+
+function CheckFood( player, food_amount )
+  return player.food + food_amount <= Clamp(player.maxFood,10,250)
 end
 
 function SpendFood( player, food_amount )

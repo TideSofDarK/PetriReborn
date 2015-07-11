@@ -8,6 +8,6 @@
  - [BMD](https://github.com/bmddota) One of the key people in the community, creator of Barebones
  - [Myll](https://github.com/Myll) Original creator of Building Helper, creator of ModKit
  - [snipplets](https://github.com/snipplets) For further supporting of Building Helper
- - [MNoya](https://github.com/MNoya) For his awesome DotaCraft and FootmenFrenzo repos!
+ - [MNoya](https://github.com/MNoya) For his awesome DotaCraft and FootmanFrenzy repos!
 
  - [SpellLibrary](https://github.com/Pizzalol/SpellLibrary) Pizzalol and 9 other contributors

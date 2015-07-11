@@ -1,17 +1,13 @@
-function CheckLumber(player, lumber_amount)
-	if player.lumber >= lumber_amount then
-		player.lumber = player.lumber - lumber_amount
-		player.lastSpentLumber = lumber_amount
-		return true
-	else 
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
-		return false
-	end
-end
-
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()
+
+	local ability = keys.ability
+	local gold_cost = ability:GetGoldCost(1)
+
+	if gold_cost ~= nil then
+		player.lastSpentGold = gold_cost
+	end
 
 	if keys.lumber ~= nil then
 		if CheckLumber(player, tonumber(keys.lumber)) == false then return end
@@ -102,7 +98,8 @@ function build( keys )
 
 	keys:OnConstructionCancelled(function( building )
 		-- This runs when a building is cancelled, building is the unit that would've been built.
-		ReturnLumber(player) print("asdsa")
+		ReturnLumber(player)
+		ReturnGold(player)
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.
