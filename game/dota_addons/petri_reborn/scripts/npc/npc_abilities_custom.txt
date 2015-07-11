@@ -1237,7 +1237,7 @@
 	    "01"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "food" "2"
+	        "food" "20"
 	    }
 	  }
 	  

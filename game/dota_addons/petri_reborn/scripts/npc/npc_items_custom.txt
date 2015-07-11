@@ -285,6 +285,24 @@
 	    }
 	  }
 	}
+	
+	"item_recipe_petri_hyperubersword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1511"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "159"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_hyperubersword"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_simple_sword;item_petri_megahammer"
+	  }
+	}
 	"item_petri_kvn_medal"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -548,7 +566,6 @@
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
-	  "SecretShop"          "1"
 	
 	  "AbilitySpecial"
 	  {
@@ -606,6 +623,15 @@
 	      "bonus_all_stats"   "50"
 	    }
 	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
+	    }
+	  }
 	  
 	  "Modifiers"
 	  {
@@ -637,7 +663,7 @@
 	      }
 	    }
 	
-	    "modifier_item_petri_cola_active"
+	    "modifier_item_petri_uber_mask_of_laugh_active"
 	    {
 	      "Duration"                "%buff_duration"
 	      "Passive"         "0"
@@ -653,6 +679,24 @@
 	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
+	  }
+	}
+	
+	"item_recipe_petri_uber_mask_of_laugh"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1512"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "159"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_uber_mask_of_laugh"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_mask_of_laugh;item_petri_butt;item_petri_zirconia_armor"
 	  }
 	}
 	"item_petri_vest"
@@ -771,6 +815,63 @@
 	    }
 	  }
 	}
+	
+	"item_petri_superthing"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1530"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_sphere"
+	
+	  "ItemCost"            "2400"
+	  "ItemShopTags"          "armor"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "superthing"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_armor"      "150"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_superthing_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_superthing"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1531"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "1800"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_superthing"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_supermegavest"
+	  }
+	}
 	"item_petri_zirconia_armor"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -834,40 +935,6 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_bracer;item_petri_vest"
-	  }
-	}
-	"item_recipe_petri_hyperubersword"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1511"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_recipe"
-	
-	  "ItemCost"            "159"
-	  "ItemShopTags"          ""
-	
-	  "ItemRecipe"          "1"
-	  "ItemResult"          "item_petri_hyperubersword"
-	  "ItemRequirements"
-	  {
-	    "01"            "item_petri_simple_sword;item_petri_megahammer"
-	  }
-	}
-	"item_recipe_petri_uber_mask_of_laugh"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1512"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_recipe"
-	
-	  "ItemCost"            "159"
-	  "ItemShopTags"          ""
-	
-	  "ItemRecipe"          "1"
-	  "ItemResult"          "item_petri_uber_mask_of_laugh"
-	  "ItemRequirements"
-	  {
-	    "01"            "item_petri_mask_of_laugh;item_petri_butt;item_petri_zirconia_armor"
 	  }
 	}
 	"item_train_peasant"

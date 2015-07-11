@@ -114,3 +114,60 @@
     }
   }
 }
+
+"item_petri_superthing"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1530"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_sphere"
+
+  "ItemCost"            "2400"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "component"
+  "ItemAliases"         "superthing"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "150"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_superthing_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_superthing"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1531"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "1800"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_superthing"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_supermegavest"
+  }
+}
