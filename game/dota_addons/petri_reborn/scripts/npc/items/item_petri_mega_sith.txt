@@ -1,0 +1,76 @@
+"item_petri_mega_sith"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1509"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_helm_of_the_dominator"
+
+  "ItemCost"            "20250"
+  "ItemShopTags"          "mana_pool;str"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "mega sith"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_strenght"    "5000"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "30"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_mana"    "5000"
+    }
+    "04"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "dodge_chance"    "30"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_bracer_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_MANA_BONUS" "%bonus_mana"
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_strenght"
+
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+
+        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%dodge_chance"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_mega_sith"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1520"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "10000"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_mega_sith"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_stone_of_power;item_petri_supervest"
+  }
+}

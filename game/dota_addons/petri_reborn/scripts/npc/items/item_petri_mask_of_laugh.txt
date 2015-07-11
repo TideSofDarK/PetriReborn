@@ -1,0 +1,61 @@
+"item_petri_mask_of_laugh"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1508"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_lifesteal"
+  
+  "ItemCost"            "1"
+  "ItemShopTags"          "unique"
+  "ItemQuality"         "component"
+  "ItemAliases"         "mask of laugh"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "lifesteal_percent"   "70"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_mask_of_laugh_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Orb"
+      {
+        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+      }
+
+      "OnOrbImpact"
+      {
+        "RunScript"
+        {
+          "ScriptFile"      "items/mask_of_laugh.lua"
+          "Function"        "OnOrbImpact"
+        }
+      }
+    }
+    "modifier_item_petri_mask_of_laugh_lifesteal"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      
+      "OnDealDamage"
+      {
+        "Lifesteal"
+        {
+          "Target"      "ATTACKER"
+          "LifestealPercent"  "%lifesteal_percent"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,116 @@
+"item_petri_vest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1516"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_chainmail"
+
+  "ItemCost"            "10"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "component"
+  "ItemAliases"         "vest"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "2"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_vest_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_petri_supervest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "674"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_platemail"
+
+  "ItemCost"            "250"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "component"
+  "ItemAliases"         "supervest"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "20"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_supervest_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_petri_supermegavest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "675"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_shivas_guard"
+
+  "ItemCost"            "600"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "component"
+  "ItemAliases"         "supermegavest"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "50"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_supermegavest_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+"item_petri_helmet"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1505"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_helm_of_iron_will"
+
+  "ItemCost"            "3"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "component"
+  "ItemAliases"         "helmet"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "1"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_helmet_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+"buy_petri_janitor"
+{
+  "BaseClass"                 "ability_datadriven"
+  "AbilityTextureName"      "holdout_battle_rage"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+
+  "AbilityGoldCost"       "5"
+
+  "AbilitySharedWithTeammates" "1"
+
+  "OnSpellStart"
+  {
+    "SpawnUnit"
+    {
+      "UnitName"    "npc_janitor"
+
+      "UnitCount"   "1"
+      "UnitLimit"   "10"
+      "GrantsGold"  "1"
+      "GrantsXP"    "1"
+      "SpawnRadius" "10"
+    }
+  }
+}

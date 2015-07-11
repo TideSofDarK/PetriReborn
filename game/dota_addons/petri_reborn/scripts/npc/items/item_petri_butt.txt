@@ -1,0 +1,38 @@
+"item_petri_butt"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1502"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_dagon"
+
+  "ItemCost"            "10"
+  "ItemShopTags"          "health_pool"
+  "ItemQuality"         "component"
+  "ItemAliases"         "butt"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_health"      "60"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_butt_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+  }
+}

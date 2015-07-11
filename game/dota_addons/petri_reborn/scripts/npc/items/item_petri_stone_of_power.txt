@@ -1,0 +1,39 @@
+"item_petri_stone_of_power"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1514"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_energy_booster"
+
+  "ItemCost"            "10000"
+  "ItemShopTags"          "str"
+  "ItemQuality"         "component"
+  "ItemAliases"         "stone of power"
+  "SecretShop"          "1"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_strength"    "2500"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_stone_of_power_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_strength"
+      }
+    }
+  }
+}

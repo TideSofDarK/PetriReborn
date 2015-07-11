@@ -1,5 +1,6 @@
 "item_petri_give_permission_to_build"
 {
+  "ID"              "1504"
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"

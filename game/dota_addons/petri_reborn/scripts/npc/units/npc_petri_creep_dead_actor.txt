@@ -38,8 +38,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "1400"
-  "VisionNighttimeRange"    "800"
+  "VisionDaytimeRange"    "600"
+  "VisionNighttimeRange"    "600"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

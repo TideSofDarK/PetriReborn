@@ -1,0 +1,37 @@
+"item_petri_kvn_medal"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1507"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_medallion_of_courage"
+
+  "ItemCost"            "5000"
+  "ItemShopTags"          "hard_to_tag"
+  "ItemQuality"         "component"
+  "ItemAliases"         "kvn medal"
+
+  "precache"
+  {
+    "particle"    "particles/items_fx/black_king_bar_avatar.vpcf"
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_kvn_medal_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+      
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

@@ -1,5 +1,51 @@
 "DOTAUnits"
 {
+	"npc_janitor"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
+	  "ModelScale"    "1.1"
+	  "Level"      "1"
+	  "HealthBarOffset"    "140"
+	
+	  "AbilityLayout"    "4"
+	  "Ability1"     "petri_janitor_truesight"
+	
+	  "ArmorPhysical"    "0"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
+	
+	  "BountyGoldMin"    "20.0"
+	  "BountyGoldMax"    "30.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
+	  "RingRadius"    "40"
+	  "CollisionSize"    "16"
+	  "FormationRank"    "4"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "600"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "5"
+	  "StatusHealthRegen"   "0.05"
+	  "StatusMana"    "0"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "800"
+	  "VisionNighttimeRange"  "600"
+	
+	  "TeamName"     "DOTA_TEAM_BADGUYS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "0"
+	  }
+	}
 	"npc_peasant"
 	{
 	  "BaseClass"     "npc_dota_creature"
@@ -75,7 +121,7 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackDamageMin"     "2.0"
-	  "AttackDamageMax"     "3.0"
+	  "AttackDamageMax"     "2.0"
 	  "AttackRate"        "1.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -99,8 +145,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -152,8 +198,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -205,8 +251,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -258,8 +304,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -311,8 +357,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -364,8 +410,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "1400"
-	  "VisionNighttimeRange"    "800"
+	  "VisionDaytimeRange"    "600"
+	  "VisionNighttimeRange"    "600"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -380,17 +426,15 @@
 	"npc_petri_exploration_tower"
 	{
 	  // General
-	  "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  // Model.
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
 	  "ModelScale"                "0.8"
 	  "Level"           "1"
 	
 	  "vscripts"     "units/exploration_tower.lua"
-	  
-	  // Abilities
-	  //----------------------------------------------------------------
-	  
-	  "Ability1"          "petri_exploration_tower_explore"     // Ability 1.
+	
+	  "Ability1"          "petri_exploration_tower_explore"
+	  "Ability2"          "buy_petri_janitor"
 	
 	  // Armor
 	  //----------------------------------------------------------------

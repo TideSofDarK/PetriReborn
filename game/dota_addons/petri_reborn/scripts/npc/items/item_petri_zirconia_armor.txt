@@ -1,0 +1,65 @@
+"item_petri_zirconia_armor"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1517"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_crimson_guard"
+
+  "ItemCost"            "60"
+  "ItemShopTags"          "agi;int;str"
+  "ItemQuality"         "component"
+  "ItemAliases"         "bracer"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"    "8"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "5"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_bracer_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_zirconia_armor"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1521"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "25"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_zirconia_armor"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_bracer;item_petri_vest"
+  }
+}

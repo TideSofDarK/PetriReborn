@@ -1,17 +1,15 @@
 "npc_petri_exploration_tower"
 {
   // General
-  "BaseClass"         "npc_dota_creature"  // Class of entity of link to.
-  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  // Model.
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
   "ModelScale"                "0.8"
   "Level"           "1"
 
   "vscripts"     "units/exploration_tower.lua"
-  
-  // Abilities
-  //----------------------------------------------------------------
-  
-  "Ability1"          "petri_exploration_tower_explore"     // Ability 1.
+
+  "Ability1"          "petri_exploration_tower_explore"
+  "Ability2"          "buy_petri_janitor"
 
   // Armor
   //----------------------------------------------------------------

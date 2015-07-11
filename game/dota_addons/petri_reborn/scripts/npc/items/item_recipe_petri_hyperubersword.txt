@@ -1,0 +1,17 @@
+"item_recipe_petri_hyperubersword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1511"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "159"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_hyperubersword"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_simple_sword;item_petri_megahammer"
+  }
+}

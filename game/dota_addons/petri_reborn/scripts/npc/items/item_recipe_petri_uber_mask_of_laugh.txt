@@ -1,0 +1,17 @@
+"item_recipe_petri_uber_mask_of_laugh"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1512"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "159"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_uber_mask_of_laugh"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_mask_of_laugh;item_petri_butt;item_petri_zirconia_armor"
+  }
+}

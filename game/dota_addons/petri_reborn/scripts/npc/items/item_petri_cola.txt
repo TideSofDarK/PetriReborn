@@ -1,0 +1,57 @@
+"item_petri_cola"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1503"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_cola"
+
+  "AbilityCastPoint"              "0"
+  "AbilityCooldown"       "55"
+  "AbilityManaCost"       "0"
+  "AbilityCastRange"        "100"
+
+  "ItemCost"            "25"
+  "ItemShopTags"          "damage"
+  "ItemQuality"         "common"
+  "ItemAliases"         "hyperubersword"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "buff_duration"     "15"
+    }
+  }
+
+  "OnSpellStart"
+  {     
+    "ApplyModifier"
+    {
+      "Target"      "TARGET"
+      "ModifierName"    "modifier_item_petri_cola_active"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_cola_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+          
+      "States"
+      {
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

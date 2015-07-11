@@ -69,8 +69,6 @@ function GameMode:OnHeroInGame(hero)
 
     local newHero
 
-    CreateUnitByName("npc_petri_creep_bad_actor", Vector(0,0,0),true, nil,nil,DOTA_TEAM_NEUTRALS)
-
     if team == 2 then
       UTIL_Remove( hero )
       newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)

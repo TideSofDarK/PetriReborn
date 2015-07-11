@@ -1,0 +1,81 @@
+"item_petri_uber_mask_of_laugh"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1515"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_mask_of_madness"
+  
+  "ItemCost"            "446"
+  "ItemShopTags"          "unique"
+  "ItemQuality"         "epic"
+  "ItemAliases"         "uber mask of laugh"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "lifesteal_percent"   "200"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"   "25"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"   "50"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Orb"
+      {
+        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+      }
+
+      "OnDealDamage"
+      {
+        "Lifesteal"
+        {
+          "Target"      "ATTACKER"
+          "LifestealPercent"  "%lifesteal_percent"
+        }
+      }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+
+    "modifier_item_petri_cola_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+          
+      "States"
+      {
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

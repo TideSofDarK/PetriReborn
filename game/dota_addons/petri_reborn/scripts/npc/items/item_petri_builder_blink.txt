@@ -1,6 +1,7 @@
 "item_petri_builder_blink"
 {
   "BaseClass"       "item_datadriven"
+  "ID"              "1501"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityTextureName"      "item_blink"
 

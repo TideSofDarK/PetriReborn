@@ -1,0 +1,40 @@
+"item_petri_bracer"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1500"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_bracer"
+
+  "ItemCost"            "25"
+  "ItemShopTags"          "agi;int;str"
+  "ItemQuality"         "component"
+  "ItemAliases"         "bracer"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"    "5"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_bracer_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+  }
+}
