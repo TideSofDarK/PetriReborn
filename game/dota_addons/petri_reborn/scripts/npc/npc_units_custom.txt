@@ -617,9 +617,12 @@
 	  
 	  // Abilities
 	  //----------------------------------------------------------------
-	  
+	  "AbilityLayout" "4"
 	  "Ability1"          "petri_get_gold"     // Ability 1.
 	  "Ability2"          "petri_upgrade_gold_tower"     // Ability 1.
+	  "Ability3"          ""
+	  "Ability4"          ""
+	  "Ability5"          "petri_upgrade_gold_tower_cancel"
 	
 	  // Armor
 	  //----------------------------------------------------------------
@@ -1043,7 +1046,8 @@
 	
 	  // Bounds
 	  //----------------------------------------------------------------
-	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      // Hull type used for navigation/locomotion.
+	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      // Hull type used for navigation/locomotion.
+	  "RingRadius"                "70"
 	
 	  // Movement
 	  //----------------------------------------------------------------

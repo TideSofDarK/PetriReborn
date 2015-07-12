@@ -21,9 +21,51 @@ function GetGold( event )
 	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + tonumber(event["gold"]), false)
 end
 
+function StartUpgrading ( event   )
+	local caster = event.caster
+	local ability = event.ability
+
+	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
+
+	if SpendFood(caster:GetPlayerOwner(), tonumber(event.food))== false then 
+		
+		Timers:CreateTimer(0.06,
+			function()
+		 	    	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+		caster:InterruptChannel()
+		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+			end
+		)
+	else
+		caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", false, true )
+	end
+end
+
+function StopUpgrading ( event   )
+	local caster = event.caster
+	local ability = event.ability
+
+	caster:InterruptChannel()
+
+	Timers:CreateTimer(0.06,
+	function()
+		caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", true, false )
+		local original_ability = caster:FindAbilityByName("petri_upgrade_gold_tower")
+
+		local gold_cost = original_ability:GetGoldCost( original_ability:GetLevel() - 1 )
+		local food_cost = original_ability:GetLevelSpecialValueFor("food_cost", original_ability:GetLevel() - 1)
+
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+		caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - food_cost
+	end
+	)
+end
+
 function Upgrade ( event   )
 	local caster = event.caster
 	local ability = event.ability
+
+	caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", true, false )
 
 	local tower_level = ability:GetLevel()
 
@@ -31,25 +73,18 @@ function Upgrade ( event   )
 		caster:SetModelScale(0.4)
 	elseif tower_level == 2 then 
 		caster:SetModelScale(0.5)
-		--caster:SetModel("models/props_structures/tent_dk_med")
 	elseif tower_level == 3 then
 		caster:SetModelScale(0.6)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 4 then
 		caster:SetModelScale(0.7)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 5 then
 		caster:SetModelScale(0.8)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 6 then
 		caster:SetModelScale(0.9)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 7 then
 		caster:SetModelScale(1.0)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	elseif tower_level == 8 then
 		caster:SetModelScale(1.1)
-		--caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	end
 
 	caster:GetAbilityByIndex(0):SetLevel(tower_level+1)

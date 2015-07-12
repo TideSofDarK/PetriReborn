@@ -30,7 +30,8 @@
 
   // Bounds
   //----------------------------------------------------------------
-  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      // Hull type used for navigation/locomotion.
+  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      // Hull type used for navigation/locomotion.
+  "RingRadius"                "70"
 
   // Movement
   //----------------------------------------------------------------
