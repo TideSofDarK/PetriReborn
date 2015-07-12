@@ -47,19 +47,19 @@ function SendCancelCommand( params )
   GameEvents.SendCustomGameEventToServer( "building_helper_cancel_command", {} );
 }
 
-function OnUpdateSelectedUnit( event )
+/*function OnUpdateSelectedUnit( event )
 {
   var iPlayerID = Players.GetLocalPlayer();
   var selectedEntities = Players.GetSelectedEntities( iPlayerID );
-  var mainSelected = Players.GetLocalPlayerPortraitUnit();
+  var mainSelected = Players.GetQueryUnit(iPlayerID);
 
   //$.Msg( "OnUpdateSelectedUnit" );
-  //$.Msg( mainSelected );
+  $.Msg( selectedEntities );
   GameEvents.SendCustomGameEventToServer( "custom_dota_player_update_selected_unit", { "player_id" : iPlayerID, 
     "main_unit" : mainSelected} );
-}
+}*/
 
 (function () {
   GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
-  GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
+  //GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
 })();

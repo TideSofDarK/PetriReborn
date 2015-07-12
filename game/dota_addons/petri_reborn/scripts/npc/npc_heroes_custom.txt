@@ -61,11 +61,14 @@
 	  "override_hero"     "npc_dota_hero_brewmaster"
 	  "SoundSet"          "0" 
 	
+	  "HasInventory"          "1"
+	  "ConsideredHero"        "1"
+	
 	  "AbilityLayout" "6"
 	
-	  "Ability1"        "petri_flat_joke" 
-	  "Ability2"        "petri_sleep" 
-	  "Ability3"        "petri_laugh_burst" 
+	  "Ability1"        "petri_petrosyan_flat_joke" 
+	  "Ability2"        "petri_petrosyan_sleep" 
+	  "Ability3"        "petri_petrosyan_laugh_burst" 
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"

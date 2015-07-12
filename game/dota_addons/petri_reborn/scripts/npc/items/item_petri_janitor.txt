@@ -9,14 +9,13 @@
 
   "ItemCost"            "15"
   "ItemShopTags"        "spec"
-  "ItemQuality"         "common"
+  "ItemQuality"         "consumable"
   "ItemAliases"         "janitor"
+  "ItemInitialCharges" "1"
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
 
   "AbilityCooldown"       "15.0"
-
-  "ItemStackable" "1"
-
-  "MaxLevel"            "1"
 
   "OnSpellStart"
   {
@@ -25,5 +24,7 @@
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "SpawnJanitor"
     }
+    "SpendCharge"
+    {}
   }
 }

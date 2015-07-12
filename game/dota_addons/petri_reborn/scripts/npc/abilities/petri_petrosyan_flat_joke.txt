@@ -1,0 +1,73 @@
+"petri_petrosyan_flat_joke"
+{
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"death_prophet_carrion_swarm"
+
+	"MaxLevel" "1"
+
+	"precache"
+	{	
+		"particle"		"particles/petri_flat_joke.vpcf"
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"joke_damage"				"1"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"10"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_flat_joke_datadriven"
+		{
+	    "Passive"   "1"
+	    "IsHidden"  "1"
+
+	    "OnAttackStart"
+	    {
+        "Random"
+        {
+          "Chance" 	"%crit_chance"
+          "OnSuccess"
+          {
+		        "LinearProjectile"
+						{
+					    "Target"		 	"ATTACKER"
+					    "EffectName"     	"particles/petri_flat_joke.vpcf"
+					    "MoveSpeed"      	"1100"
+					    "StartRadius"    	"110"
+					    "EndRadius"      	"300"
+					    "StartPosition"  	"follow_origin"
+					    "FixedDistance"  	"1000"
+					    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+					    "HasFrontalCone" 	"1"
+					    "ProvidesVision" 	"0"
+						}     
+          }
+        }
+	    }
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+
+		"Damage"
+		{
+			"Target"		 "TARGET"
+			"Type"			 "DAMAGE_TYPE_MAGICAL"
+			"Damage"		 "1"
+    }
+	}
+}

@@ -14,8 +14,11 @@
 
   "ItemCost"            "25"
   "ItemShopTags"        "hp"
-  "ItemQuality"         "common"
+  "ItemQuality"         "consumable"
   "ItemAliases"         "cola"
+  "ItemInitialCharges" "1"
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
 
   "AbilitySpecial"
   {
@@ -33,6 +36,8 @@
       "Target"      "TARGET"
       "ModifierName"    "modifier_item_petri_cola_active"
     }
+    "SpendCharge"
+    {}
   }
 
   "Modifiers"

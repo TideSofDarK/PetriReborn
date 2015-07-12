@@ -1,0 +1,322 @@
+"item_petri_magic_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1535"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_buckler"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "magic shield"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "6"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_health"      "70"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"      "7"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_magic_shield_active"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_magic_shield_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+
+    "modifier_item_petri_magic_shield_active"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_magic_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1536"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "100"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_magic_shield"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_simple_sword;item_petri_vest"
+  }
+}
+
+"item_petri_shield_of_nature"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1549"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_shield_of_nature"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "shield of nature"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "500"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_shield_of_nature_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_shield_of_nature"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1550"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "1750"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_shield_of_nature"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_superthing;item_petri_superthing"
+  }
+}
+
+"item_petri_shield_of_hell"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1551"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_shield_of_hell"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "shield of hell"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "800"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_shield_of_hell_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_shield_of_hell"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1552"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "2500"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_shield_of_hell"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_shield_of_nature;item_petri_superthing"
+  }
+}
+
+"item_petri_shield_of_heaven"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1553"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_shield_of_heaven"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "shield of heaven"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "1200"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_shield_of_heaven_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_shield_of_heaven"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1554"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "1500"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_shield_of_heaven"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_shield_of_nature;item_petri_shield_of_hell"
+  }
+}
+
+"item_petri_best_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1555"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_best_shield"
+
+  "ItemCost"            "0"
+  "ItemShopTags"          "armor"
+  "ItemQuality"         "unique"
+  "ItemAliases"         "best shield"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_armor"      "1250"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_best_shield_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_best_shield"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1556"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "8500"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_best_shield"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_shield_of_heaven;item_petri_trident"
+  }
+}

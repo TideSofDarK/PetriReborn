@@ -1,0 +1,90 @@
+"item_petri_book_of_laugh"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1903"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_necronomicon"
+
+  "ItemCost"            "30"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadBookOfLaugh"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+
+"item_petri_comedy_story"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1904"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_necronomicon_3"
+
+  "ItemCost"            "5000"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadComedyStory"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+
+"item_petri_comedy_book"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1905"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_necronomicon_2"
+
+  "ItemCost"            "2300"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadComedyBook"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+

@@ -1,0 +1,58 @@
+"petri_petrosyan_laugh_burst"
+{
+  "BaseClass"       "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+  "AbilityTextureName"      "omniknight_purification"
+
+  "AbilityCastRange"        "700"
+  "AbilityCastPoint"        "0.5"
+
+  "AbilityCooldown"       "15.0"
+
+  "AbilityManaCost"       "1 2 3 4 5 6 10 15 18 25 35 50 70 85 100 125 250 400"
+
+  "MaxLevel"            "15"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "heal"          "10 20 35 50 75 125 200 300 500 1000 1250 1500 2000 2800 5000 7500 10000 13000"
+    }
+  }
+
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification.vpcf"
+    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_hit.vpcf"
+    "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+  }
+
+  "OnSpellStart"
+  {
+    "FireSound"
+    {
+      "EffectName"  "Hero_Omniknight.Purification"
+      "Target"    "TARGET"
+    }
+    
+    "FireEffect"
+    {
+      "Target"      "TARGET"
+      "EffectName"    "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+      "EffectAttachType"  "follow_origin"
+    }
+
+    "Heal"
+    {
+      "Target"    "TARGET"
+      "HealAmount"  "%heal"
+    }
+  }
+}

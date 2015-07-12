@@ -63,6 +63,8 @@ function GameMode:OnHeroInGame(hero)
   -- This line for example will set the starting gold of every hero to 500 unreliable gold
   hero:SetGold(0, false)
 
+  CreateUnitByName( "npc_petri_hint" , Vector(0,0,0) , true, nil, nil, DOTA_TEAM_BADGUYS )
+
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
     local player = hero:GetPlayerOwner()
@@ -138,53 +140,9 @@ function GameMode:OnGameInProgress()
     end)
 end
 
--- function GameMode:FilterExecuteOrder( filterTable )
---     local units = filterTable["units"]
---     local order_type = filterTable["order_type"]
---     local issuer = filterTable["issuer_player_id_const"]
-
---     print(order_type)
-
---     for n,unit_index in pairs(units) do
---         local unit = EntIndexToHScript(unit_index)
---         local ownerID = unit:GetPlayerOwnerID()
-
---         if unit:GetUnitLabel() == "building" then
---           if order_type == 1 then
---             return false
---           end
---         end
---     end
-
---     return true
--- end
-
 function GameMode:OnUnitSelected(args)
-  local unit = EntIndexToHScript(tonumber(args["main_unit"]))
-
-  if unit ~= nil and unit:GetPlayerOwner() ~= nil then
-    if unit:GetPlayerOwner().selection == nil then 
-      unit:GetPlayerOwner().selection = {}
-    end
-
-    if unit:GetPlayerOwner().selection.flag ~= nil then
-      unit:GetPlayerOwner().selection.flag:SetModelScale(0)
-    end
-
-    if unit:GetUnitLabel() == "building" then
-      if unit:HasAbility("building_queue") then
-        if unit.flag ~= nil then
-          unit.flag:SetModelScale(0.5)
-        end 
-      end
-    end
-
-    unit:GetPlayerOwner().selection = unit
-  end
 end
 
--- This function initializes the game mode and is called before anyone loads into the game
--- It can be used to pre-initialize any values/tables that will be needed later
 function GameMode:InitGameMode()
   GameMode = self
 
@@ -194,11 +152,9 @@ function GameMode:InitGameMode()
   --GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
   -- Some creepy shit for hiding rally point
-  Timers:CreateTimer(1, function()
-    CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
-  end)
-
-  
+  -- Timers:CreateTimer(1, function()
+  --   CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
+  -- end)
 
   BuildingHelper:Init()
 end

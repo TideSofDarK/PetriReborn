@@ -40,7 +40,7 @@
 "item_petri_supervest"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "674"
+  "ID"              "1900"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -79,7 +79,7 @@
 "item_petri_supermegavest"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "675"
+  "ID"              "1901"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"

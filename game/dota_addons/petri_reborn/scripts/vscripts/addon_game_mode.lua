@@ -27,11 +27,11 @@ function Precache( context )
 
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
 
-  PrecacheItemByNameSync("item_chainmail", context)
-  PrecacheItemByNameSync("item_petri_vest", context)
+  PrecacheUnitByNameSync("npc_petri_svetlakov", context)
+  PrecacheUnitByNameSync("npc_petri_maslyakov", context)
+  PrecacheUnitByNameSync("npc_petri_gusman", context)
 
-  PrecacheItemByNameSync("item_petri_builder_blink", context)
-  PrecacheItemByNameSync("item_petri_give_permission_to_build", context)
+  PrecacheItemByNameSync("item_petri_hook", context)
 
   PrecacheUnitByNameSync("npc_petri_tower_basic", context)
   PrecacheUnitByNameSync("npc_petri_exploration_tower", context)

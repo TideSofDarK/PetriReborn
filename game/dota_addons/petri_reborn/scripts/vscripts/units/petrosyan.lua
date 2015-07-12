@@ -54,3 +54,29 @@ function SpawnJanitor( keys )
 	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
 	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 end
+
+function ReadBookOfLaugh( keys )
+	local caster = keys.caster
+	caster:HeroLevelUp(true)
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
+end
+
+function ReadComedyStory( keys )
+	local caster = keys.caster
+
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 5000)
+	caster:SetBaseDamageMin(caster:GetBaseDamageMax())
+
+	caster:CalculateStatBonus()
+end
+
+function ReadComedyBook( keys )
+	local caster = keys.caster
+	
+	caster:SetBaseStrength(caster:GetBaseStrength() + 500)
+
+	caster:CalculateStatBonus()
+end

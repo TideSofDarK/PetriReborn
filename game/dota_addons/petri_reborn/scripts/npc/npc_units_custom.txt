@@ -1,5 +1,82 @@
 "DOTAUnits"
 {
+	"npc_dummy_blank"
+	{
+	  // General
+	  "BaseClass" "npc_dota_base_additive" // Class of entity of link to.
+	  "Model" "models/development/invisiblebox.vmdl" // Model.
+	  "SoundSet" "Creep_Good_Range" // Name of sound set.
+	  "Level" "0"
+	  "UnitLabel" "healing_ward"
+	  // Abilities
+	  //----------------------------------------------------------------
+	  "Ability1" "" // Ability 1.
+	  "Ability2" "" // Ability 2.
+	  "Ability3" "" // Ability 3.
+	  "Ability4" "" // Ability 4.
+	  "Ability5" "" // Ability 5.
+	  "Ability6" "" // Ability 6 - Extra.
+	  "Ability7" "" // Ability 7 - Extra.
+	  "Ability8" "" // Ability 8 - Extra.
+	  // Armor
+	  //----------------------------------------------------------------
+	  "ArmorPhysical" "0" // Physical protection.
+	  "MagicalResistance" "0" // Magical protection.
+	  // Attack
+	  //----------------------------------------------------------------
+	  "AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK" // Type of attack - melee, ranged, etc.
+	  "AttackDamageMin" "0" // Damage range min.
+	  "AttackDamageMax" "0" // Damage range max.
+	  "AttackDamageType" "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackRate" "1" // Speed of attack.
+	  "AttackAnimationPoint" "0.5" // Normalized time in animation cycle to attack.
+	  "AttackAcquisitionRange" "800" // Range within a target can be acquired.
+	  "AttackRange" "500" // Range within a target can be attacked.
+	  "ProjectileModel" "" // Particle system model for projectile.
+	  "ProjectileSpeed" "900" // Speed of projectile.
+	  // Attributes
+	  //----------------------------------------------------------------
+	  "AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+	  "AttributeBaseStrength" "0" // Base strength
+	  "AttributeStrengthGain" "0" // Strength bonus per level.
+	  "AttributeBaseIntelligence" "0" // Base intelligence
+	  "AttributeIntelligenceGain" "0" // Intelligence bonus per level.
+	  "AttributeBaseAgility" "0" // Base agility
+	  "AttributeAgilityGain" "0" // Agility bonus per level.
+	  // Bounty
+	  //----------------------------------------------------------------
+	  "BountyXP" "0" // Experience earn.
+	  "BountyGoldMin" "0" // Gold earned min.
+	  "BountyGoldMax" "0" // Gold earned max.
+	  // Bounds
+	  //----------------------------------------------------------------
+	  "BoundsHullName" "DOTA_HULL_SIZE_SMALL" // Hull type used for navigation/locomotion.
+	  // Movement
+	  //----------------------------------------------------------------
+	  "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" // Type of locomotion - ground, air
+	  "MovementSpeed" "450" // Speed
+	  "MovementTurnRate" "10" // Turning rate.
+	  "FollowRange" "250" // Distance to keep when following
+	  // Status
+	  //----------------------------------------------------------------
+	  "StatusHealth" "1" // Base health.
+	  "StatusHealthRegen" "0" // Health regeneration rate.
+	  "StatusMana" "0" // Base mana.
+	  "StatusManaRegen" "0" // Mana regeneration rate.
+	  // Team
+	  //----------------------------------------------------------------
+	  "TeamName" "DOTA_TEAM_GOODGUYS" // Team name.
+	  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  // Vision
+	  //----------------------------------------------------------------
+	  "VisionDaytimeRange" "0" // Range of vision during day light.
+	  "VisionNighttimeRange" "0" // Range of vision at night time.
+	  // Bots
+	  //----------------------------------------------------------------
+	  "AttackDesire" "1.5" // How much bots want to attack them vs other non-hero things
+	}
 	"npc_peasant"
 	{
 	  "BaseClass"     "npc_dota_creature"
@@ -585,6 +662,63 @@
 	  "VisionDaytimeRange"    "0"   // Range of vision during day light.
 	  "VisionNighttimeRange"    "0"   // Range of vision at night time.
 	}
+	"npc_petri_gusman"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/heroes/necrolyte/necrolyte.vmdl"
+	  "ModelScale"    "1.8"
+	  "Level"      "1"
+	  "HealthBarOffset"    "240"
+	
+	  "AbilityLayout"    "4"
+	
+	  "ArmorPhysical"    "55"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+	  "AttackDamageMin"    "60000000.0"
+	  "AttackDamageMax"    "60000000.0"
+	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackRate"    "1"
+	  "AttackAnimationPoint"  "0.433"
+	  "AttackAcquisitionRange" "500"
+	  "AttackRange"     "90"
+	
+	  "BountyGoldMin"    "13000.0"
+	  "BountyGoldMax"    "15000.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
+	  //"RingRadius"    "40"
+	  //"CollisionSize"    "16"
+	  //"FormationRank"    "4"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "522"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "60000"
+	  "StatusHealthRegen"   "3"
+	  "StatusMana"    "0"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "800"
+	  "VisionNighttimeRange"  "600"
+	
+	  "TeamName"     "DOTA_TEAM_NEUTRALS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "1"
+	
+	    "AttachWearables"
+	    {
+	      "Wearable1" { "ItemDef" "4686" }
+	    }
+	  }
+	}
 	"npc_petri_janitor"
 	{
 	  "BaseClass"     "npc_dota_creature"
@@ -629,6 +763,63 @@
 	  "Creature"
 	  {
 	    "DisableClumpingBehavior"  "0"
+	  }
+	}
+	"npc_petri_maslyakov"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/heroes/keeper_of_the_light/keeper_of_the_light.vmdl"
+	  "ModelScale"    "1.8"
+	  "Level"      "1"
+	  "HealthBarOffset"    "240"
+	
+	  "AbilityLayout"    "4"
+	
+	  "ArmorPhysical"    "55"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+	  "AttackDamageMin"    "336000.0"
+	  "AttackDamageMax"    "336000.0"
+	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackRate"    "1"
+	  "AttackAnimationPoint"  "0.433"
+	  "AttackAcquisitionRange" "500"
+	  "AttackRange"     "90"
+	
+	  "BountyGoldMin"    "13000.0"
+	  "BountyGoldMax"    "15000.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
+	  //"RingRadius"    "40"
+	  //"CollisionSize"    "16"
+	  //"FormationRank"    "4"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "522"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "25000"
+	  "StatusHealthRegen"   "3"
+	  "StatusMana"    "0"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "800"
+	  "VisionNighttimeRange"  "600"
+	
+	  "TeamName"     "DOTA_TEAM_NEUTRALS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "1"
+	
+	    "AttachWearables"
+	    {
+	      "Wearable1" { "ItemDef" "252" }
+	    }
 	  }
 	}
 	"npc_petri_sawmill"
@@ -700,6 +891,64 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	}
+	"npc_petri_svetlakov"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/heroes/omniknight/omniknight.vmdl"
+	  "ModelScale"    "1.8"
+	  "Level"      "1"
+	  "HealthBarOffset"    "240"
+	
+	  "AbilityLayout"    "4"
+	
+	  "ArmorPhysical"    "55"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+	  "AttackDamageMin"    "33000.0"
+	  "AttackDamageMax"    "33000.0"
+	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackRate"    "1"
+	  "AttackAnimationPoint"  "0.433"
+	  "AttackAcquisitionRange" "500"
+	  "AttackRange"     "90"
+	
+	  "BountyGoldMin"    "5000.0"
+	  "BountyGoldMax"    "5000.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
+	  //"RingRadius"    "40"
+	  //"CollisionSize"    "16"
+	  //"FormationRank"    "4"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "522"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "11000"
+	  "StatusHealthRegen"   "3"
+	  "StatusMana"    "0"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "800"
+	  "VisionNighttimeRange"  "600"
+	
+	  "TeamName"     "DOTA_TEAM_NEUTRALS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "1"
+	
+	    "AttachWearables"
+	    {
+	        "Wearable1" { "ItemDef" "45" }
+	        "Wearable2" { "ItemDef" "46" }
+	    }
+	  }
 	}
 	"npc_petri_tent"
 	{

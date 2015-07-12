@@ -6,7 +6,7 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "rally"
+  "AbilityTextureName"            "item_rally"
 
   "OnSpellStart"
   {

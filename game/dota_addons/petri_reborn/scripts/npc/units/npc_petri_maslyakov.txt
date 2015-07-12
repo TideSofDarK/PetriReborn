@@ -1,0 +1,57 @@
+"npc_petri_maslyakov"
+{
+  "BaseClass"     "npc_dota_creature"
+  "Model"      "models/heroes/keeper_of_the_light/keeper_of_the_light.vmdl"
+  "ModelScale"    "1.8"
+  "Level"      "1"
+  "HealthBarOffset"    "240"
+
+  "AbilityLayout"    "4"
+
+  "ArmorPhysical"    "55"
+  "MagicalResistance"   "0"
+
+  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackDamageMin"    "336000.0"
+  "AttackDamageMax"    "336000.0"
+  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+  "AttackRate"    "1"
+  "AttackAnimationPoint"  "0.433"
+  "AttackAcquisitionRange" "500"
+  "AttackRange"     "90"
+
+  "BountyGoldMin"    "13000.0"
+  "BountyGoldMax"    "15000.0"
+
+  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
+  //"RingRadius"    "40"
+  //"CollisionSize"    "16"
+  //"FormationRank"    "4"
+
+  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+  "MovementSpeed"    "522"
+  "MovementTurnRate"   "0.6"
+
+  "StatusHealth"    "25000"
+  "StatusHealthRegen"   "3"
+  "StatusMana"    "0"
+  "StatusManaRegen"    "0"
+
+  "VisionDaytimeRange"  "800"
+  "VisionNighttimeRange"  "600"
+
+  "TeamName"     "DOTA_TEAM_NEUTRALS"
+  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+  "Creature"
+  {
+    "DisableClumpingBehavior"  "1"
+
+    "AttachWearables"
+    {
+      "Wearable1" { "ItemDef" "252" }
+    }
+  }
+}
