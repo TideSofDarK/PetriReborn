@@ -1,6 +1,7 @@
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()
+	local caster = keys.caster
 
 	local ability = keys.ability
 
@@ -33,8 +34,6 @@ function build( keys )
 		SpendLumber(player, lumber_cost)
 		SpendFood(player, food_cost)
 	end
-
-	-- Check if player has enough resources here. If he doesn't they just return this function.
 	
 	local returnTable = BuildingHelper:AddBuilding(keys)
 
@@ -52,6 +51,14 @@ function build( keys )
 		-- Very bad solution
 		-- But when construction is started there is no way of cancelling it so...
 		player.activeBuilder.work.callbacks.onConstructionCancelled = nil
+
+		if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
+			if caster.currentMenu == 1 then
+				caster:CastAbilityNoTarget(caster:FindAbilityByName("petri_close_basic_buildings_menu"), pID)
+			elseif caster.currentMenu == 2 then
+				caster:CastAbilityNoTarget(caster:FindAbilityByName("petri_close_advanced_buildings_menu"), pID)
+			end
+		end
 
 		unit:SetMana(0)
 	end)

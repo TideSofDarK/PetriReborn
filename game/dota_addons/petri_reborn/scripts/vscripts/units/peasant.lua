@@ -20,8 +20,11 @@ function Gather( event )
 			print("Moving to ", target_class)
 		end
 		caster.target_tree = target
+
+
 	end
 
+	caster:RemoveModifierByName("modifier_gathering_lumber")
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_gathering_lumber", {})
 
 	-- Visual fake toggle
@@ -30,9 +33,12 @@ function Gather( event )
 	end
 
 	-- Hide Return
-	local return_ability = caster:FindAbilityByName("return_resources")
-	return_ability:SetHidden(true)
-	ability:SetHidden(false)
+	--local return_ability = caster:FindAbilityByName("return_resources")
+	--return_ability:SetHidden(true)
+	--ability:SetHidden(false)
+
+	--caster:SwapAbilities("gather_lumber", "return_resources" , true, false)
+
 	if Debug_Peasant then
 		print("Gather ON, Return OFF")
 	end
@@ -78,9 +84,9 @@ function CheckTreePosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 100
+	local collision = distance < 120
 	if not collision then
-		--print("Moving to tree, distance: ",distance)
+	--print("Moving to tree, distance: ",distance)
 	elseif not caster:HasModifier("modifier_chopping_wood") then
 		caster:RemoveModifierByName("modifier_gathering_lumber")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_wood", {})
@@ -117,24 +123,24 @@ function Gather100Lumber( event )
 			if Debug_Peasant then
 				print("Gather OFF, Return ON")
 			end
-			return_ability:SetHidden(false)
+			--return_ability:SetHidden(false)
 			if return_ability:GetToggleState() == false then
 				return_ability:ToggleAbility()
 			end
-			ability:SetHidden(true)
+			--ability:SetHidden(true)
+
+			caster:SwapAbilities("gather_lumber", "return_resources", false, true)
 		end
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
-
-		--print("PLAYER OWNER = ")
-		--PrintTable(event.caster)
-		--print("PLAYER OWNER = ")
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
 
 		-- Return Ability On		
 		caster:CastAbilityNoTarget(return_ability, player)
 		return_ability:ToggleAbility()
+
+		
 	end
 end
 
@@ -213,6 +219,8 @@ function CheckBuildingPosition( event )
 			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + caster.lumber_gathered 
     		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
     		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
+
+    		caster:SwapAbilities("gather_lumber", "return_resources", true, false)
 
 			caster.lumber_gathered = 0
 		end

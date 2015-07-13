@@ -40,7 +40,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_peasant", context)
 
   PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)
-  PrecacheUnitByNameSync("npc_dota_hero_petri_builder", context)
+  PrecacheUnitByNameSync("npc_petri_kvn_fan", context)
   PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
 end
 

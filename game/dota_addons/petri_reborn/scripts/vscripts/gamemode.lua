@@ -60,10 +60,7 @@ end
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
-  -- This line for example will set the starting gold of every hero to 500 unreliable gold
   hero:SetGold(0, false)
-
-  CreateUnitByName( "npc_petri_hint" , Vector(0,0,0) , true, nil, nil, DOTA_TEAM_BADGUYS )
 
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
@@ -84,9 +81,6 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:AddItemByName("item_petri_builder_blink")
       newHero:AddItemByName("item_petri_give_permission_to_build")
-
-       -- Send lumber and food info to users
-      CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
     end
 
      -- Init petrosyan
@@ -113,6 +107,9 @@ function GameMode:OnHeroInGame(hero)
     player.lumber = 4000
     player.food = 0
     player.maxFood = 10
+ 
+    --Send lumber and food info to users
+    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
 
     --Update player's UI
     Timers:CreateTimer(0.03,
@@ -125,7 +122,7 @@ function GameMode:OnHeroInGame(hero)
           maxFood = player.maxFood
       }
       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.21
+      return 0.18
     end)
   end
 end

@@ -1,0 +1,75 @@
+"petri_open_basic_buildings_menu"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_kvn_fan_open_basic_buildings_menu"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "MaxLevel"            "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/kvn_fan.lua"
+      "Function"        "OpenBasicBuildingsMenu"
+    }
+  }
+}
+
+"petri_open_advanced_buildings_menu"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_kvn_fan_open_advanced_buildings_menu"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "MaxLevel"            "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/kvn_fan.lua"
+      "Function"        "OpenAdvancedBuildingsMenu"
+    }
+  }
+}
+
+"petri_close_basic_buildings_menu"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "MaxLevel"            "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/kvn_fan.lua"
+      "Function"        "CloseBasicBuildingsMenu"
+    }
+  }
+}
+
+"petri_close_advanced_buildings_menu"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "MaxLevel"            "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/kvn_fan.lua"
+      "Function"        "CloseAdvancedBuildingsMenu"
+    }
+  }
+}
