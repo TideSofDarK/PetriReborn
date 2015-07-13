@@ -3,14 +3,35 @@ function build( keys )
 	local pID = player:GetPlayerID()
 
 	local ability = keys.ability
+
 	local gold_cost = ability:GetGoldCost(1)
+	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", ability:GetLevel()-1)
+	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
+
+	local enough_lumber
+	local enough_food
 
 	if gold_cost ~= nil then
 		player.lastSpentGold = gold_cost
 	end
 
-	if keys.lumber ~= nil then
-		if CheckLumber(player, tonumber(keys.lumber)) == false then return end
+	if lumber_cost ~= nil then
+		enough_lumber = CheckLumber(player, lumber_cost,true)
+	else
+		enough_lumber = true
+	end
+
+	if food_cost ~= nil then
+		enough_food = CheckFood(player, food_cost,true)
+	else
+		enough_food = true
+	end
+
+	if enough_food ~= true or enough_lumber ~= true then
+		return
+	else
+		SpendLumber(player, lumber_cost)
+		SpendFood(player, food_cost)
 	end
 
 	-- Check if player has enough resources here. If he doesn't they just return this function.
@@ -27,7 +48,7 @@ function build( keys )
 		-- Play construction sound
 		-- FindClearSpace for the builder
 		FindClearSpaceForUnit(keys.caster, keys.caster:GetAbsOrigin(), true)
-
+		unit.foodSpent = food_cost
 		-- Very bad solution
 		-- But when construction is started there is no way of cancelling it so...
 		player.activeBuilder.work.callbacks.onConstructionCancelled = nil
@@ -100,6 +121,7 @@ function build( keys )
 		-- This runs when a building is cancelled, building is the unit that would've been built.
 		ReturnLumber(player)
 		ReturnGold(player)
+		ReturnFood( player )
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.

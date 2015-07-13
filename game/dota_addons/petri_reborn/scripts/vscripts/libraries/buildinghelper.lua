@@ -46,6 +46,7 @@ function BuildingHelper:Init(...)
     if cmdPlayer then
       ReturnLumber(cmdPlayer)
       ReturnGold(cmdPlayer)
+      ReturnFood(cmdPlayer)
       cmdPlayer.activeBuilder:ClearQueue()
       cmdPlayer.activeBuilding = nil
       cmdPlayer.activeBuilder:Stop()

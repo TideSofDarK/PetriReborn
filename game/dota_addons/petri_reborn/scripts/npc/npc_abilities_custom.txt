@@ -81,6 +81,20 @@
 	  "AbilityTextureName"      "petri_upgrade_gold_tower"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "food_cost" "2"
+	    }
+	    "02"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "lumber_cost" "2000"
+	    }
+	  }
+	
 	  // BuildingHelper info
 	  "Building"            "1" //bool
 	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
@@ -109,7 +123,6 @@
 	    {
 	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
 	      "Function"        "build"
-	      "lumber" "2000"
 	    }
 	  }
 	}
@@ -1128,7 +1141,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "food_cost"        "2 2 4 6 8 10 12 14 16"
+	      "food_cost"        "2 2 4 6 10 11 13 15 16"
 	    }
 	  }
 	
@@ -1138,7 +1151,6 @@
 	    {
 	      "ScriptFile"      "units/gold_tower.lua"
 	      "Function"        "StartUpgrading"
-	      "food" "%food_cost"
 	    }
 	  }
 	
@@ -1214,7 +1226,7 @@
 	    "RunScript"
 	    {
 	      "ScriptFile"      "units/food_building.lua"
-	      "Function"        "CheckLumber"
+	      "Function"        "StartUpgrading"
 	    }
 	  }
 	}

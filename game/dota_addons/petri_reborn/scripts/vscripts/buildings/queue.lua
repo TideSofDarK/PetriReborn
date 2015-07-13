@@ -10,9 +10,10 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
-	if SpendFood(caster:GetPlayerOwner(), tonumber(event.food))== false then 
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+	if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
 		return 
+	else
+		SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 	end
 
 	-- Initialize queue
@@ -189,7 +190,6 @@ function AdvanceQueue( event )
 	local ability = event.ability
 
 	if not IsChanneling( caster ) then
-		
 		-- RemakeQueue
 		ability.queue = {}
 

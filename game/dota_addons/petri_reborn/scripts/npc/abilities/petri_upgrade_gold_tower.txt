@@ -21,7 +21,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "food_cost"        "2 2 4 6 8 10 12 14 16"
+      "food_cost"        "2 2 4 6 10 11 13 15 16"
     }
   }
 
@@ -31,7 +31,6 @@
     {
       "ScriptFile"      "units/gold_tower.lua"
       "Function"        "StartUpgrading"
-      "food" "%food_cost"
     }
   }
 

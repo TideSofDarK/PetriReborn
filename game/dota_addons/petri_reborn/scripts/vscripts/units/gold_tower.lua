@@ -26,8 +26,9 @@ function StartUpgrading ( event   )
 	local ability = event.ability
 
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
+	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel() - 1)
 
-	if SpendFood(caster:GetPlayerOwner(), tonumber(event.food))== false then 
+	if CheckFood(caster:GetPlayerOwner(), food_cost,false)== false then 
 		
 		Timers:CreateTimer(0.06,
 			function()
@@ -37,6 +38,8 @@ function StartUpgrading ( event   )
 			end
 		)
 	else
+		caster.foodSpent = caster.foodSpent + food_cost
+		SpendFood(caster:GetPlayerOwner(), food_cost)
 		caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", false, true )
 	end
 end
@@ -55,8 +58,10 @@ function StopUpgrading ( event   )
 		local gold_cost = original_ability:GetGoldCost( original_ability:GetLevel() - 1 )
 		local food_cost = original_ability:GetLevelSpecialValueFor("food_cost", original_ability:GetLevel() - 1)
 
+		-- Return resources
 		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
 		caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - food_cost
+		caster.foodSpent = caster.foodSpent - food_cost
 	end
 	)
 end

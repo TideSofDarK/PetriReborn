@@ -13,27 +13,36 @@ function ReturnLumber(player)
   end
 end
 
-function CheckLumber(player, lumber_amount)
-  if player.lumber >= lumber_amount then
-    player.lumber = player.lumber - lumber_amount
-    player.lastSpentLumber = lumber_amount
-    return true
-  else 
+function CheckLumber(player, lumber_amount, notification)
+  local enough = player.lumber >= lumber_amount
+  if enough ~= true and notification == true then 
     Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
-    return false
   end
+  return enough
 end
 
-function CheckFood( player, food_amount )
-  return player.food + food_amount <= Clamp(player.maxFood,10,250)
+function SpendLumber(player, lumber_amount)
+  player.lumber = player.lumber - lumber_amount
+  player.lastSpentLumber = lumber_amount
+end
+
+function CheckFood( player, food_amount, notification)
+  local enough = player.food + food_amount <= Clamp(player.maxFood,10,250)
+  if enough ~= true and notification == true then 
+    Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+  end
+  return enough
 end
 
 function SpendFood( player, food_amount )
-  if player.food + food_amount <= Clamp(player.maxFood,10,250) then
-    player.food = player.food + food_amount
-    return true
-  else
-    return false
+  player.food = player.food + food_amount
+  player.lastSpentFood = food_amount
+end
+
+function ReturnFood( player )
+  if player.food ~= nil and player.lastSpentFood ~= nil then
+    player.food = player.food - player.lastSpentFood
+    player.lastSpentFood = nil
   end
 end
 

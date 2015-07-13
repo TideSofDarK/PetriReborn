@@ -39,7 +39,7 @@
     "RunScript"
     {
       "ScriptFile"      "units/food_building.lua"
-      "Function"        "CheckLumber"
+      "Function"        "StartUpgrading"
     }
   }
 }
