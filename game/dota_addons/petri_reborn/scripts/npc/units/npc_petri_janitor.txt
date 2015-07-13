@@ -7,7 +7,10 @@
   "HealthBarOffset"    "140"
 
   "AbilityLayout"    "4"
-  "Ability1"     "petri_janitor_truesight"
+  "Ability1"          "petri_janitor_truesight"
+  "Ability2"          "petri_empty2"
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
 
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"

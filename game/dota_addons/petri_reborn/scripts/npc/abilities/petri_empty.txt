@@ -1,0 +1,42 @@
+"petri_empty1"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}
+"petri_empty2"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}
+"petri_empty3"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}
+"petri_empty4"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}
+"petri_empty5"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}
+"petri_empty6"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "MaxLevel"            "0"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"            "rubick_empty1"
+}

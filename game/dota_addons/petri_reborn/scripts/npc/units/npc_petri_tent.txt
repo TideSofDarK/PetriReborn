@@ -11,8 +11,11 @@
   
   // Abilities
   //----------------------------------------------------------------
-  
+  "AbilityLayout"       "4"
   "Ability1"          "petri_upgrade_tent"     // Ability 1.
+  "Ability2"          "petri_empty2"
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
 
   // Armor
   //----------------------------------------------------------------

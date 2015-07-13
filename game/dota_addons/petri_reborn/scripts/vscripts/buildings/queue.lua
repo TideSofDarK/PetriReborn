@@ -11,6 +11,7 @@ function EnqueueUnit( event, food )
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
 	if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
 		return 
 	else
 		SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
@@ -94,7 +95,7 @@ function DequeueUnit( event )
 	            -- Refund ability cost
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
 
-	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food", 1)
+	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - foodToReturn
 
 	            if Debug_Queue then

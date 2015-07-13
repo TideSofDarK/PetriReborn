@@ -12,6 +12,8 @@
   "Ability1"     "gather_lumber"
   "Ability2"     "return_resources"
   "Ability3"     "petri_suicide"
+  "Ability4"          "petri_empty4"
+
 
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"

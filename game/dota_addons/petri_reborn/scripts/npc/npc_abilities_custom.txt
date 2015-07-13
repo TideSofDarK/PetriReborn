@@ -558,6 +558,48 @@
 	    } 
 	  }   
 	}
+	"petri_empty1"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
+	"petri_empty2"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
+	"petri_empty3"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
+	"petri_empty4"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
+	"petri_empty5"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
+	"petri_empty6"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "MaxLevel"            "0"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"            "rubick_empty1"
+	}
 	"petri_exploration_tower_explore_world"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -1305,7 +1347,7 @@
 	    "01"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "food" "20"
+	        "food_cost" "20"
 	    }
 	  }
 	  
@@ -1315,7 +1357,7 @@
 	    {
 	      "ScriptFile"  "buildings/queue.lua"
 	      "Function"    "EnqueueUnit"
-	      "food" "%food"
+	      "food" "%food_cost"
 	    }
 	  }
 	
@@ -1350,7 +1392,7 @@
 	        {
 	          "ScriptFile"    "buildings/queue.lua"
 	          "Function"      "SetOwner"
-	          "food" "%food"
+	          "food" "%food_cost"
 	        }
 	      }
 	    }

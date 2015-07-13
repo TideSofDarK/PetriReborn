@@ -91,6 +91,8 @@
 	  "Ability1"     "gather_lumber"
 	  "Ability2"     "return_resources"
 	  "Ability3"     "petri_suicide"
+	  "Ability4"          "petri_empty4"
+	
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
@@ -456,14 +458,17 @@
 	}
 	"npc_petri_exploration_tower"
 	{
-	  // General
 	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
 	  "ModelScale"                "0.8"
 	  "Level"           "1"
 	
+	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tower_explore_world"
-	
+	  "Ability2"          "petri_empty2"
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
+	  
 	  // Armor
 	  //----------------------------------------------------------------
 	  "ArmorPhysical"       "25"     // Physical protection.
@@ -501,18 +506,18 @@
 	}
 	"npc_petri_exploration_tree"
 	{
-	  // General
 	  "BaseClass"         "npc_dota_base_additive"  // Class of entity of link to.
 	  "Model"           "models/aow/aow.vmdl"  // Model.
 	  "ModelScale"                "0.7"
 	  "SoundSet"          "Creep_Good_Range"          // Name of sound set.
 	  "Level"           "0"
 	  
-	  // Abilities
-	  //----------------------------------------------------------------
-	  
+	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tree_explore"     // Ability 1.
-	
+	  "Ability2"          "petri_empty2"
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
+	  
 	  // Armor
 	  //----------------------------------------------------------------
 	  "ArmorPhysical"       "0"     // Physical protection.
@@ -620,8 +625,8 @@
 	  "AbilityLayout" "4"
 	  "Ability1"          "petri_get_gold"     // Ability 1.
 	  "Ability2"          "petri_upgrade_gold_tower"     // Ability 1.
-	  "Ability3"          ""
-	  "Ability4"          ""
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
 	  "Ability5"          "petri_upgrade_gold_tower_cancel"
 	
 	  // Armor
@@ -731,7 +736,10 @@
 	  "HealthBarOffset"    "140"
 	
 	  "AbilityLayout"    "4"
-	  "Ability1"     "petri_janitor_truesight"
+	  "Ability1"          "petri_janitor_truesight"
+	  "Ability2"          "petri_empty2"
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
@@ -838,13 +846,12 @@
 	
 	  // Abilities
 	  //----------------------------------------------------------------
-	  "AbilityLayout"       "6"
-	  "Ability1"          "building_queue"
-	  "Ability2"          "train_peasant"
-	  "Ability3"          ""
-	  "Ability4"          ""
-	  "Ability5"          ""
-	  "Ability6"          ""
+	  "AbilityLayout"       "4"
+	  "Ability1"          "train_peasant"
+	  "Ability2"          "petri_empty2"
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
+	  "Ability5"          "building_queue"
 	
 	  // Armor
 	  //----------------------------------------------------------------
@@ -966,8 +973,11 @@
 	  
 	  // Abilities
 	  //----------------------------------------------------------------
-	  
+	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_upgrade_tent"     // Ability 1.
+	  "Ability2"          "petri_empty2"
+	  "Ability3"          "petri_empty3"
+	  "Ability4"          "petri_empty4"
 	
 	  // Armor
 	  //----------------------------------------------------------------

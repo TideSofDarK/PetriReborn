@@ -14,8 +14,8 @@
   "AbilityLayout" "4"
   "Ability1"          "petri_get_gold"     // Ability 1.
   "Ability2"          "petri_upgrade_gold_tower"     // Ability 1.
-  "Ability3"          ""
-  "Ability4"          ""
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
   "Ability5"          "petri_upgrade_gold_tower_cancel"
 
   // Armor

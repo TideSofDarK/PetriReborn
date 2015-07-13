@@ -11,13 +11,12 @@
 
   // Abilities
   //----------------------------------------------------------------
-  "AbilityLayout"       "6"
-  "Ability1"          "building_queue"
-  "Ability2"          "train_peasant"
-  "Ability3"          ""
-  "Ability4"          ""
-  "Ability5"          ""
-  "Ability6"          ""
+  "AbilityLayout"       "4"
+  "Ability1"          "train_peasant"
+  "Ability2"          "petri_empty2"
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
+  "Ability5"          "building_queue"
 
   // Armor
   //----------------------------------------------------------------

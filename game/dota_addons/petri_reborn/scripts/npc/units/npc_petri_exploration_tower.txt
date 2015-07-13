@@ -1,13 +1,16 @@
 "npc_petri_exploration_tower"
 {
-  // General
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
   "ModelScale"                "0.8"
   "Level"           "1"
 
+  "AbilityLayout"       "4"
   "Ability1"          "petri_exploration_tower_explore_world"
-
+  "Ability2"          "petri_empty2"
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
+  
   // Armor
   //----------------------------------------------------------------
   "ArmorPhysical"       "25"     // Physical protection.
