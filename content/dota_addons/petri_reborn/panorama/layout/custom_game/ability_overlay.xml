@@ -1,0 +1,169 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/ability_overlay.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/ability_overlay.js" />
+  </scripts>
+
+  <Panel hittest="false" class="AbilityOverlayBase">
+    <!-- 6 ability layout -->
+    <Panel hittest="false" class="Layout6" id="Layout6">
+      <Panel hittest="false" class="Ability1Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability5Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability6Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability1Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability5Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability6Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+    </Panel>
+
+    <!-- 5 ability layout -->
+    <Panel hittest="false" class="Layout5" id="Layout5">
+      <Panel hittest="false" class="Ability1Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability5Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability1Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability5Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+    </Panel>
+
+    <!-- 4 ability layout -->
+    <Panel hittest="false" class="Layout4" id="Layout4">
+      <Panel hittest="false" class="Ability1Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Lumber">
+        <Label text="2000" class="LumberText" id="LumberText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability1Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability2Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability3Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+
+      <Panel hittest="false" class="Ability4Food">
+        <Label text="20" class="FoodText" id="FoodText">
+        </Label>
+      </Panel>
+    </Panel>
+  </Panel>
+</root>

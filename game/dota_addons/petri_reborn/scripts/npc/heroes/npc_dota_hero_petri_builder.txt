@@ -1,15 +1,15 @@
 "npc_dota_hero_petri_builder"
 {
-  "AbilityLayout"     "6"
+  "AbilityLayout"     "4"
   "override_hero"     "npc_dota_hero_rattletrap"
   "SoundSet"          "0" 
   "Ability1"        "build_petri_tent" 
   "Ability2"        "build_petri_sawmill" 
   "Ability3"        "build_petri_gold_tower"
   "Ability4"        "build_petri_tower_basic"
-  "Ability5"        "build_petri_exploration_tree"
-  "Ability7"        "gather_lumber"
-  "Ability8"        "return_resources"
+  //"Ability5"        "build_petri_exploration_tree"
+  //"Ability7"        "gather_lumber"
+  //"Ability8"        "return_resources"
   
   "ArmorPhysical"       "0"                 // Physical protection.
   "MagicalResistance"       "0"                 // Magical protection (percentage).

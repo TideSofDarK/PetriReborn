@@ -25,8 +25,9 @@
   	</script>
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 
-    		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" /> 
-            <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_variables.xml" />
+    	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" /> 
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_variables.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_overlay.xml" />
 	</Panel>
 </root>
 

@@ -3,7 +3,7 @@
 
 -- Set this to true if you want to see a complete debug output of all events/processes done by barebones
 -- You can also change the cvar 'barebones_spew' at any time to 1 or 0 for output/no output
-BAREBONES_DEBUG_SPEW = false 
+BAREBONES_DEBUG_SPEW = false
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -71,6 +71,7 @@ function GameMode:OnHeroInGame(hero)
 
     local newHero
 
+     -- Init kvn fan
     if team == 2 then
       UTIL_Remove( hero )
       newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
@@ -83,8 +84,12 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:AddItemByName("item_petri_builder_blink")
       newHero:AddItemByName("item_petri_give_permission_to_build")
+
+       -- Send lumber and food info to users
+      CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
     end
 
+     -- Init petrosyan
     if team == 3 then
 
       UTIL_Remove( hero )
@@ -95,7 +100,7 @@ function GameMode:OnHeroInGame(hero)
       newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
       newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
 
-      -- Wait a bit
+      -- Wait a bit and spawn tower
       Timers:CreateTimer(0.03,
         function()
           CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
@@ -148,6 +153,28 @@ function GameMode:InitGameMode()
 
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
+
+   -- Find all ability layouts to send them to clients later
+  local UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+  local HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+
+  GameMode.abilityLayouts = {}
+
+  for i=1,2 do
+    local t = UnitKVs
+    if i == 2 then
+      t = HeroKVs
+    end
+    for unit_name,unit_info in pairs(t) do
+      if type(unit_info) == "table" then
+        if i == 2 then
+          GameMode.abilityLayouts[unit_info["override_hero"]] = unit_info["AbilityLayout"]
+        else
+          GameMode.abilityLayouts[unit_name] = unit_info["AbilityLayout"]
+        end
+      end
+    end
+  end
 
   --GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
