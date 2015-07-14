@@ -1,48 +1,38 @@
-"npc_petri_tower_basic"
+"npc_petri_wall"
 {
   
   "BaseClass"         "npc_dota_creature"  
-  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
-  "ModelScale"                "0.5"
+  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
+  "ModelScale"                "0.68"
   "SoundSet"          "Creep_Good_Range"          
-  "Level"           "0"
-  "UnitLabel"         "npc_petri_tower_basic"
-
+  "Level"           "1"
+  
   "AbilityLayout"     "4"
-  "Ability1"        "petri_empty1"
-  "Ability2"        "petri_empty2"
-  "Ability3"        "petri_empty3"
-  "Ability4"        "petri_empty4"
-  "Ability5"        "petri_building"
-
+  "Ability1"        "petri_upgrade_wall"
+  "Ability2"        "petri_empty1"
+  "Ability3"        "petri_empty2"
+  "Ability4"        "petri_empty3"
+  "Ability5"        "petri_empty4"
+  "Ability6"          "petri_building"
+  
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
 
-  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-  "AttackDamageMin"            "3"
-  "AttackDamageMax"            "3"
-  "AttackRate"                 "1.7"
-  "AttackAnimationPoint"       "0.75"
-  "AttackAcquisitionRange"     "800"
-  "AttackRange"                "600"
-  "AttackRangeBuffer"          "250"
-
-  "ProjectileModel"            "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"
-  "ProjectileSpeed"            "1100"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 
   "BountyXP"          "0"     
   "BountyGoldMin"       "0"     
   "BountyGoldMax"       "0"     
 
   "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
-  "RingRadius"                "70"
+  //"RingRadius"                "70"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
   "MovementSpeed"       "0"   
   "MovementTurnRate"      "0.0"   
   "FollowRange"       "0"   
 
-  "StatusHealth"        "100"     
+  "StatusHealth"        "10"     
   "StatusHealthRegen"     "0"     
   "StatusMana"        "0"     
   "StatusManaRegen"     "0"     

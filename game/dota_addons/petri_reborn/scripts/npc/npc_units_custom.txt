@@ -18,10 +18,8 @@
 	  "Ability7" ""
 	  "Ability8" "" 
 	  
-	  
 	  "ArmorPhysical" "0" 
 	  "MagicalResistance" "0" 
-	  
 	  
 	  "AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
 	  "AttackDamageMin" "0"
@@ -42,32 +40,26 @@
 	  "AttributeBaseAgility" "0"
 	  "AttributeAgilityGain" "0"
 	  
-	  
 	  "BountyXP" "0" 
 	  "BountyGoldMin" "0" 
 	  "BountyGoldMax" "0" 
 	  
-	  
 	  "BoundsHullName" "DOTA_HULL_SIZE_SMALL" 
-	  
 	  
 	  "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
 	  "MovementSpeed" "450" 
 	  "MovementTurnRate" "10" 
 	  "FollowRange" "250" 
-	  
-	  
+	
 	  "StatusHealth" "1" 
 	  "StatusHealthRegen" "0" 
 	  "StatusMana" "0" 
 	  "StatusManaRegen" "0" 
 	  
-	  
 	  "TeamName" "DOTA_TEAM_GOODGUYS" 
 	  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 	  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
-	  
 	  
 	  "VisionDaytimeRange" "0" 
 	  "VisionNighttimeRange" "0" 
@@ -89,7 +81,6 @@
 	  "Ability2"     "return_resources"
 	  "Ability3"     "petri_suicide"
 	  "Ability4"          "petri_empty4"
-	
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
@@ -146,7 +137,6 @@
 	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
-	  
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
@@ -468,33 +458,21 @@
 	  
 	  "ArmorPhysical"       "25"     
 	  "MagicalResistance"       "0"     
-	
-	  
 	  
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
-	  
-	  
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      
 	
-	  
-	  
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
-	
-	  
 	  
 	  "StatusHealth"        "1000"     
 	  "StatusHealthRegen"     "0"     
-	
-	  
 	  
 	  "TeamName"          "DOTA_TEAM_BADGUYS"      
 	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-	
-	  
 	  
 	  "VisionDaytimeRange"    "400"   
 	  "VisionNighttimeRange"    "400"   
@@ -512,49 +490,34 @@
 	  "Ability2"          "petri_empty2"
 	  "Ability3"          "petri_empty3"
 	  "Ability4"          "petri_empty4"
-	  
-	  
-	  
+	  "Ability5"          "petri_building"
+	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
-	
-	  
 	  
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
-	
-	  
 	  
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "15"     
 	  "BountyGoldMax"       "20"     
-	
-	  
 	  
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      
-	
-	  
 	  
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	
-	  
-	  
 	  "StatusHealth"        "200"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "100"     
 	  "StatusManaRegen"     "1"     
 	
-	  
-	  
 	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-	  
-	  
-	  
+	
 	  "VisionDaytimeRange"    "1000"   
 	  "VisionNighttimeRange"    "1000"   
 	}
@@ -612,48 +575,33 @@
 	  "ModelScale"                "0.3"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "1"
-	
-	  "UnitLabel" "repairable"
-	
+	  
 	  "vscripts"                    "units/gold_tower.lua"
-	  
-	  
-	  
+	
 	  "AbilityLayout" "4"
 	  "Ability1"          "petri_get_gold"     
 	  "Ability2"          "petri_upgrade_gold_tower"     
 	  "Ability3"          "petri_empty3"
 	  "Ability4"          "petri_empty4"
 	  "Ability5"          "petri_upgrade_gold_tower_cancel"
-	
-	  
+	  "Ability6"          "petri_building"
 	  
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
 	
-	  
-	  
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
-	  
-	  
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "20"     
 	  "BountyGoldMax"       "20"     
 	
-	  
-	  
 	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
 	
-	  
-	  
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	
-	  
-	  
 	  "StatusHealth"        "20"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
@@ -847,7 +795,7 @@
 	  "Ability3"          "petri_empty3"
 	  "Ability4"          "petri_empty4"
 	  "Ability5"          "building_queue"
-	
+	  "Ability6"          "petri_building"
 	  
 	  
 	  "ArmorPhysical"       "0"
@@ -965,42 +913,30 @@
 	  "Level"           "1"
 	
 	  "vscripts"                    "units/food_building.lua"
-	  
-	  
-	  
+	
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_upgrade_tent"     
 	  "Ability2"          "petri_empty2"
 	  "Ability3"          "petri_empty3"
 	  "Ability4"          "petri_empty4"
-	
+	  "Ability5"          "petri_building"
 	  
 	  
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
 	
-	  
-	  
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
-	  
-	  
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "10"     
 	  "BountyGoldMax"       "10"     
 	
-	  
-	  
 	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
 	
-	  
-	  
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
-	
-	  
 	  
 	  "StatusHealth"        "1"     
 	  "StatusHealthRegen"     "0"     
@@ -1012,68 +948,110 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	  
-	  
-	  
 	  "VisionDaytimeRange"    "0"   
 	  "VisionNighttimeRange"    "0"   
 	}
 	"npc_petri_tower_basic"
 	{
 	  
-	  "BaseClass"         "npc_dota_base_additive"  
-	  "Model"           "models/props_structures/radiant_tower_base001.vmdl"  
-	  "ModelScale"                "0.8"
+	  "BaseClass"         "npc_dota_creature"  
+	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
+	  "ModelScale"                "0.5"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
 	  "UnitLabel"         "npc_petri_tower_basic"
-	  
-	  
-	  
-	  
-	  // "Ability1"          ""     
 	
-	  
-	  
+	  "AbilityLayout"     "4"
+	  "Ability1"        "petri_empty1"
+	  "Ability2"        "petri_empty2"
+	  "Ability3"        "petri_empty3"
+	  "Ability4"        "petri_empty4"
+	  "Ability5"        "petri_building"
+	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
 	
-	  
-	  
-	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+	  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+	  "AttackDamageMin"            "3"
+	  "AttackDamageMax"            "3"
+	  "AttackRate"                 "1.7"
+	  "AttackAnimationPoint"       "0.75"
+	  "AttackAcquisitionRange"     "800"
+	  "AttackRange"                "600"
+	  "AttackRangeBuffer"          "250"
 	
-	  
-	  
+	  "ProjectileModel"            "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf"
+	  "ProjectileSpeed"            "1100"
+	
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "0"     
 	  "BountyGoldMax"       "0"     
 	
-	  
-	  
 	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
 	  "RingRadius"                "70"
 	
-	  
-	  
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	
-	  
-	  
 	  "StatusHealth"        "100"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
 	
-	  
 	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	
+	  "VisionDaytimeRange"    "0"   
+	  "VisionNighttimeRange"    "0"   
+	}
+	"npc_petri_wall"
+	{
 	  
+	  "BaseClass"         "npc_dota_creature"  
+	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
+	  "ModelScale"                "0.68"
+	  "SoundSet"          "Creep_Good_Range"          
+	  "Level"           "1"
 	  
+	  "AbilityLayout"     "4"
+	  "Ability1"        "petri_upgrade_wall"
+	  "Ability2"        "petri_empty1"
+	  "Ability3"        "petri_empty2"
+	  "Ability4"        "petri_empty3"
+	  "Ability5"        "petri_empty4"
+	  "Ability6"          "petri_building"
 	  
+	  "ArmorPhysical"       "0"     
+	  "MagicalResistance"       "0"     
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+	
+	  "BountyXP"          "0"     
+	  "BountyGoldMin"       "0"     
+	  "BountyGoldMax"       "0"     
+	
+	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
+	  //"RingRadius"                "70"
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+	  "MovementSpeed"       "0"   
+	  "MovementTurnRate"      "0.0"   
+	  "FollowRange"       "0"   
+	
+	  "StatusHealth"        "10"     
+	  "StatusHealthRegen"     "0"     
+	  "StatusMana"        "0"     
+	  "StatusManaRegen"     "0"     
+	
+	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	
 	  "VisionDaytimeRange"    "0"   
 	  "VisionNighttimeRange"    "0"   
 	}

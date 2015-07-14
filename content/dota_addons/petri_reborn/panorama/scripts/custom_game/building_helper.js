@@ -30,11 +30,11 @@ function SendBuildCommand( params )
   var mPos = GameUI.GetCursorPosition();
   var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
   GameEvents.SendCustomGameEventToServer( "building_helper_build_command", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
-  if (!GameUI.IsShiftDown()) // Remove the green square unless the player is holding shift
-  {
-    state = 'disabled'
-    $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;";
-  }
+  //if (!GameUI.IsShiftDown())
+  //{
+  state = 'disabled'
+  $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;";
+  //}
 }
 
 function SendCancelCommand( params )

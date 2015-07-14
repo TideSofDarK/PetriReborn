@@ -63,6 +63,7 @@
 	  "Ability4"        "petri_repair"
 	  "Ability5"        "petri_empty2"
 	  "Ability6"        "petri_empty3"
+	  
 	  "Ability7"        "return_resources"
 	  
 	  "ArmorPhysical"       "0"

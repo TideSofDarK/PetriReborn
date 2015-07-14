@@ -4,7 +4,7 @@ function build( keys )
 	local caster = keys.caster
 
 	local ability = keys.ability
-
+	
 	local gold_cost = ability:GetGoldCost(1)
 	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", ability:GetLevel()-1)
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
@@ -14,6 +14,11 @@ function build( keys )
 
 	if gold_cost ~= nil then
 		player.lastSpentGold = gold_cost
+	end
+
+	if player.waitingForBuildHelper then
+		ReturnGold(player)
+	    return
 	end
 
 	if lumber_cost ~= nil then
@@ -61,12 +66,18 @@ function build( keys )
 		end
 
 		unit:SetMana(0)
+		unit.tempManaRegen = unit:GetManaRegen()
+		unit:SetBaseManaRegen(0.0)
 	end)
 	keys:OnConstructionCompleted(function(unit)
 		-- Play construction complete sound.
 		-- Give building its abilities
 		-- add the mana
 		unit:SetMana(unit:GetMaxMana())
+		unit:SetBaseManaRegen(unit.tempManaRegen)
+		unit.tempManaRegen = nil
+
+		
 
 		InitAbilities(unit)
 		

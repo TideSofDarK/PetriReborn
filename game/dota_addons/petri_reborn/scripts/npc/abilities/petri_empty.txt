@@ -3,7 +3,9 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"            "rubick_empty1"
+  "AbilityTextureName"            "rubick_empty1" 
+
+  "IsHidden"         "1"
 }
 "petri_empty2"
 {
@@ -11,6 +13,7 @@
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"            "rubick_empty1"
+  "IsHidden"         "1"
 }
 "petri_empty3"
 {
@@ -18,6 +21,7 @@
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"            "rubick_empty1"
+  "IsHidden"         "1"
 }
 "petri_empty4"
 {
@@ -25,6 +29,7 @@
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"            "rubick_empty1"
+  "IsHidden"         "1"
 }
 "petri_empty5"
 {
@@ -32,6 +37,7 @@
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"            "rubick_empty1"
+  "IsHidden"         "1"
 }
 "petri_empty6"
 {
@@ -39,4 +45,5 @@
   "MaxLevel"            "0"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"            "rubick_empty1"
+  "IsHidden"         "1"
 }

@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "AbilityCooldown" "9 9 9 2 2 2 2 2"
+  "AbilityCooldown" "9 9 9 9 9 9 9 9"
 
   "MaxLevel"            "8"
 
@@ -16,7 +16,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "gold"      "2 3 4 2 10 20 32 44"
+      "gold"      "1 2 3 4 5 6 7 8"
     }
   }
 

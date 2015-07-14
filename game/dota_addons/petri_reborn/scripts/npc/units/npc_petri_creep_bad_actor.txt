@@ -11,7 +11,6 @@
 
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
-  
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"

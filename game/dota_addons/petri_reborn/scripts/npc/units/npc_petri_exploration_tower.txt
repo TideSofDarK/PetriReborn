@@ -13,33 +13,21 @@
   
   "ArmorPhysical"       "25"     
   "MagicalResistance"       "0"     
-
-  
   
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 
-  
-  
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      
 
-  
-  
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     
   "MovementSpeed"       "0"   
   "MovementTurnRate"      "0.0"   
   "FollowRange"       "0"   
-
-  
   
   "StatusHealth"        "1000"     
   "StatusHealthRegen"     "0"     
-
-  
   
   "TeamName"          "DOTA_TEAM_BADGUYS"      
   "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
-
-  
   
   "VisionDaytimeRange"    "400"   
   "VisionNighttimeRange"    "400"   

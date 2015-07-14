@@ -1,0 +1,28 @@
+"petri_building"
+{
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      ""
+
+  "Modifiers"
+  {
+    "unit_properties"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED"
+      }
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+      }
+    }
+  }
+}

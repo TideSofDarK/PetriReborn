@@ -288,8 +288,8 @@ function StartRepairing(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
-
-	if target:GetHealthPercent() < 100 and target:GetUnitLabel() == "repairable" then
+	
+	if target:GetHealthPercent() < 100 and target:HasAbility("petri_building") then
 		caster:MoveToNPC(target)
 		caster.repairingTarget = target
 

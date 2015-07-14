@@ -14,7 +14,6 @@
   "Ability3"     "petri_suicide"
   "Ability4"          "petri_empty4"
 
-
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
 

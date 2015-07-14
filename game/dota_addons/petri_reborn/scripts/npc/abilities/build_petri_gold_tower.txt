@@ -15,7 +15,7 @@
     "02"
     { 
         "var_type"  "FIELD_INTEGER"
-        "lumber_cost" "2000"
+        "lumber_cost" "4000"
     }
   }
 
@@ -37,8 +37,6 @@
   "AbilityCastPoint"        "0.0"
   "MaxLevel"            "1"
 
-  // Item Info
-  
   "AbilityManaCost"       "0"
   
   "OnSpellStart"

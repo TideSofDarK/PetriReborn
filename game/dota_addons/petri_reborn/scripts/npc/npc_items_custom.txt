@@ -304,8 +304,6 @@
 	  "ItemQuality"         "secret_shop"
 	  "ItemAliases"         "hook"
 	  "SecretShop" "1"
-	
-	  // Precache
 	  
 	  "precache"
 	  {
@@ -314,12 +312,8 @@
 	    "particle"      "particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf"
 	  }
 	  
-	  // Casting
-	  
 	  "AbilityCastRange"        "1300"
 	  "AbilityCastPoint"        "0.3"
-	
-	  // Time   
 	  
 	  "AbilityCooldown"       "15.0"
 	

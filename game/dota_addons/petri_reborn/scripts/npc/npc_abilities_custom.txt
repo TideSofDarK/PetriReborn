@@ -91,7 +91,7 @@
 	    "02"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "lumber_cost" "2000"
+	        "lumber_cost" "4000"
 	    }
 	  }
 	
@@ -113,8 +113,6 @@
 	  "AbilityCastPoint"        "0.0"
 	  "MaxLevel"            "1"
 	
-	  // Item Info
-	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -208,6 +206,16 @@
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      "build_petri_tower_basic"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "lumber_cost" "50"
+	    }
+	  }
+	
 	  // BuildingHelper info
 	  "Building"            "1" //bool
 	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
@@ -220,13 +228,59 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_tower_basic"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "10"
+	  "AbilityGoldCost"       "0"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
 	  "MaxLevel"            "1"
 	
 	  // Item Info
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"build_petri_wall"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "build_petri_wall"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "lumber_cost" "150"
+	    }
+	  }
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "3.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_wall"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "0"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
 	  
 	  "AbilityManaCost"       "0"
 	  
@@ -530,6 +584,34 @@
 	    }
 	  }
 	}
+	"petri_building"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      ""
+	
+	  "Modifiers"
+	  {
+	    "unit_properties"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+	      }
+	    }
+	  }
+	}
 	"petri_dummy_invisibility"
 	{
 	  "BaseClass" "ability_datadriven"
@@ -563,7 +645,9 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "rubick_empty1" 
+	
+	  "IsHidden"         "1"
 	}
 	"petri_empty2"
 	{
@@ -571,6 +655,7 @@
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
+	  "IsHidden"         "1"
 	}
 	"petri_empty3"
 	{
@@ -578,6 +663,7 @@
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
+	  "IsHidden"         "1"
 	}
 	"petri_empty4"
 	{
@@ -585,6 +671,7 @@
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
+	  "IsHidden"         "1"
 	}
 	"petri_empty5"
 	{
@@ -592,6 +679,7 @@
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
+	  "IsHidden"         "1"
 	}
 	"petri_empty6"
 	{
@@ -599,6 +687,7 @@
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
+	  "IsHidden"         "1"
 	}
 	"petri_exploration_tower_explore_world"
 	{
@@ -661,7 +750,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "9 9 9 2 2 2 2 2"
+	  "AbilityCooldown" "9 9 9 9 9 9 9 9"
 	
 	  "MaxLevel"            "8"
 	
@@ -670,7 +759,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "2 3 4 2 10 20 32 44"
+	      "gold"      "1 2 3 4 5 6 7 8"
 	    }
 	  }
 	
@@ -727,7 +816,6 @@
 	  "AbilityTextureName"      "undying_tombstone"
 	
 	  "MaxLevel"            "1"
-	  
 	
 	  "OnSpellStart"
 	  {
@@ -1459,6 +1547,77 @@
 	    }
 	  }
 	}
+	"petri_upgrade_wall"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_wall"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "MaxLevel"            "9"
+	
+	  "AbilityChannelTime"      "2.0 4.0 5.0 6.0 7.0 10.0 15.0 20.0 25.0"
+	  "AbilityGoldCost"       "0 0 0 10 25 60 300 550 900"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "50 200 500 0 0 0 0 0 0"
+	    }
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "health_points"        "150 270 380 590 800 1100 1450 1700 2000"
+	    }
+	    "03"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "armor"        "1 1 5 10 20 75 400 600 1000"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/wall.lua"
+	      "Function"        "Upgrade"
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_armor"
+	      "Target"    "CASTER"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/wall.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_armor"
+	    {
+	      "IsPassive"  "1"
+	      "IsHidden" "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+	      }
+	    }
+	  }
+	}
 	"return_resources"
 	{
 	  "BaseClass"                 "ability_datadriven"
@@ -1525,8 +1684,8 @@
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	
-	  "AbilityGoldCost"       "8" // From "GoldCost"
-	  "AbilityChannelTime"      "4" // From "BuildTime"
+	  "AbilityGoldCost"       "6"
+	  "AbilityChannelTime"      "4"
 	  "AbilityUpgradeGoldCost"    "0"
 	
 	  "AbilitySpecial"

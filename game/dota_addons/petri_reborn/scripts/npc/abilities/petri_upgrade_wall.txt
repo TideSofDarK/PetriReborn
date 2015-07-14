@@ -1,0 +1,71 @@
+"petri_upgrade_wall"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_upgrade_wall"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "MaxLevel"            "9"
+
+  "AbilityChannelTime"      "2.0 4.0 5.0 6.0 7.0 10.0 15.0 20.0 25.0"
+  "AbilityGoldCost"       "0 0 0 10 25 60 300 550 900"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "50 200 500 0 0 0 0 0 0"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "health_points"        "150 270 380 590 800 1100 1450 1700 2000"
+    }
+    "03"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "armor"        "1 1 5 10 20 75 400 600 1000"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/wall.lua"
+      "Function"        "Upgrade"
+    }
+
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_armor"
+      "Target"    "CASTER"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/wall.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_armor"
+    {
+      "IsPassive"  "1"
+      "IsHidden" "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+      }
+    }
+  }
+}

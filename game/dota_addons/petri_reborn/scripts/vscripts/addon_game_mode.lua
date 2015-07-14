@@ -15,17 +15,22 @@ function Precache( context )
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl", context)
 
   PrecacheResource("model", "models/props_structures/radiant_tower001.vmdl", context)
+  PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
 
-  PrecacheResource("model", "models/aow/aow.vmdl", context)
-  
   PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)
-  
-  PrecacheResource("model", "models/particle/legion_duel_banner.vmdl", context)
-  PrecacheResource("particle_folder", "particles/buildinghelper", context)
 
+  PrecacheResource("model", "models/aow/aow.vmdl", context)
+
+  PrecacheResource("particle_folder", "particles/buildinghelper", context)
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_ready.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context)
 
   PrecacheUnitByNameSync("npc_petri_svetlakov", context)
   PrecacheUnitByNameSync("npc_petri_maslyakov", context)

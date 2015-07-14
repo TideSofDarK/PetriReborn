@@ -15,7 +15,7 @@
   "Ability3"          "petri_empty3"
   "Ability4"          "petri_empty4"
   "Ability5"          "building_queue"
-
+  "Ability6"          "petri_building"
   
   
   "ArmorPhysical"       "0"

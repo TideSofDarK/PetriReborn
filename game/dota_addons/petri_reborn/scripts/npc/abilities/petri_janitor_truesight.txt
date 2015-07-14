@@ -5,7 +5,6 @@
   "AbilityTextureName"      "undying_tombstone"
 
   "MaxLevel"            "1"
-  
 
   "OnSpellStart"
   {
