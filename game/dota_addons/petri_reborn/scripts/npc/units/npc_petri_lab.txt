@@ -1,0 +1,51 @@
+"npc_petri_lab"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/props_gameplay/shopkeeper_fountain/shopkeeper_fountain.vmdl"
+  "ModelScale"        "1.0"
+  "Level"           "0"
+  "HealthBarOffset"       "140"
+  "HasInventory"        "0"
+
+  "vscripts"                    "units/lab.lua"
+
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_empty1"
+  "Ability2"          "petri_empty2"
+  "Ability3"          "petri_empty3"
+  "Ability4"          "petri_empty4"
+  "Ability5"          "petri_building"
+  
+  "ArmorPhysical"       "0"
+  "MagicalResistance"     "0"
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+  "AttackDamageMin"       "0"
+  "AttackDamageMax"       "0"
+
+  "BountyGoldMin"       "0.0"
+  "BountyGoldMax"       "0.0"
+
+  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
+  "RingRadius"        "100"
+  //"CollisionSize"       "144"
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+  "MovementSpeed"         "0"   
+  "MovementTurnRate"    "0.0"  
+  "HasAggressiveStance"     "0"
+  
+  "StatusHealth"        "50"
+  "StatusHealthRegen"     "0"
+  "StatusMana"        "0"
+  "StatusManaRegen"       "0"
+
+  "VisionDaytimeRange"    "900"
+  "VisionNighttimeRange"    "600"
+
+  "TeamName"          "DOTA_TEAM_GOODGUYS"
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+}

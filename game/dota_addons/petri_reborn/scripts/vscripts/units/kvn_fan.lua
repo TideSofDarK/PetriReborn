@@ -71,14 +71,14 @@ function OpenAdvancedBuildingsMenu(keys)
 
 	caster:AddAbility("build_petri_gold_tower")
 	caster:AddAbility("build_petri_exploration_tree")
-	caster:AddAbility("petri_empty4")
+	caster:AddAbility("build_petri_lab")
 	caster:AddAbility("petri_close_advanced_buildings_menu")
 
 	InitAbilities(caster)
 
 	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_gold_tower", false, true)
 	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_exploration_tree", false, true)
-	caster:SwapAbilities(lumberAbility, "petri_empty4", false, true)
+	caster:SwapAbilities(lumberAbility, "build_petri_lab", false, true)
 	--caster:SwapAbilities("petri_empty1", "petri_empty1", false, true)
 	--caster:SwapAbilities("petri_empty2", "petri_empty2", false, true)
 	caster:SwapAbilities("petri_repair", "petri_close_advanced_buildings_menu", false, true)
@@ -115,14 +115,14 @@ function CloseAdvancedBuildingsMenu(keys)
 
 	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_gold_tower", true, false)
 	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_exploration_tree", true, false)
-	caster:SwapAbilities(lumberAbility, "petri_empty4", true, false)
+	caster:SwapAbilities(lumberAbility, "build_petri_lab", true, false)
 	--caster:SwapAbilities("petri_empty1", "petri_empty1", false, true)
 	--caster:SwapAbilities("petri_empty2", "petri_empty2", false, true)
 	caster:SwapAbilities("petri_repair", "petri_close_advanced_buildings_menu", true, false)
 
 	caster:RemoveAbility("build_petri_gold_tower")
 	caster:RemoveAbility("build_petri_exploration_tree")
-	caster:RemoveAbility("petri_empty4")
+	caster:RemoveAbility("build_petri_lab")
 	caster:RemoveAbility("petri_close_advanced_buildings_menu")
 end
 
