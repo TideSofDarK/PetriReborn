@@ -854,7 +854,7 @@
 	        }
 	      }
 	
-	      "ThinkInterval" "2.05" // whatever
+	      "ThinkInterval" "5.57" // whatever
 	      "OnIntervalThink"
 	      {
 	        "RunScript"

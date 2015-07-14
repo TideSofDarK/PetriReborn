@@ -1,4 +1,4 @@
-UPGRADE_RATE = 35
+UPGRADE_RATE = 65
 
 function GetGoldAutocast( event )
 	local caster = event.caster
@@ -53,5 +53,14 @@ function Upgrade( event )
 		PlayerResource:SpendGold(pID, count*UPGRADE_RATE, 0)
 
 		caster:SetModifierStackCount("modifier_gold_bag", caster,goldModifier+count)
+
+		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= 130 then
+			caster:SetModifierStackCount("modifier_gold_bag", caster,130)
+
+			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
+			ability:ToggleAbility()
+
+			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+		end
 	end
 end
