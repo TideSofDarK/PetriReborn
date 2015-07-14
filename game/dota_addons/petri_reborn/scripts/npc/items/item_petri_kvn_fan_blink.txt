@@ -1,4 +1,4 @@
-"item_petri_builder_blink"
+"item_petri_kvn_fan_blink"
 {
   "BaseClass"       "item_datadriven"
   "ID"              "1501"

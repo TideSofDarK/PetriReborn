@@ -1,7 +1,7 @@
 ; FBX 6.1.0 project file
 ; Created by Blender FBX Exporter
 ; for support mail: ideasman42@gmail.com
-; ----------------------------------------------------
+; -------
 
 FBXHeaderExtension:  {
 	FBXHeaderVersion: 1003
@@ -25,7 +25,7 @@ CreationTime: "2015-07-09 16:10:59:000"
 Creator: "Blender version 2.69 (sub 0)"
 
 ; Object definitions
-;------------------------------------------------------------------
+;---------------------
 
 Definitions:  {
 	Version: 100
@@ -54,7 +54,7 @@ Definitions:  {
 }
 
 ; Object properties
-;------------------------------------------------------------------
+;---------------------
 
 Objects:  {
 	Model: "Model::Camera Switcher", "CameraSwitcher" {
@@ -3801,7 +3801,7 @@ Objects:  {
 }
 
 ; Object relations
-;------------------------------------------------------------------
+;---------------------
 
 Relations:  {
 	Model: "Model::Armature", "Limb" {
@@ -3837,7 +3837,7 @@ Relations:  {
 }
 
 ; Object connections
-;------------------------------------------------------------------
+;---------------------
 
 Connections:  {
 	Connect: "OO", "Model::aow", "Model::Armature"
@@ -3849,7 +3849,7 @@ Connections:  {
 	Connect: "OO", "Model::Bone_001", "Model::Bone"
 }
 ;Takes and animation section
-;----------------------------------------------------
+;-------
 
 Takes:  {
 	Current: "Default Take"
@@ -3859,7 +3859,7 @@ Takes:  {
 		ReferenceTime: 0,479181389250
 
 		;Models animation
-		;----------------------------------------------------
+		;-------
 		Model: "Model::Bone" {
 			Version: 1.1
 			Channel: "Transform" {
@@ -4207,7 +4207,7 @@ Takes:  {
 	}
 }
 ;Version 5 settings
-;------------------------------------------------------------------
+;---------------------
 
 Version5:  {
 	AmbientRenderSettings:  {

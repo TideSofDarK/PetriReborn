@@ -1,67 +1,65 @@
 "npc_petri_sawmill"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/props_structures/good_barracks_ranged002_lvl2.vmdl"
   "ModelScale"        "0.6"
   "Level"           "0"
   "HealthBarOffset"       "140"
   "HasInventory"        "1"
 
-  "UnitLabel"          "building"
-
-  // Abilities
-  //----------------------------------------------------------------
+  
+  
   "AbilityLayout"       "4"
-  "Ability1"          "train_peasant"
+  "Ability1"          "train_petri_peasant"
   "Ability2"          "petri_empty2"
   "Ability3"          "petri_empty3"
   "Ability4"          "petri_empty4"
   "Ability5"          "building_queue"
 
-  // Armor
-  //----------------------------------------------------------------
+  
+  
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
-  // Attack
-  //----------------------------------------------------------------
+  
+  
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
   "AttackDamageMin"       "0"
   "AttackDamageMax"       "0"
 
-  // Bounty
-  //----------------------------------------------------------------
+  
+  
   "BountyGoldMin"       "0.0"
   "BountyGoldMax"       "0.0"
 
-  // Bounds
-  //----------------------------------------------------------------
-  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    // Hull type used for navigation/locomotion.
+  
+  
+  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
   "RingRadius"        "100"
   //"CollisionSize"       "144"
 
-  // Movement
-  //----------------------------------------------------------------
-  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" // Needed to cast Point abilities
+  
+  
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
   "MovementSpeed"         "0"   
   "MovementTurnRate"    "0.0"  
   "HasAggressiveStance"     "0"
 
-  // Status
-  //----------------------------------------------------------------
-  "StatusHealth"        "15"
+  
+  
+  "StatusHealth"        "1.0"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"       "0"
 
-  // Vision
-  //----------------------------------------------------------------
+  
+  
   "VisionDaytimeRange"    "900"
   "VisionNighttimeRange"    "600"
 
-  // Team
-  //----------------------------------------------------------------
+  
+  
   "TeamName"          "DOTA_TEAM_GOODGUYS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"

@@ -6,17 +6,10 @@
   "Ability1"        "petri_open_basic_buildings_menu" 
   "Ability2"        "petri_open_advanced_buildings_menu" 
   "Ability3"        "gather_lumber"
-  "Ability4"        "petri_empty1"
+  "Ability4"        "petri_repair"
   "Ability5"        "petri_empty2"
   "Ability6"        "petri_empty3"
   "Ability7"        "return_resources"
-  //"Ability8"        "petri_close_advanced_buildings_menu"
-  //"Ability9"        "petri_close_basic_buildings_menu"
-  //"Ability10"        "build_petri_tent"
-  //"Ability11"        "build_petri_sawmill"
-  //"Ability12"        "build_petri_gold_tower"
-  //"Ability13"        "build_petri_tower_basic"
-  //"Ability14"        "build_petri_exploration_tree"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"       "0"
@@ -31,29 +24,29 @@
   "AttackRange"               "90"
 
   //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
-  "AttributeBaseStrength"   "0"                   // Base strength
-  "AttributeStrengthGain"   "0"                   // Strength bonus per level.
-  "AttributeBaseIntelligence" "0"                   // Base intelligence
-  "AttributeIntelligenceGain" "0"                   // Intelligence bonus per level.
-  "AttributeBaseAgility"    "0"                   // Base agility
-  "AttributeAgilityGain"    "0"                   // Agility bonus per level.
+  "AttributeBaseStrength"   "0"
+  "AttributeStrengthGain"   "0"
+  "AttributeBaseIntelligence" "0"
+  "AttributeIntelligenceGain" "0"
+  "AttributeBaseAgility"    "0"
+  "AttributeAgilityGain"    "0"
 
-  "BountyXP"          "0"                 // Experience earn.
-  "BountyGoldMin"       "0"                   // Gold earned min.
-  "BountyGoldMax"       "0"                   // Gold earned max.
+  "BountyXP"          "0"                 
+  "BountyGoldMin"       "0"                   
+  "BountyGoldMax"       "0"                   
 
   //"BoundsHullName"      "DOTA_HULL_SIZE_HERO"
   //"RingRadius"        "70"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-  "MovementSpeed"       "600"                 // Speed.
-  "MovementTurnRate"      "1.0"                 // Turning rate.
+  "MovementSpeed"       "600"   
+  "MovementTurnRate"      "1.0"                 
 
-  "StatusHealth"        "10"                 // Base health.
-  "StatusHealthRegen"     "0.25"                 // Health regeneration rate.
+  "StatusHealth"        "10"                 
+  "StatusHealthRegen"     "0.25"                 
 
-  "VisionDaytimeRange"    "1800"                  // Range of vision at night time.
-  "VisionNighttimeRange"    "1800"                  // Range of vision at night time.
+  "VisionDaytimeRange"    "1800"                  
+  "VisionNighttimeRange"    "1800"                  
 
   "Creature"
   {

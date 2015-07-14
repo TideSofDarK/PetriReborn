@@ -62,7 +62,7 @@
 	  "MaxLevel"            "1"
 	
 	  // Item Info
-	  //-------------------------------------------------------------------------------------------------------------
+	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -114,7 +114,7 @@
 	  "MaxLevel"            "1"
 	
 	  // Item Info
-	  //-------------------------------------------------------------------------------------------------------------
+	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -152,7 +152,7 @@
 	  "MaxLevel"            "1"
 	
 	  // Item Info
-	  //-------------------------------------------------------------------------------------------------------------
+	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -190,7 +190,7 @@
 	  "MaxLevel"            "1"
 	
 	  // Item Info
-	  //-------------------------------------------------------------------------------------------------------------
+	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -227,7 +227,7 @@
 	  "MaxLevel"            "1"
 	
 	  // Item Info
-	  //-------------------------------------------------------------------------------------------------------------
+	  
 	  "AbilityManaCost"       "0"
 	  
 	  "OnSpellStart"
@@ -1206,6 +1206,118 @@
 	    }
 	  }
 	}
+	"petri_repair"
+	{
+	  "AbilityCastAnimation" ""
+	
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "petri_repair"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_CREEP"
+	
+	  "OnAbilityPhaseStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/peasant.lua"
+	      "Function"    "StartRepairing"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_repairing"
+	    {
+	      "IsHidden"        "1"
+	        
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "CheckRepairingTargetPosition"
+	        }
+	      }
+	
+	      "OnOrder"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_repairing"
+	          "Target"    "CASTER"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffRepairing"
+	        }
+	      }
+	      
+	    }
+	
+	    "modifier_chopping_building"
+	    {
+	      "IsHidden"        "1"
+	    
+	      "OverrideAnimation"   "ACT_DOTA_ATTACK"
+	
+	      "OnOrder"
+	      {     
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_building"
+	          "Target"    "CASTER"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffRepairing"
+	        }
+	      }
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "RepairBy1Percent"
+	        }
+	
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_building_animation"
+	          "Target"    "CASTER"
+	          "Duration"    "0.87"
+	        }
+	      }   
+	    }
+	
+	    "modifier_chopping_building_animation"
+	    {
+	      "OverrideAnimation"     "ACT_DOTA_ATTACK"
+	      "IsHidden"        "1"
+	      "OnOrder"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_chopping_building_animation"
+	          "Target"    "CASTER"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/peasant.lua"
+	          "Function"    "ToggleOffRepairing"
+	        }
+	      }
+	    }
+	  }
+	}
 	"petri_suicide"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -1405,7 +1517,7 @@
 	    }
 	  }
 	} 
-	"train_peasant"
+	"train_petri_peasant"
 	{
 	  "BaseClass"                 "ability_datadriven"
 	  "AbilityTextureName"      "train_knight"

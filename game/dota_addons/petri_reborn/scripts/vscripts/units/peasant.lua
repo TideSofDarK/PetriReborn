@@ -1,5 +1,7 @@
 Debug_Peasant = false
 
+-- Lumber gathering
+
 function Gather( event )
 	local caster = event.caster
 	local target = event.target
@@ -279,6 +281,77 @@ function FindClosestResourceDeposit( caster )
 	end
 
 end
+
+-- Repairing
+
+function StartRepairing(event)
+	local caster = event.caster
+	local target = event.target
+	local ability = event.ability
+
+	if target:GetHealthPercent() < 100 and target:GetUnitLabel() == "repairable" then
+		caster:MoveToNPC(target)
+		caster.repairingTarget = target
+
+		caster:RemoveModifierByName("modifier_repairing")
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_repairing", {})
+
+		-- Visual fake toggle
+		if ability:GetToggleState() == false then
+			ability:ToggleAbility()
+		end
+	end
+end
+
+function CheckRepairingTargetPosition( event )
+	local caster = event.caster
+	local target = caster.repairingTarget
+	local ability = event.ability
+
+	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
+	local collision = distance < 120
+	if not collision then
+
+	elseif not caster:HasModifier("modifier_chopping_building") then
+		caster:RemoveModifierByName("modifier_repairing")
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_building", {})
+	end
+end
+
+function ToggleOffRepairing( event )
+	local caster = event.caster
+	local repair_ability = caster:FindAbilityByName("petri_repair")
+
+	if repair_ability:GetToggleState() == true then
+		repair_ability:ToggleAbility()
+		if Debug_Peasant then
+			print("Toggled Off Repairing")
+		end
+	end
+end
+
+function RepairBy1Percent( event )
+	local caster = event.caster
+	local ability = event.ability
+	local target = caster.repairingTarget
+
+	local health = target:GetHealth()
+	local maxHealth = target:GetMaxHealth()
+
+	if health < maxHealth then
+		target:SetHealth(health + (maxHealth/10.0))
+	else
+		local player = caster:GetPlayerOwner():GetPlayerID()
+
+		ability:ToggleAbility()
+
+		caster:RemoveModifierByName("modifier_chopping_building")
+		caster:RemoveModifierByName("modifier_repairing")
+		caster:RemoveModifierByName("modifier_chopping_building_animation")
+	end
+end
+
+-- Misc
 
 function Spawn( t )
 	local pID = thisEntity:GetPlayerOwnerID()

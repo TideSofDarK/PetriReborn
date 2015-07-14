@@ -1,4 +1,4 @@
-"train_peasant"
+"train_petri_peasant"
 {
   "BaseClass"                 "ability_datadriven"
   "AbilityTextureName"      "train_knight"
