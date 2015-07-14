@@ -8,6 +8,8 @@
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_rally"
 
+  "ItemPermanent"         "0"
+
   "OnSpellStart"
   {
     "RunScript"

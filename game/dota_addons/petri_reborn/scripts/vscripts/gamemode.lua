@@ -81,6 +81,7 @@ function GameMode:OnHeroInGame(hero)
 
       newHero:AddItemByName("item_petri_kvn_fan_blink")
       newHero:AddItemByName("item_petri_give_permission_to_build")
+      newHero:AddItemByName("item_petri_gold_bag")
     end
 
      -- Init petrosyan

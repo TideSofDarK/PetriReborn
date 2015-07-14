@@ -1,6 +1,6 @@
 function GetGoldAutocast( event )
 	local caster = event.caster
-	local target = event.target -- victim of the attack
+	local target = event.target
 	local ability = event.ability
 
 	caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())

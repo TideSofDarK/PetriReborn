@@ -809,6 +809,181 @@
 	    }
 	  }
 	}
+	"petri_gold_bag_get_gold"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "alchemist_goblins_greed"
+	
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "AbilityCastPoint"        "0.0"
+	  "AbilityCooldown"        "5.5"
+	
+	  "MaxLevel"            "1"
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"       "CASTER"
+	      "ModifierName" "modifier_gold_bag_get_gold_autocast"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_bag.lua"
+	      "Function"        "GetGold"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_gold_bag_get_gold_autocast"
+	    {
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "2.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"petri_upgrade_gold_bag"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	
+	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
+	  "AbilityCastPoint"        "0.0"
+	
+	  "MaxLevel"            "1"
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"       "CASTER"
+	      "ModifierName" "modifier_gold_bag"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_bag.lua"
+	      "Function"        "ToggleUpgrading"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_gold_bag"
+	    {
+	      "IsHidden"  "0"
+	      "Passive"   "1"
+	    }
+	
+	    "modifier_gold_bag_upgrading_autocast"
+	    {
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "Upgrade"
+	        }
+	      }
+	
+	      "ThinkInterval" "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "Upgrade"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"petri_gold_bag_blink"
+	{
+	  "BaseClass"       "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityTextureName"      "antimage_blink"
+	
+	  "precache"
+	  {
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+	  }
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown"       "5.0"
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "blink_range"     "2150"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "min_blink_range"   "200"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "Function"    "Blink"
+	      "Target"    "POINT"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_out"
+	      "Target"    "CASTER"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_in"
+	      "Target"    "CASTER"
+	    }
+	  }
+	}
 	"petri_janitor_truesight"
 	{
 	  "BaseClass"       "ability_datadriven"

@@ -17,7 +17,6 @@ function Blink(keys)
 	local point = keys.target_points[1]
 	local caster = keys.caster
 	local casterPos = caster:GetAbsOrigin()
-	local pid = caster:GetPlayerID()
 	local difference = point - casterPos
 	local ability = keys.ability
 	local range = ability:GetLevelSpecialValueFor("blink_range", (ability:GetLevel() - 1))
@@ -125,4 +124,11 @@ function CloseAdvancedBuildingsMenu(keys)
 	caster:RemoveAbility("build_petri_exploration_tree")
 	caster:RemoveAbility("petri_empty4")
 	caster:RemoveAbility("petri_close_advanced_buildings_menu")
+end
+
+function SpawnGoldBag( keys )
+	local caster = keys.caster
+
+	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
+	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 end

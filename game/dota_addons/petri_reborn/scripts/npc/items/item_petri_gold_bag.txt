@@ -1,0 +1,25 @@
+"item_petri_gold_bag"
+{
+  "BaseClass"                 "item_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_gold_bag"
+
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "bag"
+  "ItemInitialCharges" "1"
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/kvn_fan.lua"
+      "Function"    "SpawnGoldBag"
+    }
+    "SpendCharge"
+    {}
+  }
+}

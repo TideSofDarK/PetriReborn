@@ -2,13 +2,15 @@
 {
   "BaseClass"       "item_datadriven"
   "ID"              "1501"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityTextureName"      "item_blink"
 
   "precache"
   {
     "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
   }
+
+  "ItemPermanent"         "0"
 
   "AbilityCastPoint"        "0.4"
 

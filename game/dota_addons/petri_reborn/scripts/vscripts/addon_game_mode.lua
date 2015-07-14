@@ -1,9 +1,12 @@
--- This is the entry-point to your game mode and should be used primarily to precache models/particles/sounds/etc
-
 require('internal/util')
 require('gamemode')
 
 function Precache( context )
+  -- HEROES
+  PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)
+  PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
+
+  -- UNITS
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
 
   PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)
@@ -14,6 +17,14 @@ function Precache( context )
   PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl", context)
 
+  PrecacheUnitByNameSync("npc_petri_svetlakov", context)
+  PrecacheUnitByNameSync("npc_petri_maslyakov", context)
+  PrecacheUnitByNameSync("npc_petri_gusman", context)
+
+  PrecacheUnitByNameSync("npc_peasant", context)
+
+  -- BUILDINGS
+
   PrecacheResource("model", "models/props_structures/radiant_tower001.vmdl", context)
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
 
@@ -23,6 +34,12 @@ function Precache( context )
 
   PrecacheResource("model", "models/aow/aow.vmdl", context)
 
+  PrecacheUnitByNameSync("npc_petri_sawmill", context)
+  PrecacheUnitByNameSync("npc_petri_tower_basic", context)
+  PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag", context)
+  
+  -- PARTICLES
   PrecacheResource("particle_folder", "particles/buildinghelper", context)
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf", context)
@@ -31,28 +48,9 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_ready.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context)
-
-  PrecacheUnitByNameSync("npc_petri_svetlakov", context)
-  PrecacheUnitByNameSync("npc_petri_maslyakov", context)
-  PrecacheUnitByNameSync("npc_petri_gusman", context)
-
-  PrecacheItemByNameSync("item_petri_hook", context)
-
-  PrecacheUnitByNameSync("npc_petri_tower_basic", context)
-  PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
-
-  PrecacheUnitByNameSync("npc_petri_sawmill", context)
-  PrecacheUnitByNameSync("npc_peasant", context)
-
-  PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)
-  PrecacheUnitByNameSync("npc_petri_kvn_fan", context)
-  PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
 end
 
--- Create the game mode when we activate
 function Activate()
   GameRules.GameMode = GameMode()
   GameRules.GameMode:InitGameMode()
-  -- GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, 8)
-  -- GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, 2)
 end

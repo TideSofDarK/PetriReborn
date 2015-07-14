@@ -567,6 +567,53 @@
 	  "VisionDaytimeRange"    "1800"   
 	  "VisionNighttimeRange"    "1800"   
 	}
+	"npc_petri_gold_bag"
+	{
+	  
+	  "BaseClass"         "npc_dota_creature"  
+	  "Model"           "models/props_gameplay/gold_bag.vmdl"  
+	  "ModelScale"                "1.1"
+	  "SoundSet"          "Creep_Good_Range"          
+	  "Level"           "1"
+	  
+	  "vscripts"                    "units/gold_bag.lua"
+	
+	  "AbilityLayout" "4"
+	  "Ability1"          "petri_gold_bag_get_gold"     
+	  "Ability2"          "petri_upgrade_gold_bag"     
+	  "Ability3"          "petri_gold_bag_blink"
+	  "Ability4"          "petri_empty1"
+	  "Ability5"          "petri_building"
+	
+	  "ArmorPhysical"       "0"     
+	  "MagicalResistance"       "0"     
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+	
+	  "BountyXP"          "0"     
+	  "BountyGoldMin"       "20"     
+	  "BountyGoldMax"       "20"     
+	
+	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"     
+	  "MovementSpeed"       "0"   
+	  "MovementTurnRate"      "0.0"   
+	  "FollowRange"       "0"   
+	
+	  "StatusHealth"        "10"     
+	  "StatusHealthRegen"     "0"     
+	  "StatusMana"        "0"     
+	  "StatusManaRegen"     "0"     
+	
+	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	  
+	  "VisionDaytimeRange"    "0"   
+	  "VisionNighttimeRange"    "0"   
+	}
 	"npc_petri_gold_tower"
 	{
 	  
