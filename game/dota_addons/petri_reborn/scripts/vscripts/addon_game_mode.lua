@@ -24,9 +24,18 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_peasant", context)
 
   -- BUILDINGS
+  PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
+  PrecacheResource("model", "models/props_rock/riveredge_rock008a.vmdl", context)
+  PrecacheResource("model", "models/heroes/oracle/crystal_ball.vmdl", context)
+  PrecacheResource("model", "models/props_items/bloodstone.vmdl", context)
+  PrecacheResource("model", "models/props_magic/bad_crystals002.vmdl", context)
+  PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
+  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
+  PrecacheResource("model", "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl", context)
+  PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
 
   PrecacheResource("model", "models/props_structures/radiant_tower001.vmdl", context)
-  PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
 
   PrecacheResource("model", "models/props_structures/tent_dk_small.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)

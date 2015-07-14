@@ -1058,11 +1058,9 @@
 	}
 	"npc_petri_wall"
 	{
-	  
-	  "BaseClass"         "npc_dota_creature"  
+	  "BaseClass"         "npc_dota_base_additive"  
 	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
-	  "ModelScale"                "0.68"
-	  "SoundSet"          "Creep_Good_Range"          
+	  "ModelScale"                "0.68"    
 	  "Level"           "1"
 	  
 	  "AbilityLayout"     "4"

@@ -14,6 +14,7 @@ require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
+require('libraries/animations')
 
 require('libraries/FlashUtil')
 require('libraries/buildinghelper')
@@ -105,7 +106,7 @@ function GameMode:OnHeroInGame(hero)
     end
 
     -- We don't need 'undefined' variables
-    player.lumber = 4000
+    player.lumber = 40000
     player.food = 0
     player.maxFood = 10
  

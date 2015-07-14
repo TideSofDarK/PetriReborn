@@ -3,6 +3,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"      "petri_upgrade_wall"
+
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "AbilityCastPoint"        "0.0"
@@ -17,7 +18,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "50 200 500 0 0 0 0 0 0"
+      "lumber_cost"        "1000 5000 10000 0 0 0 0 0 0"
     }
     "02"
     {
@@ -27,7 +28,7 @@
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "1 1 5 10 20 75 400 600 1000"
+      "armor"        "1 1 5 10 20 75 400 600 999"
     }
   }
   
@@ -37,12 +38,6 @@
     {
       "ScriptFile"      "units/wall.lua"
       "Function"        "Upgrade"
-    }
-
-    "ApplyModifier"
-    {
-      "ModifierName"  "modifier_armor"
-      "Target"    "CASTER"
     }
   }
 

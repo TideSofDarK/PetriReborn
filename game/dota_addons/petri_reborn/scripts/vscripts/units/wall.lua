@@ -30,27 +30,36 @@ function Upgrade (event)
 
 	local wall_level = ability:GetLevel()
 
-	if wall_level == 1 then
-		--caster:SetModelScale(0.4)
-	elseif wall_level == 2 then 
-		--caster:SetModelScale(0.5)
-	elseif wall_level == 3 then
-		--caster:SetModelScale(0.6)
-	elseif wall_level == 4 then
-		--caster:SetModelScale(0.7)
-	elseif wall_level == 5 then
-		--caster:SetModelScale(0.8)
-	elseif wall_level == 6 then
-		--caster:SetModelScale(0.9)
-	elseif wall_level == 7 then
-		--caster:SetModelScale(1.0)
-	elseif wall_level == 8 then
-		--caster:SetModelScale(1.1)
-	elseif wall_level == 9 then
-		--caster:SetModelScale(1.1)
-	end
-
 	UpdateAttributes(caster, wall_level, ability)
+
+	if wall_level == 1 then
+		caster:SetModel("models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl")
+		caster:SetModelScale(3.35)
+	elseif wall_level == 2 then 
+		caster:SetModel("models/props_rock/riveredge_rock008a.vmdl")
+		caster:SetModelScale(0.8)
+	elseif wall_level == 3 then
+		caster:SetModel("models/props_magic/bad_crystals002.vmdl")
+		caster:SetModelScale(2.4)
+	elseif wall_level == 4 then
+		caster:SetModel("models/heroes/oracle/crystal_ball.vmdl")
+		caster:SetModelScale(4.3)
+	elseif wall_level == 5 then
+		caster:SetModel("models/props_items/bloodstone.vmdl")
+		caster:SetModelScale(3.0)
+	elseif wall_level == 6 then
+		caster:SetModel("models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl")
+		caster:SetModelScale(1.2)
+	elseif wall_level == 7 then
+		caster:SetModel("models/heroes/undying/undying_flesh_golem.vmdl")
+		caster:SetModelScale(1.3)
+	elseif wall_level == 8 then
+		caster:SetModel("models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl")
+		caster:SetModelScale(1.5)
+	elseif wall_level == 9 then
+		caster:SetModel("models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl")
+		caster:SetModelScale(1.6)
+	end
 
 	caster:GetAbilityByIndex(0):SetLevel(wall_level+1)
 
@@ -65,11 +74,11 @@ function UpdateAttributes(wall, level, ability)
 
 	local fullHP = wall:GetHealth() == wall:GetMaxHealth()
 
-	wall:SetMaxHealth(newHealth)
+	wall:SetBaseMaxHealth(newHealth)
 
 	if fullHP then
 		wall:SetHealth(newHealth)
 	end
 
-	wall:SetPhysicalArmorBaseValue(newArmor)
+	ability:ApplyDataDrivenModifier(wall, wall, "modifier_armor", {})
 end
