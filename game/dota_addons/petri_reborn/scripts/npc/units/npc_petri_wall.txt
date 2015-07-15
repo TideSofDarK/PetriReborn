@@ -30,7 +30,7 @@
   "MovementTurnRate"      "0.0"   
   "FollowRange"       "0"   
 
-  "StatusHealth"        "10"     
+  "StatusHealth"        "30"     
   "StatusHealthRegen"     "0"     
   "StatusMana"        "0"     
   "StatusManaRegen"     "0"     

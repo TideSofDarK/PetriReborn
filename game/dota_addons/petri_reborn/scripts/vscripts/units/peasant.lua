@@ -257,17 +257,25 @@ function FindClosestResourceDeposit( caster )
 	local position = caster:GetAbsOrigin()
 
 	-- Find a building to deliver
-	local barracks = Entities:FindAllByModel("models/props_structures/good_barracks_ranged002_lvl2.vmdl")	
+	--local sawmills = Entities:FindAllByName("npc_petri_sawmill*") 
+	--Entities:FindAllByName("npc_petri_sawmill_*")	
+	local buildings = Entities:FindAllByClassname("npc_dota_base_additive*") 
+	local sawmills = {}
+	for _,building in pairs(buildings) do
+		if building:GetUnitName() == "npc_petri_sawmill" then
+			table.insert(sawmills, building)
+		end
+	end
+
 	local distance = 9999
 	local closest_building = nil
 
-	if barracks then
-		-- print(table.getn(barracks))
+	if sawmills then
+		-- print(table.getn(sawmills))
 		if Debug_Peasant then
 			print("barrack found")
 		end
-		for _,building in pairs(barracks) do
-			
+		for _,building in pairs(sawmills) do
 			if building:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
 				local this_distance = (position - building:GetAbsOrigin()):Length()
 				if this_distance < distance then

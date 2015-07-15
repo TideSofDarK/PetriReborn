@@ -1,4 +1,4 @@
-"npc_peasant"
+"npc_petri_peasant"
 {
   "BaseClass"     "npc_dota_creature"
   "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"

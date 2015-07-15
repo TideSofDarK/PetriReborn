@@ -452,6 +452,10 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     return .2
   end)
 
+  if callbacks.onConstructionStarted ~= nil then
+    callbacks.onConstructionStarted(building)
+  end
+
   function building:RemoveBuilding( bForcedKill )
     -- if building:GetPlayerOwner() ~= nil then 
     --   local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", PATTACH_ABSORIGIN, building)
@@ -472,11 +476,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
       building:ForceKill(bForcedKill)
     end
   end
-
-  if callbacks.onConstructionStarted ~= nil then
-    callbacks.onConstructionStarted(building)
-  end
-
   -- Remove the model particl
   ParticleManager:DestroyParticle(work.particles, true)
 end
@@ -572,7 +571,7 @@ function InitializeBuilder( builder )
       ParticleManager:DestroyParticle(builder.work.particles, true)
       if builder.work.callbacks.onConstructionCancelled ~= nil then
         builder.work.callbacks.onConstructionCancelled(work)
-        builder.work.callbacks.onConstructionCancelled = nil
+        builder.work = nil
       end
     end
 

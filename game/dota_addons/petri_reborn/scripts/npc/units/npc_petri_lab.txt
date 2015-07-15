@@ -1,6 +1,6 @@
 "npc_petri_lab"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_gameplay/shopkeeper_fountain/shopkeeper_fountain.vmdl"
   "ModelScale"        "1.0"
   "Level"           "0"
@@ -10,11 +10,14 @@
   "vscripts"                    "units/lab.lua"
 
   "AbilityLayout"       "4"
-  "Ability1"          "petri_empty1"
-  "Ability2"          "petri_empty2"
-  "Ability3"          "petri_empty3"
-  "Ability4"          "petri_empty4"
-  "Ability5"          "petri_building"
+  "Ability1"          "petri_upgrade_concrete"
+  "Ability2"          "petri_empty1"
+  "Ability3"          "petri_empty2"
+  "Ability4"          "petri_empty3"
+  "Ability5"          "petri_empty4"
+  "Ability6"          "petri_cancel_concrete_upgrading"
+  "Ability7"          "petri_empty5"
+  "Ability8"          "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"

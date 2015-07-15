@@ -1,0 +1,42 @@
+"petri_upgrade_sawmill"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "shredder_whirling_death"
+
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "MaxLevel"            "3"
+
+  "AbilityChannelTime"      "4.0 5.0"
+  "AbilityGoldCost"       "0 10"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "1000 15000"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/sawmill.lua"
+      "Function"        "Upgrade"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/sawmill.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+}

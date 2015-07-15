@@ -21,9 +21,11 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_maslyakov", context)
   PrecacheUnitByNameSync("npc_petri_gusman", context)
 
-  PrecacheUnitByNameSync("npc_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_super_peasant", context)
 
   -- BUILDINGS
+  -- wall
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
   PrecacheResource("model", "models/props_rock/riveredge_rock008a.vmdl", context)
   PrecacheResource("model", "models/heroes/oracle/crystal_ball.vmdl", context)
@@ -34,6 +36,11 @@ function Precache( context )
   PrecacheResource("model", "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl", context)
   PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
   PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
+
+  -- sawmill
+  PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)
+  PrecacheResource("model", "models/props_structures/good_barracks_ranged002_lvl2.vmdl", context)
+  PrecacheResource("model", "models/props_structures/good_ancient001.vmdl", context)
 
   PrecacheResource("model", "models/props_structures/radiant_tower001.vmdl", context)
 

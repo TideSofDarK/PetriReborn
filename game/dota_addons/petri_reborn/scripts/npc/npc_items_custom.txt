@@ -2011,7 +2011,27 @@
 	"item_train_petri_peasant"
 	{
 	  "BaseClass"                 "item_datadriven"
-	  "AbilityTextureName"      "item_train_footman"
+	  "AbilityTextureName"      "item_train_petri_peasant"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "AbilityCastPoint"        "0"
+	
+	  "ItemDroppable"         "0"
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "buildings/queue.lua"
+	      "Function"    "DequeueUnit"
+	    }
+	  }
+	}
+	"item_train_petri_super_peasant"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityTextureName"      "item_train_petri_super_peasant"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	  "AbilityCastPoint"        "0"
 	
