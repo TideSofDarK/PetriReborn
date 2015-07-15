@@ -1,6 +1,6 @@
 "npc_petri_sawmill"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_structures/good_barracks_ranged002_lvl2.vmdl"
   "ModelScale"        "0.6"
   "Level"           "0"

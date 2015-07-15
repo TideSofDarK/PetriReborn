@@ -70,8 +70,8 @@
 	  "MagicalResistance"       "0"
 	
 	  "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
-	  "AttackDamageMin"           "5.0"
-	  "AttackDamageMax"           "6.0"
+	  "AttackDamageMin"           "10000000.0"
+	  "AttackDamageMax"           "10000000.0"
 	  "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackRate"                "2"
 	  "AttackAnimationPoint"      "0.433"

@@ -12,13 +12,25 @@ function build( keys )
 	local enough_lumber
 	local enough_food
 
-	if gold_cost ~= nil then
-		player.lastSpentGold = gold_cost
+	-- Cancel building
+	if player.waitingForBuildHelper == true then
+		PlayerResource:ModifyGold(pID, gold_cost,false,0)
+
+	    player.activeCallbacks.onConstructionCancelled()
+	      
+	    player.activeBuilder:ClearQueue()
+	    player.activeBuilding = nil
+	    player.activeBuilder:Stop()
+	    player.activeBuilder.ProcessingBuilding = false
+
+	    player.waitingForBuildHelper = false
+
+	    CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_force_cancel", {} )
+		return
 	end
 
-	if player.waitingForBuildHelper then
-		ReturnGold(player)
-	    return
+	if gold_cost ~= nil then
+		player.lastSpentGold = gold_cost
 	end
 
 	if lumber_cost ~= nil then
@@ -39,6 +51,8 @@ function build( keys )
 		SpendLumber(player, lumber_cost)
 		SpendFood(player, food_cost)
 	end
+
+	player.waitingForBuildHelper = true
 	
 	local returnTable = BuildingHelper:AddBuilding(keys)
 
@@ -77,7 +91,9 @@ function build( keys )
 		unit:SetBaseManaRegen(unit.tempManaRegen)
 		unit.tempManaRegen = nil
 
-		
+		if unit.controllableWhenReady then
+			unit:SetControllableByPlayer(keys.caster:GetPlayerOwnerID(), true)
+		end
 
 		InitAbilities(unit)
 		
@@ -131,12 +147,12 @@ function build( keys )
 	end)
 
 	keys:OnConstructionFailed(function( building )
-		-- This runs when a building cannot be placed, you should refund resources if any. building is the unit that would've been built.
-
+		ReturnLumber(player)
+		ReturnGold(player)
+		ReturnFood( player )
 	end)
 
 	keys:OnConstructionCancelled(function( building )
-		-- This runs when a building is cancelled, building is the unit that would've been built.
 		ReturnLumber(player)
 		ReturnGold(player)
 		ReturnFood( player )
@@ -145,6 +161,17 @@ function build( keys )
 	-- Have a fire effect when the building goes below 50% health.
 	-- It will turn off it building goes above 50% health again.
 	keys:EnableFireEffect("modifier_jakiro_liquid_fire_burn")
+
+  	if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
+		local basicMenu = caster:FindAbilityByName("petri_close_basic_buildings_menu")
+		local advancedMenu = caster:FindAbilityByName("petri_close_advanced_buildings_menu")
+
+		if basicMenu ~= nil then
+			caster:CastAbilityNoTarget(basicMenu, pID)
+		else
+			caster:CastAbilityNoTarget(advancedMenu, pID)
+		end
+	end
 end
 
 function building_canceled( keys )

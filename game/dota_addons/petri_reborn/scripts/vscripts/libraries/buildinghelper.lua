@@ -29,6 +29,8 @@ function BuildingHelper:Init(...)
     --get the player that sent the command
     local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
     
+    print(cmdPlayer.activeBuilder:HasAbility("has_build_queue"))
+
     if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
       cmdPlayer.activeBuilder:AddAbility("has_build_queue")
       local abil = cmdPlayer.activeBuilder:FindAbilityByName("has_build_queue")
@@ -40,15 +42,15 @@ function BuildingHelper:Init(...)
     end
 
     cmdPlayer.waitingForBuildHelper = false
+
   end )
 
   CustomGameEventManager:RegisterListener( "building_helper_cancel_command", function( eventSourceIndex, args )
     --get the player that sent the command
     local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
     if cmdPlayer then
-      ReturnLumber(cmdPlayer)
-      ReturnGold(cmdPlayer)
-      ReturnFood(cmdPlayer)
+      cmdPlayer.activeCallbacks.onConstructionCancelled()
+      
       cmdPlayer.activeBuilder:ClearQueue()
       cmdPlayer.activeBuilding = nil
       cmdPlayer.activeBuilder:Stop()
@@ -81,6 +83,10 @@ function BuildingHelper:Init(...)
 end
 
 function BuildingHelper:AddBuilding(keys)
+
+  local ability = keys.ability
+  local abilName = ability:GetAbilityName()
+  local buildingTable = BuildingAbilities[abilName]
 
   -- Callbacks
   callbacks = {}
@@ -115,10 +121,6 @@ function BuildingHelper:AddBuilding(keys)
   function keys:OnBuildingPosChosen( callback )
     callbacks.onBuildingPosChosen = callback
   end
-
-  local ability = keys.ability
-  local abilName = ability:GetAbilityName()
-  local buildingTable = BuildingAbilities[abilName]
 
   function buildingTable:GetVal( key, expectedType )
     local val = buildingTable[key]
@@ -280,7 +282,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     
   -- Spawn the building
   local building = CreateUnitByName(unitName, location, false, playersHero, nil, builder:GetTeam())
-  building:SetControllableByPlayer(pID, true)
+  -- building:SetControllableByPlayer(pID, true)
   building.blockers = gridNavBlockers
   building.buildingTable = buildingTable
   building.state = "building"
@@ -342,7 +344,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
   local bPlayerCanControl = buildingTable:GetVal("PlayerCanControl", "bool")
   if bPlayerCanControl then
-    building:SetControllableByPlayer(playersHero:GetPlayerID(), true)
+    building.controllableWhenReady = true
     building:SetOwner(playersHero)
   end
     
@@ -451,6 +453,15 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   end)
 
   function building:RemoveBuilding( bForcedKill )
+    -- if building:GetPlayerOwner() ~= nil then 
+    --   local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", PATTACH_ABSORIGIN, building)
+    -- end
+
+    Timers:CreateTimer(0.2,
+    function()
+      building:RemoveSelf()
+    end)
+
     -- Thanks based T__
     for k, v in pairs(building.blockers) do
       DoEntFireByInstanceHandle(v, "Disable", "1", 0, nil, nil)
@@ -468,7 +479,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
   -- Remove the model particl
   ParticleManager:DestroyParticle(work.particles, true)
-
 end
 
 --[[
@@ -517,8 +527,8 @@ function InitializeBuilder( builder )
       for y = location.y - (size / 2) * 32 , location.y + (size / 2) * 32 , 32 do
         local testLocation = Vector(x, y, location.z)
         if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          if callbacks.onConstructionCancelled ~= nil then
-            callbacks.onConstructionCancelled(work)
+          if callbacks.onConstructionFailed ~= nil then
+            callbacks.onConstructionFailed(work)
           end
           return
         end
@@ -529,8 +539,8 @@ function InitializeBuilder( builder )
       for y = location.y - (size / 2) * 32 - 16, location.y + (size / 2) * 32 + 16, 32 do
         local testLocation = Vector(x, y, location.z)
          if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          if callbacks.onConstructionCancelled ~= nil then
-            callbacks.onConstructionCancelled(work)
+          if callbacks.onConstructionFailed ~= nil then
+            callbacks.onConstructionFailed(work)
           end
           return
         end
@@ -540,17 +550,20 @@ function InitializeBuilder( builder )
 
     -- Create model ghost dummy out of the map, then make pretty particles
     mgd = CreateUnitByName(building, OutOfWorldVector, false, nil, nil, builder:GetTeam())
+    if mgd ~= nil then
+        --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
+      local modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, mgd, player)
+      ParticleManager:SetParticleControlEnt(modelParticle, 1, mgd, 1, "follow_origin", mgd:GetAbsOrigin(), true)            
+      ParticleManager:SetParticleControl(modelParticle, 3, Vector(MODEL_ALPHA,0,0))
+      ParticleManager:SetParticleControl(modelParticle, 4, Vector(fMaxScale,0,0))
 
-    --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
-    local modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, mgd, player)
-    ParticleManager:SetParticleControlEnt(modelParticle, 1, mgd, 1, "follow_origin", mgd:GetAbsOrigin(), true)            
-    ParticleManager:SetParticleControl(modelParticle, 3, Vector(MODEL_ALPHA,0,0))
-    ParticleManager:SetParticleControl(modelParticle, 4, Vector(fMaxScale,0,0))
+      ParticleManager:SetParticleControl(modelParticle, 0, location)
+      ParticleManager:SetParticleControl(modelParticle, 2, Vector(0,255,0))
 
-    ParticleManager:SetParticleControl(modelParticle, 0, location)
-    ParticleManager:SetParticleControl(modelParticle, 2, Vector(0,255,0))
-
-    table.insert(builder.buildingQueue, {["location"] = location, ["name"] = building, ["buildingTable"] = buildingTable, ["particles"] = modelParticle, ["callbacks"] = callbacks})
+      table.insert(builder.buildingQueue, {["location"] = location, ["name"] = building, ["buildingTable"] = buildingTable, ["particles"] = modelParticle, ["callbacks"] = callbacks})
+    else
+      callbacks.onConstructionFailed(work)
+    end
   end
 
   -- Clear the build queue, the player right clicked

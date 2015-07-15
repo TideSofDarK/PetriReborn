@@ -39,9 +39,13 @@ function SendBuildCommand( params )
 
 function SendCancelCommand( params )
 {
+  Cancel(params);
+  GameEvents.SendCustomGameEventToServer( "building_helper_cancel_command", {} );
+}
+
+function Cancel(params) {
   state = 'disabled'
   $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;"; 
-  GameEvents.SendCustomGameEventToServer( "building_helper_cancel_command", {} );
 }
 
 /*function OnUpdateSelectedUnit( event )
@@ -58,5 +62,6 @@ function SendCancelCommand( params )
 
 (function () {
   GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
+  GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
   //GameEvents.Subscribe( "dota_player_update_selected_unit", OnUpdateSelectedUnit );
 })();

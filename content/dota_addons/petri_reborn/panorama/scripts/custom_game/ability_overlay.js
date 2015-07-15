@@ -52,7 +52,7 @@ function OnUpdateSelectedUnit(event) {
     var unitName = Entities.GetUnitName(mainSelected);
     var layout = abilityLayouts[unitName]
 
-    if (!Entities.IsEnemy(mainSelected)) {
+    if (!Entities.IsEnemy(mainSelected) && Entities.IsControllableByPlayer( mainSelected, iPlayerID)) {
         if (layout <= 4) {
             $("#Layout4").style['visibility'] = "visible;";
 

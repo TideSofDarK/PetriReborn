@@ -1,7 +1,7 @@
 "npc_petri_tower_basic"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
   "ModelScale"                "0.5"
   "SoundSet"          "Creep_Good_Range"          

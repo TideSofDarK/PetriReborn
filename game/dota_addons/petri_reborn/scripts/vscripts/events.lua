@@ -248,7 +248,7 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:GetPlayerOwner().food = killedUnit:GetPlayerOwner().food - killedUnit.foodSpent
   end
 
-  print(killedUnit:GetUnitName ())
+  -- Respawn creep
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") then
     Timers:CreateTimer(0.73,
     function()
@@ -256,10 +256,12 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
+  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
+    killedUnit:RemoveBuilding(true)
+  end
+
   -- Put code here to handle when an entity gets killed
 end
-
-
 
 -- This function is called 1 to 2 times as the player connects initially but before they 
 -- have completely connected
