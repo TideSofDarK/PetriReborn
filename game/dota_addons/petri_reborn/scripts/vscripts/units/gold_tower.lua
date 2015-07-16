@@ -21,56 +21,11 @@ function GetGold( event )
 	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + tonumber(event["gold"]), false)
 end
 
-function StartUpgrading ( event   )
-	local caster = event.caster
-	local ability = event.ability
-
-	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
-	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel() - 1)
-
-	if CheckFood(caster:GetPlayerOwner(), food_cost,false)== false then 
-		
-		Timers:CreateTimer(0.06,
-			function()
-		 	    	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
-		caster:InterruptChannel()
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
-			end
-		)
-	else
-		caster.foodSpent = caster.foodSpent + food_cost
-		SpendFood(caster:GetPlayerOwner(), food_cost)
-		caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", false, true )
-	end
-end
-
-function StopUpgrading ( event   )
-	local caster = event.caster
-	local ability = event.ability
-
-	caster:InterruptChannel()
-
-	Timers:CreateTimer(0.06,
-	function()
-		caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", true, false )
-		local original_ability = caster:FindAbilityByName("petri_upgrade_gold_tower")
-
-		local gold_cost = original_ability:GetGoldCost( original_ability:GetLevel() - 1 )
-		local food_cost = original_ability:GetLevelSpecialValueFor("food_cost", original_ability:GetLevel() - 1)
-
-		-- Return resources
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
-		caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - food_cost
-		caster.foodSpent = caster.foodSpent - food_cost
-	end
-	)
-end
-
 function Upgrade ( event   )
 	local caster = event.caster
 	local ability = event.ability
 
-	caster:SwapAbilities( "petri_upgrade_gold_tower", "petri_upgrade_gold_tower_cancel", true, false )
+	ability:SetHidden(false)
 
 	local tower_level = ability:GetLevel()
 
@@ -93,9 +48,4 @@ function Upgrade ( event   )
 	end
 
 	caster:GetAbilityByIndex(0):SetLevel(tower_level+1)
-	caster:GetAbilityByIndex(1):SetLevel(tower_level+1)
-
-	if tower_level+1 == 8 then
-		caster:RemoveAbility("petri_upgrade_gold_tower")
-	end
 end

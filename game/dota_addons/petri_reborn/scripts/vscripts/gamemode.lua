@@ -106,7 +106,7 @@ function GameMode:OnHeroInGame(hero)
     end
 
     -- We don't need 'undefined' variables
-    player.lumber = 40000
+    player.lumber = 500000
     player.food = 0
     player.maxFood = 10
  

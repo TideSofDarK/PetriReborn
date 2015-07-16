@@ -1,30 +1,6 @@
-function StartUpgrading (event)
-	local caster = event.caster
-	local ability = event.ability
-
-	local sawmill_level = ability:GetLevel() - 1
-
-	local gold_cost = ability:GetGoldCost(sawmill_level)
-	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", sawmill_level)
-
-	if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false then 
-		Timers:CreateTimer(0.06,
-			function()
-		 	    PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
-				caster:InterruptChannel()
-			end
-		)
-	else
-		SpendLumber(caster:GetPlayerOwner(), lumber_cost)
-		ability:SetHidden(true)
-	end
-end
-
 function Upgrade (event)
 	local caster = event.caster
 	local ability = event.ability
-
-	ability:SetHidden(false)
 
 	local sawmill_level = ability:GetLevel()
 
@@ -44,12 +20,6 @@ function Upgrade (event)
 		caster:GetPlayerOwner().sawmill_3 = true
 
 		caster:SwapAbilities("train_petri_super_peasant", "petri_empty2", true, false)
-	end
-
-	ability:SetLevel(sawmill_level+1)
-
-	if sawmill_level+1 == 3 then
-		caster:RemoveAbility("petri_upgrade_sawmill")
 	end
 end
 

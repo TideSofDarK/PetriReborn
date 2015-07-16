@@ -21,6 +21,24 @@
       "lumber_cost"        "1000 15000"
     }
   }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
   
   "OnChannelSucceeded"
   {
@@ -29,14 +47,10 @@
       "ScriptFile"      "units/sawmill.lua"
       "Function"        "Upgrade"
     }
-  }
-
-  "OnSpellStart"
-  {
     "RunScript"
     {
-      "ScriptFile"      "units/sawmill.lua"
-      "Function"        "StartUpgrading"
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
     }
   }
 }

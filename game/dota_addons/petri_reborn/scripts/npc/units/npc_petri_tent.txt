@@ -10,10 +10,11 @@
 
   "AbilityLayout"       "4"
   "Ability1"          "petri_upgrade_tent"     
-  "Ability2"          "petri_empty2"
-  "Ability3"          "petri_empty3"
-  "Ability4"          "petri_empty4"
-  "Ability5"          "petri_building"
+  "Ability2"          "petri_empty1"
+  "Ability3"          "petri_empty2"
+  "Ability4"          "petri_empty3"
+  "Ability5"          "petri_empty4"
+  "Ability6"          "petri_building"
   
   
   "ArmorPhysical"       "0"     

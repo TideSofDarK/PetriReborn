@@ -1,3 +1,77 @@
+-- Upgrades
+
+function StartUpgrading (event)
+  local caster = event.caster
+  local ability = event.ability
+
+  local level = ability:GetLevel() - 1
+
+  local gold_cost = ability:GetGoldCost(level) or 0
+  local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
+  local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
+
+  if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
+    or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false then 
+    Timers:CreateTimer(0.06,
+      function()
+          PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+          caster:InterruptChannel()
+      end
+    )
+  else
+    caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber - lumber_cost
+    caster:GetPlayerOwner().food = caster:GetPlayerOwner().food + food_cost
+
+    caster.lastSpentLumber = lumber_cost
+    caster.lastSpentGold = gold_cost
+    caster.lastSpentFood = food_cost
+
+    caster.foodSpent = caster.foodSpent + food_cost
+
+    ability:SetHidden(true)
+  end
+end
+
+function StopUpgrading(event)
+  local caster = event.caster
+  local ability = event.ability
+
+  caster.lastSpentLumber = caster.lastSpentLumber or 0
+  caster.lastSpentGold = caster.lastSpentGold or 0
+  caster.lastSpentFood = caster.lastSpentFood or 0
+
+  caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + caster.lastSpentLumber
+  caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - caster.lastSpentFood
+  PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+
+  caster.lastSpentLumber = 0
+  caster.lastSpentGold = 0
+  caster.lastSpentFood = 0
+
+  ability:SetHidden(false)
+end
+
+function OnUpgradeSucceeded(event)
+  local caster = event.caster
+  local ability = event.ability
+
+  local level = ability:GetLevel()
+
+  ability:SetLevel(level+1)
+
+  caster.lastSpentLumber = 0
+  caster.lastSpentGold = 0
+  caster.lastSpentFood = 0
+
+  if level+1 == ability:GetMaxLevel() then
+    caster:RemoveAbility(ability:GetAbilityName())
+  else 
+    ability:SetHidden(false)
+  end
+end
+
+-- End of upgrades
+
 function ReturnGold(player)
   local playerID = player:GetPlayerID() 
   if player.lastSpentGold ~= nil then

@@ -287,6 +287,8 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building.buildingTable = buildingTable
   building.state = "building"
 
+  building:FindAbilityByName("petri_building"):SetLevel(1)
+
   -- Prevent regen messing with the building spawn hp gain
   local regen = building:GetBaseHealthRegen()
   building:SetBaseHealthRegen(0)

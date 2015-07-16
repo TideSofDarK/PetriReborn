@@ -1,32 +1,8 @@
-function StartUpgrading (event)
-	local caster = event.caster
-	local ability = event.ability
-
-	local wall_level = ability:GetLevel() - 1
-
-	local gold_cost = ability:GetGoldCost(wall_level)
-	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", wall_level)
-
-	if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false then 
-		Timers:CreateTimer(0.06,
-			function()
-		 	    PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
-				caster:InterruptChannel()
-			end
-		)
-	else
-		SpendLumber(caster:GetPlayerOwner(), lumber_cost)
-		caster:SwapAbilities("petri_upgrade_wall", "petri_empty4", false, true)
-		ability:SetHidden(true)
-	end
-end
-
 function Upgrade (event)
 	local caster = event.caster
 	local ability = event.ability
 
 	ability:SetHidden(false)
-	caster:SwapAbilities("petri_upgrade_wall", "petri_empty4", true, false)
 
 	local wall_level = ability:GetLevel()
 
@@ -57,31 +33,25 @@ function Upgrade (event)
 		caster:SetModel(GetModelNameForLevel(6))
 		caster:SetModelScale(1.2)
 
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 7 then
 		caster:SetOriginalModel(GetModelNameForLevel(7))
 		caster:SetModel(GetModelNameForLevel(7))
 		caster:SetModelScale(1.3)
 
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 8 then
 		caster:SetOriginalModel(GetModelNameForLevel(8))
 		caster:SetModel(GetModelNameForLevel(8))
 		caster:SetModelScale(1.5)
 
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 9 then
 		caster:SetOriginalModel(GetModelNameForLevel(9))
 		caster:SetModel(GetModelNameForLevel(9))
 		caster:SetModelScale(1.6)
 
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
-	end
-
-	caster:GetAbilityByIndex(0):SetLevel(wall_level+1)
-
-	if wall_level+1 == 10 then
-		caster:RemoveAbility("petri_upgrade_wall")
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	end
 end
 

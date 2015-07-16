@@ -22,36 +22,6 @@ function Upgrade ( event   )
 		caster:SetModel("models/props_structures/tent_dk_large.vmdl")
 	end
 
-	ability:SetLevel(tent_level+1)
-
-	if tent_level+1 == 4 then
-		caster:RemoveAbility("petri_upgrade_tent")
-	else
-		ability:SetHidden(false)
-	end
-
 	player.maxFood = player.maxFood + 30
 	caster.foodProvided = caster.foodProvided  + 30
-end
-
-function StartUpgrading(event)
-	local caster = event.caster
-	local ability = event.ability
-	local player = caster:GetPlayerOwner()
-
-	local tent_level = ability:GetLevel()
-	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", tent_level-1)
-
-	ability:SetHidden(true)
-
-	Timers:CreateTimer(0.06,
-	function()
-		if CheckLumber(player, lumber_cost,true) == true then
-			SpendLumber(player, lumber_cost)
-		else
-			caster:InterruptChannel()
-
-			ability:SetHidden(false)
-		end
-	end)
 end

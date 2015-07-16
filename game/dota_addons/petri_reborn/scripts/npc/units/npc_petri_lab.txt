@@ -15,9 +15,8 @@
   "Ability3"          "petri_empty2"
   "Ability4"          "petri_empty3"
   "Ability5"          "petri_empty4"
-  "Ability6"          "petri_cancel_concrete_upgrading"
-  "Ability7"          "petri_empty5"
-  "Ability8"          "petri_building"
+  "Ability6"          "petri_empty5"
+  "Ability7"          "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
