@@ -25,6 +25,12 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
 
   -- BUILDINGS
+  -- towers
+  PrecacheResource("model", "models/props_structures/tower_good3_dest_lvl1.vmdl", context)
+  PrecacheResource("model", "models/items/invoker/forge_spirit/infernus/infernus.vmdl", context)
+  PrecacheResource("model", "models/heroes/ancient_apparition/ancient_apparition.vmdl", context)
+  PrecacheResource("model", "models/heroes/undying/undying_tower.vmdl", context)
+  
   -- wall
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
   PrecacheResource("model", "models/props_rock/riveredge_rock008a.vmdl", context)

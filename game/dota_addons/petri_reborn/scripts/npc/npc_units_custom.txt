@@ -559,8 +559,7 @@
 	}
 	"npc_petri_gold_tower"
 	{
-	  
-	  "BaseClass"         "npc_dota_creature"  
+	  "BaseClass"         "npc_dota_base_additive"  
 	  "Model"           "models/props_structures/radiant_tower001.vmdl"  
 	  "ModelScale"                "0.3"
 	  "SoundSet"          "Creep_Good_Range"          
@@ -1115,13 +1114,14 @@
 	
 	  "AbilityLayout"     "4"
 	  "Ability1"        "petri_upgrade_basic_tower"
-	  "Ability2"        "petri_empty1"
-	  "Ability3"        "petri_empty2"
-	  "Ability4"        "petri_empty3"
-	  "Ability5"        "petri_empty4"
-	  "Ability6"        "petri_empty5"
-	  "Ability7"        "petri_empty6"
-	  "Ability8"        "petri_building"
+	  "Ability2"        "petri_upgrade_elements_tower"
+	  "Ability3"        "petri_empty1"
+	  "Ability4"        "petri_empty2"
+	  "Ability5"        "petri_empty3"
+	  "Ability6"        "petri_empty4"
+	  "Ability7"        "petri_empty5"
+	  "Ability8"        "petri_empty6"
+	  "Ability9"        "petri_building"
 	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -1167,7 +1167,7 @@
 	{
 	  "BaseClass"         "npc_dota_base_additive"  
 	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
-	  "ModelScale"                "0.68"    
+	  "ModelScale"                "0.6"    
 	  "Level"           "1"
 	  
 	  "AbilityLayout"     "4"

@@ -1,7 +1,6 @@
 "npc_petri_gold_tower"
 {
-  
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_structures/radiant_tower001.vmdl"  
   "ModelScale"                "0.3"
   "SoundSet"          "Creep_Good_Range"          
