@@ -28,8 +28,6 @@ function BuildingHelper:Init(...)
 
     --get the player that sent the command
     local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
-    
-    print(cmdPlayer.activeBuilder:HasAbility("has_build_queue"))
 
     if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
       cmdPlayer.activeBuilder:AddAbility("has_build_queue")

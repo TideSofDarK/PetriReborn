@@ -30,6 +30,11 @@ function Precache( context )
   PrecacheResource("model", "models/items/invoker/forge_spirit/infernus/infernus.vmdl", context)
   PrecacheResource("model", "models/heroes/ancient_apparition/ancient_apparition.vmdl", context)
   PrecacheResource("model", "models/heroes/undying/undying_tower.vmdl", context)
+
+  PrecacheResource("model", "models/items/undying/idol_of_ruination/idol_tower.vmdl", context)
+  PrecacheResource("model", "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl", context)
+
+  PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
   
   -- wall
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)

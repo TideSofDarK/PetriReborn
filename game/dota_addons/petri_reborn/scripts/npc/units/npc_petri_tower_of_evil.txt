@@ -1,0 +1,55 @@
+"npc_petri_tower_of_evil"
+{
+  "BaseClass"         "npc_dota_base_additive"  
+  "Model"           "models/items/undying/idol_of_ruination/idol_tower.vmdl"  
+  "ModelScale"                "0.6"
+  "SoundSet"          "Creep_Good_Range"          
+  "Level"           "0"
+
+  "AbilityLayout"     "4"
+  "Ability1"        "petri_upgrade_tower_of_evil"
+  "Ability3"        "petri_empty1"
+  "Ability4"        "petri_empty2"
+  "Ability5"        "petri_empty3"
+  "Ability6"        "petri_building"
+
+  "ArmorPhysical"       "0"     
+  "MagicalResistance"       "0"     
+
+  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+  "AttackDamageMin"            "9"
+  "AttackDamageMax"            "9"
+  "AttackRate"                 "0.8"
+  "AttackAnimationPoint"       "0.75"
+  "AttackAcquisitionRange"     "800"
+  "AttackRange"                "900"
+  "AttackRangeBuffer"          "250"
+
+  "ProjectileModel"            "particles/units/heroes/hero_pugna/pugna_base_attack.vpcf"
+  "ProjectileSpeed"            "1100"
+
+  "BountyXP"          "0"     
+  "BountyGoldMin"       "0"     
+  "BountyGoldMax"       "0"     
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
+  "RingRadius"                "70"
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+  "MovementSpeed"       "0"   
+  "MovementTurnRate"      "0.0"   
+  "FollowRange"       "0"   
+
+  "StatusHealth"        "250"     
+  "StatusHealthRegen"     "0"     
+  "StatusMana"        "0"     
+  "StatusManaRegen"     "0"     
+
+  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+  "VisionDaytimeRange"    "0"   
+  "VisionNighttimeRange"    "0"   
+}

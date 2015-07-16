@@ -10,7 +10,7 @@ function UpgradeDeath (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, TOWER_DEATH, 0.62 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_DEATH), 0.62 + (tower_level/20))
 
 	caster:RemoveAbility("petri_upgrade_ice_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
@@ -24,7 +24,7 @@ function UpgradeIce (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, TOWER_ICE, 0.85 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.85 + (tower_level/20))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
@@ -38,7 +38,7 @@ function UpgradeFire (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, TOWER_FIRE, 0.85 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.85 + (tower_level/20))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_ice_tower")
@@ -52,7 +52,7 @@ function UpgradeElements (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, TOWER_ELEMENTS, 0.61)
+	UpdateModel(caster, GetModelNameForTower(TOWER_ELEMENTS), 0.61)
 
 	caster:RemoveAbility("petri_upgrade_basic_tower")
 
@@ -114,12 +114,6 @@ function UpdateAttributes(tower, ability)
 	elseif tower == TOWER_DEATH then 
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_death_tower", {})
 	end
-end
-
-function UpdateModel(tower, type, scale)
-	tower:SetOriginalModel(GetModelNameForTower(type))
-	tower:SetModel(GetModelNameForTower(type))
-	tower:SetModelScale(scale)
 end
 
 -- Misc

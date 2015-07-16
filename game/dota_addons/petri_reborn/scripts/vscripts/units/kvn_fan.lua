@@ -1,3 +1,39 @@
+NO_MENU = 0
+BASIC_MENU = 1
+ADVANCED_MENU = 2
+
+NO_MENU_ABILITIES = {"petri_open_basic_buildings_menu",
+					 "petri_open_advanced_buildings_menu",
+					 "gather_lumber",
+					 "petri_repair",
+					 "petri_empty1",
+					 "petri_empty2",
+					 "return_resources"}
+BASIC_MENU_ABILITIES = {"build_petri_tent",
+						"build_petri_sawmill",
+						"build_petri_tower_basic",
+						"build_petri_wall",
+						"petri_close_basic_buildings_menu"}
+ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
+							"build_petri_exploration_tree",
+							"build_petri_lab",
+							"build_petri_tower_of_evil",
+							"petri_close_advanced_buildings_menu"}
+
+function Spawn( event )
+	for i=0, thisEntity:GetAbilityCount()-1 do
+		if thisEntity:GetAbilityByIndex(i) ~= nil then
+			thisEntity:RemoveAbility(thisEntity:GetAbilityByIndex(i):GetName())
+		end
+    end
+
+	for i=1, table.getn(NO_MENU_ABILITIES) do
+		thisEntity:AddAbility(NO_MENU_ABILITIES[i])
+    end
+
+	InitAbilities(thisEntity)
+end
+
 function GivePermissionToBuild( keys )
 	local caster = keys.caster
 	local target = keys.target
@@ -28,6 +64,12 @@ function Blink(keys)
 	FindClearSpaceForUnit(caster, point, false)	
 end
 
+function GetLumberAbilityName(caster)
+	local lumberAbility = "gather_lumber"
+	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	return lumberAbility
+end
+
 function CloseAllMenus(entity)
 	local keys = {}
 	keys.caster = entity
@@ -41,89 +83,81 @@ end
 function OpenBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
-	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
-
 	caster.currentMenu = 1
 
-	caster:AddAbility("build_petri_tent")
-	caster:AddAbility("build_petri_sawmill")
-	caster:AddAbility("build_petri_tower_basic")
-	caster:AddAbility("build_petri_wall")
-	caster:AddAbility("petri_close_basic_buildings_menu")
+	for i=1, table.getn(BASIC_MENU_ABILITIES) do
+		caster:AddAbility(BASIC_MENU_ABILITIES[i])
+    end
 
 	InitAbilities(caster)
 
-	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_tent", false, true)
-	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_sawmill", false, true)
-	caster:SwapAbilities(lumberAbility, "build_petri_tower_basic", false, true)
-	caster:SwapAbilities("petri_repair", "build_petri_wall", false, true)
-	caster:SwapAbilities("petri_empty2", "petri_close_basic_buildings_menu", false, true)
-end
-
-function OpenAdvancedBuildingsMenu(keys)
-	local caster = keys.caster
-
-	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
-
-	caster.currentMenu = 2
-
-	caster:AddAbility("build_petri_gold_tower")
-	caster:AddAbility("build_petri_exploration_tree")
-	caster:AddAbility("build_petri_lab")
-	caster:AddAbility("petri_close_advanced_buildings_menu")
-
-	InitAbilities(caster)
-
-	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_gold_tower", false, true)
-	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_exploration_tree", false, true)
-	caster:SwapAbilities(lumberAbility, "build_petri_lab", false, true)
-	--caster:SwapAbilities("petri_empty1", "petri_empty1", false, true)
-	--caster:SwapAbilities("petri_empty2", "petri_empty2", false, true)
-	caster:SwapAbilities("petri_repair", "petri_close_advanced_buildings_menu", false, true)
+	for i=1, table.getn(BASIC_MENU_ABILITIES) do
+		if NO_MENU_ABILITIES[i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), BASIC_MENU_ABILITIES[i], false, true)
+		else
+			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], false, true)
+		end
+    end
 end
 
 function CloseBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
-	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	local lumberAbility = GetLumberAbilityName(caster)
 
 	caster.currentMenu = 0
 
-	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_tent", true, false)
-	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_sawmill",true, false)
-	caster:SwapAbilities(lumberAbility, "build_petri_tower_basic", true, false)
-	caster:SwapAbilities("petri_repair", "build_petri_wall", true, false)
-	caster:SwapAbilities("petri_empty2", "petri_close_basic_buildings_menu", true, false)
+	for i=1, table.getn(BASIC_MENU_ABILITIES) do
+		if NO_MENU_ABILITIES[i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), BASIC_MENU_ABILITIES[i], true, false)
+		else
+			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], true, false)
+		end
+    end
 
-	caster:RemoveAbility("build_petri_tent")
-	caster:RemoveAbility("build_petri_sawmill")
-	caster:RemoveAbility("build_petri_tower_basic")
-	caster:RemoveAbility("build_petri_wall")
-	caster:RemoveAbility("petri_close_basic_buildings_menu")
+	for i=1, table.getn(BASIC_MENU_ABILITIES) do
+		caster:RemoveAbility(BASIC_MENU_ABILITIES[i])
+    end
+end
+
+function OpenAdvancedBuildingsMenu(keys)
+	local caster = keys.caster
+
+	caster.currentMenu = 2
+
+	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
+		caster:AddAbility(ADVANCED_MENU_ABILITIES[i])
+    end
+
+	InitAbilities(caster)
+
+    for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
+		if NO_MENU_ABILITIES[i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), ADVANCED_MENU_ABILITIES[i], false, true)
+		else
+			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], false, true)
+		end
+    end
 end
 
 function CloseAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
 
-	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	local lumberAbility = GetLumberAbilityName(caster)
 
 	caster.currentMenu = 0
 
-	caster:SwapAbilities("petri_open_basic_buildings_menu", "build_petri_gold_tower", true, false)
-	caster:SwapAbilities("petri_open_advanced_buildings_menu", "build_petri_exploration_tree", true, false)
-	caster:SwapAbilities(lumberAbility, "build_petri_lab", true, false)
-	--caster:SwapAbilities("petri_empty1", "petri_empty1", false, true)
-	--caster:SwapAbilities("petri_empty2", "petri_empty2", false, true)
-	caster:SwapAbilities("petri_repair", "petri_close_advanced_buildings_menu", true, false)
+	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
+		if NO_MENU_ABILITIES[i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), ADVANCED_MENU_ABILITIES[i], true, false)
+		else
+			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], true, false)
+		end
+    end
 
-	caster:RemoveAbility("build_petri_gold_tower")
-	caster:RemoveAbility("build_petri_exploration_tree")
-	caster:RemoveAbility("build_petri_lab")
-	caster:RemoveAbility("petri_close_advanced_buildings_menu")
+	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
+		caster:RemoveAbility(ADVANCED_MENU_ABILITIES[i])
+    end
 end
 
 function SpawnGoldBag( keys )

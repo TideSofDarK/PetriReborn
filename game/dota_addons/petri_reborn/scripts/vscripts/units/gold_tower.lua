@@ -25,8 +25,6 @@ function Upgrade ( event   )
 	local caster = event.caster
 	local ability = event.ability
 
-	ability:SetHidden(false)
-
 	local tower_level = ability:GetLevel()
 
 	if tower_level == 1 then

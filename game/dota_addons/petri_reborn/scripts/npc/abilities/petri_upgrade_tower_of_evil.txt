@@ -1,0 +1,83 @@
+"petri_upgrade_tower_of_evil"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_upgrade_tower_of_evil"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+  
+  "AbilityGoldCost"       "25 50 75 150"
+
+  "AbilityManaCost"       "0"
+  
+  "AbilityChannelTime"      "1.0"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "MaxLevel"            "5"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "0 0 0 0"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack"        "17 56 115 175"
+    }
+    "03"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack_rate"        "40 60 90 120"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/tower_of_evil.lua"
+      "Function"        "Upgrade"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_attack_speed"
+    {
+      "Passive"  "0"
+      "IsHidden" "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_rate"
+      }
+    }
+  }
+}

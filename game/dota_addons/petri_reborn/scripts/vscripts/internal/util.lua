@@ -70,6 +70,12 @@ function OnUpgradeSucceeded(event)
   end
 end
 
+function UpdateModel(tower, model, scale)
+  tower:SetOriginalModel(model)
+  tower:SetModel(model)
+  tower:SetModelScale(scale)
+end
+
 -- End of upgrades
 
 function ReturnGold(player)
