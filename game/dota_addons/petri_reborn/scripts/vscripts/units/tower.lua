@@ -106,11 +106,13 @@ function UpdateAttributes(tower, ability)
 	ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_attack_speed", {})
 
 	if tower == TOWER_BASIC then
-		
 	elseif tower == TOWER_ELEMENTS then 
 	elseif tower == TOWER_FIRE then 
-	elseif tower == TOWER_ICE then 
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_crits", {})
+	elseif tower == TOWER_ICE then
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_skadi", {})
 	elseif tower == TOWER_DEATH then 
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_death_tower", {})
 	end
 end
 

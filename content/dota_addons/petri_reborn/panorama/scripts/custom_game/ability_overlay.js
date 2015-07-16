@@ -4,7 +4,7 @@ var abilityLayouts = {}
 
 function GetPresentAbilities(entity, count) {
 	var presentAbilities = new Array(count);
-    $.Msg(Object.keys(presentAbilities).length);
+    
 	for (var i = 0; i < 16; i++) {
     	var ability = Entities.GetAbility(entity, i );
     	

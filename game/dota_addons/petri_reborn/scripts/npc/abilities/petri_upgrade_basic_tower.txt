@@ -245,7 +245,7 @@
     }
     "modifier_crits"
     {
-      "Passive"  "1"
+      "Passive"  "0"
 
       "IsHidden"   "1"
       "OnAttackStart"
@@ -332,7 +332,7 @@
     "04"
     {
       "var_type"          "FIELD_INTEGER"
-      "slow_rate"        "10 15 20 30"
+      "slow_rate"        "-10 -15 -20 -30"
     }
   }
 
@@ -382,7 +382,7 @@
     }
     "modifier_skadi"
     {
-      "Passive"       "1"
+      "Passive"       "0"
       "IsHidden"        "1"
       
       "Orb"
@@ -511,7 +511,7 @@
     }
     "modifier_death_tower"
     {
-      "Passive"     "1"
+      "Passive"     "0"
       "IsHidden"      "1"
       
       "Orb"
