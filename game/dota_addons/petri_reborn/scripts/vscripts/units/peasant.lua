@@ -50,9 +50,12 @@ end
 function ToggleOffGather( event )
 	local caster = event.caster
 	local gather_ability = caster:FindAbilityByName("gather_lumber")
+	
+	caster.target_tree.worker = nil
 
 	if gather_ability:GetToggleState() == true then
 		gather_ability:ToggleAbility()
+
 		if Debug_Peasant then
 			print("Toggled Off Gather")
 		end
@@ -290,6 +293,15 @@ function FindClosestResourceDeposit( caster )
 
 end
 
+function ReleaseTree( event )
+	local caster = event.caster
+	print("asdasd")
+	if caster.target_tree.worker ~= nil then
+		print("asdasd12")
+		caster.target_tree.worker = nil
+	end
+end
+
 -- Repairing
 
 function StartRepairing(event)
@@ -367,9 +379,9 @@ function Spawn( t )
 
 	Timers:CreateTimer(0.2, function()
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
-		--DeepPrintTable(trees)
+
 		local distance = 9999
-		local closest_building = nil
+		local closest_tree = nil
 		local position = thisEntity:GetAbsOrigin()
 
 		if trees then
@@ -378,11 +390,14 @@ function Spawn( t )
 
 				if this_distance < distance then
 					distance = this_distance
-					closest_building = v
+					if v.worker == nil then
+						closest_tree = v
+					end
 				end
 			end
 
-			thisEntity:CastAbilityOnTarget(closest_building, ability,pID)
+			if closest_tree ~= nil then closest_tree.worker = thisEntity end
+			thisEntity:CastAbilityOnTarget(closest_tree, ability,pID)
 		end
 	end)
 end

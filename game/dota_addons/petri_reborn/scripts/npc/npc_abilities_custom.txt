@@ -2120,7 +2120,7 @@
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor_reduction"        "30 70 110 150"
+	      "armor_reduction"        "-30 -70 -110 -150"
 	    }
 	  }
 	
@@ -2197,13 +2197,13 @@
 	    }
 	    "modifier_death_tower_corruption"
 	    {
-	      "Duration"        "%corruption_duration"
+	      "Duration"        "5"
 	      "Passive"       "0"
 	      "IsHidden"        "0"
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%corruption_armor"
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_reduction"
 	      }
 	    }
 	  }
@@ -2555,7 +2555,6 @@
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
 	
-	  // When the ability is active, it means there are resources left to return (else it will be hidden)
 	  "OnSpellStart"
 	  {
 	    "ApplyModifier"

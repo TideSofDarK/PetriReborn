@@ -6,7 +6,6 @@
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
 
-  // When the ability is active, it means there are resources left to return (else it will be hidden)
   "OnSpellStart"
   {
     "ApplyModifier"
