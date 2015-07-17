@@ -90,10 +90,11 @@
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
 	  "MovementSpeed"       "600"   
-	  "MovementTurnRate"      "1.0"                 
+	  "MovementTurnRate"      "1.0" 
 	
-	  "StatusHealth"        "10"                 
-	  "StatusHealthRegen"     "0.25"                 
+	  "StatusHealth"        "10"          
+	  "StatusHealthRegen"     "0.175"
+	  "StatusMana"        "1"              
 	
 	  "VisionDaytimeRange"    "1800"                  
 	  "VisionNighttimeRange"    "1800"                  
