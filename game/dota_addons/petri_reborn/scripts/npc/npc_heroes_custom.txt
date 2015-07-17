@@ -58,6 +58,7 @@
 	  "SoundSet"          "0" 
 	
 	  "AbilityLayout"     "6"
+	  "Ability1" "petri_deny_locker"
 	
 	  "vscripts" "units/kvn_fan.lua"
 	  

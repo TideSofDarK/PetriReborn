@@ -75,17 +75,17 @@ function GameMode:OnHeroInGame(hero)
         function() 
           newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
-        InitAbilities(newHero)
+          InitAbilities(newHero)
 
-        newHero:SetAbilityPoints(0)
+          newHero:SetAbilityPoints(0)
 
-        --newHero:SetGold(1000, false)
+          --newHero:SetGold(1000, false)
 
-        newHero:AddItemByName("item_petri_kvn_fan_blink")
-        newHero:AddItemByName("item_petri_give_permission_to_build")
-        newHero:AddItemByName("item_petri_gold_bag")
+          newHero:AddItemByName("item_petri_kvn_fan_blink")
+          newHero:AddItemByName("item_petri_give_permission_to_build")
+          newHero:AddItemByName("item_petri_gold_bag")
 
-        player.lumber = 150
+          player.lumber = 150
         end, player:GetPlayerID())
     end
 
@@ -104,6 +104,7 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
+          player.lumber = 0
         end, player:GetPlayerID())
     end
 
