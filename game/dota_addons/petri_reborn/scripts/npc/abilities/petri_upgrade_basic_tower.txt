@@ -197,6 +197,16 @@
       "var_type"          "FIELD_INTEGER"
       "attack_rate"        "10 15 20 30"
     }
+    "04"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "chance"        "20 20 20 20"
+    }
+    "05"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "crit"        "200 200 200 200"
+    }
   }
 
   "OnSpellStart"
@@ -252,7 +262,7 @@
       {
         "Random"
         {
-          "Chance" "20"
+          "Chance" "%chance"
           "OnSuccess"
           {
             "ApplyModifier"
@@ -270,7 +280,7 @@
       "IsHidden"  "1"
       "Properties"
       {
-        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "200"
+        "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit"
       }
       
       "OnAttackLanded"
