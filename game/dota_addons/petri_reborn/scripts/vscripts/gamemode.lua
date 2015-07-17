@@ -102,13 +102,8 @@ function GameMode:OnHeroInGame(hero)
 
           newHero:SetGold(32, false)
 
-          -- Wait a bit and spawn tower
-          Timers:CreateTimer(0.03,
-            function()
-              CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
-              
-              newHero.spawnPosition = newHero:GetAbsOrigin()
-              end)
+          newHero.spawnPosition = newHero:GetAbsOrigin()
+
         end, player:GetPlayerID())
     end
 
@@ -130,7 +125,7 @@ function GameMode:OnHeroInGame(hero)
           maxFood = player.maxFood
       }
       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.15
+      return 0.35
     end)
   end
 end
@@ -181,12 +176,8 @@ function GameMode:InitGameMode()
     end
   end
 
-  --GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
-  -- Some creepy shit for hiding rally point
-  -- Timers:CreateTimer(1, function()
-  --   CustomGameEventManager:RegisterListener( "custom_dota_player_update_selected_unit", Dynamic_Wrap(GameMode, 'OnUnitSelected') )
-  -- end)
+  CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
 
   BuildingHelper:Init()
 end

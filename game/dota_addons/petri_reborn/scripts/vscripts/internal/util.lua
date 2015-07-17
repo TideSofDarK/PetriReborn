@@ -96,7 +96,7 @@ end
 function CheckLumber(player, lumber_amount, notification)
   local enough = player.lumber >= lumber_amount
   if enough ~= true and notification == true then 
-    Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
+    Notifications:Bottom(player.GetPlayerID(), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
   end
   return enough
 end
@@ -109,7 +109,7 @@ end
 function CheckFood( player, food_amount, notification)
   local enough = player.food + food_amount <= Clamp(player.maxFood,10,250)
   if enough ~= true and notification == true then 
-    Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+    Notifications:Bottom(player.GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
   end
   return enough
 end

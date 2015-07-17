@@ -23,7 +23,7 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
-	  "AttackRate" "0.95"
+	  "AttackRate" "0.65"
 	
 	  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
 	  "AttributeBaseStrength"   "1"

@@ -89,7 +89,7 @@ function CheckTreePosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 120
+	local collision = distance < 150
 	if not collision then
 	--print("Moving to tree, distance: ",distance)
 	elseif not caster:HasModifier("modifier_chopping_wood") then
@@ -310,12 +310,12 @@ function StartRepairing(event)
 	local ability = event.ability
 
 	if target:GetHealthPercent() == 100 then
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
+		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
 		return
 	end
 
 	if target:HasAbility("petri_building") ~= true then
-		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
+		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
 		return
 	end
 	
