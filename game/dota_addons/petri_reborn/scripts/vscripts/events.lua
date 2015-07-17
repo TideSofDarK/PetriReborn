@@ -224,11 +224,9 @@ end
 -- An entity died
 function GameMode:OnEntityKilled( keys )
   DebugPrint( '[BAREBONES] OnEntityKilled Called' )
-  DebugPrintTable( keys )
 
   GameMode:_OnEntityKilled( keys )
   
-
   -- The Unit that was Killed
   local killedUnit = EntIndexToHScript( keys.entindex_killed )
   -- The Killing entity
@@ -260,7 +258,32 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:RemoveBuilding(true)
   end
 
-  -- Put code here to handle when an entity gets killed
+  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
+    Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
+    Timers:CreateTimer(30.0,
+    function()
+      killedUnit:RespawnHero(false, false, false)
+    end)
+  end
+
+  if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
+    Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
+    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
+    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
+
+    if GameRules.deadKvnFansNumber == PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) then
+      Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
+
+      for i=1,10 do
+        PlayerResource:SetCameraTarget(i-1, killerEntity)
+      end
+
+      Timers:CreateTimer(2.0,
+        function()
+          GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+        end)
+    end
+  end
 end
 
 -- This function is called 1 to 2 times as the player connects initially but before they 

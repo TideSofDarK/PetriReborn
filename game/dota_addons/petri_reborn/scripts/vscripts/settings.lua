@@ -1,13 +1,13 @@
 -- In this file you can set up all the properties and settings for your game mode.
 
 
-ENABLE_HERO_RESPAWN = true              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
+ENABLE_HERO_RESPAWN = false              -- Should the heroes automatically respawn on a timer or stay dead until manually respawned
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
 
 HERO_SELECTION_TIME = 0.0              -- How long should we let people select their hero?
 PRE_GAME_TIME = 0.0                    -- How long after people select their heroes should the horn blow and the game start?
-POST_GAME_TIME = 60.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
+POST_GAME_TIME = 600.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
 GOLD_PER_TICK = 0                     -- How much gold should players get per tick?

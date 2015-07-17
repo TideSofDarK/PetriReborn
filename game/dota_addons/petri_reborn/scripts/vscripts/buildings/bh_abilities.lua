@@ -84,6 +84,19 @@ function build( keys )
 		unit:SetBaseManaRegen(0.0)
 	end)
 	keys:OnConstructionCompleted(function(unit)
+		if unit:GetUnitName() == "npc_petri_exit" then
+			Notifications:TopToAll({text="#kvn_win", duration=10, style={color="green"}, continue=false})
+
+			for i=1,10 do
+				PlayerResource:SetCameraTarget(i-1, unit)
+			end
+
+			Timers:CreateTimer(2.0,
+		    function()
+		      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+		    end)
+		end
+
 		-- Play construction complete sound.
 		-- Give building its abilities
 		-- add the mana
@@ -123,12 +136,12 @@ function build( keys )
 
 					--GameRules:GetGameModeEntity():SetExecuteOrderFilter(handle hFunction, handle hContext) 
 
-					Notifications:Top(pID, {text="This area is now yours", duration=4, style={color="white"}, continue=true})
+					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=true})
 				elseif keys.caster.currentArea.claimers == nil or
 					(keys.caster.currentArea.claimers[0] ~= keys.caster
 					or keys.caster.currentArea.claimers[1] ~= keys.caster) then
 
-					Notifications:Top(pID, {text="You are not allowed to build here", duration=4, style={color="white"}, continue=false})
+					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
 					
 					-- Destroy unit
 					UTIL_Remove(unit)
