@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_broadsword"
+  "AbilityTextureName"      "item_petri_simple_sword"
 
   "ItemCost"            "30"
   "ItemShopTags"          "damage"
@@ -44,7 +44,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_claymore"
+  "AbilityTextureName"      "item_petri_hyperubersword"
 
   "ItemCost"            "142"
   "ItemShopTags"          "damage"
@@ -101,7 +101,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_lesser_crit"
+  "AbilityTextureName"      "item_petri_kladenets_sword"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -159,7 +159,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_sange"
+  "AbilityTextureName"      "item_petri_perfect_sword"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -217,7 +217,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_yasha"
+  "AbilityTextureName"      "item_petri_titan_sword"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -275,7 +275,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_manta"
+  "AbilityTextureName"      "item_petri_magic_axe"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -333,7 +333,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_reaver"
+  "AbilityTextureName"      "item_petri_grond"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -391,7 +391,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_mjollnir"
+  "AbilityTextureName"      "item_petri_thunder"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"
@@ -449,7 +449,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_mystic_staff"
+  "AbilityTextureName"      "item_petri_trident"
 
   "ItemCost"            "0"
   "ItemShopTags"          "damage"

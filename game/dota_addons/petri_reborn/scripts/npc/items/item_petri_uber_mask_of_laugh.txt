@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_mask_of_madness"
+  "AbilityTextureName"      "item_petri_uber_mask_of_laugh"
 
   "AbilityCooldown"       "65"
   

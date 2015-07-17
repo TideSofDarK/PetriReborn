@@ -79,11 +79,13 @@ function GameMode:OnHeroInGame(hero)
 
         newHero:SetAbilityPoints(0)
 
-        newHero:SetGold(1000, false)
+        --newHero:SetGold(1000, false)
 
         newHero:AddItemByName("item_petri_kvn_fan_blink")
         newHero:AddItemByName("item_petri_give_permission_to_build")
         newHero:AddItemByName("item_petri_gold_bag")
+
+        player.lumber = 150
         end, player:GetPlayerID())
     end
 
@@ -98,6 +100,8 @@ function GameMode:OnHeroInGame(hero)
           newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
           newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
 
+          newHero:SetGold(32, false)
+
           -- Wait a bit and spawn tower
           Timers:CreateTimer(0.03,
             function()
@@ -109,7 +113,6 @@ function GameMode:OnHeroInGame(hero)
     end
 
     -- We don't need 'undefined' variables
-    player.lumber = 500000
     player.food = 0
     player.maxFood = 10
  

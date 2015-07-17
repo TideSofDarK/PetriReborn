@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_buckler"
+  "AbilityTextureName"      "item_petri_magic_shield"
 
   "ItemCost"            "0"
   "ItemShopTags"          "armor"
@@ -100,7 +100,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_shield_of_nature"
+  "AbilityTextureName"      "item_petri_shield_of_nature"
 
   "ItemCost"            "0"
   "ItemShopTags"          "armor"
@@ -157,7 +157,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_shield_of_hell"
+  "AbilityTextureName"      "item_petri_shield_of_hell"
 
   "ItemCost"            "0"
   "ItemShopTags"          "armor"
@@ -214,7 +214,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_shield_of_heaven"
+  "AbilityTextureName"      "item_petri_shield_of_heaven"
 
   "ItemCost"            "0"
   "ItemShopTags"          "armor"
@@ -271,7 +271,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_best_shield"
+  "AbilityTextureName"      "item_petri_best_shield"
 
   "ItemCost"            "0"
   "ItemShopTags"          "armor"
