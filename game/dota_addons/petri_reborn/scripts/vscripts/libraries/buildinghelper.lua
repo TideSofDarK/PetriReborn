@@ -1,14 +1,3 @@
---[[
-  A library to help make RTS-style and Tower Defense custom games in Dota 2
-  Developer: Myll
-  Version: 2.0
-  Credits to:
-    Ash47 and BMD for timers.lua.
-    BMD for helping figure out how to get mouse clicks in Flash.
-    Perry for writing FlashUtil, which contains functions for cursor tracking.
-]]
--- Rewritten with multiplayer + shift queue in mind
-
 BuildingHelper = {}
 BuildingAbilities = {}
 

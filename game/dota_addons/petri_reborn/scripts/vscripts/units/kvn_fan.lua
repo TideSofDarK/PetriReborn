@@ -18,6 +18,7 @@ ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
 							"build_petri_exploration_tree",
 							"build_petri_lab",
 							"build_petri_tower_of_evil",
+							"build_petri_exit",
 							"petri_close_advanced_buildings_menu"}
 
 function Spawn( event )

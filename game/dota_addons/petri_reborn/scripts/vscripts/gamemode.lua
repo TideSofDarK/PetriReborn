@@ -28,11 +28,7 @@ require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")    
-  --PrecacheItemByNameAsync("item_example_item", function(...) end)
-  --PrecacheItemByNameAsync("example_ability", function(...) end)
-
-  --PrecacheUnitByNameAsync("npc_dota_hero_viper", function(...) end)
-  --PrecacheUnitByNameAsync("npc_dota_hero_enigma", function(...) end)
+  
 end
 
 --[[
@@ -41,6 +37,8 @@ end
 ]]
 function GameMode:OnFirstPlayerLoaded()
   DebugPrint("[BAREBONES] First Player has loaded")
+
+  
 end
 
 --[[
@@ -69,40 +67,45 @@ function GameMode:OnHeroInGame(hero)
 
     local newHero
 
+    UTIL_Remove( hero )
+
      -- Init kvn fan
     if team == 2 then
-      UTIL_Remove( hero )
-      newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+      PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+        function() 
+          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
-      InitAbilities(newHero)
+        InitAbilities(newHero)
 
-      newHero:SetAbilityPoints(0)
+        newHero:SetAbilityPoints(0)
 
-      newHero:SetGold(1000, false)
+        newHero:SetGold(1000, false)
 
-      newHero:AddItemByName("item_petri_kvn_fan_blink")
-      newHero:AddItemByName("item_petri_give_permission_to_build")
-      newHero:AddItemByName("item_petri_gold_bag")
+        newHero:AddItemByName("item_petri_kvn_fan_blink")
+        newHero:AddItemByName("item_petri_give_permission_to_build")
+        newHero:AddItemByName("item_petri_gold_bag")
+        end, player:GetPlayerID())
     end
 
      -- Init petrosyan
     if team == 3 then
+      PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
+        function() 
+          newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
 
-      UTIL_Remove( hero )
-      newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
+          -- It's dangerous to go alone, take this
+          newHero:SetAbilityPoints(3)
+          newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
+          newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
 
-      -- It's dangerous to go alone, take this
-      newHero:SetAbilityPoints(3)
-      newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
-      newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
-
-      -- Wait a bit and spawn tower
-      Timers:CreateTimer(0.03,
-        function()
-          CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
-          
-          newHero.spawnPosition = newHero:GetAbsOrigin()
-          end)
+          -- Wait a bit and spawn tower
+          Timers:CreateTimer(0.03,
+            function()
+              CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+              
+              newHero.spawnPosition = newHero:GetAbsOrigin()
+              end)
+        end, player:GetPlayerID())
     end
 
     -- We don't need 'undefined' variables
@@ -118,13 +121,13 @@ function GameMode:OnHeroInGame(hero)
     function()
       local event_data =
       {
-          gold = newHero:GetGold(),
+          gold = PlayerResource:GetGold(player:GetPlayerID()),
           lumber = player.lumber,
           food = player.food,
           maxFood = player.maxFood
       }
       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.18
+      return 0.15
     end)
   end
 end

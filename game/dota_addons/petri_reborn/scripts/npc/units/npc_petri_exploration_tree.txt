@@ -1,8 +1,8 @@
 "npc_petri_exploration_tree"
 {
   "BaseClass"         "npc_dota_base_additive"  
-  "Model"           "models/aow/aow.vmdl"  
-  "ModelScale"                "0.7"
+  "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"  
+  "ModelScale"                "2.4"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "0"
   

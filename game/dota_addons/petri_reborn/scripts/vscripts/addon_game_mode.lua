@@ -3,8 +3,11 @@ require('gamemode')
 
 function Precache( context )
   -- HEROES
-  PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)
-  PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
+  -- for i=1, 8, 1 do
+  --   print(i)
+  --   PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context,i-1)
+  -- end
+  -- PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
 
   -- UNITS
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
@@ -25,6 +28,9 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
 
   -- BUILDINGS
+  -- exit
+  PrecacheUnitByNameSync("npc_petri_exit", context)
+
   -- towers
   PrecacheResource("model", "models/props_structures/tower_good3_dest_lvl1.vmdl", context)
   PrecacheResource("model", "models/items/invoker/forge_spirit/infernus/infernus.vmdl", context)
@@ -59,7 +65,7 @@ function Precache( context )
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)
 
-  PrecacheResource("model", "models/aow/aow.vmdl", context)
+  PrecacheResource("model", "models/items/wards/eyeofforesight/eyeofforesight.vmdl", context)
 
   PrecacheUnitByNameSync("npc_petri_sawmill", context)
   PrecacheUnitByNameSync("npc_petri_tower_basic", context)

@@ -102,7 +102,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "3"
+	  "StatusHealth"        "2"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -385,6 +385,46 @@
 	    "DisableClumpingBehavior" "1"
 	  }
 	}
+	"npc_petri_exit"
+	{
+	  "BaseClass"         "npc_dota_base_additive"  
+	  "Model"           "models/props_structures/bad_ancient001.vmdl"  
+	  "ModelScale"                "0.3"
+	  "SoundSet"          "Creep_Good_Range"          
+	  "Level"           "1"
+	
+	  "AbilityLayout"       "4"
+	  "Ability1"         "petri_building"
+	  
+	  "ArmorPhysical"       "0"     
+	  "MagicalResistance"       "0"     
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+	
+	  "BountyXP"          "0"     
+	  "BountyGoldMin"       "10"     
+	  "BountyGoldMax"       "10"     
+	
+	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+	  "MovementSpeed"       "0"   
+	  "MovementTurnRate"      "0.0"   
+	  "FollowRange"       "0"   
+	  
+	  "StatusHealth"        "5000"     
+	  "StatusHealthRegen"     "0"     
+	  "StatusMana"        "0"     
+	  "StatusManaRegen"     "0"     
+	  
+	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	  
+	  "VisionDaytimeRange"    "0"   
+	  "VisionNighttimeRange"    "0"   
+	}
 	"npc_petri_exploration_tower"
 	{
 	  "BaseClass"         "npc_dota_creature"
@@ -422,8 +462,8 @@
 	"npc_petri_exploration_tree"
 	{
 	  "BaseClass"         "npc_dota_base_additive"  
-	  "Model"           "models/aow/aow.vmdl"  
-	  "ModelScale"                "0.7"
+	  "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"  
+	  "ModelScale"                "2.4"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
 	  

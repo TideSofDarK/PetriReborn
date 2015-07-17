@@ -105,7 +105,7 @@ function Gather100Lumber( event )
 	
 	local caster = event.caster
 	local ability = event.ability
-	local max_lumber_carried = 500
+	local max_lumber_carried = 200
 
 	local return_ability = caster:FindAbilityByName("return_resources")
 
@@ -308,6 +308,16 @@ function StartRepairing(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
+
+	if target:GetHealthPercent() == 100 then
+		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
+		return
+	end
+
+	if target:HasAbility("petri_building") ~= true then
+		Notifications:Bottom(PlayerResource:GetPlayer(0), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
+		return
+	end
 	
 	if target:GetHealthPercent() < 100 and target:HasAbility("petri_building") then
 		caster:MoveToNPC(target)
@@ -359,7 +369,8 @@ function RepairBy1Percent( event )
 	local maxHealth = target:GetMaxHealth()
 
 	if health < maxHealth then
-		target:SetHealth(health + (maxHealth/10.0))
+
+		target:SetHealth(health + 25)
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
 
