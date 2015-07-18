@@ -64,8 +64,11 @@ function GameMode:OnHeroInGame(hero)
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
     local player = hero:GetPlayerOwner()
+    local pID = player:GetPlayerID()
 
     local newHero
+
+    MoveCamera(pID, hero)
 
     UTIL_Remove( hero )
 
@@ -73,20 +76,20 @@ function GameMode:OnHeroInGame(hero)
     if team == 2 then
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
         function() 
+          Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
+
           newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
           InitAbilities(newHero)
 
           newHero:SetAbilityPoints(0)
 
-          --newHero:SetGold(1000, false)
-
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
 
           player.lumber = 150
-        end, player:GetPlayerID())
+        end, pID)
     end
 
      -- Init petrosyan
@@ -96,22 +99,30 @@ function GameMode:OnHeroInGame(hero)
           newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
 
           -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(3)
-          newHero:UpgradeAbility(newHero:GetAbilityByIndex(0))
-          newHero:UpgradeAbility(newHero:GetAbilityByIndex(5))
+          newHero:SetAbilityPoints(4)
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
 
           newHero:SetGold(32, false)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          player.lumber = 0
-        end, player:GetPlayerID())
+          if GameRules.explorationTowerCreated == nil then
+            GameRules.explorationTowerCreated = true
+            Timers:CreateTimer(0.2,
+            function()
+              CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+              end)
+          end
+        end, pID)
     end
 
     -- We don't need 'undefined' variables
     player.food = 0
     player.maxFood = 10
- 
+    player.lumber = player.lumber or 0
+
     --Send lumber and food info to users
     CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
 
@@ -176,9 +187,6 @@ function GameMode:InitGameMode()
       end
     end
   end
-
-
-  CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
 
   BuildingHelper:Init()
 end

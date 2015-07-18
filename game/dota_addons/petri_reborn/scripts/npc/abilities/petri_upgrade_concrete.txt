@@ -67,7 +67,7 @@
       "IsHidden"        "1"
       
       "Aura"          "modifier_concrete"
-      "Aura_Radius"       "99999"
+      "Aura_Radius"       "4000"
       "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
       "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
       "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"

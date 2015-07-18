@@ -60,3 +60,57 @@
     } 
   }   
 }
+
+"petri_petrosyan_dummy_sleep"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+  "MaxLevel" "1"
+
+  "precache"
+  {
+    "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
+  }
+
+  "OnUpgrade"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "dummy_sleep_modifier"
+      "Target"    "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "dummy_sleep_modifier"
+    {
+      "Duration"  "30"
+      "IsDebuff"  "1"
+
+      "EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
+      "EffectAttachType"      "follow_overhead"
+
+      "States"
+      {
+        "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_SPECIALLY_DENIABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
+
+        "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
+      }
+
+      "OnDestroy"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/petrosyan.lua"
+          "Function"    "OnAwake"
+        }
+      }
+    } 
+  }   
+}

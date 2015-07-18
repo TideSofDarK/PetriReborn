@@ -80,3 +80,11 @@ function ReadComedyBook( keys )
 
 	caster:CalculateStatBonus()
 end
+
+function OnAwake( keys )
+	if GameRules.firstPetrosyanIsAwake == nil then
+		GameRules.firstPetrosyanIsAwake = true
+		Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#petrosyan_is_awake", duration=4, style={color="red", ["font-size"]="45px"}})
+		print("First petrosyan is awake")
+	end
+end

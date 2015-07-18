@@ -4,6 +4,7 @@
   "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
   "ModelScale"    "1.1"
   "Level"      "1"
+  "HasInventory"                "1"
   "HealthBarOffset"    "140"
 
   "AbilityLayout"    "4"

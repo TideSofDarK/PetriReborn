@@ -1,3 +1,12 @@
+function MoveCamera(pID, target)
+  PlayerResource:SetCameraTarget(pID, target)
+  Timers:CreateTimer(0.03,
+      function()
+          PlayerResource:SetCameraTarget(pID, nil)
+      end
+    )
+end
+
 -- Upgrades
 
 function StartUpgrading (event)

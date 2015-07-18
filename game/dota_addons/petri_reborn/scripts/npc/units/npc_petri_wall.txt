@@ -40,6 +40,6 @@
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
-  "VisionDaytimeRange"    "0"   
-  "VisionNighttimeRange"    "0"   
+  "VisionDaytimeRange"    "500"   
+  "VisionNighttimeRange"    "500"   
 }

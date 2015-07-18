@@ -1,6 +1,5 @@
 function OnStartTouch(trigger)
-	print(trigger.activator:GetUnitName ())
-	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" then
+	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" or trigger.activator:GetUnitName () == "npc_petri_janitor" then
 		if trigger.activator.teleportationState == nil or trigger.activator.teleportationState == 0 
 			or trigger.activator.teleportationState == 3 then
 			trigger.activator.teleportationState = 1
@@ -20,7 +19,7 @@ function OnStartTouch(trigger)
 end
  
 function OnEndTouch(trigger)
-	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" then
+	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" or trigger.activator:GetUnitName () == "npc_petri_janitor" then
 		trigger.activator.teleportationState = trigger.activator.teleportationState + 1
 		PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), nil)
 	end

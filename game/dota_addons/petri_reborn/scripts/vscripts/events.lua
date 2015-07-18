@@ -259,7 +259,10 @@ function GameMode:OnEntityKilled( keys )
   end
 
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
-    Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
+    -- if killerEntity:GetPlayerOwnerID() ~= nil then
+    --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
+    -- end
+    killedUnit:SetTimeUntilRespawn(30.0)
     Timers:CreateTimer(30.0,
     function()
       killedUnit:RespawnHero(false, false, false)

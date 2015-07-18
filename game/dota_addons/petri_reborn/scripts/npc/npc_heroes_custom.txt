@@ -16,6 +16,7 @@
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"
+	  "Ability7"        "petri_petrosyan_dummy_sleep"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"

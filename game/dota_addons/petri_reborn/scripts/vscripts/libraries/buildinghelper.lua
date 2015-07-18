@@ -206,6 +206,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   local builder = keys.caster
   local pID = builder:GetMainControllingPlayer()
   local work = builder.work
+  if work == nil then return end
   local callbacks = work.callbacks
   local unitName = work.name
   local location = work.location

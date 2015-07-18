@@ -90,7 +90,7 @@
 	  "AttackRange"       "90"
 	
 	  "BountyGoldMin"       "1.0"
-	  "BountyGoldMax"       "1.0"
+	  "BountyGoldMax"       "2.0"
 	  "BountyXP"          "2"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -142,8 +142,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "2.0"
-	  "BountyGoldMax"       "2.0"
+	  "BountyGoldMin"       "8.0"
+	  "BountyGoldMax"       "8.0"
 	  "BountyXP"          "25"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -195,8 +195,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "10.0"
-	  "BountyGoldMax"       "10.0"
+	  "BountyGoldMin"       "300.0"
+	  "BountyGoldMax"       "300.0"
 	  "BountyXP"          "100"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -241,15 +241,15 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "4.0"
-	  "AttackDamageMax"     "6.0"
+	  "AttackDamageMin"     "7.0"
+	  "AttackDamageMax"     "9.0"
 	  "AttackRate"        "1.2"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "2.0"
-	  "BountyGoldMax"       "2.0"
+	  "BountyGoldMin"       "4.0"
+	  "BountyGoldMax"       "5.0"
 	  "BountyXP"          "10"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -301,8 +301,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "10.0"
-	  "BountyGoldMax"       "10.0"
+	  "BountyGoldMin"       "100.0"
+	  "BountyGoldMax"       "100.0"
 	  "BountyXP"          "75"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -354,8 +354,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "10.0"
-	  "BountyGoldMax"       "10.0"
+	  "BountyGoldMin"       "45.0"
+	  "BountyGoldMax"       "45.0"
 	  "BountyXP"          "50"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -422,8 +422,8 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	  
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "500"   
+	  "VisionNighttimeRange"    "500"   
 	}
 	"npc_petri_exploration_tower"
 	{
@@ -708,6 +708,7 @@
 	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
 	  "ModelScale"    "1.1"
 	  "Level"      "1"
+	  "HasInventory"                "1"
 	  "HealthBarOffset"    "140"
 	
 	  "AbilityLayout"    "4"
@@ -1139,8 +1140,8 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	  
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "100"   
+	  "VisionNighttimeRange"    "100"   
 	}
 	"npc_petri_tower_basic"
 	{
@@ -1200,8 +1201,8 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "500"   
+	  "VisionNighttimeRange"    "500"   
 	}
 	"npc_petri_tower_of_evil"
 	{
@@ -1255,8 +1256,8 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "500"   
+	  "VisionNighttimeRange"    "500"   
 	}
 	"npc_petri_wall"
 	{
@@ -1300,7 +1301,7 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "500"   
+	  "VisionNighttimeRange"    "500"   
 	}
 }
