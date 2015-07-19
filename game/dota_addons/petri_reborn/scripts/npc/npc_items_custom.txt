@@ -195,7 +195,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "buff_duration"     "15"
+	      "buff_duration"     "13"
 	    }
 	  }
 	
@@ -830,7 +830,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"      "7"
+	      "invu_duration"      "6"
 	    }
 	  }
 	
@@ -1683,12 +1683,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "200"
+	      "lifesteal_percent"   "140"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"   "25"
+	      "invu_duration"   "17"
 	    }
 	    "03"
 	    {

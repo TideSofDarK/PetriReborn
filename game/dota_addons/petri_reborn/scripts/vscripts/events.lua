@@ -253,6 +253,12 @@ function GameMode:OnEntityKilled( keys )
 
       killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
       Notifications:Bottom(killerEntity:GetPlayerOwnerID(), {text="#no_farm_tonight", duration=5, style={color="red", ["font-size"]="45px"}})
+      
+      Timers:CreateTimer(0.04,
+      function()
+        MoveCamera(killerEntity:GetPlayerOwnerID(), killerEntity)
+      end)
+      
     end
     Timers:CreateTimer(0.73,
     function()

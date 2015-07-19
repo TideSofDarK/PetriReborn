@@ -1,0 +1,94 @@
+"petri_upgrade_tower_damage"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "holdout_focusfire"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityGoldCost"       "20 40 60 80 100 110 130 150 170 190 350 450"
+  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6"
+
+  "MaxLevel"            "13"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 99999"
+    }
+
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "bonus_damage"  "0 45 90 120 155 195 275 385 450 750 1000 1450"
+    }
+
+    "03"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "bonus_range"  "0 20 30 40 50 60 70 80 90 100 110 120"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_damage_aura"
+      "Target"     "CASTER"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_damage_aura"
+    {
+      "Passive"       "1"
+      "IsHidden"        "1"
+      
+      "Aura"          "modifier_damage"
+      "Aura_Radius"       "5000"
+      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
+      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
+      "Aura_ApplyToCaster"  "0"
+    }
+    "modifier_damage"
+    {
+      "Passive"  "0"
+      "IsHidden" "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
+      }
+    }
+  }
+}

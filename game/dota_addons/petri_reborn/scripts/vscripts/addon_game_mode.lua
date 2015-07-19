@@ -9,6 +9,8 @@ function Precache( context )
   -- end
   -- PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
 
+  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+
   -- UNITS
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
 
@@ -83,6 +85,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context)
 
   PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", context)
+
+  PrecacheResource("particle", "particles/generic_gameplay/dropped_item.vpcf", context)
 end
 
 function Activate()

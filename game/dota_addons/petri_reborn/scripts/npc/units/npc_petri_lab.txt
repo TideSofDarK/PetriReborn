@@ -11,11 +11,11 @@
 
   "AbilityLayout"       "4"
   "Ability1"          "petri_upgrade_concrete"
-  "Ability2"          "petri_empty1"
-  "Ability3"          "petri_empty2"
-  "Ability4"          "petri_empty3"
-  "Ability5"          "petri_empty4"
-  "Ability6"          "petri_empty5"
+  "Ability2"          "petri_upgrade_tower_damage"
+  "Ability3"          "petri_empty1"
+  "Ability4"          "petri_empty2"
+  "Ability5"          "petri_empty3"
+  "Ability6"          "petri_empty4"
   "Ability7"          "petri_building"
   
   "ArmorPhysical"       "0"

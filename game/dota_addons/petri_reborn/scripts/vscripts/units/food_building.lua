@@ -19,9 +19,9 @@ function Upgrade ( event   )
 	if tent_level == 1 then
 		caster:SetModelScale(0.4)
 	elseif tent_level == 2 then 
-		UpdateModel(caster, "models/props_structures/tent_dk_med", 0.4)
+		UpdateModel(caster, "models/props_structures/tent_dk_med", 0.36)
 	elseif tent_level == 3 then
-		UpdateModel(caster, "models/props_structures/tent_dk_large.vmdl", 0.4)
+		UpdateModel(caster, "models/props_structures/tent_dk_large.vmdl", 0.24)
 	end
 
 	player.maxFood = player.maxFood + 30

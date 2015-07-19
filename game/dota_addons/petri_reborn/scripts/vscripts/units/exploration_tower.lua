@@ -12,4 +12,6 @@ function ExploreWorld(keys)
 			AddFOWViewer(caster_team, position,2000, 5, false)
 		end
 	end
+
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#sputnik_launched", duration=4, style={color="red", ["font-size"]="40px"}})
 end

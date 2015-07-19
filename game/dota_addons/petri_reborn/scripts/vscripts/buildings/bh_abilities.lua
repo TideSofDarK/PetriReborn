@@ -126,11 +126,15 @@ function build( keys )
 					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=true})
 				end
 
-				keys.caster.currentArea.claimers = {}
-				keys.caster.currentArea.claimers[1] = keys.caster
+				keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
+				if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
 			else
 				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
 				
+				ReturnLumber(player)
+				ReturnGold(player)
+				ReturnFood( player )
+
 				-- Destroy unit
 				DestroyEntityBasedOnHealth(caster,unit)
 			end
