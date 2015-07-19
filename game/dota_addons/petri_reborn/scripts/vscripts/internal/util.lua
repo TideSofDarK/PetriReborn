@@ -1,3 +1,21 @@
+function DestroyEntityBasedOnHealth(killer, target)
+  local damageTable = {
+    victim = target,
+    attacker = killer,
+    damage = target:GetMaxHealth(),
+    damage_type = DAMAGE_TYPE_PURE,
+  }
+  ApplyDamage(damageTable)
+end
+
+function CheckAreaClaimers(target, claimers)
+  if claimers == nil or target == nil then return false end
+  for i=1,table.getn(claimers),1 do
+    if claimers[i] == target then return true end
+  end
+  return false
+end
+
 function MoveCamera(pID, target)
   PlayerResource:SetCameraTarget(pID, target)
   Timers:CreateTimer(0.03,
@@ -116,6 +134,7 @@ function SpendLumber(player, lumber_amount)
 end
 
 function CheckFood( player, food_amount, notification)
+  if food_amount == 0 then return true end
   local enough = player.food + food_amount <= Clamp(player.maxFood,10,250)
   if enough ~= true and notification == true then 
     Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})

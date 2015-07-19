@@ -39,7 +39,7 @@ function build( keys )
 		enough_lumber = true
 	end
 
-	if food_cost ~= nil then
+	if food_cost ~= nil and food_cost ~= 0 then
 		enough_food = CheckFood(player, food_cost,true)
 	else
 		enough_food = true
@@ -62,6 +62,15 @@ function build( keys )
 	end)
 
 	keys:OnConstructionStarted(function(unit)
+		if unit:GetUnitName() == "npc_petri_exit" then
+			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
+
+			local tower = Entities:FindByClassname(nil, "npc_petri_exploration_tower")
+			if tower ~= nil then
+				tower:GetAbilityByIndex(0):CreateVisibilityNode(unit:GetAbsOrigin(), 1200, 5)
+			end
+		end
+
 		-- Unit is the building be built.
 		-- Play construction sound
 		-- FindClearSpace for the builder
@@ -85,13 +94,13 @@ function build( keys )
 	end)
 	keys:OnConstructionCompleted(function(unit)
 		if unit:GetUnitName() == "npc_petri_exit" then
-			Notifications:TopToAll({text="#kvn_win", duration=10, style={color="green"}, continue=false})
+			Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
 			for i=1,10 do
 				PlayerResource:SetCameraTarget(i-1, unit)
 			end
 
-			Timers:CreateTimer(2.0,
+			Timers:CreateTimer(5.0,
 		    function()
 		      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
 		    end)
@@ -110,42 +119,20 @@ function build( keys )
 
 		InitAbilities(unit)
 		
-		if keys.caster.currentArea ~= nil then
-			if keys.caster.currentArea ~= keys.caster.claimedArea then
-				if keys.caster.currentArea.claimers == nil and keys.caster.claimedArea == nil then
-					keys.caster.currentArea.claimers = {}
-					keys.caster.currentArea.claimers[0] = keys.caster
+		if caster.currentArea ~= nil then
+			if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
 
-					keys.caster.claimedArea = keys.caster.currentArea
-
-					--[[
-					area_controlllers  = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, keys.caster.currentArea:GetOrigin(),nil,
-						700,DOTA_UNIT_TARGET_TEAM_FRIENDLY,
-	                              DOTA_UNIT_TARGET_ALL,
-	                              DOTA_UNIT_TARGET_FLAG_INVULNERABLE,
-	                              FIND_ANY_ORDER,
-	                              false)
-
-					for k, v in pairs( area_controlllers ) do
-					   v:SetTeam(keys.caster:GetTeamNumber())
-						v:SetOwner(keys.caster)
-						v:SetControllableByPlayer(pID, true)
-						break
-					end
-					--]]
-
-					--GameRules:GetGameModeEntity():SetExecuteOrderFilter(handle hFunction, handle hContext) 
-
+				if caster.currentArea.claimers == nil then 
 					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=true})
-				elseif keys.caster.currentArea.claimers == nil or
-					(keys.caster.currentArea.claimers[0] ~= keys.caster
-					or keys.caster.currentArea.claimers[1] ~= keys.caster) then
-
-					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
-					
-					-- Destroy unit
-					UTIL_Remove(unit)
 				end
+
+				keys.caster.currentArea.claimers = {}
+				keys.caster.currentArea.claimers[1] = keys.caster
+			else
+				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
+				
+				-- Destroy unit
+				DestroyEntityBasedOnHealth(caster,unit)
 			end
 		end
 	end)

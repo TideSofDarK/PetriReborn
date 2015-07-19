@@ -56,7 +56,7 @@
 	  // BuildingHelper info
 	  "Building"            "1" //bool
 	  "BuildingSize"          "3" // this is (3x64) by (3x64) units, so 9 squares.
-	  "BuildTime"           "5.0"
+	  "BuildTime"           "720.0"
 	  "AbilityCastRange"        "100"
 	  "UpdateHealth"          "1" //bool
 	  "Scale"             "1" //bool
@@ -733,37 +733,13 @@
 	      {
 	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED"
+	        //"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
 	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
-	      }
-	    }
-	  }
-	}
-	"petri_deny_locker"
-	{
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      ""
-	
-	  "Modifiers"
-	  {
-	    "unit_properties"
-	    {
-	      "Passive"     "1"
-	      "IsHidden"      "1"
-	
-	      "OnAttackAllied"
-	      {
-	        "MoveUnit"
-	        {
-	          "Target" "CASTER"
-	          "MoveToTarget" "TARGET"
-	        }
 	      }
 	    }
 	  }
@@ -1252,6 +1228,40 @@
 	    {
 	      "ScriptFile"      "units/kvn_fan.lua"
 	      "Function"        "CloseAdvancedBuildingsMenu"
+	    }
+	  }
+	}
+	"petri_kvn_fan_deny"
+	{
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	  "AbilityTextureName"      "techies_suicide"
+	
+	  "AbilityCastRange" "150"
+	
+	  "AbilityCooldown" "0.1"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "TARGET"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "Deny"
 	    }
 	  }
 	}
@@ -1843,7 +1853,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "6 15 31 67 99"
+	      "attack"        "14 25 67 99 140"
 	    }
 	    "03"
 	    {
@@ -1924,12 +1934,12 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "6"
+	      "attack"        "16"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10"
+	      "attack_rate"        "20"
 	    }
 	  }
 	
@@ -2010,7 +2020,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "10 40 80 140"
+	      "attack"        "32 55 91 180"
 	    }
 	    "03"
 	    {
@@ -2025,7 +2035,7 @@
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "crit"        "200 200 200 200"
+	      "crit"        "300 300 300 300"
 	    }
 	  }
 	
@@ -2152,17 +2162,17 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "15 30 60 100"
+	      "attack"        "30 60 90 120"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10 15 20 30"
+	      "attack_rate"        "10 15 20 25"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_rate"        "-10 -15 -20 -30"
+	      "slow_rate"        "-15 -20 -30 -40"
 	    }
 	  }
 	
@@ -2281,7 +2291,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "50 75 100 150"
+	      "attack"        "50 75 100 175"
 	    }
 	    "03"
 	    {
@@ -2404,7 +2414,7 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_armor_percent"  "0 60 90 120 150 180 210 240 270 300 500"
+	      "bonus_armor_percent"  "0 180 210 240 270 300 500 750 1000 2500"
 	    }
 	  }
 	
@@ -2428,10 +2438,15 @@
 	  
 	  "OnChannelSucceeded"
 	  {
-	    "RunScript"
+	    ///"RunScript"
+	    //{
+	    //  "ScriptFile"      "units/lab.lua"
+	    //  "Function"        "Upgrade"
+	    //}
+	    "ApplyModifier"
 	    {
-	      "ScriptFile"      "units/lab.lua"
-	      "Function"        "Upgrade"
+	      "ModifierName"  "modifier_concrete_aura"
+	      "Target"     "CASTER"
 	    }
 	    "RunScript"
 	    {
@@ -2448,7 +2463,7 @@
 	      "IsHidden"        "1"
 	      
 	      "Aura"          "modifier_concrete"
-	      "Aura_Radius"       "4000"
+	      "Aura_Radius"       "5000"
 	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
 	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
@@ -2751,12 +2766,12 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "150 270 380 590 800 1100 1450 1700 2000"
+	      "health_points"        "270 380 590 800 1100 1450 1700 2400 7050"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "1 1 5 10 20 75 400 600 999"
+	      "armor"        "1 100 200 300 400 750 1000 1300 1600"
 	    }
 	  }
 	

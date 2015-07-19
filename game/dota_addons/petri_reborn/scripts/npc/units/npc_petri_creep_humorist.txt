@@ -20,7 +20,7 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "100.0"
+  "BountyGoldMin"       "70.0"
   "BountyGoldMax"       "100.0"
   "BountyXP"          "75"  
 

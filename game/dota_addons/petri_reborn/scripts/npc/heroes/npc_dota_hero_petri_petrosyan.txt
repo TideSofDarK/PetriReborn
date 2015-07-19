@@ -16,13 +16,17 @@
   "Ability6"        "petri_petrosyan_return"
   "Ability7"        "petri_petrosyan_dummy_sleep"
 
+  "MinimapIcon"               "minimap_candybucket"
+  "MinimapIconSize"           "1000"
+
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackRange"                "75"
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
-  "AttackRate" "0.65"
+  "AttackRate" "0.6"
 
   //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
@@ -33,11 +37,12 @@
   "AttributeAgilityGain"    "0.25"
 
   "BountyXP"          "50"                 
-  "BountyGoldMin"       "0"                   
-  "BountyGoldMax"       "0"                   
+  "BountyGoldMin"       "10"                   
+  "BountyGoldMax"       "20"     
+  "BountyGain"                "0"              
 
-  //"BoundsHullName"      "DOTA_HULL_SIZE_HERO"
-  //"RingRadius"        "70"
+  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"
+  "RingRadius"        "70"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"       "600"

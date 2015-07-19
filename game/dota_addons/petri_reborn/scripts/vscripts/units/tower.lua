@@ -100,19 +100,24 @@ function UpdateAttributes(tower, ability)
 	local attack = ability:GetLevelSpecialValueFor("attack", tower_level)
 	local attack_rate = ability:GetLevelSpecialValueFor("attack_rate", tower_level)
 
-	ability:GetCaster():SetBaseDamageMax(attack)
-	ability:GetCaster():SetBaseDamageMin(attack)
+	local caster = ability:GetCaster()
 
-	ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_attack_speed", {})
+	caster:SetBaseDamageMax(attack)
+	caster:SetBaseDamageMin(attack)
+
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_attack_speed", {})
 
 	if tower == TOWER_BASIC then
 	elseif tower == TOWER_ELEMENTS then 
 	elseif tower == TOWER_FIRE then 
-		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_crits", {})
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_crits", {})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif tower == TOWER_ICE then
-		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_skadi", {})
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_skadi", {})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif tower == TOWER_DEATH then 
-		ability:ApplyDataDrivenModifier(ability:GetCaster(), ability:GetCaster(), "modifier_death_tower", {})
+		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_death_tower", {})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	end
 end
 

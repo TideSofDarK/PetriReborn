@@ -88,6 +88,8 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
 
+          newHero.spawnPosition = newHero:GetAbsOrigin()
+
           player.lumber = 150
         end, pID)
     end

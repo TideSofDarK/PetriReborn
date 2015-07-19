@@ -90,7 +90,7 @@
 	  "AttackRange"       "90"
 	
 	  "BountyGoldMin"       "1.0"
-	  "BountyGoldMax"       "2.0"
+	  "BountyGoldMax"       "1.0"
 	  "BountyXP"          "2"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -142,8 +142,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "8.0"
-	  "BountyGoldMax"       "8.0"
+	  "BountyGoldMin"       "6.0"
+	  "BountyGoldMax"       "6.0"
 	  "BountyXP"          "25"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -195,8 +195,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "300.0"
-	  "BountyGoldMax"       "300.0"
+	  "BountyGoldMin"       "150.0"
+	  "BountyGoldMax"       "150.0"
 	  "BountyXP"          "100"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -248,9 +248,9 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "4.0"
-	  "BountyGoldMax"       "5.0"
-	  "BountyXP"          "10"  
+	  "BountyGoldMin"       "3.0"
+	  "BountyGoldMax"       "4.0"
+	  "BountyXP"          "7"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -301,7 +301,7 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "100.0"
+	  "BountyGoldMin"       "70.0"
 	  "BountyGoldMax"       "100.0"
 	  "BountyXP"          "75"  
 	
@@ -642,8 +642,8 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
 	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	  
-	  "VisionDaytimeRange"    "0"   
-	  "VisionNighttimeRange"    "0"   
+	  "VisionDaytimeRange"    "600"   
+	  "VisionNighttimeRange"    "600"   
 	}
 	"npc_petri_gusman"
 	{
@@ -655,7 +655,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "55"
+	  "ArmorPhysical"    "5500"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -815,7 +815,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "55"
+	  "ArmorPhysical"    "3000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1047,7 +1047,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "55"
+	  "ArmorPhysical"    "3000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"

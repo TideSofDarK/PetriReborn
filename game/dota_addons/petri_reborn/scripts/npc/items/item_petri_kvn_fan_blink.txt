@@ -12,7 +12,7 @@
 
   "ItemPermanent"         "0"
 
-  "AbilityCastPoint"        "0.4"
+  "AbilityCastPoint"        "0.0"
 
   "AbilityCooldown"       "5.0"
   

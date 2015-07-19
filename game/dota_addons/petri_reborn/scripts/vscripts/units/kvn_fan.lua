@@ -6,8 +6,8 @@ NO_MENU_ABILITIES = {"petri_open_basic_buildings_menu",
 					 "petri_open_advanced_buildings_menu",
 					 "gather_lumber",
 					 "petri_repair",
+					 "petri_kvn_fan_deny",
 					 "petri_empty1",
-					 "petri_empty2",
 					 "return_resources"}
 BASIC_MENU_ABILITIES = {"build_petri_tent",
 						"build_petri_sawmill",
@@ -41,11 +41,14 @@ function GivePermissionToBuild( keys )
 	local caster_team = caster:GetTeamNumber()
 	local player = caster:GetPlayerOwnerID()
 	local ability = keys.ability
-	local ability_level = ability:GetLevel() - 1
 
-	if target.currentArea == caster.claimedArea then
-		if target.claimedArea == nil then
-			target.claimedArea = caster.claimedArea
+	if CheckAreaClaimers(target, caster.currentArea.claimers) == true then return false end
+
+	if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
+		if target.currentArea == caster.currentArea then
+			if caster.currentArea.claimers[1] == caster then
+				caster.currentArea.claimers[#caster.currentArea.claimers+1] = target
+			end
 		end
 	end
 end
@@ -166,4 +169,20 @@ function SpawnGoldBag( keys )
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+end
+
+function Deny(keys)
+	local caster = keys.caster
+	local target = keys.target
+
+	local damageTable = {
+		victim = target,
+		attacker = caster,
+		damage = target:GetMaxHealth(),
+		damage_type = DAMAGE_TYPE_PURE,
+	}
+ 
+	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
+		ApplyDamage(damageTable)
+	end
 end

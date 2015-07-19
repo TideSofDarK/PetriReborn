@@ -1,0 +1,34 @@
+"petri_kvn_fan_deny"
+{
+  "BaseClass"           "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+  "AbilityTextureName"      "techies_suicide"
+
+  "AbilityCastRange" "150"
+
+  "AbilityCooldown" "0.1"
+
+  "MaxLevel"            "1"
+
+  "precache"
+  {
+    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "FireEffect"
+    {
+      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+      "EffectAttachType"  "follow_origin"
+      "Target"            "TARGET"
+    }
+    "RunScript"
+    {
+      "ScriptFile"  "units/kvn_fan.lua"
+      "Function"    "Deny"
+    }
+  }
+}

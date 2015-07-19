@@ -43,7 +43,6 @@ function Explore(keys)
 
 	local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
 	ParticleManager:SetParticleControl( particle, 0, point )
-	point.z = point.z - 90000
 
 	ability:CreateVisibilityNode(point, radius, 6)	
 end
@@ -82,6 +81,8 @@ function ReadComedyBook( keys )
 end
 
 function OnAwake( keys )
+	local caster = keys.caster
+	Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#petri_start", duration=5, style={color="white", ["font-size"]="45px"}})
 	if GameRules.firstPetrosyanIsAwake == nil then
 		GameRules.firstPetrosyanIsAwake = true
 		Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#petrosyan_is_awake", duration=4, style={color="red", ["font-size"]="45px"}})

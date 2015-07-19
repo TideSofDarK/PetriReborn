@@ -4,7 +4,6 @@
   "SoundSet"          "0" 
 
   "AbilityLayout"     "6"
-  "Ability1" "petri_deny_locker"
 
   "vscripts" "units/kvn_fan.lua"
   
@@ -12,8 +11,8 @@
   "MagicalResistance"       "0"
 
   "AttackCapabilities"        "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"           "10000000.0"
-  "AttackDamageMax"           "10000000.0"
+  "AttackDamageMin"           "1.0"
+  "AttackDamageMax"           "1.0"
   "AttackDamageType"          "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"                "2"
   "AttackAnimationPoint"      "0.433"

@@ -23,7 +23,7 @@
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "bonus_armor_percent"  "0 60 90 120 150 180 210 240 270 300 500"
+      "bonus_armor_percent"  "0 180 210 240 270 300 500 750 1000 2500"
     }
   }
 
@@ -47,10 +47,15 @@
   
   "OnChannelSucceeded"
   {
-    "RunScript"
+    ///"RunScript"
+    //{
+    //  "ScriptFile"      "units/lab.lua"
+    //  "Function"        "Upgrade"
+    //}
+    "ApplyModifier"
     {
-      "ScriptFile"      "units/lab.lua"
-      "Function"        "Upgrade"
+      "ModifierName"  "modifier_concrete_aura"
+      "Target"     "CASTER"
     }
     "RunScript"
     {
@@ -67,7 +72,7 @@
       "IsHidden"        "1"
       
       "Aura"          "modifier_concrete"
-      "Aura_Radius"       "4000"
+      "Aura_Radius"       "5000"
       "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
       "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
       "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"

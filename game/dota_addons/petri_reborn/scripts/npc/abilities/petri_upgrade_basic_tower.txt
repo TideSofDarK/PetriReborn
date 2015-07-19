@@ -23,7 +23,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "6 15 31 67 99"
+      "attack"        "14 25 67 99 140"
     }
     "03"
     {
@@ -104,12 +104,12 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "6"
+      "attack"        "16"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_rate"        "10"
+      "attack_rate"        "20"
     }
   }
 
@@ -190,7 +190,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "10 40 80 140"
+      "attack"        "32 55 91 180"
     }
     "03"
     {
@@ -205,7 +205,7 @@
     "05"
     {
       "var_type"          "FIELD_INTEGER"
-      "crit"        "200 200 200 200"
+      "crit"        "300 300 300 300"
     }
   }
 
@@ -332,17 +332,17 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "15 30 60 100"
+      "attack"        "30 60 90 120"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_rate"        "10 15 20 30"
+      "attack_rate"        "10 15 20 25"
     }
     "04"
     {
       "var_type"          "FIELD_INTEGER"
-      "slow_rate"        "-10 -15 -20 -30"
+      "slow_rate"        "-15 -20 -30 -40"
     }
   }
 
@@ -461,7 +461,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "50 75 100 150"
+      "attack"        "50 75 100 175"
     }
     "03"
     {

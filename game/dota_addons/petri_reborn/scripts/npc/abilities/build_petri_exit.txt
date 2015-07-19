@@ -17,7 +17,7 @@
   // BuildingHelper info
   "Building"            "1" //bool
   "BuildingSize"          "3" // this is (3x64) by (3x64) units, so 9 squares.
-  "BuildTime"           "5.0"
+  "BuildTime"           "720.0"
   "AbilityCastRange"        "100"
   "UpdateHealth"          "1" //bool
   "Scale"             "1" //bool

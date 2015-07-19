@@ -8,6 +8,8 @@
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_rally"
 
+  "AbilityCastRange" "150"
+
   "ItemPermanent"         "0"
 
   "OnSpellStart"

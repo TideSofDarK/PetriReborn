@@ -11,6 +11,7 @@ function GameMode:OnDisconnect(keys)
   local reason = keys.reason
   local userid = keys.userid
 
+  
 end
 -- The overall game state has changed
 function GameMode:OnGameRulesStateChange(keys)
@@ -248,6 +249,11 @@ function GameMode:OnEntityKilled( keys )
 
   -- Respawn creep
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") then
+    if GameRules:IsDaytime() == false then
+
+      killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
+      Notifications:Bottom(killerEntity:GetPlayerOwnerID(), {text="#no_farm_tonight", duration=5, style={color="red", ["font-size"]="45px"}})
+    end
     Timers:CreateTimer(0.73,
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
@@ -258,6 +264,7 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:RemoveBuilding(true)
   end
 
+  -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
@@ -269,8 +276,9 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
+  -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
-    Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
+    --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
@@ -306,7 +314,7 @@ function GameMode:OnConnectFull(keys)
   local entIndex = keys.index+1
   -- The Player entity of the joining user
   local ply = EntIndexToHScript(entIndex)
-  
+
   -- The Player ID of the joining player
   local playerID = ply:GetPlayerID()
 end
