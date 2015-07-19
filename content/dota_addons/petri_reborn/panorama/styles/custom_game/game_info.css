@@ -1,0 +1,117 @@
+.GameInfo
+{
+    width:100%;
+    flow-children: down;
+}
+ 
+Label
+{
+    font-size: 18px;
+    color: #999999;
+    vertical-align: top;
+}
+ 
+#Title
+{
+    flow-children: right;
+}
+
+#TitleIcon
+{
+    width: 64px;
+    height: 64px;
+    vertical-align: center;
+}
+
+#TitleName
+{
+    color: #cccccc;
+    font-size: 64px;
+    margin-left: 16px;
+    margin-top: 16px;
+    text-transform: uppercase;
+    vertical-align: center;
+}
+
+#BriefDescription
+{
+}
+
+#PetrosyanText,
+#KVNsText,
+#ItemsText
+{
+    width: 50%;
+}
+
+.Header
+{
+	font-size: 18px;
+    font-weight: bold;
+	margin-top: 36px;
+	text-transform: uppercase;
+}
+
+#ObjectiveHeader
+{
+	margin-top: 18px;
+}
+
+#PetrosyanRow
+{
+    margin-top: 20px;
+}
+
+#PetrosyanText
+{   
+    margin-top:  60px;
+	text-align: center;
+}
+
+#PetrosyanImage
+{
+    width: 240px;
+    height: 170px;
+}
+
+#KVNsRow
+{
+    margin-top: 20px;
+}
+
+#KVNsImage
+{
+    margin-top: -50px;
+    width: 300px;
+    height: 251px;
+}
+
+#KVNsText
+{
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+#TipsHeader
+{
+}
+
+#TipsRow
+{
+	flow-children: down;
+	margin-right: 92px;
+	margin-top: 18px;
+}
+
+.TipText
+{
+	margin-left: 16px;
+    margin-top: 0px;
+}
+
+.InfoRow
+{
+    flow-children: right;
+    width: 100%;
+}
