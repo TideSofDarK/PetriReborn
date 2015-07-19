@@ -208,7 +208,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "4500"
+	  "StatusHealth"        "7500"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -314,7 +314,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "2875"
+	  "StatusHealth"        "3875"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "80"
+	  "StatusHealth"        "180"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -387,9 +387,9 @@
 	}
 	"npc_petri_exit"
 	{
-	  "BaseClass"         "npc_dota_base_additive"  
+	  "BaseClass"         "npc_dota_creature"  
 	  "Model"           "models/props_structures/bad_ancient001.vmdl"  
-	  "ModelScale"                "0.3"
+	  "ModelScale"                "0.25"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "1"
 	
@@ -405,14 +405,14 @@
 	  "BountyGoldMin"       "10"     
 	  "BountyGoldMax"       "10"     
 	
-	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
+	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	  
-	  "StatusHealth"        "5000"     
+	  "StatusHealth"        "2000"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
@@ -625,7 +625,7 @@
 	  "BountyGoldMin"       "20"     
 	  "BountyGoldMax"       "20"     
 	
-	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
+	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
@@ -1123,7 +1123,7 @@
 	  "BountyGoldMin"       "10"     
 	  "BountyGoldMax"       "10"     
 	
-	  "BoundsHullName"      "DOTA_HULL_SIZE_MEDIUM"      
+	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   

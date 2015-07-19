@@ -67,7 +67,7 @@ function build( keys )
 
 			local tower = Entities:FindByClassname(nil, "npc_petri_exploration_tower")
 			if tower ~= nil then
-				tower:GetAbilityByIndex(0):CreateVisibilityNode(unit:GetAbsOrigin(), 1200, 5)
+				tower:GetAbilityByIndex(0):CreateVisibilityNode(unit:GetAbsOrigin()+Vector(0,0,500), 1200, 5)
 			end
 		end
 

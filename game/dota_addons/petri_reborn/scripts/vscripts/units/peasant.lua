@@ -209,25 +209,26 @@ function CheckBuildingPosition( event )
 				print("Reached building, give resources")
 			end
 
+			local lumber_gathered = caster.lumber_gathered
+			caster.lumber_gathered = 0
+
 			-- Green Particle Lumber Popup
 			POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
 			local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
 			local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
 			local color = Vector(10, 200, 90)
 			local lifetime = 3.0
-		    local digits = #tostring(caster.lumber_gathered) + 1
+		    local digits = #tostring(lumber_gathered) + 1
 		    
-		    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, caster.lumber_gathered, 0 ) )
+		    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, lumber_gathered, 0 ) )
 		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
 		    ParticleManager:SetParticleControl(pidx, 3, color)
 
-			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + caster.lumber_gathered 
+			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + lumber_gathered 
     		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
     		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
 
     		caster:SwapAbilities("gather_lumber", "return_resources", true, false)
-
-			caster.lumber_gathered = 0
 		end
 
 		-- Return Ability Off

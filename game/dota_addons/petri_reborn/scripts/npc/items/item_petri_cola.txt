@@ -33,7 +33,7 @@
   {     
     "ApplyModifier"
     {
-      "Target"      "TARGET"
+      "Target"      "CASTER"
       "ModifierName"    "modifier_item_petri_cola_active"
     }
     "SpendCharge"

@@ -10,7 +10,7 @@ end
 
 function CheckAreaClaimers(target, claimers)
   if claimers == nil or target == nil then return false end
-  for i=1,table.getn(claimers),1 do
+  for i=0,#claimers,1 do
     if claimers[i] == target then return true end
   end
   return false
