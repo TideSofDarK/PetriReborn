@@ -1,0 +1,29 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/game_info.css" />
+	</styles>
+	<Panel class="GameInfo">
+		<Panel id="Title">
+			<Label id="TitleName" text="#addon_game_name" />
+		</Panel>
+		<Label id="GameDescription" text="#addon_game_description" />		
+		<Label id="HowToPlayHeader" class="Header" html="true" text="#Как играть:" />
+		<Panel id="PetrosyanRow" class="InfoRow">
+			<Image id="PetrosyanImage" src="file://{images}/custom_game/game_info/Petrosyan.psd" />			
+			<Label id="PetrosyanText" html="true" text="#game_info_Petrosyan" />
+		</Panel>
+		<Panel id="KVNsRow" class="InfoRow">
+			<Label id="KVNsText" html="true" text="#game_info_KVNs" />			
+			<Image id="KVNsImage" src="file://{images}/custom_game/game_info/KVNs.psd" />						
+		</Panel>
+		<Label id="TipsHeader" class="Header" html="true" text="#game_info_tips_header" />
+		<Panel id="TipsRow" class="InfoRow">
+			<Label id="TipText01" class="TipText" html="true" text="#game_info_tip01" />
+			<Label id="TipText02" class="TipText" html="true" text="#game_info_tip02" />
+			<Label id="TipText03" class="TipText" html="true" text="#game_info_tip03" />
+
+		</Panel> -->
+	</Panel>
+</root>
+
