@@ -1,6 +1,6 @@
-"addon"
+﻿"addon"
 {
-    "addon_game_name"                               "Petri Reborn"
+    "addon_game_name"                               "Petri Reborn" 
     "addon_game_description"                        "It is a big humor battle between stylish, trendy, youth KVN's and old, dull, soaked mothballs inhabitants of Crooked Mirror headed by Petrosyan."
     "how_to_play"                                   "How to play"
     "game_info_Petrosyan"                           "Petrosyan and his henchmans need to laugh to death all KVN's."
