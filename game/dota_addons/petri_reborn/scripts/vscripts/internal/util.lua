@@ -91,7 +91,7 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentFood = 0
 
   if level+1 == ability:GetMaxLevel() then
-    caster:RemoveAbility(ability:GetAbilityName())
+    ability:SetHidden(true)
   else 
     ability:SetHidden(false)
   end

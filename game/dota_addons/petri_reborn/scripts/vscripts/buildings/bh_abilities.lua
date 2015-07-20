@@ -12,6 +12,20 @@ function build( keys )
 	local enough_lumber
 	local enough_food
 
+	local ability_name = ability:GetName()
+
+	--Build exit only after 16 min
+	if ability:GetName() == "build_petri_exit" then
+		if GameRules:GetGameTime() < (60 * 16) + 30 then
+			Notifications:Top(caster:GetPlayerOwnerID(),{text="#too_early_for_exit", duration=10, style={color="red"}, continue=false})
+
+			PlayerResource:ModifyGold(pID, gold_cost,false,0)
+
+			ability:EndCooldown()
+			return
+		end
+	end
+
 	-- Cancel building
 	if player.waitingForBuildHelper == true then
 		PlayerResource:ModifyGold(pID, gold_cost,false,0)
@@ -57,18 +71,15 @@ function build( keys )
 	local returnTable = BuildingHelper:AddBuilding(keys)
 
 	keys:OnBuildingPosChosen(function(vPos)
-		--print("OnBuildingPosChosen")
-		-- in WC3 some build sound was played here.
+
 	end)
 
 	keys:OnConstructionStarted(function(unit)
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
-			local tower = Entities:FindByClassname(nil, "npc_petri_exploration_tower")
-			if tower ~= nil then
-				tower:GetAbilityByIndex(0):CreateVisibilityNode(unit:GetAbsOrigin()+Vector(0,0,500), 1200, 5)
-			end
+			local dummy = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+			Timers:CreateTimer(600, function() dummy:RemoveSelf() end)
 		end
 
 		-- Unit is the building be built.
@@ -94,16 +105,7 @@ function build( keys )
 	end)
 	keys:OnConstructionCompleted(function(unit)
 		if unit:GetUnitName() == "npc_petri_exit" then
-			Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
-
-			for i=1,10 do
-				PlayerResource:SetCameraTarget(i-1, unit)
-			end
-
-			Timers:CreateTimer(5.0,
-		    function()
-		      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
-		    end)
+			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
 		end
 
 		-- Play construction complete sound.
@@ -135,6 +137,8 @@ function build( keys )
 				ReturnGold(player)
 				ReturnFood( player )
 
+				if ability:IsNull() ~= true then ability:EndCooldown() end
+
 				-- Destroy unit
 				DestroyEntityBasedOnHealth(caster,unit)
 			end
@@ -154,12 +158,32 @@ function build( keys )
 		ReturnLumber(player)
 		ReturnGold(player)
 		ReturnFood( player )
+
+		if ability_name == "build_petri_exit" then
+			if caster:FindAbilityByName("build_petri_exit") ~= nil then
+				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
+			else
+				caster:AddAbility("build_petri_exit")
+				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
+				caster:RemoveAbility("build_petri_exit")
+			end
+		end
 	end)
 
 	keys:OnConstructionCancelled(function( building )
 		ReturnLumber(player)
 		ReturnGold(player)
 		ReturnFood( player )
+
+		if ability_name == "build_petri_exit" then
+			if caster:FindAbilityByName("build_petri_exit") ~= nil then
+				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
+			else
+				caster:AddAbility("build_petri_exit")
+				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
+				caster:RemoveAbility("build_petri_exit")
+			end
+		end
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.

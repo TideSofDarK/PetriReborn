@@ -105,11 +105,18 @@ function Gather100Lumber( event )
 	
 	local caster = event.caster
 	local ability = event.ability
+
 	local max_lumber_carried = 200
+	local single_chop = 100
+
+	if caster:GetUnitName() == "npc_petri_super_peasant" then 
+		max_lumber_carried = 400
+		single_chop = 200
+	end
 
 	local return_ability = caster:FindAbilityByName("return_resources")
 
-	caster.lumber_gathered = caster.lumber_gathered + 100
+	caster.lumber_gathered = caster.lumber_gathered + single_chop
 	if Debug_Peasant then
 		print("Gathered "..caster.lumber_gathered)
 	end
@@ -255,14 +262,9 @@ function CheckBuildingPosition( event )
 	end
 end
 
-
--- Aux to find resource deposit
 function FindClosestResourceDeposit( caster )
 	local position = caster:GetAbsOrigin()
 
-	-- Find a building to deliver
-	--local sawmills = Entities:FindAllByName("npc_petri_sawmill*") 
-	--Entities:FindAllByName("npc_petri_sawmill_*")	
 	local buildings = Entities:FindAllByClassname("npc_dota_base_additive*") 
 	local sawmills = {}
 	for _,building in pairs(buildings) do
@@ -296,9 +298,7 @@ end
 
 function ReleaseTree( event )
 	local caster = event.caster
-	print("asdasd")
 	if caster.target_tree.worker ~= nil then
-		print("asdasd12")
 		caster.target_tree.worker = nil
 	end
 end
@@ -309,6 +309,8 @@ function StartRepairing(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
+
+	if target:GetUnitName() == "npc_petri_exit" then return end
 
 	if target:GetHealthPercent() == 100 then
 		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
@@ -340,7 +342,7 @@ function CheckRepairingTargetPosition( event )
 	local ability = event.ability
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 120
+	local collision = distance < 210
 	if not collision then
 
 	elseif not caster:HasModifier("modifier_chopping_building") then

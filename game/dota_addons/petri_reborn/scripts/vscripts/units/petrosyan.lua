@@ -1,3 +1,76 @@
+--[[
+	Author: Noya
+	Date: 17.01.2015.
+	Gives vision over an area and shows a particle to the team
+]]
+function FarSight( event )
+	local caster = event.caster
+	local ability = event.ability
+	local level = ability:GetLevel()
+	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
+	local duration = ability:GetLevelSpecialValueFor( "duration", level - 1 )
+
+	local allHeroes = HeroList:GetAllHeroes()
+	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
+	local target = event.target_points[1]
+
+	-- Particle for team
+	for _, v in pairs( allHeroes ) do
+		if v:GetPlayerID() and v:GetTeam() == caster:GetTeam() then
+			local fxIndex = ParticleManager:CreateParticleForPlayer( particleName, PATTACH_WORLDORIGIN, v, PlayerResource:GetPlayer( v:GetPlayerID() ) )
+			ParticleManager:SetParticleControl( fxIndex, 0, target )
+			ParticleManager:SetParticleControl( fxIndex, 1, Vector(reveal_radius,0,reveal_radius) )
+		end
+	end
+
+	-- Vision
+	if level == 1 then
+		local dummy = CreateUnitByName("petri_dummy_600vision", target, false, caster, caster, caster:GetTeamNumber())
+		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
+
+	elseif level == 2 then
+		local dummy = CreateUnitByName("petri_dummy_1000vision", target, false, caster, caster, caster:GetTeamNumber())
+		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
+	elseif level == 3 then
+		local dummy = CreateUnitByName("petri_dummy_1400vision", target, false, caster, caster, caster:GetTeamNumber())
+		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
+    elseif level == 4 then
+		-- Central dummy
+		local dummy = CreateUnitByName("petri_dummy_1800vision", target, false, caster, caster, caster:GetTeamNumber())
+
+		-- We need to create many 1800vision dummies to make a bigger circle
+		local fv = caster:GetForwardVector()
+    	local distance = 1800
+
+    	-- Front and Back
+    	local front_position = target + fv * distance
+    	local back_position = target - fv * distance
+
+		-- Left and Right
+    	ang_left = QAngle(0, 90, 0)
+    	ang_right = QAngle(1, -90, 0)
+		
+		local left_position = RotatePosition(target, ang_left, front_position)
+    	local right_position = RotatePosition(target, ang_right, front_position)
+
+    	-- Create the 4 auxiliar units
+    	local dummy_front = CreateUnitByName("dummy_1800vision", front_position, false, caster, caster, caster:GetTeamNumber())
+    	local dummy_back = CreateUnitByName("dummy_1800vision", back_position, false, caster, caster, caster:GetTeamNumber())
+    	local dummy_left = CreateUnitByName("dummy_1800vision", left_position, false, caster, caster, caster:GetTeamNumber())
+    	local dummy_right = CreateUnitByName("dummy_1800vision", right_position, false, caster, caster, caster:GetTeamNumber())
+
+    	-- Destroy after the duration
+    	Timers:CreateTimer(duration, function() 
+    		dummy:RemoveSelf()
+    		dummy_front:RemoveSelf() 
+    		dummy_back:RemoveSelf() 
+    		dummy_left:RemoveSelf() 
+    		dummy_right:RemoveSelf()
+    	end)
+    end
+
+end
+
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
@@ -30,21 +103,14 @@ function Return( keys )
 	FindClearSpaceForUnit(caster,caster.spawnPosition,true)
 end
 
-function Explore(keys)
+function SpawnWard(keys)
 	local point = keys.target_points[1]
 	local caster = keys.caster
 
-	local ability = keys.ability
-	local ability_level = ability:GetLevel() - 1
+	local ward = CreateUnitByName("npc_petri_ward", point,  true, nil, caster, DOTA_TEAM_BADGUYS)
 
-	local particleName = "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
-
-	local radius = ability:GetLevelSpecialValueFor("aoe_radius", ability_level)
-
-	local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
-	ParticleManager:SetParticleControl( particle, 0, point )
-
-	ability:CreateVisibilityNode(point, radius, 6)	
+	InitAbilities(ward)
+	StartAnimation(ward, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
 
 function SpawnJanitor( keys )
@@ -52,22 +118,24 @@ function SpawnJanitor( keys )
 
 	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
 	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+
+	janitor.spawnPosition = caster:GetAbsOrigin()
 end
 
 function ReadBookOfLaugh( keys )
 	local caster = keys.caster
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
+	caster:HeroLevelUp(false)
 	caster:HeroLevelUp(true)
-	caster:HeroLevelUp(false)
-	caster:HeroLevelUp(false)
-	caster:HeroLevelUp(false)
-	caster:HeroLevelUp(false)
 end
 
 function ReadComedyStory( keys )
 	local caster = keys.caster
 
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 5000)
-	caster:SetBaseDamageMin(caster:GetBaseDamageMax())
+	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + 575)
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 575)
 
 	caster:CalculateStatBonus()
 end
@@ -75,7 +143,7 @@ end
 function ReadComedyBook( keys )
 	local caster = keys.caster
 	
-	caster:SetBaseStrength(caster:GetBaseStrength() + 500)
+	caster:SetBaseStrength(caster:GetBaseStrength() + 40)
 
 	caster:CalculateStatBonus()
 end

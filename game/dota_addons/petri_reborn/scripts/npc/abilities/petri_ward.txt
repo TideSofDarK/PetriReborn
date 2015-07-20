@@ -1,0 +1,41 @@
+"petri_ward"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName" ""
+
+  "OnOwnerSpawned"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "lifetime"
+      "Target"     "CASTER"
+      "Duration"    "50"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "lifetime"
+    {
+      "IsHidden" "1"
+      "OnDestroy"
+      {
+        "RemoveUnit"
+        {
+          "Target" "CASTER"
+        }
+      }
+    }
+    "unit_properties"
+    {
+      "Passive" "1"
+      
+      "States"
+      {
+        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    } 
+  }   
+}

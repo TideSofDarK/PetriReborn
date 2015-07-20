@@ -16,7 +16,7 @@ function StartBuildingHelper( params )
     var mPos = GameUI.GetCursorPosition();
 
     mPos[0] = (mPos[0] * 1.0 / $( "#BuildingHelperBase").desiredlayoutwidth ) * Math.max(1920, $( "#BuildingHelperBase").desiredlayoutwidth );
-    mPos[1] = (mPos[1] * 1.0 / $( "#BuildingHelperBase").desiredlayoutheight) * Math.max(1080, $( "#BuildingHelperBase").desiredlayoutheight);
+    mPos[1] = (mPos[1] * 1.0 / $( "#BuildingHelperBase").desiredlayoutheight) * Math.max(1080, $( "#BuildingHelperBase").desiredlayoutheight == 1200 ? 1080: $( "#BuildingHelperBase").desiredlayoutheight);
 
     $( "#GreenSquare").style['height'] = String(100) + "px;";
     $( "#GreenSquare").style['width'] = String(100) + "px;";

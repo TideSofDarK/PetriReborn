@@ -27,8 +27,8 @@
   "AttackDamageMin"       "0"
   "AttackDamageMax"       "0"
 
-  "BountyGoldMin"       "0.0"
-  "BountyGoldMax"       "0.0"
+  "BountyGoldMin"       "10.0"
+  "BountyGoldMax"       "10.0"
 
   "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
   "RingRadius"        "100"

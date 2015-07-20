@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "AbilityGoldCost"       "10 15 18 25 50 75 100 125 150 175 200 250"
+  "AbilityGoldCost"       "50 100 125 150 175 200 250 500 750 800 900 999"
   "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6"
 
   "MaxLevel"            "13"
@@ -20,10 +20,15 @@
       "lumber_cost"        "1000 2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000"
     }
 
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "bonus_armor_percent"  "0 45 90 180 210 240 270 300 500 750 1000 2500"
+    }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "bonus_armor_percent"  "0 180 210 240 270 300 500 750 1000 2500 3300 4000"
+      "aura_range"  "5000"
     }
   }
 
@@ -72,7 +77,7 @@
       "IsHidden"        "1"
       
       "Aura"          "modifier_concrete"
-      "Aura_Radius"       "5000"
+      "Aura_Radius"       "%aura_range"
       "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
       "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
       "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"

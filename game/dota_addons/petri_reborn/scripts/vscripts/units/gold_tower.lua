@@ -28,21 +28,21 @@ function Upgrade ( event   )
 	local tower_level = ability:GetLevel()
 
 	if tower_level == 1 then
-		caster:SetModelScale(0.4)
+		caster:SetModelScale(0.45)
 	elseif tower_level == 2 then 
 		caster:SetModelScale(0.5)
 	elseif tower_level == 3 then
-		caster:SetModelScale(0.6)
+		caster:SetModelScale(0.55)
 	elseif tower_level == 4 then
-		caster:SetModelScale(0.7)
+		caster:SetModelScale(0.6)
 	elseif tower_level == 5 then
-		caster:SetModelScale(0.8)
+		caster:SetModelScale(0.65)
 	elseif tower_level == 6 then
-		caster:SetModelScale(0.9)
+		caster:SetModelScale(0.7)
 	elseif tower_level == 7 then
-		caster:SetModelScale(1.0)
+		caster:SetModelScale(0.75)
 	elseif tower_level == 8 then
-		caster:SetModelScale(1.1)
+		caster:SetModelScale(0.80)
 	end
 
 	caster:GetAbilityByIndex(0):SetLevel(tower_level+1)

@@ -195,8 +195,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "150.0"
-	  "BountyGoldMax"       "150.0"
+	  "BountyGoldMin"       "120.0"
+	  "BountyGoldMax"       "140.0"
 	  "BountyXP"          "100"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -208,7 +208,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "7500"
+	  "StatusHealth"        "8500"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -241,14 +241,14 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "7.0"
-	  "AttackDamageMax"     "9.0"
+	  "AttackDamageMin"     "9.0"
+	  "AttackDamageMax"     "11.0"
 	  "AttackRate"        "1.2"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "3.0"
+	  "BountyGoldMin"       "4.0"
 	  "BountyGoldMax"       "4.0"
 	  "BountyXP"          "7"  
 	
@@ -301,8 +301,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "70.0"
-	  "BountyGoldMax"       "100.0"
+	  "BountyGoldMin"       "75.0"
+	  "BountyGoldMax"       "75.0"
 	  "BountyXP"          "75"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -314,7 +314,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "3875"
+	  "StatusHealth"        "4875"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -354,8 +354,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "45.0"
-	  "BountyGoldMax"       "45.0"
+	  "BountyGoldMin"       "35.0"
+	  "BountyGoldMax"       "35.0"
 	  "BountyXP"          "50"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -395,6 +395,7 @@
 	
 	  "AbilityLayout"       "4"
 	  "Ability1"         "petri_building"
+	  "Ability2"          "petri_exit"
 	  
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -405,7 +406,7 @@
 	  "BountyGoldMin"       "10"     
 	  "BountyGoldMax"       "10"     
 	
-	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
+	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"   
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
@@ -549,6 +550,57 @@
 	  "VisionDaytimeRange"    "1800"   
 	  "VisionNighttimeRange"    "1800"   
 	}
+	
+	"petri_dummy_600vision"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "VisionDaytimeRange"    "600" 
+	  "VisionNighttimeRange"    "600"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_dummy_invisibility"
+	}
+	
+	"petri_dummy_1000vision"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/development/invisiblebox.vmdl"
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "VisionDaytimeRange"    "1000"  
+	  "VisionNighttimeRange"    "1000"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_dummy_invisibility"
+	}
+	
+	"petri_dummy_1400vision"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/development/invisiblebox.vmdl"
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "VisionDaytimeRange"    "1400"  
+	  "VisionNighttimeRange"    "1400"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_dummy_invisibility"
+	}
+	
+	"petri_dummy_1800vision"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/development/invisiblebox.vmdl"
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "VisionDaytimeRange"    "1800"  
+	  "VisionNighttimeRange"    "1800"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_dummy_invisibility"
+	}
 	"npc_petri_gold_bag"
 	{
 	  
@@ -574,8 +626,8 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "20"     
-	  "BountyGoldMax"       "20"     
+	  "BountyGoldMin"       "10"     
+	  "BountyGoldMax"       "10"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"      
 	
@@ -622,8 +674,8 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "20"     
-	  "BountyGoldMax"       "20"     
+	  "BountyGoldMin"       "10"     
+	  "BountyGoldMax"       "10"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
@@ -679,7 +731,7 @@
 	  "MovementSpeed"    "522"
 	  "MovementTurnRate"   "0.6"
 	
-	  "StatusHealth"    "60000"
+	  "StatusHealth"    "50000"
 	  "StatusHealthRegen"   "3"
 	  "StatusMana"    "0"
 	  "StatusManaRegen"    "0"
@@ -727,7 +779,7 @@
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"    "40"
-	  "CollisionSize"    "16"
+	  "CollisionSize"    "1"
 	  "FormationRank"    "4"
 	
 	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
@@ -780,8 +832,8 @@
 	  "AttackDamageMin"       "0"
 	  "AttackDamageMax"       "0"
 	
-	  "BountyGoldMin"       "0.0"
-	  "BountyGoldMax"       "0.0"
+	  "BountyGoldMin"       "10.0"
+	  "BountyGoldMax"       "10.0"
 	
 	  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
 	  "RingRadius"        "100"
@@ -949,8 +1001,8 @@
 	  "AttackDamageMin"       "0"
 	  "AttackDamageMax"       "0"
 	
-	  "BountyGoldMin"       "0.0"
-	  "BountyGoldMax"       "0.0"
+	  "BountyGoldMin"       "10.0"
+	  "BountyGoldMax"       "10.0"
 	
 	  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
 	  "RingRadius"        "100"
@@ -1120,8 +1172,8 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "10"     
-	  "BountyGoldMax"       "10"     
+	  "BountyGoldMin"       "1"     
+	  "BountyGoldMax"       "1"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
@@ -1180,8 +1232,8 @@
 	  "ProjectileSpeed"            "1100"
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "0"     
-	  "BountyGoldMax"       "0"     
+	  "BountyGoldMin"       "7"     
+	  "BountyGoldMax"       "7"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
 	  "RingRadius"                "70"
@@ -1235,8 +1287,8 @@
 	  "ProjectileSpeed"            "1100"
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "0"     
-	  "BountyGoldMax"       "0"     
+	  "BountyGoldMin"       "14"     
+	  "BountyGoldMax"       "14"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
 	  "RingRadius"                "70"
@@ -1280,8 +1332,8 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "0"     
-	  "BountyGoldMax"       "0"     
+	  "BountyGoldMin"       "5"     
+	  "BountyGoldMax"       "5"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
 	  //"RingRadius"                "70"
@@ -1303,5 +1355,50 @@
 	
 	  "VisionDaytimeRange"    "500"   
 	  "VisionNighttimeRange"    "500"   
+	}
+	"npc_petri_ward"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"
+	  "ModelScale"        "0.7"
+	  "Level"           "0"
+	  "HealthBarOffset"       "140"
+	  "HasInventory"        "0"
+	
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_ward"
+	  
+	  "ArmorPhysical"       "0"
+	  "MagicalResistance"     "0"
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackDamageMin"       "0"
+	  "AttackDamageMax"       "0"
+	
+	  "BountyGoldMin"       "10.0"
+	  "BountyGoldMax"       "10.0"
+	
+	  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
+	  "RingRadius"        "10"
+	  "CollisionSize"       "2"
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+	  "MovementSpeed"         "0"   
+	  "MovementTurnRate"    "0.0"  
+	  "HasAggressiveStance"     "0"
+	  
+	  "StatusHealth"        "1"
+	  "StatusHealthRegen"     "0"
+	  "StatusMana"        "0"
+	  "StatusManaRegen"       "0"
+	
+	  "VisionDaytimeRange"    "1700"
+	  "VisionNighttimeRange"    "1700"
+	
+	  "TeamName"          "DOTA_TEAM_BADGUYS"
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	}
 }

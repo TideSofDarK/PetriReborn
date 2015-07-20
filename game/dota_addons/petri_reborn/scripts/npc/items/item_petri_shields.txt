@@ -28,7 +28,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"      "6"
+      "invu_duration"      "4"
     }
   }
 

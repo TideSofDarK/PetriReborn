@@ -1,7 +1,7 @@
 function Spawn ( entityKeyValues  )
 	Timers:CreateTimer(2.1,
     function()
-    	if thisEntity:GetPlayerOwner() ~= nil then
+    	if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
 
 			thisEntity:GetPlayerOwner().maxFood = thisEntity:GetPlayerOwner().maxFood + 30
 	    	thisEntity.foodProvided = 30

@@ -1,11 +1,6 @@
 function CheckFarmPlaces(trigger)
 	local triggerName = trigger:GetName ()
-	if 	triggerName == "portal_trigger_1_input" or
-		triggerName == "portal_trigger_2_input" or
-		triggerName == "portal_trigger_3_input" or
-		triggerName == "portal_trigger_4_input" or
-		triggerName == "portal_trigger_5_input" or
-		triggerName == "portal_trigger_6_input" then
+	if 	string.match(triggerName, "portal_trigger_creep")  then
 		if GameRules:IsDaytime() ~= true then return true end
 	end
 end
@@ -18,11 +13,22 @@ function OnStartTouch(trigger)
 			or trigger.activator.teleportationState == 3 then
 			trigger.activator.teleportationState = 1
 
+			local newPosition = thisEntity:GetAbsOrigin()
+
+			if string.match(trigger.caller:GetName (), "portal_trigger_creep") then
+				local additionalVector = (thisEntity:GetAbsOrigin() - trigger.caller:GetAbsOrigin()):Normalized() * 300
+				newPosition = newPosition + additionalVector
+				if string.match(trigger.caller:GetName (), "output") then
+					newPosition = trigger.activator.spawnPosition
+				end
+				trigger.activator.teleportationState = 0
+			end
+
 			trigger.activator.currentArea = trigger.caller
-	    	FindClearSpaceForUnit(trigger.activator,thisEntity:GetAbsOrigin(),true)
+	    	FindClearSpaceForUnit(trigger.activator,newPosition,true)
 
 	    	trigger.activator:Stop()
-	    	PlayerResource:SetCameraTarget(trigger.activator:GetPlayerOwnerID(), trigger.activator)
+	    	MoveCamera(trigger.activator:GetPlayerOwnerID(), trigger.activator)
 
 	    	local particleName = "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf"
 			local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )

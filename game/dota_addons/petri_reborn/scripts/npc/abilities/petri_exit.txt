@@ -1,0 +1,15 @@
+"petri_exit"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "AbilityTextureName" ""
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "gamemode.lua"
+      "Function"    "KVNWin"
+    }
+  } 
+}

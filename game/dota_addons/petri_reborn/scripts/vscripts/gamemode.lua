@@ -90,6 +90,8 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
+          newHero:SetGold(10, false)
+
           player.lumber = 150
         end, pID)
     end
@@ -152,14 +154,64 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+  Timers:CreateTimer(16 * 60,
     function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer(22 * 60,
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer(35 * 60,
+    function()
+      PetrosyanWin()
     end)
 end
 
-function GameMode:OnUnitSelected(args)
+function GameMode:FilterExecuteOrder( filterTable )
+    local units = filterTable["units"]
+    local order_type = filterTable["order_type"]
+    local issuer = filterTable["issuer_player_id_const"]
+    
+    if order_type == 19 then
+      if filterTable["entindex_target"] >= 6 then
+        return false
+      else
+        local ent = EntIndexToHScript(filterTable["units"]["0"])
+        local stashSlot = 6
+        for i=6,11 do
+          if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+            stashSlot = i
+            break
+          end
+        end
+
+        ent:SwapItems(filterTable["entindex_target"], stashSlot)
+      end
+    end
+
+    for n,unit_index in pairs(units) do
+        local unit = EntIndexToHScript(unit_index)
+        local ownerID = unit:GetPlayerOwnerID()
+
+        if PlayerResource:GetConnectionState(ownerID) == 3 or
+          PlayerResource:GetConnectionState(ownerID) == 4
+          then
+          return false
+        end
+    end
+
+    return true
+end
+
+function GameMode:ModifyGoldFilter(event)
+  if event.reason_const == DOTA_ModifyGold_HeroKill then
+    PlayerResource:ModifyGold(event.player_id_const, 20,false,DOTA_ModifyGold_HeroKill )
+    return false
+  end
+  return true
 end
 
 function GameMode:InitGameMode()
@@ -190,5 +242,35 @@ function GameMode:InitGameMode()
     end
   end
 
+  -- Some way to prevent controlling of disconnected players
+  GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
+
+  -- Fix hero bounties
+  GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
+
   BuildingHelper:Init()
+end
+
+function KVNWin(keys)
+  local caster = keys.caster
+
+  Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+
+  for i=1,10 do
+    PlayerResource:SetCameraTarget(i-1, caster)
+  end
+
+  Timers:CreateTimer(5.0,
+    function()
+      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+    end)
+end
+
+function PetrosyanWin()
+  Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
+
+  Timers:CreateTimer(5.0,
+    function()
+      GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+    end)
 end

@@ -190,7 +190,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "32 55 91 180 210 240 260"
+      "attack"        "55 91 180 210 240 260 350"
     }
     "03"
     {
@@ -471,7 +471,7 @@
     "04"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor_reduction"        "-30 -70 -110 -150 -180 -210 -250"
+      "armor_reduction"        "-150 -180 -210 -250 -500 -800 -1100"
     }
   }
 

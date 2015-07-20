@@ -2,6 +2,7 @@
 {
   "consumables"
   {
+    "item"        "item_petri_ward"
     "item"        "item_petri_cola"
     "item"        "item_petri_janitor"
     "item"        "item_petri_book_of_laugh"

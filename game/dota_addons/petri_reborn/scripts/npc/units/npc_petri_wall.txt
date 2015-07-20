@@ -19,8 +19,8 @@
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 
   "BountyXP"          "0"     
-  "BountyGoldMin"       "0"     
-  "BountyGoldMax"       "0"     
+  "BountyGoldMin"       "5"     
+  "BountyGoldMax"       "5"     
 
   "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
   //"RingRadius"                "70"
