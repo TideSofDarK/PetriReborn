@@ -169,22 +169,25 @@ function GameMode:FilterExecuteOrder( filterTable )
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
-
+    PrintTable(filterTable)
     if order_type == 19 then 
       if filterTable["entindex_target"] >= 6 or
         PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
         return false
       else
         local ent = EntIndexToHScript(filterTable["units"]["0"])
-        local stashSlot = 6
-        for i=6,11 do
-          if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
-            stashSlot = i
-            break
-          end
-        end
 
-        ent:SwapItems(filterTable["entindex_target"], stashSlot)
+        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
+          local stashSlot = 6
+          for i=6,11 do
+            if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+              stashSlot = i
+              break
+            end
+          end
+
+          ent:SwapItems(filterTable["entindex_target"], stashSlot)
+        end
       end
     end
 
