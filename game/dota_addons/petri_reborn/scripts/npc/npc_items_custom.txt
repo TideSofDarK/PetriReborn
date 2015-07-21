@@ -334,7 +334,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_hook"
 	
-	  "ItemCost"            "7500"
+	  "ItemCost"            "9500"
 	  "ItemQuality"         "secret_shop"
 	  "ItemAliases"         "hook"
 	  "SecretShop" "1"
@@ -349,7 +349,7 @@
 	  "AbilityCastRange"        "1300"
 	  "AbilityCastPoint"        "0.3"
 	  
-	  "AbilityCooldown"       "7.0"
+	  "AbilityCooldown"       "15.0"
 	
 	  "AbilitySpecial"
 	  {
@@ -774,7 +774,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_mega_sith"
 	
-	  "ItemCost"            "20250"
+	  "ItemCost"            "0"
 	  "ItemShopTags"          "mana_pool;str"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "mega sith"
@@ -831,7 +831,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10000"
+	  "ItemCost"            "9000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

@@ -65,7 +65,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_exit"
 	  "AbilityCooldown"       "480.0"
-	  "AbilityGoldCost"       "3200"
+	  "AbilityGoldCost"       "4000"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -2639,7 +2639,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "50 100 175 350 500"
+	  "AbilityGoldCost"       "50 100 175 275 400"
 	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
 	
 	  "MaxLevel"            "6"
