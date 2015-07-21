@@ -1,5 +1,6 @@
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
+	local hero = player:GetAssignedHero()
 	local pID = player:GetPlayerID()
 	local caster = keys.caster
 
@@ -11,6 +12,20 @@ function build( keys )
 
 	local enough_lumber
 	local enough_food
+
+	local ability_name = ability:GetName()
+
+	--Build exit only after 16 min
+	if ability:GetName() == "build_petri_exit" then
+		if GameRules:GetGameTime() < (60 * 16) + 30 then
+			Notifications:Top(caster:GetPlayerOwnerID(),{text="#too_early_for_exit", duration=10, style={color="red"}, continue=false})
+
+			PlayerResource:ModifyGold(pID, gold_cost,false,0)
+
+			ability:EndCooldown()
+			return
+		end
+	end
 
 	-- Cancel building
 	if player.waitingForBuildHelper == true then
@@ -30,7 +45,7 @@ function build( keys )
 	end
 
 	if gold_cost ~= nil then
-		player.lastSpentGold = gold_cost
+		hero.lastSpentGold = gold_cost
 	end
 
 	if lumber_cost ~= nil then
@@ -46,6 +61,8 @@ function build( keys )
 	end
 
 	if enough_food ~= true or enough_lumber ~= true then
+		ReturnGold(player)
+		EndCooldown(caster, ability_name)
 		return
 	else
 		SpendLumber(player, lumber_cost)
@@ -57,18 +74,15 @@ function build( keys )
 	local returnTable = BuildingHelper:AddBuilding(keys)
 
 	keys:OnBuildingPosChosen(function(vPos)
-		--print("OnBuildingPosChosen")
-		-- in WC3 some build sound was played here.
+
 	end)
 
 	keys:OnConstructionStarted(function(unit)
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
-			local tower = Entities:FindByClassname(nil, "npc_petri_exploration_tower")
-			if tower ~= nil then
-				tower:GetAbilityByIndex(0):CreateVisibilityNode(unit:GetAbsOrigin()+Vector(0,0,500), 1200, 5)
-			end
+			local dummy = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+			Timers:CreateTimer(600, function() dummy:RemoveSelf() end)
 		end
 
 		-- Unit is the building be built.
@@ -94,16 +108,7 @@ function build( keys )
 	end)
 	keys:OnConstructionCompleted(function(unit)
 		if unit:GetUnitName() == "npc_petri_exit" then
-			Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
-
-			for i=1,10 do
-				PlayerResource:SetCameraTarget(i-1, unit)
-			end
-
-			Timers:CreateTimer(5.0,
-		    function()
-		      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
-		    end)
+			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
 		end
 
 		-- Play construction complete sound.
@@ -126,11 +131,17 @@ function build( keys )
 					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=true})
 				end
 
-				keys.caster.currentArea.claimers = {}
-				keys.caster.currentArea.claimers[1] = keys.caster
+				keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
+				if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
 			else
 				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
 				
+				ReturnLumber(player)
+				ReturnGold(player)
+				ReturnFood( player )
+
+				if ability:IsNull() ~= true then ability:EndCooldown() end
+
 				-- Destroy unit
 				DestroyEntityBasedOnHealth(caster,unit)
 			end
@@ -150,12 +161,16 @@ function build( keys )
 		ReturnLumber(player)
 		ReturnGold(player)
 		ReturnFood( player )
+
+		EndCooldown(caster, ability_name)
 	end)
 
 	keys:OnConstructionCancelled(function( building )
 		ReturnLumber(player)
 		ReturnGold(player)
 		ReturnFood( player )
+
+		EndCooldown(caster, ability_name)
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.
@@ -189,9 +204,11 @@ function builder_queue( keys )
   if caster.ProcessingBuilding ~= nil then
     -- caster is probably a builder, stop them
     player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
-    player.activeBuilder:ClearQueue()
+    if player.activeBuilder ~= nil then
+    	player.activeBuilder:ClearQueue()
+    	player.activeBuilder:Stop()
+    	player.activeBuilder.ProcessingBuilding = false
+    end
     player.activeBuilding = nil
-    player.activeBuilder:Stop()
-    player.activeBuilder.ProcessingBuilding = false
   end
 end

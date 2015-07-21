@@ -46,8 +46,8 @@ function GivePermissionToBuild( keys )
 
 	if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
 		if target.currentArea == caster.currentArea then
-			if caster.currentArea.claimers[1] == caster then
-				caster.currentArea.claimers[#caster.currentArea.claimers+1] = target
+			if caster.currentArea.claimers[0] == caster then
+				caster.currentArea.claimers[#caster.currentArea.claimers + 1] = target
 			end
 		end
 	end

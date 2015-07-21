@@ -1,5 +1,15 @@
 Debug_Peasant = false
 
+function LumberUpgrade(event)
+	local caster = event.caster
+	local target = event.target
+	local ability = event.ability
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	hero.bonusLumber = ability:GetLevelSpecialValueFor("bonus_lumber", ability:GetLevel() - 1)
+end
+
 -- Lumber gathering
 
 function Gather( event )
@@ -89,7 +99,7 @@ function CheckTreePosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 150
+	local collision = distance < 160
 	if not collision then
 	--print("Moving to tree, distance: ",distance)
 	elseif not caster:HasModifier("modifier_chopping_wood") then
@@ -105,11 +115,23 @@ function Gather100Lumber( event )
 	
 	local caster = event.caster
 	local ability = event.ability
+
+	local hero = caster:GetPlayerOwner():GetAssignedHero()
+
 	local max_lumber_carried = 200
+	local single_chop = 100
+
+	if caster:GetUnitName() == "npc_petri_super_peasant" then 
+		max_lumber_carried = 400
+		single_chop = 200
+	end
+
+	max_lumber_carried = max_lumber_carried + (hero.bonusLumber * 2)
+	single_chop = single_chop + hero.bonusLumber 
 
 	local return_ability = caster:FindAbilityByName("return_resources")
 
-	caster.lumber_gathered = caster.lumber_gathered + 100
+	caster.lumber_gathered = caster.lumber_gathered + single_chop
 	if Debug_Peasant then
 		print("Gathered "..caster.lumber_gathered)
 	end
@@ -188,7 +210,10 @@ function CheckBuildingPosition( event )
 	local target = caster.target_building -- Index building so we know which target to start with
 	local ability = event.ability
 
-	if not target then
+	if not target or not caster then
+		-- caster:RemoveModifierByName("modifier_chopping_wood")
+		-- caster:RemoveModifierByName("modifier_gathering_lumber")
+		-- caster:RemoveModifierByName("modifier_chopping_wood_animation")
 		return
 	end
 
@@ -209,6 +234,8 @@ function CheckBuildingPosition( event )
 				print("Reached building, give resources")
 			end
 
+			local hero = caster:GetPlayerOwner():GetAssignedHero()
+ 
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
@@ -224,7 +251,8 @@ function CheckBuildingPosition( event )
 		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
 		    ParticleManager:SetParticleControl(pidx, 3, color)
 
-			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + lumber_gathered 
+		   
+			hero.lumber = hero.lumber + lumber_gathered 
     		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
     		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
 
@@ -255,14 +283,9 @@ function CheckBuildingPosition( event )
 	end
 end
 
-
--- Aux to find resource deposit
 function FindClosestResourceDeposit( caster )
 	local position = caster:GetAbsOrigin()
 
-	-- Find a building to deliver
-	--local sawmills = Entities:FindAllByName("npc_petri_sawmill*") 
-	--Entities:FindAllByName("npc_petri_sawmill_*")	
 	local buildings = Entities:FindAllByClassname("npc_dota_base_additive*") 
 	local sawmills = {}
 	for _,building in pairs(buildings) do
@@ -296,9 +319,7 @@ end
 
 function ReleaseTree( event )
 	local caster = event.caster
-	print("asdasd")
 	if caster.target_tree.worker ~= nil then
-		print("asdasd12")
 		caster.target_tree.worker = nil
 	end
 end
@@ -309,6 +330,8 @@ function StartRepairing(event)
 	local caster = event.caster
 	local target = event.target
 	local ability = event.ability
+
+	if target:GetUnitName() == "npc_petri_exit" then return end
 
 	if target:GetHealthPercent() == 100 then
 		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
@@ -340,7 +363,7 @@ function CheckRepairingTargetPosition( event )
 	local ability = event.ability
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 120
+	local collision = distance < 210
 	if not collision then
 
 	elseif not caster:HasModifier("modifier_chopping_building") then
@@ -402,9 +425,9 @@ function Spawn( t )
 
 				if this_distance < distance then
 					distance = this_distance
-					if v.worker == nil then
+					--if v.worker == nil then
 						closest_tree = v
-					end
+					--end
 				end
 			end
 

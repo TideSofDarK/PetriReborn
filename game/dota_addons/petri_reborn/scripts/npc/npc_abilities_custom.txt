@@ -55,8 +55,8 @@
 	
 	  // BuildingHelper info
 	  "Building"            "1" //bool
-	  "BuildingSize"          "3" // this is (3x64) by (3x64) units, so 9 squares.
-	  "BuildTime"           "720.0"
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "540.0"
 	  "AbilityCastRange"        "100"
 	  "UpdateHealth"          "1" //bool
 	  "Scale"             "1" //bool
@@ -64,8 +64,8 @@
 	  //"CancelsBuildingGhost"      "0" //bool
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_exit"
-	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "999"
+	  "AbilityCooldown"       "480.0"
+	  "AbilityGoldCost"       "3200"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -133,12 +133,12 @@
 	    "01"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "food_cost" "2"
+	        "food_cost" "25"
 	    }
 	    "02"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "lumber_cost" "4000"
+	        "lumber_cost" "3250"
 	    }
 	  }
 	
@@ -437,21 +437,17 @@
 	
 	  "AbilityCastPoint"        "0.1"
 	
-	  "OnUpgrade"
-	  {
-	    "ApplyModifier"
-	    {
-	      "Target"      "CASTER"
-	      "ModifierName"    "modifier_ability_gather_lumber_no_col"
-	    }
-	  }
-	
 	  "OnAbilityPhaseStart"
 	  {
 	    "RunScript"
 	    {
 	      "ScriptFile"  "units/peasant.lua"
 	      "Function"    "Gather"
+	    }
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_ability_gather_lumber_no_col"
 	    }
 	  }
 	
@@ -489,6 +485,11 @@
 	      {
 	        "RemoveModifier"
 	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }  
+	        "RemoveModifier"
+	        {
 	          "ModifierName"  "modifier_gathering_lumber"
 	          "Target"    "CASTER"
 	        }
@@ -509,7 +510,12 @@
 	      "OverrideAnimation"   "ACT_DOTA_ATTACK"
 	
 	      "OnOrder"
-	      {     
+	      { 
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }    
 	        "RemoveModifier"
 	        {
 	          "ModifierName"  "modifier_chopping_wood"
@@ -546,6 +552,11 @@
 	      "IsHidden"        "1"
 	      "OnOrder"
 	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }  
 	        "RemoveModifier"
 	        {
 	          "ModifierName"  "modifier_chopping_wood_animation"
@@ -770,6 +781,50 @@
 	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    } 
+	    "modifier_truesight_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"  "1800"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	          }
+	        
+	          "Action"    
+	          {
+	            "RemoveModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	
+	            "ApplyModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	          }
+	        }     
+	      }   
+	    }
+	    "modifier_truesight_reveal"
+	    {
+	      "IsHidden"      "1"
+	      "Duration"      "0.5"
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+	      }
+	    }
 	  }   
 	}
 	"petri_empty1"
@@ -820,6 +875,21 @@
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"            "rubick_empty1"
 	  "IsHidden"         "1"
+	}
+	"petri_exit"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityTextureName" ""
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "gamemode.lua"
+	      "Function"    "KVNWin"
+	    }
+	  } 
 	}
 	"petri_exploration_tower_explore_world"
 	{
@@ -882,7 +952,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "9 9 9 9 9 9 9 9 9"
+	  "AbilityCooldown" "10 9 8 8 8 7 6 5 4"
 	
 	  "MaxLevel"            "9"
 	
@@ -891,7 +961,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "1 2 3 4 5 6 7 8 9"
+	      "gold"      "2 4 5 6 7 10 12 14"
 	    }
 	  }
 	
@@ -1272,17 +1342,28 @@
 	  "AbilityTextureName"      "petri_exploration_tree_explore"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
-	  "AbilityManaCost"       "10 40 70 150 250"
-	  "AbilityCooldown"       "35 30 25 20 15"
+	  "AbilityManaCost"       "10 40 70 150"
+	  "AbilityCooldown"       "30 25 20 15"
 	
-	  "MaxLevel"            "5"
+	  "MaxLevel"            "4"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/dust_of_appearance.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	  }
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "aoe_radius"          "1600 2850 3100 3250 3300"
+	      "reveal_radius"          "600 1000 1400 1800"
+	    }
+	    "02"
+	    {
+	      "var_type"    "FIELD_INTEGER"
+	      "duration"    "5 6 7 8"
 	    }
 	  }
 	
@@ -1296,7 +1377,7 @@
 	    "RunScript"
 	    {
 	      "ScriptFile"      "units/petrosyan.lua"
-	      "Function"        "Explore"
+	      "Function"        "FarSight"
 	      "Target"    "POINT"
 	    }
 	  }
@@ -1505,11 +1586,11 @@
 	
 	      "States"
 	      {
+	        "MODIFIER_STATE_ROOTED" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FROZEN" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_SPECIALLY_DENIABLE"   "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
-	
+	        "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED" 
 	        "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
 	      }
@@ -1738,7 +1819,6 @@
 	          "Function"    "ToggleOffRepairing"
 	        }
 	      }
-	      
 	    }
 	
 	    "modifier_chopping_building"
@@ -1838,27 +1918,27 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "6"
+	  "MaxLevel"            "8"
 	
-	  "AbilityChannelTime"      "1.0 2.0 3.0 4.0 5.0"
-	  "AbilityGoldCost"       "0 0 1 5 10"
+	  "AbilityChannelTime"      "1.0 2.0 3.0 4.0 5.0 6.0 8.0"
+	  "AbilityGoldCost"       "0 0 1 5 10 20 40"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "500 1500 4500 10000 17000"
+	      "lumber_cost"        "500 1500 4500 10000 17000 21000 28000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "14 25 67 99 140"
+	      "attack"        "14 25 67 99 140 200 400"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "20 40 50 60 70"
+	      "attack_rate"        "20 40 50 60 70 90 120"
 	    }
 	  }
 	
@@ -2000,10 +2080,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "5"
+	  "MaxLevel"            "8"
 	
-	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3"
-	  "AbilityGoldCost"       "0 0 2 10"
+	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
+	  "AbilityGoldCost"       "0 0 2 10 20 30 40"
 	
 	  "precache"
 	  {
@@ -2015,27 +2095,27 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "2000 5000 10000 17000"
+	      "lumber_cost"        "2000 5000 10000 17000 20000 25000 34000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "32 55 91 180"
+	      "attack"        "55 91 180 210 240 260 350"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10 15 20 30"
+	      "attack_rate"        "10 15 20 30 40 50 60"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "chance"        "20 20 20 20"
+	      "chance"        "20 20 20 20 20 20 20"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "crit"        "300 300 300 300"
+	      "crit"        "300 300 300 300 300 300 300"
 	    }
 	  }
 	
@@ -2141,10 +2221,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "5"
+	  "MaxLevel"            "8"
 	
-	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3"
-	  "AbilityGoldCost"       "0 1 5 10"
+	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
+	  "AbilityGoldCost"       "0 1 5 10 15 20 25"
 	
 	  "precache"
 	  {
@@ -2157,22 +2237,22 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2500 7000 11000"
+	      "lumber_cost"        "1000 2500 7000 11000 15000 20000 25000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "30 60 90 120"
+	      "attack"        "30 60 90 120 160 190 210"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10 15 20 25"
+	      "attack_rate"        "10 15 20 25 30 35 40"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_rate"        "-15 -20 -30 -40"
+	      "slow_rate"        "-15 -20 -25 -35 -40 -45 -50"
 	    }
 	  }
 	
@@ -2271,10 +2351,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "5"
+	  "MaxLevel"            "8"
 	
-	  "AbilityChannelTime"      "3.0 3.1 3.2 3.3"
-	  "AbilityGoldCost"       "1 5 10 15"
+	  "AbilityChannelTime"      "3.0 3.1 3.2 3.3 3.4 3.5 3.6"
+	  "AbilityGoldCost"       "1 5 10 15 20 25 30"
 	
 	  "precache"
 	  {
@@ -2286,22 +2366,22 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "3000 8000 15000 20000"
+	      "lumber_cost"        "3000 8000 15000 20000 30000 40000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "50 75 100 175"
+	      "attack"        "50 75 100 175 215 265 365"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "0 0 0 0"
+	      "attack_rate"        "0 0 0 0 0 0 0"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor_reduction"        "-30 -70 -110 -150"
+	      "armor_reduction"        "-150 -180 -210 -250 -500 -800 -1100"
 	    }
 	  }
 	
@@ -2398,23 +2478,28 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "5 5 6 7 8 9 10 15 18 25"
-	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4"
+	  "AbilityGoldCost"       "50 100 125 150 175 200 250 500 750 800 900 999"
+	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6"
 	
-	  "MaxLevel"            "11"
+	  "MaxLevel"            "13"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2500 5000 8500 11500 16000 21000 27500 36000 50000"
+	      "lumber_cost"        "1000 2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000"
 	    }
 	
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_armor_percent"  "0 45 90 180 210 240 270 300 500 750 1000 2500"
+	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_armor_percent"  "0 180 210 240 270 300 500 750 1000 2500"
+	      "aura_range"  "5000"
 	    }
 	  }
 	
@@ -2463,7 +2548,7 @@
 	      "IsHidden"        "1"
 	      
 	      "Aura"          "modifier_concrete"
-	      "Aura_Radius"       "5000"
+	      "Aura_Radius"       "%aura_range"
 	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
 	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
@@ -2490,7 +2575,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "15 30 60 100 200 500 700 900"
+	  "AbilityGoldCost"       "5 10 15 30 35 45 55 75"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -2504,12 +2589,12 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "food_cost"        "2 2 4 6 10 11 13 15"
+	      "food_cost"        "0 2 3 3 3 3 3 4"
 	    }
 	    "02"
 	    { 
-	        "var_type"  "FIELD_INTEGER"
-	        "lumber_cost" "5000 7500 10000 15000 20000 25000 30000 40000"
+	      "var_type"  "FIELD_INTEGER"
+	      "lumber_cost" "1250 2500 5000 7500 10000 15000 20000 25000"
 	    }
 	  }
 	
@@ -2537,6 +2622,61 @@
 	    {
 	      "ScriptFile"      "units/gold_tower.lua"
 	      "Function"        "Upgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	}
+	"petri_upgrade_lumber"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "holdout_culling_blade"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityGoldCost"       "50 100 175 350 500"
+	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
+	
+	  "MaxLevel"            "6"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_lumber"  "10 20 40 60 80"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/peasant.lua"
+	      "Function"        "LumberUpgrade"
 	    }
 	    "RunScript"
 	    {
@@ -2658,6 +2798,106 @@
 	    }
 	  }
 	}
+	"petri_upgrade_tower_damage"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "holdout_focusfire"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityGoldCost"       "80 100 110 130 150 170 190 350 450 650 850 1000"
+	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6"
+	
+	  "MaxLevel"            "13"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 99999"
+	    }
+	
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_damage"  "0 20 45 90 120 155 195 275 385 450 550 650"
+	    }
+	
+	    "03"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_range"  "0 10 20 30 40 50 60 70 80 90 100 110"
+	    }
+	
+	   "04"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "aura_range"  "5000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_damage_aura"
+	      "Target"     "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_damage_aura"
+	    {
+	      "Passive"       "1"
+	      "IsHidden"        "1"
+	      
+	      "Aura"          "modifier_damage"
+	      "Aura_Radius"       "%aura_range"
+	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
+	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
+	      "Aura_ApplyToCaster"  "0"
+	    }
+	    "modifier_damage"
+	    {
+	      "Passive"  "0"
+	      "IsHidden" "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
+	      }
+	    }
+	  }
+	}
 	"petri_upgrade_tower_of_evil"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -2753,25 +2993,25 @@
 	
 	  "MaxLevel"            "10"
 	
-	  "AbilityChannelTime"      "2.0 4.0 5.0 6.0 7.0 10.0 15.0 20.0 25.0"
-	  "AbilityGoldCost"       "0 0 0 10 25 60 300 550 900"
+	  "AbilityChannelTime"      "5.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0"
+	  "AbilityGoldCost"       "0 10 60 270 550 900 1500 2000 3500"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 5000 10000 0 0 0 0 0 0"
+	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 800 1100 1450 1700 2400 7050"
+	      "health_points"        "270 380 590 800 1100 1450 2400 4400 7050"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "1 100 200 300 400 750 1000 1300 1600"
+	      "armor"        "1 50 750 1000 1300 1600 2000 5000 7260"
 	    }
 	  }
 	
@@ -2820,6 +3060,47 @@
 	      }
 	    }
 	  }
+	}
+	"petri_ward"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName" ""
+	
+	  "OnOwnerSpawned"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "lifetime"
+	      "Target"     "CASTER"
+	      "Duration"    "50"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "lifetime"
+	    {
+	      "IsHidden" "1"
+	      "OnDestroy"
+	      {
+	        "RemoveUnit"
+	        {
+	          "Target" "CASTER"
+	        }
+	      }
+	    }
+	    "unit_properties"
+	    {
+	      "Passive" "1"
+	      
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    } 
+	  }   
 	}
 	"return_resources"
 	{

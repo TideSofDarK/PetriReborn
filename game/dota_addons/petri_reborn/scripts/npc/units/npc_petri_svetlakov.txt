@@ -8,7 +8,7 @@
 
   "AbilityLayout"    "4"
 
-  "ArmorPhysical"    "3000"
+  "ArmorPhysical"    "2000"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"

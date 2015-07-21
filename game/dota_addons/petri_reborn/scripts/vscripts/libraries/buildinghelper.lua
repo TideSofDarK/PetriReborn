@@ -447,15 +447,11 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   end
 
   function building:RemoveBuilding( bForcedKill )
-    -- if building:GetPlayerOwner() ~= nil then 
-    --   local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", PATTACH_ABSORIGIN, building)
-    -- end
-
     Timers:CreateTimer(0.2,
     function()
       building:RemoveSelf()
     end)
-
+    
     -- Thanks based T__
     for k, v in pairs(building.blockers) do
       DoEntFireByInstanceHandle(v, "Disable", "1", 0, nil, nil)

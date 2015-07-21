@@ -8,6 +8,7 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
+  "Ability2"          "petri_exit"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
@@ -18,7 +19,7 @@
   "BountyGoldMin"       "10"     
   "BountyGoldMax"       "10"     
 
-  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
+  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"   
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
   "MovementSpeed"       "0"   

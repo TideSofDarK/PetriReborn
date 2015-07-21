@@ -26,11 +26,11 @@
   "AttackRange"                "75"
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
-  "AttackRate" "0.6"
+  "AttackRate" "0.45"
 
   //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
-  "AttributeStrengthGain"   "0.038"
+  "AttributeStrengthGain"   "0.2"
   "AttributeBaseIntelligence" "1"
   "AttributeIntelligenceGain" "0.25"
   "AttributeBaseAgility"    "1"

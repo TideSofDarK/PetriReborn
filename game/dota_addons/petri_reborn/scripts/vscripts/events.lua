@@ -4,14 +4,15 @@
 -- Cleanup a player when they leave
 function GameMode:OnDisconnect(keys)
   DebugPrint('[BAREBONES] Player Disconnected ' .. tostring(keys.userid))
-  DebugPrintTable(keys)
+  PrintTable(keys)
 
   local name = keys.name
   local networkid = keys.networkid
   local reason = keys.reason
   local userid = keys.userid
-
   
+  -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
+  -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 end
 -- The overall game state has changed
 function GameMode:OnGameRulesStateChange(keys)
@@ -21,10 +22,99 @@ function GameMode:OnGameRulesStateChange(keys)
   -- This internal handling is used to set up main barebones functions
   GameMode:_OnGameRulesStateChange(keys)
 
-  local newState = GameRules:State_Get()
+  -- local newState = GameRules:State_Get()
+
+  -- if GameRules:State_Get() == 2 then
+  --   local players = {}
+  --   for i=1,10 do
+  --     local pID = i-1
+  --     local player = PlayerResource:GetPlayer(pID)
+  --     local team = PlayerResource:GetTeam(pID)
+
+  --     if player == nil then
+  --       goto continue
+  --     end
+
+  --     if team == DOTA_TEAM_GOODGUYS then
+  --       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+  --       function() 
+  --         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
+
+  --         newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+
+  --         InitAbilities(newHero)
+
+  --         newHero:SetAbilityPoints(0)
+
+  --         newHero:AddItemByName("item_petri_kvn_fan_blink")
+  --         newHero:AddItemByName("item_petri_give_permission_to_build")
+  --         newHero:AddItemByName("item_petri_gold_bag")
+
+  --         newHero.spawnPosition = newHero:GetAbsOrigin()
+
+  --         newHero:SetGold(10, false)
+
+  --         player.lumber = 150
+  --       end, pID)
+  --     elseif team == DOTA_TEAM_BADGUYS then
+  --       PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
+  --       function() 
+  --         newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
+  --         newHero:SetControllableByPlayer(pID, true)
+  --         newHero:SetPlayerID(pID)
+
+  --         -- It's dangerous to go alone, take this
+  --         newHero:SetAbilityPoints(4)
+  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
+
+  --         newHero:SetGold(32, false)
+
+  --         newHero.spawnPosition = newHero:GetAbsOrigin()
+
+  --         if GameRules.explorationTowerCreated == nil then
+  --           GameRules.explorationTowerCreated = true
+  --           Timers:CreateTimer(0.2,
+  --           function()
+  --             CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+  --             end)
+  --         end
+  --       end, pID)
+  --     end
+
+  --     -- We don't need 'undefined' variables
+  --     player.food = 0
+  --     player.maxFood = 10
+  --     player.lumber = player.lumber or 0
+
+  --     --Send lumber and food info to users
+  --     CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+
+  --     --Update player's UI
+  --     Timers:CreateTimer(0.03,
+  --     function()
+  --       local event_data =
+  --       {
+  --           gold = PlayerResource:GetGold(player:GetPlayerID()),
+  --           lumber = player.lumber,
+  --           food = player.food,
+  --           maxFood = player.maxFood
+  --       }
+  --       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+  --       return 0.35
+  --     end)
+
+  --     ::continue::
+  --   end
+  -- end
 end
 
-
+function GameMode:CreateHeroes()
+  --print("Game State Changed: " .. GameRules:State_Get())
+  --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
+  
+end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
 function GameMode:OnNPCSpawned(keys)
@@ -59,13 +149,46 @@ function GameMode:OnItemPickedUp(keys)
   local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local itemname = keys.itemname
+
+  if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
+    heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+  end
 end
 
 -- A player has reconnected to the game.  This function can be used to repaint Player-based particles or change
 -- state as necessary
 function GameMode:OnPlayerReconnect(keys)
   DebugPrint( '[BAREBONES] OnPlayerReconnect' )
-  DebugPrintTable(keys) 
+  --PrintTable(keys) 
+
+  local player = PlayerResource:GetPlayer(keys.PlayerID)
+  local hero = player:GetAssignedHero()
+
+  Timers:CreateTimer(0, function()
+    if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
+      Timers:CreateTimer(1,
+      function()
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+      end)
+
+      Timers:CreateTimer(0.03,
+      function()
+        local event_data =
+        {
+            gold = PlayerResource:GetGold(player:GetPlayerID()),
+            lumber = hero.lumber,
+            food = hero.food,
+            maxFood = hero.maxFood
+        }
+        CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+        if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.03 end
+      end)
+    else
+      return 0.03
+    end
+  end)
+
+  
 end
 
 -- An item was purchased by a player
@@ -239,12 +362,21 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  -- Remove building
+  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
+    killedUnit:RemoveBuilding(true)
+  end
+
   if killedUnit.foodProvided ~= nil then
-    killedUnit:GetPlayerOwner().maxFood = killedUnit:GetPlayerOwner().maxFood - killedUnit.foodProvided
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
+    hero.maxFood = hero.maxFood - killedUnit.foodProvided
   end
 
   if killedUnit.foodSpent ~= nil then
-    killedUnit:GetPlayerOwner().food = killedUnit:GetPlayerOwner().food - killedUnit.foodSpent
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
+    hero.food = hero.food - killedUnit.foodSpent
   end
 
   -- Respawn creep
@@ -253,15 +385,17 @@ function GameMode:OnEntityKilled( keys )
 
       killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
       Notifications:Bottom(killerEntity:GetPlayerOwnerID(), {text="#no_farm_tonight", duration=5, style={color="red", ["font-size"]="45px"}})
+      
+      Timers:CreateTimer(0.04,
+      function()
+        MoveCamera(killerEntity:GetPlayerOwnerID(), killerEntity)
+      end)
+      
     end
     Timers:CreateTimer(0.73,
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
-  end
-
-  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
-    killedUnit:RemoveBuilding(true)
   end
 
   -- Petrosyn is killed
@@ -279,6 +413,8 @@ function GameMode:OnEntityKilled( keys )
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
+    
+    --if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) == 2 then
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
@@ -294,6 +430,7 @@ function GameMode:OnEntityKilled( keys )
           GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
         end)
     end
+    --end 
   end
 end
 

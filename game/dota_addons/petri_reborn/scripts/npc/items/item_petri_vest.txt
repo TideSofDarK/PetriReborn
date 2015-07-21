@@ -85,7 +85,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supermegavest"
 
-  "ItemCost"            "600"
+  "ItemCost"            "950"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supermegavest"

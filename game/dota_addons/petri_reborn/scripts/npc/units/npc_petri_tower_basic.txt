@@ -35,8 +35,8 @@
   "ProjectileSpeed"            "1100"
 
   "BountyXP"          "0"     
-  "BountyGoldMin"       "0"     
-  "BountyGoldMax"       "0"     
+  "BountyGoldMin"       "7"     
+  "BountyGoldMax"       "7"     
 
   "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
   "RingRadius"                "70"

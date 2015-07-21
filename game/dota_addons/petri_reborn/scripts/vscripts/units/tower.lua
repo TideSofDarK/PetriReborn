@@ -10,7 +10,7 @@ function UpgradeDeath (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_DEATH), 0.62 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_DEATH), 0.58 + (tower_level/30))
 
 	caster:RemoveAbility("petri_upgrade_ice_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
@@ -24,7 +24,7 @@ function UpgradeIce (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.85 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.58 + (tower_level/30))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
@@ -38,7 +38,7 @@ function UpgradeFire (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.85 + (tower_level/20))
+	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.58 + (tower_level/30))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_ice_tower")
@@ -52,7 +52,7 @@ function UpgradeElements (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_ELEMENTS), 0.61)
+	UpdateModel(caster, GetModelNameForTower(TOWER_ELEMENTS), 0.58)
 
 	caster:RemoveAbility("petri_upgrade_basic_tower")
 
@@ -75,7 +75,7 @@ function UpgradeBasic (event)
 
 	local tower_level = ability:GetLevel()
 
-	caster:SetModelScale(0.4 + (tower_level/20))
+	caster:SetModelScale(0.35 + (tower_level/30))
 
 	caster:RemoveAbility("petri_upgrade_elements_tower")
 

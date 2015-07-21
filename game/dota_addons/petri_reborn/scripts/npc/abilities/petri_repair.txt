@@ -47,7 +47,6 @@
           "Function"    "ToggleOffRepairing"
         }
       }
-      
     }
 
     "modifier_chopping_building"

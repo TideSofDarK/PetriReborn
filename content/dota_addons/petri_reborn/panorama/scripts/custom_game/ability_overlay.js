@@ -55,7 +55,9 @@ function SetAbilitiesFoodAndLumber(abilities, count) {
     }
 }
 
-function OnUpdateSelectedUnit(event) {
+function OnUpdateSelectedUnit() {
+    $.Schedule(0.001, OnUpdateSelectedUnit);
+
     var iPlayerID = Players.GetLocalPlayer();
     var selectedEntities = Players.GetSelectedEntities(iPlayerID);
     var mainSelected = Players.GetLocalPlayerPortraitUnit();
@@ -100,5 +102,6 @@ function SetAbilityLayouts(event) {
 
 (function() {
     GameEvents.Subscribe("petri_set_ability_layouts", SetAbilityLayouts);
-    GameEvents.Subscribe("dota_player_update_selected_unit", OnUpdateSelectedUnit);
+    //GameEvents.Subscribe("dota_player_update_selected_unit", OnUpdateSelectedUnit);
+    OnUpdateSelectedUnit();
 })();

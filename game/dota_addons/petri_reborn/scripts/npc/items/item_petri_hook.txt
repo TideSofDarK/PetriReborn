@@ -26,7 +26,7 @@
   "AbilityCastRange"        "1300"
   "AbilityCastPoint"        "0.3"
   
-  "AbilityCooldown"       "15.0"
+  "AbilityCooldown"       "7.0"
 
   "AbilitySpecial"
   {
@@ -79,7 +79,7 @@
       "StartPosition" "attach_origin"
       "EndRadius"     "%hook_width"
       "FixedDistance" "%hook_distance"
-      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_BOTH"
       "TargetTypes"   "DOTA_UNIT_TARGET_HERO"
       "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
       "HasFrontalCone"    "0"

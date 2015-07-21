@@ -10,12 +10,12 @@
     "01"
     { 
         "var_type"  "FIELD_INTEGER"
-        "food_cost" "2"
+        "food_cost" "25"
     }
     "02"
     { 
         "var_type"  "FIELD_INTEGER"
-        "lumber_cost" "4000"
+        "lumber_cost" "3250"
     }
   }
 

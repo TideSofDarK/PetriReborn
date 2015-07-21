@@ -1,9 +1,7 @@
--- This is the primary barebones gamemode script and should be used to assist in initializing your game mode
-
-
--- Set this to true if you want to see a complete debug output of all events/processes done by barebones
--- You can also change the cvar 'barebones_spew' at any time to 1 or 0 for output/no output
 BAREBONES_DEBUG_SPEW = false
+
+PETRI_TIME_LIMIT = 55
+PETRI_EXIT_MARK = 20
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -31,35 +29,22 @@ function GameMode:PostLoadPrecache()
   
 end
 
---[[
-  This function is called once and only once as soon as the first player (almost certain to be the server in local lobbies) loads in.
-  It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
-]]
 function GameMode:OnFirstPlayerLoaded()
   DebugPrint("[BAREBONES] First Player has loaded")
 
   
 end
 
---[[
-  This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
-  It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
-]]
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
 end
 
---[[
-  This function is called once and only once for every player when they spawn into the game for the first time.  It is also called
-  if the player's hero is replaced with a new hero for any reason.  This function is useful for initializing heroes, such as adding
-  levels, changing the starting gold, removing/adding abilities, adding physics, etc.
-
-  The hero parameter is the hero entity that just spawned in
-]]
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
   hero:SetGold(0, false)
+
+  GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
@@ -90,7 +75,14 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          player.lumber = 150
+          newHero:SetGold(10, false)
+          newHero.lumber = 150
+          newHero.bonusLumber = 0
+          newHero.food = 0
+          newHero.maxFood = 10
+          SetupUI(newHero)
+
+          GameMode.assignedPlayerHeroes[pID] = newHero
         end, pID)
     end
 
@@ -106,9 +98,15 @@ function GameMode:OnHeroInGame(hero)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
 
-          newHero:SetGold(32, false)
-
           newHero.spawnPosition = newHero:GetAbsOrigin()
+
+          newHero:SetGold(32, false)
+          newHero.lumber = 0
+          newHero.food = 0
+          newHero.maxFood = 0
+          SetupUI(newHero)
+
+          GameMode.assignedPlayerHeroes[pID] = newHero
 
           if GameRules.explorationTowerCreated == nil then
             GameRules.explorationTowerCreated = true
@@ -119,29 +117,28 @@ function GameMode:OnHeroInGame(hero)
           end
         end, pID)
     end
-
-    -- We don't need 'undefined' variables
-    player.food = 0
-    player.maxFood = 10
-    player.lumber = player.lumber or 0
-
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
-
-    --Update player's UI
-    Timers:CreateTimer(0.03,
-    function()
-      local event_data =
-      {
-          gold = PlayerResource:GetGold(player:GetPlayerID()),
-          lumber = player.lumber,
-          food = player.food,
-          maxFood = player.maxFood
-      }
-      CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.35
-    end)
   end
+end
+
+function SetupUI(newHero)
+  local player = newHero:GetPlayerOwner()
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+
+  --Update player's UI
+  Timers:CreateTimer(0.03,
+  function()
+    local event_data =
+    {
+        gold = PlayerResource:GetGold(newHero:GetPlayerOwnerID()),
+        lumber = newHero.lumber,
+        food = newHero.food,
+        maxFood = newHero.maxFood
+    }
+    CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+    if PlayerResource:GetConnectionState(player:GetPlayerID()) == DOTA_CONNECTION_STATE_CONNECTED then return 0.35 end
+  end)
 end
 
 --[[
@@ -152,14 +149,65 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  Timers:CreateTimer(30, -- Start this timer 30 game-time seconds later
+  Timers:CreateTimer(PETRI_EXIT_MARK * 60,
     function()
-      DebugPrint("This function is called 30 seconds after the game begins, and every 30 seconds thereafter")
-      return 30.0 -- Rerun this timer every 30 game-time seconds 
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer((PETRI_TIME_LIMIT - 9 - 2) * 60,
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer(PETRI_TIME_LIMIT * 60,
+    function()
+      PetrosyanWin()
     end)
 end
 
-function GameMode:OnUnitSelected(args)
+function GameMode:FilterExecuteOrder( filterTable )
+    local units = filterTable["units"]
+    local order_type = filterTable["order_type"]
+    local issuer = filterTable["issuer_player_id_const"]
+
+    if order_type == 19 then 
+      if filterTable["entindex_target"] >= 6 or
+        PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+        return false
+      else
+        local ent = EntIndexToHScript(filterTable["units"]["0"])
+        local stashSlot = 6
+        for i=6,11 do
+          if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+            stashSlot = i
+            break
+          end
+        end
+
+        ent:SwapItems(filterTable["entindex_target"], stashSlot)
+      end
+    end
+
+    for n,unit_index in pairs(units) do
+        local unit = EntIndexToHScript(unit_index)
+        local ownerID = unit:GetPlayerOwnerID()
+
+        if PlayerResource:GetConnectionState(ownerID) == 3 or
+          PlayerResource:GetConnectionState(ownerID) == 4
+          then
+          return false
+        end
+    end
+
+    return true
+end
+
+function GameMode:ModifyGoldFilter(event)
+  if event.reason_const == DOTA_ModifyGold_HeroKill then
+    PlayerResource:ModifyGold(event.player_id_const, 100,false,DOTA_ModifyGold_HeroKill )
+    return false
+  end
+  return true
 end
 
 function GameMode:InitGameMode()
@@ -190,5 +238,35 @@ function GameMode:InitGameMode()
     end
   end
 
+  -- Some way to prevent controlling of disconnected players
+  GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
+
+  -- Fix hero bounties
+  GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
+
   BuildingHelper:Init()
+end
+
+function KVNWin(keys)
+  local caster = keys.caster
+
+  Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+
+  for i=1,10 do
+    PlayerResource:SetCameraTarget(i-1, caster)
+  end
+
+  Timers:CreateTimer(5.0,
+    function()
+      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+    end)
+end
+
+function PetrosyanWin()
+  Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
+
+  Timers:CreateTimer(5.0,
+    function()
+      GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+    end)
 end

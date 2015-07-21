@@ -13,6 +13,10 @@
   "ItemAliases"         "book"
   "ItemInitialCharges" "1"
 
+  "ItemStockMax" "10" 
+  "ItemStockTime" "45"
+  "ItemStockInitial" "5"
+
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
 
@@ -33,7 +37,7 @@
   "BaseClass"                 "item_datadriven"
   "ID"              "1904"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+  "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_comedy_story"
 
@@ -63,7 +67,7 @@
   "BaseClass"                 "item_datadriven"
   "ID"              "1905"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+  "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_comedy_book"
 

@@ -28,7 +28,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"      "7"
+      "invu_duration"      "4"
     }
   }
 
@@ -286,6 +286,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "1250"
     }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_damage"      "19000"
+    }
   }
 
   "Modifiers"
@@ -299,6 +304,7 @@
       "Properties"
       {
         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }

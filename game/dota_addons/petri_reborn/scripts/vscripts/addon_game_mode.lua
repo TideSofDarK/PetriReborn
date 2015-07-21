@@ -9,6 +9,10 @@ function Precache( context )
   -- end
   -- PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
 
+  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+
+  PrecacheItemByNameSync("item_petri_hook", context)
+
   -- UNITS
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
 
@@ -77,12 +81,16 @@ function Precache( context )
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf", context)
 
+  PrecacheResource("particle", "particles/items_fx/dust_of_appearance.vpcf", context)
+
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_ready.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf", context)
 
   PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", context)
+
+  PrecacheResource("particle", "particles/generic_gameplay/dropped_item.vpcf", context)
 end
 
 function Activate()

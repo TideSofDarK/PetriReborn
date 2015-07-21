@@ -23,7 +23,7 @@
 
   "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
   "RingRadius"    "40"
-  "CollisionSize"    "16"
+  "CollisionSize"    "1"
   "FormationRank"    "4"
 
   "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"

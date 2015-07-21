@@ -1,3 +1,13 @@
+function EndCooldown(caster, ability_name)
+  if caster:FindAbilityByName(ability_name) ~= nil then
+    caster:FindAbilityByName(ability_name):EndCooldown()
+  else
+    caster:AddAbility(ability_name)
+    caster:FindAbilityByName(ability_name):EndCooldown()
+    caster:RemoveAbility(ability_name)
+  end
+end
+
 function DestroyEntityBasedOnHealth(killer, target)
   local damageTable = {
     victim = target,
@@ -31,6 +41,8 @@ function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
 
+  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+
   local level = ability:GetLevel() - 1
 
   local gold_cost = ability:GetGoldCost(level) or 0
@@ -46,8 +58,8 @@ function StartUpgrading (event)
       end
     )
   else
-    caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber - lumber_cost
-    caster:GetPlayerOwner().food = caster:GetPlayerOwner().food + food_cost
+    hero.lumber = hero.lumber - lumber_cost
+    hero.food = hero.food + food_cost
 
     caster.lastSpentLumber = lumber_cost
     caster.lastSpentGold = gold_cost
@@ -63,12 +75,14 @@ function StopUpgrading(event)
   local caster = event.caster
   local ability = event.ability
 
+  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+
   caster.lastSpentLumber = caster.lastSpentLumber or 0
   caster.lastSpentGold = caster.lastSpentGold or 0
   caster.lastSpentFood = caster.lastSpentFood or 0
 
-  caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + caster.lastSpentLumber
-  caster:GetPlayerOwner().food = caster:GetPlayerOwner().food - caster.lastSpentFood
+  hero.lumber = hero.lumber + caster.lastSpentLumber
+  hero.food = hero.food - caster.lastSpentFood
   PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
 
   caster.lastSpentLumber = 0
@@ -82,6 +96,8 @@ function OnUpgradeSucceeded(event)
   local caster = event.caster
   local ability = event.ability
 
+  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+
   local level = ability:GetLevel()
 
   ability:SetLevel(level+1)
@@ -91,7 +107,7 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentFood = 0
 
   if level+1 == ability:GetMaxLevel() then
-    caster:RemoveAbility(ability:GetAbilityName())
+    ability:SetHidden(true)
   else 
     ability:SetHidden(false)
   end
@@ -107,21 +123,24 @@ end
 
 function ReturnGold(player)
   local playerID = player:GetPlayerID() 
-  if player.lastSpentGold ~= nil then
-    PlayerResource:ModifyGold(playerID, player.lastSpentGold,false,0)
-    player.lastSpentGold = nil
+  local hero = player:GetAssignedHero() 
+  if hero.lastSpentGold ~= nil then
+    PlayerResource:ModifyGold(playerID, hero.lastSpentGold,false,0)
+    hero.lastSpentGold = nil
   end
 end
 
 function ReturnLumber(player)
-  if player.lumber ~= nil and player.lastSpentLumber ~= nil then
-    player.lumber = player.lumber + player.lastSpentLumber
-    player.lastSpentLumber = nil
+  local hero = player:GetAssignedHero() 
+  if hero.lumber ~= nil and hero.lastSpentLumber ~= nil then
+    hero.lumber = hero.lumber + hero.lastSpentLumber
+    hero.lastSpentLumber = nil
   end
 end
 
 function CheckLumber(player, lumber_amount, notification)
-  local enough = player.lumber >= lumber_amount
+  local hero = player:GetAssignedHero() 
+  local enough = hero.lumber >= lumber_amount
   if enough ~= true and notification == true then 
     Notifications:Bottom(player:GetPlayerID(), {text="#gather_more_lumber", duration=1, style={color="red", ["font-size"]="45px"}})
   end
@@ -129,13 +148,15 @@ function CheckLumber(player, lumber_amount, notification)
 end
 
 function SpendLumber(player, lumber_amount)
-  player.lumber = player.lumber - lumber_amount
-  player.lastSpentLumber = lumber_amount
+  local hero = player:GetAssignedHero() 
+  hero.lumber = hero.lumber - lumber_amount
+  hero.lastSpentLumber = lumber_amount
 end
 
 function CheckFood( player, food_amount, notification)
+  local hero = player:GetAssignedHero() 
   if food_amount == 0 then return true end
-  local enough = player.food + food_amount <= Clamp(player.maxFood,10,250)
+  local enough = hero.food + food_amount <= Clamp(hero.maxFood,10,250)
   if enough ~= true and notification == true then 
     Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
   end
@@ -143,14 +164,16 @@ function CheckFood( player, food_amount, notification)
 end
 
 function SpendFood( player, food_amount )
-  player.food = player.food + food_amount
-  player.lastSpentFood = food_amount
+  local hero = player:GetAssignedHero() 
+  hero.food = hero.food + food_amount
+  hero.lastSpentFood = food_amount
 end
 
 function ReturnFood( player )
-  if player.food ~= nil and player.lastSpentFood ~= nil then
-    player.food = player.food - player.lastSpentFood
-    player.lastSpentFood = nil
+  local hero = player:GetAssignedHero() 
+  if hero.food ~= nil and hero.lastSpentFood ~= nil then
+    hero.food = hero.food - hero.lastSpentFood
+    hero.lastSpentFood = nil
   end
 end
 

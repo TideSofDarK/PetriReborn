@@ -37,19 +37,19 @@ function Upgrade (event)
 	elseif wall_level == 7 then
 		caster:SetOriginalModel(GetModelNameForLevel(7))
 		caster:SetModel(GetModelNameForLevel(7))
-		caster:SetModelScale(1.3)
+		caster:SetModelScale(1.2)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 8 then
 		caster:SetOriginalModel(GetModelNameForLevel(8))
 		caster:SetModel(GetModelNameForLevel(8))
-		caster:SetModelScale(1.5)
+		caster:SetModelScale(1.3)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 9 then
 		caster:SetOriginalModel(GetModelNameForLevel(9))
 		caster:SetModel(GetModelNameForLevel(9))
-		caster:SetModelScale(1.6)
+		caster:SetModelScale(1.3)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	end

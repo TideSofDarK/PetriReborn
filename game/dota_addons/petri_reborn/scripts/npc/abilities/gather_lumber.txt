@@ -10,21 +10,17 @@
 
   "AbilityCastPoint"        "0.1"
 
-  "OnUpgrade"
-  {
-    "ApplyModifier"
-    {
-      "Target"      "CASTER"
-      "ModifierName"    "modifier_ability_gather_lumber_no_col"
-    }
-  }
-
   "OnAbilityPhaseStart"
   {
     "RunScript"
     {
       "ScriptFile"  "units/peasant.lua"
       "Function"    "Gather"
+    }
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_ability_gather_lumber_no_col"
     }
   }
 
@@ -62,6 +58,11 @@
       {
         "RemoveModifier"
         {
+          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+          "Target"    "CASTER"
+        }  
+        "RemoveModifier"
+        {
           "ModifierName"  "modifier_gathering_lumber"
           "Target"    "CASTER"
         }
@@ -82,7 +83,12 @@
       "OverrideAnimation"   "ACT_DOTA_ATTACK"
 
       "OnOrder"
-      {     
+      { 
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+          "Target"    "CASTER"
+        }    
         "RemoveModifier"
         {
           "ModifierName"  "modifier_chopping_wood"
@@ -119,6 +125,11 @@
       "IsHidden"        "1"
       "OnOrder"
       {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+          "Target"    "CASTER"
+        }  
         "RemoveModifier"
         {
           "ModifierName"  "modifier_chopping_wood_animation"

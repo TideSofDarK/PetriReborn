@@ -15,6 +15,10 @@
 	  "ItemAliases"         "book"
 	  "ItemInitialCharges" "1"
 	
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "45"
+	  "ItemStockInitial" "5"
+	
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
 	
@@ -35,7 +39,7 @@
 	  "BaseClass"                 "item_datadriven"
 	  "ID"              "1904"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_comedy_story"
 	
@@ -65,7 +69,7 @@
 	  "BaseClass"                 "item_datadriven"
 	  "ID"              "1905"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "Model"             "models/props_debris/merchant_debris_book001.vmdl" 
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_comedy_book"
 	
@@ -195,7 +199,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "buff_duration"     "15"
+	      "buff_duration"     "8"
 	    }
 	  }
 	
@@ -255,6 +259,7 @@
 	}
 	"item_petri_gold_bag"
 	{
+	  "ID"              "1108"
 	  "BaseClass"                 "item_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
@@ -344,7 +349,7 @@
 	  "AbilityCastRange"        "1300"
 	  "AbilityCastPoint"        "0.3"
 	  
-	  "AbilityCooldown"       "15.0"
+	  "AbilityCooldown"       "7.0"
 	
 	  "AbilitySpecial"
 	  {
@@ -397,7 +402,7 @@
 	      "StartPosition" "attach_origin"
 	      "EndRadius"     "%hook_width"
 	      "FixedDistance" "%hook_distance"
-	      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_BOTH"
 	      "TargetTypes"   "DOTA_UNIT_TARGET_HERO"
 	      "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
 	      "HasFrontalCone"    "0"
@@ -561,7 +566,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown"       "5.0"
+	  "AbilityCooldown"       "7.5"
 	  
 	  "AbilityManaCost"       "0"
 	  
@@ -658,7 +663,13 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "50"
+	    }
+	
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "10"
 	    }
 	  }
 	  
@@ -675,12 +686,42 @@
 	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
 	      }
 	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierLifesteal"
+	        }
+	      }
+	    }
+	    
+	    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
 	      "OnDealDamage"
 	      {
 	        "Lifesteal"
 	        {
 	          "Target"      "ATTACKER"
 	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
 	        }
 	      }
 	    }
@@ -719,7 +760,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -830,7 +871,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"      "7"
+	      "invu_duration"      "4"
 	    }
 	  }
 	
@@ -1088,6 +1129,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "1250"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_damage"      "19000"
+	    }
 	  }
 	
 	  "Modifiers"
@@ -1101,6 +1147,7 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1132,7 +1179,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_stone_of_power"
 	
-	  "ItemCost"            "10000"
+	  "ItemCost"            "7500"
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
@@ -1142,7 +1189,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_strength"    "277"
+	      "bonus_strength"    "55"
 	    }
 	  }
 	  
@@ -1194,7 +1241,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1233,7 +1280,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1290,7 +1337,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1348,7 +1395,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1392,7 +1439,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "500"
+	      "bonus_damage"      "390"
 	    }
 	  }
 	  
@@ -1406,7 +1453,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1450,7 +1497,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "4000"
+	      "bonus_damage"      "3100"
 	    }
 	  }
 	  
@@ -1464,7 +1511,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1508,7 +1555,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "9000"
+	      "bonus_damage"      "8000"
 	    }
 	  }
 	  
@@ -1522,7 +1569,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1566,7 +1613,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "19000"
+	      "bonus_damage"      "12000"
 	    }
 	  }
 	  
@@ -1580,7 +1627,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1624,7 +1671,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "19000"
+	      "bonus_damage"      "18000"
 	    }
 	  }
 	  
@@ -1638,7 +1685,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1652,7 +1699,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "2500"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1673,7 +1720,7 @@
 	
 	  "AbilityCooldown"       "65"
 	  
-	  "ItemCost"            "446"
+	  "ItemCost"            "487"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -1683,17 +1730,22 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "200"
+	      "lifesteal_percent"   "70"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"   "25"
+	      "invu_duration"   "12"
 	    }
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_all_stats"   "20"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "13"
 	    }
 	  }
 	
@@ -1719,12 +1771,17 @@
 	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
 	      }
 	
-	      "OnDealDamage"
+	      "OnOrbImpact"
 	      {
-	        "Lifesteal"
+	        "RunScript"
 	        {
-	          "Target"      "ATTACKER"
-	          "LifestealPercent"  "%lifesteal_percent"
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
 	        }
 	      }
 	
@@ -1733,6 +1790,36 @@
 	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
 	      }
 	    }
 	
@@ -1763,7 +1850,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "159"
+	  "ItemCost"            "200"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1860,7 +1947,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supermegavest"
 	
-	  "ItemCost"            "600"
+	  "ItemCost"            "950"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supermegavest"
@@ -1944,6 +2031,39 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_supermegavest"
+	  }
+	}
+	"item_petri_ward"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1020"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_ward"
+	
+	  "ItemCost"            "25"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "ward"
+	  "ItemInitialCharges"  "2"
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "AbilityCastRange" "250"
+	
+	  "AbilityCooldown"       "1.0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "SpawnWard"
+	      "Target"    "POINT"
+	    }
+	    "SpendCharge"
+	    {}
 	  }
 	}
 	"item_petri_zirconia_armor"

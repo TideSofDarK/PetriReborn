@@ -10,25 +10,25 @@
 
   "MaxLevel"            "10"
 
-  "AbilityChannelTime"      "2.0 4.0 5.0 6.0 7.0 10.0 15.0 20.0 25.0"
-  "AbilityGoldCost"       "0 0 0 10 25 60 300 550 900"
+  "AbilityChannelTime"      "5.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0"
+  "AbilityGoldCost"       "0 10 60 270 550 900 1500 2000 3500"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "1000 5000 10000 0 0 0 0 0 0"
+      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "health_points"        "270 380 590 800 1100 1450 1700 2400 7050"
+      "health_points"        "270 380 590 800 1100 1450 2400 4400 7050"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "1 100 200 300 400 750 1000 1300 1600"
+      "armor"        "1 50 750 1000 1300 1600 2000 5000 7260"
     }
   }
 

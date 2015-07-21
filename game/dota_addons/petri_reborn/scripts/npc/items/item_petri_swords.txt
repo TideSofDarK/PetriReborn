@@ -31,7 +31,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -70,7 +70,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -127,7 +127,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -185,7 +185,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -229,7 +229,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "500"
+      "bonus_damage"      "390"
     }
   }
   
@@ -243,7 +243,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -287,7 +287,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "4000"
+      "bonus_damage"      "3100"
     }
   }
   
@@ -301,7 +301,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -345,7 +345,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "9000"
+      "bonus_damage"      "8000"
     }
   }
   
@@ -359,7 +359,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -403,7 +403,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "19000"
+      "bonus_damage"      "12000"
     }
   }
   
@@ -417,7 +417,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -461,7 +461,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "19000"
+      "bonus_damage"      "18000"
     }
   }
   
@@ -475,7 +475,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"    "%bonus_damage"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
       }
     }
   }
@@ -489,7 +489,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "2500"
+  "ItemCost"            "5000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

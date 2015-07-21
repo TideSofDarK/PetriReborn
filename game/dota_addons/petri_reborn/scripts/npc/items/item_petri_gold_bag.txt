@@ -1,5 +1,6 @@
 "item_petri_gold_bag"
 {
+  "ID"              "1108"
   "BaseClass"                 "item_datadriven"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 

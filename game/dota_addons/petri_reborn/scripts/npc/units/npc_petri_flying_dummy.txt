@@ -44,3 +44,54 @@
   "VisionDaytimeRange"    "1800"   
   "VisionNighttimeRange"    "1800"   
 }
+
+"petri_dummy_600vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "600" 
+  "VisionNighttimeRange"    "600"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
+
+"petri_dummy_1000vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/development/invisiblebox.vmdl"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "1000"  
+  "VisionNighttimeRange"    "1000"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
+
+"petri_dummy_1400vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/development/invisiblebox.vmdl"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "1400"  
+  "VisionNighttimeRange"    "1400"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
+
+"petri_dummy_1800vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/development/invisiblebox.vmdl"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "1800"  
+  "VisionNighttimeRange"    "1800"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
