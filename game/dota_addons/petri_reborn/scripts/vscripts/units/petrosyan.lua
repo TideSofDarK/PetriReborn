@@ -1,3 +1,19 @@
+function ModifierSuperLifesteal(keys)
+	if keys.target:HasAbility("petri_building") then
+		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
+	else
+		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+	end
+end
+
+function ModifierLifesteal(keys)
+	if keys.target:HasAbility("petri_building") then
+		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
+	else
+		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+	end
+end
+
 --[[
 	Author: Noya
 	Date: 17.01.2015.

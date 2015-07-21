@@ -19,6 +19,12 @@
       "var_type"        "FIELD_INTEGER"
       "lifesteal_percent"   "50"
     }
+
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "lifesteal_percent_building"   "10"
+    }
   }
   
   "Modifiers"
@@ -34,12 +40,42 @@
         "Priority"    "DOTA_ORB_PRIORITY_ITEM"
       }
 
+      "OnOrbImpact"
+      {
+        "RunScript"
+        {
+          "ScriptFile"      "units/petrosyan.lua"
+          "Function"        "ModifierLifesteal"
+        }
+      }
+    }
+    
+    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      
       "OnDealDamage"
       {
         "Lifesteal"
         {
           "Target"      "ATTACKER"
           "LifestealPercent"  "%lifesteal_percent"
+        }
+      }
+    }
+
+    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      
+      "OnDealDamage"
+      {
+        "Lifesteal"
+        {
+          "Target"      "ATTACKER"
+          "LifestealPercent"  "%lifesteal_percent_building"
         }
       }
     }

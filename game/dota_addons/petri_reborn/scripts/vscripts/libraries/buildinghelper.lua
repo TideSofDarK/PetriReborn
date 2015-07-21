@@ -447,6 +447,11 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   end
 
   function building:RemoveBuilding( bForcedKill )
+    Timers:CreateTimer(0.2,
+    function()
+      building:RemoveSelf()
+    end)
+    
     -- Thanks based T__
     for k, v in pairs(building.blockers) do
       DoEntFireByInstanceHandle(v, "Disable", "1", 0, nil, nil)

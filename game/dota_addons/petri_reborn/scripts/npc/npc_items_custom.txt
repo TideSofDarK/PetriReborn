@@ -349,7 +349,7 @@
 	  "AbilityCastRange"        "1300"
 	  "AbilityCastPoint"        "0.3"
 	  
-	  "AbilityCooldown"       "15.0"
+	  "AbilityCooldown"       "7.0"
 	
 	  "AbilitySpecial"
 	  {
@@ -665,6 +665,12 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "lifesteal_percent"   "50"
 	    }
+	
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "10"
+	    }
 	  }
 	  
 	  "Modifiers"
@@ -680,12 +686,42 @@
 	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
 	      }
 	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierLifesteal"
+	        }
+	      }
+	    }
+	    
+	    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
 	      "OnDealDamage"
 	      {
 	        "Lifesteal"
 	        {
 	          "Target"      "ATTACKER"
 	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
 	        }
 	      }
 	    }
@@ -1093,6 +1129,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "1250"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_damage"      "19000"
+	    }
 	  }
 	
 	  "Modifiers"
@@ -1106,6 +1147,7 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
 	      }
 	    }
 	  }
@@ -1700,6 +1742,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_all_stats"   "20"
 	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "20"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -1724,12 +1771,12 @@
 	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
 	      }
 	
-	      "OnDealDamage"
+	      "OnOrbImpact"
 	      {
-	        "Lifesteal"
+	        "RunScript"
 	        {
-	          "Target"      "ATTACKER"
-	          "LifestealPercent"  "%lifesteal_percent"
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
 	        }
 	      }
 	
@@ -1738,6 +1785,36 @@
 	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
 	      }
 	    }
 	
