@@ -97,8 +97,9 @@ Label
 {
 }
 
-#TipsRow
+.TipsRow
 {
+    width: 100%;
 	flow-children: down;
 	margin-right: 92px;
 	margin-top: 18px;
@@ -106,8 +107,9 @@ Label
 
 .TipText
 {
+    width: 80%;
 	margin-left: 16px;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 .InfoRow
