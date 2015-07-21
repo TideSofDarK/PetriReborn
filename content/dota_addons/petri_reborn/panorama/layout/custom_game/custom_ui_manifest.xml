@@ -28,7 +28,8 @@
     	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" /> 
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_variables.xml" />
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_overlay.xml" />
-        <CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />      
+        <CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />
+        <CustomUIElement type="FlyoutScoreboard"    layoutfile="file://{resources}/layout/custom_game/scoreboard/simple_scoreboard.xml" />         
 	</Panel>
 </root>
 
