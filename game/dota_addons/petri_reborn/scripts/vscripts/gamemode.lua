@@ -76,7 +76,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(10, false)
-          newHero.lumber = 150
+          newHero.lumber = 150000
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
@@ -169,7 +169,7 @@ function GameMode:FilterExecuteOrder( filterTable )
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
-    PrintTable(filterTable)
+    
     if order_type == 19 then 
       if filterTable["entindex_target"] >= 6 or
         PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then

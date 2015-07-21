@@ -52,11 +52,6 @@
   
   "OnChannelSucceeded"
   {
-    ///"RunScript"
-    //{
-    //  "ScriptFile"      "units/lab.lua"
-    //  "Function"        "Upgrade"
-    //}
     "ApplyModifier"
     {
       "ModifierName"  "modifier_concrete_aura"
@@ -73,15 +68,17 @@
   {
     "modifier_concrete_aura"
     {
-      "Passive"       "1"
       "IsHidden"        "1"
       
-      "Aura"          "modifier_concrete"
-      "Aura_Radius"       "%aura_range"
-      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
-      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
-      "Aura_ApplyToCaster"  "0"
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/lab.lua"
+          "Function"    "ApplyArmorAura"
+        }
+      }
     }
     "modifier_concrete"
     {
