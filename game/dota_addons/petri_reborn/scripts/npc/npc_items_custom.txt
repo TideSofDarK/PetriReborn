@@ -1613,7 +1613,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "19000"
+	      "bonus_damage"      "14000"
 	    }
 	  }
 	  
@@ -1735,7 +1735,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"   "13"
+	      "invu_duration"   "12"
 	    }
 	    "03"
 	    {

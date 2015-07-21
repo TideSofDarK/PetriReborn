@@ -403,7 +403,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "19000"
+      "bonus_damage"      "14000"
     }
   }
   
@@ -489,7 +489,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "2500"
+  "ItemCost"            "5000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

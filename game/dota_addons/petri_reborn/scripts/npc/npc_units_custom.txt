@@ -195,8 +195,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "120.0"
-	  "BountyGoldMax"       "140.0"
+	  "BountyGoldMin"       "100.0"
+	  "BountyGoldMax"       "100.0"
 	  "BountyXP"          "100"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -208,7 +208,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10750"
+	  "StatusHealth"        "14750"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -301,8 +301,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "75.0"
-	  "BountyGoldMax"       "75.0"
+	  "BountyGoldMin"       "70.0"
+	  "BountyGoldMax"       "70.0"
 	  "BountyXP"          "75"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -314,7 +314,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "4875"
+	  "StatusHealth"        "9875"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -354,8 +354,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "35.0"
-	  "BountyGoldMax"       "35.0"
+	  "BountyGoldMin"       "28.0"
+	  "BountyGoldMax"       "30.0"
 	  "BountyXP"          "50"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "180"
+	  "StatusHealth"        "340"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -1039,10 +1039,10 @@
 	  "AbilityLayout"    "6"
 	  "Ability1"     "gather_lumber"
 	  "Ability2"     "petri_repair"
-	  "Ability3"     "petri_empty1"
-	  "Ability4"     "petri_empty2"
-	  "Ability5"     "petri_gold_bag_blink"
-	  "Ability6"     "petri_suicide"
+	  "Ability3"     "petri_gold_bag_blink"
+	  "Ability4"     "petri_suicide"
+	  "Ability5"     "petri_empty1"
+	  "Ability6"     "petri_empty2"
 	  "Ability7"     "petri_empty3"
 	  "Ability8"     "petri_empty4"
 	  "Ability9"     "return_resources"

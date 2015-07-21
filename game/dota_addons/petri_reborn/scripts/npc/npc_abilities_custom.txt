@@ -941,7 +941,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "10 10 9 8 8 8 7 6 5"
+	  "AbilityCooldown" "10 9 8 8 8 7 6 5 4"
 	
 	  "MaxLevel"            "9"
 	
@@ -1561,21 +1561,6 @@
 	      "ModifierName"  "sleep_modifier"
 	      "Target"    "TARGET"
 	    }
-	    "RemoveModifier"
-	    {
-	      "ModifierName" "modifier_repairing"
-	      "Target"    "TARGET"
-	    }
-	    "RemoveModifier"
-	    {
-	      "ModifierName" "modifier_chopping_building"
-	      "Target"    "TARGET"
-	    }
-	    "RemoveModifier"
-	    {
-	      "ModifierName" "modifier_chopping_building_animation"
-	      "Target"    "TARGET"
-	    }
 	  }
 	  
 	  "Modifiers"
@@ -1590,8 +1575,9 @@
 	
 	      "States"
 	      {
+	        "MODIFIER_STATE_ROOTED" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FROZEN" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
 	        "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED" 
 	        "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
@@ -1822,7 +1808,6 @@
 	          "Function"    "ToggleOffRepairing"
 	        }
 	      }
-	      
 	    }
 	
 	    "modifier_chopping_building"

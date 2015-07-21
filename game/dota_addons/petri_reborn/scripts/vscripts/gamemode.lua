@@ -159,12 +159,12 @@ function GameMode:OnGameInProgress()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer(22 * 60,
+  Timers:CreateTimer(34 * 60,
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer(35 * 60,
+  Timers:CreateTimer(45 * 60,
     function()
       PetrosyanWin()
     end)
@@ -208,7 +208,7 @@ end
 
 function GameMode:ModifyGoldFilter(event)
   if event.reason_const == DOTA_ModifyGold_HeroKill then
-    PlayerResource:ModifyGold(event.player_id_const, 20,false,DOTA_ModifyGold_HeroKill )
+    PlayerResource:ModifyGold(event.player_id_const, 100,false,DOTA_ModifyGold_HeroKill )
     return false
   end
   return true

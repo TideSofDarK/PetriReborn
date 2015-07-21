@@ -404,9 +404,9 @@ function Spawn( t )
 
 				if this_distance < distance then
 					distance = this_distance
-					if v.worker == nil then
+					--if v.worker == nil then
 						closest_tree = v
-					end
+					--end
 				end
 			end
 
