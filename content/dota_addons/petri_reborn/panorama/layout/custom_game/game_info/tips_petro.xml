@@ -1,0 +1,10 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/game_info.css" />
+	</styles>
+	<Panel class="TipsRow">
+		<Label id="TipText01" class="TipText" html="true" text="#game_info_tip_petro01" />
+	</Panel>
+</root>
+
