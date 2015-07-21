@@ -1439,7 +1439,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "430"
+	      "bonus_damage"      "390"
 	    }
 	  }
 	  
@@ -1497,7 +1497,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "3500"
+	      "bonus_damage"      "3100"
 	    }
 	  }
 	  
@@ -1555,7 +1555,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "9000"
+	      "bonus_damage"      "8000"
 	    }
 	  }
 	  
@@ -1613,7 +1613,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "14000"
+	      "bonus_damage"      "12000"
 	    }
 	  }
 	  
@@ -1671,7 +1671,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "19000"
+	      "bonus_damage"      "18000"
 	    }
 	  }
 	  
@@ -1720,7 +1720,7 @@
 	
 	  "AbilityCooldown"       "65"
 	  
-	  "ItemCost"            "446"
+	  "ItemCost"            "487"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -1850,7 +1850,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "159"
+	  "ItemCost"            "200"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

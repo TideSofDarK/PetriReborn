@@ -2994,7 +2994,7 @@
 	  "MaxLevel"            "10"
 	
 	  "AbilityChannelTime"      "5.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0"
-	  "AbilityGoldCost"       "0 10 60 300 550 900 1500 2000 3500"
+	  "AbilityGoldCost"       "0 10 60 270 550 900 1500 2000 3500"
 	
 	  "AbilitySpecial"
 	  {

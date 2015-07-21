@@ -1,9 +1,7 @@
--- This is the primary barebones gamemode script and should be used to assist in initializing your game mode
-
-
--- Set this to true if you want to see a complete debug output of all events/processes done by barebones
--- You can also change the cvar 'barebones_spew' at any time to 1 or 0 for output/no output
 BAREBONES_DEBUG_SPEW = false
+
+PETRI_TIME_LIMIT = 55
+PETRI_EXIT_MARK = 20
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -31,31 +29,16 @@ function GameMode:PostLoadPrecache()
   
 end
 
---[[
-  This function is called once and only once as soon as the first player (almost certain to be the server in local lobbies) loads in.
-  It can be used to initialize state that isn't initializeable in InitGameMode() but needs to be done before everyone loads in.
-]]
 function GameMode:OnFirstPlayerLoaded()
   DebugPrint("[BAREBONES] First Player has loaded")
 
   
 end
 
---[[
-  This function is called once and only once after all players have loaded into the game, right as the hero selection time begins.
-  It can be used to initialize non-hero player state or adjust the hero selection (i.e. force random etc)
-]]
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
 end
 
---[[
-  This function is called once and only once for every player when they spawn into the game for the first time.  It is also called
-  if the player's hero is replaced with a new hero for any reason.  This function is useful for initializing heroes, such as adding
-  levels, changing the starting gold, removing/adding abilities, adding physics, etc.
-
-  The hero parameter is the hero entity that just spawned in
-]]
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
@@ -166,17 +149,17 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  Timers:CreateTimer(16 * 60,
+  Timers:CreateTimer(PETRI_EXIT_MARK * 60,
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer(34 * 60,
+  Timers:CreateTimer((PETRI_TIME_LIMIT - 9 - 2) * 60,
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer(45 * 60,
+  Timers:CreateTimer(PETRI_TIME_LIMIT * 60,
     function()
       PetrosyanWin()
     end)
@@ -186,9 +169,10 @@ function GameMode:FilterExecuteOrder( filterTable )
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
-    
-    if order_type == 19 then
-      if filterTable["entindex_target"] >= 6 then
+
+    if order_type == 19 then 
+      if filterTable["entindex_target"] >= 6 or
+        PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
         return false
       else
         local ent = EntIndexToHScript(filterTable["units"]["0"])

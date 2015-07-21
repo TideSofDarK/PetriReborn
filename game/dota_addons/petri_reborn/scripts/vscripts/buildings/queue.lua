@@ -97,7 +97,7 @@ function DequeueUnit( event )
 
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
-	            hero.food = chero.food - foodToReturn
+	            hero.food = hero.food - foodToReturn
 
 	            if Debug_Queue then
 					print("Refund ",gold_cost)

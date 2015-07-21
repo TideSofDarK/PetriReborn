@@ -1,4 +1,5 @@
-UPGRADE_RATE = 65
+UPGRADE_RATE = 58
+UPGRADE_LIMIT = 230
 
 function GetGoldAutocast( event )
 	local caster = event.caster
@@ -54,8 +55,8 @@ function Upgrade( event )
 
 		caster:SetModifierStackCount("modifier_gold_bag", caster,goldModifier+count)
 
-		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= 130 then
-			caster:SetModifierStackCount("modifier_gold_bag", caster,130)
+		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= UPGRADE_LIMIT then
+			caster:SetModifierStackCount("modifier_gold_bag", caster,UPGRADE_LIMIT)
 
 			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
 			ability:ToggleAbility()

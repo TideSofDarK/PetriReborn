@@ -99,7 +99,7 @@ function CheckTreePosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 150
+	local collision = distance < 160
 	if not collision then
 	--print("Moving to tree, distance: ",distance)
 	elseif not caster:HasModifier("modifier_chopping_wood") then
@@ -210,7 +210,10 @@ function CheckBuildingPosition( event )
 	local target = caster.target_building -- Index building so we know which target to start with
 	local ability = event.ability
 
-	if not target then
+	if not target or not caster then
+		-- caster:RemoveModifierByName("modifier_chopping_wood")
+		-- caster:RemoveModifierByName("modifier_gathering_lumber")
+		-- caster:RemoveModifierByName("modifier_chopping_wood_animation")
 		return
 	end
 

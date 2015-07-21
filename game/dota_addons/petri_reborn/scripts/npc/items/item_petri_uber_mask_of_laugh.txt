@@ -9,7 +9,7 @@
 
   "AbilityCooldown"       "65"
   
-  "ItemCost"            "446"
+  "ItemCost"            "487"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -139,7 +139,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "159"
+  "ItemCost"            "200"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
