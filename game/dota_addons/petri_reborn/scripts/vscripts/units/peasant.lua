@@ -412,6 +412,8 @@ function Spawn( t )
 	local pID = thisEntity:GetPlayerOwnerID()
 	local ability = thisEntity:FindAbilityByName("gather_lumber")
 
+	thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
+
 	Timers:CreateTimer(0.2, function()
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
 
