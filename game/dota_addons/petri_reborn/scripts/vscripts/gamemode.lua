@@ -61,6 +61,8 @@ function GameMode:OnHeroInGame(hero)
 
   hero:SetGold(0, false)
 
+  GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
+
   if hero:GetClassname() == "npc_dota_hero_viper" then
     local team = hero:GetTeamNumber()
     local player = hero:GetPlayerOwner()
@@ -91,8 +93,13 @@ function GameMode:OnHeroInGame(hero)
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(10, false)
+          newHero.lumber = 150
+          newHero.bonusLumber = 0
+          newHero.food = 0
+          newHero.maxFood = 10
+          SetupUI(newHero)
 
-          player.lumber = 150
+          GameMode.assignedPlayerHeroes[pID] = newHero
         end, pID)
     end
 
@@ -108,9 +115,15 @@ function GameMode:OnHeroInGame(hero)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
 
-          newHero:SetGold(32, false)
-
           newHero.spawnPosition = newHero:GetAbsOrigin()
+
+          newHero:SetGold(32, false)
+          newHero.lumber = 0
+          newHero.food = 0
+          newHero.maxFood = 0
+          SetupUI(newHero)
+
+          GameMode.assignedPlayerHeroes[pID] = newHero
 
           if GameRules.explorationTowerCreated == nil then
             GameRules.explorationTowerCreated = true
@@ -121,29 +134,28 @@ function GameMode:OnHeroInGame(hero)
           end
         end, pID)
     end
-
-    -- We don't need 'undefined' variables
-    player.food = 0
-    player.maxFood = 10
-    player.lumber = player.lumber or 0
-
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
-
-    --Update player's UI
-    Timers:CreateTimer(0.03,
-    function()
-      local event_data =
-      {
-          gold = PlayerResource:GetGold(player:GetPlayerID()),
-          lumber = player.lumber,
-          food = player.food,
-          maxFood = player.maxFood
-      }
-      CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-      return 0.35
-    end)
   end
+end
+
+function SetupUI(newHero)
+  local player = newHero:GetPlayerOwner()
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+
+  --Update player's UI
+  Timers:CreateTimer(0.03,
+  function()
+    local event_data =
+    {
+        gold = PlayerResource:GetGold(newHero:GetPlayerOwnerID()),
+        lumber = newHero.lumber,
+        food = newHero.food,
+        maxFood = newHero.maxFood
+    }
+    CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+    if PlayerResource:GetConnectionState(player:GetPlayerID()) == DOTA_CONNECTION_STATE_CONNECTED then return 0.35 end
+  end)
 end
 
 --[[

@@ -188,8 +188,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "4200000.0"
-	  "AttackDamageMax"     "4200000.0"
+	  "AttackDamageMin"     "100000.0"
+	  "AttackDamageMax"     "100000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -294,8 +294,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "80000.0"
-	  "AttackDamageMax"     "80000.0"
+	  "AttackDamageMin"     "50000.0"
+	  "AttackDamageMax"     "50000.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "340"
+	  "StatusHealth"        "365"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -707,7 +707,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "5500"
+	  "ArmorPhysical"    "3500"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -818,10 +818,10 @@
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_upgrade_concrete"
 	  "Ability2"          "petri_upgrade_tower_damage"
-	  "Ability3"          "petri_empty1"
-	  "Ability4"          "petri_empty2"
-	  "Ability5"          "petri_empty3"
-	  "Ability6"          "petri_empty4"
+	  "Ability3"          "petri_upgrade_lumber"
+	  "Ability4"          "petri_empty1"
+	  "Ability5"          "petri_empty2"
+	  "Ability6"          "petri_empty3"
 	  "Ability7"          "petri_building"
 	  
 	  "ArmorPhysical"       "0"
@@ -867,7 +867,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "3000"
+	  "ArmorPhysical"    "2000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -1099,7 +1099,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "3000"
+	  "ArmorPhysical"    "2000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"

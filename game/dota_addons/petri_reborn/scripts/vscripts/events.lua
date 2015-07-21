@@ -162,23 +162,33 @@ function GameMode:OnPlayerReconnect(keys)
   --PrintTable(keys) 
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
+  local hero = player:GetAssignedHero()
 
-  --Send lumber and food info to users
-  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+  Timers:CreateTimer(0, function()
+    if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
+      Timers:CreateTimer(1,
+      function()
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+      end)
 
-  --Update player's UI
-  Timers:CreateTimer(0.03,
-  function()
-    local event_data =
-    {
-        gold = PlayerResource:GetGold(player:GetPlayerID()),
-        lumber = player.lumber,
-        food = player.food,
-        maxFood = player.maxFood
-    }
-    CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-    return 0.35
+      Timers:CreateTimer(0.03,
+      function()
+        local event_data =
+        {
+            gold = PlayerResource:GetGold(player:GetPlayerID()),
+            lumber = hero.lumber,
+            food = hero.food,
+            maxFood = hero.maxFood
+        }
+        CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
+        if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.03 end
+      end)
+    else
+      return 0.03
+    end
   end)
+
+  
 end
 
 -- An item was purchased by a player
@@ -352,12 +362,21 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  -- Remove building
+  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
+    killedUnit:RemoveBuilding(true)
+  end
+
   if killedUnit.foodProvided ~= nil then
-    killedUnit:GetPlayerOwner().maxFood = killedUnit:GetPlayerOwner().maxFood - killedUnit.foodProvided
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
+    hero.maxFood = hero.maxFood - killedUnit.foodProvided
   end
 
   if killedUnit.foodSpent ~= nil then
-    killedUnit:GetPlayerOwner().food = killedUnit:GetPlayerOwner().food - killedUnit.foodSpent
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
+    hero.food = hero.food - killedUnit.foodSpent
   end
 
   -- Respawn creep
@@ -377,11 +396,6 @@ function GameMode:OnEntityKilled( keys )
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
-  end
-
-  -- Remove building
-  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
-    killedUnit:RemoveBuilding(true)
   end
 
   -- Petrosyn is killed

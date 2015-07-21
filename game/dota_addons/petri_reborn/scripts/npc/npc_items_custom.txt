@@ -1439,7 +1439,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "500"
+	      "bonus_damage"      "430"
 	    }
 	  }
 	  
@@ -1497,7 +1497,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "4000"
+	      "bonus_damage"      "3500"
 	    }
 	  }
 	  
@@ -1699,7 +1699,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "2500"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1745,7 +1745,7 @@
 	    "04"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent_building"   "20"
+	      "lifesteal_percent_building"   "13"
 	    }
 	  }
 	
@@ -1777,6 +1777,11 @@
 	        {
 	          "ScriptFile"      "units/petrosyan.lua"
 	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
 	        }
 	      }
 	

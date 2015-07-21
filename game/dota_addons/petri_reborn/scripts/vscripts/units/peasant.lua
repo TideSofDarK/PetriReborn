@@ -1,5 +1,15 @@
 Debug_Peasant = false
 
+function LumberUpgrade(event)
+	local caster = event.caster
+	local target = event.target
+	local ability = event.ability
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	hero.bonusLumber = ability:GetLevelSpecialValueFor("bonus_lumber", ability:GetLevel() - 1)
+end
+
 -- Lumber gathering
 
 function Gather( event )
@@ -106,6 +116,8 @@ function Gather100Lumber( event )
 	local caster = event.caster
 	local ability = event.ability
 
+	local hero = caster:GetPlayerOwner():GetAssignedHero()
+
 	local max_lumber_carried = 200
 	local single_chop = 100
 
@@ -113,6 +125,9 @@ function Gather100Lumber( event )
 		max_lumber_carried = 400
 		single_chop = 200
 	end
+
+	max_lumber_carried = max_lumber_carried + (hero.bonusLumber * 2)
+	single_chop = single_chop + hero.bonusLumber 
 
 	local return_ability = caster:FindAbilityByName("return_resources")
 
@@ -216,6 +231,8 @@ function CheckBuildingPosition( event )
 				print("Reached building, give resources")
 			end
 
+			local hero = caster:GetPlayerOwner():GetAssignedHero()
+ 
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
@@ -231,7 +248,8 @@ function CheckBuildingPosition( event )
 		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
 		    ParticleManager:SetParticleControl(pidx, 3, color)
 
-			caster:GetPlayerOwner().lumber = caster:GetPlayerOwner().lumber + lumber_gathered 
+		   
+			hero.lumber = hero.lumber + lumber_gathered 
     		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
     		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
 

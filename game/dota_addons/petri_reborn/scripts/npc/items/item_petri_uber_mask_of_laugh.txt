@@ -34,7 +34,7 @@
     "04"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent_building"   "20"
+      "lifesteal_percent_building"   "13"
     }
   }
 
@@ -66,6 +66,11 @@
         {
           "ScriptFile"      "units/petrosyan.lua"
           "Function"        "ModifierSuperLifesteal"
+        }
+        "RunScript"
+        {
+          "ScriptFile"      "units/petrosyan.lua"
+          "Function"        "BonusGoldFromWall"
         }
       }
 

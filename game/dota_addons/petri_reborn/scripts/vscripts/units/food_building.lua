@@ -3,7 +3,7 @@ function Spawn ( entityKeyValues  )
     function()
     	if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
 
-			thisEntity:GetPlayerOwner().maxFood = thisEntity:GetPlayerOwner().maxFood + 30
+			thisEntity:GetPlayerOwner():GetAssignedHero().maxFood = thisEntity:GetPlayerOwner():GetAssignedHero().maxFood + 30
 	    	thisEntity.foodProvided = 30
 		end
     end)
@@ -24,6 +24,8 @@ function Upgrade ( event   )
 		UpdateModel(caster, "models/props_structures/tent_dk_large.vmdl", 0.24)
 	end
 
-	player.maxFood = player.maxFood + 30
+	local hero = player:GetAssignedHero()
+
+	hero.maxFood = hero.maxFood + 30
 	caster.foodProvided = caster.foodProvided  + 30
 end

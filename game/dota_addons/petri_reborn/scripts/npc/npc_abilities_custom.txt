@@ -437,21 +437,17 @@
 	
 	  "AbilityCastPoint"        "0.1"
 	
-	  "OnUpgrade"
-	  {
-	    "ApplyModifier"
-	    {
-	      "Target"      "CASTER"
-	      "ModifierName"    "modifier_ability_gather_lumber_no_col"
-	    }
-	  }
-	
 	  "OnAbilityPhaseStart"
 	  {
 	    "RunScript"
 	    {
 	      "ScriptFile"  "units/peasant.lua"
 	      "Function"    "Gather"
+	    }
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_ability_gather_lumber_no_col"
 	    }
 	  }
 	
@@ -489,6 +485,11 @@
 	      {
 	        "RemoveModifier"
 	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }  
+	        "RemoveModifier"
+	        {
 	          "ModifierName"  "modifier_gathering_lumber"
 	          "Target"    "CASTER"
 	        }
@@ -509,7 +510,12 @@
 	      "OverrideAnimation"   "ACT_DOTA_ATTACK"
 	
 	      "OnOrder"
-	      {     
+	      { 
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }    
 	        "RemoveModifier"
 	        {
 	          "ModifierName"  "modifier_chopping_wood"
@@ -546,6 +552,11 @@
 	      "IsHidden"        "1"
 	      "OnOrder"
 	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
+	          "Target"    "CASTER"
+	        }  
 	        "RemoveModifier"
 	        {
 	          "ModifierName"  "modifier_chopping_wood_animation"
@@ -2611,6 +2622,61 @@
 	    {
 	      "ScriptFile"      "units/gold_tower.lua"
 	      "Function"        "Upgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	}
+	"petri_upgrade_lumber"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "holdout_culling_blade"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityGoldCost"       "50 100 175 350 500"
+	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
+	
+	  "MaxLevel"            "6"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_lumber"  "10 20 40 60 80"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/peasant.lua"
+	      "Function"        "LumberUpgrade"
 	    }
 	    "RunScript"
 	    {

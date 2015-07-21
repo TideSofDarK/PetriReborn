@@ -1,5 +1,6 @@
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
+	local hero = player:GetAssignedHero()
 	local pID = player:GetPlayerID()
 	local caster = keys.caster
 
@@ -44,7 +45,7 @@ function build( keys )
 	end
 
 	if gold_cost ~= nil then
-		player.lastSpentGold = gold_cost
+		hero.lastSpentGold = gold_cost
 	end
 
 	if lumber_cost ~= nil then
@@ -60,6 +61,8 @@ function build( keys )
 	end
 
 	if enough_food ~= true or enough_lumber ~= true then
+		ReturnGold(player)
+		EndCooldown(caster, ability_name)
 		return
 	else
 		SpendLumber(player, lumber_cost)
@@ -159,15 +162,7 @@ function build( keys )
 		ReturnGold(player)
 		ReturnFood( player )
 
-		if ability_name == "build_petri_exit" then
-			if caster:FindAbilityByName("build_petri_exit") ~= nil then
-				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
-			else
-				caster:AddAbility("build_petri_exit")
-				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
-				caster:RemoveAbility("build_petri_exit")
-			end
-		end
+		EndCooldown(caster, ability_name)
 	end)
 
 	keys:OnConstructionCancelled(function( building )
@@ -175,15 +170,7 @@ function build( keys )
 		ReturnGold(player)
 		ReturnFood( player )
 
-		if ability_name == "build_petri_exit" then
-			if caster:FindAbilityByName("build_petri_exit") ~= nil then
-				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
-			else
-				caster:AddAbility("build_petri_exit")
-				caster:FindAbilityByName("build_petri_exit"):EndCooldown()
-				caster:RemoveAbility("build_petri_exit")
-			end
-		end
+		EndCooldown(caster, ability_name)
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.
@@ -217,9 +204,11 @@ function builder_queue( keys )
   if caster.ProcessingBuilding ~= nil then
     -- caster is probably a builder, stop them
     player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
-    player.activeBuilder:ClearQueue()
+    if player.activeBuilder ~= nil then
+    	player.activeBuilder:ClearQueue()
+    	player.activeBuilder:Stop()
+    	player.activeBuilder.ProcessingBuilding = false
+    end
     player.activeBuilding = nil
-    player.activeBuilder:Stop()
-    player.activeBuilder.ProcessingBuilding = false
   end
 end
