@@ -15,12 +15,29 @@ function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
 }
 
 
+function UpdateDisconnectIcon( playerInfo, playerContainer )
+{
+	if (!playerInfo || !playerContainer)
+		return;
+
+	var icon = playerContainer.FindChildInLayoutFile( "DisconnectionIndicator" );
+	icon.style['visibility'] = "collapse;";
+	switch(playerInfo.player_connection_state)
+	{
+		case DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED:
+		case DOTAConnectionState_t.DOTA_CONNECTION_STATE_FAILED:
+		case DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED:
+			icon.style['visibility'] = "visible;";
+			break;
+	}
+}
 //=============================================================================
 //=============================================================================
 function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )
 {
 	var playerPanelName = "_dynamic_player_" + playerId;
 	var playerPanel = playersContainer.FindChild( playerPanelName );
+
 	if ( playerPanel === null )
 	{
 		playerPanel = $.CreatePanel( "Panel", playersContainer, playerPanelName );
@@ -37,6 +54,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 	var playerInfo = Game.GetPlayerInfo( playerId );
 	if ( playerInfo )
 	{
+
 		isTeammate = ( playerInfo.player_team_id == localPlayerTeamId );
 		if ( isTeammate )
 		{
@@ -93,6 +111,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		playerPanel.SetHasClass( "player_connection_abandoned", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_ABANDONED );
 		playerPanel.SetHasClass( "player_connection_failed", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_FAILED );
 		playerPanel.SetHasClass( "player_connection_disconnected", playerInfo.player_connection_state == DOTAConnectionState_t.DOTA_CONNECTION_STATE_DISCONNECTED );
+
+		UpdateDisconnectIcon( playerInfo, playerPanel );
 
 		var playerAvatar = playerPanel.FindChildInLayoutFile( "AvatarImage" );
 		if ( playerAvatar )
