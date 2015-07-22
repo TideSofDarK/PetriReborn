@@ -1,15 +1,5 @@
 Debug_Peasant = false
 
-function LumberUpgrade(event)
-	local caster = event.caster
-	local target = event.target
-	local ability = event.ability
-
-	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
-
-	hero.bonusLumber = ability:GetLevelSpecialValueFor("bonus_lumber", ability:GetLevel() - 1)
-end
-
 -- Lumber gathering
 
 function Gather( event )

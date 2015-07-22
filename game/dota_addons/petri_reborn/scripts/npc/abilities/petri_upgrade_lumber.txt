@@ -43,7 +43,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"      "units/peasant.lua"
+      "ScriptFile"      "units/lab.lua"
       "Function"        "LumberUpgrade"
     }
     "RunScript"

@@ -1567,6 +1567,11 @@
 	
 	  "OnSpellStart"
 	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "Sleep"
+	    }
 	    "ApplyModifier"
 	    {
 	      "ModifierName"  "sleep_modifier"
@@ -2541,7 +2546,7 @@
 	    {
 	      "IsHidden"        "1"
 	      
-	      "ThinkInterval"  "1.0"
+	      "ThinkInterval"  "0.5"
 	      "OnIntervalThink"
 	      {
 	        "RunScript"
@@ -2672,7 +2677,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "units/peasant.lua"
+	      "ScriptFile"      "units/lab.lua"
 	      "Function"        "LumberUpgrade"
 	    }
 	    "RunScript"
@@ -2874,7 +2879,7 @@
 	    {
 	      "IsHidden"        "1"
 	
-	      "ThinkInterval"  "1.0"
+	      "ThinkInterval"  "0.5"
 	      "OnIntervalThink"
 	      {
 	        "RunScript"

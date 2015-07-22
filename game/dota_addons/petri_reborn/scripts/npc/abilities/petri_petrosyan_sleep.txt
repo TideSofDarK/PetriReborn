@@ -30,6 +30,11 @@
 
   "OnSpellStart"
   {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "Sleep"
+    }
     "ApplyModifier"
     {
       "ModifierName"  "sleep_modifier"

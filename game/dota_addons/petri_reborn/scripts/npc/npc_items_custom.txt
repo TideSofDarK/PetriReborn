@@ -1179,7 +1179,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_stone_of_power"
 	
-	  "ItemCost"            "7500"
+	  "ItemCost"            "7200"
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
@@ -1497,7 +1497,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "3100"
+	      "bonus_damage"      "1900"
 	    }
 	  }
 	  
@@ -1555,7 +1555,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "7100"
+	      "bonus_damage"      "5100"
 	    }
 	  }
 	  
@@ -1613,7 +1613,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "12000"
+	      "bonus_damage"      "11500"
 	    }
 	  }
 	  
@@ -1671,7 +1671,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "18000"
+	      "bonus_damage"      "15000"
 	    }
 	  }
 	  

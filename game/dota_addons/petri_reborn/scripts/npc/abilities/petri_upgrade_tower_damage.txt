@@ -77,7 +77,7 @@
     {
       "IsHidden"        "1"
 
-      "ThinkInterval"  "1.0"
+      "ThinkInterval"  "0.5"
       "OnIntervalThink"
       {
         "RunScript"
