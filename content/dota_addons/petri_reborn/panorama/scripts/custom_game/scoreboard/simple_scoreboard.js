@@ -12,6 +12,12 @@ function AutoUpdateScoreboard()
     $.Schedule( 1, AutoUpdateScoreboard );
 }
 
+function UpdatePlayers()
+{
+	g_ScoreboardHandle.scoreboardConfig["updatePlayersCount"] = true;
+	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, visible );
+}
+
 function SetFlyoutScoreboardVisible( bVisible )
 {
 	visible = bVisible;
@@ -34,6 +40,7 @@ function SetFlyoutScoreboardVisible( bVisible )
 	{
 		"teamXmlName" : "file://{resources}/layout/custom_game/scoreboard/simple_scoreboard_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/scoreboard/simple_scoreboard_player.xml",
+		"updatePlayersCount" : false,
 	};
 
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#TeamsContainer" ) );
@@ -41,4 +48,6 @@ function SetFlyoutScoreboardVisible( bVisible )
 	SetFlyoutScoreboardVisible( false );
 
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
+	// Подписываемся на событие "Смена команды"
+    GameEvents.Subscribe("player_team", UpdatePlayers);	
 })();

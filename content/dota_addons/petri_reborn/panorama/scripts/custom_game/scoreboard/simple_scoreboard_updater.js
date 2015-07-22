@@ -29,6 +29,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		playerPanel.BLoadLayout( scoreboardConfig.playerXmlName, false, false );
 	}
 
+	//playerPanel.BLoadLayoutFromString("<root></root>", true, false);
+
 	playerPanel.SetHasClass( "is_local_player", ( playerId == Game.GetLocalPlayerID() ) );
 	
 	var ultStateOrTime = PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_HIDDEN; // values > 0 mean on cooldown for that many seconds
@@ -174,6 +176,8 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 
 //=============================================================================
 //=============================================================================
+
+
 function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, teamDetails, teamsInfo )
 {
 	if ( !containerPanel )
@@ -189,12 +193,14 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 //		$.Msg( "UpdateTeamPanel.Create: ", teamPanelName, " = ", scoreboardConfig.teamXmlName );
 		teamPanel = $.CreatePanel( "Panel", containerPanel, teamPanelName );
 		teamPanel.SetAttributeInt( "team_id", teamId );
-		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false );
+
+		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false);
 
 		var logo_xml = GameUI.CustomUIConfig().team_logo_xml;
+
 		if ( logo_xml )
 		{
-			var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );
+			var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );		
 			if ( teamLogoPanel )
 			{
 				teamLogoPanel.SetAttributeInt( "team_id", teamId );
@@ -216,6 +222,12 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 	var playersContainer = teamPanel.FindChildInLayoutFile( "PlayersContainer" );
 	if ( playersContainer )
 	{
+		if (scoreboardConfig["updatePlayersCount"])
+		{
+			playersContainer.RemoveAndDeleteChildren()
+			scoreboardConfig["updatePlayersCount"] = false;
+		}
+
 		for ( var playerId of teamPlayers )
 		{
 			_ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContainer, playerId, localPlayerTeamId )

@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/simple_scoreboard_team_icon.css" />
+	</styles>
+	<script>
+		var teamId = $.GetContextPanel().GetAttributeInt( "team_id", -1 );
+		if ( GameUI.CustomUIConfig().team_colors )
+		{
+			var teamColor = GameUI.CustomUIConfig().team_colors[ teamId ];
+		}
+		if ( GameUI.CustomUIConfig().team_icons )
+		{
+			var teamIcon = GameUI.CustomUIConfig().team_icons[ teamId ];
+			if ( teamIcon )
+			{
+				$("#TeamIcon").SetImage( teamIcon );
+			}
+		}
+
+	</script>
+	<Panel class="TeamIcon">
+		<Image id="TeamIcon" src="" />
+	</Panel>
+</root>
