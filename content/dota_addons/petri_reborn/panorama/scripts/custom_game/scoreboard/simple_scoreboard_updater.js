@@ -192,9 +192,10 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 		teamPanel.BLoadLayout( scoreboardConfig.teamXmlName, false, false );
 
 		var logo_xml = GameUI.CustomUIConfig().team_logo_xml;
+
 		if ( logo_xml )
 		{
-			var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );
+			var teamLogoPanel = teamPanel.FindChildInLayoutFile( "TeamLogo" );		
 			if ( teamLogoPanel )
 			{
 				teamLogoPanel.SetAttributeInt( "team_id", teamId );
