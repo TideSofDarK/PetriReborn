@@ -54,10 +54,8 @@
 			<Label id="KVNsText" html="true" text="#game_info_KVNs" />			
 			<Image id="KVNsImage" src="file://{images}/custom_game/game_info/KVNs.psd" />						
 		</Panel>
-
-		<Label id="TipsHeader" class="Header" html="true" />
+		<Label id="TipsHeader" class="Header" html="true" text="#game_info_tips_header" />		
 		<Panel id="TeamTips" />
-		<Label id="TipsHeader" class="Header" html="true" text="#game_info_tips_header" />
 	</Panel>		
 </root>
 

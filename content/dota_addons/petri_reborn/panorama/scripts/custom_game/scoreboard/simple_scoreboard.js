@@ -1,13 +1,24 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
+var visible;
+
+function AutoUpdateScoreboard()
+{
+	if (!visible)
+		return;
+
+	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
+    $.Schedule( 1, AutoUpdateScoreboard );
+}
 
 function SetFlyoutScoreboardVisible( bVisible )
 {
-	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", bVisible );
-	if ( bVisible )
+	visible = bVisible;
+	$.GetContextPanel().SetHasClass( "flyout_scoreboard_visible", visible );
+	if ( visible )
 	{
-		ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
+		AutoUpdateScoreboard( bVisible );
 	}
 	else
 	{
@@ -24,9 +35,10 @@ function SetFlyoutScoreboardVisible( bVisible )
 		"teamXmlName" : "file://{resources}/layout/custom_game/scoreboard/simple_scoreboard_team.xml",
 		"playerXmlName" : "file://{resources}/layout/custom_game/scoreboard/simple_scoreboard_player.xml",
 	};
+
 	g_ScoreboardHandle = ScoreboardUpdater_InitializeScoreboard( scoreboardConfig, $( "#TeamsContainer" ) );
-	
+
 	SetFlyoutScoreboardVisible( false );
-	
+
 	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
 })();
