@@ -1,7 +1,7 @@
 BAREBONES_DEBUG_SPEW = false
 
-PETRI_TIME_LIMIT = 55
-PETRI_EXIT_MARK = 20
+PETRI_TIME_LIMIT = 72
+PETRI_EXIT_MARK = 24
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 11
 
 if GameMode == nil then
@@ -84,6 +84,11 @@ function GameMode:OnHeroInGame(hero)
           SetupUI(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
+
+          -- Timers:CreateTimer(2.0, function ()
+          --   player:SetTeam(DOTA_TEAM_BADGUYS)
+          --   newHero:SetTeam(DOTA_TEAM_BADGUYS)
+          -- end)
         end, pID)
     end
 
@@ -123,6 +128,7 @@ end
 
 function SetupUI(newHero)
   local player = newHero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
 
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
@@ -132,13 +138,13 @@ function SetupUI(newHero)
   function()
     local event_data =
     {
-        gold = PlayerResource:GetGold(newHero:GetPlayerOwnerID()),
+        gold = GameMode.assignedPlayerHeroes[pID]:GetGold(),
         lumber = newHero.lumber,
         food = newHero.food,
         maxFood = newHero.maxFood
     }
     CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-    if PlayerResource:GetConnectionState(player:GetPlayerID()) == DOTA_CONNECTION_STATE_CONNECTED then return 0.35 end
+    if PlayerResource:GetConnectionState(pID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.35 end
   end)
 end
 
@@ -208,7 +214,7 @@ end
 
 function GameMode:ModifyGoldFilter(event)
   if event.reason_const == DOTA_ModifyGold_HeroKill then
-    PlayerResource:ModifyGold(event.player_id_const, 100,false,DOTA_ModifyGold_HeroKill )
+    PlayerResource:ModifyGold(event.player_id_const, 100 * (PlayerResource:GetKills(event.player_id_const) + 1),false,DOTA_ModifyGold_HeroKill )
     return false
   end
   return true
@@ -249,6 +255,33 @@ function GameMode:InitGameMode()
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
 
   BuildingHelper:Init()
+end
+
+function GameMode:ReplaceWithMiniActor(player)
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
+
+  PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
+    function() 
+      player:SetTeam(DOTA_TEAM_BADGUYS)
+
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", 0, 0)
+      GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
+
+      newHero:SetTeam(DOTA_TEAM_BADGUYS)
+
+      newHero:RespawnHero(false, false, false)
+
+      newHero:SetAbilityPoints(3)
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+
+      Timers:CreateTimer(0.03, function ()
+        newHero.spawnPosition = newHero:GetAbsOrigin()
+      end)
+    end
+    , 
+  player:GetPlayerID())
 end
 
 function KVNWin(keys)

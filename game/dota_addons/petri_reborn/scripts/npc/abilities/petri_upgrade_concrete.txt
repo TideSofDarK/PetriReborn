@@ -23,7 +23,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "bonus_armor_percent"  "0 45 90 180 210 240 270 300 500 750 1000 2500"
+      "bonus_armor_percent"  "0 90 180 270 360 450 660 1100 1500 1900 2300 2700"
     }
     "03"
     {

@@ -6,7 +6,7 @@ function CheckFarmPlaces(trigger)
 end
 
 function OnStartTouch(trigger)
-	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" or trigger.activator:GetUnitName () == "npc_petri_janitor" then
+	if trigger.activator:GetTeam() == DOTA_TEAM_BADGUYS then
 		if CheckFarmPlaces(trigger.caller) == true then return end
 
 		if trigger.activator.teleportationState == nil or trigger.activator.teleportationState == 0 
@@ -16,11 +16,6 @@ function OnStartTouch(trigger)
 			local newPosition = thisEntity:GetAbsOrigin()
 
 			if string.match(trigger.caller:GetName (), "portal_trigger_creep") then
-				local additionalVector = (thisEntity:GetAbsOrigin() - trigger.caller:GetAbsOrigin()):Normalized() * 300
-				newPosition = newPosition + additionalVector
-				if string.match(trigger.caller:GetName (), "output") then
-					newPosition = trigger.activator.spawnPosition
-				end
 				trigger.activator.teleportationState = 0
 			end
 
@@ -39,7 +34,7 @@ function OnStartTouch(trigger)
 end
  
 function OnEndTouch(trigger)
-	if trigger.activator:GetUnitName () == "npc_dota_hero_brewmaster" or trigger.activator:GetUnitName () == "npc_petri_janitor" then
+	if trigger.activator:GetTeam() == DOTA_TEAM_BADGUYS then
 		if CheckFarmPlaces(trigger.caller) == true then return end
 		
 		trigger.activator.teleportationState = trigger.activator.teleportationState + 1

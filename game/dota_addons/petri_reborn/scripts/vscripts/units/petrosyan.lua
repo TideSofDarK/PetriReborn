@@ -95,10 +95,10 @@ function FarSight( event )
     	-- Destroy after the duration
     	Timers:CreateTimer(duration, function() 
     		dummy:RemoveSelf()
-    		dummy_front:RemoveSelf() 
-    		dummy_back:RemoveSelf() 
-    		dummy_left:RemoveSelf() 
-    		dummy_right:RemoveSelf()
+    		if not dummy_front:IsNull() then dummy_front:RemoveSelf() end
+    		if not dummy_back:IsNull() then dummy_back:RemoveSelf() end
+    		if not dummy_left:IsNull() then dummy_left:RemoveSelf() end
+    		if not dummy_right:IsNull() then dummy_right:RemoveSelf() end
     	end)
     end
 

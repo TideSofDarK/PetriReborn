@@ -13,15 +13,15 @@
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "1000.0"
-  "AttackDamageMax"     "1000.0"
+  "AttackDamageMin"     "1500.0"
+  "AttackDamageMax"     "1700.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "28.0"
-  "BountyGoldMax"       "28.0"
+  "BountyGoldMin"       "25.0"
+  "BountyGoldMax"       "26.0"
   "BountyXP"          "50"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "475"
+  "StatusHealth"        "505"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

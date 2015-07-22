@@ -1,0 +1,55 @@
+"npc_petri_mini_actor"
+{
+  "override_hero"     "npc_dota_hero_storm_spirit"
+  "SoundSet"          "0" 
+
+  "HasInventory"          "1"
+  "ConsideredHero"        "1"
+
+  "AbilityLayout" "4"
+
+  "Ability1"        "petri_petrosyan_flat_joke" 
+  "Ability2"        "petri_petrosyan_laugh_burst" 
+  "Ability3"        "petri_petrosyan_wind_walk"
+  "Ability4"        "petri_petrosyan_return"
+
+  "MinimapIcon"               "minimap_candybucket"
+  "MinimapIconSize"           "1000"
+
+  "ArmorPhysical"       "1"                 
+  "MagicalResistance"       "0"
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackRange"                "75"
+  "AttackDamageMin"     "2"
+  "AttackDamageMax"     "2"
+  "AttackRate" "0.56"
+
+  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+  "AttributeBaseStrength"   "1"
+  "AttributeStrengthGain"   "0.1"
+  "AttributeBaseIntelligence" "1"
+  "AttributeIntelligenceGain" "0.25"
+  "AttributeBaseAgility"    "1"
+  "AttributeAgilityGain"    "0.25"
+
+  "BountyXP"          "50"                 
+  "BountyGoldMin"       "10"                   
+  "BountyGoldMax"       "20"     
+  "BountyGain"                "0"              
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"
+  "RingRadius"        "70"
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+  "MovementSpeed"       "600"
+  "MovementTurnRate"      "1.0"                 
+
+  "StatusHealth"        "55"                 
+  "StatusHealthRegen"     "0.0"                 
+  "StatusMana"        "5"                   
+  "StatusManaRegen"     "1.5"                 
+
+  "VisionDaytimeRange"    "1000"                  
+  "VisionNighttimeRange"    "1000"                  
+}

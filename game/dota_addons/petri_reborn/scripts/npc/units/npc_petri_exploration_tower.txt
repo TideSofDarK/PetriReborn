@@ -11,7 +11,7 @@
   "Ability3"          "petri_empty3"
   "Ability4"          "petri_empty4"
   
-  "ArmorPhysical"       "25"     
+  "ArmorPhysical"       "25000000"     
   "MagicalResistance"       "0"     
   
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    

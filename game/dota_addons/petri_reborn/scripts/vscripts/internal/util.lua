@@ -1,3 +1,11 @@
+function CheckKVN()
+  local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
+  for k,v in pairs(kvns) do
+    if v:IsAlive() then return false end
+  end
+  return true
+end
+
 function EndCooldown(caster, ability_name)
   if caster:FindAbilityByName(ability_name) ~= nil then
     caster:FindAbilityByName(ability_name):EndCooldown()
