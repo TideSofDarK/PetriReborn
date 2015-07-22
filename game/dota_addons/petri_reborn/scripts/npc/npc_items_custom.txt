@@ -334,7 +334,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_hook"
 	
-	  "ItemCost"            "7500"
+	  "ItemCost"            "9500"
 	  "ItemQuality"         "secret_shop"
 	  "ItemAliases"         "hook"
 	  "SecretShop" "1"
@@ -349,7 +349,7 @@
 	  "AbilityCastRange"        "1300"
 	  "AbilityCastPoint"        "0.3"
 	  
-	  "AbilityCooldown"       "7.0"
+	  "AbilityCooldown"       "15.0"
 	
 	  "AbilitySpecial"
 	  {
@@ -774,7 +774,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_mega_sith"
 	
-	  "ItemCost"            "20250"
+	  "ItemCost"            "0"
 	  "ItemShopTags"          "mana_pool;str"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "mega sith"
@@ -831,7 +831,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10000"
+	  "ItemCost"            "9000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1179,7 +1179,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_stone_of_power"
 	
-	  "ItemCost"            "7500"
+	  "ItemCost"            "7200"
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
@@ -1497,7 +1497,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "3100"
+	      "bonus_damage"      "1900"
 	    }
 	  }
 	  
@@ -1555,7 +1555,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "8000"
+	      "bonus_damage"      "5100"
 	    }
 	  }
 	  
@@ -1613,7 +1613,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "12000"
+	      "bonus_damage"      "11500"
 	    }
 	  }
 	  
@@ -1671,7 +1671,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "18000"
+	      "bonus_damage"      "15000"
 	    }
 	  }
 	  

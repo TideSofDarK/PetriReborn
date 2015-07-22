@@ -8,7 +8,7 @@
 
   "AbilityLayout"    "4"
 
-  "ArmorPhysical"    "3500"
+  "ArmorPhysical"    "3000"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -20,8 +20,8 @@
   "AttackAcquisitionRange" "500"
   "AttackRange"     "90"
 
-  "BountyGoldMin"    "13000.0"
-  "BountyGoldMax"    "15000.0"
+  "BountyGoldMin"    "26000.0"
+  "BountyGoldMax"    "26000.0"
 
   "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
   //"RingRadius"    "40"

@@ -362,6 +362,39 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  -- KVN fan is killed
+  if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
+    --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
+    
+    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
+    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
+
+    if GameRules.deadKvnFansNumber == PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) then
+      Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
+
+      for i=1,10 do
+        PlayerResource:SetCameraTarget(i-1, killerEntity)
+      end
+
+      Timers:CreateTimer(2.0,
+        function()
+          GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+        end)
+    end
+  end
+
+  -- Petrosyn is killed
+  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
+    -- if killerEntity:GetPlayerOwnerID() ~= nil then
+    --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
+    -- end
+    killedUnit:SetTimeUntilRespawn(30.0)
+    Timers:CreateTimer(30.0,
+    function()
+      killedUnit:RespawnHero(false, false, false)
+    end)
+  end
+
   -- Remove building
   if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
     killedUnit:RemoveBuilding(true)
@@ -396,41 +429,6 @@ function GameMode:OnEntityKilled( keys )
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
-  end
-
-  -- Petrosyn is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
-    -- if killerEntity:GetPlayerOwnerID() ~= nil then
-    --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
-    -- end
-    killedUnit:SetTimeUntilRespawn(30.0)
-    Timers:CreateTimer(30.0,
-    function()
-      killedUnit:RespawnHero(false, false, false)
-    end)
-  end
-
-  -- KVN fan is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
-    --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
-    
-    --if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) == 2 then
-    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
-    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
-
-    if GameRules.deadKvnFansNumber == PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) then
-      Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
-
-      for i=1,10 do
-        PlayerResource:SetCameraTarget(i-1, killerEntity)
-      end
-
-      Timers:CreateTimer(2.0,
-        function()
-          GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
-        end)
-    end
-    --end 
   end
 end
 

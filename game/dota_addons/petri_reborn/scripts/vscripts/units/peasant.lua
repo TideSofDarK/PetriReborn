@@ -1,15 +1,5 @@
 Debug_Peasant = false
 
-function LumberUpgrade(event)
-	local caster = event.caster
-	local target = event.target
-	local ability = event.ability
-
-	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
-
-	hero.bonusLumber = ability:GetLevelSpecialValueFor("bonus_lumber", ability:GetLevel() - 1)
-end
-
 -- Lumber gathering
 
 function Gather( event )
@@ -411,6 +401,8 @@ end
 function Spawn( t )
 	local pID = thisEntity:GetPlayerOwnerID()
 	local ability = thisEntity:FindAbilityByName("gather_lumber")
+
+	thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
 
 	Timers:CreateTimer(0.2, function()
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)

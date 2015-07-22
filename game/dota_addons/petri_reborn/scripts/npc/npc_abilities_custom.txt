@@ -65,7 +65,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_exit"
 	  "AbilityCooldown"       "480.0"
-	  "AbilityGoldCost"       "3200"
+	  "AbilityGoldCost"       "4000"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1567,6 +1567,11 @@
 	
 	  "OnSpellStart"
 	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "Sleep"
+	    }
 	    "ApplyModifier"
 	    {
 	      "ModifierName"  "sleep_modifier"
@@ -2523,11 +2528,6 @@
 	  
 	  "OnChannelSucceeded"
 	  {
-	    ///"RunScript"
-	    //{
-	    //  "ScriptFile"      "units/lab.lua"
-	    //  "Function"        "Upgrade"
-	    //}
 	    "ApplyModifier"
 	    {
 	      "ModifierName"  "modifier_concrete_aura"
@@ -2544,15 +2544,17 @@
 	  {
 	    "modifier_concrete_aura"
 	    {
-	      "Passive"       "1"
 	      "IsHidden"        "1"
 	      
-	      "Aura"          "modifier_concrete"
-	      "Aura_Radius"       "%aura_range"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
-	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
-	      "Aura_ApplyToCaster"  "0"
+	      "ThinkInterval"  "0.5"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/lab.lua"
+	          "Function"    "ApplyArmorAura"
+	        }
+	      }
 	    }
 	    "modifier_concrete"
 	    {
@@ -2639,7 +2641,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "50 100 175 350 500"
+	  "AbilityGoldCost"       "50 100 175 275 400"
 	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
 	
 	  "MaxLevel"            "6"
@@ -2675,7 +2677,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "units/peasant.lua"
+	      "ScriptFile"      "units/lab.lua"
 	      "Function"        "LumberUpgrade"
 	    }
 	    "RunScript"
@@ -2875,15 +2877,17 @@
 	  {
 	    "modifier_damage_aura"
 	    {
-	      "Passive"       "1"
 	      "IsHidden"        "1"
-	      
-	      "Aura"          "modifier_damage"
-	      "Aura_Radius"       "%aura_range"
-	      "Aura_Teams"      "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
-	      "Aura_Types"      "DOTA_UNIT_TARGET_OTHER"
-	      "Aura_Flags"      "DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
-	      "Aura_ApplyToCaster"  "0"
+	
+	      "ThinkInterval"  "0.5"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/lab.lua"
+	          "Function"    "ApplyDamageAura"
+	        }
+	      }
 	    }
 	    "modifier_damage"
 	    {

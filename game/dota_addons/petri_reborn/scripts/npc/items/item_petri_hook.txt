@@ -11,7 +11,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_hook"
 
-  "ItemCost"            "7500"
+  "ItemCost"            "9500"
   "ItemQuality"         "secret_shop"
   "ItemAliases"         "hook"
   "SecretShop" "1"
@@ -26,7 +26,7 @@
   "AbilityCastRange"        "1300"
   "AbilityCastPoint"        "0.3"
   
-  "AbilityCooldown"       "7.0"
+  "AbilityCooldown"       "15.0"
 
   "AbilitySpecial"
   {

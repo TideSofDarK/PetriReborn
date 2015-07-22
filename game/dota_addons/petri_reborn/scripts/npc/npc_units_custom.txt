@@ -155,7 +155,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "52"
+	  "StatusHealth"        "82"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -188,8 +188,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "100000.0"
-	  "AttackDamageMax"     "100000.0"
+	  "AttackDamageMin"     "80000.0"
+	  "AttackDamageMax"     "80000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -294,8 +294,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "50000.0"
-	  "AttackDamageMax"     "50000.0"
+	  "AttackDamageMin"     "19000.0"
+	  "AttackDamageMax"     "19000.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -355,7 +355,7 @@
 	  "AttackRange"       "90"
 	
 	  "BountyGoldMin"       "28.0"
-	  "BountyGoldMax"       "30.0"
+	  "BountyGoldMax"       "28.0"
 	  "BountyXP"          "50"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "365"
+	  "StatusHealth"        "475"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -707,7 +707,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "3500"
+	  "ArmorPhysical"    "3000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -719,8 +719,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "13000.0"
-	  "BountyGoldMax"    "15000.0"
+	  "BountyGoldMin"    "26000.0"
+	  "BountyGoldMax"    "26000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -1099,7 +1099,7 @@
 	
 	  "AbilityLayout"    "4"
 	
-	  "ArmorPhysical"    "2000"
+	  "ArmorPhysical"    "1000"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"

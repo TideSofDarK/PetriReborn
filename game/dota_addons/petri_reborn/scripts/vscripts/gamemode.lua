@@ -176,15 +176,18 @@ function GameMode:FilterExecuteOrder( filterTable )
         return false
       else
         local ent = EntIndexToHScript(filterTable["units"]["0"])
-        local stashSlot = 6
-        for i=6,11 do
-          if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
-            stashSlot = i
-            break
-          end
-        end
 
-        ent:SwapItems(filterTable["entindex_target"], stashSlot)
+        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
+          local stashSlot = 6
+          for i=6,11 do
+            if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+              stashSlot = i
+              break
+            end
+          end
+
+          ent:SwapItems(filterTable["entindex_target"], stashSlot)
+        end
       end
     end
 
