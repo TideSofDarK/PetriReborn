@@ -17,7 +17,7 @@ function build( keys )
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
-		if GameRules:GetGameTime() < (60 * 16) + 30 then
+		if GameRules:GetGameTime() < (60 * PETRI_EXIT_MARK) + 30 then
 			Notifications:Top(caster:GetPlayerOwnerID(),{text="#too_early_for_exit", duration=10, style={color="red"}, continue=false})
 
 			PlayerResource:ModifyGold(pID, gold_cost,false,0)

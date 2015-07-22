@@ -2,6 +2,7 @@ BAREBONES_DEBUG_SPEW = false
 
 PETRI_TIME_LIMIT = 55
 PETRI_EXIT_MARK = 20
+PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 11
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -154,7 +155,7 @@ function GameMode:OnGameInProgress()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer((PETRI_TIME_LIMIT - 9 - 2) * 60,
+  Timers:CreateTimer(PETRI_EXIT_WARNING * 60,
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
