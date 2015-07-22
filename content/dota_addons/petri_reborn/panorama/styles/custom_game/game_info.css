@@ -95,6 +95,7 @@ Label
 
 #TipsHeader
 {
+    visibility: collapse;
 }
 
 .TipsRow
