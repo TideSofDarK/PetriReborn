@@ -679,7 +679,7 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Orb"
 	      {
@@ -784,7 +784,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_strength"    "555"
+	      "bonus_strength"    "95"
 	    }
 	    "02"
 	    {
@@ -1764,7 +1764,7 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Orb"
 	      {
