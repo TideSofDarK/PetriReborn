@@ -754,56 +754,6 @@
 	    }
 	  }
 	}
-	"npc_petri_janitor"
-	{
-	  "BaseClass"     "npc_dota_creature"
-	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
-	  "ModelScale"    "1.1"
-	  "Level"      "1"
-	  "HasInventory"                "1"
-	  "HealthBarOffset"    "140"
-	
-	  "AbilityLayout"    "4"
-	  "Ability1"          "petri_janitor_truesight"
-	  "Ability2"          "petri_empty2"
-	  "Ability3"          "petri_empty3"
-	  "Ability4"          "petri_empty4"
-	
-	  "ArmorPhysical"    "0"
-	  "MagicalResistance"   "0"
-	
-	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
-	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
-	
-	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
-	  "RingRadius"    "40"
-	  "CollisionSize"    "1"
-	  "FormationRank"    "4"
-	
-	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
-	  "MovementSpeed"    "600"
-	  "MovementTurnRate"   "0.6"
-	
-	  "StatusHealth"    "5"
-	  "StatusHealthRegen"   "0.05"
-	  "StatusMana"    "0"
-	  "StatusManaRegen"    "0"
-	
-	  "VisionDaytimeRange"  "800"
-	  "VisionNighttimeRange"  "600"
-	
-	  "TeamName"     "DOTA_TEAM_BADGUYS"
-	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
-	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior"  "0"
-	  }
-	}
 	"npc_petri_lab"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
