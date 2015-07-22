@@ -402,6 +402,8 @@ function Spawn( t )
 	local pID = thisEntity:GetPlayerOwnerID()
 	local ability = thisEntity:FindAbilityByName("gather_lumber")
 
+	InitAbilities(thisEntity)
+
 	thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
 
 	Timers:CreateTimer(0.2, function()

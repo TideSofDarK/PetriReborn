@@ -142,8 +142,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "6.0"
-	  "BountyGoldMax"       "6.0"
+	  "BountyGoldMin"       "8.0"
+	  "BountyGoldMax"       "8.0"
 	  "BountyXP"          "25"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -347,15 +347,15 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "1000.0"
-	  "AttackDamageMax"     "1000.0"
+	  "AttackDamageMin"     "1500.0"
+	  "AttackDamageMax"     "1700.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "28.0"
-	  "BountyGoldMax"       "28.0"
+	  "BountyGoldMin"       "25.0"
+	  "BountyGoldMax"       "26.0"
 	  "BountyXP"          "50"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "475"
+	  "StatusHealth"        "505"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -387,7 +387,7 @@
 	}
 	"npc_petri_exit"
 	{
-	  "BaseClass"         "npc_dota_creature"  
+	  "BaseClass"         "npc_dota_base_additive"  
 	  "Model"           "models/props_structures/bad_ancient001.vmdl"  
 	  "ModelScale"                "0.25"
 	  "SoundSet"          "Creep_Good_Range"          
@@ -439,7 +439,7 @@
 	  "Ability3"          "petri_empty3"
 	  "Ability4"          "petri_empty4"
 	  
-	  "ArmorPhysical"       "25"     
+	  "ArmorPhysical"       "25000000"     
 	  "MagicalResistance"       "0"     
 	  
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
@@ -916,7 +916,7 @@
 	}
 	"npc_petri_peasant"
 	{
-	  "BaseClass"     "npc_dota_creature"
+	  "BaseClass"     "npc_dota_base_additive"
 	  "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"
 	  "ModelScale"    "0.8"
 	  "Level"      "1"
@@ -1028,7 +1028,7 @@
 	}
 	"npc_petri_super_peasant"
 	{
-	  "BaseClass"     "npc_dota_creature"
+	  "BaseClass"     "npc_dota_base_additive"
 	  "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
 	  "ModelScale"    "0.8"
 	  "Level"      "1"
@@ -1172,8 +1172,8 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
 	
 	  "BountyXP"          "0"     
-	  "BountyGoldMin"       "1"     
-	  "BountyGoldMax"       "1"     
+	  "BountyGoldMin"       "2"     
+	  "BountyGoldMax"       "2"     
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_HERO"      
 	
@@ -1243,7 +1243,7 @@
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	
-	  "StatusHealth"        "100"     
+	  "StatusHealth"        "35"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
@@ -1365,8 +1365,9 @@
 	  "HealthBarOffset"       "140"
 	  "HasInventory"        "0"
 	
+	  "vscripts" "units/ward.lua"
+	
 	  "AbilityLayout"       "4"
-	  "Ability1"          "petri_ward"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"

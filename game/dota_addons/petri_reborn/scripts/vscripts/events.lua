@@ -175,7 +175,7 @@ function GameMode:OnPlayerReconnect(keys)
       function()
         local event_data =
         {
-            gold = PlayerResource:GetGold(player:GetPlayerID()),
+            gold = GameMode.assignedPlayerHeroes[keys.PlayerID]:GetGold(),
             lumber = hero.lumber,
             food = hero.food,
             maxFood = hero.maxFood
@@ -369,22 +369,40 @@ function GameMode:OnEntityKilled( keys )
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
-    if GameRules.deadKvnFansNumber == PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) then
-      Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
+    local allBuildings = Entities:FindAllByClassname("npc_dota_base_additive")
 
-      for i=1,10 do
-        PlayerResource:SetCameraTarget(i-1, killerEntity)
+    for k,v in pairs(allBuildings) do
+      if v:GetPlayerOwnerID() == killedUnit:GetPlayerOwnerID() then
+        
+        --PlayerResource:ModifyGold(killerEntity:GetPlayerOwnerID(), v:GetGoldBounty(), false, 1)
+        DestroyEntityBasedOnHealth(killerEntity, v)
       end
-
-      Timers:CreateTimer(2.0,
-        function()
-          GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
-        end)
     end
+
+    if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) ~= DOTA_CONNECTION_STATE_ABANDONED then
+      GameMode:ReplaceWithMiniActor(killedUnit:GetPlayerOwner())
+    end
+
+    Timers:CreateTimer(1.0,
+    function()
+      if CheckKVN() then
+        Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
+
+        for i=1,10 do
+          PlayerResource:SetCameraTarget(i-1, killerEntity)
+        end
+
+        Timers:CreateTimer(2.0,
+          function()
+            GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+          end)
+      end
+    end)
   end
 
   -- Petrosyn is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" then
+  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
+  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit" then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end

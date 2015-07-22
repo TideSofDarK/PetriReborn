@@ -7,7 +7,7 @@ function Precache( context )
   --   print(i)
   --   PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context,i-1)
   -- end
-  -- PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
+  PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
 
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
 

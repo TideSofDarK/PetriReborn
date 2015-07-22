@@ -107,13 +107,12 @@ function build( keys )
 		unit:SetBaseManaRegen(0.0)
 	end)
 	keys:OnConstructionCompleted(function(unit)
+		InitAbilities(unit)
+
 		if unit:GetUnitName() == "npc_petri_exit" then
 			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
 		end
 
-		-- Play construction complete sound.
-		-- Give building its abilities
-		-- add the mana
 		unit:SetMana(unit:GetMaxMana())
 		unit:SetBaseManaRegen(unit.tempManaRegen)
 		unit.tempManaRegen = nil
@@ -121,14 +120,12 @@ function build( keys )
 		if unit.controllableWhenReady then
 			unit:SetControllableByPlayer(keys.caster:GetPlayerOwnerID(), true)
 		end
-
-		InitAbilities(unit)
 		
 		if caster.currentArea ~= nil then
 			if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
 
 				if caster.currentArea.claimers == nil then 
-					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=true})
+					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
 				end
 
 				keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}

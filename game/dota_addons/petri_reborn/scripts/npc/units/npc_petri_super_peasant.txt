@@ -1,6 +1,6 @@
 "npc_petri_super_peasant"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
