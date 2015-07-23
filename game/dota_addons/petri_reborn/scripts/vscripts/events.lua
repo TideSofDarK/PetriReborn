@@ -168,7 +168,11 @@ function GameMode:OnPlayerReconnect(keys)
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
       Timers:CreateTimer(1,
       function()
+        --Send lumber and food info to users
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+
+        --Send gold costs
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
       end)
 
       Timers:CreateTimer(0.03,
@@ -187,8 +191,6 @@ function GameMode:OnPlayerReconnect(keys)
       return 0.03
     end
   end)
-
-  
 end
 
 -- An item was purchased by a player

@@ -755,98 +755,6 @@
 	    }
 	  }
 	}
-	"petri_dummy_invisibility"
-	{
-	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
-	  "AbilityTextureName" "undying_tombstone"
-	  
-	  "Modifiers"
-	  {
-	    "unit_properties"
-	    {
-	      "Passive" "1"
-	      
-	      "States"
-	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
-	      }
-	    } 
-	    "modifier_truesight_datadriven"
-	    {
-	      "Passive"     "1"
-	      "IsHidden"      "1"
-	  
-	      "ThinkInterval"  "0.03"
-	      "OnIntervalThink"
-	      {
-	        "ActOnTargets"
-	        {
-	          "Target"
-	          {
-	            "Center"    "TARGET"
-	            "Radius"  "1800"
-	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Types"   "DOTA_UNIT_TARGET_ALL"
-	          }
-	        
-	          "Action"    
-	          {
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_invisibility"
-	              "Target"    "TARGET"
-	            }
-	
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_wind_walk"
-	              "Target"    "TARGET"
-	            }
-	
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_invisible"
-	              "Target"    "TARGET"
-	            }
-	          }
-	        }     
-	      }   
-	    }
-	  }   
-	}
-	
-	"petri_invisibility"
-	{
-	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName" "riki_permanent_invisibility"
-	  
-	  "Modifiers"
-	  {
-	    "modifier_invisibility"
-	    {
-	      "Passive" "1"
-	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-	
-	      "States"
-	      {
-	        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_DISABLED"
-	      }
-	    }
-	  }  
-	}
 	"petri_empty1"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
@@ -1207,45 +1115,106 @@
 	    }
 	  }
 	}
-	"petri_janitor_truesight"
+	"petri_dummy_invisibility"
 	{
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName"      "undying_tombstone"
-	
-	  "MaxLevel"            "1"
-	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    {
-	      "EffectName"    "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
-	      "EffectAttachType"  "attach_origin"
-	      "Target"      "CASTER"
-	    }
-	
-	    "ApplyModifier"
-	    {
-	      "Target"    "CASTER"
-	      "ModifierName"  "modifier_wind_walk_fade"
-	      "Duration"    "%fade_time"
-	    }
-	  }
-	
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	  "AbilityTextureName" "undying_tombstone"
+	  
 	  "Modifiers"
 	  {
 	    "unit_properties"
 	    {
 	      "Passive" "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "States"
 	      {
+	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_INVISIBLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    } 
-	  } 
+	    "modifier_truesight_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"  "1800"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_ALL"
+	          }
+	        
+	          "Action"    
+	          {
+	            "RemoveModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	
+	            "ApplyModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	          }
+	        }     
+	      }   
+	    }
+	
+	    "modifier_truesight_reveal"
+	    {
+	      "IsHidden"      "1"
+	      "Duration"      "0.5"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+	      }
+	    }
+	  }   
+	}
+	
+	"petri_invisibility"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_invisibility"
+	    {
+	      "Passive" "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "OnCreated"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName" "modifier_invisible"
+	          "Target" "CASTER" 
+	        }
+	      } 
+	    }
+	  }  
 	}
 	"petri_open_basic_buildings_menu"
 	{

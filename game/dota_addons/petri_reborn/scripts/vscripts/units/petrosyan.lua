@@ -155,7 +155,6 @@ function SpawnJanitor( keys )
 	end
 
 	janitor:AddAbility("courier_transfer_items")
-	janitor:AddAbility("petri_janitor_truesight")
 	
 	InitAbilities(janitor)
 

@@ -46,24 +46,30 @@
           {
             "RemoveModifier"
             {
-              "ModifierName"  "modifier_invisibility"
+              "ModifierName"  "modifier_truesight_reveal"
               "Target"    "TARGET"
             }
 
-            "RemoveModifier"
+            "ApplyModifier"
             {
-              "ModifierName"  "modifier_wind_walk"
-              "Target"    "TARGET"
-            }
-
-            "RemoveModifier"
-            {
-              "ModifierName"  "modifier_invisible"
+              "ModifierName"  "modifier_truesight_reveal"
               "Target"    "TARGET"
             }
           }
         }     
       }   
+    }
+
+    "modifier_truesight_reveal"
+    {
+      "IsHidden"      "1"
+      "Duration"      "0.5"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "States"
+      {
+        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+      }
     }
   }   
 }
@@ -82,11 +88,14 @@
       "IsHidden"      "1"
       "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
-      "States"
+      "OnCreated"
       {
-        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_DISABLED"
-      }
+        "ApplyModifier"
+        {
+          "ModifierName" "modifier_invisible"
+          "Target" "CASTER" 
+        }
+      } 
     }
   }  
 }
