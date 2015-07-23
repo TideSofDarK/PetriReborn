@@ -56,7 +56,7 @@ function SetAbilitiesFoodAndLumber(abilities, count) {
 }
 
 function OnUpdateSelectedUnit() {
-    $.Schedule(0.001, OnUpdateSelectedUnit);
+    $.Schedule(0.003, OnUpdateSelectedUnit);
 
     var iPlayerID = Players.GetLocalPlayer();
     var selectedEntities = Players.GetSelectedEntities(iPlayerID);

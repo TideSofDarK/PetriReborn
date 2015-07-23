@@ -39,34 +39,54 @@
             "Center"    "TARGET"
             "Radius"  "1800"
             "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Types"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+            "Types"   "DOTA_UNIT_TARGET_ALL"
           }
         
           "Action"    
           {
             "RemoveModifier"
             {
-              "ModifierName"  "modifier_truesight_reveal"
+              "ModifierName"  "modifier_invisibility"
               "Target"    "TARGET"
             }
 
-            "ApplyModifier"
+            "RemoveModifier"
             {
-              "ModifierName"  "modifier_truesight_reveal"
+              "ModifierName"  "modifier_wind_walk"
+              "Target"    "TARGET"
+            }
+
+            "RemoveModifier"
+            {
+              "ModifierName"  "modifier_invisible"
               "Target"    "TARGET"
             }
           }
         }     
       }   
     }
-    "modifier_truesight_reveal"
+  }   
+}
+
+"petri_invisibility"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName" "riki_permanent_invisibility"
+  
+  "Modifiers"
+  {
+    "modifier_invisibility"
     {
+      "Passive" "1"
       "IsHidden"      "1"
-      "Duration"      "0.5"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
       "States"
       {
-        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_DISABLED"
       }
     }
-  }   
+  }  
 }

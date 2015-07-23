@@ -16,7 +16,7 @@ GOLD_TICK_TIME = 0                      -- How long should we wait in seconds be
 RECOMMENDED_BUILDS_DISABLED = true     -- Should we disable the recommened builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
 
-MINIMAP_ICON_SIZE = 1                   -- What icon size should we use for our heroes?
+MINIMAP_ICON_SIZE = 0.9                   -- What icon size should we use for our heroes?
 MINIMAP_CREEP_ICON_SIZE = 1             -- What icon size should we use for creeps?
 MINIMAP_RUNE_ICON_SIZE = 1              -- What icon size should we use for runes?
 
@@ -27,7 +27,7 @@ BUYBACK_ENABLED = false                 -- Should we allow people to buyback whe
 
 DISABLE_FOG_OF_WAR_ENTIRELY = false      -- Should we disable fog of war entirely for both teams?
 USE_STANDARD_DOTA_BOT_THINKING = false  -- Should we have bots act like they would in Dota? (This requires 3 lanes, normal items, etc)
-USE_STANDARD_HERO_GOLD_BOUNTY = false    -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
+USE_STANDARD_HERO_GOLD_BOUNTY = true    -- Should we give gold for hero kills the same as in Dota, or allow those values to be changed?
 
 USE_CUSTOM_TOP_BAR_VALUES = true        -- Should we do customized top bar values or use the default kill count per team?
 TOP_BAR_VISIBLE = true                  -- Should we display the top bar score/count at all?
@@ -50,8 +50,8 @@ for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = (i-1) * 100
 end
 
-ENABLE_FIRST_BLOOD = true               -- Should we enable first blood for the first kill in this game?
-HIDE_KILL_BANNERS = false               -- Should we hide the kill banners that show when a player is killed?
+ENABLE_FIRST_BLOOD = false               -- Should we enable first blood for the first kill in this game?
+HIDE_KILL_BANNERS = true               -- Should we hide the kill banners that show when a player is killed?
 LOSE_GOLD_ON_DEATH = false               -- Should we have players lose the normal amount of dota gold on death?
 SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see their own inventory even when selecting other units?
 DISABLE_STASH_PURCHASING = false        -- Should we prevent players from being able to buy items into their stash when not at a shop?
@@ -82,9 +82,20 @@ USE_CUSTOM_TEAM_COLORS = true          -- Should we use custom team colors?
 USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS = true          -- Should we use custom team colors to color the players/minimap?
 
 TEAM_COLORS = {}                        -- If USE_CUSTOM_TEAM_COLORS is set, use these colors.
-TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 61, 210, 150 }  --    Teal
-TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 243, 201, 9 }   --    Yellow
+TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 61, 210, 150 } 
+TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 243, 201, 9 }
 
+PLAYER_COLORS = {}
+PLAYER_COLORS[0] = { 100 * 2.55, 1.17, 1.17 }
+PLAYER_COLORS[1]  = { 0, 25.88 * 2.55, 100 }
+PLAYER_COLORS[2]  = { 9.8 * 2.55, 90.2  * 2.55, 72.55  * 2.55}
+PLAYER_COLORS[3]  = { 32.94 * 2.55, 0, 50.59 * 2.55}
+PLAYER_COLORS[4]  = { 100 * 2.55, 98.82 * 2.55, 0 }
+PLAYER_COLORS[5]  = { 99.61 * 2.55, 72.94 * 2.55, 5.49 * 2.55}
+PLAYER_COLORS[6]  = { 12.55 * 2.55, 75.3 * 2.55, 0 }
+PLAYER_COLORS[7]  = { 89.8  * 2.55, 35.69 * 2.55, 69.02 * 2.55 }
+PLAYER_COLORS[8]  = { 58.43 * 2.55, 58.82 * 2.55, 59.21 * 2.55 }
+PLAYER_COLORS[9]  = { 49.41 * 2.55, 74.90 * 2.55, 94.51 * 2.55 }
 
 USE_AUTOMATIC_PLAYERS_PER_TEAM = false   -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 

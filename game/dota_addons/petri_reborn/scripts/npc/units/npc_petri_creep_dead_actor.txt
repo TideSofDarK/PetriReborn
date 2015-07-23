@@ -8,7 +8,7 @@
   
   "PathfindingSearchDepthScale" "0.5"
 
-  "ArmorPhysical"       "1"
+  "ArmorPhysical"       "2"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "82"
+  "StatusHealth"        "120"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

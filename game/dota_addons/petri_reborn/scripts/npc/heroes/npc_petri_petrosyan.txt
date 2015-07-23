@@ -17,7 +17,7 @@
   "Ability7"        "petri_petrosyan_dummy_sleep"
 
   "MinimapIcon"               "minimap_candybucket"
-  "MinimapIconSize"           "1000"
+  "MinimapIconSize"           "5"
 
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"

@@ -51,6 +51,7 @@ function GameMode:_InitGameMode()
       SetTeamCustomHealthbarColor(team, color[1], color[2], color[3])
     end
   end
+
   DebugPrint('[BAREBONES] GameRules set')
 
   --InitLogFile( "log/barebones.txt","")

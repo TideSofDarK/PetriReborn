@@ -8,13 +8,13 @@
   
   "PathfindingSearchDepthScale" "0.5"
 
-  "ArmorPhysical"       "2"
+  "ArmorPhysical"       "3"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "1500.0"
-  "AttackDamageMax"     "1700.0"
+  "AttackDamageMin"     "1800.0"
+  "AttackDamageMax"     "1800.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "505"
+  "StatusHealth"        "605"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

@@ -85,12 +85,15 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
-          -- Timers:CreateTimer(2.0, function ()
-          --   player:SetTeam(DOTA_TEAM_BADGUYS)
-          --   newHero:SetTeam(DOTA_TEAM_BADGUYS)
-          -- end)
+          PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
+          PLAYER_COLORS[pID][2],
+          PLAYER_COLORS[pID][3])
         end, pID)
     end
+
+    local friends = {}
+    friends[0] = 96571761
+    friends[1] = 63399181
 
      -- Init petrosyan
     if team == 3 then
@@ -114,6 +117,14 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
+          PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
+          PLAYER_COLORS[pID][2],
+          PLAYER_COLORS[pID][3])
+
+          if PlayerResource:GetSteamAccountID(pID) == friends[0] or PlayerResource:GetSteamAccountID(pID) == friends[1] then 
+            UpdateModel(newHero, "models/heroes/doom/doom.vmdl", 1.1)
+          end
+
           if GameRules.explorationTowerCreated == nil then
             GameRules.explorationTowerCreated = true
             Timers:CreateTimer(0.2,
@@ -123,6 +134,8 @@ function GameMode:OnHeroInGame(hero)
           end
         end, pID)
     end
+    --print("Player with ID: ")
+    --print(PlayerResource:GetSteamAccountID(pID))
   end
 end
 
@@ -156,17 +169,17 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  Timers:CreateTimer((PETRI_EXIT_MARK * 60) + 30,
+  Timers:CreateTimer((PETRI_EXIT_MARK * 60),
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer((PETRI_EXIT_WARNING * 60) + 30,
+  Timers:CreateTimer((PETRI_EXIT_WARNING * 60),
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer((PETRI_TIME_LIMIT * 60) + 30,
+  Timers:CreateTimer((PETRI_TIME_LIMIT * 60),
     function()
       PetrosyanWin()
     end)
@@ -213,9 +226,9 @@ function GameMode:FilterExecuteOrder( filterTable )
 end
 
 function GameMode:ModifyGoldFilter(event)
+  event["reliable"] = 0
   if event.reason_const == DOTA_ModifyGold_HeroKill then
-    PlayerResource:ModifyGold(event.player_id_const, 100 * (PlayerResource:GetKills(event.player_id_const) + 1),false,DOTA_ModifyGold_HeroKill )
-    return false
+    event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
   end
   return true
 end

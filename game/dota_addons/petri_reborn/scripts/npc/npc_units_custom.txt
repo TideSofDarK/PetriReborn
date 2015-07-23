@@ -130,7 +130,7 @@
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "1"
+	  "ArmorPhysical"       "2"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -155,7 +155,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "82"
+	  "StatusHealth"        "120"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -177,19 +177,19 @@
 	{
 	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
-	  "ModelScale"        "0.9"
+	  "ModelScale"        "0.6"
 	  "Level"           "6"
 	  "HealthBarOffset"     "140"
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "4"
+	  "ArmorPhysical"       "15"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "80000.0"
-	  "AttackDamageMax"     "80000.0"
+	  "AttackDamageMin"     "60000.0"
+	  "AttackDamageMax"     "65000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -261,7 +261,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "6"
+	  "StatusHealth"        "14"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -294,8 +294,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "19000.0"
-	  "AttackDamageMax"     "19000.0"
+	  "AttackDamageMin"     "16500.0"
+	  "AttackDamageMax"     "16500.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -342,13 +342,13 @@
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "2"
+	  "ArmorPhysical"       "3"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "1500.0"
-	  "AttackDamageMax"     "1700.0"
+	  "AttackDamageMin"     "1800.0"
+	  "AttackDamageMax"     "1800.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "505"
+	  "StatusHealth"        "605"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -1318,6 +1318,7 @@
 	  "vscripts" "units/ward.lua"
 	
 	  "AbilityLayout"       "4"
+	  "Ability1" "petri_invisibility"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"

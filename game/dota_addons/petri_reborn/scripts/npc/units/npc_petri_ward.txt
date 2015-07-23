@@ -10,6 +10,7 @@
   "vscripts" "units/ward.lua"
 
   "AbilityLayout"       "4"
+  "Ability1" "petri_invisibility"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
