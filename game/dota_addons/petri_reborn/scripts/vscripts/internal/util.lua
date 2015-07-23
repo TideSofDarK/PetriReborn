@@ -1,3 +1,11 @@
+function Split(s, delimiter)
+    result = {}
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 function CheckKVN()
   local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
   for k,v in pairs(kvns) do

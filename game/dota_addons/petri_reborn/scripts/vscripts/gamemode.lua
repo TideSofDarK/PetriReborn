@@ -146,6 +146,9 @@ function SetupUI(newHero)
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
 
+  --Send gold costs
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
+
   --Update player's UI
   Timers:CreateTimer(0.03,
   function()
@@ -242,8 +245,10 @@ function GameMode:InitGameMode()
    -- Find all ability layouts to send them to clients later
   local UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
   local HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+  local AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
   GameMode.abilityLayouts = {}
+  GameMode.abilityGoldCosts = {}
 
   for i=1,2 do
     local t = UnitKVs
@@ -258,6 +263,18 @@ function GameMode:InitGameMode()
           GameMode.abilityLayouts[unit_name] = unit_info["AbilityLayout"]
         end
       end
+    end
+  end
+
+  for ability_name,ability_info in pairs(AbilityKVs) do
+    if type(ability_info) == "table" then
+      if ability_info["AbilityGoldCost"] ~= nil then
+        GameMode.abilityGoldCosts[ability_name] = Split(ability_info["AbilityGoldCost"], " ")
+        -- local i = 0
+        -- for c in string.gmatch(ability_info["AbilityGoldCost"], "[^%s]+") do
+        --   GameMode.abilityGoldCosts[i] = c
+        -- end
+      end  
     end
   end
 
