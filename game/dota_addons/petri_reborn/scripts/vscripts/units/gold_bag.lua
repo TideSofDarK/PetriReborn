@@ -1,4 +1,4 @@
-UPGRADE_RATE = 58
+UPGRADE_RATE = 65
 UPGRADE_LIMIT = 230
 
 function GetGoldAutocast( event )

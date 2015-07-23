@@ -11,7 +11,7 @@
 
   "precache"
   {
-    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+    "particle"    "particles/items_fx/dust_of_appearance.vpcf"
   }
 
   "OnSpellStart"

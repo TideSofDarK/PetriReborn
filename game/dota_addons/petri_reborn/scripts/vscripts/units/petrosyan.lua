@@ -146,8 +146,20 @@ end
 function SpawnJanitor( keys )
 	local caster = keys.caster
 
-	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
+	local janitor = CreateUnitByName("npc_dota_courier", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
 	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+
+	UpdateModel(janitor, "models/heroes/death_prophet/death_prophet_ghost.vmdl", 1.0)
+	for i=0,15 do
+		if janitor:GetAbilityByIndex(i) ~= nil then janitor:RemoveAbility(janitor:GetAbilityByIndex(i):GetName())  end
+	end
+
+	janitor:AddAbility("courier_transfer_items")
+	janitor:AddAbility("petri_janitor_truesight")
+	
+	InitAbilities(janitor)
+
+	janitor:SetMoveCapability(2)
 
 	janitor.spawnPosition = caster:GetAbsOrigin()
 end

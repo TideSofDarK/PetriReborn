@@ -10,13 +10,6 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
-	if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
-		return 
-	else
-		SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
-	end
-
 	-- Initialize queue
 	if not ability.queue then
 		ability.queue = {}
@@ -24,6 +17,13 @@ function EnqueueUnit( event, food )
 
 	-- Queue up to 6 units max
 	if #ability.queue < 6 then
+
+		if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
+			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+			return 
+		else
+			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
+		end
 
 		local ability_name = ability:GetAbilityName()
 		local item_name = "item_"..ability_name
@@ -39,6 +39,8 @@ function EnqueueUnit( event, food )
 			end
 		end
 	else
+		Notifications:Bottom(player, {text="#queue_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
+
 		-- Refund with message
  		PlayerResource:ModifyGold(player, gold_cost, false, 0)
 		FireGameEvent( 'custom_error_show', { player_ID = player, _error = "Queue is full" } )		

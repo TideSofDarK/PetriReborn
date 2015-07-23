@@ -2,19 +2,19 @@
 {
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
-  "ModelScale"        "0.9"
+  "ModelScale"        "0.6"
   "Level"           "6"
   "HealthBarOffset"     "140"
   
   "PathfindingSearchDepthScale" "0.5"
 
-  "ArmorPhysical"       "4"
+  "ArmorPhysical"       "15"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "80000.0"
-  "AttackDamageMax"     "80000.0"
+  "AttackDamageMin"     "60000.0"
+  "AttackDamageMax"     "65000.0"
   "AttackRate"        "0.3"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"

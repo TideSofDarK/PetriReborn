@@ -130,7 +130,7 @@
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "1"
+	  "ArmorPhysical"       "2"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
@@ -155,7 +155,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "82"
+	  "StatusHealth"        "120"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -177,19 +177,19 @@
 	{
 	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
-	  "ModelScale"        "0.9"
+	  "ModelScale"        "0.6"
 	  "Level"           "6"
 	  "HealthBarOffset"     "140"
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "4"
+	  "ArmorPhysical"       "15"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "80000.0"
-	  "AttackDamageMax"     "80000.0"
+	  "AttackDamageMin"     "60000.0"
+	  "AttackDamageMax"     "65000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -261,7 +261,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "6"
+	  "StatusHealth"        "14"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -294,8 +294,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "19000.0"
-	  "AttackDamageMax"     "19000.0"
+	  "AttackDamageMin"     "16500.0"
+	  "AttackDamageMax"     "16500.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -342,13 +342,13 @@
 	  
 	  "PathfindingSearchDepthScale" "0.5"
 	
-	  "ArmorPhysical"       "2"
+	  "ArmorPhysical"       "3"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "1500.0"
-	  "AttackDamageMax"     "1700.0"
+	  "AttackDamageMin"     "1800.0"
+	  "AttackDamageMax"     "1800.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -367,7 +367,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "505"
+	  "StatusHealth"        "605"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -752,56 +752,6 @@
 	    {
 	      "Wearable1" { "ItemDef" "4686" }
 	    }
-	  }
-	}
-	"npc_petri_janitor"
-	{
-	  "BaseClass"     "npc_dota_creature"
-	  "Model"      "models/heroes/death_prophet/death_prophet_ghost.vmdl"
-	  "ModelScale"    "1.1"
-	  "Level"      "1"
-	  "HasInventory"                "1"
-	  "HealthBarOffset"    "140"
-	
-	  "AbilityLayout"    "4"
-	  "Ability1"          "petri_janitor_truesight"
-	  "Ability2"          "petri_empty2"
-	  "Ability3"          "petri_empty3"
-	  "Ability4"          "petri_empty4"
-	
-	  "ArmorPhysical"    "0"
-	  "MagicalResistance"   "0"
-	
-	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
-	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
-	
-	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
-	  "RingRadius"    "40"
-	  "CollisionSize"    "1"
-	  "FormationRank"    "4"
-	
-	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
-	  "MovementSpeed"    "600"
-	  "MovementTurnRate"   "0.6"
-	
-	  "StatusHealth"    "5"
-	  "StatusHealthRegen"   "0.05"
-	  "StatusMana"    "0"
-	  "StatusManaRegen"    "0"
-	
-	  "VisionDaytimeRange"  "800"
-	  "VisionNighttimeRange"  "600"
-	
-	  "TeamName"     "DOTA_TEAM_BADGUYS"
-	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
-	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
-	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior"  "0"
 	  }
 	}
 	"npc_petri_lab"
@@ -1368,6 +1318,7 @@
 	  "vscripts" "units/ward.lua"
 	
 	  "AbilityLayout"       "4"
+	  "Ability1" "petri_invisibility"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"

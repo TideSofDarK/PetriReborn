@@ -1,3 +1,11 @@
+function Split(s, delimiter)
+    result = {}
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 function CheckKVN()
   local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
   for k,v in pairs(kvns) do
@@ -121,10 +129,10 @@ function OnUpgradeSucceeded(event)
   end
 end
 
-function UpdateModel(tower, model, scale)
-  tower:SetOriginalModel(model)
-  tower:SetModel(model)
-  tower:SetModelScale(scale)
+function UpdateModel(target, model, scale)
+  target:SetOriginalModel(model)
+  target:SetModel(model)
+  target:SetModelScale(scale)
 end
 
 -- End of upgrades

@@ -14,6 +14,8 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_hook", context)
 
   -- UNITS
+  PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
+
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
 
   PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)

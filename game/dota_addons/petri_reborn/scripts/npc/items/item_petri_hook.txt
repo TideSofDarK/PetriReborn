@@ -11,7 +11,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_hook"
 
-  "ItemCost"            "14000"
+  "ItemCost"            "16000"
   "ItemQuality"         "secret_shop"
   "ItemAliases"         "hook"
   "SecretShop" "1"
@@ -33,7 +33,7 @@
     "01"
     {
       "var_type"        "FIELD_FLOAT"
-      "hook_speed"      "1600.0"
+      "hook_speed"      "1000.0"
     }
     "02"
     {
