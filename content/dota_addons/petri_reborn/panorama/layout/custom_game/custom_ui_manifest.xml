@@ -1,6 +1,6 @@
 <root>
 	<script>
-		//GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );      //Time of day (clock).
+		GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );      //Time of day (clock).
 	    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );     //Heroes and team score at the top of the HUD.
 	    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_FLYOUT_SCOREBOARD, false );      //Lefthand flyout scoreboard.
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_PANEL, false );     //Hero actions UI.
@@ -37,8 +37,9 @@
         <CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />
         <CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/scoreboard/simple_scoreboard.xml" /> 
 
-		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_panel/action_panel.xml" /> -->
-        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities/abilities_container.xml" />
+		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_panel/action_panel.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities/abilities_container.xml" /> -->
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />          
 	</Panel>
 </root>
 
