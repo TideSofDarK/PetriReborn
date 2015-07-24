@@ -1,0 +1,36 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/timeofday.css" />
+	</styles>
+	<script>
+		var dayLength = 480;
+
+		function UpdateTime()
+		{
+			var time = Math.floor( Game.GetDOTATime( false, false) );
+			$( "#Time" ).text = new Date(0, 0, 0, 0, 0, time ).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+
+			var daySec = time % 480;
+			if ( daySec > 240 )
+				$( "#PetroTime" ).style.visibility = "visible;";
+			else
+				$( "#PetroTime" ).style.visibility = "collapse;";				
+
+			$( "#TimeOfDayImage" ).style["transform"] = "rotateZ(" + String( -180 + daySec / 480 * 360 ) + "deg );";
+
+			$.Schedule( 1, UpdateTime );
+		}
+
+		(function() {
+		    $.Schedule( 0.1, UpdateTime );
+		})();
+	</script>	
+	<Panel class="TimeOfDay" >
+		<Image hittest="false" id="TimeOfDayImage" src="file://{images}/custom_game/timeofday/dayNight.png" />
+		<Image hittest="false" id="TimeOfDayBorderImage" src="file://{images}/custom_game/timeofday/border.png" />
+		<Label id="Time" text="00:00" />
+		<Image hittest="false" id="PetroTime" src="file://{images}/custom_game/timeofday/petrotime.png" />
+	</Panel>
+</root>
+
