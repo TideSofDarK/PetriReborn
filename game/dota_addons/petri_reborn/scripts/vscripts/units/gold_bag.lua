@@ -1,5 +1,5 @@
-UPGRADE_RATE = 65
-UPGRADE_LIMIT = 230
+UPGRADE_RATE = 70
+UPGRADE_LIMIT = 275
 
 function GetGoldAutocast( event )
 	local caster = event.caster
@@ -51,9 +51,12 @@ function Upgrade( event )
 
 	if gold >= UPGRADE_RATE then
 		local count = math.floor(gold / UPGRADE_RATE)
-		PlayerResource:SpendGold(pID, count*UPGRADE_RATE, 0)
+		local actualCount = count
+		if goldModifier+count > UPGRADE_LIMIT then actualCount = UPGRADE_LIMIT - goldModifier end
+		local cost = actualCount*UPGRADE_RATE
+		PlayerResource:SpendGold(pID, cost, 0)
 
-		caster:SetModifierStackCount("modifier_gold_bag", caster,goldModifier+count)
+		caster:SetModifierStackCount("modifier_gold_bag", caster,goldModifier+actualCount)
 
 		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= UPGRADE_LIMIT then
 			caster:SetModifierStackCount("modifier_gold_bag", caster,UPGRADE_LIMIT)

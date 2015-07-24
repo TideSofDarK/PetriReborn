@@ -30,16 +30,18 @@
 
   //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
-  "AttributeStrengthGain"   "0.2"
+  "AttributeStrengthGain"   "1.5"
   "AttributeBaseIntelligence" "1"
   "AttributeIntelligenceGain" "0.25"
   "AttributeBaseAgility"    "1"
-  "AttributeAgilityGain"    "0.25"
+  "AttributeAgilityGain"    "0.3"
 
   "BountyXP"          "50"                 
   "BountyGoldMin"       "10"                   
   "BountyGoldMax"       "20"     
-  "BountyGain"                "0"              
+  "BountyGain"                "0"  
+
+         
 
   "BoundsHullName"      "DOTA_HULL_SIZE_HERO"
   "RingRadius"        "70"
@@ -54,5 +56,11 @@
   "StatusManaRegen"     "1.5"                 
 
   "VisionDaytimeRange"    "1000"                  
-  "VisionNighttimeRange"    "1000"                  
+  "VisionNighttimeRange"    "1000"         
+
+  "Creature"
+  {
+    "DisableClumpingBehavior" "1"
+    "XPGain"                    "200"     
+  }         
 }

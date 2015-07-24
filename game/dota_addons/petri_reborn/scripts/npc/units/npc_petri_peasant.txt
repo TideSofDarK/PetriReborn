@@ -1,6 +1,6 @@
 "npc_petri_peasant"
 {
-  "BaseClass"     "npc_dota_base_additive"
+  "BaseClass"     "npc_dota_creature"
   "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
@@ -18,8 +18,8 @@
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"    "5.0"
-  "AttackDamageMax"    "6.0"
+  "AttackDamageMin"    "2.0"
+  "AttackDamageMax"    "3.0"
   "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"    "2"
   "AttackAnimationPoint"  "0.433"
@@ -53,6 +53,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior"  "0"
+    "DisableClumpingBehavior"  "1"
   }
 }

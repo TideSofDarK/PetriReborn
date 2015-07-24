@@ -91,7 +91,7 @@
 	
 	  "BountyGoldMin"       "1.0"
 	  "BountyGoldMax"       "1.0"
-	  "BountyXP"          "2"  
+	  "BountyXP"          "3"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -144,7 +144,7 @@
 	
 	  "BountyGoldMin"       "8.0"
 	  "BountyGoldMax"       "8.0"
-	  "BountyXP"          "25"  
+	  "BountyXP"          "18"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -197,7 +197,7 @@
 	
 	  "BountyGoldMin"       "100.0"
 	  "BountyGoldMax"       "100.0"
-	  "BountyXP"          "100"  
+	  "BountyXP"          "275"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -250,7 +250,7 @@
 	
 	  "BountyGoldMin"       "4.0"
 	  "BountyGoldMax"       "4.0"
-	  "BountyXP"          "7"  
+	  "BountyXP"          "10"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -303,7 +303,7 @@
 	
 	  "BountyGoldMin"       "70.0"
 	  "BountyGoldMax"       "70.0"
-	  "BountyXP"          "75"  
+	  "BountyXP"          "150"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -356,7 +356,7 @@
 	
 	  "BountyGoldMin"       "25.0"
 	  "BountyGoldMax"       "26.0"
-	  "BountyXP"          "50"  
+	  "BountyXP"          "65"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -866,7 +866,7 @@
 	}
 	"npc_petri_peasant"
 	{
-	  "BaseClass"     "npc_dota_base_additive"
+	  "BaseClass"     "npc_dota_creature"
 	  "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"
 	  "ModelScale"    "0.8"
 	  "Level"      "1"
@@ -884,8 +884,8 @@
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-	  "AttackDamageMin"    "5.0"
-	  "AttackDamageMax"    "6.0"
+	  "AttackDamageMin"    "2.0"
+	  "AttackDamageMax"    "3.0"
 	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackRate"    "2"
 	  "AttackAnimationPoint"  "0.433"
@@ -919,7 +919,7 @@
 	
 	  "Creature"
 	  {
-	    "DisableClumpingBehavior"  "0"
+	    "DisableClumpingBehavior"  "1"
 	  }
 	}
 	"npc_petri_sawmill"
@@ -978,7 +978,7 @@
 	}
 	"npc_petri_super_peasant"
 	{
-	  "BaseClass"     "npc_dota_base_additive"
+	  "BaseClass"     "npc_dota_creature"
 	  "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
 	  "ModelScale"    "0.8"
 	  "Level"      "1"
@@ -1036,7 +1036,7 @@
 	
 	  "Creature"
 	  {
-	    "DisableClumpingBehavior"  "0"
+	    "DisableClumpingBehavior"  "1"
 	  }
 	}
 	"npc_petri_svetlakov"

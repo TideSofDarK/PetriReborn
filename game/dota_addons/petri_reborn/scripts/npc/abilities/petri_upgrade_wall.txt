@@ -66,6 +66,20 @@
 
   "Modifiers"
   {
+    "modifier_wall_notification"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/wall.lua"
+          "Function"    "Notification"
+        }
+      }
+    }
     "modifier_armor"
     {
       "IsPassive"  "1"

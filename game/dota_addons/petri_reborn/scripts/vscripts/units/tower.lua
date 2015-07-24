@@ -111,13 +111,13 @@ function UpdateAttributes(tower, ability)
 	elseif tower == TOWER_ELEMENTS then 
 	elseif tower == TOWER_FIRE then 
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_crits", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_ICE then
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_skadi", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_DEATH then 
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_death_tower", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	end
 end
 

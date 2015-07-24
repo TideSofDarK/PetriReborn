@@ -91,3 +91,9 @@ function GetModelNameForLevel(level)
 		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
 	end
 end
+
+function Notification(keys)
+	local caster = keys.caster
+	local origin = caster:GetAbsOrigin()
+	MinimapEvent(DOTA_TEAM_GOODGUYS, caster, origin.x, origin.y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 1 )
+end

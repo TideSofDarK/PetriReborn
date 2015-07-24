@@ -4,6 +4,12 @@ PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 11
 
+START_KVN_GOLD = 10
+START_KVN_LUMBER = 150
+
+START_PETROSYANS_GOLD = 32
+START_MINI_ACTORS_GOLD = 15
+
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
@@ -76,8 +82,8 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(10, false)
-          newHero.lumber = 150
+          newHero:SetGold(START_KVN_GOLD, false)
+          newHero.lumber = START_KVN_LUMBER
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
@@ -102,14 +108,13 @@ function GameMode:OnHeroInGame(hero)
           newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
 
           -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(4)
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+          newHero:SetAbilityPoints(3)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(32, false)
+          newHero:SetGold(START_PETROSYANS_GOLD, false)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
@@ -295,7 +300,7 @@ function GameMode:ReplaceWithMiniActor(player)
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", 0, 0)
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD, 0)
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
 
       newHero:SetTeam(DOTA_TEAM_BADGUYS)

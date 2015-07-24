@@ -372,11 +372,16 @@ function GameMode:OnEntityKilled( keys )
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
     local allBuildings = Entities:FindAllByClassname("npc_dota_base_additive")
+    local allCreeps = Entities:FindAllByClassname("npc_dota_creature")
 
     for k,v in pairs(allBuildings) do
       if v:GetPlayerOwnerID() == killedUnit:GetPlayerOwnerID() then
-        
-        --PlayerResource:ModifyGold(killerEntity:GetPlayerOwnerID(), v:GetGoldBounty(), false, 1)
+        DestroyEntityBasedOnHealth(killerEntity, v)
+      end
+    end
+
+    for k,v in pairs(allCreeps) do
+      if v:GetPlayerOwnerID() == killedUnit:GetPlayerOwnerID() then
         DestroyEntityBasedOnHealth(killerEntity, v)
       end
     end
