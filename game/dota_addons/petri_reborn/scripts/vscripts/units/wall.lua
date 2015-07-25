@@ -67,7 +67,9 @@ function UpdateAttributes(wall, level, ability)
 		wall:SetHealth(newHealth)
 	end
 
+	wall:RemoveModifierByName("modifier_armor")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_armor", {})
+	wall:SetModifierStackCount("modifier_armor", wall, newArmor)
 end
 
 function GetModelNameForLevel(level)

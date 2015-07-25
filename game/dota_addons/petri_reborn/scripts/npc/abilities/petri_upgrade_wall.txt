@@ -23,12 +23,12 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "health_points"        "270 380 590 800 1100 1450 2400 4400 7050"
+      "health_points"        "270 380 590 800 1100 1450 2400 4400 6050"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "0 50 350 850 1300 1600 2000 4250 6500"
+      "armor"        "50 350 875 1300 1700 2200 4000 6000 8000"
     }
   }
 
@@ -87,7 +87,7 @@
 
       "Properties"
       {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
       }
     }
   }

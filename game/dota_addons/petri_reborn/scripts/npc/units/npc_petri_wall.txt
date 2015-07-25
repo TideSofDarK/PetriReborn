@@ -13,7 +13,7 @@
   "Ability5"        "petri_empty4"
   "Ability6"          "petri_building"
   
-  "ArmorPhysical"       "0"     
+  "ArmorPhysical"       "1"     
   "MagicalResistance"       "0"     
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    

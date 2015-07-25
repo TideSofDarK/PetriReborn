@@ -1,3 +1,9 @@
+function HideIfMaxLevel(ability)
+  if ability:GetMaxLevel() == ability:GetLevel() then
+    ability:SetHidden(true)
+  end
+end
+
 function FindAllByUnitName(name, pID, ignore)
   local entities = {}
   for k,v in pairs(Entities:FindAllByClassname("npc_dota_base_additive")) do
