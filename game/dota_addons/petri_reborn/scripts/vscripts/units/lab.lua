@@ -40,6 +40,7 @@ function ApplyDamageAura(event)
 	local ability = event.ability
 
 	local newDamage = ability:GetLevelSpecialValueFor("bonus_damage", ability:GetLevel() - 2) 
+	local newRange = ability:GetLevelSpecialValueFor("bonus_range", ability:GetLevel() - 2) 
 
 	local radius = ability:GetLevelSpecialValueFor("aura_range", ability:GetLevel()-1)
 
@@ -56,6 +57,13 @@ function ApplyDamageAura(event)
 				v:RemoveModifierByName("modifier_damage")
 				ability:ApplyDataDrivenModifier(v, v, "modifier_damage", { })
 				v:SetModifierStackCount("modifier_damage", v, newDamage)
+			end
+
+			if (v:FindModifierByName("modifier_range") ~= nil and v:GetModifierStackCount("modifier_range", v) < newRange) 
+				or (v:FindModifierByName("modifier_range") == nil) then
+				v:RemoveModifierByName("modifier_range")
+				ability:ApplyDataDrivenModifier(v, v, "modifier_range", { })
+				v:SetModifierStackCount("modifier_range", v, newRange)
 			end
 		end
 	end

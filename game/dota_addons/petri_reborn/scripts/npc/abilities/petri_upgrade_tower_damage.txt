@@ -98,7 +98,16 @@
       "Properties"
       {
         "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "1"
-        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
+      }
+    }
+    "modifier_range"
+    {
+      "Passive"  "0"
+      "IsHidden" "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "1"
       }
     }
   }

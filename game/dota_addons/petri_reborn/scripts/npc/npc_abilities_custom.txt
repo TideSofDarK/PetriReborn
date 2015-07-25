@@ -890,7 +890,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "2 4 5 6 7 10 12 14"
+	      "gold"      "1 2 4 5 6 7 10 12 14"
 	    }
 	  }
 	
@@ -2970,7 +2970,16 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "1"
-	        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
+	      }
+	    }
+	    "modifier_range"
+	    {
+	      "Passive"  "0"
+	      "IsHidden" "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "1"
 	      }
 	    }
 	  }

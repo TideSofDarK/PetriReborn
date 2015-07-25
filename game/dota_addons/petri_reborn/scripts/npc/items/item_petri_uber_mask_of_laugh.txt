@@ -29,7 +29,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "10"
     }
     "04"
     {
