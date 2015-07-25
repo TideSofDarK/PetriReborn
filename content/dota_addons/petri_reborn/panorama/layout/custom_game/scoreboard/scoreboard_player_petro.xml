@@ -1,8 +1,8 @@
 <root>
     <styles>
  		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
-        <include src="file://{resources}/styles/custom_game/simple_scoreboard.css" />
+		<include src="file://{resources}/styles/custom_game/scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/scoreboard.css" />
     </styles>
 	<script>
 		function ToggleMute()
@@ -30,9 +30,20 @@
 			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
 				<Panel id="PlayerAndHeroName">
 					<Label id="PlayerName" text="AAAAA" />
-					<Label id="HeroNameAndDescription" text="#custom_scoreboard_hero_name_and_desc" />
 				</Panel>
 				<Button id="MuteButton" onactivate="ToggleMute();" />
+			</Panel>
+			<Panel id="LevelContainer" class="ScoreCol_Kills ScoreboardPanel">
+				<Label id="Level" text="999" />
+			</Panel>				
+			<Panel id="GoldContainer" class="ScoreCol_Kills ScoreboardPanel">
+				<Label id="Gold" text="999" />
+			</Panel>			
+			<Panel id="KillsContainer" class="ScoreCol_Kills ScoreboardPanel">
+				<Label id="Kills" text="999" />
+			</Panel>
+			<Panel id="DeathsContainer" class="ScoreCol_Deaths ScoreboardPanel">
+				<Label id="Deaths" text="999" />
 			</Panel>
 		</Panel>
 	</Panel>

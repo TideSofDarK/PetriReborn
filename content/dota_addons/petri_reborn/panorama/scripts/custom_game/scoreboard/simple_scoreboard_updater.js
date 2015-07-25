@@ -1,6 +1,5 @@
 "use strict";
 
-
 //=============================================================================
 //=============================================================================
 function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
@@ -271,89 +270,6 @@ function _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, containerPanel, t
 
 //=============================================================================
 //=============================================================================
-function _ScoreboardUpdater_ReorderTeam( scoreboardConfig, teamsParent, teamPanel, teamId, newPlace, prevPanel )
-{
-//	$.Msg( "UPDATE: ", GameUI.CustomUIConfig().teamsPrevPlace );
-	var oldPlace = null;
-	if ( GameUI.CustomUIConfig().teamsPrevPlace.length > teamId )
-	{
-		oldPlace = GameUI.CustomUIConfig().teamsPrevPlace[ teamId ];
-	}
-	GameUI.CustomUIConfig().teamsPrevPlace[ teamId ] = newPlace;
-	
-	if ( newPlace != oldPlace )
-	{
-//		$.Msg( "Team ", teamId, " : ", oldPlace, " --> ", newPlace );
-		teamPanel.RemoveClass( "team_getting_worse" );
-		teamPanel.RemoveClass( "team_getting_better" );
-		if ( newPlace > oldPlace )
-		{
-			teamPanel.AddClass( "team_getting_worse" );
-		}
-		else if ( newPlace < oldPlace )
-		{
-			teamPanel.AddClass( "team_getting_better" );
-		}
-	}
-
-	teamsParent.MoveChildAfter( teamPanel, prevPanel );
-}
-
-// sort / reorder as necessary
-function compareFunc( a, b ) // GameUI.CustomUIConfig().sort_teams_compare_func;
-{
-	if ( a.team_score < b.team_score )
-	{
-		return 1; // [ B, A ]
-	}
-	else if ( a.team_score > b.team_score )
-	{
-		return -1; // [ A, B ]
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-function stableCompareFunc( a, b )
-{
-	var unstableCompare = compareFunc( a, b );
-	if ( unstableCompare != 0 )
-	{
-		return unstableCompare;
-	}
-	
-	if ( GameUI.CustomUIConfig().teamsPrevPlace.length <= a.team_id )
-	{
-		return 0;
-	}
-	
-	if ( GameUI.CustomUIConfig().teamsPrevPlace.length <= b.team_id )
-	{
-		return 0;
-	}
-	
-//			$.Msg( GameUI.CustomUIConfig().teamsPrevPlace );
-
-	var a_prev = GameUI.CustomUIConfig().teamsPrevPlace[ a.team_id ];
-	var b_prev = GameUI.CustomUIConfig().teamsPrevPlace[ b.team_id ];
-	if ( a_prev < b_prev ) // [ A, B ]
-	{
-		return -1; // [ A, B ]
-	}
-	else if ( a_prev > b_prev ) // [ B, A ]
-	{
-		return 1; // [ B, A ]
-	}
-	else
-	{
-		return 0;
-	}
-};
-
-//=============================================================================
-//=============================================================================
 function _ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardConfig, teamsContainer )
 {
 //	$.Msg( "_ScoreboardUpdater_UpdateAllTeamsAndPlayers: ", scoreboardConfig );
@@ -367,37 +283,15 @@ function _ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardConfig, teamsCon
 	// update/create team panels
 	var teamsInfo = { max_team_players: 0 };
 	var panelsByTeam = [];
+
 	for ( var i = 0; i < teamsList.length; ++i )
 	{
 		var teamPanel = _ScoreboardUpdater_UpdateTeamPanel( scoreboardConfig, teamsContainer, teamsList[i], teamsInfo );
+
 		if ( teamPanel )
 		{
 			panelsByTeam[ teamsList[i].team_id ] = teamPanel;
 		}
-	}
-
-	if ( teamsList.length > 1 )
-	{
-//		$.Msg( "panelsByTeam: ", panelsByTeam );
-
-		// sort
-		if ( scoreboardConfig.shouldSort )
-		{
-			teamsList.sort( stableCompareFunc );
-		}
-
-//		$.Msg( "POST: ", teamsAndPanels );
-
-		// reorder the panels based on the sort
-		var prevPanel = panelsByTeam[ teamsList[0].team_id ];
-		for ( var i = 0; i < teamsList.length; ++i )
-		{
-			var teamId = teamsList[i].team_id;
-			var teamPanel = panelsByTeam[ teamId ];
-			_ScoreboardUpdater_ReorderTeam( scoreboardConfig, teamsContainer, teamPanel, teamId, i, prevPanel );
-			prevPanel = teamPanel;
-		}
-//		$.Msg( GameUI.CustomUIConfig().teamsPrevPlace );
 	}
 
 //	$.Msg( "END _ScoreboardUpdater_UpdateAllTeamsAndPlayers: ", scoreboardConfig );
@@ -427,7 +321,7 @@ function ScoreboardUpdater_SetScoreboardActive( scoreboardHandle, isActive )
 	{
 		return;
 	}
-	
+
 	if ( isActive )
 	{
 		_ScoreboardUpdater_UpdateAllTeamsAndPlayers( scoreboardHandle.scoreboardConfig, scoreboardHandle.scoreboardPanel );
@@ -445,23 +339,5 @@ function ScoreboardUpdater_GetTeamPanel( scoreboardHandle, teamId )
 	
 	var teamPanelName = "_dynamic_team_" + teamId;
 	return scoreboardHandle.scoreboardPanel.FindChild( teamPanelName );
-}
-
-//=============================================================================
-//=============================================================================
-function ScoreboardUpdater_GetSortedTeamInfoList( scoreboardHandle )
-{
-	var teamsList = [];
-	for ( var teamId of Game.GetAllTeamIDs() )
-	{
-		teamsList.push( Game.GetTeamDetails( teamId ) );
-	}
-
-	if ( teamsList.length > 1 )
-	{
-		teamsList.sort( stableCompareFunc );		
-	}
-	
-	return teamsList;
 }
 

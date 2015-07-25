@@ -1,9 +1,10 @@
 .TimeOfDay
 {
-    width: 192px;
-    height: 192px;
-
-    horizontal-align: center;
+    width: 150px;
+    height: 150px;
+    
+    margin-left: 1100px;
+    horizontal-align: left;
 }
 
 #TimeOfDayImage
@@ -29,9 +30,7 @@
     font-size: 20px;
     color: #FFFFFF;
 
-    margin-left: 60px;
-
-    horizontal-align: left;
+    horizontal-align: center;
 
     margin-top: 10px;
 }
@@ -41,9 +40,11 @@
     width: 48px;
     height: 48px;
 
-    margin-top: 60px;
     margin-left: -6px;
+    margin-bottom: 40%;
 
+    vertical-align: bottom;
     horizontal-align: center;
+
     visibility: collapse;
 }
