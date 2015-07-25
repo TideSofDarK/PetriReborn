@@ -1,0 +1,46 @@
+<root>
+    <styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/scoreboard.css" />
+    </styles>
+
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/scoreboard/scoreboard_updater.js" />
+        <include src="file://{resources}/scripts/custom_game/scoreboard/scoreboard.js" />
+    </scripts>
+
+	<Panel hittest="false" class="FlyoutScoreboardRoot">
+		<Panel id="TeamsContainer" >
+			<Panel class="Legend">
+				<Panel class="LegendPanel ScoreCol_TeamInfo" />
+				<Panel class="LegendPanel ScoreCol_Hero" />
+				<Panel class="LegendPanel ScoreCol_PlayerDetails" />
+				<Label class="LegendPanel ScoreCol_Gold" text="#score_gold" >
+					<Image class="LegendPanel Icon" src="file://{images}/custom_game/custom_variables/gold.png" />
+				</Label>
+				<Label class="LegendPanel ScoreCol_Lumber" text="#score_lumber" >
+					<Image class="LegendPanel Icon" src="file://{images}/custom_game/custom_variables/lumber.png" />				
+				</Label>
+				<Label class="LegendPanel ScoreCol_Food" text="#score_food" >
+					<Image class="LegendPanel Icon" src="file://{images}/custom_game/custom_variables/food.png" />				
+				</Label>
+			</Panel>			
+			<Panel id="TeamKVN" />
+
+			<Panel class="Legend">
+				<Panel class="LegendPanel ScoreCol_TeamInfo" />
+				<Panel class="LegendPanel ScoreCol_Hero" />
+				<Panel class="LegendPanel ScoreCol_PlayerDetails" />
+				<Label class="LegendPanel ScoreCol_Level" text="#score_level" />
+				<Label class="LegendPanel ScoreCol_Gold" text="#score_gold" >
+					<Image class="LegendPanel Icon" src="file://{images}/custom_game/custom_variables/gold.png" />
+				</Label>					
+				<Label class="LegendPanel ScoreCol_Kills" text="#score_kills" />
+				<Label class="LegendPanel ScoreCol_Deaths" text="#score_deaths" />
+			</Panel>			
+			<Panel id="TeamPetro" />
+
+		</Panel>
+	</Panel>
+</root>

@@ -36,7 +36,8 @@
 
         <CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />
         <CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/scoreboard/simple_scoreboard.xml" /> 
-
+        <CustomUIElement type="HudTopBar" layoutfile="file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard.xml" /> 
+        
 		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_panel/action_panel.xml" />
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities/abilities_container.xml" /> -->
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />          
