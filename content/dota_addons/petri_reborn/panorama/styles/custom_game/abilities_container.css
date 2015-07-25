@@ -55,8 +55,7 @@
 	margin-bottom: 15px;
 
 	flow-children: right;
-	border: 1px solid black;
-	background-color: #272823;
+	background-color: transparent;
 }
 
 .AbilityPanel
@@ -76,12 +75,11 @@
     background-color: #c4a529;
 	width: 135px;
 	height: 30px;
-	margin-bottom: 6px;
 	vertical-align: bottom;
 	horizontal-align: center;
 	visibility: collapse;
-	margin-bottom: 240px;
-	margin-right: 800px;
+	margin-bottom: 225px;
+	margin-right: 840px;
 }
 
 .could_level_up #LevelUpButton
@@ -225,27 +223,17 @@
 
 .LumberBase
 {
+	flow-children: down;
+
 	horizontal-align: right;
     vertical-align: top;
 
-    margin-right: 50px;
+    margin-top: 50px;
 }
 
-.TotalGoldText
-{
-	margin-left: 50px;
-	margin-top: 5px;
-}
-
-.TotalLumberText
-{
-	margin-left: 250px;
-	margin-top: 5px;
-
-}
-
+.TotalGoldText,
+.TotalLumberText,
 .TotalFoodText
 {
-	margin-left: 450px;
-	margin-top: 5px;
+    margin-right: 5px;
 }
