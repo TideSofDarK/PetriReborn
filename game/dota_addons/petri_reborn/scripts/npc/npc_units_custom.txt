@@ -66,9 +66,59 @@
 	  
 	  "AttackDesire" "1.5"
 	}
+	
+	"npc_dummy_portal_icon"
+	{
+	  "BaseClass" "npc_dota_building" 
+	  "Model" "models/development/invisiblebox.vmdl" 
+	  "SoundSet" "Creep_Good_Range" 
+	  "Level" "0"
+	
+	  "Ability1"          "petri_dummy_portal_icon_passive"    
+	
+	  "MinimapIcon"         "minimap_ping"
+	  "MinimapIconSize"       "555"
+	  
+	  "ArmorPhysical" "0" 
+	  "MagicalResistance" "0" 
+	  
+	  "AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+	  
+	  "AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+	  "AttributeBaseStrength" "0"
+	  "AttributeStrengthGain" "0"
+	  "AttributeBaseIntelligence" "0"
+	  "AttributeIntelligenceGain" "0"
+	  "AttributeBaseAgility" "0"
+	  "AttributeAgilityGain" "0"
+	  
+	  "BountyXP" "0" 
+	  "BountyGoldMin" "0" 
+	  "BountyGoldMax" "0" 
+	  
+	  "BoundsHullName" "DOTA_HULL_SIZE_SMALL" 
+	  
+	  "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+	  "MovementSpeed" "450" 
+	  "MovementTurnRate" "10" 
+	  "FollowRange" "250" 
+	
+	  "StatusHealth" "1" 
+	  "StatusHealthRegen" "0" 
+	  "StatusMana" "0" 
+	  "StatusManaRegen" "0" 
+	  
+	  "TeamName" "DOTA_TEAM_NEUTRALS" 
+	  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+	  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  
+	  "VisionDaytimeRange" "0" 
+	  "VisionNighttimeRange" "0" 
+	}
 	"npc_petri_creep_bad_actor"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "1"
@@ -114,15 +164,10 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_creep_dead_actor"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
 	  "ModelScale"        "1.2"
 	  "Level"           "3"
@@ -167,15 +212,10 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_creep_draconoid"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
 	  "ModelScale"        "0.6"
 	  "Level"           "6"
@@ -220,15 +260,10 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_creep_good_actor"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "2"
@@ -273,15 +308,10 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_creep_humorist"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"
 	  "ModelScale"        "1.1"
 	  "Level"           "5"
@@ -294,8 +324,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "16500.0"
-	  "AttackDamageMax"     "16500.0"
+	  "AttackDamageMin"     "14500.0"
+	  "AttackDamageMax"     "14500.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -326,15 +356,10 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_creep_kvn_actor"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "4"
@@ -379,11 +404,6 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-	
-	  "Creature"
-	  {
-	    "DisableClumpingBehavior" "1"
-	  }
 	}
 	"npc_petri_exit"
 	{
@@ -1150,7 +1170,7 @@
 	  
 	  "BaseClass"         "npc_dota_base_additive"  
 	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
-	  "ModelScale"                "0.4"
+	  "ModelScale"                "0.29"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
 	  "UnitLabel"         "npc_petri_tower_basic"
@@ -1225,8 +1245,8 @@
 	  "MagicalResistance"       "0"     
 	
 	  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-	  "AttackDamageMin"            "9"
-	  "AttackDamageMax"            "9"
+	  "AttackDamageMin"            "30"
+	  "AttackDamageMax"            "30"
 	  "AttackRate"                 "0.8"
 	  "AttackAnimationPoint"       "0.75"
 	  "AttackAcquisitionRange"     "800"
@@ -1260,6 +1280,52 @@
 	
 	  "VisionDaytimeRange"    "500"   
 	  "VisionNighttimeRange"    "500"   
+	}
+	"npc_petri_trap"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/heroes/techies/fx_techiesfx_stasis.vmdl"
+	  "ModelScale"        "1.0"
+	  "Level"           "0"
+	  "HealthBarOffset"       "140"
+	  "HasInventory"        "0"
+	
+	  "AbilityLayout"       "4"
+	  "Ability1"  "petri_invisibility"
+	  "Ability2"  "petri_trap"
+	  
+	  "ArmorPhysical"       "0"
+	  "MagicalResistance"     "0"
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackDamageMin"       "0"
+	  "AttackDamageMax"       "0"
+	
+	  "BountyGoldMin"       "20.0"
+	  "BountyGoldMax"       "20.0"
+	
+	  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
+	  "RingRadius"        "10"
+	  "CollisionSize"       "2"
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+	  "MovementSpeed"         "0"   
+	  "MovementTurnRate"    "0.0"  
+	  "HasAggressiveStance"     "0"
+	  
+	  "StatusHealth"        "1"
+	  "StatusHealthRegen"     "0"
+	  "StatusMana"        "0"
+	  "StatusManaRegen"       "0"
+	
+	  "VisionDaytimeRange"    "1700"
+	  "VisionNighttimeRange"    "1700"
+	
+	  "TeamName"          "DOTA_TEAM_GOODGUYS"
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	}
 	"npc_petri_wall"
 	{

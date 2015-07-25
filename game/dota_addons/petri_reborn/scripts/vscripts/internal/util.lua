@@ -1,3 +1,11 @@
+function FindAllByUnitName(name, pID, ignore)
+  local entities = {}
+  for k,v in pairs(Entities:FindAllByClassname("npc_dota_base_additive")) do
+    if v:GetUnitName() == name and v:GetPlayerOwnerID() == pID and v ~= ignore then entities[k] = v end
+  end
+  return entities
+end
+
 function Split(s, delimiter)
     result = {}
     for match in (s..delimiter):gmatch("(.-)"..delimiter) do
@@ -53,6 +61,10 @@ end
 
 -- Upgrades
 
+function GetUpgradeLevelForPlayer(upgrade, pID)
+  return CustomNetTables:GetTableValue("players_upgrades", tostring(pID))["1"][upgrade]
+end
+
 function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
@@ -83,7 +95,19 @@ function StartUpgrading (event)
 
     caster.foodSpent = caster.foodSpent + food_cost
 
-    ability:SetHidden(true)
+    if not event["Permanent"] then
+      ability:SetHidden(true)
+    else 
+      local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+      local abilityName = ability:GetName()
+
+      for k,v in pairs(all) do
+        if v:HasAbility(abilityName) then
+          local a = v:FindAbilityByName(abilityName)
+          a:SetHidden(true)
+        end
+      end
+    end
   end
 end
 
@@ -105,7 +129,19 @@ function StopUpgrading(event)
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
-  ability:SetHidden(false)
+  if not event["Permanent"] then
+    ability:SetHidden(false)
+  else 
+    local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+    local abilityName = ability:GetName()
+
+    for k,v in pairs(all) do
+      if v:HasAbility(abilityName) then
+        local a = v:FindAbilityByName(abilityName)
+        a:SetHidden(false)
+      end
+    end
+  end
 end
 
 function OnUpgradeSucceeded(event)
@@ -113,6 +149,7 @@ function OnUpgradeSucceeded(event)
   local ability = event.ability
 
   local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local pID = caster:GetPlayerOwnerID()
 
   local level = ability:GetLevel()
 
@@ -122,10 +159,32 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
-  if level+1 == ability:GetMaxLevel() then
-    ability:SetHidden(true)
+  if event["Permanent"] then
+    local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))
+    tempTable["1"][ability:GetName()] = tempTable["1"][ability:GetName()] + 1
+    CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), { tempTable["1"] } );
+
+    local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+    local abilityName = ability:GetName()
+
+    for k,v in pairs(all) do
+      if v:HasAbility(abilityName) then
+        local a = v:FindAbilityByName(abilityName)
+        a:SetLevel(level+1)
+
+        if level+1 == a:GetMaxLevel() then
+          a:SetHidden(true)
+        else 
+          a:SetHidden(false)
+        end
+      end
+    end
   else 
-    ability:SetHidden(false)
+    if level+1 == ability:GetMaxLevel() then
+      ability:SetHidden(true)
+    else 
+      ability:SetHidden(false)
+    end
   end
 end
 

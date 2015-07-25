@@ -1,6 +1,6 @@
 "npc_petri_creep_dead_actor"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
   "ModelScale"        "1.2"
   "Level"           "3"
@@ -45,9 +45,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

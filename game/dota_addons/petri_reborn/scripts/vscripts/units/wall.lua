@@ -95,5 +95,14 @@ end
 function Notification(keys)
 	local caster = keys.caster
 	local origin = caster:GetAbsOrigin()
-	MinimapEvent(DOTA_TEAM_GOODGUYS, caster, origin.x, origin.y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 1 )
+	caster.lastWallIsUnderAttackNotification = caster.lastWallIsUnderAttackNotification or 0
+
+	if GameRules:GetGameTime() - caster.lastWallIsUnderAttackNotification > 15.0 then
+		EmitSoundOnClient("General.PingDefense", caster:GetPlayerOwner())
+		caster.lastWallIsUnderAttackNotification = GameRules:GetGameTime()
+	end
+
+	caster.lastWallIsUnderAttackNotification = caster.lastWallIsUnderAttackNotification or 0
+	
+	MinimapEvent(DOTA_TEAM_GOODGUYS, caster, origin.x, origin.y, DOTA_MINIMAP_EVENT_ENEMY_TELEPORTING, 1 )
 end

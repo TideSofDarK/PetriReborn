@@ -79,6 +79,7 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
+          newHero:AddItemByName("item_petri_trap")
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
@@ -88,6 +89,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.food = 0
           newHero.maxFood = 10
           SetupUI(newHero)
+          SetupUpgrades(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
@@ -142,6 +144,25 @@ function GameMode:OnHeroInGame(hero)
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
   end
+end
+
+function SetupUpgrades(newHero)
+  local player = newHero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
+
+  local upgradeAbilities = {}
+
+  for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
+    if type(ability_info) == "table" then
+      if string.match(ability_name, "petri_upgrade") then 
+         upgradeAbilities[ability_name] = 0
+      end  
+    end
+  end
+
+  CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), { upgradeAbilities } );
+
+  --PrintTable(CustomNetTables:GetTableValue("players_upgrades", tostring(pID)))
 end
 
 function SetupUI(newHero)
@@ -248,17 +269,17 @@ function GameMode:InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
 
    -- Find all ability layouts to send them to clients later
-  local UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
-  local HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
-  local AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+  GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+  GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+  GameMode.AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
 
   for i=1,2 do
-    local t = UnitKVs
+    local t = GameMode.UnitKVs
     if i == 2 then
-      t = HeroKVs
+      t = GameMode.HeroKVs
     end
     for unit_name,unit_info in pairs(t) do
       if type(unit_info) == "table" then
@@ -271,7 +292,7 @@ function GameMode:InitGameMode()
     end
   end
 
-  for ability_name,ability_info in pairs(AbilityKVs) do
+  for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
     if type(ability_info) == "table" then
       if ability_info["AbilityGoldCost"] ~= nil then
         GameMode.abilityGoldCosts[ability_name] = Split(ability_info["AbilityGoldCost"], " ")
@@ -288,6 +309,9 @@ function GameMode:InitGameMode()
 
   -- Fix hero bounties
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
+
+  -- Commands
+  Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 end
@@ -341,4 +365,14 @@ function PetrosyanWin()
     function()
       GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
     end)
+end
+
+function GameMode:LumberCommand()
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      GameMode.assignedPlayerHeroes[playerID].lumber = GameMode.assignedPlayerHeroes[playerID].lumber + 15000000
+    end
+  end
 end

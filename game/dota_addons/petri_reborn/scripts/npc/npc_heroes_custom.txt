@@ -116,9 +116,6 @@
 	  "Ability3"        "petri_petrosyan_wind_walk"
 	  "Ability4"        "petri_petrosyan_return"
 	
-	  "MinimapIcon"               "minimap_candybucket"
-	  "MinimapIconSize"           "1000"
-	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
 	
@@ -128,7 +125,7 @@
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.56"
 	
-	  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
 	  "AttributeBaseStrength"   "1"
 	  "AttributeStrengthGain"   "1.0"
 	  "AttributeBaseIntelligence" "1"
@@ -174,9 +171,6 @@
 	  "Ability6"        "petri_petrosyan_return"
 	  "Ability7"        "petri_petrosyan_dummy_sleep"
 	
-	  "MinimapIcon"               "minimap_candybucket"
-	  "MinimapIconSize"           "5"
-	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
 	
@@ -186,7 +180,7 @@
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.39"
 	
-	  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
 	  "AttributeBaseStrength"   "1"
 	  "AttributeStrengthGain"   "1.5"
 	  "AttributeBaseIntelligence" "1"

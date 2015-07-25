@@ -173,6 +173,11 @@ function GameMode:OnPlayerReconnect(keys)
 
         --Send gold costs
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
+
+        --Set correct team
+        if hero:GetTeam() == DOTA_TEAM_BADGUYS then
+          player:SetTeam(DOTA_TEAM_BADGUYS)
+        end
       end)
 
       Timers:CreateTimer(0.03,

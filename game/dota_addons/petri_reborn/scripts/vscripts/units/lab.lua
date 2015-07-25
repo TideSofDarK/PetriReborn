@@ -1,5 +1,19 @@
 function Spawn( keys )
 	StartAnimation(thisEntity, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
+
+	Timers:CreateTimer(5.1, function()
+		local pID = thisEntity:GetPlayerOwnerID()
+		if pID ~= -1 then
+			local level = GetUpgradeLevelForPlayer("petri_upgrade_concrete", pID)
+			thisEntity:FindAbilityByName("petri_upgrade_concrete"):SetLevel(level+1)
+
+			level = GetUpgradeLevelForPlayer("petri_upgrade_tower_damage", pID)
+			thisEntity:FindAbilityByName("petri_upgrade_tower_damage"):SetLevel(level+1)
+
+			level = GetUpgradeLevelForPlayer("petri_upgrade_lumber", pID)
+			thisEntity:FindAbilityByName("petri_upgrade_lumber"):SetLevel(level+1)
+		end
+	end)
 end
 
 function LumberUpgrade(event)
@@ -11,7 +25,11 @@ function LumberUpgrade(event)
 
 	local bonus = ability:GetLevelSpecialValueFor("bonus_lumber", ability:GetLevel() - 1)
 
-	if bonus > hero.bonusLumber then hero.bonusLumber = bonus end
+	if bonus > hero.bonusLumber then 
+		local level = GetUpgradeLevelForPlayer("petri_upgrade_lumber", caster:GetPlayerOwnerID())
+
+		hero.bonusLumber = bonus
+	end
 end
 
 function ApplyDamageAura(event)

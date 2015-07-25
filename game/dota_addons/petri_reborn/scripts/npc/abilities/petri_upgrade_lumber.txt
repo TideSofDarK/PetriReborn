@@ -27,6 +27,7 @@
     {
       "ScriptFile"      "internal/util.lua"
       "Function"        "StartUpgrading"
+      "Permanent"       "1"
     }
   }
 
@@ -36,6 +37,7 @@
     {
       "ScriptFile"      "internal/util.lua"
       "Function"        "StopUpgrading"
+      "Permanent"       "1"
     }
   }
   
@@ -50,6 +52,7 @@
     {
       "ScriptFile"      "internal/util.lua"
       "Function"        "OnUpgradeSucceeded"
+      "Permanent"       "1"
     }
   }
 }

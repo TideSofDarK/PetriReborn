@@ -2,6 +2,12 @@
 {
   "Version"   "1"
 
+  "item_petri_trap"
+  {
+    "ItemPurchasable"                "0"
+    "ItemDroppable"                    "0"
+  }
+
   "item_petri_kvn_fan_blink"
   {
     "ItemPurchasable"                "0"

@@ -35,6 +35,17 @@ function Spawn( event )
 	InitAbilities(thisEntity)
 end
 
+function SpawnTrap(keys)
+	local point = keys.target_points[1]
+	local caster = keys.caster
+
+	local trap = CreateUnitByName("npc_petri_trap", point,  true, nil, caster, caster:GetTeam())
+
+	InitAbilities(trap)
+	trap:AddNewModifier(trap, nil, "modifier_kill", {duration = 240})
+	StartAnimation(trap, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+end
+
 function GivePermissionToBuild( keys )
 	local caster = keys.caster
 	local target = keys.target

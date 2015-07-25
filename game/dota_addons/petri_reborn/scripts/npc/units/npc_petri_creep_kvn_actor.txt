@@ -1,6 +1,6 @@
 "npc_petri_creep_kvn_actor"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
   "ModelScale"        "1.0"
   "Level"           "4"
@@ -45,9 +45,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

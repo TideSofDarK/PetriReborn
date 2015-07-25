@@ -1,6 +1,6 @@
 "npc_petri_creep_draconoid"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
   "ModelScale"        "0.6"
   "Level"           "6"
@@ -45,9 +45,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

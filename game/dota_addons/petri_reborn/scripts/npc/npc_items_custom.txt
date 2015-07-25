@@ -9,7 +9,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_book_of_laugh"
 	
-	  "ItemCost"            "30"
+	  "ItemCost"            "225"
 	  "ItemShopTags"          "consumable"
 	  "ItemQuality"           "consumable"
 	  "ItemAliases"         "book"
@@ -1707,6 +1707,39 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_thunder"
+	  }
+	}
+	"item_petri_trap"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1997"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_trap"
+	
+	  "ItemCost"            "25"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "ward"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "AbilityCastRange" "250"
+	
+	  "AbilityCooldown"       "1.0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "SpawnTrap"
+	      "Target"    "POINT"
+	    }
+	    "SpendCharge"
+	    {}
 	  }
 	}
 	"item_petri_uber_mask_of_laugh"

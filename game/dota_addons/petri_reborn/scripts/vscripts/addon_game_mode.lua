@@ -2,16 +2,12 @@ require('internal/util')
 require('gamemode')
 
 function Precache( context )
-  -- HEROES
-  -- for i=1, 8, 1 do
-  --   print(i)
-  --   PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context,i-1)
-  -- end
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
-
+  
+  -- ITEMS
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
-
   PrecacheItemByNameSync("item_petri_hook", context)
+  PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
   -- UNITS
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)

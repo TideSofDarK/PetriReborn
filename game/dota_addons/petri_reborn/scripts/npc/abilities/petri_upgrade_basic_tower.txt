@@ -177,7 +177,7 @@
 
   "precache"
   {
-    "particle"  "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
+    "particle"  "particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_fire_arcana.vpcf"
   }
 
   "AbilitySpecial"
@@ -287,7 +287,7 @@
       {
         "FireEffect"
         {
-          "EffectName"     "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
+          "EffectName"     "particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_fire_arcana.vpcf"
           "EffectAttachType"   "follow_origin"
           "Target"       "TARGET"
         } 
