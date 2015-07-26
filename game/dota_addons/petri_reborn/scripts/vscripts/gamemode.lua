@@ -114,7 +114,7 @@ function GameMode:OnHeroInGame(hero)
         end, pID)
     end
 
-    local petrosyanHeroName = "npc_dota_hero_death_prophet"
+    local petrosyanHeroName = "npc_dota_hero_brewmaster"
     if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
       petrosyanHeroName = "npc_dota_hero_death_prophet"
     end

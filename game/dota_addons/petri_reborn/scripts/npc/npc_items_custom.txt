@@ -785,7 +785,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_strength"    "95"
+	      "bonus_strength"    "75"
 	    }
 	    "02"
 	    {
@@ -806,7 +806,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_bracer_datadriven"
+	    "modifier_mega_sith"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -818,7 +818,16 @@
 	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_strength"
 	
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
+	      }
+	    }
 	
+	    "modifier_mega_sith_evasion"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Properties"
+	      {
 	        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%dodge_chance"
 	      }
 	    }

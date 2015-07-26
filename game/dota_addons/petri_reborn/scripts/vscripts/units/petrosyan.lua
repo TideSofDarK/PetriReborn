@@ -108,9 +108,16 @@ function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
 
-	target:RemoveModifierByName("modifier_repairing")
-	target:RemoveModifierByName("modifier_chopping_building")
-	target:RemoveModifierByName("modifier_chopping_building_animation")
+	for i=0,target:GetAbilityCount() do
+		if target:GetAbilityByIndex(i) ~= nil and target:GetAbilityByIndex(i):GetToggleState() then
+			target:GetAbilityByIndex(i):ToggleAbility()
+		end
+	end
+
+	for i=0,target:GetModifierCount() do
+		local modifierName = target:GetModifierNameByIndex(i)
+		target:RemoveModifierByName(modifierName)
+	end
 end
 
 function Return( keys )
