@@ -17,7 +17,7 @@ function Gather( event )
 	caster.manual_order = false
 
 	if target_class == "ent_dota_tree" then
-		caster:MoveToTargetToAttack(target)
+		caster:MoveToNPC(target)
 		if Debug_Peasant then
 			print("Moving to ", target_class)
 		end
@@ -106,7 +106,11 @@ function Gather100Lumber( event )
 	local caster = event.caster
 	local ability = event.ability
 
-	local hero = caster:GetPlayerOwner():GetAssignedHero()
+	if caster == nil then
+		return
+	end
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
 	local max_lumber_carried = 200
 	local single_chop = 100
@@ -209,9 +213,7 @@ function CheckBuildingPosition( event )
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
 	local collision = distance <= (caster.target_building:GetHullRadius()+100)
-	if not collision then
-		--print("Moving to building, distance: ",distance)
-	else
+	if collision then
 		local hero = caster:GetOwner()
 		local pID = hero:GetPlayerID()
 		caster:RemoveModifierByName("modifier_returning_resources")

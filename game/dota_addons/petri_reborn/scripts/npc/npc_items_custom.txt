@@ -229,7 +229,8 @@
 	          
 	      "States"
 	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -402,7 +403,7 @@
 	      "StartPosition" "attach_origin"
 	      "EndRadius"     "%hook_width"
 	      "FixedDistance" "%hook_distance"
-	      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_BOTH"
+	      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	      "TargetTypes"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 	      "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
 	      "HasFrontalCone"    "0"
@@ -851,7 +852,7 @@
 	  "AbilityTextureName"      "item_petri_magic_shield"
 	  "AbilityCooldown"       "55"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "140"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "magic shield"
@@ -861,7 +862,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "6"
+	      "bonus_armor"      "10"
 	    }
 	    "02"
 	    {
@@ -926,14 +927,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "100"
+	  "ItemCost"            "130"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_magic_shield"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_simple_sword;item_petri_vest"
+	    "01"            "item_petri_vest;"
 	  }
 	}
 	
@@ -990,7 +991,7 @@
 	  "ItemResult"          "item_petri_shield_of_nature"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_superthing;item_petri_superthing"
+	    "01"            "item_petri_superthing;"
 	  }
 	}
 	
@@ -1047,7 +1048,7 @@
 	  "ItemResult"          "item_petri_shield_of_hell"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_shield_of_nature;item_petri_superthing"
+	    "01"            "item_petri_shield_of_nature;"
 	  }
 	}
 	
@@ -1070,7 +1071,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "1200"
+	      "bonus_armor"      "1500"
 	    }
 	  }
 	
@@ -1104,7 +1105,7 @@
 	  "ItemResult"          "item_petri_shield_of_heaven"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_shield_of_nature;item_petri_shield_of_hell"
+	    "01"            "item_petri_shield_of_hell;"
 	  }
 	}
 	
@@ -1127,7 +1128,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "1250"
+	      "bonus_armor"      "1500"
 	    }
 	    "02"
 	    {
@@ -1179,7 +1180,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_stone_of_power"
 	
-	  "ItemCost"            "7200"
+	  "ItemCost"            "5800"
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
@@ -1256,7 +1257,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_hyperubersword"
 	
-	  "ItemCost"            "142"
+	  "ItemCost"            "201"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "common"
 	  "ItemAliases"         "hyperubersword"
@@ -1313,7 +1314,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kladenets_sword"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "402"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kladenets sword"
@@ -1351,14 +1352,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "180"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_kladenets_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_hyperubersword;item_petri_hyperubersword"
+	    "01"            "item_petri_hyperubersword;"
 	  }
 	}
 	
@@ -1371,7 +1372,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "953"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -1409,14 +1410,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "350"
+	  "ItemCost"            "400"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_perfect_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_kladenets_sword;item_petri_hyperubersword"
+	    "01"            "item_petri_kladenets_sword;"
 	  }
 	}
 	
@@ -1429,7 +1430,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_titan_sword"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "1272"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "titan sword"
@@ -1439,7 +1440,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "390"
+	      "bonus_damage"      "430"
 	    }
 	  }
 	  
@@ -1487,7 +1488,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_magic_axe"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "3044"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "magic axe"
@@ -1497,7 +1498,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "1900"
+	      "bonus_damage"      "2200"
 	    }
 	  }
 	  
@@ -1525,14 +1526,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "500"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_magic_axe"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_titan_sword;item_petri_titan_sword"
+	    "01"            "item_petri_titan_sword"
 	  }
 	}
 	
@@ -1545,7 +1546,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_grond"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "7088"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "grond"
@@ -1583,14 +1584,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "3000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_grond"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_magic_axe;item_petri_magic_axe"
+	    "01"            "item_petri_magic_axe;"
 	  }
 	}
 	
@@ -1603,7 +1604,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_thunder"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "14176"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "thunder"
@@ -1641,14 +1642,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "3800"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_thunder"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_grond;item_petri_grond"
+	    "01"            "item_petri_grond;"
 	  }
 	}
 	
@@ -1661,7 +1662,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trident"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "19176"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "trident"

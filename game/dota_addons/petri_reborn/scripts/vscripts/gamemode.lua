@@ -10,6 +10,13 @@ START_KVN_LUMBER = 150
 START_PETROSYANS_GOLD = 32
 START_MINI_ACTORS_GOLD = 15
 
+local FRIENDS_KVN = {}
+FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
+
+local FRIENDS_PETRI = {}
+FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
+FRIENDS_KVN["63399181"] = "models/heroes/doom/doom.vmdl"
+
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
@@ -96,18 +103,27 @@ function GameMode:OnHeroInGame(hero)
           PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
+
+          for k,v in pairs(FRIENDS_KVN) do
+            local id = tonumber(k)
+
+            if PlayerResource:GetSteamAccountID(pID) == id then
+              UpdateModel(newHero, v, 1)
+            end
+          end
         end, pID)
     end
 
-    local friends = {}
-    friends[0] = 96571761
-    friends[1] = 63399181
+    local petrosyanHeroName = "npc_dota_hero_death_prophet"
+    if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
+      petrosyanHeroName = "npc_dota_hero_death_prophet"
+    end
 
      -- Init petrosyan
     if team == 3 then
-      PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
+      PrecacheUnitByNameAsync(petrosyanHeroName,
         function() 
-          newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
+          newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
           newHero:SetAbilityPoints(3)
@@ -128,8 +144,12 @@ function GameMode:OnHeroInGame(hero)
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
 
-          if PlayerResource:GetSteamAccountID(pID) == friends[0] or PlayerResource:GetSteamAccountID(pID) == friends[1] then 
-            UpdateModel(newHero, "models/heroes/doom/doom.vmdl", 1.1)
+          for k,v in pairs(FRIENDS_PETRI) do
+            local id = tonumber(k)
+
+            if PlayerResource:GetSteamAccountID(pID) == id then
+              UpdateModel(newHero, v, 1)
+            end
           end
 
           if GameRules.explorationTowerCreated == nil then

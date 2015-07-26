@@ -30,7 +30,7 @@
   "AttributeBaseAgility"    "1"
   "AttributeAgilityGain"    "0.25"
 
-  "BountyXP"          "50"                 
+  "BountyXP"          "0"                 
   "BountyGoldMin"       "10"                   
   "BountyGoldMax"       "20"     
   "BountyGain"                "0"              

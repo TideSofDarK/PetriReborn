@@ -8,7 +8,7 @@
   "AbilityTextureName"      "item_petri_magic_shield"
   "AbilityCooldown"       "55"
 
-  "ItemCost"            "0"
+  "ItemCost"            "140"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "magic shield"
@@ -18,7 +18,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "6"
+      "bonus_armor"      "10"
     }
     "02"
     {
@@ -83,14 +83,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "100"
+  "ItemCost"            "130"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_magic_shield"
   "ItemRequirements"
   {
-    "01"            "item_petri_simple_sword;item_petri_vest"
+    "01"            "item_petri_vest;"
   }
 }
 
@@ -147,7 +147,7 @@
   "ItemResult"          "item_petri_shield_of_nature"
   "ItemRequirements"
   {
-    "01"            "item_petri_superthing;item_petri_superthing"
+    "01"            "item_petri_superthing;"
   }
 }
 
@@ -204,7 +204,7 @@
   "ItemResult"          "item_petri_shield_of_hell"
   "ItemRequirements"
   {
-    "01"            "item_petri_shield_of_nature;item_petri_superthing"
+    "01"            "item_petri_shield_of_nature;"
   }
 }
 
@@ -227,7 +227,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "1200"
+      "bonus_armor"      "1500"
     }
   }
 
@@ -261,7 +261,7 @@
   "ItemResult"          "item_petri_shield_of_heaven"
   "ItemRequirements"
   {
-    "01"            "item_petri_shield_of_nature;item_petri_shield_of_hell"
+    "01"            "item_petri_shield_of_hell;"
   }
 }
 
@@ -284,7 +284,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "1250"
+      "bonus_armor"      "1500"
     }
     "02"
     {

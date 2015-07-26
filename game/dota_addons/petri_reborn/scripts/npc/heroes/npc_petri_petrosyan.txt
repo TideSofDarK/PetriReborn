@@ -24,6 +24,7 @@
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
   "AttackRate" "0.39"
+  "AttackAnimationPoint"       "0.275"
 
   "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
@@ -33,12 +34,10 @@
   "AttributeBaseAgility"    "1"
   "AttributeAgilityGain"    "0.3"
 
-  "BountyXP"          "50"                 
+  "BountyXP"          "0"                 
   "BountyGoldMin"       "10"                   
   "BountyGoldMax"       "20"     
   "BountyGain"                "0"  
-
-         
 
   "BoundsHullName"      "DOTA_HULL_SIZE_HERO"
   "RingRadius"        "70"
@@ -57,7 +56,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior" "1"
-    "XPGain"                    "200"     
+    "DisableClumpingBehavior" "1" 
   }         
 }

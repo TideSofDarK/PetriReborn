@@ -10,6 +10,7 @@ function Precache( context )
   PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
   -- UNITS
+  PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
 
   PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)

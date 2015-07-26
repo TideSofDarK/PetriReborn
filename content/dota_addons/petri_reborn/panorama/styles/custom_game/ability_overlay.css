@@ -633,6 +633,7 @@
 /* Text styles */
 
 .LumberText{
+  font-size: 12px;
 	font-weight: bold;
 	color: #EEEB8A;
 	text-shadow: 2px 2px 8px 3.0 #333333b0;

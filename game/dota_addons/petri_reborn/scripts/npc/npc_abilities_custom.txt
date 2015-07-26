@@ -1191,6 +1191,27 @@
 	  }   
 	}
 	
+	"petri_janitor_invisibility"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "IsHidden"      "1"
+	    "Passive"      "1"
+	    "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	    "States"
+	    {
+	      "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	      "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+	      "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
+	    }
+	  }  
+	}
+	
 	"petri_invisibility"
 	{
 	  "BaseClass" "ability_datadriven"
@@ -2550,7 +2571,7 @@
 	  "AbilityGoldCost"       "50 100 125 150 175 200 250 500 750 800 900 1100 1700 2500"
 	  "AbilityChannelTime"      "2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9"
 	
-	  "MaxLevel"            "14"
+	  "MaxLevel"            "15"
 	
 	  "AbilitySpecial"
 	  {
@@ -2563,7 +2584,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_armor"  "90 180 270 360 450 660 1100 1500 1900 2300 2700 3200 4000"
+	      "bonus_armor"  "45 90 180 270 360 450 660 1100 1500 1900 2300 2700 3200 4000"
 	    }
 	    "03"
 	    {
@@ -2889,7 +2910,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 99999"
+	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 10000"
 	    }
 	
 	    "02"

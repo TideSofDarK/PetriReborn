@@ -155,6 +155,9 @@ function SpawnJanitor( keys )
 	end
 
 	janitor:AddAbility("courier_transfer_items")
+	janitor:AddAbility("petri_janitor_invisibility")
+
+	janitor:GetAbilityByIndex(1):ApplyDataDrivenModifier(janitor, janitor, "modifier_beastmaster_hawk_invisibility", {})
 	
 	InitAbilities(janitor)
 
@@ -184,7 +187,7 @@ end
 function ReadComedyBook( keys )
 	local caster = keys.caster
 	
-	caster:SetBaseStrength(caster:GetBaseStrength() + 20)
+	caster:SetBaseStrength(caster:GetBaseStrength() + 25)
 
 	caster:CalculateStatBonus()
 end

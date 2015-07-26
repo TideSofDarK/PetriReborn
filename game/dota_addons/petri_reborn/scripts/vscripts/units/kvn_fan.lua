@@ -180,6 +180,7 @@ function SpawnGoldBag( keys )
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+	bag.spawnPosition = caster:GetAbsOrigin()
 end
 
 function Deny(keys)

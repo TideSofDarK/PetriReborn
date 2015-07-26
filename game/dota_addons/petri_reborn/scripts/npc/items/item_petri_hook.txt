@@ -79,7 +79,7 @@
       "StartPosition" "attach_origin"
       "EndRadius"     "%hook_width"
       "FixedDistance" "%hook_distance"
-      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_BOTH"
+      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
       "TargetTypes"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
       "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
       "HasFrontalCone"    "0"

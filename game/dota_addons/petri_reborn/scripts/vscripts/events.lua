@@ -162,7 +162,7 @@ function GameMode:OnPlayerReconnect(keys)
   --PrintTable(keys) 
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
-  local hero = player:GetAssignedHero()
+  local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
@@ -414,7 +414,8 @@ function GameMode:OnEntityKilled( keys )
 
   -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
-  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit" then
+  killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
+  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit"  then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
@@ -440,6 +441,17 @@ function GameMode:OnEntityKilled( keys )
     local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
 
     hero.food = hero.food - killedUnit.foodSpent
+  end
+
+  -- Respawn creep
+  if string.match(killedUnit:GetUnitName (), "peasant") then
+    killedUnit:RemoveModifierByName("modifier_chopping_wood")
+    killedUnit:RemoveModifierByName("modifier_gathering_lumber")
+    killedUnit:RemoveModifierByName("modifier_chopping_wood_animation")
+
+    killedUnit:RemoveModifierByName("modifier_repairing")
+    killedUnit:RemoveModifierByName("modifier_chopping_building")
+    killedUnit:RemoveModifierByName("modifier_chopping_building_animation")
   end
 
   -- Respawn creep
