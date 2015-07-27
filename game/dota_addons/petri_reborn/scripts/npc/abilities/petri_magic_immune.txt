@@ -1,0 +1,21 @@
+"petri_magic_immune"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "riki_permanent_invisibility"
+  
+  "Modifiers"
+  {
+    "modifier_magic_immune"
+    {
+      "IsHidden"      "1"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }  
+}

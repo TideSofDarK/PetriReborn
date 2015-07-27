@@ -1,3 +1,12 @@
+function CancelBuilding(caster, ability, pID, gold_cost, reason)
+	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
+
+	PlayerResource:ModifyGold(pID, gold_cost,false,0)
+
+	ability:EndCooldown()
+	return false
+end
+
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local hero = player:GetAssignedHero()
@@ -18,16 +27,16 @@ function build( keys )
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
 		if GameRules:GetGameTime() < (60 * PETRI_EXIT_MARK) + 30 then
-			Notifications:Top(caster:GetPlayerOwnerID(),{text="#too_early_for_exit", duration=10, style={color="red"}, continue=false})
-
-			PlayerResource:ModifyGold(pID, gold_cost,false,0)
-
-			ability:EndCooldown()
-			return
+			return CancelBuilding(caster, ability, pID, gold_cost, "#too_early_for_exit")
 		end
 	end
 
-	-- Cancel building
+	-- Cancel building if limit is reached
+	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
+		return CancelBuilding(caster, ability, pID, gold_cost, "#building_limit_is_reached")
+	end
+
+	-- Cancel building if building helper is active
 	if player.waitingForBuildHelper == true then
 		PlayerResource:ModifyGold(pID, gold_cost,false,0)
 
@@ -78,6 +87,8 @@ function build( keys )
 	end)
 
 	keys:OnConstructionStarted(function(unit)
+		hero.buildingCount = hero.buildingCount + 1
+
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
@@ -195,17 +206,17 @@ function create_building_entity( keys )
 end
 
 function builder_queue( keys )
-	local ability = keys.ability
-  local caster = keys.caster  
+    local ability = keys.ability
+    local caster = keys.caster  
 
-  if caster.ProcessingBuilding ~= nil then
-    -- caster is probably a builder, stop them
-    player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
-    if player.activeBuilder ~= nil then
-    	player.activeBuilder:ClearQueue()
-    	player.activeBuilder:Stop()
-    	player.activeBuilder.ProcessingBuilding = false
+    if caster.ProcessingBuilding ~= nil then
+        -- caster is probably a builder, stop them
+        player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
+        player.activeBuilding = nil
+        if player.activeBuilder and IsValidEntity(player.activeBuilder) then
+            player.activeBuilder:ClearQueue()
+            player.activeBuilder:Stop()
+            player.activeBuilder.ProcessingBuilding = false
+        end
     end
-    player.activeBuilding = nil
-  end
 end

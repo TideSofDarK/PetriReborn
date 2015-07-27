@@ -20,8 +20,8 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "8.0"
-  "BountyGoldMax"       "8.0"
+  "BountyGoldMin"       "5.0"
+  "BountyGoldMax"       "5.0"
   "BountyXP"          "18"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "120"
+  "StatusHealth"        "140"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

@@ -33,8 +33,10 @@ function EndCooldown(caster, ability_name)
     caster:FindAbilityByName(ability_name):EndCooldown()
   else
     caster:AddAbility(ability_name)
-    caster:FindAbilityByName(ability_name):EndCooldown()
-    caster:RemoveAbility(ability_name)
+    if caster:FindAbilityByName(ability_name) ~= nil then
+      caster:FindAbilityByName(ability_name):EndCooldown()
+      caster:RemoveAbility(ability_name)
+    end
   end
 end
 

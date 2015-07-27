@@ -192,7 +192,7 @@ function ReturnResources( event )
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = fixed_position, Queue = false}) 
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
 		caster.skip_order = true
 		caster.target_building = building
 	end
@@ -212,7 +212,7 @@ function CheckBuildingPosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance <= (caster.target_building:GetHullRadius()+100)
+	local collision = distance <= (caster.target_building:GetHullRadius()+155)
 	if collision then
 		local hero = caster:GetOwner()
 		local pID = hero:GetPlayerID()
@@ -364,6 +364,24 @@ function CheckRepairingTargetPosition( event )
 	end
 end
 
+function RepairingAutocast( event )
+	local caster = event.caster
+	local ability = event.ability
+
+	if ability:GetAutoCastState() and not ability:GetToggleState() then
+		local units = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+
+		for k,v in pairs(units) do
+			if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
+				if v:HasAbility("petri_building") and v:GetHealthPercent() ~= 100 then
+					caster:CastAbilityOnTarget(v, ability, caster:GetPlayerOwnerID())
+					break
+				end
+			end
+		end
+	end
+end
+
 function ToggleOffRepairing( event )
 	local caster = event.caster
 	local repair_ability = caster:FindAbilityByName("petri_repair")
@@ -395,6 +413,8 @@ function RepairBy1Percent( event )
 		caster:RemoveModifierByName("modifier_chopping_building")
 		caster:RemoveModifierByName("modifier_repairing")
 		caster:RemoveModifierByName("modifier_chopping_building_animation")
+
+		RepairingAutocast( event )
 	end
 end
 

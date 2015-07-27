@@ -9,6 +9,12 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_hook", context)
   PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
+  -- HEROES
+  PrecacheResource("model_folder", "models/heroes/death_prophet", context)
+  PrecacheResource("model_folder", "models/heroes/rattletrap", context)
+  PrecacheResource("model_folder", "models/heroes/brewmaster", context)
+  PrecacheResource("model_folder", "models/heroes/storm_spirit", context)
+
   -- UNITS
   PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)

@@ -328,8 +328,6 @@
 	  "ID"              "1801"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-	  "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"  
-	  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -1807,7 +1805,7 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
 	      "Properties"
 	      {

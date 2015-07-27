@@ -9,7 +9,7 @@ function Upgrade (event)
 		caster:SetModel(GetModelNameForLevel(sawmill_level))
 		caster:SetModelScale(0.7)
 
-		caster:SwapAbilities("train_petri_peasant", "petri_empty1", true, false)
+		caster:AddAbility("train_petri_peasant")
 
 		caster:GetPlayerOwner().sawmill_2 = true
 	elseif sawmill_level == 2 then 
@@ -19,8 +19,13 @@ function Upgrade (event)
 
 		caster:GetPlayerOwner().sawmill_3 = true
 
-		caster:SwapAbilities("train_petri_super_peasant", "petri_empty2", true, false)
+		caster:AddAbility("train_petri_super_peasant")
+		caster:AddAbility("petri_buy_lumber")
+
+		caster:RemoveAbility(ability:GetName())
 	end
+
+	InitAbilities(caster)
 end
 
 function GetModelNameForLevel(level)
@@ -29,4 +34,13 @@ function GetModelNameForLevel(level)
 	elseif level == 2 then 
 		return "models/props_structures/good_ancient001.vmdl"
 	end
+end
+
+function BuyLumber(event)
+	local caster = event.caster
+	local ability = event.ability
+
+	local lumber = ability:GetSpecialValueFor("lumber")
+
+	GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber + lumber
 end

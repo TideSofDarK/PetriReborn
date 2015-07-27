@@ -755,6 +755,38 @@
 	    }
 	  }
 	}
+	"petri_buy_lumber"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_buy_lumber"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown" "0.1"
+	
+	  "AbilityGoldCost" "125"
+	
+	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber"      "10000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/sawmill.lua"
+	      "Function"        "BuyLumber"
+	    }
+	  }
+	}
 	"petri_empty1"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
@@ -1199,15 +1231,18 @@
 	  
 	  "Modifiers"
 	  {
-	    "IsHidden"      "1"
-	    "Passive"      "1"
-	    "Priority"                     "MODIFIER_PRIORITY_ULTRA"
-	
-	    "States"
+	    "modifier_janitor_invisibility"
 	    {
-	      "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
-	      "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
-	      "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
 	    }
 	  }  
 	}
@@ -1372,6 +1407,27 @@
 	      "Function"    "Deny"
 	    }
 	  }
+	}
+	"petri_magic_immune"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_magic_immune"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }  
 	}
 	"petri_petrosyan_explore"
 	{
@@ -1819,7 +1875,7 @@
 	  "AbilityTextureName"      "petri_repair"
 	  "MaxLevel"            "1"
 	
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 	
@@ -1834,6 +1890,31 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_repairing_autocast_aura"
+	    {
+	      "Passive" "1"
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/peasant.lua"
+	          "Function"      "RepairingAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "3"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/peasant.lua"
+	          "Function"      "RepairingAutocast"
+	        }
+	      }
+	    }
+	
 	    "modifier_repairing"
 	    {
 	      "IsHidden"        "1"
@@ -3100,7 +3181,7 @@
 	
 	  "MaxLevel"            "10"
 	
-	  "AbilityChannelTime"      "6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0 100.0"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0"
 	  "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 5750"
 	
 	  "AbilitySpecial"
@@ -3118,7 +3199,7 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "50 350 875 1300 1700 2200 4000 6000 8000"
+	      "armor"        "125 350 875 1300 1700 2200 4000 6000 8000"
 	    }
 	  }
 	

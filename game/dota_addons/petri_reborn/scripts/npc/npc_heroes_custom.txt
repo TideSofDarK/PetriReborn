@@ -75,7 +75,7 @@
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.39"
-	  "AttackAnimationPoint"       "0.275"
+	  "AttackAnimationPoint"       "0.295"
 	
 	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
 	  "AttributeBaseStrength"   "1"
@@ -159,7 +159,7 @@
 	
 	  "Creature"
 	  {
-	    "DisableClumpingBehavior" "1"
+	    "DisableClumpingBehavior" "0"
 	  }
 	}
 	"npc_petri_mini_actor"
@@ -240,7 +240,7 @@
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.39"
-	  "AttackAnimationPoint"       "0.275"
+	  "AttackAnimationPoint"       "0.295"
 	
 	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
 	  "AttributeBaseStrength"   "1"

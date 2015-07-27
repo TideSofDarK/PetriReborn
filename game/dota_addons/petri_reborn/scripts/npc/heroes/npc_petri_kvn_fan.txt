@@ -47,6 +47,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior" "1"
+    "DisableClumpingBehavior" "0"
   }
 }

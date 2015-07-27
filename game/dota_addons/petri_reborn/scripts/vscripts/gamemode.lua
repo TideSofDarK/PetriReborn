@@ -1,5 +1,7 @@
 BAREBONES_DEBUG_SPEW = false
 
+-- Settings time
+
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
@@ -9,6 +11,8 @@ START_KVN_LUMBER = 150
 
 START_PETROSYANS_GOLD = 32
 START_MINI_ACTORS_GOLD = 15
+
+PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
 local FRIENDS_KVN = {}
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
@@ -36,6 +40,8 @@ require('settings')
 require('internal/events')
 require('events')
 
+require('units/kvn_fan')
+require('filters')
 require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
@@ -45,8 +51,6 @@ end
 
 function GameMode:OnFirstPlayerLoaded()
   DebugPrint("[BAREBONES] First Player has loaded")
-
-  
 end
 
 function GameMode:OnAllPlayersLoaded()
@@ -65,6 +69,9 @@ function GameMode:OnHeroInGame(hero)
     local player = hero:GetPlayerOwner()
     local pID = player:GetPlayerID()
 
+    InitAbilities(hero)
+    DestroyEntityBasedOnHealth(hero,hero)
+
     local newHero
 
     MoveCamera(pID, hero)
@@ -74,7 +81,7 @@ function GameMode:OnHeroInGame(hero)
      -- Init kvn fan
     if team == 2 then
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-        function() 
+       function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
           newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
@@ -95,6 +102,9 @@ function GameMode:OnHeroInGame(hero)
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+
+          newHero.buildingCount = 0
+
           SetupUI(newHero)
           SetupUpgrades(newHero)
 
@@ -111,7 +121,7 @@ function GameMode:OnHeroInGame(hero)
               UpdateModel(newHero, v, 1)
             end
           end
-        end, pID)
+       end, pID)
     end
 
     local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -122,7 +132,7 @@ function GameMode:OnHeroInGame(hero)
      -- Init petrosyan
     if team == 3 then
       PrecacheUnitByNameAsync(petrosyanHeroName,
-        function() 
+       function() 
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
@@ -159,7 +169,7 @@ function GameMode:OnHeroInGame(hero)
               CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
               end)
           end
-        end, pID)
+       end, pID)
     end
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
@@ -232,54 +242,6 @@ function GameMode:OnGameInProgress()
     function()
       PetrosyanWin()
     end)
-end
-
-function GameMode:FilterExecuteOrder( filterTable )
-    local units = filterTable["units"]
-    local order_type = filterTable["order_type"]
-    local issuer = filterTable["issuer_player_id_const"]
-
-    if order_type == 19 then 
-      if filterTable["entindex_target"] >= 6 or
-        PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        return false
-      else
-        local ent = EntIndexToHScript(filterTable["units"]["0"])
-
-        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
-          local stashSlot = 6
-          for i=6,11 do
-            if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
-              stashSlot = i
-              break
-            end
-          end
-
-          ent:SwapItems(filterTable["entindex_target"], stashSlot)
-        end
-      end
-    end
-
-    for n,unit_index in pairs(units) do
-        local unit = EntIndexToHScript(unit_index)
-        local ownerID = unit:GetPlayerOwnerID()
-
-        if PlayerResource:GetConnectionState(ownerID) == 3 or
-          PlayerResource:GetConnectionState(ownerID) == 4
-          then
-          return false
-        end
-    end
-
-    return true
-end
-
-function GameMode:ModifyGoldFilter(event)
-  event["reliable"] = 0
-  if event.reason_const == DOTA_ModifyGold_HeroKill then
-    event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
-  end
-  return true
 end
 
 function GameMode:InitGameMode()

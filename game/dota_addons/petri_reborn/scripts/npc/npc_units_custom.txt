@@ -187,8 +187,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "8.0"
-	  "BountyGoldMax"       "8.0"
+	  "BountyGoldMin"       "5.0"
+	  "BountyGoldMax"       "5.0"
 	  "BountyXP"          "18"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -200,7 +200,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "120"
+	  "StatusHealth"        "140"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -235,8 +235,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "100.0"
-	  "BountyGoldMax"       "100.0"
+	  "BountyGoldMin"       "70.0"
+	  "BountyGoldMax"       "70.0"
 	  "BountyXP"          "275"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -283,8 +283,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "4.0"
-	  "BountyGoldMax"       "4.0"
+	  "BountyGoldMin"       "2.0"
+	  "BountyGoldMax"       "3.0"
 	  "BountyXP"          "10"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -296,7 +296,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "14"
+	  "StatusHealth"        "15"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -331,8 +331,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "70.0"
-	  "BountyGoldMax"       "70.0"
+	  "BountyGoldMin"       "45.0"
+	  "BountyGoldMax"       "45.0"
 	  "BountyXP"          "150"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -379,8 +379,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "25.0"
-	  "BountyGoldMax"       "26.0"
+	  "BountyGoldMin"       "16.0"
+	  "BountyGoldMax"       "18.0"
 	  "BountyXP"          "65"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -726,6 +726,7 @@
 	  "HealthBarOffset"    "240"
 	
 	  "AbilityLayout"    "4"
+	  "Ability1" "petri_magic_immune"
 	
 	  "ArmorPhysical"    "3000"
 	  "MagicalResistance"   "0"
@@ -836,6 +837,7 @@
 	  "HealthBarOffset"    "240"
 	
 	  "AbilityLayout"    "4"
+	  "Ability1" "petri_magic_immune"
 	
 	  "ArmorPhysical"    "2000"
 	  "MagicalResistance"   "0"
@@ -948,20 +950,13 @@
 	  "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
 	  "ModelScale"        "0.6"
 	  "Level"           "0"
-	  "HealthBarOffset"       "140"
+	  "HealthBarOffset"       "200"
 	  "HasInventory"        "1"
 	
 	  "AbilityLayout"       "4"
-	  "Ability1"          "petri_empty1"
-	  "Ability2"          "petri_empty2"
+	  "Ability1"          "building_queue"
+	  "Ability2"          "petri_building"
 	  "Ability3"          "petri_upgrade_sawmill"
-	  "Ability4"          "petri_empty3"
-	  "Ability5"          "petri_empty4"
-	  "Ability6"          "petri_empty5"
-	  "Ability7"          "train_petri_peasant"
-	  "Ability8"          "train_petri_super_peasant"
-	  "Ability9"          "building_queue"
-	  "Ability10"          "petri_building"
 	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
@@ -1068,6 +1063,7 @@
 	  "HealthBarOffset"    "240"
 	
 	  "AbilityLayout"    "4"
+	  "Ability1" "petri_magic_immune"
 	
 	  "ArmorPhysical"    "1000"
 	  "MagicalResistance"   "0"

@@ -274,6 +274,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building.blockers = gridNavBlockers
   building.buildingTable = buildingTable
   building.state = "building"
+  building:SetHullRadius( size * 32 - 32 )
 
   building:FindAbilityByName("petri_building"):SetLevel(1)
 

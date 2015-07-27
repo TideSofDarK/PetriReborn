@@ -81,7 +81,7 @@ end
 
 function GetLumberAbilityName(caster)
 	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	if caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
 	return lumberAbility
 end
 
