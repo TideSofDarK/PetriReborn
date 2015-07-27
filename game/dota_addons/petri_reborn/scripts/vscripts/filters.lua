@@ -3,6 +3,10 @@ function GameMode:FilterExecuteOrder( filterTable )
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
 
+    local issuerUnit = EntIndexToHScript(units["0"])
+    issuerUnit.lastOrder = order_type
+    --print(order_type)
+
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
       if filterTable["entindex_target"] >= 6 or
         PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
@@ -30,41 +34,44 @@ function GameMode:FilterExecuteOrder( filterTable )
         return false
       else
       end
-    elseif order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
-      local caster = EntIndexToHScript(units["0"])
+    -- elseif order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
+    --   local caster = EntIndexToHScript(units["0"])
 
-      if EntIndexToHScript(filterTable["entindex_ability"]) == nil then return true end
-      local abilityName = EntIndexToHScript(filterTable["entindex_ability"]):GetName()
+    --   if EntIndexToHScript(filterTable["entindex_ability"]) == nil then return false end
+    --   local abilityName = EntIndexToHScript(filterTable["entindex_ability"]):GetName()
 
-      local keys = {}
-      keys.caster = caster
+    --   local keys = {}
+    --   keys.caster = caster
 
-      -- Don't interrupt repairing or lumber gathering
-      if abilityName == "petri_open_basic_buildings_menu" then
-        OpenBasicBuildingsMenu(keys)
-        return false
-      elseif abilityName == "petri_open_advanced_buildings_menu" then
-        OpenAdvancedBuildingsMenu(keys)
-        return false
-      elseif abilityName == "petri_close_basic_buildings_menu" then
-        CloseBasicBuildingsMenu(keys)
-        return false
-      elseif abilityName == "petri_close_advanced_buildings_menu" then
-        CloseAdvancedBuildingsMenu(keys)
-        return false
-      end
+    --   -- Don't interrupt repairing or lumber gathering
+    --   if abilityName == "petri_open_basic_buildings_menu" then
+    --     issuerUnit.lastOrder = DOTA_UNIT_ORDER_CAST_NO_TARGET
+    --     return true
+    --   end
+    --   if abilityName == "petri_open_advanced_buildings_menu" then
+    --     issuerUnit.lastOrder = DOTA_UNIT_ORDER_CAST_NO_TARGET
+    --     return true
+    --   end
+    --   if abilityName == "petri_close_basic_buildings_menu" then
+    --     issuerUnit.lastOrder = DOTA_UNIT_ORDER_CAST_NO_TARGET
+    --     return true
+    --   end
+    --   if abilityName == "petri_close_advanced_buildings_menu" then
+    --     issuerUnit.lastOrder = DOTA_UNIT_ORDER_CAST_NO_TARGET
+    --     return true
+    --   end
     end
 
-    for n,unit_index in pairs(units) do
-        local unit = EntIndexToHScript(unit_index)
-        local ownerID = unit:GetPlayerOwnerID()
+    -- for n,unit_index in pairs(units) do
+    --   local unit = EntIndexToHScript(unit_index)
+    --   local ownerID = unit:GetPlayerOwnerID()
 
-        if PlayerResource:GetConnectionState(ownerID) == 3 or
-          PlayerResource:GetConnectionState(ownerID) == 4
-          then
-          return false
-        end
-    end
+    --   if PlayerResource:GetConnectionState(ownerID) == 3 or
+    --     PlayerResource:GetConnectionState(ownerID) == 4
+    --     then
+    --     return false
+    --   end
+    -- end
 
     return true
 end

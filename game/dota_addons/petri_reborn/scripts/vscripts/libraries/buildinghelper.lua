@@ -18,14 +18,23 @@ function BuildingHelper:Init(...)
     --get the player that sent the command
     local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
 
-    if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
-      cmdPlayer.activeBuilder:AddAbility("has_build_queue")
-      local abil = cmdPlayer.activeBuilder:FindAbilityByName("has_build_queue")
-      abil:SetLevel(1)
-    end
+    -- if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
+    --   cmdPlayer.activeBuilder:AddAbility("has_build_queue")
+    --   local abil = cmdPlayer.activeBuilder:FindAbilityByName("has_build_queue")
+    --   abil:SetLevel(1)
+    -- end
 
     if cmdPlayer then
       cmdPlayer.activeBuilder:AddToQueue(location)
+      cmdPlayer.activeBuilder:Stop()
+
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
+
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_repairing")
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building")
+      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
     end
 
     cmdPlayer.waitingForBuildHelper = false

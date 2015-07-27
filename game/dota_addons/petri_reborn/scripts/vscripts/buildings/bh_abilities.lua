@@ -215,7 +215,7 @@ function builder_queue( keys )
         player.activeBuilding = nil
         if player.activeBuilder and IsValidEntity(player.activeBuilder) then
             player.activeBuilder:ClearQueue()
-            player.activeBuilder:Stop()
+            --player.activeBuilder:Stop()
             player.activeBuilder.ProcessingBuilding = false
         end
     end

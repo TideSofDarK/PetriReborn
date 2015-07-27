@@ -14,7 +14,7 @@
       "ScriptFile"      "units/kvn_fan.lua"
       "Function"        "OpenBasicBuildingsMenu"
     }
-  }
+  } 
 }
 
 "petri_open_advanced_buildings_menu"

@@ -488,16 +488,12 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }  
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_gathering_lumber"
-	          "Target"    "CASTER"
-	        }
 	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_gathering_lumber"
 	        }
 	      }
 	      
@@ -516,15 +512,11 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }    
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_chopping_wood"
-	          "Target"    "CASTER"
-	        }
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_chopping_wood"
 	        }
 	      }
 	
@@ -557,15 +549,12 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }  
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_chopping_wood_animation"
-	          "Target"    "CASTER"
-	        }
+	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_chopping_wood_animation"
 	        }
 	      }
 	    }
@@ -574,7 +563,7 @@
 	// START OF BUILDING HELPER ABILITIES
 	"has_build_queue"
 	{
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass" "ability_datadriven"
 	
 	  "Modifiers"
@@ -960,7 +949,7 @@
 	        }
 	      }
 	
-	      "ThinkInterval" "2.05" // Bad solution
+	      "ThinkInterval" "1.03" // Bad solution
 	      "OnIntervalThink"
 	      {
 	        "RunScript"
@@ -1315,7 +1304,7 @@
 	      "ScriptFile"      "units/kvn_fan.lua"
 	      "Function"        "OpenBasicBuildingsMenu"
 	    }
-	  }
+	  } 
 	}
 	
 	"petri_open_advanced_buildings_menu"
@@ -2659,7 +2648,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000 120000 150000"
+	      "lumber_cost"        "2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000 120000 150000 190000"
 	    }
 	
 	    "02"

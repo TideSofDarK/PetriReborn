@@ -1,3 +1,24 @@
+
+
+function GetPresentAbilities(unit, layout)
+  local abilities = {}
+  for i=0, unit:GetAbilityCount()-1 do
+    if unit:GetAbilityByIndex(i) then
+      if not unit:GetAbilityByIndex(i):IsHidden() then
+        abilities[(#abilities + 1)] = unit:GetAbilityByIndex(i):GetName()
+        if #abilities == layout then break end
+      end
+    end 
+  end
+  return abilities
+end
+
+function IsHiddenBehavior(ability)
+  local behavior = GameMode.AbilityKVs[ability]["AbilityBehavior"]
+  print(behavior)
+  return string.match(behavior, "DOTA_ABILITY_BEHAVIOR_HIDDEN")
+end
+
 function HideIfMaxLevel(ability)
   if ability:GetMaxLevel() == ability:GetLevel() then
     ability:SetHidden(true)

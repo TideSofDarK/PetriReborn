@@ -54,7 +54,7 @@
         }
       }
 
-      "ThinkInterval" "2.05" // Bad solution
+      "ThinkInterval" "1.03" // Bad solution
       "OnIntervalThink"
       {
         "RunScript"
