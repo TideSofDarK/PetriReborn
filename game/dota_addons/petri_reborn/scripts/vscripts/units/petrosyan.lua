@@ -170,6 +170,8 @@ function SpawnJanitor( keys )
 
 	janitor:SetMoveCapability(2)
 
+	janitor:SetBaseMoveSpeed(522)
+
 	janitor.spawnPosition = caster:GetAbsOrigin()
 end
 

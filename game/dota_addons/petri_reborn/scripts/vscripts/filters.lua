@@ -3,8 +3,12 @@ function GameMode:FilterExecuteOrder( filterTable )
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
 
-    local issuerUnit = EntIndexToHScript(units["0"])
-    if issuerUnit then issuerUnit.lastOrder = order_type end
+    local issuerUnit
+    if units["0"] then
+      issuerUnit = EntIndexToHScript(units["0"])
+      if issuerUnit then issuerUnit.lastOrder = order_type end
+    end
+    
     --print(order_type)
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 

@@ -77,8 +77,7 @@ function ToggleOffReturn( event )
 
 	print(caster.lastOrder)
 
-	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET and
-	caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_TO_TARGET then
+	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
 			if Debug_Peasant then

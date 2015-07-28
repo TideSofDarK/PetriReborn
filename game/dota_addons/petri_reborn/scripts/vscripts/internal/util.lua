@@ -1,4 +1,8 @@
-
+function ToggleAbilityOff(ability)
+  if ability:GetToggleState() == true then 
+      ability:ToggleAbility()  
+    end
+end
 
 function GetPresentAbilities(unit, layout)
   local abilities = {}

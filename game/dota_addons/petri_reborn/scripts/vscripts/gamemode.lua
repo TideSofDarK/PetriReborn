@@ -250,10 +250,10 @@ function GameMode:InitGameMode()
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
 
-   -- Find all ability layouts to send them to clients later
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
   GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
   GameMode.AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+  GameMode.ItemKVs = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}

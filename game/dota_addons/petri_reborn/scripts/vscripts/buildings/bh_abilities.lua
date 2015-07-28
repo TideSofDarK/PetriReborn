@@ -1,8 +1,6 @@
 function CancelBuilding(caster, ability, pID, gold_cost, reason)
 	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
 
-	PlayerResource:ModifyGold(pID, gold_cost,false,0)
-
 	ability:EndCooldown()
 	return false
 end
@@ -19,10 +17,9 @@ function build( keys )
 	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", ability:GetLevel()-1)
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
-	local enough_lumber
-	local enough_food
-
 	local ability_name = ability:GetName()
+
+	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
@@ -36,48 +33,6 @@ function build( keys )
 		return CancelBuilding(caster, ability, pID, gold_cost, "#building_limit_is_reached")
 	end
 
-	-- Cancel building if building helper is active
-	if player.waitingForBuildHelper == true then
-		PlayerResource:ModifyGold(pID, gold_cost,false,0)
-
-	    player.activeCallbacks.onConstructionCancelled()
-	      
-	    player.activeBuilder:ClearQueue()
-	    player.activeBuilding = nil
-	    player.activeBuilder:Stop()
-	    player.activeBuilder.ProcessingBuilding = false
-
-	    player.waitingForBuildHelper = false
-
-	    CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_force_cancel", {} )
-		return
-	end
-
-	if gold_cost ~= nil then
-		hero.lastSpentGold = gold_cost
-	end
-
-	if lumber_cost ~= nil then
-		enough_lumber = CheckLumber(player, lumber_cost,true)
-	else
-		enough_lumber = true
-	end
-
-	if food_cost ~= nil and food_cost ~= 0 then
-		enough_food = CheckFood(player, food_cost,true)
-	else
-		enough_food = true
-	end
-
-	if enough_food ~= true or enough_lumber ~= true then
-		ReturnGold(player)
-		EndCooldown(caster, ability_name)
-		return
-	else
-		SpendLumber(player, lumber_cost)
-		SpendFood(player, food_cost)
-	end
-
 	player.waitingForBuildHelper = true
 	
 	local returnTable = BuildingHelper:AddBuilding(keys)
@@ -85,6 +40,17 @@ function build( keys )
 	keys:OnBuildingPosChosen(function(vPos)
 
 	end)
+
+	keys:OnPreConstruction(function ()
+        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost then
+        	return false
+		else
+			SpendLumber(player, lumber_cost)
+			SpendFood(player, food_cost)
+
+			PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
+		end
+    end)
 
 	keys:OnConstructionStarted(function(unit)
 		hero.buildingCount = hero.buildingCount + 1
@@ -143,10 +109,18 @@ function build( keys )
 				if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
 			else
 				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
+
+				--RETURN
+				PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 				
-				ReturnLumber(player)
-				ReturnGold(player)
-				ReturnFood( player )
+				if hero.lumber ~= nil then
+				    hero.lumber = hero.lumber + lumber_cost
+				end
+
+				if hero.food ~= nil then
+				    hero.food = hero.food - food_cost
+				end
+				--RETURN
 
 				if ability:IsNull() ~= true then ability:EndCooldown() end
 
@@ -166,19 +140,9 @@ function build( keys )
 	end)
 
 	keys:OnConstructionFailed(function( building )
-		ReturnLumber(player)
-		ReturnGold(player)
-		ReturnFood( player )
-
-		EndCooldown(caster, ability_name)
 	end)
 
 	keys:OnConstructionCancelled(function( building )
-		ReturnLumber(player)
-		ReturnGold(player)
-		ReturnFood( player )
-
-		EndCooldown(caster, ability_name)
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.
@@ -209,13 +173,15 @@ function builder_queue( keys )
     local ability = keys.ability
     local caster = keys.caster  
 
-    if caster.ProcessingBuilding ~= nil then
+    if caster.ProcessingBuilding ~= nil
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
         -- caster is probably a builder, stop them
         player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
-        player.activeBuilding = nil
+        --player.activeBuilding = nil
         if player.activeBuilder and IsValidEntity(player.activeBuilder) then
             player.activeBuilder:ClearQueue()
-            --player.activeBuilder:Stop()
+            player.activeBuilder:Stop()
             player.activeBuilder.ProcessingBuilding = false
         end
     end
