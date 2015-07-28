@@ -1,0 +1,13 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/action_panel.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_panel/action_panel.js" />		
+	</scripts>
+	<Panel>
+		<Image hittest="false" id="SpacerImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/spacer_16_9.png" />
+	</Panel>
+</root>
+

@@ -1,0 +1,12 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/action_panel.css" />
+	</styles>
+	<scripts>
+	</scripts>
+	<Panel>
+		<Image hittest="false" id="MinimapBorderImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/minimapborder.png" />
+	</Panel>
+</root>
+

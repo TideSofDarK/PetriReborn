@@ -2,7 +2,6 @@
 
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
-var goldCosts = {};
 
 function OnLevelUpClicked()
 {
@@ -18,19 +17,19 @@ function OnLevelUpClicked()
 
 function OnAbilityLearnModeToggled( bEnabled )
 {
-	UpdateAbilityList();
+	UpdateAbilitiesContainer();
 }
 
-function UpdateAbilityList()
+function UpdateAbilitiesContainer()
 {
-	var abilityListPanel = $( "#ability_list" );
+	var queryUnit = GameUI.CustomUIConfig().selected_unit;
+	var abilityListPanel = $( "#AbilityList" );
 	if ( !abilityListPanel )
 		return;
 
 	// Прячем панель скиллов
 	abilityListPanel.style["visibility"] = "collapse";
 
-	var queryUnit = Players.GetLocalPlayerPortraitUnit();
 	var bSameUnit = ( m_QueryUnit == queryUnit );
 	m_QueryUnit = queryUnit;
 
@@ -40,6 +39,10 @@ function UpdateAbilityList()
 	var bControlsUnit = Entities.IsControllableByPlayer( queryUnit, Game.GetLocalPlayerID() );
 	$.GetContextPanel().SetHasClass( "could_level_up", ( bControlsUnit && bPointsToSpend ) );
 
+	if ( !bPointsToSpend )
+		Game.EndAbilityLearnMode();
+
+
 	// update all the panels
 	var nUsedPanels = 0;
 	for ( var i = 0; i < Entities.GetAbilityCount( m_QueryUnit ); ++i )
@@ -48,7 +51,15 @@ function UpdateAbilityList()
 		if ( i > 5)
 			break;
 
-		var ability = Entities.GetAbility( m_QueryUnit, i );
+		var ability = Entities.GetAbility( m_QueryUnit, 6 );
+/*
+		for (var m in GameUI.CustomUIConfig())
+			try
+		{
+			$.Msg(m + " = " + GameUI.CustomUIConfig()[m]);
+		}
+		catch( error ){}
+*/
 		if ( ability == -1 )
 			continue;
 
@@ -59,13 +70,13 @@ function UpdateAbilityList()
 		{
 			// create a new panel
 			var abilityPanel = $.CreatePanel( "Panel", abilityListPanel, "" );
-			abilityPanel.BLoadLayout( "file://{resources}/layout/custom_game/abilities/ability.xml", false, false );
+			abilityPanel.BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/abilities/ability.xml", false, false );
 			m_AbilityPanels.push( abilityPanel );
 		}
 
 		// update the panel for the current unit / ability
 		var abilityPanel = m_AbilityPanels[ nUsedPanels ];
-		abilityPanel.data().SetAbility( ability, m_QueryUnit, Game.IsInAbilityLearnMode(), goldCosts );
+		abilityPanel.data().SetAbility( ability, m_QueryUnit, Game.IsInAbilityLearnMode() );
 		
 		nUsedPanels++;
 	}
@@ -74,7 +85,7 @@ function UpdateAbilityList()
 	for ( var i = nUsedPanels; i < m_AbilityPanels.length; ++i )
 	{
 		var abilityPanel = m_AbilityPanels[ i ];
-		abilityPanel.data().SetAbility( -1, -1, false, goldCosts );
+		abilityPanel.data().SetAbility( -1, -1, false );
 	}
 
 	// Если есть дочерние панели, то показываем основную
@@ -82,23 +93,15 @@ function UpdateAbilityList()
 		abilityListPanel.style["visibility"] = "visible";
 }
 
-function GetGoldCosts( eventArgs )
-{
-	goldCosts = eventArgs;
-}
-
 (function()
 {
+	$.GetContextPanel().data().UpdateAbilitiesContainer = UpdateAbilitiesContainer;	
+
     $.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", OnAbilityLearnModeToggled);
 
-	GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_player_update_selected_unit", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilityList );
-	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilityList );
-
-	GameEvents.Subscribe( "petri_set_gold_costs", GetGoldCosts );   
-
-	UpdateAbilityList(); // initial update
+	GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilitiesContainer );
+	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilitiesContainer );
+	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
+	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
 })();
 
