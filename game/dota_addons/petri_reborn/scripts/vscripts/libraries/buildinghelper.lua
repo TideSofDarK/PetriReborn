@@ -27,14 +27,16 @@ function BuildingHelper:Init(...)
     if cmdPlayer then
       cmdPlayer.activeBuilder:AddToQueue(location)
       cmdPlayer.activeBuilder:Stop()
+      cmdPlayer.activeBuilder.lastOrder = 21
 
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
+      local newOrder = {
+            UnitIndex       = cmdPlayer.activeBuilder:entindex(),
+            OrderType       = 21,
+            Position        = cmdPlayer.activeBuilder:GetAbsOrigin(), 
+            Queue           = 0
+        }
 
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_repairing")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
+        ExecuteOrderFromTable(newOrder)
     end
 
     cmdPlayer.waitingForBuildHelper = false
@@ -49,7 +51,6 @@ function BuildingHelper:Init(...)
       
       cmdPlayer.activeBuilder:ClearQueue()
       cmdPlayer.activeBuilding = nil
-      cmdPlayer.activeBuilder:Stop()
       cmdPlayer.activeBuilder.ProcessingBuilding = false
 
       cmdPlayer.waitingForBuildHelper = false
