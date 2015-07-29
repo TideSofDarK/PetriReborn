@@ -4,7 +4,7 @@
   "Model"           "models/props_gameplay/shopkeeper_fountain/shopkeeper_fountain.vmdl"
   "ModelScale"        "1.0"
   "Level"           "0"
-  "HealthBarOffset"       "140"
+  "HealthBarOffset"       "210"
   "HasInventory"        "0"
 
   "vscripts"                    "units/lab.lua"

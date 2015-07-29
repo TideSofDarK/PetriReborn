@@ -414,10 +414,13 @@
 	      "IsPurgable"        "0"
 	      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	          
 	      "States"
 	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -1176,10 +1179,13 @@
 	      "IsPurgable"        "0"
 	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	          
 	      "States"
 	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -2140,10 +2146,13 @@
 	      "IsPurgable"        "0"
 	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
 	          
 	      "States"
 	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
