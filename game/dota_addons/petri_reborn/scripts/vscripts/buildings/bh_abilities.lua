@@ -1,7 +1,5 @@
-function CancelBuilding(caster, ability, pID, gold_cost, reason)
+function CancelBuilding(caster, ability, pID, reason)
 	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
-
-	ability:EndCooldown()
 	return false
 end
 
@@ -19,18 +17,19 @@ function build( keys )
 
 	local ability_name = ability:GetName()
 
+	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
-		if GameRules:GetGameTime() < (60 * PETRI_EXIT_MARK) + 30 then
-			return CancelBuilding(caster, ability, pID, gold_cost, "#too_early_for_exit")
+		if PETIR_EXIT_ALLOWED == false then
+			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
 	end
 
 	-- Cancel building if limit is reached
 	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
-		return CancelBuilding(caster, ability, pID, gold_cost, "#building_limit_is_reached")
+		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
 	end
 
 	player.waitingForBuildHelper = true
@@ -49,6 +48,8 @@ function build( keys )
 			SpendFood(player, food_cost)
 
 			PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
+
+			StartCooldown(caster, ability_name)
 		end
     end)
 

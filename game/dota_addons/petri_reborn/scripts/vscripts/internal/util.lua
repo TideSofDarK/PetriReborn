@@ -53,6 +53,19 @@ function CheckKVN()
   return true
 end
 
+-- Cooldowns
+function StartCooldown(caster, ability_name)
+  if caster:FindAbilityByName(ability_name) ~= nil then
+    caster:FindAbilityByName(ability_name):StartCooldown(ability:GetCooldown(-1))
+  else
+    caster:AddAbility(ability_name)
+    if caster:FindAbilityByName(ability_name) ~= nil then
+      caster:FindAbilityByName(ability_name):StartCooldown(ability:GetCooldown(-1))
+      caster:RemoveAbility(ability_name)
+    end
+  end
+end
+
 function EndCooldown(caster, ability_name)
   if caster:FindAbilityByName(ability_name) ~= nil then
     caster:FindAbilityByName(ability_name):EndCooldown()
@@ -64,6 +77,7 @@ function EndCooldown(caster, ability_name)
     end
   end
 end
+-- Cooldowns
 
 function DestroyEntityBasedOnHealth(killer, target)
   local damageTable = {
