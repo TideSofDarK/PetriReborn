@@ -11,13 +11,14 @@ NO_MENU_ABILITIES = {"petri_open_basic_buildings_menu",
 					 "return_resources"}
 BASIC_MENU_ABILITIES = {"build_petri_tent",
 						"build_petri_sawmill",
-						"build_petri_tower_basic",
+						"build_petri_lab",
 						"build_petri_wall",
+						"build_petri_tower_basic",
 						"petri_close_basic_buildings_menu"}
 ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
-							"build_petri_exploration_tree",
-							"build_petri_lab",
+							"petri_empty2",
 							"build_petri_tower_of_evil",
+							"build_petri_exploration_tree",
 							"build_petri_exit",
 							"petri_close_advanced_buildings_menu"}
 

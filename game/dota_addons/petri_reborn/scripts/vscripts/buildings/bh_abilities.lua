@@ -176,7 +176,8 @@ function builder_queue( keys )
 
     if caster.ProcessingBuilding ~= nil
     and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
-    and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+     then
         -- caster is probably a builder, stop them
         player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
         --player.activeBuilding = nil
