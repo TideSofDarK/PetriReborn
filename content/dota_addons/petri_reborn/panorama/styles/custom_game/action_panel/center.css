@@ -1,11 +1,10 @@
 #HealthAndMana,
 #RespawnPanel
 {
-	width: 95%;
+	width: 93%;
 	height: 40px;
 
-	margin-left: -100%;
-	margin-right: 17px;
+	margin-left: 17px;
 	margin-top: 11px;
 
 	horizontal-align: left;
@@ -118,4 +117,13 @@
 #ManaRegen.visible
 {
 	visibility: visible;
+}
+
+#BuffPanel
+{
+	horizontal-align: left;
+	vertical-align: top;
+
+	margin-top: -40px;
+	z-index: 3;
 }

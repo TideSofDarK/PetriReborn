@@ -8,7 +8,6 @@ function UpdateResources( args )
 {
 	 GameUI.CustomUIConfig().unitResources = args;
 
-
 	 $.GetContextPanel().FindChild("TotalGoldText").text = args["gold"];
 	 $.GetContextPanel().FindChild("TotalLumberText").text = args["lumber"];
 	 $.GetContextPanel().FindChild("TotalFoodText").text = args["food"] + "/" + String(Math.clamp(parseInt(args["maxFood"]),0,250));

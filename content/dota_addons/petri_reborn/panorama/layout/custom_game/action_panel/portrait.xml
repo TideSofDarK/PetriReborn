@@ -8,6 +8,11 @@
 		<include src="file://{resources}/scripts/custom_game/action_panel/portrait.js" />		
 	</scripts>		
 	<Panel>
+		<Button id="LevelUpButton" onactivate="OnLevelUpClicked()">
+			<Panel id="LevelUpButtonInset">
+				<Label text="#LevelUp" />
+			</Panel>
+		</Button>		
 		<Label class="PortraitLabel" id="HeroName" text="" />
 		<Label class="PortraitLabel" id="HeroLevel" text="0" />
 		<Image hittest="false" id="PortraitImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/portrait_wide.png" />

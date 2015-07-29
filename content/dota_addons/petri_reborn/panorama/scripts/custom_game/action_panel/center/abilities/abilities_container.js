@@ -3,22 +3,6 @@
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
 
-function OnLevelUpClicked()
-{
-	if ( Game.IsInAbilityLearnMode() )
-	{
-		Game.EndAbilityLearnMode();
-	}
-	else
-	{
-		Game.EnterAbilityLearnMode();
-	}
-}
-
-function OnAbilityLearnModeToggled( bEnabled )
-{
-	UpdateAbilitiesContainer();
-}
 
 function UpdateAbilitiesContainer()
 {
@@ -42,7 +26,6 @@ function UpdateAbilitiesContainer()
 	if ( !bPointsToSpend )
 		Game.EndAbilityLearnMode();
 
-
 	// update all the panels
 	var nUsedPanels = 0;
 	for ( var i = 0; i < Entities.GetAbilityCount( m_QueryUnit ); ++i )
@@ -51,15 +34,8 @@ function UpdateAbilitiesContainer()
 		if ( i > 5)
 			break;
 
-		var ability = Entities.GetAbility( m_QueryUnit, 6 );
-/*
-		for (var m in GameUI.CustomUIConfig())
-			try
-		{
-			$.Msg(m + " = " + GameUI.CustomUIConfig()[m]);
-		}
-		catch( error ){}
-*/
+		var ability = Entities.GetAbility( m_QueryUnit, i );
+
 		if ( ability == -1 )
 			continue;
 
@@ -97,11 +73,8 @@ function UpdateAbilitiesContainer()
 {
 	$.GetContextPanel().data().UpdateAbilitiesContainer = UpdateAbilitiesContainer;	
 
-    $.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", OnAbilityLearnModeToggled);
-
 	GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilitiesContainer );
 	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilitiesContainer );
 	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
-	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
 })();
 

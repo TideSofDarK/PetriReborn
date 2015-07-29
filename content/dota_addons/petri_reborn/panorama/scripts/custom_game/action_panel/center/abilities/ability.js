@@ -123,7 +123,7 @@ function UpdateAbility()
 
 function AbilityShowTooltip()
 {
-	UpdateCostsPanel();
+	//UpdateCostsPanel();
 
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );

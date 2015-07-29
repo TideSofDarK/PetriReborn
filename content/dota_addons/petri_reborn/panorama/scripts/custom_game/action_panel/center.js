@@ -4,6 +4,7 @@ var m_Unit = -1;
 
 function LoadUIElements()
 {
+	$( "#BuffPanel" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center_buff_list.xml", false, false );
     $( "#CenterLeft" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_left.xml", false, false );
     $( "#CenterRight" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_right.xml", false, false );
 }
@@ -66,11 +67,13 @@ function UpdateHealthAndMana()
 	}
 }
 
+
 function UpdateCenter()
 {
 	m_Unit = GameUI.CustomUIConfig().selected_unit;
 	UpdateHealthAndMana();
 
+	$( "#BuffPanel" ).data().UpdateBuffs();
 	$( "#CenterLeft" ).data().UpdateCenterLeft();
 	$( "#CenterRight" ).data().UpdateCenterRight();
 }

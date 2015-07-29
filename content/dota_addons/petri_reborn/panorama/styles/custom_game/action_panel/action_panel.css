@@ -82,7 +82,6 @@
 	margin-left: -55px;
 	margin-top: 1px;
 	background-color: transparent;
-	flow-children: right;
 }
 
 .AspectRatio4x3 #Center
@@ -91,7 +90,7 @@
 }
 
 #CenterLeft
-{
+{	
 	width: 30%;
 }
 
@@ -108,6 +107,9 @@
 #CenterRight
 {
 	margin-left: -1px;
+	width: 515px;
+
+	margin-left: 220px;
 }
 
 #MainPanelBack
