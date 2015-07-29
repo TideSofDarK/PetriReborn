@@ -121,9 +121,9 @@ function build( keys )
 				if hero.food ~= nil then
 				    hero.food = hero.food - food_cost
 				end
+			
+				EndCooldown(caster, ability_name)
 				--RETURN
-
-				if ability:IsNull() ~= true then ability:EndCooldown() end
 
 				-- Destroy unit
 				DestroyEntityBasedOnHealth(caster,unit)

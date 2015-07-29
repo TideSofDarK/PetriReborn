@@ -56,11 +56,11 @@ end
 -- Cooldowns
 function StartCooldown(caster, ability_name)
   if caster:FindAbilityByName(ability_name) ~= nil then
-    caster:FindAbilityByName(ability_name):StartCooldown(ability:GetCooldown(-1))
+    caster:FindAbilityByName(ability_name):StartCooldown(caster:FindAbilityByName(ability_name):GetCooldown(0))
   else
     caster:AddAbility(ability_name)
     if caster:FindAbilityByName(ability_name) ~= nil then
-      caster:FindAbilityByName(ability_name):StartCooldown(ability:GetCooldown(-1))
+      caster:FindAbilityByName(ability_name):StartCooldown(caster:FindAbilityByName(ability_name):GetCooldown(0))
       caster:RemoveAbility(ability_name)
     end
   end
