@@ -1,3 +1,21 @@
+-- ITEMS
+function GetItemByID(id)
+  for k,v in pairs(GameMode.ItemKVs) do
+    if tonumber(v["ID"]) == id then return v end
+  end
+end
+
+function CheckShopType(item)
+  for k,v in pairs(GameMode.ItemKVs) do
+    if k == item then 
+      if v["SideShop"] then return 1
+      elseif v["SecretShop"] then return 2
+      else return 0 end
+    end
+  end
+end
+-- ITEMS
+
 function ToggleAbilityOff(ability)
   if ability:GetToggleState() == true then 
       ability:ToggleAbility()  

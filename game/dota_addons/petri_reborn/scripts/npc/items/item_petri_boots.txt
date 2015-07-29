@@ -1,0 +1,117 @@
+"item_petri_boots"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1993"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_boots"
+
+  "AbilityCooldown"       "30"
+
+  "ItemCost"            "1350"
+  "ItemAliases"         "boots"
+
+  "AbilityChannelTime"      "2.00"
+
+  "SideShop" "1"
+
+  "precache"
+  {
+    "soundfile"         "soundevents/game_sounds_heroes/game_sounds_puck.vsndevts"
+    "particle"          "particles/units/heroes/hero_puck/puck_phase_shift.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_movespeed"    "100"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "duration"      "2"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_boots_shift"
+      "Target"    "CASTER"
+    }
+  }
+  
+  "OnChannelFinish"
+  {
+    "RemoveModifier"
+    {
+      "ModifierName"  "modifier_boots_shift"
+      "Target"    "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_boots_shift"
+    {
+      "Duration"    "%duration"
+      
+      "EffectName"    "particles/units/heroes/hero_puck/puck_phase_shift.vpcf"
+      "EffectAttachType"  "attach_origin"
+      
+      "OnCreated"
+      {
+        "FireSound"
+        {
+          "EffectName"  "Hero_Puck.Phase_Shift"
+          "Target"    "TARGET"
+        }
+        
+        "RunScript"
+        {
+          "ScriptFile"    "items/boots.lua"
+          "Function"      "HideCaster"
+        }
+      }
+      
+      "OnDestroy"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "items/boots.lua"
+          "Function"    "StopSound"
+          "Target"    "TARGET"
+          "sound_name"  "Hero_Puck.Phase_Shift"
+        }
+        
+        "RunScript"
+        {
+          "ScriptFile"    "items/boots.lua"
+          "Function"      "ShowCaster"
+        }
+      }
+      
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"      "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"     "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_UNSELECTABLE"     "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"      "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+    "modifier_boots_passive"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_movespeed"
+      }
+    }
+  }
+}

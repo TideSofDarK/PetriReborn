@@ -64,7 +64,14 @@ function GameMode:OnItemPickedUp(keys)
   local itemname = keys.itemname
 
   if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-    heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    if CheckShopType(itemname) ~= 1 then
+      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    end
+  end
+  if player:GetTeam() == DOTA_TEAM_BADGUYS then 
+    if CheckShopType(itemname) == 1 then
+      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    end
   end
 end
 
@@ -323,6 +330,12 @@ function GameMode:OnEntityKilled( keys )
           end)
       end
     end)
+  end
+
+  -- Idol is killed
+  if killedUnit:GetUnitName() == "npc_petri_idol" then
+    UTIL_Remove(killedUnit.newShopTarget)
+    UTIL_Remove(killedUnit.newShop)
   end
 
   -- Petrosyn is killed

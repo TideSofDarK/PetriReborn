@@ -69,8 +69,7 @@
           
       "States"
       {
-        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }
@@ -289,7 +288,7 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "22000"
+      "bonus_damage"      "23500"
     }
   }
 

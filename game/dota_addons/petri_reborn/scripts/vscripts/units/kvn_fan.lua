@@ -16,7 +16,7 @@ BASIC_MENU_ABILITIES = {"build_petri_tent",
 						"build_petri_tower_basic",
 						"petri_close_basic_buildings_menu"}
 ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
-							"petri_empty2",
+							"build_petri_idol",
 							"build_petri_tower_of_evil",
 							"build_petri_exploration_tree",
 							"build_petri_exit",

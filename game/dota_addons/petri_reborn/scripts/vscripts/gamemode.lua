@@ -41,8 +41,6 @@ require('settings')
 require('internal/events')
 require('events')
 
-require('units/kvn_fan')
-
 require('filters')
 require('commands')
 require('internal/gamemode')
@@ -253,6 +251,8 @@ function GameMode:InitGameMode()
 
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
+
+  GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
   GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")

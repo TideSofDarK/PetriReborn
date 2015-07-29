@@ -1,0 +1,71 @@
+"item_petri_alcohol"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1994"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_alcohol"
+
+  "AbilityCastPoint"              "0"
+  "AbilityCooldown"       "125"
+  "AbilityManaCost"       "0"
+
+  "ItemCost"            "250"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "alcohol"
+  "ItemInitialCharges" "1"
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "ItemStockMax" "2" 
+  "ItemStockTime" "125"
+  "ItemStockInitial" "1"
+
+  "SideShop" "1"
+
+  "precache"
+  {
+    "particle"  "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "buff_duration"     "10"
+    }
+  }
+
+  "OnSpellStart"
+  {     
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_alcohol_active"
+    }
+    "SpendCharge"
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_petri_alcohol_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+          
+      "States"
+      {
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

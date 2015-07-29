@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "200 320 480 620"
+  "AbilityGoldCost"       "200 320 680 990"
 
   "AbilityManaCost"       "0"
   
@@ -26,7 +26,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "115 195 325 425"
+      "attack"        "115 195 425 825"
     }
     "03"
     {

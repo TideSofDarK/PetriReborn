@@ -6,7 +6,9 @@ function Precache( context )
   
   -- ITEMS
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+  PrecacheItemByNameSync("item_petri_boots", context)
   PrecacheItemByNameSync("item_petri_hook", context)
+  PrecacheItemByNameSync("item_petri_alcohol", context)
   PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
   -- HEROES
@@ -37,6 +39,9 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
 
   -- BUILDINGS
+  -- idol
+  PrecacheUnitByNameSync("npc_petri_idol", context)
+
   -- exit
   PrecacheUnitByNameSync("npc_petri_exit", context)
 

@@ -8,14 +8,11 @@ function GameMode:FilterExecuteOrder( filterTable )
       issuerUnit = EntIndexToHScript(units["0"])
       if issuerUnit then issuerUnit.lastOrder = order_type end
     end
-    
-    --print(order_type)
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
-      if filterTable["entindex_target"] >= 6 or
-        PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+      if filterTable["entindex_target"] >= 6 then
         return false
-      else
+      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
         local ent = EntIndexToHScript(filterTable["units"]["0"])
 
         if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
@@ -26,17 +23,23 @@ function GameMode:FilterExecuteOrder( filterTable )
               break
             end
           end
-
           ent:SwapItems(filterTable["entindex_target"], stashSlot)
         end
       end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
-      print(purchaser:GetUnitName().." order item purchase/sell")
       if OnEnemyShop(purchaser) then
         Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
         return false
-      else
+      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+        -- local item = GetItemByID(filterTable["entindex_ability"])
+        -- local goldCost = tonumber(item["ItemCost"])
+
+        -- if PlayerResource:GetGold(issuer) >= goldCost then
+        --   PlayerResource:ModifyGold(issuer, -1 * goldCost, false, 0)
+        --   issuerUnit:AddItemByName(item["AbilityTextureName"])
+        -- end
+        --return false
       end
     end
 

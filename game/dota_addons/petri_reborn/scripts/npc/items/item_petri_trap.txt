@@ -14,6 +14,8 @@
   "ItemInitialCharges"  "1"
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+  
+  "SideShop" "1"
 
   "AbilityCastRange" "250"
 

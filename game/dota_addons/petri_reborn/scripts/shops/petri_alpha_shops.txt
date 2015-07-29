@@ -84,14 +84,16 @@
 
   "sideshop1"
   {
-    "item"    "item_petri_hook"
+    "item"    "item_petri_trap"
+    "item"    "item_petri_defence_scroll"
+    "item"    "item_petri_alcohol"
   }
 
  //Sideshop Page 2
 
   "sideshop2"
   {
-    "item"    "ITEM_NAME"
+    "item"    "item_petri_boots"
   }
 
  //Secret Shop Start
