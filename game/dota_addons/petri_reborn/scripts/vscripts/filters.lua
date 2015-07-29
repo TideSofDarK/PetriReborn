@@ -65,6 +65,11 @@ function GameMode:ModifyGoldFilter(event)
   return true
 end
 
+function GameMode:ModifyExperienceFilter(filterTable)
+  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS then return false end 
+  return true
+end
+
 function OnEnemyShop( unit )
     local teamID = unit:GetTeamNumber()
     local position = unit:GetAbsOrigin()
