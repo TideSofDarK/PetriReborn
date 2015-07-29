@@ -222,7 +222,7 @@ function CheckBuildingPosition( event )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	if not target or not caster then
+	if not target or not caster or not caster.target_building then
 		return
 	end
 
@@ -417,6 +417,18 @@ function RepairBy1Percent( event )
 	local caster = event.caster
 	local ability = event.ability
 	local target = caster.repairingTarget
+
+	if not target or not target:IsAlive() then 
+		ability:ToggleAbility()
+
+		caster:RemoveModifierByName("modifier_chopping_building")
+		caster:RemoveModifierByName("modifier_repairing")
+		caster:RemoveModifierByName("modifier_chopping_building_animation")
+
+		RepairingAutocast( event )
+		
+		return false 
+	end
 
 	local health = target:GetHealth()
 	local maxHealth = target:GetMaxHealth()
