@@ -1,22 +1,12 @@
-.ResourcesAndAbilities
-{
-	height: 100%;
-	width: 100%;
-}
-
 #AbilityCost
 {
-	width: 110px;
-	height: 125px;
+	width: 100px;
+	height: 100px;
 	
 	vertical-align: bottom;
-	horizontal-align: center;
-	margin-bottom: 0px;
-	margin-left: -250px;
+	margin-left: 110px;
 
 	flow-children: down;
-	border: 2px solid black;
-	background-color: #272823;
 }
 
 #GoldText,
@@ -46,13 +36,13 @@
 	text-align: right;
 }
 
-#ability_list
+#AbilityList
 {
 	horizontal-align: center;
 	vertical-align: bottom;
 
-	margin-left: 330px;
 	margin-bottom: 15px;
+	margin-left: 15px;
 
 	flow-children: right;
 	background-color: transparent;
@@ -75,16 +65,24 @@
     background-color: #c4a529;
 	width: 135px;
 	height: 30px;
+
 	vertical-align: bottom;
 	horizontal-align: center;
-	visibility: collapse;
-	margin-bottom: 225px;
-	margin-right: 840px;
+
+	margin-bottom: 100px;
+	margin-right: 300px;
+
+	visibility: visible;
 }
 
-.could_level_up #LevelUpButton
+.could_level_up #LevelUpButton 
 {
 	visibility: visible;
+}
+
+.AspectRatio4x3 .could_level_up #LevelUpButton
+{
+	margin-right: 500px;
 }
 
 #LevelUpButton:hover

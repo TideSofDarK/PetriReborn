@@ -1,0 +1,124 @@
+.ActionPanelRoot
+{
+	height: 33%;
+	width: 78%;
+
+	margin-top: 1px;
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	flow-children: right;
+	margin-bottom: -1px;
+	z-index: 0;
+}
+
+.StandartPanel
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	background-color: #272823;
+}
+
+#MinimapBorder
+{
+	width: 320px;
+	height: 360px;
+
+	background-color: transparent;
+	z-index: 1;
+}
+
+#Spacer
+{
+	width: 10%;
+	height: 75%;
+
+	background-color: transparent;
+	margin-left: -24px;
+	z-index: 0;
+}
+
+#SpacerImage
+{
+	z-index: 0;
+}
+
+#Portrait
+{
+	width: 300px;
+	height: 80%;
+
+	margin-left: -60px;
+	background-color: transparent;
+	z-index: 1;
+}
+
+.AspectRatio4x3 #Portrait
+{
+	margin-left: -90px;
+}
+
+#PortraitImage
+{
+	z-index: 1;
+}
+
+#PortraitModel
+{
+	width: 50%;
+	height: 75%;
+
+	margin-left: 80px;
+	background-color: #808080;	
+	z-index: 0;	
+}
+
+#Center
+{
+	width: 50%;
+	height: 50%;
+
+	margin-left: -55px;
+	margin-top: 1px;
+	background-color: transparent;
+	flow-children: right;
+}
+
+.AspectRatio4x3 #Center
+{
+	width: 48%;
+}
+
+#CenterLeft
+{
+	width: 30%;
+}
+
+.AspectRatio4x3 #CenterLeft
+{
+	width: 35%;
+}
+
+#CenterLeftImage
+{
+	vertical-align: bottom;
+}
+
+#CenterRight
+{
+	margin-left: -1px;
+}
+
+#MainPanelBack
+{
+	width: 79%;
+	height: 60%;
+}
+
+.Bar
+{
+  	border-style: solid;
+    border-radius: 10px;
+	background-color: #FF0000;    
+}

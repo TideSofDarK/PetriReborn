@@ -1,0 +1,57 @@
+.PortraitLabel
+{
+	color: #FFFFFF;
+	z-index: 3;	
+}
+
+#HeroName
+{
+	horizontal-align: center;
+
+	margin-top: 63px;
+	margin-left: 10px;
+}
+
+#HeroLevel
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	
+	font-weight: bold;
+	margin-left: -140px;
+	margin-bottom: 2px;		
+}
+
+#Experience
+{
+	width: 120px;
+	height: 4%;
+
+	horizontal-align: center;
+	vertical-align: bottom;
+
+  	border-style: solid;
+    border-radius: 3px;
+
+	margin-bottom: 8px;
+	margin-left: 19px;
+	background-color: #000000;
+	z-index: 2;	
+}
+
+.have_exp.ExperienceBar
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #00FF00 ), to( #FF0000 ) );
+}
+
+#ExperienceCount
+{
+	font-size: 14px;
+	horizontal-align: center;
+	vertical-align: bottom;
+
+	font-weight: bold;
+
+	margin-bottom: 4px;
+	margin-left: 25px;
+}

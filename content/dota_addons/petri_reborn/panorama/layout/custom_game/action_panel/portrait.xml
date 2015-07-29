@@ -1,0 +1,23 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/action_panel.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/portrait.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_panel/portrait.js" />		
+	</scripts>		
+	<Panel>
+		<Label class="PortraitLabel" id="HeroName" text="" />
+		<Label class="PortraitLabel" id="HeroLevel" text="0" />
+		<Image hittest="false" id="PortraitImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/portrait_wide.png" />
+		<DOTAScenePanel class="StandartPanel" id="PortraitModel" map="scenes/loadout_preview_rays" camera="point_camera" hittest="false">
+		</DOTAScenePanel>
+
+		<!-- <DOTAScenePanel class="hud" id="Portrait" camera="shot_camera" unit="npc_dota_hero_antimage"/> -->
+
+		<Label class="PortraitLabel" id="ExperienceCount" text="0/0" />
+		<Panel class="Bar" id="Experience" />
+	</Panel>
+</root>
+

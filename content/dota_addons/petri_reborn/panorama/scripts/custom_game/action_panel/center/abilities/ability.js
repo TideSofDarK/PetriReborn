@@ -4,26 +4,12 @@ var m_Ability = -1;
 var m_QueryUnit = -1;
 var m_bInLevelUp = false;
 
-var currentResources = {};
 var goldCosts;
+var currentResources = {};
 
-(function(){Math.clamp=function(a,b,c){return Math.max(b,Math.min(c,a));}})();
-
-function UpdateResources(args)
+function SetAbility( ability, queryUnit, bInLevelUp )
 {
-	// Обновляем соседнюю панель
-	var resourcesPanel = $.GetContextPanel().GetParent().GetParent()
-		.FindChild("TotalResources").FindChild("ResourcePanel");
-
-	currentResources = args;
-	resourcesPanel.FindChild("TotalGoldText").text = args["gold"];
-	resourcesPanel.FindChild("TotalLumberText").text = args["lumber"];
-	resourcesPanel.FindChild("TotalFoodText").text = args["food"] + "/" + String(Math.clamp(parseInt(args["maxFood"]),0,250));
-}
-
-function SetAbility( ability, queryUnit, bInLevelUp, costs )
-{
-	goldCosts = costs;
+	goldCosts = GameUI.CustomUIConfig().goldCosts;
 	var bChanged = ( ability !== m_Ability || queryUnit !== m_QueryUnit );
 	m_Ability = ability;
 	m_QueryUnit = queryUnit;
@@ -66,6 +52,12 @@ function UpdateCostsPanel()
 
 function CheckSpellCost()
 {
+	var gold = Players.GetGold( Players.GetLocalPlayer() );
+
+	currentResources = GameUI.CustomUIConfig().unitResources;
+	if (!currentResources)
+		currentResources = { "lumber" : 0, "maxFood" : 0, "food" : 0 };
+
     var abilityLevel = Abilities.GetLevel( m_Ability );
 	var manaCost = Abilities.GetManaCost( m_Ability );
     var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
@@ -74,14 +66,14 @@ function CheckSpellCost()
 
     try
     {
-	    goldCost = goldCosts[ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
+	    goldCost = GameUI.CustomUIConfig().goldCosts [ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
     }
     catch( error ) { }
 
     return !(manaCost > Entities.GetMana( m_QueryUnit ) ||
     	lumberCost > currentResources["lumber"] ||
     	currentResources["maxFood"] < currentResources["food"] + foodCost ||
-    	goldCost > currentResources["gold"]);
+    	goldCost > gold);
 }
 
 function UpdateAbility()
@@ -89,8 +81,7 @@ function UpdateAbility()
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );
 
-	var textureName = Abilities.GetAbilityTextureName( m_Ability );
-
+	//$.Msg(abilityName);
 	var noLevel =( 0 == Abilities.GetLevel( m_Ability ) );
 	var isCastable = !Abilities.IsPassive( m_Ability ) && !noLevel;
 	var manaCost = Abilities.GetManaCost( m_Ability );
@@ -202,8 +193,8 @@ function RebuildAbilityUI()
 		var levelPanel = $.CreatePanel( "Panel", abilityLevelContainer, "" );		
 		levelPanel.AddClass( "LevelPanel" );
 		levelPanel.SetHasClass( "active_level", true );
-		levelPanel.style["visibility"] = "visible;";
-		levelPanel.style["width"] = String(currentLevel / maxLevel * 100) + "%;";
+		levelPanel.style.visibility = "visible;";
+		levelPanel.style.width = String(currentLevel / maxLevel * 100) + "%;";
 	}
 }
 
@@ -213,6 +204,4 @@ function RebuildAbilityUI()
 
 	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild
 	AutoUpdateAbility(); // initial update of dynamic state
-
-	GameEvents.Subscribe( "receive_resources_info", UpdateResources);
 })();
