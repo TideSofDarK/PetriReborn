@@ -42,7 +42,9 @@ require('internal/events')
 require('events')
 
 require('units/kvn_fan')
+
 require('filters')
+require('commands')
 require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
@@ -296,6 +298,7 @@ function GameMode:InitGameMode()
 
   -- Commands
   Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
+  Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
   --Convars:RegisterCommand( "dota_sf_hud_force_captainsmode", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
 
   BuildingHelper:Init()
@@ -350,14 +353,4 @@ function PetrosyanWin()
     function()
       GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
     end)
-end
-
-function GameMode:LumberCommand()
-  local cmdPlayer = Convars:GetCommandClient()
-  if cmdPlayer then
-    local playerID = cmdPlayer:GetPlayerID()
-    if playerID ~= nil and playerID ~= -1 then
-      GameMode.assignedPlayerHeroes[playerID].lumber = GameMode.assignedPlayerHeroes[playerID].lumber + 15000000
-    end
-  end
 end
