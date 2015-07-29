@@ -334,8 +334,8 @@ function GameMode:OnEntityKilled( keys )
 
   -- Idol is killed
   if killedUnit:GetUnitName() == "npc_petri_idol" then
-    UTIL_Remove(killedUnit.newShopTarget)
-    UTIL_Remove(killedUnit.newShop)
+    if killedUnit.newShopTarget then UTIL_Remove(killedUnit.newShopTarget) end
+    if killedUnit.newShop then UTIL_Remove(killedUnit.newShop) end
   end
 
   -- Remove building
