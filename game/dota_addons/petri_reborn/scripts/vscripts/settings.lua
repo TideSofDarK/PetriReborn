@@ -47,7 +47,7 @@ USE_CUSTOM_XP_VALUES = true             -- Should we use custom XP values to lev
 -- Fill this table up with the required XP per level if you want to change it
 XP_PER_LEVEL_TABLE = {}
 for i=1,MAX_LEVEL do
-  XP_PER_LEVEL_TABLE[i] = (i-1) * 100
+	XP_PER_LEVEL_TABLE[i] = (XP_PER_LEVEL_TABLE[i-1] or 0) + (25 * (i-1))
 end
 
 ENABLE_FIRST_BLOOD = false               -- Should we enable first blood for the first kill in this game?
