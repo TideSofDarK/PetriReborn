@@ -81,7 +81,13 @@ end
 
 function GetLumberAbilityName(caster)
 	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	if caster.currentMenu == 0 then
+		if caster:FindAbilityByName("gather_lumber"):IsHidden() then
+			lumberAbility = "return_resources"
+		end
+	else
+		if caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	end
 	return lumberAbility
 end
 
@@ -98,8 +104,6 @@ end
 function OpenBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
-	caster.currentMenu = 1
-
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		caster:AddAbility(BASIC_MENU_ABILITIES[i])
     end
@@ -113,14 +117,14 @@ function OpenBasicBuildingsMenu(keys)
 			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], false, true)
 		end
     end
+
+    caster.currentMenu = 1
 end
 
 function CloseBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
 	local lumberAbility = GetLumberAbilityName(caster)
-
-	caster.currentMenu = 0
 
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		if NO_MENU_ABILITIES[i] == "gather_lumber" then
@@ -133,12 +137,12 @@ function CloseBasicBuildingsMenu(keys)
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		caster:RemoveAbility(BASIC_MENU_ABILITIES[i])
     end
+
+    caster.currentMenu = 0
 end
 
 function OpenAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
-
-	caster.currentMenu = 2
 
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		caster:AddAbility(ADVANCED_MENU_ABILITIES[i])
@@ -153,14 +157,14 @@ function OpenAdvancedBuildingsMenu(keys)
 			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], false, true)
 		end
     end
+
+    caster.currentMenu = 2
 end
 
 function CloseAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
 
 	local lumberAbility = GetLumberAbilityName(caster)
-
-	caster.currentMenu = 0
 
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		if NO_MENU_ABILITIES[i] == "gather_lumber" then
@@ -173,6 +177,8 @@ function CloseAdvancedBuildingsMenu(keys)
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		caster:RemoveAbility(ADVANCED_MENU_ABILITIES[i])
     end
+
+    caster.currentMenu = 0
 end
 
 function SpawnGoldBag( keys )

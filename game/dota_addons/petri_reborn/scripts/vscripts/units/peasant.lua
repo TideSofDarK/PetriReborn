@@ -75,8 +75,6 @@ function ToggleOffReturn( event )
 	local caster = event.caster
 	local return_ability = caster:FindAbilityByName("return_resources")
 
-	print(caster.lastOrder)
-
 	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()

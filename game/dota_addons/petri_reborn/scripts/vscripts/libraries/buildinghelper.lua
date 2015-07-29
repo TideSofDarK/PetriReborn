@@ -59,7 +59,7 @@ function BuildingHelper:RegisterLeftClick( args )
   end
 
   if cmdPlayer then
-
+    -- NEEDS WORK
     if cmdPlayer.activeBuilder:HasModifier("modifier_returning_resources")
     or cmdPlayer.activeBuilder:HasModifier("modifier_chopping_wood")
     or cmdPlayer.activeBuilder:HasModifier("modifier_gathering_lumber")
@@ -69,7 +69,7 @@ function BuildingHelper:RegisterLeftClick( args )
       ToggleAbilityOff(cmdPlayer.activeBuilder:FindAbilityByName("gather_lumber"))
       ToggleAbilityOff(cmdPlayer.activeBuilder:FindAbilityByName("petri_repair"))
 
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
+      --cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
       cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
       cmdPlayer.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
       cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
@@ -78,14 +78,14 @@ function BuildingHelper:RegisterLeftClick( args )
       cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building")
       cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
 
-      local newOrder = {
-        UnitIndex       = cmdPlayer.activeBuilder:entindex(),
-        OrderType       = 21,
-        Position        = cmdPlayer.activeBuilder:GetAbsOrigin(), 
-        Queue           = 0
-      }
-
-        ExecuteOrderFromTable(newOrder)
+      -- Fake stop command
+      -- local newOrder = {
+      --   UnitIndex       = cmdPlayer.activeBuilder:entindex(),
+      --   OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+      --   Position        = cmdPlayer.activeBuilder:GetAbsOrigin(), 
+      --   Queue           = 0
+      -- }
+      -- ExecuteOrderFromTable(newOrder)
     end
 
     cmdPlayer.activeBuilder:AddToQueue(location)
@@ -687,9 +687,6 @@ function InitializeBuilder( builder )
 
     -- Create model ghost dummy out of the map, then make pretty particles
     local mgd = CreateUnitByName(building, OutOfWorldVector, false, nil, nil, builder:GetTeam())
-    print("team"..builder:GetTeam())
-    print(building)
-
 
     --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
     local modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, mgd, player)
