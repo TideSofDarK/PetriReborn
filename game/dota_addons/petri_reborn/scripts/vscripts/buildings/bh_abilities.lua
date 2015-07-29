@@ -91,6 +91,12 @@ function build( keys )
 			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
 		end
 
+		if unit:GetUnitName() == "npc_petri_idol" then
+			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
+			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {name = "team_"..DOTA_TEAM_GOODGUYS.."_idol", origin = unit:GetAbsOrigin()})
+			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
+		end
+
 		unit:SetMana(unit:GetMaxMana())
 		unit:SetBaseManaRegen(unit.tempManaRegen)
 		unit.tempManaRegen = nil

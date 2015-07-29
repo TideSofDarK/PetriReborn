@@ -11,9 +11,5 @@ function Spawn( keys )
 		-- SpawnEntityFromTableSynchronous( "info_target", hSpawnTable )
 
 		--SpawnEntityFromTableSynchronous( "trigger_shop", hSpawnTable )
-
-		local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
-		thisEntity.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {name = "team_"..DOTA_TEAM_GOODGUYS.."_idol", origin = thisEntity:GetAbsOrigin()})
-		thisEntity.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {origin = thisEntity:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
 	end)
 end

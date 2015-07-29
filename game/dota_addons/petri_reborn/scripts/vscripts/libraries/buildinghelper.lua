@@ -609,6 +609,9 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     if bForcedKill then
       building:ForceKill(bForcedKill)
     end
+    Timers:CreateTimer(0.8, function (  )
+      UTIL_Remove(building)
+    end)
   end
 
   -- Remove the model particl

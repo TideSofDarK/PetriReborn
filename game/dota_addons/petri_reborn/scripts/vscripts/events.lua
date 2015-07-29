@@ -338,6 +338,15 @@ function GameMode:OnEntityKilled( keys )
     UTIL_Remove(killedUnit.newShop)
   end
 
+  -- Remove building
+  if killedUnit:HasAbility("petri_building") then
+    if killedUnit.RemoveBuilding ~= nil then killedUnit:RemoveBuilding(true) end
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+    if hero then
+      hero.buildingCount = hero.buildingCount - 1
+    end
+  end
+  
   -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
   killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
@@ -350,15 +359,6 @@ function GameMode:OnEntityKilled( keys )
     function()
       killedUnit:RespawnHero(false, false, false)
     end)
-  end
-
-  -- Remove building
-  if killedUnit:HasAbility("petri_building") then
-    if killedUnit.RemoveBuilding ~= nil then killedUnit:RemoveBuilding(true) end
-    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
-    if hero then
-      hero.buildingCount = hero.buildingCount - 1
-    end
   end
 
   if killedUnit.foodProvided ~= nil then
