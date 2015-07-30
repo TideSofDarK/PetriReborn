@@ -1,19 +1,20 @@
 #HealthAndMana,
 #RespawnPanel
 {
-	width: 95%;
+	width: 93%;
 	height: 40px;
 
-	margin-left: -100%;
-	margin-right: 17px;
+	margin-left: 17px;
 	margin-top: 11px;
 
 	horizontal-align: left;
 }
 
-.AspectRatio4x3 #HealthAndMana
+.AspectRatio4x3 #HealthAndMana,
+.AspectRatio4x3 #RespawnPanel
 {
-	margin-right: 12px;
+	margin-left: 14px;
+	width: 95%;
 }
 
 #HealthAndMana.dead
@@ -31,7 +32,6 @@
 {
 	visibility: visible;
 }
-
 
 .BarLabel
 {
@@ -118,4 +118,13 @@
 #ManaRegen.visible
 {
 	visibility: visible;
+}
+
+#BuffPanel
+{
+	horizontal-align: left;
+	vertical-align: top;
+
+	margin-top: -40px;
+	z-index: 3;
 }

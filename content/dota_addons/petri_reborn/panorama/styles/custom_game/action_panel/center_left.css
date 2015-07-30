@@ -1,11 +1,14 @@
 #InfoPanel
 {
+	flow-children: right;
+
 	vertical-align: bottom;
 
-	margin-left: 10px;
 	margin-bottom: 20px;
+	margin-left: 20px;
 }
 
+/* Info */
 #Info
 {
 	width: 100px;
@@ -15,7 +18,7 @@
 .AspectRatio4x3 #Info
 {
 	margin-right: 12px;
-	width: 50px;
+	width: 80px;
 }
 
 #ArmorImage,
@@ -33,6 +36,16 @@
 	margin-left: 50px;
 }
 
+.AspectRatio4x3 #ArmorImage,
+.AspectRatio4x3 #SpeedImage
+{
+	width: 30px;
+	height: 30px;
+
+	vertical-align: bottom;
+	margin-bottom: 20px;
+}
+
 #DamageImage
 {
 	width: 150px;
@@ -44,6 +57,11 @@
 	margin-top: -10px;
 	margin-right: -55px;
 	margin-left: -30px;
+}
+
+.AspectRatio4x3 #DamageImage
+{
+	width: 130px;
 }
 
 .InfoLabel
@@ -76,18 +94,18 @@
 	margin-left: -50px;
 }
 
+/* Stats */
 
 #Stats
 {
 	width: 100px;
 	height: 100px;
-
-	margin-left: 100px;
 }
 
 .AspectRatio4x3 #Stats
 {
-
+	width: 0px;
+	height: 0px;
 }
 
 #Strength,

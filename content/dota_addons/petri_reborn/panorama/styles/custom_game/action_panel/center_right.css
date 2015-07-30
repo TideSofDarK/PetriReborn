@@ -8,6 +8,7 @@
 	margin-left: 20px;
 }
 
+/* Info */
 #Info
 {
 	width: 100px;
@@ -78,6 +79,7 @@
 	margin-left: -50px;
 }
 
+/* Stats */
 
 #Stats
 {
@@ -128,6 +130,8 @@
 {
 	margin-top: 64px;
 }
+
+/* Abilities container */
 
 #AbilitiesContainer
 {

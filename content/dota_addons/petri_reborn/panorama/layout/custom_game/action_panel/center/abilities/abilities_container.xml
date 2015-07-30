@@ -7,11 +7,6 @@
 		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/abilities_container.js" />
 	</scripts>
 	<Panel hittest="false" >
-		<Button id="LevelUpButton" onactivate="OnLevelUpClicked()">
-			<Panel id="LevelUpButtonInset">
-				<Label text="#LevelUp" />
-			</Panel>
-		</Button>
 		<Panel id="AbilityList" />
 	</Panel>
 </root>

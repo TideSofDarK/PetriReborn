@@ -7,9 +7,11 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/action_panel/center.js" />		
 	</scripts>
-	<Panel>
+	<Panel class="CenterPanel">
+		<Panel hittest="false" id="BuffPanel" />
 		<Panel hittest="false" id="CenterLeft" />
 		<Panel hittest="false" id="CenterRight" />
+	
 		<Panel id="RespawnPanel">
 			<Label class="BarLabel" id="RespawnTimer" text="Respawn in 0" />			
 		</Panel>

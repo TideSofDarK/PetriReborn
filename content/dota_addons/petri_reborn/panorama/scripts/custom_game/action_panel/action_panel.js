@@ -26,6 +26,8 @@ function GetGoldCosts( eventArgs )
 	// Loading all parts of action_panel
 	LoadUIElements();
 
-	GameEvents.Subscribe( "dota_player_update_selected_unit", Update );    
+    GameEvents.Subscribe( "dota_player_update_selected_unit", Update );
+    GameEvents.Subscribe( "dota_player_update_query_unit", Update );
+    
     GameEvents.Subscribe( "petri_set_gold_costs", GetGoldCosts );
 })();

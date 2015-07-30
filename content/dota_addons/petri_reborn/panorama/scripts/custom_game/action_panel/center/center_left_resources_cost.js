@@ -27,5 +27,5 @@ function HidePanels()
 
 (function() {
 	// Подписываемся на событие "Смена команды"
-    GameEvents.Subscribe("player_team", HidePanels());  
+    GameEvents.Subscribe("player_team", HidePanels);
 })();

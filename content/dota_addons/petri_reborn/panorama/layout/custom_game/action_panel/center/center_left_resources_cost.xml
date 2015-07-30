@@ -5,7 +5,7 @@
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/abilities_container.js" />
-		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/hide_panels.js" />		
+		<include src="file://{resources}/scripts/custom_game/action_panel/center/center_left_resources_cost.js" />		
 	</scripts>
 	<Panel>
 		<Panel id="AbilityCost" >
