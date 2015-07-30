@@ -9,7 +9,9 @@
 	</scripts>
 	<Panel>
 		<Image hittest="false" id="CenterLeftImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/center_left_wide.png" />
+
 		<Panel id="InfoPanel">
+
 			<Panel id="Info" />
 			<Panel id="Stats" />
 			<Panel id="ResourcesCost" />

@@ -112,6 +112,14 @@
 	margin-left: 220px;
 }
 
+.AspectRatio4x3 #CenterRight
+{
+	margin-left: -1px;
+	width: 420px;
+
+	margin-left: 187px;
+}
+
 #MainPanelBack
 {
 	width: 79%;

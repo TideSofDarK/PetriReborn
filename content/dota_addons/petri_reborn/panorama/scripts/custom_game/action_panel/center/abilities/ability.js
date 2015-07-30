@@ -4,6 +4,7 @@ var m_Ability = -1;
 var m_QueryUnit = -1;
 var m_bInLevelUp = false;
 
+var costsPanel;
 var goldCosts;
 var currentResources = {};
 
@@ -44,10 +45,16 @@ function UpdateCostsPanel()
     }
     catch( error ) { }
 
-    var costsPanel = $.GetContextPanel().GetParent().GetParent().FindChild( "AbilityCost" );
     costsPanel.FindChild( "GoldText" ).text = goldCost;
     costsPanel.FindChild( "LumberText" ).text = lumberCost;
     costsPanel.FindChild( "FoodText" ).text = foodCost;
+}
+
+function ClearCostsPanel()
+{
+    costsPanel.FindChild( "GoldText" ).text = 0;
+    costsPanel.FindChild( "LumberText" ).text = 0;
+    costsPanel.FindChild( "FoodText" ).text = 0;
 }
 
 function CheckSpellCost()
@@ -81,7 +88,6 @@ function UpdateAbility()
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );
 
-	//$.Msg(abilityName);
 	var noLevel =( 0 == Abilities.GetLevel( m_Ability ) );
 	var isCastable = !Abilities.IsPassive( m_Ability ) && !noLevel;
 	var manaCost = Abilities.GetManaCost( m_Ability );
@@ -123,7 +129,7 @@ function UpdateAbility()
 
 function AbilityShowTooltip()
 {
-	//UpdateCostsPanel();
+	UpdateCostsPanel();
 
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );
@@ -136,6 +142,8 @@ function AbilityShowTooltip()
 
 function AbilityHideTooltip()
 {
+	ClearCostsPanel();
+
 	var abilityButton = $( "#AbilityButton" );
 	$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
 }
@@ -200,6 +208,8 @@ function RebuildAbilityUI()
 
 (function()
 {
+	costsPanel = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
+	    	.FindChild( "CenterLeft" ).FindChild( "InfoPanel" ).FindChild( "ResourcesCost" ).FindChild( "AbilityCost" );	
 	$.GetContextPanel().data().SetAbility = SetAbility;
 
 	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild

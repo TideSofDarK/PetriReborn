@@ -4,9 +4,16 @@
 	height: 100px;
 	
 	vertical-align: bottom;
-	margin-left: 110px;
+	margin-left: -95px;
 
 	flow-children: down;
+}
+
+.AspectRatio4x3 #AbilityCost
+{
+	width: 100px;
+	margin-left: -10px;
+	vertical-align: top;
 }
 
 #GoldText,
@@ -36,6 +43,14 @@
 	text-align: right;
 }
 
+#TotalLumberText.hide,
+#TotalFoodText.hide 
+{
+	visibility: collapse;
+}
+
+/* Abilities */
+
 #AbilityList
 {
 	horizontal-align: center;
@@ -54,6 +69,12 @@
 	margin-bottom: 15px;
 }
 
+.AspectRatio4x3 .AbilityPanel
+{
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
 .AbilityPanel.no_ability
 {
 	visibility: collapse;
@@ -64,6 +85,13 @@
 	width: 72px;
 	height: 72px;
 	border: 2px solid transparent;
+}
+
+.AspectRatio4x3 #AbilityButton
+{
+	width: 52px;
+	height: 52px;
+	border: 1px solid transparent;
 }
 
 .is_passive #AbilityButton

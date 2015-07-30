@@ -22,7 +22,7 @@
 	margin-bottom: 2px;		
 }
 
-#Experience
+#ExperienceBack
 {
 	width: 120px;
 	height: 4%;
@@ -36,12 +36,21 @@
 	margin-bottom: 8px;
 	margin-left: 19px;
 	background-color: #000000;
-	z-index: 2;	
+	z-index: 1;	
 }
 
-.have_exp.ExperienceBar
+#Experience
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #00FF00 ), to( #FF0000 ) );
+	width: 0%;
+	height: 100%;
+
+	horizontal-align: left;
+
+  	border-style: solid;
+    border-radius: 3px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e3c416 ), to( #b79d0d ) );
+	z-index: 2;	
 }
 
 #ExperienceCount
@@ -71,6 +80,15 @@
 
 	visibility: collapse;
 	z-index: 1;
+}
+
+.AspectRatio4x3 #LevelUpButton
+{
+	width: 30px;
+	height: 30px;
+	margin-top: 0px;
+	margin-left: 0px;
+	z-index: 5;
 }
 
 .could_level_up #LevelUpButton 

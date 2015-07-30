@@ -10,9 +10,11 @@
 	horizontal-align: left;
 }
 
-.AspectRatio4x3 #HealthAndMana
+.AspectRatio4x3 #HealthAndMana,
+.AspectRatio4x3 #RespawnPanel
 {
-	margin-right: 12px;
+	margin-left: 14px;
+	width: 95%;
 }
 
 #HealthAndMana.dead
@@ -30,7 +32,6 @@
 {
 	visibility: visible;
 }
-
 
 .BarLabel
 {
