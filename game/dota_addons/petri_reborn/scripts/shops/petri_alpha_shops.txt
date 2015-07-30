@@ -93,6 +93,8 @@
 
   "sideshop2"
   {
+    "item"    "item_petri_kvn_fan_blink"
+    "item"    "item_petri_kvn_fan_cool_blink"
     "item"    "item_petri_boots"
   }
 

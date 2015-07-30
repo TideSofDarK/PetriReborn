@@ -4,6 +4,7 @@
   "ID"              "1801"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE" 
 
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -25,6 +26,8 @@
   "AbilityCastPoint"        "0.3"
   
   "AbilityCooldown"       "18.0"
+
+  "AbilityDamage"                 "1"
 
   "AbilitySpecial"
   {

@@ -40,6 +40,9 @@ function GameMode:FilterExecuteOrder( filterTable )
         --   issuerUnit:AddItemByName(item["AbilityTextureName"])
         -- end
         --return false
+      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+        local item = GetItemByID(filterTable["entindex_ability"])
+        if item["SideShop"] then return false end
       end
     end
 

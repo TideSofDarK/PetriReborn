@@ -23,10 +23,9 @@ function GameMode:OnGameRulesStateChange(keys)
   GameMode:_OnGameRulesStateChange(keys)
 end
 
-function GameMode:CreateHeroes()
-  --print("Game State Changed: " .. GameRules:State_Get())
-  --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
-  
+function GameMode:OnPause(keys)
+  --PrintTable(keys)
+  PauseGame(false) 
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes

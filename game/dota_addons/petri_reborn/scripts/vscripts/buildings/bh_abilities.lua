@@ -70,7 +70,7 @@ function build( keys )
 		unit.foodSpent = food_cost
 		-- Very bad solution
 		-- But when construction is started there is no way of cancelling it so...
-		player.activeBuilder.work.callbacks.onConstructionCancelled = nil
+		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
 
 		if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
 			if caster.currentMenu == 1 then
@@ -187,7 +187,7 @@ function builder_queue( keys )
         -- caster is probably a builder, stop them
         player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
         --player.activeBuilding = nil
-        if player.activeBuilder and IsValidEntity(player.activeBuilder) then
+        if player.activeBuilder and player.activeBuilder ==caster and IsValidEntity(player.activeBuilder) then
             player.activeBuilder:ClearQueue()
             player.activeBuilder:Stop()
             player.activeBuilder.ProcessingBuilding = false

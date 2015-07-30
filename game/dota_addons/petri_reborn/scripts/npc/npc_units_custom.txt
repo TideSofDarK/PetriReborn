@@ -840,7 +840,8 @@
 	  "Ability4"          "petri_empty1"
 	  "Ability5"          "petri_empty2"
 	  "Ability6"          "petri_empty3"
-	  "Ability7"          "petri_building"
+	  "Ability7"          "petri_empty4"
+	  "Ability8"          "petri_building"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
@@ -1048,12 +1049,12 @@
 	
 	  "vscripts"     "units/peasant.lua"
 	
-	  "AbilityLayout"    "6"
+	  "AbilityLayout"    "5"
 	  "Ability1"     "gather_lumber"
 	  "Ability2"     "petri_repair"
 	  "Ability3"     "petri_gold_bag_blink"
 	  "Ability4"     "petri_suicide"
-	  "Ability5"     "petri_empty1"
+	  "Ability5"     "build_petri_tower_of_evil"
 	  "Ability6"     "petri_empty2"
 	  "Ability7"     "petri_empty3"
 	  "Ability8"     "petri_empty4"
@@ -1288,8 +1289,8 @@
 	  "MagicalResistance"       "0"     
 	
 	  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-	  "AttackDamageMin"            "30"
-	  "AttackDamageMax"            "30"
+	  "AttackDamageMin"            "300"
+	  "AttackDamageMax"            "300"
 	  "AttackRate"                 "0.8"
 	  "AttackAnimationPoint"       "0.75"
 	  "AttackAcquisitionRange"     "800"

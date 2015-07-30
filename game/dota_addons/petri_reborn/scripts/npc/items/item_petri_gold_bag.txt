@@ -12,6 +12,7 @@
   "ItemInitialCharges" "1"
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+  "ItemSellable"                  "0"
 
   "OnSpellStart"
   {

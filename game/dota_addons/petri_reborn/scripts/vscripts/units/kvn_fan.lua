@@ -11,13 +11,13 @@ NO_MENU_ABILITIES = {"petri_open_basic_buildings_menu",
 					 "return_resources"}
 BASIC_MENU_ABILITIES = {"build_petri_tent",
 						"build_petri_sawmill",
-						"build_petri_lab",
-						"build_petri_wall",
 						"build_petri_tower_basic",
+						"build_petri_wall",
+						"petri_empty2",
 						"petri_close_basic_buildings_menu"}
 ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
+							"build_petri_lab",
 							"build_petri_idol",
-							"build_petri_tower_of_evil",
 							"build_petri_exploration_tree",
 							"build_petri_exit",
 							"petri_close_advanced_buildings_menu"}
@@ -63,21 +63,6 @@ function GivePermissionToBuild( keys )
 			end
 		end
 	end
-end
-
-function Blink(keys)
-	local point = keys.target_points[1]
-	local caster = keys.caster
-	local casterPos = caster:GetAbsOrigin()
-	local difference = point - casterPos
-	local ability = keys.ability
-	local range = ability:GetLevelSpecialValueFor("blink_range", (ability:GetLevel() - 1))
-
-	if difference:Length2D() > range then
-		point = casterPos + (point - casterPos):Normalized() * range
-	end
-
-	FindClearSpaceForUnit(caster, point, false)	
 end
 
 function GetLumberAbilityName(caster)

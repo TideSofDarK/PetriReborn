@@ -179,9 +179,9 @@
 	  "ItemCost"            "1350"
 	  "ItemAliases"         "boots"
 	
-	  "AbilityChannelTime"      "2.00"
-	
 	  "SideShop" "1"
+	
+	  "AbilityChannelTime"      "2.00"
 	
 	  "precache"
 	  {
@@ -510,6 +510,7 @@
 	  "AbilityCastRange" "150"
 	
 	  "ItemPermanent"         "0"
+	  "ItemSellable"                  "0"
 	
 	  "OnSpellStart"
 	  {
@@ -534,6 +535,7 @@
 	  "ItemInitialCharges" "1"
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
+	  "ItemSellable"                  "0"
 	
 	  "OnSpellStart"
 	  {
@@ -590,6 +592,7 @@
 	  "ID"              "1801"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE" 
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -611,6 +614,8 @@
 	  "AbilityCastPoint"        "0.3"
 	  
 	  "AbilityCooldown"       "18.0"
+	
+	  "AbilityDamage"                 "1"
 	
 	  "AbilitySpecial"
 	  {
@@ -816,18 +821,22 @@
 	  "BaseClass"       "item_datadriven"
 	  "ID"              "1501"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "item_blink"
+	  "AbilityTextureName"      "item_petri_kvn_fan_blink"
 	
 	  "precache"
 	  {
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
 	  }
 	
-	  "ItemPermanent"         "0"
+	  "ItemCost"            "25"
+	  "ItemAliases"         "dagger"
+	
+	  "SideShop" "1"
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown"       "7.5"
+	  "AbilityCooldown"       "8.0"
+	  "AbilitySharedCooldown"         "blink"
 	  
 	  "AbilityManaCost"       "0"
 	  
@@ -844,13 +853,101 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "min_blink_range"   "200"
 	    }
+	
+	    "03"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "blink_damage_cooldown"         "5"
+	    }
 	  }
 	
 	  "OnSpellStart"
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "ScriptFile"  "items/dagger.lua"
+	      "Function"    "Blink"
+	      "Target"    "POINT"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_out"
+	      "Target"    "CASTER"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_in"
+	      "Target"    "CASTER"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_item_blink_datadriven_damage_cooldown"
+	    {
+	      "Passive"           "1"
+	      "IsHidden"          "1"
+	      "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "OnTakeDamage"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"            "items/dagger.lua"
+	          "Function"              "OnTakeDamage"
+	          "Damage"                "%attack_damage"
+	          "BlinkDamageCooldown"   "%blink_damage_cooldown"
+	        }
+	      }
+	    }
+	  }
+	}
+	"item_petri_kvn_fan_cool_blink"
+	{
+	  "BaseClass"       "item_datadriven"
+	  "ID"              "1991"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+	
+	  "precache"
+	  {
+	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+	  }
+	
+	  "ItemCost"            "950"
+	  "ItemAliases"         "dagger"
+	
+	  "SideShop" "1"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown"       "8.0"
+	  "AbilitySharedCooldown"         "blink"
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "blink_range"     "2250"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "min_blink_range"   "200"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/dagger.lua"
 	      "Function"    "Blink"
 	      "Target"    "POINT"
 	    }
@@ -1990,7 +2087,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trap"
 	
-	  "ItemCost"            "25"
+	  "ItemCost"            "125"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"

@@ -8,12 +8,12 @@
 
   "vscripts"     "units/peasant.lua"
 
-  "AbilityLayout"    "6"
+  "AbilityLayout"    "5"
   "Ability1"     "gather_lumber"
   "Ability2"     "petri_repair"
   "Ability3"     "petri_gold_bag_blink"
   "Ability4"     "petri_suicide"
-  "Ability5"     "petri_empty1"
+  "Ability5"     "build_petri_tower_of_evil"
   "Ability6"     "petri_empty2"
   "Ability7"     "petri_empty3"
   "Ability8"     "petri_empty4"

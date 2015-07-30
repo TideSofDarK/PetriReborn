@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "200 320 680 990"
+  "AbilityGoldCost"       "1000 2000 3000 4000"
 
   "AbilityManaCost"       "0"
   
@@ -21,17 +21,17 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "0 0 0 0"
+      "lumber_cost"        "35000 70000 140000 200000"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "115 195 425 825"
+      "attack"        "650 1150 1625 2750"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_rate"        "40 60 90 120"
+      "attack_rate"        "80 120 160 200"
     }
   }
 

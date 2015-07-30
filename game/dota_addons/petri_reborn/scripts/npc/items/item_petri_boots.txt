@@ -12,9 +12,9 @@
   "ItemCost"            "1350"
   "ItemAliases"         "boots"
 
-  "AbilityChannelTime"      "2.00"
-
   "SideShop" "1"
+
+  "AbilityChannelTime"      "2.00"
 
   "precache"
   {

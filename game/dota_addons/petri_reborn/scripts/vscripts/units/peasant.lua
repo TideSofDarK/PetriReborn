@@ -222,6 +222,10 @@ function CheckBuildingPosition( event )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
+	if not target or not caster or not caster.target_building then
+		return
+	end
+
 	if target:IsNull() or caster:IsNull() or caster.target_building:IsNull() then
 		return
 	end
