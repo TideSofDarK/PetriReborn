@@ -155,7 +155,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+      "ScriptFile"  "items/dagger.lua"
       "Function"    "Blink"
       "Target"    "POINT"
     }

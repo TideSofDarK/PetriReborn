@@ -1,7 +1,7 @@
 "petri_exit"
 {
   "BaseClass" "ability_datadriven"
-  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "AbilityTextureName" ""
 
   "OnSpellStart"
