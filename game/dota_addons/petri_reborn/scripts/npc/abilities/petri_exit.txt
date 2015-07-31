@@ -2,14 +2,23 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" ""
+  "AbilityTextureName" "build_petri_exit"
 
-  "OnSpellStart"
+  "Modifiers"
   {
-    "RunScript"
+    "modifier_exit"
     {
-      "ScriptFile"  "gamemode.lua"
-      "Function"    "KVNWin"
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "gamemode.lua"
+          "Function"    "KVNWin"
+        }
+      }
     }
-  } 
+  }
 }

@@ -298,7 +298,11 @@ function CheckFood( player, food_amount, notification)
   if food_amount == 0 then return true end
   local enough = hero.food + food_amount <= Clamp(hero.maxFood,10,250)
   if enough ~= true and notification == true then 
-    Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+    if hero.food == 250 then
+      Notifications:Bottom(player:GetPlayerID(), {text="#food_limit_is_reached", duration=2, style={color="red", ["font-size"]="35px"}})
+    else 
+      Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+    end
   end
   return enough
 end

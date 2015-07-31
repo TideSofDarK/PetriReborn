@@ -87,10 +87,6 @@ function build( keys )
 	keys:OnConstructionCompleted(function(unit)
 		InitAbilities(unit)
 
-		if unit:GetUnitName() == "npc_petri_exit" then
-			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
-		end
-
 		if unit:GetUnitName() == "npc_petri_idol" then
 			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
 			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {name = "team_"..DOTA_TEAM_GOODGUYS.."_idol", origin = unit:GetAbsOrigin()})
