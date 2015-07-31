@@ -1,7 +1,7 @@
 .ActionPanelRoot
 {
-	height: 33%;
-	width: 78%;
+	height: 356px;
+	width: 1500px;
 
 	margin-top: 1px;
 	horizontal-align: left;
@@ -29,10 +29,16 @@
 	z-index: 1;
 }
 
+.AspectRatio5x4 #MinimapBorder
+{
+	width: 300px;
+	height: 345px;
+}
+
 #Spacer
 {
-	width: 10%;
-	height: 75%;
+	width: 150px;
+	height: 270px;
 
 	background-color: transparent;
 	margin-left: -24px;
@@ -47,16 +53,25 @@
 #Portrait
 {
 	width: 300px;
-	height: 80%;
+	height: 280px;
 
 	margin-left: -60px;
 	background-color: transparent;
+
 	z-index: 1;
 }
 
 .AspectRatio4x3 #Portrait
 {
-	margin-left: -90px;
+	margin-left: -150px;
+}
+
+.AspectRatio5x4 #Portrait
+{
+	width: 280px;
+	height: 270px;
+
+	margin-left: -140px;
 }
 
 #PortraitImage
@@ -66,18 +81,24 @@
 
 #PortraitModel
 {
-	width: 50%;
-	height: 75%;
+	width: 150px;
+	height: 210px;
 
 	margin-left: 80px;
 	background-color: #808080;	
 	z-index: 0;	
 }
 
+.AspectRatio5x4 #PortraitModel
+{
+	width: 125px;
+	height: 200px;
+}
+
 #Center
 {
-	width: 50%;
-	height: 50%;
+	width: 750px;
+	height: 180px;
 
 	margin-left: -55px;
 	margin-top: 1px;
@@ -86,17 +107,28 @@
 
 .AspectRatio4x3 #Center
 {
-	width: 48%;
+	width: 565px;
+}
+
+.AspectRatio5x4 #Center
+{
+	width: 527px;
+	height: 170px;
 }
 
 #CenterLeft
 {	
-	width: 30%;
+	width: 225px;
 }
 
 .AspectRatio4x3 #CenterLeft
 {
-	width: 35%;
+	width: 245px;
+}
+
+.AspectRatio5x4 #CenterLeft
+{
+	width: 190px;
 }
 
 #CenterLeftImage
@@ -115,15 +147,18 @@
 .AspectRatio4x3 #CenterRight
 {
 	margin-left: -1px;
-	width: 420px;
+	width: 410px;
 
 	margin-left: 187px;
 }
 
-#MainPanelBack
+.AspectRatio5x4 #CenterRight
 {
-	width: 79%;
-	height: 60%;
+	margin-left: -1px;
+	width: 340px;
+
+	margin-left: 190px;
+	margin-right: -20px;
 }
 
 .Bar

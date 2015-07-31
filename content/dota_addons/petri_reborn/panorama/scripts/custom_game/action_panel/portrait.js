@@ -14,7 +14,8 @@ function UpdateExperience( unitLevel )
 	var player = Game.GetLocalPlayerID();
 	var exp = Players.GetTotalEarnedXP( player );
 	var curLevelExp = Entities.IsHero(m_Unit) ? exp - xpTable[String(unitLevel)] : 0;
-	var maxLevelExp = xpTable[String(unitLevel + 1)] - xpTable[String(unitLevel)];
+	var maxLevelExp = Entities.IsHero(m_Unit) ? xpTable[String(unitLevel + 1)] - xpTable[String(unitLevel)] : 1;
+
 	$( "#ExperienceCount" ).style.visibility = "visible;";
 	$( "#ExperienceCount" ).text = curLevelExp + "/" + maxLevelExp;
 	$( "#Experience" ).style.width = curLevelExp / maxLevelExp * 100 + "%;";

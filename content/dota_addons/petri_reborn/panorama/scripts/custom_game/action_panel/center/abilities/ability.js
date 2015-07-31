@@ -33,6 +33,9 @@ function AutoUpdateAbility()
 
 function UpdateCostsPanel()
 {
+	if (!costsPanel)
+		return;
+
     var abilityLevel = Abilities.GetLevel( m_Ability );
 	var manaCost = Abilities.GetManaCost( m_Ability );
     var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
@@ -52,6 +55,9 @@ function UpdateCostsPanel()
 
 function ClearCostsPanel()
 {
+	if (!costsPanel)
+		return;
+	
     costsPanel.FindChild( "GoldText" ).text = 0;
     costsPanel.FindChild( "LumberText" ).text = 0;
     costsPanel.FindChild( "FoodText" ).text = 0;

@@ -17,6 +17,13 @@
 	width: 95%;
 }
 
+.AspectRatio5x4 #HealthAndMana,
+.AspectRatio5x4 #RespawnPanel
+{
+	margin-left: 14px;
+	width: 95%;
+}
+
 #HealthAndMana.dead
 {
 	visibility: collapse;

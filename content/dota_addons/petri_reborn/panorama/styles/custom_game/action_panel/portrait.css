@@ -79,26 +79,17 @@
 	margin-left: 85px;
 
 	visibility: collapse;
-	z-index: 1;
+	z-index: 2;
 }
 
-.AspectRatio4x3 #LevelUpButton
+.AspectRatio5x4 #LevelUpButton
 {
-	width: 30px;
-	height: 30px;
-	margin-top: 0px;
-	margin-left: 0px;
-	z-index: 5;
+	margin-left: 75px;
 }
 
 .could_level_up #LevelUpButton 
 {
 	visibility: visible;
-}
-
-.AspectRatio4x3 .could_level_up #LevelUpButton
-{
-	margin-right: 500px;
 }
 
 #LevelUpButton:hover
