@@ -67,6 +67,20 @@
 
   "MaxLevel"            "1"
 
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "upgrade_rate"      "77"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "upgrade_limit"      "275"
+    }
+  }
+
   "OnUpgrade"
   {
     "ApplyModifier"

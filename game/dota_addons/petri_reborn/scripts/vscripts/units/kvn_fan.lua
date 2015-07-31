@@ -169,10 +169,29 @@ end
 
 function SpawnGoldBag( keys )
 	local caster = keys.caster
+	local pID = caster:GetPlayerOwnerID()
+
+	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()
+
+	if GameMode.assignedPlayerHeroes[pID].currentGoldBag then
+		DestroyEntityBasedOnHealth(caster, GameMode.assignedPlayerHeroes[pID].currentGoldBag)
+	end
+	GameMode.assignedPlayerHeroes[pID].currentGoldBag = bag
+
+	bag:SetModifierStackCount("modifier_gold_bag", bag, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
+
+	local upgradeRate = bag:FindAbilityByName("petri_upgrade_gold_bag"):GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = bag:FindAbilityByName("petri_upgrade_gold_bag"):GetSpecialValueFor("upgrade_limit")
+
+	if bag:GetModifierStackCount("modifier_gold_bag", bag) >= upgradeLimit then
+		bag:SetModifierStackCount("modifier_gold_bag", bag,upgradeLimit)
+
+		bag:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+	end
 end
 
 function Deny(keys)

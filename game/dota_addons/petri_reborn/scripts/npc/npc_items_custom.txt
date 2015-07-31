@@ -530,12 +530,15 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_gold_bag"
 	
+	  "ItemCost"            "675"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges" "1"
-	  "ItemStackable"         "1"
+	  "ItemStackable"         "0"
 	  "ItemPermanent"         "0"
-	  "ItemSellable"                  "0"
+	  "ItemSellable"                  "1"
+	
+	  "SideShop" "1"
 	
 	  "OnSpellStart"
 	  {
@@ -951,7 +954,7 @@
 	      "Function"    "Blink"
 	      "Target"    "POINT"
 	    }
-	
+	    
 	    "FireSound"
 	    {
 	      "EffectName"  "Hero_Antimage.Blink_out"
@@ -2087,7 +2090,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trap"
 	
-	  "ItemCost"            "125"
+	  "ItemCost"            "425"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"

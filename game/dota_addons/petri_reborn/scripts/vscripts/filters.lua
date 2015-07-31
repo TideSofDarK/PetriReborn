@@ -46,6 +46,8 @@ function GameMode:FilterExecuteOrder( filterTable )
         local item = GetItemByID(filterTable["entindex_ability"])
         if item["SideShop"] then return false end
       end
+    elseif order_type == DOTA_UNIT_ORDER_GLYPH then
+      return false
     end
 
     for n,unit_index in pairs(units) do

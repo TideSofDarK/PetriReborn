@@ -768,7 +768,7 @@
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      ""
-	
+	  
 	  "Modifiers"
 	  {
 	    "unit_properties"
@@ -1085,6 +1085,20 @@
 	  "AbilityCastPoint"        "0.0"
 	
 	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_rate"      "77"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_limit"      "275"
+	    }
+	  }
 	
 	  "OnUpgrade"
 	  {
@@ -1572,7 +1586,7 @@
 						    "StartPosition"  	"follow_origin"
 						    "FixedDistance"  	"1000"
 						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
 						    "HasFrontalCone" 	"1"
 						    "ProvidesVision" 	"0"
 							}     
@@ -3159,7 +3173,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "650 1150 1625 2750"
+	      "attack"        "650 1150 1625 3250"
 	    }
 	    "03"
 	    {

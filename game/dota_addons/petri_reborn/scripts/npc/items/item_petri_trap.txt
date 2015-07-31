@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_trap"
 
-  "ItemCost"            "125"
+  "ItemCost"            "425"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"

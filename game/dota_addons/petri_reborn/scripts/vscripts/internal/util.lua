@@ -159,7 +159,7 @@ function StartUpgrading (event)
     caster.lastSpentFood = food_cost
 
     caster.foodSpent = caster.foodSpent + food_cost
-
+    
     if not event["Permanent"] then
       ability:SetHidden(true)
     else 

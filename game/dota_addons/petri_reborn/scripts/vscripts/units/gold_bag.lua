@@ -1,6 +1,3 @@
-UPGRADE_RATE = 70
-UPGRADE_LIMIT = 275
-
 function GetGoldAutocast( event )
 	local caster = event.caster
 	local target = event.target
@@ -49,17 +46,22 @@ function Upgrade( event )
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	local gold = PlayerResource:GetGold(pID)
 
-	if gold >= UPGRADE_RATE then
-		local count = math.floor(gold / UPGRADE_RATE)
+	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
+
+	if gold >= upgradeRate then
+		local count = math.floor(gold / upgradeRate)
 		local actualCount = count
-		if goldModifier+count > UPGRADE_LIMIT then actualCount = UPGRADE_LIMIT - goldModifier end
-		local cost = actualCount*UPGRADE_RATE
+		if goldModifier+count > upgradeLimit then actualCount = upgradeLimit - goldModifier end
+		local cost = actualCount*upgradeRate
 		PlayerResource:SpendGold(pID, cost, 0)
 
-		caster:SetModifierStackCount("modifier_gold_bag", caster,goldModifier+actualCount)
+		GameMode.assignedPlayerHeroes[pID].goldBagStacks = goldModifier+actualCount
 
-		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= UPGRADE_LIMIT then
-			caster:SetModifierStackCount("modifier_gold_bag", caster,UPGRADE_LIMIT)
+		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
+
+		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
+			caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
 
 			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
 			ability:ToggleAbility()

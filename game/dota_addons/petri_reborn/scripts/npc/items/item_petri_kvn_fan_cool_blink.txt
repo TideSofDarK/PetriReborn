@@ -45,7 +45,7 @@
       "Function"    "Blink"
       "Target"    "POINT"
     }
-
+    
     "FireSound"
     {
       "EffectName"  "Hero_Antimage.Blink_out"

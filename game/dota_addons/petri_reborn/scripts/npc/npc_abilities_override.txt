@@ -7,12 +7,6 @@
     "ItemPurchasable"                "0"
     "ItemDroppable"                    "0"
   }
-
-  "item_petri_gold_bag"
-  {
-    "ItemPurchasable"                "0"
-    "ItemDroppable"                    "0"
-  }
   
   "item_blink"      "REMOVE"
   "item_blades_of_attack"     "REMOVE"
