@@ -8,6 +8,11 @@
 	margin-left: 20px;
 }
 
+.AspectRatio5x4 #InfoPanel
+{
+	margin-bottom: 10px;
+}
+
 /* Info */
 #Info
 {
@@ -15,7 +20,8 @@
 	height: 100px;
 }
 
-.AspectRatio4x3 #Info
+.AspectRatio4x3 #Info,
+.AspectRatio5x4 #Info
 {
 	margin-right: 12px;
 	width: 80px;
@@ -37,7 +43,9 @@
 }
 
 .AspectRatio4x3 #ArmorImage,
-.AspectRatio4x3 #SpeedImage
+.AspectRatio4x3 #SpeedImage,
+.AspectRatio5x4 #ArmorImage,
+.AspectRatio5x4 #SpeedImage
 {
 	width: 30px;
 	height: 30px;
@@ -59,7 +67,8 @@
 	margin-left: -30px;
 }
 
-.AspectRatio4x3 #DamageImage
+.AspectRatio4x3 #DamageImage,
+.AspectRatio5x4 #DamageImage
 {
 	width: 130px;
 }
@@ -104,8 +113,16 @@
 
 .AspectRatio4x3 #Stats
 {
-	width: 0px;
-	height: 0px;
+	width: 90px;
+	height: 100px;
+
+	margin-left: -5px;
+}
+
+.AspectRatio5x4 #Stats
+{
+	width: 100px;
+	height: 100px;
 }
 
 #Strength,
