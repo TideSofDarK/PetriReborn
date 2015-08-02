@@ -1,0 +1,12 @@
+C:\2\ConsoleApplication1\ConsoleApplication1\obj\Debug\DummyCreator.csprojResolveAssemblyReference.cache
+C:\2\ConsoleApplication1\ConsoleApplication1\bin\Debug\DummyCreator.exe.config
+C:\2\ConsoleApplication1\ConsoleApplication1\bin\Debug\DummyCreator.exe
+C:\2\ConsoleApplication1\ConsoleApplication1\bin\Debug\DummyCreator.pdb
+C:\2\ConsoleApplication1\ConsoleApplication1\obj\Debug\DummyCreator.exe
+C:\2\ConsoleApplication1\ConsoleApplication1\obj\Debug\DummyCreator.pdb
+c:\2\ConsoleApplication1\DummyCreator\bin\Debug\DummyCreator.exe.config
+c:\2\ConsoleApplication1\DummyCreator\obj\Debug\DummyCreator.exe
+c:\2\ConsoleApplication1\DummyCreator\obj\Debug\DummyCreator.pdb
+c:\2\DummyCreator\DummyCreator\bin\Debug\DummyCreator.exe.config
+c:\2\DummyCreator\DummyCreator\obj\Debug\DummyCreator.exe
+c:\2\DummyCreator\DummyCreator\obj\Debug\DummyCreator.pdb
