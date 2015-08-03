@@ -69,7 +69,10 @@ function GameMode:ModifyGoldFilter(event)
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
     PrintTable(event)
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
-      event["gold"] >= 5000 then
+      event["gold"] >= 5000 then -- boss
+      Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
+      Notifications:TopToAll({text=tostring(event["gold"]/2).." ", duration=4, style={color="red"}, continue=true})
+      Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
       for i=1,PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
         local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)] 
         if hero then
