@@ -516,7 +516,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "ScriptFile"  "units/kvn_fan.lua"
 	      "Function"    "GivePermissionToBuild"
 	    }
 	  }

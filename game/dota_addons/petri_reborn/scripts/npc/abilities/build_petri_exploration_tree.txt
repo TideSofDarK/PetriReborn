@@ -30,7 +30,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+      "ScriptFile"      "buildings/bh_abilities.lua"
       "Function"        "build"
     }
   }
