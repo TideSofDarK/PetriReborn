@@ -122,6 +122,8 @@ function UpdateAttributes(tower, ability)
 end
 
 -- Misc
-function modifier_skadi_on_orb_impact(keys)
-	keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_skadi_cold_attack", {duration = keys.ColdDurationMelee})
+function IceTowerOnOrbImpact(keys)
+	if not keys.target:IsMagicImmune() then
+		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_skadi_cold_attack", {duration = keys.ColdDuration})
+	end
 end

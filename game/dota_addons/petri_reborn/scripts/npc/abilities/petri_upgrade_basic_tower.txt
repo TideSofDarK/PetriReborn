@@ -408,9 +408,8 @@
         "RunScript"
         {
           "ScriptFile"      "units/tower.lua"
-          "Function"        "modifier_skadi_on_orb_impact"
-          "ColdDurationMelee"   "4"
-          "ColdDurationRanged"  "4"
+          "Function"        "IceTowerOnOrbImpact"
+          "ColdDuration"   "4"
         }
       }
     }
