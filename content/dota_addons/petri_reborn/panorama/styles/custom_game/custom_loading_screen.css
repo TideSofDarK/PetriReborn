@@ -1,6 +1,6 @@
 @define TotalLength: 40s;
 @define TimingFunc: linear;
-@define IterationCount: 999999;
+@define IterationCount: infinite;
 @define AnimationDelay: 0s;
 
 .AddonLoadingRoot
