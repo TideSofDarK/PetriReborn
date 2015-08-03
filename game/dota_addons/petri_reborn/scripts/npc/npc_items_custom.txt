@@ -977,7 +977,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kvn_medal"
 	
-	  "ItemCost"            "750"
+	  "ItemCost"            "850"
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"
@@ -1201,7 +1201,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "9000"
+	  "ItemCost"            "6500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
