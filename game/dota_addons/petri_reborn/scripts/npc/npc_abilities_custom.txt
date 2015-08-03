@@ -79,7 +79,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -116,7 +116,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -166,7 +166,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -213,7 +213,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -260,7 +260,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -298,7 +298,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -336,7 +336,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -383,7 +383,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -421,7 +421,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -467,7 +467,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -623,7 +623,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	          "ScriptFile"  "buildings/bh_abilities.lua"
 	          "Function"    "builder_queue"
 	        }
 	      }
@@ -647,7 +647,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -669,7 +669,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -691,7 +691,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -713,7 +713,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -735,7 +735,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -758,7 +758,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -3186,7 +3186,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "650 1150 1625 3250"
+	      "attack"        "650 1150 2325 4250"
 	    }
 	    "03"
 	    {

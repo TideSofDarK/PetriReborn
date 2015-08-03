@@ -26,7 +26,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "650 1150 1625 3250"
+      "attack"        "650 1350 2425 4250"
     }
     "03"
     {
