@@ -1,7 +1,6 @@
 "npc_petri_kvn_fan"
 {
   "override_hero"     "npc_dota_hero_rattletrap"
-  "SoundSet"          "0" 
 
   "AbilityLayout"     "6"
 

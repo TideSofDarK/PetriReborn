@@ -1369,7 +1369,7 @@
 	}
 	"npc_petri_wall"
 	{
-	  "BaseClass"         "npc_dota_base_additive"  
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
 	  "ModelScale"                "0.6"    
 	  "Level"           "1"

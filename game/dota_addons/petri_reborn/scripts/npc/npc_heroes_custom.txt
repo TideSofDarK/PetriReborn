@@ -52,7 +52,6 @@
 	"npc_petri_elena"
 	{
 	  "override_hero"     "npc_dota_hero_death_prophet"
-	  "SoundSet"          "0" 
 	
 	  "HasInventory"          "1"
 	  "ConsideredHero"        "1"
@@ -113,7 +112,6 @@
 	"npc_petri_kvn_fan"
 	{
 	  "override_hero"     "npc_dota_hero_rattletrap"
-	  "SoundSet"          "0" 
 	
 	  "AbilityLayout"     "6"
 	
@@ -165,7 +163,6 @@
 	"npc_petri_mini_actor"
 	{
 	  "override_hero"     "npc_dota_hero_storm_spirit"
-	  "SoundSet"          "0" 
 	
 	  "HasInventory"          "1"
 	  "ConsideredHero"        "1"
@@ -217,7 +214,6 @@
 	"npc_petri_petrosyan"
 	{
 	  "override_hero"     "npc_dota_hero_brewmaster"
-	  "SoundSet"          "0" 
 	
 	  "HasInventory"          "1"
 	  "ConsideredHero"        "1"
