@@ -3,6 +3,7 @@
   "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
   "ModelScale"        "1.2"
+  "SoundSet"          "Creep_Good_Melee"  
   "Level"           "3"
   "HealthBarOffset"     "140"
   
