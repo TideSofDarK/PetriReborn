@@ -8,7 +8,6 @@
       <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" />
       <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
-      
       <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
     </Panel>
     <Panel id="TitlePanel">

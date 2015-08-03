@@ -52,7 +52,7 @@
 
   animation-name: gamemode_anim_petrosyan;
   animation-delay: AnimationDelay;
-  animation-duration: 80s;
+  animation-duration: 90s;
   animation-timing-function: TimingFunc;
   animation-iteration-count: 1;
 }
@@ -72,7 +72,7 @@
 .Smoke2
 {
   background-repeat: repeat-x;
-  background-position: -1080px 0%;
+  background-position: -1920px 0%;
   background-size: 100% 100%;
 
   animation-name: gamemode_anim_second;
@@ -100,7 +100,7 @@
 
   100%
   {
-    transform: translateX( 1080px ) translateY( 0px );
+    transform: translateX( 1920px ) translateY( 0px );
   }
 }
 
@@ -108,7 +108,7 @@
 {
   0%
   {
-    transform: translateX( -1080px ) translateY( 0px );
+    transform: translateX( -1920px ) translateY( 0px );
   }
 
   100%
