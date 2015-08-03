@@ -177,7 +177,7 @@ function SpawnGoldBag( keys )
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()
 
-	if GameMode.assignedPlayerHeroes[pID].currentGoldBag then
+	if GameMode.assignedPlayerHeroes[pID].currentGoldBag and not GameMode.assignedPlayerHeroes[pID].currentGoldBag:IsNull() then
 		DestroyEntityBasedOnHealth(caster, GameMode.assignedPlayerHeroes[pID].currentGoldBag)
 	end
 	GameMode.assignedPlayerHeroes[pID].currentGoldBag = bag
