@@ -66,6 +66,29 @@ function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
   if event.reason_const == DOTA_ModifyGold_HeroKill then
     event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
+  elseif event.reason_const == DOTA_ModifyGold_CreepKill then
+    PrintTable(event)
+    if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
+      event["gold"] >= 5000 then
+      for i=1,PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
+        local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)] 
+        if hero then
+          PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), event["gold"]/2, false, DOTA_ModifyGold_SharedGold)
+
+          POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
+          local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
+          local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, hero)
+          local color = Vector(244,201,23)
+          local lifetime = 3.0
+          local digits = #tostring(event["gold"]/2) + 1
+          
+          ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, event["gold"]/2, 0 ) )
+          ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
+          ParticleManager:SetParticleControl(pidx, 3, color)
+        end
+      end
+      return false
+    end
   end
   return true
 end
