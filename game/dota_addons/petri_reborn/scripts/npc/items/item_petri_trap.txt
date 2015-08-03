@@ -12,8 +12,9 @@
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
   "ItemInitialCharges"  "1"
-  "ItemStackable"         "1"
-  "ItemPermanent"         "0"
+  "ItemStackable"       "1"
+  "ItemSellable"        "0"
+  "ItemPermanent"       "0"
   
   "SideShop" "1"
 

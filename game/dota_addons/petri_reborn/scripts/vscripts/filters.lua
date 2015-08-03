@@ -28,23 +28,21 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
+      local item = GetItemByID(filterTable["entindex_ability"])
+
       if OnEnemyShop(purchaser) then
         Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
         return false
       elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        -- local item = GetItemByID(filterTable["entindex_ability"])
-        -- local goldCost = tonumber(item["ItemCost"])
-
-        -- if PlayerResource:GetGold(issuer) >= goldCost then
-        --   PlayerResource:ModifyGold(issuer, -1 * goldCost, false, 0)
-        --   issuerUnit:AddItemByName(item["AbilityTextureName"])
-        -- end
-        --return false
-        local item = GetItemByID(filterTable["entindex_ability"])
         if not item["SideShop"] then return false end
       elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
-        local item = GetItemByID(filterTable["entindex_ability"])
         if item["SideShop"] then return false end
+      end
+    elseif order_type == DOTA_UNIT_ORDER_SELL_ITEM then
+      local purchaser = EntIndexToHScript(units["0"])
+
+      if OnEnemyShop(purchaser) then
+        return false
       end
     elseif order_type == DOTA_UNIT_ORDER_GLYPH then
       return false
