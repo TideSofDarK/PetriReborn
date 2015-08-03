@@ -1356,7 +1356,8 @@
 	{
 	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
-	  "ModelScale"                "0.6"    
+	  "ModelScale"                "0.6"
+	  "SoundSet"          "Creep_Good_Range"  
 	  "Level"           "1"
 	  
 	  "AbilityLayout"     "4"
@@ -1378,7 +1379,7 @@
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
 	  //"RingRadius"                "70"
-	
+	ы
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
 	  "MovementTurnRate"      "0.0"   
