@@ -1096,7 +1096,7 @@
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_limit"      "275"
+	      "upgrade_limit"      "295"
 	    }
 	  }
 	
