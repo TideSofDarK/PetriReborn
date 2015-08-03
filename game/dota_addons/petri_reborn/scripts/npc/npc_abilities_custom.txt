@@ -2234,6 +2234,11 @@
 	  "AbilityChannelTime"      "2.0"
 	  "AbilityGoldCost"       "0"
 	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+	  }
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -2291,6 +2296,13 @@
 	    {
 	      "Passive"  "0"
 	      "IsHidden" "1"
+	
+	      "Orb"
+	      {
+	        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+	        "ProjectileName"    "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+	        "CastAttack"      "0"
+	      }
 	
 	      "Properties"
 	      {
