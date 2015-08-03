@@ -2317,7 +2317,7 @@
 	
 	  "precache"
 	  {
-	    "particle"  "particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_fire_arcana.vpcf"
+	    "particle"  "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 	  }
 	
 	  "AbilitySpecial"
@@ -2398,6 +2398,14 @@
 	      "Passive"  "0"
 	
 	      "IsHidden"   "1"
+	
+	      "Orb"
+	      {
+	        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+	        "ProjectileName"    "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+	        "CastAttack"      "0"
+	      }
+	
 	      "OnAttackStart"
 	      {
 	        "Random"
@@ -2424,13 +2432,7 @@
 	      }
 	      
 	      "OnAttackLanded"
-	      {
-	        "FireEffect"
-	        {
-	          "EffectName"     "particles/econ/items/shadow_fiend/sf_desolation/sf_base_attack_desolation_fire_arcana.vpcf"
-	          "EffectAttachType"   "follow_origin"
-	          "Target"       "TARGET"
-	        } 
+	      { 
 	        "RemoveModifier"
 	        {
 	          "ModifierName"    "creep_crit"
