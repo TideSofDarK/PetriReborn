@@ -53,7 +53,8 @@ function ToggleOffGather( event )
 
 	--print(caster.lastOrder)
 
-	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
+	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET 
+	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
 		if event["arg"] then
 			caster:RemoveModifierByName(event["arg"])
 		end
@@ -74,8 +75,9 @@ end
 function ToggleOffReturn( event )
 	local caster = event.caster
 	local return_ability = caster:FindAbilityByName("return_resources")
-
-	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET then
+	
+	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
 			if Debug_Peasant then

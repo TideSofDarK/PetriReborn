@@ -175,10 +175,11 @@ end
 function builder_queue( keys )
     local ability = keys.ability
     local caster = keys.caster  
-
+    print(caster.lastOrder)
     if caster.ProcessingBuilding ~= nil
     and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
     and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM
      then
         -- caster is probably a builder, stop them
         player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
