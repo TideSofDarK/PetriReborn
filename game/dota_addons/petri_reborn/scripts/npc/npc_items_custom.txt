@@ -968,6 +968,26 @@
 	    }
 	  }
 	}
+	
+	"item_recipe_petri_kvn_fan_cool_blink"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1988"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "950"
+	  "ItemShopTags"          ""
+	
+	  "SideShop" "1"
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_kvn_fan_cool_blink"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_kvn_fan_blink;"
+	  }
+	}
 	"item_petri_kvn_medal"
 	{
 	  "BaseClass"           "item_datadriven"
