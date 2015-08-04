@@ -96,7 +96,7 @@ function CheckTreePosition( event )
 	local target_class = target:GetClassname()
 
 	if target_class == "ent_dota_tree" then
-		caster:MoveToTargetToAttack(target)
+		caster:MoveToPosition(target:GetAbsOrigin())
 		--print("Moving to "..target_class)
 	end
 
