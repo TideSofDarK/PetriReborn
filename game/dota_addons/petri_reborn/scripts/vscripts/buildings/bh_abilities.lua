@@ -20,6 +20,10 @@ function build( keys )
 	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
+	if not CheckBuildingDependencies(pID, ability_name) then
+		return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
+	end
+
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
 		if PETIR_EXIT_ALLOWED == false then
@@ -86,6 +90,8 @@ function build( keys )
 	end)
 	keys:OnConstructionCompleted(function(unit)
 		InitAbilities(unit)
+
+		AddEntryToDependenciesTable(pID, ability_name, 1)
 
 		if unit:GetUnitName() == "npc_petri_idol" then
 			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer

@@ -1,3 +1,19 @@
+-- NETTABLES
+function GetKeyInNetTable(pID, nettable, k)
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+
+  return tempTable[k]
+end
+
+function AddKeyToNetTable(pID, nettable, k, v)
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+
+  tempTable[k] = v
+
+  CustomNetTables:SetTableValue(nettable, tostring(pID), tempTable);
+end
+-- NETTABLES
+
 -- ITEMS
 function GetItemByID(id)
   for k,v in pairs(GameMode.ItemKVs) do
@@ -223,6 +239,14 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentLumber = 0
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
+
+  --if not caster:HasAbility("petri_upgrade") then
+    caster:AddAbility("petri_upgrade")
+  --end
+  caster:FindAbilityByName("petri_upgrade"):ApplyDataDrivenModifier(caster, caster, "modifier_upgrade", {})
+  caster:SetModifierStackCount("modifier_upgrade", caster, caster:GetModifierStackCount("modifier_upgrade", caster) + 1)
+
+  AddEntryToDependenciesTable(pID, ability:GetName(), ability:GetLevel())
 
   if event["Permanent"] then
     local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))

@@ -35,6 +35,7 @@ require('libraries/animations')
 
 require('libraries/FlashUtil')
 require('libraries/buildinghelper')
+require('libraries/dependencies')
 require('buildings/bh_abilities')
 
 require('settings')
@@ -108,6 +109,7 @@ function GameMode:OnHeroInGame(hero)
 
           SetupUI(newHero)
           SetupUpgrades(newHero)
+          SetupDependencies(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
@@ -175,6 +177,13 @@ function GameMode:OnHeroInGame(hero)
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
   end
+end
+
+function SetupDependencies(newHero)
+  local player = newHero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
+
+  CustomNetTables:SetTableValue( "players_dependencies", tostring(pID), {} );
 end
 
 function SetupUpgrades(newHero)
@@ -251,6 +260,8 @@ function GameMode:InitGameMode()
 
   GameMode:_InitGameMode()
   SendToServerConsole( "dota_combine_models 0" )
+
+  GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
 
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 

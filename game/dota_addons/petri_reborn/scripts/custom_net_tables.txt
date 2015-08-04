@@ -3,6 +3,7 @@
   custom_net_tables =
   [
     "players_resources",
-        "players_upgrades"
+    "players_upgrades",
+    "players_dependencies"
   ]
 }
