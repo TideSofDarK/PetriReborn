@@ -105,20 +105,23 @@ function UpdateAttributes(tower, ability)
 	caster:SetBaseDamageMax(attack)
 	caster:SetBaseDamageMin(attack)
 
-	ability:ApplyDataDrivenModifier(caster, caster, "modifier_attack_speed", {})
-
 	if tower == TOWER_BASIC then
 	elseif tower == TOWER_ELEMENTS then 
-	elseif tower == TOWER_FIRE then 
+	elseif tower == TOWER_FIRE then
+		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_crits", {})
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_ICE then
+		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_skadi", {})
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_DEATH then 
+		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_death_tower", {})
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	end
+
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_attack_speed", {})
 end
 
 -- Misc
