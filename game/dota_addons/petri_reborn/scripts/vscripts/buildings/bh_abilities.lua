@@ -26,7 +26,7 @@ function build( keys )
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
-		if PETIR_EXIT_ALLOWED == false then
+		if PETRI_EXIT_ALLOWED == false then
 			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
 	end

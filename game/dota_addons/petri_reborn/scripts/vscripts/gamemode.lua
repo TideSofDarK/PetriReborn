@@ -4,7 +4,7 @@ BAREBONES_DEBUG_SPEW = false
 
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
-PETIR_EXIT_ALLOWED = false
+PETRI_EXIT_ALLOWED = false
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
 
 START_KVN_GOLD = 10
@@ -240,7 +240,7 @@ function GameMode:OnGameInProgress()
   
   Timers:CreateTimer((PETRI_EXIT_MARK * 60),
     function()
-      PETIR_EXIT_ALLOWED = true
+      PETRI_EXIT_ALLOWED = true
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
