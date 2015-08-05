@@ -259,7 +259,6 @@ function GameMode:InitGameMode()
   GameMode = self
 
   GameMode:_InitGameMode()
-  SendToServerConsole( "dota_combine_models 0" )
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
 
