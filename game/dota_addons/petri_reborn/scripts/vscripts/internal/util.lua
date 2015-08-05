@@ -150,7 +150,8 @@ function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = caster:GetPlayerOwner():GetAssignedHero()
+  local pID = hero:GetPlayerOwnerID()
 
   local level = ability:GetLevel() - 1
 
@@ -159,7 +160,8 @@ function StartUpgrading (event)
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
-    or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false then 
+    or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false then 
     Timers:CreateTimer(0.06,
       function()
           PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
