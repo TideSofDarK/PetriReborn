@@ -242,10 +242,12 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
-  --if not caster:HasAbility("petri_upgrade") then
+  if caster:HasAbility("petri_upgrade") == false then
     caster:AddAbility("petri_upgrade")
-  --end
-  caster:FindAbilityByName("petri_upgrade"):ApplyDataDrivenModifier(caster, caster, "modifier_upgrade", {})
+    caster:FindAbilityByName("petri_upgrade"):ApplyDataDrivenModifier(caster, caster, "modifier_upgrade", {})
+    caster:SetModifierStackCount("modifier_upgrade", caster, 1)
+  end
+  
   caster:SetModifierStackCount("modifier_upgrade", caster, caster:GetModifierStackCount("modifier_upgrade", caster) + 1)
 
   AddEntryToDependenciesTable(pID, ability:GetName(), ability:GetLevel())

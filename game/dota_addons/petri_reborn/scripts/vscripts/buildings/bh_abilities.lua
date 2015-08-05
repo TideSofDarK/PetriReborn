@@ -21,7 +21,7 @@ function build( keys )
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
 	if not CheckBuildingDependencies(pID, ability_name) then
-		return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
+		return false
 	end
 
 	--Build exit only after 16 min
