@@ -143,7 +143,7 @@ end
 -- Upgrades
 
 function GetUpgradeLevelForPlayer(upgrade, pID)
-  return CustomNetTables:GetTableValue("players_upgrades", tostring(pID))["1"][upgrade]
+  return CustomNetTables:GetTableValue("players_upgrades", tostring(pID))[upgrade]
 end
 
 function StartUpgrading (event)
@@ -252,8 +252,8 @@ function OnUpgradeSucceeded(event)
 
   if event["Permanent"] then
     local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))
-    tempTable["1"][ability:GetName()] = tempTable["1"][ability:GetName()] + 1
-    CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), { tempTable["1"] } );
+    tempTable[ability:GetName()] = tempTable[ability:GetName()] + 1
+    CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), tempTable );
 
     local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
     local abilityName = ability:GetName()

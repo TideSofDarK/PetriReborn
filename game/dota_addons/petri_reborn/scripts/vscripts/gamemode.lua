@@ -200,7 +200,7 @@ function SetupUpgrades(newHero)
     end
   end
 
-  CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), { upgradeAbilities } );
+  CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), upgradeAbilities );
 
   --PrintTable(CustomNetTables:GetTableValue("players_upgrades", tostring(pID)))
 end
