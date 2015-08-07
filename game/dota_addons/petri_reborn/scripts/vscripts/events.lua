@@ -372,7 +372,6 @@ function GameMode:OnEntityKilled( keys )
     hero.food = hero.food - killedUnit.foodSpent
   end
 
-  -- Respawn creep
   if string.match(killedUnit:GetUnitName (), "peasant") then
     killedUnit:RemoveModifierByName("modifier_chopping_wood")
     killedUnit:RemoveModifierByName("modifier_gathering_lumber")
@@ -396,7 +395,7 @@ function GameMode:OnEntityKilled( keys )
       end)
       
     end
-    Timers:CreateTimer(0.73,
+    Timers:CreateTimer(0.5,
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
