@@ -77,7 +77,7 @@ function build( keys )
 		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
 
 		local building_ability = unit:FindAbilityByName("petri_building")
-		if building_ability then building_ability:SetLevel(1)
+		if building_ability then building_ability:SetLevel(1) end
 
 		if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
 			if caster.currentMenu == 1 then
