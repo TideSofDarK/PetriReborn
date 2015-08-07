@@ -76,6 +76,9 @@ function build( keys )
 		-- But when construction is started there is no way of cancelling it so...
 		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
 
+		local building_ability = unit:FindAbilityByName("petri_building")
+		if building_ability then building_ability:SetLevel(1)
+
 		if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
 			if caster.currentMenu == 1 then
 				caster:CastAbilityNoTarget(caster:FindAbilityByName("petri_close_basic_buildings_menu"), pID)
