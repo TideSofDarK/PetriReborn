@@ -138,6 +138,16 @@ function Return( keys )
     end)
 
 	FindClearSpaceForUnit(caster,caster.spawnPosition,true)
+
+	caster:Stop()
+	local newOrder = {
+        UnitIndex       = caster:entindex(),
+        OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+        Position        = caster:GetAbsOrigin(), 
+        Queue           = 0
+    }
+
+  	ExecuteOrderFromTable(newOrder)
 end
 
 function SpawnWard(keys)
