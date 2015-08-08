@@ -63,7 +63,7 @@ function build( keys )
 					return false
 				end
 			end
-			
+
 			SpendLumber(player, lumber_cost)
 			SpendFood(player, food_cost)
 
@@ -114,8 +114,8 @@ function build( keys )
 
 		if unit:GetUnitName() == "npc_petri_idol" then
 			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
-			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {name = "team_"..DOTA_TEAM_GOODGUYS.."_idol", origin = unit:GetAbsOrigin()})
-			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
+			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol", origin = unit:GetAbsOrigin()})
+			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol",origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
 		end
 
 		unit:SetMana(unit:GetMaxMana())

@@ -34,7 +34,7 @@ function GameMode:FilterExecuteOrder( filterTable )
         Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
         return false
       elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        if not item["SideShop"] then return false end
+        if not item["SideShop"] or OnKVNSideShop( purchaser ) == false then return false end
       elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
         if item["SideShop"] then return false end
       end
@@ -102,17 +102,33 @@ function GameMode:ModifyExperienceFilter(filterTable)
 end
 
 function OnEnemyShop( unit )
-    local teamID = unit:GetTeamNumber()
-    local position = unit:GetAbsOrigin()
-    local own_base_name = "team_"..teamID
-    local nearby_entities = Entities:FindAllByNameWithin("team_*", position, 300)
+  local teamID = unit:GetTeamNumber()
+  local position = unit:GetAbsOrigin()
+  local own_base_name = "team_"..teamID
+  local nearby_entities = Entities:FindAllByNameWithin("team_*", position, 300)
 
-    if (#nearby_entities > 0) then
-        for k,ent in pairs(nearby_entities) do
-            if not string.match(ent:GetName(), own_base_name) then
-                return true
-            end
-        end
+  if (#nearby_entities > 0) then
+    for k,ent in pairs(nearby_entities) do
+      if not string.match(ent:GetName(), own_base_name) then
+        return true
+      end
     end
-    return false
+  end
+  return false
+end
+
+function OnKVNSideShop( unit )
+  local teamID = unit:GetTeamNumber()
+  local position = unit:GetAbsOrigin()
+  local own_base_name = "team_"..teamID
+  local nearby_entities = Entities:FindAllByNameWithin("team_*", position, 300)
+
+  if (#nearby_entities > 0) then
+    for k,ent in pairs(nearby_entities) do
+      if string.match(ent:GetName(), own_base_name) then
+        return true
+      end
+    end
+  end
+  return false
 end
