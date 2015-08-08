@@ -1,5 +1,7 @@
 function OnStartTouch(trigger)
- 	trigger.activator.currentArea = trigger.caller
+ 	Timers:CreateTimer(0.03, function ()
+ 		trigger.activator.currentArea = trigger.caller
+ 	end)
 end
  
 function OnEndTouch(trigger)

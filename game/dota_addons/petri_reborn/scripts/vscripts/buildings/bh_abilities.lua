@@ -45,9 +45,25 @@ function build( keys )
 	end)
 
 	keys:OnPreConstruction(function ()
-        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost then
+        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost 
+        	then
         	return false
 		else
+			if caster.currentArea ~= nil then
+				if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
+
+					if caster.currentArea.claimers == nil then 
+						Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
+					end
+
+					keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
+					if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
+				else
+					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
+					return false
+				end
+			end
+			
 			SpendLumber(player, lumber_cost)
 			SpendFood(player, food_cost)
 
@@ -108,37 +124,6 @@ function build( keys )
 
 		if unit.controllableWhenReady then
 			unit:SetControllableByPlayer(keys.caster:GetPlayerOwnerID(), true)
-		end
-		
-		if caster.currentArea ~= nil then
-			if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
-
-				if caster.currentArea.claimers == nil then 
-					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
-				end
-
-				keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
-				if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
-			else
-				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
-
-				--RETURN
-				PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
-				
-				if hero.lumber ~= nil then
-				    hero.lumber = hero.lumber + lumber_cost
-				end
-
-				if hero.food ~= nil then
-				    hero.food = hero.food - food_cost
-				end
-			
-				EndCooldown(caster, ability_name)
-				--RETURN
-
-				-- Destroy unit
-				DestroyEntityBasedOnHealth(caster,unit)
-			end
 		end
 	end)
 
