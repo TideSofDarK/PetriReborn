@@ -1,7 +1,7 @@
 "AddonInfo"
 {
 	"TeamCount"		"2"
-	"template_map"
+	"petri_alpha"
 	{
 		"MaxPlayers"		"10"
 	}

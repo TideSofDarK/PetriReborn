@@ -17,7 +17,7 @@ function Gather( event )
 	caster.manual_order = false
 
 	if target_class == "ent_dota_tree" then
-		caster:MoveToTargetToAttack(target)
+		caster:MoveToNPC(target)
 		if Debug_Peasant then
 			print("Moving to ", target_class)
 		end
@@ -50,14 +50,23 @@ end
 function ToggleOffGather( event )
 	local caster = event.caster
 	local gather_ability = caster:FindAbilityByName("gather_lumber")
-	
-	caster.target_tree.worker = nil
 
-	if gather_ability:GetToggleState() == true then
-		gather_ability:ToggleAbility()
+	--print(caster.lastOrder)
 
-		if Debug_Peasant then
-			print("Toggled Off Gather")
+	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET 
+	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
+		if event["arg"] then
+			caster:RemoveModifierByName(event["arg"])
+		end
+		
+		caster.target_tree.worker = nil
+
+		if gather_ability:GetToggleState() == true then
+			gather_ability:ToggleAbility()
+
+			if Debug_Peasant then
+				print("Toggled Off Gather")
+			end
 		end
 	end
 end
@@ -66,14 +75,17 @@ end
 function ToggleOffReturn( event )
 	local caster = event.caster
 	local return_ability = caster:FindAbilityByName("return_resources")
-
-	if return_ability:GetToggleState() == true then 
-		return_ability:ToggleAbility()
-		if Debug_Peasant then
-			print("Toggled Off Return")
+	
+	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
+		if return_ability:GetToggleState() == true then 
+			return_ability:ToggleAbility()
+			if Debug_Peasant then
+				print("Toggled Off Return")
+			end
 		end
+		caster.skip_order = false
 	end
-	caster.skip_order = false
 end
 
 function CheckTreePosition( event )
@@ -84,7 +96,7 @@ function CheckTreePosition( event )
 	local target_class = target:GetClassname()
 
 	if target_class == "ent_dota_tree" then
-		caster:MoveToTargetToAttack(target)
+		caster:MoveToPosition(target:GetAbsOrigin())
 		--print("Moving to "..target_class)
 	end
 
@@ -106,7 +118,11 @@ function Gather100Lumber( event )
 	local caster = event.caster
 	local ability = event.ability
 
-	local hero = caster:GetPlayerOwner():GetAssignedHero()
+	if caster == nil then
+		return
+	end
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
 	local max_lumber_carried = 200
 	local single_chop = 100
@@ -146,10 +162,16 @@ function Gather100Lumber( event )
 			end
 			--ability:SetHidden(true)
 
-			caster:SwapAbilities("gather_lumber", "return_resources", false, true)
+			if  caster:FindAbilityByName("gather_lumber"):IsHidden() and
+				 caster:FindAbilityByName("return_resources"):IsHidden() then
+
+			else
+				caster:SwapAbilities("gather_lumber", "return_resources", false, true)
+			end
+			
 		end
 	else
-		local player = caster:GetPlayerOwner():GetPlayerID()
+		local player = caster:GetPlayerOwnerID()
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
 
@@ -188,7 +210,7 @@ function ReturnResources( event )
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = fixed_position, Queue = false}) 
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
 		caster.skip_order = true
 		caster.target_building = building
 	end
@@ -200,19 +222,19 @@ function CheckBuildingPosition( event )
 	local target = caster.target_building -- Index building so we know which target to start with
 	local ability = event.ability
 
-	if not target or not caster then
-		-- caster:RemoveModifierByName("modifier_chopping_wood")
-		-- caster:RemoveModifierByName("modifier_gathering_lumber")
-		-- caster:RemoveModifierByName("modifier_chopping_wood_animation")
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	if not target or not caster or not caster.target_building then
+		return
+	end
+
+	if target:IsNull() or caster:IsNull() or caster.target_building:IsNull() then
 		return
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance <= (caster.target_building:GetHullRadius()+100)
-	if not collision then
-		--print("Moving to building, distance: ",distance)
-	else
-		local hero = caster:GetOwner()
+	local collision = distance <= (caster.target_building:GetHullRadius()+155)
+	if collision and hero then
 		local pID = hero:GetPlayerID()
 		caster:RemoveModifierByName("modifier_returning_resources")
 		if Debug_Peasant then
@@ -223,8 +245,6 @@ function CheckBuildingPosition( event )
 			if Debug_Peasant then
 				print("Reached building, give resources")
 			end
-
-			local hero = caster:GetPlayerOwner():GetAssignedHero()
  
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
@@ -246,7 +266,14 @@ function CheckBuildingPosition( event )
     		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
     		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
 
-    		caster:SwapAbilities("gather_lumber", "return_resources", true, false)
+    		if caster:FindAbilityByName("gather_lumber"):IsHidden() and
+				caster:FindAbilityByName("return_resources"):IsHidden() then
+
+			else
+				caster:SwapAbilities("gather_lumber", "return_resources", true, false)
+			end
+
+    		
 		end
 
 		-- Return Ability Off
@@ -362,6 +389,24 @@ function CheckRepairingTargetPosition( event )
 	end
 end
 
+function RepairingAutocast( event )
+	local caster = event.caster
+	local ability = event.ability
+
+	if ability:GetAutoCastState() and not ability:GetToggleState() then
+		local units = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, 250, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+
+		for k,v in pairs(units) do
+			if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
+				if v:HasAbility("petri_building") and v:GetHealthPercent() ~= 100 then
+					caster:CastAbilityOnTarget(v, ability, caster:GetPlayerOwnerID())
+					break
+				end
+			end
+		end
+	end
+end
+
 function ToggleOffRepairing( event )
 	local caster = event.caster
 	local repair_ability = caster:FindAbilityByName("petri_repair")
@@ -379,6 +424,18 @@ function RepairBy1Percent( event )
 	local ability = event.ability
 	local target = caster.repairingTarget
 
+	if not target or not target:IsAlive() then 
+		ability:ToggleAbility()
+
+		caster:RemoveModifierByName("modifier_chopping_building")
+		caster:RemoveModifierByName("modifier_repairing")
+		caster:RemoveModifierByName("modifier_chopping_building_animation")
+
+		RepairingAutocast( event )
+		
+		return false 
+	end
+
 	local health = target:GetHealth()
 	local maxHealth = target:GetMaxHealth()
 
@@ -393,6 +450,8 @@ function RepairBy1Percent( event )
 		caster:RemoveModifierByName("modifier_chopping_building")
 		caster:RemoveModifierByName("modifier_repairing")
 		caster:RemoveModifierByName("modifier_chopping_building_animation")
+
+		RepairingAutocast( event )
 	end
 end
 

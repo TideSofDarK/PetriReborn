@@ -17,7 +17,7 @@
   // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
   "UnitName"            "npc_petri_tower_of_evil"
   "AbilityCooldown"       "0"
-  "AbilityGoldCost"       "10"
+  "AbilityGoldCost"       "350"
   // End of BuildingHelper info
 
   "AbilityCastPoint"        "0.0"
@@ -31,7 +31,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+      "ScriptFile"      "buildings/bh_abilities.lua"
       "Function"        "build"
     }
   }

@@ -6,6 +6,7 @@ function OnStartTouch(trigger)
  			FindClearSpaceForUnit(trigger.activator, trigger.activator.spawnPosition, false)
 	 		Timers:CreateTimer(0.03, function()
 	 			MoveCamera(trigger.activator:GetPlayerOwnerID(),trigger.activator)
+	 			trigger.activator:Stop()
 	 		end)
 	 		
 

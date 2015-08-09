@@ -1,7 +1,6 @@
 "npc_petri_mini_actor"
 {
   "override_hero"     "npc_dota_hero_storm_spirit"
-  "SoundSet"          "0" 
 
   "HasInventory"          "1"
   "ConsideredHero"        "1"
@@ -13,9 +12,6 @@
   "Ability3"        "petri_petrosyan_wind_walk"
   "Ability4"        "petri_petrosyan_return"
 
-  "MinimapIcon"               "minimap_candybucket"
-  "MinimapIconSize"           "1000"
-
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"
 
@@ -25,15 +21,15 @@
   "AttackDamageMax"     "2"
   "AttackRate" "0.56"
 
-  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
-  "AttributeStrengthGain"   "0.1"
+  "AttributeStrengthGain"   "0.8"
   "AttributeBaseIntelligence" "1"
   "AttributeIntelligenceGain" "0.25"
   "AttributeBaseAgility"    "1"
   "AttributeAgilityGain"    "0.25"
 
-  "BountyXP"          "50"                 
+  "BountyXP"          "0"                 
   "BountyGoldMin"       "10"                   
   "BountyGoldMax"       "20"     
   "BountyGain"                "0"              

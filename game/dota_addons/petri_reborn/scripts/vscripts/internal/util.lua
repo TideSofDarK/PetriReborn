@@ -1,3 +1,76 @@
+-- NETTABLES
+function GetKeyInNetTable(pID, nettable, k)
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+
+  return tempTable[k]
+end
+
+function AddKeyToNetTable(pID, nettable, k, v)
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+
+  tempTable[k] = v
+
+  CustomNetTables:SetTableValue(nettable, tostring(pID), tempTable);
+end
+-- NETTABLES
+
+-- ITEMS
+function GetItemByID(id)
+  for k,v in pairs(GameMode.ItemKVs) do
+    if tonumber(v["ID"]) == id then return v end
+  end
+end
+
+function CheckShopType(item)
+  for k,v in pairs(GameMode.ItemKVs) do
+    if k == item then 
+      if v["SideShop"] then return 1
+      elseif v["SecretShop"] then return 2
+      else return 0 end
+    end
+  end
+end
+-- ITEMS
+
+function ToggleAbilityOff(ability)
+  if ability:GetToggleState() == true then 
+      ability:ToggleAbility()  
+  end
+end
+
+function GetPresentAbilities(unit, layout)
+  local abilities = {}
+  for i=0, unit:GetAbilityCount()-1 do
+    if unit:GetAbilityByIndex(i) then
+      if not unit:GetAbilityByIndex(i):IsHidden() then
+        abilities[(#abilities + 1)] = unit:GetAbilityByIndex(i):GetName()
+        if #abilities == layout then break end
+      end
+    end 
+  end
+  return abilities
+end
+
+function IsHiddenBehavior(ability)
+  local behavior = GameMode.AbilityKVs[ability]["AbilityBehavior"]
+  print(behavior)
+  return string.match(behavior, "DOTA_ABILITY_BEHAVIOR_HIDDEN")
+end
+
+function HideIfMaxLevel(ability)
+  if ability:GetMaxLevel() == ability:GetLevel() then
+    ability:SetHidden(true)
+  end
+end
+
+function FindAllByUnitName(name, pID, ignore)
+  local entities = {}
+  for k,v in pairs(Entities:FindAllByClassname("npc_dota_base_additive")) do
+    if v:GetUnitName() == name and v:GetPlayerOwnerID() == pID and v ~= ignore then entities[k] = v end
+  end
+  return entities
+end
+
 function Split(s, delimiter)
     result = {}
     for match in (s..delimiter):gmatch("(.-)"..delimiter) do
@@ -14,15 +87,31 @@ function CheckKVN()
   return true
 end
 
+-- Cooldowns
+function StartCooldown(caster, ability_name)
+  if caster:FindAbilityByName(ability_name) ~= nil then
+    caster:FindAbilityByName(ability_name):StartCooldown(caster:FindAbilityByName(ability_name):GetCooldown(0))
+  else
+    caster:AddAbility(ability_name)
+    if caster:FindAbilityByName(ability_name) ~= nil then
+      caster:FindAbilityByName(ability_name):StartCooldown(caster:FindAbilityByName(ability_name):GetCooldown(0))
+      caster:RemoveAbility(ability_name)
+    end
+  end
+end
+
 function EndCooldown(caster, ability_name)
   if caster:FindAbilityByName(ability_name) ~= nil then
     caster:FindAbilityByName(ability_name):EndCooldown()
   else
     caster:AddAbility(ability_name)
-    caster:FindAbilityByName(ability_name):EndCooldown()
-    caster:RemoveAbility(ability_name)
+    if caster:FindAbilityByName(ability_name) ~= nil then
+      caster:FindAbilityByName(ability_name):EndCooldown()
+      caster:RemoveAbility(ability_name)
+    end
   end
 end
+-- Cooldowns
 
 function DestroyEntityBasedOnHealth(killer, target)
   local damageTable = {
@@ -53,11 +142,16 @@ end
 
 -- Upgrades
 
+function GetUpgradeLevelForPlayer(upgrade, pID)
+  return CustomNetTables:GetTableValue("players_upgrades", tostring(pID))[upgrade]
+end
+
 function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = caster:GetPlayerOwner():GetAssignedHero()
+  local pID = hero:GetPlayerOwnerID()
 
   local level = ability:GetLevel() - 1
 
@@ -66,7 +160,8 @@ function StartUpgrading (event)
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
-    or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false then 
+    or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false then 
     Timers:CreateTimer(0.06,
       function()
           PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
@@ -82,8 +177,20 @@ function StartUpgrading (event)
     caster.lastSpentFood = food_cost
 
     caster.foodSpent = caster.foodSpent + food_cost
+    
+    if not event["Permanent"] then
+      ability:SetHidden(true)
+    else 
+      local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+      local abilityName = ability:GetName()
 
-    ability:SetHidden(true)
+      for k,v in pairs(all) do
+        if v:HasAbility(abilityName) then
+          local a = v:FindAbilityByName(abilityName)
+          a:SetHidden(true)
+        end
+      end
+    end
   end
 end
 
@@ -105,7 +212,19 @@ function StopUpgrading(event)
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
-  ability:SetHidden(false)
+  if not event["Permanent"] then
+    ability:SetHidden(false)
+  else 
+    local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+    local abilityName = ability:GetName()
+
+    for k,v in pairs(all) do
+      if v:HasAbility(abilityName) then
+        local a = v:FindAbilityByName(abilityName)
+        a:SetHidden(false)
+      end
+    end
+  end
 end
 
 function OnUpgradeSucceeded(event)
@@ -113,6 +232,7 @@ function OnUpgradeSucceeded(event)
   local ability = event.ability
 
   local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local pID = caster:GetPlayerOwnerID()
 
   local level = ability:GetLevel()
 
@@ -122,10 +242,42 @@ function OnUpgradeSucceeded(event)
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
-  if level+1 == ability:GetMaxLevel() then
-    ability:SetHidden(true)
+  if caster:HasAbility("petri_upgrade") == false then
+    caster:AddAbility("petri_upgrade")
+    caster:FindAbilityByName("petri_upgrade"):ApplyDataDrivenModifier(caster, caster, "modifier_upgrade", {})
+    caster:SetModifierStackCount("modifier_upgrade", caster, 1)
+  end
+  
+  caster:SetModifierStackCount("modifier_upgrade", caster, caster:GetModifierStackCount("modifier_upgrade", caster) + 1)
+
+  AddEntryToDependenciesTable(pID, ability:GetName(), ability:GetLevel())
+
+  if event["Permanent"] then
+    local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))
+    tempTable[ability:GetName()] = tempTable[ability:GetName()] + 1
+    CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), tempTable );
+
+    local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
+    local abilityName = ability:GetName()
+
+    for k,v in pairs(all) do
+      if v:HasAbility(abilityName) then
+        local a = v:FindAbilityByName(abilityName)
+        a:SetLevel(level+1)
+
+        if level+1 == a:GetMaxLevel() then
+          a:SetHidden(true)
+        else 
+          a:SetHidden(false)
+        end
+      end
+    end
   else 
-    ability:SetHidden(false)
+    if level+1 == ability:GetMaxLevel() then
+      ability:SetHidden(true)
+    else 
+      ability:SetHidden(false)
+    end
   end
 end
 
@@ -174,7 +326,11 @@ function CheckFood( player, food_amount, notification)
   if food_amount == 0 then return true end
   local enough = hero.food + food_amount <= Clamp(hero.maxFood,10,250)
   if enough ~= true and notification == true then 
-    Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+    if hero.food == 250 then
+      Notifications:Bottom(player:GetPlayerID(), {text="#food_limit_is_reached", duration=2, style={color="red", ["font-size"]="35px"}})
+    else 
+      Notifications:Bottom(player:GetPlayerID(), {text="#need_more_food", duration=2, style={color="red", ["font-size"]="35px"}})
+    end
   end
   return enough
 end

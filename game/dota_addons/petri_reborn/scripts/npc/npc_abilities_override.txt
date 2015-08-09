@@ -2,19 +2,7 @@
 {
   "Version"   "1"
 
-  "item_petri_kvn_fan_blink"
-  {
-    "ItemPurchasable"                "0"
-    "ItemDroppable"                    "0"
-  }
-
   "item_petri_give_permission_to_build"
-  {
-    "ItemPurchasable"                "0"
-    "ItemDroppable"                    "0"
-  }
-
-  "item_petri_gold_bag"
   {
     "ItemPurchasable"                "0"
     "ItemDroppable"                    "0"

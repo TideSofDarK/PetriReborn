@@ -56,7 +56,7 @@
 	  // BuildingHelper info
 	  "Building"            "1" //bool
 	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
-	  "BuildTime"           "540.0"
+	  "BuildTime"           "600.0"
 	  "AbilityCastRange"        "100"
 	  "UpdateHealth"          "1" //bool
 	  "Scale"             "1" //bool
@@ -65,7 +65,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_exit"
 	  "AbilityCooldown"       "480.0"
-	  "AbilityGoldCost"       "5000"
+	  "AbilityGoldCost"       "5750"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -79,7 +79,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -116,7 +116,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -166,7 +166,54 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
+	"build_petri_idol"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "build_petri_idol"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "lumber_cost" "5000"
+	    }
+	  }
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "6.5"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_idol"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "100"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -199,7 +246,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_lab"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "0"
+	  "AbilityGoldCost"       "25"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -213,7 +260,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -251,7 +298,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -289,7 +336,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -336,7 +383,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -360,7 +407,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_tower_of_evil"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "10"
+	  "AbilityGoldCost"       "350"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -374,7 +421,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -420,7 +467,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"      "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
 	  }
@@ -488,16 +535,12 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }  
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_gathering_lumber"
-	          "Target"    "CASTER"
-	        }
 	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_gathering_lumber"
 	        }
 	      }
 	      
@@ -516,15 +559,11 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }    
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_chopping_wood"
-	          "Target"    "CASTER"
-	        }
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_chopping_wood"
 	        }
 	      }
 	
@@ -557,15 +596,12 @@
 	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
 	          "Target"    "CASTER"
 	        }  
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_chopping_wood_animation"
-	          "Target"    "CASTER"
-	        }
+	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffGather"
+	          "arg" "modifier_chopping_wood_animation"
 	        }
 	      }
 	    }
@@ -574,7 +610,7 @@
 	// START OF BUILDING HELPER ABILITIES
 	"has_build_queue"
 	{
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass" "ability_datadriven"
 	
 	  "Modifiers"
@@ -587,7 +623,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	          "ScriptFile"  "buildings/bh_abilities.lua"
 	          "Function"    "builder_queue"
 	        }
 	      }
@@ -611,7 +647,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -633,7 +669,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -655,7 +691,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -677,7 +713,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -699,7 +735,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -722,7 +758,7 @@
 	    "RunScript"
 	    {
 	      "Target"    "POINT"
-	      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+	      "ScriptFile"  "buildings/bh_abilities.lua"
 	      "Function"    "create_building_entity"
 	    }
 	  }
@@ -732,7 +768,7 @@
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      ""
-	
+	  
 	  "Modifiers"
 	  {
 	    "unit_properties"
@@ -755,97 +791,37 @@
 	    }
 	  }
 	}
-	"petri_dummy_invisibility"
+	"petri_buy_lumber"
 	{
-	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
-	  "AbilityTextureName" "undying_tombstone"
-	  
-	  "Modifiers"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_buy_lumber"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown" "0.1"
+	
+	  "AbilityGoldCost" "125"
+	
+	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
 	  {
-	    "unit_properties"
+	    "01"
 	    {
-	      "Passive" "1"
-	      
-	      "States"
-	      {
-	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
-	      }
-	    } 
-	    "modifier_truesight_datadriven"
-	    {
-	      "Passive"     "1"
-	      "IsHidden"      "1"
-	  
-	      "ThinkInterval"  "0.03"
-	      "OnIntervalThink"
-	      {
-	        "ActOnTargets"
-	        {
-	          "Target"
-	          {
-	            "Center"    "TARGET"
-	            "Radius"  "1800"
-	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	            "Types"   "DOTA_UNIT_TARGET_ALL"
-	          }
-	        
-	          "Action"    
-	          {
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_invisibility"
-	              "Target"    "TARGET"
-	            }
-	
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_wind_walk"
-	              "Target"    "TARGET"
-	            }
-	
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_invisible"
-	              "Target"    "TARGET"
-	            }
-	          }
-	        }     
-	      }   
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber"      "10000"
 	    }
-	  }   
-	}
+	  }
 	
-	"petri_invisibility"
-	{
-	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName" "riki_permanent_invisibility"
-	  
-	  "Modifiers"
+	  "OnSpellStart"
 	  {
-	    "modifier_invisibility"
+	    "RunScript"
 	    {
-	      "Passive" "1"
-	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-	
-	      "States"
-	      {
-	        "MODIFIER_STATE_INVISIBLE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_DISABLED"
-	      }
+	      "ScriptFile"      "units/sawmill.lua"
+	      "Function"        "BuyLumber"
 	    }
-	  }  
+	  }
 	}
 	"petri_empty1"
 	{
@@ -899,17 +875,26 @@
 	"petri_exit"
 	{
 	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "AbilityTextureName" ""
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "build_petri_exit"
 	
-	  "OnSpellStart"
+	  "Modifiers"
 	  {
-	    "RunScript"
+	    "modifier_exit"
 	    {
-	      "ScriptFile"  "gamemode.lua"
-	      "Function"    "KVNWin"
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "gamemode.lua"
+	          "Function"    "KVNWin"
+	        }
+	      }
 	    }
-	  } 
+	  }
 	}
 	"petri_exploration_tower_explore_world"
 	{
@@ -982,7 +967,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "2 4 5 6 7 10 12 14"
+	      "gold"      "1 2 4 5 6 7 10 12 14"
 	    }
 	  }
 	
@@ -1020,7 +1005,7 @@
 	        }
 	      }
 	
-	      "ThinkInterval" "2.05" // Bad solution
+	      "ThinkInterval" "1.03" // Bad solution
 	      "OnIntervalThink"
 	      {
 	        "RunScript"
@@ -1100,6 +1085,20 @@
 	  "AbilityCastPoint"        "0.0"
 	
 	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_rate"      "77"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_limit"      "295"
+	    }
+	  }
 	
 	  "OnUpgrade"
 	  {
@@ -1189,7 +1188,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+	      "ScriptFile"  "items/dagger.lua"
 	      "Function"    "Blink"
 	      "Target"    "POINT"
 	    }
@@ -1207,45 +1206,157 @@
 	    }
 	  }
 	}
-	"petri_janitor_truesight"
+	"petri_dummy_invisibility"
 	{
-	  "BaseClass"       "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName"      "undying_tombstone"
-	
-	  "MaxLevel"            "1"
-	
-	  "OnSpellStart"
-	  {
-	    "FireEffect"
-	    {
-	      "EffectName"    "particles/units/heroes/hero_clinkz/clinkz_windwalk.vpcf"
-	      "EffectAttachType"  "attach_origin"
-	      "Target"      "CASTER"
-	    }
-	
-	    "ApplyModifier"
-	    {
-	      "Target"    "CASTER"
-	      "ModifierName"  "modifier_wind_walk_fade"
-	      "Duration"    "%fade_time"
-	    }
-	  }
-	
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	  "AbilityTextureName" "undying_tombstone"
+	  
 	  "Modifiers"
 	  {
 	    "unit_properties"
 	    {
 	      "Passive" "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "States"
 	      {
+	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_INVISIBLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    } 
-	  } 
+	    "modifier_truesight_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"  "1800"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_ALL"
+	          }
+	        
+	          "Action"    
+	          {
+	            "RemoveModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	
+	            "ApplyModifier"
+	            {
+	              "ModifierName"  "modifier_truesight_reveal"
+	              "Target"    "TARGET"
+	            }
+	          }
+	        }     
+	      }   
+	    }
+	
+	    "modifier_truesight_reveal"
+	    {
+	      "IsHidden"      "1"
+	      "Duration"      "0.5"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+	      }
+	    }
+	  }   
+	}
+	
+	"petri_janitor_invisibility"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_janitor_invisibility"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }  
+	}
+	
+	"petri_invisibility"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_invisibility"
+	    {
+	      "Passive" "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "OnCreated"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName" "modifier_invisible"
+	          "Target" "CASTER" 
+	        }
+	      } 
+	    }
+	  }  
+	}
+	
+	"petri_dummy_portal_icon_passive"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_invisibility"
+	    {
+	      "Passive" "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }  
 	}
 	"petri_open_basic_buildings_menu"
 	{
@@ -1263,7 +1374,7 @@
 	      "ScriptFile"      "units/kvn_fan.lua"
 	      "Function"        "OpenBasicBuildingsMenu"
 	    }
-	  }
+	  } 
 	}
 	
 	"petri_open_advanced_buildings_menu"
@@ -1355,6 +1466,27 @@
 	      "Function"    "Deny"
 	    }
 	  }
+	}
+	"petri_magic_immune"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityTextureName" "riki_permanent_invisibility"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_magic_immune"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }  
 	}
 	"petri_petrosyan_explore"
 	{
@@ -1454,7 +1586,7 @@
 						    "StartPosition"  	"follow_origin"
 						    "FixedDistance"  	"1000"
 						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
 						    "HasFrontalCone" 	"1"
 						    "ProvidesVision" 	"0"
 							}     
@@ -1802,7 +1934,7 @@
 	  "AbilityTextureName"      "petri_repair"
 	  "MaxLevel"            "1"
 	
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 	
@@ -1817,6 +1949,31 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_repairing_autocast_aura"
+	    {
+	      "Passive" "1"
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/peasant.lua"
+	          "Function"      "RepairingAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "3"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/peasant.lua"
+	          "Function"      "RepairingAutocast"
+	        }
+	      }
+	    }
+	
 	    "modifier_repairing"
 	    {
 	      "IsHidden"        "1"
@@ -1934,6 +2091,68 @@
 	    }
 	  }
 	}
+	"petri_trap"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+	  "AbilityTextureName" "techies_stasis_trap"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_trap"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	  
+	      "ThinkInterval"  "0.03"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"  "100"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_HERO"
+	          }
+	          
+	          "Action"
+	          {
+	            "RunScript"
+	            {
+	              "ScriptFile"  "units/trap.lua"
+	              "Function"    "AddTrap"
+	              "Target"  "TARGET"
+	            }
+	            "RemoveModifier"
+	            {
+	              "ModifierName"  "modifier_trap"
+	              "Target"     "CASTER"
+	            }
+	          }      
+	        }     
+	      }   
+	    }
+	  }   
+	}
+	"petri_upgrade"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      ""
+	  
+	  "Modifiers"
+	  {
+	    "modifier_upgrade"
+	    {
+	      "Passive"     "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+	    }
+	  }
+	}
 	"petri_upgrade_basic_tower"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -2030,6 +2249,11 @@
 	  "AbilityChannelTime"      "2.0"
 	  "AbilityGoldCost"       "0"
 	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+	  }
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -2088,6 +2312,13 @@
 	      "Passive"  "0"
 	      "IsHidden" "1"
 	
+	      "Orb"
+	      {
+	        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+	        "ProjectileName"    "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+	        "CastAttack"      "0"
+	      }
+	
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_rate"
@@ -2113,7 +2344,7 @@
 	
 	  "precache"
 	  {
-	    "particle"  "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
+	    "particle"  "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
 	  }
 	
 	  "AbilitySpecial"
@@ -2194,6 +2425,14 @@
 	      "Passive"  "0"
 	
 	      "IsHidden"   "1"
+	
+	      "Orb"
+	      {
+	        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+	        "ProjectileName"    "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+	        "CastAttack"      "0"
+	      }
+	
 	      "OnAttackStart"
 	      {
 	        "Random"
@@ -2220,13 +2459,7 @@
 	      }
 	      
 	      "OnAttackLanded"
-	      {
-	        "FireEffect"
-	        {
-	          "EffectName"     "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
-	          "EffectAttachType"   "follow_origin"
-	          "Target"       "TARGET"
-	        } 
+	      { 
 	        "RemoveModifier"
 	        {
 	          "ModifierName"    "creep_crit"
@@ -2344,15 +2577,15 @@
 	        "RunScript"
 	        {
 	          "ScriptFile"      "units/tower.lua"
-	          "Function"        "modifier_skadi_on_orb_impact"
-	          "ColdDurationMelee"   "4"
-	          "ColdDurationRanged"  "4"
+	          "Function"        "IceTowerOnOrbImpact"
+	          "ColdDuration"   "4"
 	        }
 	      }
 	    }
 	    "modifier_skadi_cold_attack"
 	    {
 	      "Passive"       "0"
+	      "IsDebuff"      "1"
 	      "IsHidden"        "0"
 	      
 	      "StatusEffectName"     "particles/status_fx/status_effect_frost.vpcf"
@@ -2504,23 +2737,23 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "50 100 125 150 175 200 250 500 750 800 900 1100 1700"
-	  "AbilityChannelTime"      "2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8"
+	  "AbilityGoldCost"       "50 100 125 150 175 200 250 500 750 800 900 1100 1700 2500"
+	  "AbilityChannelTime"      "2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9"
 	
-	  "MaxLevel"            "14"
+	  "MaxLevel"            "15"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000 120000"
+	      "lumber_cost"        "2500 5000 8500 11500 16000 21000 27500 36000 50000 75000 100000 120000 150000 190000"
 	    }
 	
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_armor_percent"  "0 90 180 270 360 450 660 1100 1500 1900 2300 2700 3200"
+	      "bonus_armor"  "45 90 180 270 360 450 660 1100 1500 1900 2300 2700 3200 4000"
 	    }
 	    "03"
 	    {
@@ -2535,6 +2768,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	
@@ -2544,6 +2778,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	  
@@ -2558,6 +2793,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
 	    }
 	  }
 	
@@ -2579,12 +2815,12 @@
 	    }
 	    "modifier_concrete"
 	    {
-	      "Passive"  "0"
+	      "Passive"  "1"
 	      "IsHidden" "1"
 	
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor_percent"
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
 	      }
 	    }
 	  }
@@ -2682,6 +2918,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	
@@ -2691,6 +2928,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	  
@@ -2705,6 +2943,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
 	    }
 	  }
 	}
@@ -2840,19 +3079,19 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 99999"
+	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 10000"
 	    }
 	
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_damage"  "0 20 45 90 120 155 195 275 385 450 550 650"
+	      "bonus_damage"  "10 20 45 90 120 155 195 275 385 450 550 650"
 	    }
 	
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_range"  "0 10 20 30 40 50 60 70 80 90 100 110"
+	      "bonus_range"  "5 10 20 30 40 50 60 70 80 90 100 110"
 	    }
 	
 	   "04"
@@ -2868,6 +3107,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	
@@ -2877,6 +3117,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
 	    }
 	  }
 	  
@@ -2891,6 +3132,7 @@
 	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
 	    }
 	  }
 	
@@ -2917,8 +3159,17 @@
 	
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "%bonus_damage"
-	        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "%bonus_range"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    "1"
+	      }
+	    }
+	    "modifier_range"
+	    {
+	      "Passive"  "0"
+	      "IsHidden" "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS" "1"
 	      }
 	    }
 	  }
@@ -2932,31 +3183,31 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "25 50 75 150"
+	  "AbilityGoldCost"       "1000 2000 3000 4000"
 	
 	  "AbilityManaCost"       "0"
 	  
 	  "AbilityChannelTime"      "1.0"
 	  "AbilityUpgradeGoldCost"    "0"
 	
-	  "MaxLevel"            "5"
+	  "MaxLevel"            "4"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "0 0 0 0"
+	      "lumber_cost"        "35000 70000 140000 200000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "17 56 115 175"
+	      "attack"        "1350 2425 4250 5900"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "40 60 90 120"
+	      "attack_rate"        "80 120 160 200"
 	    }
 	  }
 	
@@ -3018,7 +3269,7 @@
 	
 	  "MaxLevel"            "10"
 	
-	  "AbilityChannelTime"      "6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0 100.0"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0"
 	  "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 5750"
 	
 	  "AbilitySpecial"
@@ -3031,12 +3282,12 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 800 1100 1450 2400 4400 7050"
+	      "health_points"        "270 380 590 800 1100 1450 2400 4400 6050"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "1 50 750 1000 1300 1600 2000 5000 7260"
+	      "armor"        "125 350 875 1300 1700 2200 4000 6000 8000"
 	    }
 	  }
 	
@@ -3074,6 +3325,20 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_wall_notification"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	
+	      "OnAttacked"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/wall.lua"
+	          "Function"    "Notification"
+	        }
+	      }
+	    }
 	    "modifier_armor"
 	    {
 	      "IsPassive"  "1"
@@ -3081,7 +3346,7 @@
 	
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
 	      }
 	    }
 	  }

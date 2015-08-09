@@ -1,7 +1,6 @@
 "npc_petri_kvn_fan"
 {
   "override_hero"     "npc_dota_hero_rattletrap"
-  "SoundSet"          "0" 
 
   "AbilityLayout"     "6"
 
@@ -35,7 +34,7 @@
   //"RingRadius"        "70"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-  "MovementSpeed"       "600"   
+  "MovementSpeed"       "422"   
   "MovementTurnRate"      "1.0" 
 
   "StatusHealth"        "10"          
@@ -47,6 +46,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior" "1"
+    "DisableClumpingBehavior" "0"
   }
 }

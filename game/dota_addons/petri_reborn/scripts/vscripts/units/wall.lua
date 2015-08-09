@@ -67,7 +67,9 @@ function UpdateAttributes(wall, level, ability)
 		wall:SetHealth(newHealth)
 	end
 
+	wall:RemoveModifierByName("modifier_armor")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_armor", {})
+	wall:SetModifierStackCount("modifier_armor", wall, newArmor)
 end
 
 function GetModelNameForLevel(level)
@@ -90,4 +92,19 @@ function GetModelNameForLevel(level)
 	elseif level == 9 then
 		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
 	end
+end
+
+function Notification(keys)
+	local caster = keys.caster
+	local origin = caster:GetAbsOrigin()
+	caster.lastWallIsUnderAttackNotification = caster.lastWallIsUnderAttackNotification or 0
+
+	if GameRules:GetGameTime() - caster.lastWallIsUnderAttackNotification > 15.0 then
+		EmitSoundOnClient("General.PingDefense", caster:GetPlayerOwner())
+		caster.lastWallIsUnderAttackNotification = GameRules:GetGameTime()
+	end
+
+	caster.lastWallIsUnderAttackNotification = caster.lastWallIsUnderAttackNotification or 0
+	
+	MinimapEvent(DOTA_TEAM_GOODGUYS, caster, origin.x, origin.y, DOTA_MINIMAP_EVENT_ENEMY_TELEPORTING, 1 )
 end

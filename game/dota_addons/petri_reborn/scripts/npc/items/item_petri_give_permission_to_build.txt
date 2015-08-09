@@ -11,12 +11,13 @@
   "AbilityCastRange" "150"
 
   "ItemPermanent"         "0"
+  "ItemSellable"                  "0"
 
   "OnSpellStart"
   {
     "RunScript"
     {
-      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+      "ScriptFile"  "units/kvn_fan.lua"
       "Function"    "GivePermissionToBuild"
     }
   }

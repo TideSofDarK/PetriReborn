@@ -21,99 +21,11 @@ function GameMode:OnGameRulesStateChange(keys)
 
   -- This internal handling is used to set up main barebones functions
   GameMode:_OnGameRulesStateChange(keys)
-
-  -- local newState = GameRules:State_Get()
-
-  -- if GameRules:State_Get() == 2 then
-  --   local players = {}
-  --   for i=1,10 do
-  --     local pID = i-1
-  --     local player = PlayerResource:GetPlayer(pID)
-  --     local team = PlayerResource:GetTeam(pID)
-
-  --     if player == nil then
-  --       goto continue
-  --     end
-
-  --     if team == DOTA_TEAM_GOODGUYS then
-  --       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-  --       function() 
-  --         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
-
-  --         newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
-
-  --         InitAbilities(newHero)
-
-  --         newHero:SetAbilityPoints(0)
-
-  --         newHero:AddItemByName("item_petri_kvn_fan_blink")
-  --         newHero:AddItemByName("item_petri_give_permission_to_build")
-  --         newHero:AddItemByName("item_petri_gold_bag")
-
-  --         newHero.spawnPosition = newHero:GetAbsOrigin()
-
-  --         newHero:SetGold(10, false)
-
-  --         player.lumber = 150
-  --       end, pID)
-  --     elseif team == DOTA_TEAM_BADGUYS then
-  --       PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
-  --       function() 
-  --         newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
-  --         newHero:SetControllableByPlayer(pID, true)
-  --         newHero:SetPlayerID(pID)
-
-  --         -- It's dangerous to go alone, take this
-  --         newHero:SetAbilityPoints(4)
-  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
-  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-  --         newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
-
-  --         newHero:SetGold(32, false)
-
-  --         newHero.spawnPosition = newHero:GetAbsOrigin()
-
-  --         if GameRules.explorationTowerCreated == nil then
-  --           GameRules.explorationTowerCreated = true
-  --           Timers:CreateTimer(0.2,
-  --           function()
-  --             CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
-  --             end)
-  --         end
-  --       end, pID)
-  --     end
-
-  --     -- We don't need 'undefined' variables
-  --     player.food = 0
-  --     player.maxFood = 10
-  --     player.lumber = player.lumber or 0
-
-  --     --Send lumber and food info to users
-  --     CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
-
-  --     --Update player's UI
-  --     Timers:CreateTimer(0.03,
-  --     function()
-  --       local event_data =
-  --       {
-  --           gold = PlayerResource:GetGold(player:GetPlayerID()),
-  --           lumber = player.lumber,
-  --           food = player.food,
-  --           maxFood = player.maxFood
-  --       }
-  --       CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-  --       return 0.35
-  --     end)
-
-  --     ::continue::
-  --   end
-  -- end
 end
 
-function GameMode:CreateHeroes()
-  --print("Game State Changed: " .. GameRules:State_Get())
-  --print("Hero Selection State: " .. DOTA_GAMERULES_STATE_HERO_SELECTION)
-  
+function GameMode:OnPause(keys)
+  --PrintTable(keys)
+  PauseGame(false) 
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
@@ -151,7 +63,14 @@ function GameMode:OnItemPickedUp(keys)
   local itemname = keys.itemname
 
   if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-    heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    if CheckShopType(itemname) ~= 1 then
+      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    end
+  end
+  if player:GetTeam() == DOTA_TEAM_BADGUYS then 
+    if CheckShopType(itemname) == 1 then
+      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    end
   end
 end
 
@@ -162,13 +81,22 @@ function GameMode:OnPlayerReconnect(keys)
   --PrintTable(keys) 
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
-  local hero = player:GetAssignedHero()
+  local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
       Timers:CreateTimer(1,
       function()
+        --Send lumber and food info to users
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
+
+        --Send gold costs
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
+
+        --Set correct team
+        if hero:GetTeam() == DOTA_TEAM_BADGUYS then
+          player:SetTeam(DOTA_TEAM_BADGUYS)
+        end
       end)
 
       Timers:CreateTimer(0.03,
@@ -187,8 +115,6 @@ function GameMode:OnPlayerReconnect(keys)
       return 0.03
     end
   end)
-
-  
 end
 
 -- An item was purchased by a player
@@ -370,11 +296,16 @@ function GameMode:OnEntityKilled( keys )
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
     local allBuildings = Entities:FindAllByClassname("npc_dota_base_additive")
+    local allCreeps = Entities:FindAllByClassname("npc_dota_creature")
 
     for k,v in pairs(allBuildings) do
       if v:GetPlayerOwnerID() == killedUnit:GetPlayerOwnerID() then
-        
-        --PlayerResource:ModifyGold(killerEntity:GetPlayerOwnerID(), v:GetGoldBounty(), false, 1)
+        DestroyEntityBasedOnHealth(killerEntity, v)
+      end
+    end
+
+    for k,v in pairs(allCreeps) do
+      if v:GetPlayerOwnerID() == killedUnit:GetPlayerOwnerID() then
         DestroyEntityBasedOnHealth(killerEntity, v)
       end
     end
@@ -400,9 +331,25 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
+  -- Idol is killed
+  if killedUnit:GetUnitName() == "npc_petri_idol" then
+    if killedUnit.newShopTarget then UTIL_Remove(killedUnit.newShopTarget) end
+    if killedUnit.newShop then UTIL_Remove(killedUnit.newShop) end
+  end
+
+  -- Remove building
+  if killedUnit:HasAbility("petri_building") then
+    if killedUnit.RemoveBuilding ~= nil then killedUnit:RemoveBuilding(true) end
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+    if hero then
+      hero.buildingCount = hero.buildingCount - 1
+    end
+  end
+  
   -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
-  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit" then
+  killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
+  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit"  then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
@@ -411,11 +358,6 @@ function GameMode:OnEntityKilled( keys )
     function()
       killedUnit:RespawnHero(false, false, false)
     end)
-  end
-
-  -- Remove building
-  if killedUnit:HasAbility("petri_building") and killedUnit.RemoveBuilding ~= nil then
-    killedUnit:RemoveBuilding(true)
   end
 
   if killedUnit.foodProvided ~= nil then
@@ -428,6 +370,16 @@ function GameMode:OnEntityKilled( keys )
     local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
 
     hero.food = hero.food - killedUnit.foodSpent
+  end
+
+  if string.match(killedUnit:GetUnitName (), "peasant") then
+    killedUnit:RemoveModifierByName("modifier_chopping_wood")
+    killedUnit:RemoveModifierByName("modifier_gathering_lumber")
+    killedUnit:RemoveModifierByName("modifier_chopping_wood_animation")
+
+    killedUnit:RemoveModifierByName("modifier_repairing")
+    killedUnit:RemoveModifierByName("modifier_chopping_building")
+    killedUnit:RemoveModifierByName("modifier_chopping_building_animation")
   end
 
   -- Respawn creep
@@ -443,7 +395,7 @@ function GameMode:OnEntityKilled( keys )
       end)
       
     end
-    Timers:CreateTimer(0.73,
+    Timers:CreateTimer(0.5,
     function()
       CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
@@ -460,7 +412,6 @@ end
 -- This function is called once when the player fully connects and becomes "Ready" during Loading
 function GameMode:OnConnectFull(keys)
   DebugPrint('[BAREBONES] OnConnectFull')
-  DebugPrintTable(keys)
 
   GameMode:_OnConnectFull(keys)
   

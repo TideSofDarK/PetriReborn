@@ -61,16 +61,12 @@
           "ModifierName"  "modifier_ability_gather_lumber_no_col"
           "Target"    "CASTER"
         }  
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_gathering_lumber"
-          "Target"    "CASTER"
-        }
 
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
           "Function"    "ToggleOffGather"
+          "arg" "modifier_gathering_lumber"
         }
       }
       
@@ -89,15 +85,11 @@
           "ModifierName"  "modifier_ability_gather_lumber_no_col"
           "Target"    "CASTER"
         }    
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_chopping_wood"
-          "Target"    "CASTER"
-        }
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
           "Function"    "ToggleOffGather"
+          "arg" "modifier_chopping_wood"
         }
       }
 
@@ -130,15 +122,12 @@
           "ModifierName"  "modifier_ability_gather_lumber_no_col"
           "Target"    "CASTER"
         }  
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_chopping_wood_animation"
-          "Target"    "CASTER"
-        }
+
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
           "Function"    "ToggleOffGather"
+          "arg" "modifier_chopping_wood_animation"
         }
       }
     }

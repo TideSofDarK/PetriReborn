@@ -1,6 +1,6 @@
 "npc_petri_creep_good_actor"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
   "ModelScale"        "1.0"
   "Level"           "2"
@@ -20,9 +20,9 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "4.0"
-  "BountyGoldMax"       "4.0"
-  "BountyXP"          "7"  
+  "BountyGoldMin"       "2.0"
+  "BountyGoldMax"       "3.0"
+  "BountyXP"          "10"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "14"
+  "StatusHealth"        "15"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -45,9 +45,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

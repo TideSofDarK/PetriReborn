@@ -1,20 +1,24 @@
 "item_petri_kvn_fan_blink"
 {
   "BaseClass"       "item_datadriven"
-  "ID"              "1501"
+  "ID"              "1989"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-  "AbilityTextureName"      "item_blink"
+  "AbilityTextureName"      "item_petri_kvn_fan_blink"
 
   "precache"
   {
     "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
   }
 
-  "ItemPermanent"         "0"
+  "ItemCost"            "25"
+  "ItemAliases"         "dagger"
+
+  "SideShop" "1"
 
   "AbilityCastPoint"        "0.0"
 
-  "AbilityCooldown"       "7.5"
+  "AbilityCooldown"       "8.0"
+  "AbilitySharedCooldown"         "blink"
   
   "AbilityManaCost"       "0"
   
@@ -31,13 +35,19 @@
       "var_type"        "FIELD_INTEGER"
       "min_blink_range"   "200"
     }
+
+    "03"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "blink_damage_cooldown"         "5"
+    }
   }
 
   "OnSpellStart"
   {
     "RunScript"
     {
-      "ScriptFile"  "scripts/vscripts/units/kvn_fan.lua"
+      "ScriptFile"  "items/dagger.lua"
       "Function"    "Blink"
       "Target"    "POINT"
     }
@@ -52,6 +62,27 @@
     {
       "EffectName"  "Hero_Antimage.Blink_in"
       "Target"    "CASTER"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_item_blink_datadriven_damage_cooldown"
+    {
+      "Passive"           "1"
+      "IsHidden"          "1"
+      "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "OnTakeDamage"
+      {
+        "RunScript"
+        {
+          "ScriptFile"            "items/dagger.lua"
+          "Function"              "OnTakeDamage"
+          "Damage"                "%attack_damage"
+          "BlinkDamageCooldown"   "%blink_damage_cooldown"
+        }
+      }
     }
   }
 }

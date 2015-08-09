@@ -94,6 +94,11 @@
   "AbilityChannelTime"      "2.0"
   "AbilityGoldCost"       "0"
 
+  "precache"
+  {
+    "particle"  "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+  }
+
   "AbilitySpecial"
   {
     "01"
@@ -152,6 +157,13 @@
       "Passive"  "0"
       "IsHidden" "1"
 
+      "Orb"
+      {
+        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+        "ProjectileName"    "particles/units/heroes/hero_razor/razor_static_link_projectile_a.vpcf"
+        "CastAttack"      "0"
+      }
+
       "Properties"
       {
         "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_rate"
@@ -177,7 +189,7 @@
 
   "precache"
   {
-    "particle"  "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
+    "particle"  "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
   }
 
   "AbilitySpecial"
@@ -258,6 +270,14 @@
       "Passive"  "0"
 
       "IsHidden"   "1"
+
+      "Orb"
+      {
+        "Priority"        "DOTA_ORB_PRIORITY_ITEM"
+        "ProjectileName"    "particles/units/heroes/hero_invoker/invoker_forged_spirit_projectile.vpcf"
+        "CastAttack"      "0"
+      }
+
       "OnAttackStart"
       {
         "Random"
@@ -284,13 +304,7 @@
       }
       
       "OnAttackLanded"
-      {
-        "FireEffect"
-        {
-          "EffectName"     "particles/econ/courier/courier_cluckles/courier_cluckles_ambient_rocket_explosion_flash_c.vpcf"
-          "EffectAttachType"   "follow_origin"
-          "Target"       "TARGET"
-        } 
+      { 
         "RemoveModifier"
         {
           "ModifierName"    "creep_crit"
@@ -408,15 +422,15 @@
         "RunScript"
         {
           "ScriptFile"      "units/tower.lua"
-          "Function"        "modifier_skadi_on_orb_impact"
-          "ColdDurationMelee"   "4"
-          "ColdDurationRanged"  "4"
+          "Function"        "IceTowerOnOrbImpact"
+          "ColdDuration"   "4"
         }
       }
     }
     "modifier_skadi_cold_attack"
     {
       "Passive"       "0"
+      "IsDebuff"      "1"
       "IsHidden"        "0"
       
       "StatusEffectName"     "particles/status_fx/status_effect_frost.vpcf"

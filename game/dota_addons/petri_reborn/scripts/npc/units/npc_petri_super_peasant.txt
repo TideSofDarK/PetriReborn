@@ -1,6 +1,6 @@
 "npc_petri_super_peasant"
 {
-  "BaseClass"     "npc_dota_base_additive"
+  "BaseClass"     "npc_dota_creature"
   "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
@@ -8,12 +8,12 @@
 
   "vscripts"     "units/peasant.lua"
 
-  "AbilityLayout"    "6"
+  "AbilityLayout"    "5"
   "Ability1"     "gather_lumber"
   "Ability2"     "petri_repair"
   "Ability3"     "petri_gold_bag_blink"
   "Ability4"     "petri_suicide"
-  "Ability5"     "petri_empty1"
+  "Ability5"     "build_petri_tower_of_evil"
   "Ability6"     "petri_empty2"
   "Ability7"     "petri_empty3"
   "Ability8"     "petri_empty4"
@@ -22,14 +22,7 @@
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
 
-  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"    "5.0"
-  "AttackDamageMax"    "6.0"
-  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
-  "AttackRate"    "2"
-  "AttackAnimationPoint"  "0.433"
-  "AttackAcquisitionRange" "500"
-  "AttackRange"     "90"
+  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
 
   "BountyGoldMin"    "20.0"
   "BountyGoldMax"    "30.0"
@@ -58,6 +51,6 @@
 
   "Creature"
   {
-    "DisableClumpingBehavior"  "0"
+    "DisableClumpingBehavior"  "1"
   }
 }

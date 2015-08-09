@@ -23,14 +23,14 @@ function OnStartTouch(trigger)
 	    	FindClearSpaceForUnit(trigger.activator,newPosition,true)
 
 	    	trigger.activator:Stop()
-	    	MoveCamera(trigger.activator:GetPlayerOwnerID(), trigger.activator)
+
+	    	if trigger.activator:IsHero() then MoveCamera(trigger.activator:GetPlayerOwnerID(), trigger.activator) end
 
 	    	local particleName = "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf"
 			local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
 		 	ParticleManager:SetParticleControl( particle, 0, trigger.activator:GetAbsOrigin() )
 		end
 	end
-	
 end
  
 function OnEndTouch(trigger)

@@ -1,7 +1,6 @@
 "npc_petri_petrosyan"
 {
   "override_hero"     "npc_dota_hero_brewmaster"
-  "SoundSet"          "0" 
 
   "HasInventory"          "1"
   "ConsideredHero"        "1"
@@ -16,9 +15,6 @@
   "Ability6"        "petri_petrosyan_return"
   "Ability7"        "petri_petrosyan_dummy_sleep"
 
-  "MinimapIcon"               "minimap_candybucket"
-  "MinimapIconSize"           "5"
-
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"
 
@@ -27,19 +23,20 @@
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
   "AttackRate" "0.39"
+  "AttackAnimationPoint"       "0.295"
 
-  //"AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
+  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"
-  "AttributeStrengthGain"   "0.2"
+  "AttributeStrengthGain"   "1.25"
   "AttributeBaseIntelligence" "1"
   "AttributeIntelligenceGain" "0.25"
   "AttributeBaseAgility"    "1"
-  "AttributeAgilityGain"    "0.25"
+  "AttributeAgilityGain"    "0.3"
 
-  "BountyXP"          "50"                 
+  "BountyXP"          "0"                 
   "BountyGoldMin"       "10"                   
   "BountyGoldMax"       "20"     
-  "BountyGain"                "0"              
+  "BountyGain"                "0"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_HERO"
   "RingRadius"        "70"
@@ -54,5 +51,10 @@
   "StatusManaRegen"     "1.5"                 
 
   "VisionDaytimeRange"    "1000"                  
-  "VisionNighttimeRange"    "1000"                  
+  "VisionNighttimeRange"    "1000"         
+
+  "Creature"
+  {
+    "DisableClumpingBehavior" "1" 
+  }         
 }

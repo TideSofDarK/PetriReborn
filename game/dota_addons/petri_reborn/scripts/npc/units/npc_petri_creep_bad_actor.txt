@@ -1,6 +1,6 @@
 "npc_petri_creep_bad_actor"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
   "ModelScale"        "1.0"
   "Level"           "1"
@@ -23,7 +23,7 @@
 
   "BountyGoldMin"       "1.0"
   "BountyGoldMax"       "1.0"
-  "BountyXP"          "2"  
+  "BountyXP"          "3"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -46,9 +46,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

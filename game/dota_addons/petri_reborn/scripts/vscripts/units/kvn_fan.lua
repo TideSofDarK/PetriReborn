@@ -13,11 +13,12 @@ BASIC_MENU_ABILITIES = {"build_petri_tent",
 						"build_petri_sawmill",
 						"build_petri_tower_basic",
 						"build_petri_wall",
+						"petri_empty2",
 						"petri_close_basic_buildings_menu"}
 ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
-							"build_petri_exploration_tree",
 							"build_petri_lab",
-							"build_petri_tower_of_evil",
+							"build_petri_idol",
+							"build_petri_exploration_tree",
 							"build_petri_exit",
 							"petri_close_advanced_buildings_menu"}
 
@@ -33,6 +34,17 @@ function Spawn( event )
     end
 
 	InitAbilities(thisEntity)
+end
+
+function SpawnTrap(keys)
+	local point = keys.target_points[1]
+	local caster = keys.caster
+
+	local trap = CreateUnitByName("npc_petri_trap", point,  true, nil, caster, caster:GetTeam())
+
+	InitAbilities(trap)
+	trap:AddNewModifier(trap, nil, "modifier_kill", {duration = 240})
+	StartAnimation(trap, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
 
 function GivePermissionToBuild( keys )
@@ -53,24 +65,15 @@ function GivePermissionToBuild( keys )
 	end
 end
 
-function Blink(keys)
-	local point = keys.target_points[1]
-	local caster = keys.caster
-	local casterPos = caster:GetAbsOrigin()
-	local difference = point - casterPos
-	local ability = keys.ability
-	local range = ability:GetLevelSpecialValueFor("blink_range", (ability:GetLevel() - 1))
-
-	if difference:Length2D() > range then
-		point = casterPos + (point - casterPos):Normalized() * range
-	end
-
-	FindClearSpaceForUnit(caster, point, false)	
-end
-
 function GetLumberAbilityName(caster)
 	local lumberAbility = "gather_lumber"
-	if caster:HasModifier("modifier_gathering_lumber") or caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	if caster.currentMenu == 0 then
+		if caster:FindAbilityByName("gather_lumber"):IsHidden() then
+			lumberAbility = "return_resources"
+		end
+	else
+		if caster:HasModifier("modifier_returning_resources") then lumberAbility = "return_resources" end
+	end
 	return lumberAbility
 end
 
@@ -87,8 +90,6 @@ end
 function OpenBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
-	caster.currentMenu = 1
-
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		caster:AddAbility(BASIC_MENU_ABILITIES[i])
     end
@@ -102,14 +103,14 @@ function OpenBasicBuildingsMenu(keys)
 			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], false, true)
 		end
     end
+
+    caster.currentMenu = 1
 end
 
 function CloseBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
 	local lumberAbility = GetLumberAbilityName(caster)
-
-	caster.currentMenu = 0
 
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		if NO_MENU_ABILITIES[i] == "gather_lumber" then
@@ -122,12 +123,12 @@ function CloseBasicBuildingsMenu(keys)
 	for i=1, table.getn(BASIC_MENU_ABILITIES) do
 		caster:RemoveAbility(BASIC_MENU_ABILITIES[i])
     end
+
+    caster.currentMenu = 0
 end
 
 function OpenAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
-
-	caster.currentMenu = 2
 
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		caster:AddAbility(ADVANCED_MENU_ABILITIES[i])
@@ -142,14 +143,14 @@ function OpenAdvancedBuildingsMenu(keys)
 			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], false, true)
 		end
     end
+
+    caster.currentMenu = 2
 end
 
 function CloseAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
 
 	local lumberAbility = GetLumberAbilityName(caster)
-
-	caster.currentMenu = 0
 
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		if NO_MENU_ABILITIES[i] == "gather_lumber" then
@@ -162,13 +163,35 @@ function CloseAdvancedBuildingsMenu(keys)
 	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
 		caster:RemoveAbility(ADVANCED_MENU_ABILITIES[i])
     end
+
+    caster.currentMenu = 0
 end
 
 function SpawnGoldBag( keys )
 	local caster = keys.caster
+	local pID = caster:GetPlayerOwnerID()
+
+	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+	bag.spawnPosition = caster:GetAbsOrigin()
+
+	if GameMode.assignedPlayerHeroes[pID].currentGoldBag and not GameMode.assignedPlayerHeroes[pID].currentGoldBag:IsNull() then
+		DestroyEntityBasedOnHealth(caster, GameMode.assignedPlayerHeroes[pID].currentGoldBag)
+	end
+	GameMode.assignedPlayerHeroes[pID].currentGoldBag = bag
+
+	bag:SetModifierStackCount("modifier_gold_bag", bag, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
+
+	local upgradeRate = bag:FindAbilityByName("petri_upgrade_gold_bag"):GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = bag:FindAbilityByName("petri_upgrade_gold_bag"):GetSpecialValueFor("upgrade_limit")
+
+	if bag:GetModifierStackCount("modifier_gold_bag", bag) >= upgradeLimit then
+		bag:SetModifierStackCount("modifier_gold_bag", bag,upgradeLimit)
+
+		bag:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+	end
 end
 
 function Deny(keys)

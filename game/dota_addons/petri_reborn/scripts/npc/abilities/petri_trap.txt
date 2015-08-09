@@ -1,0 +1,47 @@
+"petri_trap"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+  "AbilityTextureName" "techies_stasis_trap"
+  
+  "Modifiers"
+  {
+    "modifier_trap"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+  
+      "ThinkInterval"  "0.03"
+      "OnIntervalThink"
+      {
+        "ActOnTargets"
+        {
+          "Target"
+          {
+            "Center"    "TARGET"
+            "Radius"  "100"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO"
+          }
+          
+          "Action"
+          {
+            "RunScript"
+            {
+              "ScriptFile"  "units/trap.lua"
+              "Function"    "AddTrap"
+              "Target"  "TARGET"
+            }
+            "RemoveModifier"
+            {
+              "ModifierName"  "modifier_trap"
+              "Target"     "CASTER"
+            }
+          }      
+        }     
+      }   
+    }
+  }   
+}

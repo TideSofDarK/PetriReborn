@@ -15,7 +15,7 @@
     "RunScript"
     {
       "Target"    "POINT"
-      "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+      "ScriptFile"  "buildings/bh_abilities.lua"
       "Function"    "create_building_entity"
     }
   }

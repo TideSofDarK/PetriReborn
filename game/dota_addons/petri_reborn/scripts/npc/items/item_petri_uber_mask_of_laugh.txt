@@ -29,7 +29,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "10"
     }
     "04"
     {
@@ -49,11 +49,24 @@
   
   "Modifiers"
   {
-    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
     {
       "Passive"     "1"
       "IsHidden"      "1"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+
+    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
       
       "Orb"
       {
@@ -72,13 +85,6 @@
           "ScriptFile"      "units/petrosyan.lua"
           "Function"        "BonusGoldFromWall"
         }
-      }
-
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
-        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
-        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
       }
     }
 
@@ -122,6 +128,8 @@
       "IsPurgable"        "0"
       "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
       "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
           
       "States"
       {

@@ -1,8 +1,26 @@
 BAREBONES_DEBUG_SPEW = false
 
+-- Settings time
+
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
-PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 11
+PETRI_EXIT_ALLOWED = false
+PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
+
+START_KVN_GOLD = 10
+START_KVN_LUMBER = 150
+
+START_PETROSYANS_GOLD = 32
+START_MINI_ACTORS_GOLD = 15
+
+PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
+
+local FRIENDS_KVN = {}
+FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
+
+local FRIENDS_PETRI = {}
+FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
+FRIENDS_KVN["63399181"] = "models/heroes/doom/doom.vmdl"
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -17,12 +35,15 @@ require('libraries/animations')
 
 require('libraries/FlashUtil')
 require('libraries/buildinghelper')
+require('libraries/dependencies')
 require('buildings/bh_abilities')
 
 require('settings')
 require('internal/events')
 require('events')
 
+require('filters')
+require('commands')
 require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
@@ -32,8 +53,6 @@ end
 
 function GameMode:OnFirstPlayerLoaded()
   DebugPrint("[BAREBONES] First Player has loaded")
-
-  
 end
 
 function GameMode:OnAllPlayersLoaded()
@@ -52,6 +71,9 @@ function GameMode:OnHeroInGame(hero)
     local player = hero:GetPlayerOwner()
     local pID = player:GetPlayerID()
 
+    InitAbilities(hero)
+    DestroyEntityBasedOnHealth(hero,hero)
+
     local newHero
 
     MoveCamera(pID, hero)
@@ -61,7 +83,7 @@ function GameMode:OnHeroInGame(hero)
      -- Init kvn fan
     if team == 2 then
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-        function() 
+       function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
           newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
@@ -73,43 +95,57 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
+          newHero:AddItemByName("item_petri_trap")
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(10, false)
-          newHero.lumber = 150
+          newHero:SetGold(START_KVN_GOLD, false)
+          newHero.lumber = START_KVN_LUMBER
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+
+          newHero.buildingCount = 0
+
           SetupUI(newHero)
+          SetupUpgrades(newHero)
+          SetupDependencies(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
           PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
-        end, pID)
+
+          for k,v in pairs(FRIENDS_KVN) do
+            local id = tonumber(k)
+
+            if PlayerResource:GetSteamAccountID(pID) == id then
+              UpdateModel(newHero, v, 1)
+            end
+          end
+       end, pID)
     end
 
-    local friends = {}
-    friends[0] = 96571761
-    friends[1] = 63399181
+    local petrosyanHeroName = "npc_dota_hero_brewmaster"
+    if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
+      petrosyanHeroName = "npc_dota_hero_death_prophet"
+    end
 
      -- Init petrosyan
     if team == 3 then
-      PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
-        function() 
-          newHero = CreateHeroForPlayer("npc_dota_hero_brewmaster", player)
+      PrecacheUnitByNameAsync(petrosyanHeroName,
+       function() 
+          newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(4)
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+          newHero:SetAbilityPoints(3)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(32, false)
+          newHero:SetGold(START_PETROSYANS_GOLD, false)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
@@ -121,8 +157,12 @@ function GameMode:OnHeroInGame(hero)
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
 
-          if PlayerResource:GetSteamAccountID(pID) == friends[0] or PlayerResource:GetSteamAccountID(pID) == friends[1] then 
-            UpdateModel(newHero, "models/heroes/doom/doom.vmdl", 1.1)
+          for k,v in pairs(FRIENDS_PETRI) do
+            local id = tonumber(k)
+
+            if PlayerResource:GetSteamAccountID(pID) == id then
+              UpdateModel(newHero, v, 1)
+            end
           end
 
           if GameRules.explorationTowerCreated == nil then
@@ -132,11 +172,37 @@ function GameMode:OnHeroInGame(hero)
               CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
               end)
           end
-        end, pID)
+       end, pID)
     end
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
   end
+end
+
+function SetupDependencies(newHero)
+  local player = newHero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
+
+  CustomNetTables:SetTableValue( "players_dependencies", tostring(pID), {} );
+end
+
+function SetupUpgrades(newHero)
+  local player = newHero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
+
+  local upgradeAbilities = {}
+
+  for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
+    if type(ability_info) == "table" then
+      if string.match(ability_name, "petri_upgrade") then 
+         upgradeAbilities[ability_name] = 0
+      end  
+    end
+  end
+
+  CustomNetTables:SetTableValue( "players_upgrades", tostring(pID), upgradeAbilities );
+
+  --PrintTable(CustomNetTables:GetTableValue("players_upgrades", tostring(pID)))
 end
 
 function SetupUI(newHero)
@@ -148,6 +214,9 @@ function SetupUI(newHero)
 
   --Send gold costs
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
+
+  --Send xp table
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_xp_table", XP_PER_LEVEL_TABLE )
 
   --Update player's UI
   Timers:CreateTimer(0.03,
@@ -171,9 +240,10 @@ end
 ]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
-
+  
   Timers:CreateTimer((PETRI_EXIT_MARK * 60),
     function()
+      PETRI_EXIT_ALLOWED = true
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
@@ -188,72 +258,27 @@ function GameMode:OnGameInProgress()
     end)
 end
 
-function GameMode:FilterExecuteOrder( filterTable )
-    local units = filterTable["units"]
-    local order_type = filterTable["order_type"]
-    local issuer = filterTable["issuer_player_id_const"]
-
-    if order_type == 19 then 
-      if filterTable["entindex_target"] >= 6 or
-        PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        return false
-      else
-        local ent = EntIndexToHScript(filterTable["units"]["0"])
-
-        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
-          local stashSlot = 6
-          for i=6,11 do
-            if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
-              stashSlot = i
-              break
-            end
-          end
-
-          ent:SwapItems(filterTable["entindex_target"], stashSlot)
-        end
-      end
-    end
-
-    for n,unit_index in pairs(units) do
-        local unit = EntIndexToHScript(unit_index)
-        local ownerID = unit:GetPlayerOwnerID()
-
-        if PlayerResource:GetConnectionState(ownerID) == 3 or
-          PlayerResource:GetConnectionState(ownerID) == 4
-          then
-          return false
-        end
-    end
-
-    return true
-end
-
-function GameMode:ModifyGoldFilter(event)
-  event["reliable"] = 0
-  if event.reason_const == DOTA_ModifyGold_HeroKill then
-    event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
-  end
-  return true
-end
-
 function GameMode:InitGameMode()
   GameMode = self
 
   GameMode:_InitGameMode()
-  SendToServerConsole( "dota_combine_models 0" )
 
-   -- Find all ability layouts to send them to clients later
-  local UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
-  local HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
-  local AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+  GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
+
+  GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
+
+  GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
+  GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
+  GameMode.AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+  GameMode.ItemKVs = LoadKeyValues("scripts/npc/npc_items_custom.txt")
 
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
 
   for i=1,2 do
-    local t = UnitKVs
+    local t = GameMode.UnitKVs
     if i == 2 then
-      t = HeroKVs
+      t = GameMode.HeroKVs
     end
     for unit_name,unit_info in pairs(t) do
       if type(unit_info) == "table" then
@@ -266,7 +291,7 @@ function GameMode:InitGameMode()
     end
   end
 
-  for ability_name,ability_info in pairs(AbilityKVs) do
+  for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
     if type(ability_info) == "table" then
       if ability_info["AbilityGoldCost"] ~= nil then
         GameMode.abilityGoldCosts[ability_name] = Split(ability_info["AbilityGoldCost"], " ")
@@ -284,6 +309,14 @@ function GameMode:InitGameMode()
   -- Fix hero bounties
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
 
+  -- Fix hero bounties
+  GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ModifyExperienceFilter"), GameMode)
+
+  -- Commands
+  Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
+  Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
+  --Convars:RegisterCommand( "dota_sf_hud_force_captainsmode", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
+
   BuildingHelper:Init()
 end
 
@@ -295,7 +328,7 @@ function GameMode:ReplaceWithMiniActor(player)
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", 0, 0)
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD, 0)
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
 
       newHero:SetTeam(DOTA_TEAM_BADGUYS)

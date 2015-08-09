@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kvn_medal"
 
-  "ItemCost"            "5000"
+  "ItemCost"            "850"
   "ItemShopTags"          "hard_to_tag"
   "ItemQuality"         "component"
   "ItemAliases"         "kvn medal"

@@ -16,7 +16,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "gold"      "2 4 5 6 7 10 12 14"
+      "gold"      "1 2 4 5 6 7 10 12 14"
     }
   }
 
@@ -54,7 +54,7 @@
         }
       }
 
-      "ThinkInterval" "2.05" // Bad solution
+      "ThinkInterval" "1.03" // Bad solution
       "OnIntervalThink"
       {
         "RunScript"

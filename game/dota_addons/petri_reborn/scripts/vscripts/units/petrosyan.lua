@@ -94,7 +94,7 @@ function FarSight( event )
 
     	-- Destroy after the duration
     	Timers:CreateTimer(duration, function() 
-    		dummy:RemoveSelf()
+    		if not dummy:IsNull() then dummy:RemoveSelf() end
     		if not dummy_front:IsNull() then dummy_front:RemoveSelf() end
     		if not dummy_back:IsNull() then dummy_back:RemoveSelf() end
     		if not dummy_left:IsNull() then dummy_left:RemoveSelf() end
@@ -108,9 +108,16 @@ function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
 
-	target:RemoveModifierByName("modifier_repairing")
-	target:RemoveModifierByName("modifier_chopping_building")
-	target:RemoveModifierByName("modifier_chopping_building_animation")
+	for i=0,target:GetAbilityCount() do
+		if target:GetAbilityByIndex(i) ~= nil and target:GetAbilityByIndex(i):GetToggleState() then
+			target:GetAbilityByIndex(i):ToggleAbility()
+		end
+	end
+
+	for i=0,target:GetModifierCount() do
+		local modifierName = target:GetModifierNameByIndex(i)
+		target:RemoveModifierByName(modifierName)
+	end
 end
 
 function Return( keys )
@@ -131,6 +138,16 @@ function Return( keys )
     end)
 
 	FindClearSpaceForUnit(caster,caster.spawnPosition,true)
+
+	caster:Stop()
+	local newOrder = {
+        UnitIndex       = caster:entindex(),
+        OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+        Position        = caster:GetAbsOrigin(), 
+        Queue           = 0
+    }
+
+  	ExecuteOrderFromTable(newOrder)
 end
 
 function SpawnWard(keys)
@@ -155,11 +172,15 @@ function SpawnJanitor( keys )
 	end
 
 	janitor:AddAbility("courier_transfer_items")
-	janitor:AddAbility("petri_janitor_truesight")
+	janitor:AddAbility("petri_janitor_invisibility")
+
+	janitor:GetAbilityByIndex(1):ApplyDataDrivenModifier(janitor, janitor, "modifier_beastmaster_hawk_invisibility", {})
 	
 	InitAbilities(janitor)
 
 	janitor:SetMoveCapability(2)
+
+	janitor:SetBaseMoveSpeed(522)
 
 	janitor.spawnPosition = caster:GetAbsOrigin()
 end
@@ -185,7 +206,7 @@ end
 function ReadComedyBook( keys )
 	local caster = keys.caster
 	
-	caster:SetBaseStrength(caster:GetBaseStrength() + 40)
+	caster:SetBaseStrength(caster:GetBaseStrength() + 25)
 
 	caster:CalculateStatBonus()
 end

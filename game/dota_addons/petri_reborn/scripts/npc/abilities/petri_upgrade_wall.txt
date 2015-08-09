@@ -10,7 +10,7 @@
 
   "MaxLevel"            "10"
 
-  "AbilityChannelTime"      "6.0 7.0 10.0 15.0 20.0 30.0 50.0 75.0 100.0"
+  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0"
   "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 5750"
 
   "AbilitySpecial"
@@ -23,12 +23,12 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "health_points"        "270 380 590 800 1100 1450 2400 4400 7050"
+      "health_points"        "270 380 590 800 1100 1450 2400 4400 6050"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "1 50 750 1000 1300 1600 2000 5000 7260"
+      "armor"        "125 350 875 1300 1700 2200 4000 6000 8000"
     }
   }
 
@@ -66,6 +66,20 @@
 
   "Modifiers"
   {
+    "modifier_wall_notification"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/wall.lua"
+          "Function"    "Notification"
+        }
+      }
+    }
     "modifier_armor"
     {
       "IsPassive"  "1"
@@ -73,7 +87,7 @@
 
       "Properties"
       {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
       }
     }
   }

@@ -4,7 +4,7 @@
   "AbilityTextureName"      "petri_repair"
   "MaxLevel"            "1"
 
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 
@@ -19,6 +19,31 @@
 
   "Modifiers"
   {
+    "modifier_repairing_autocast_aura"
+    {
+      "Passive" "1"
+      "IsHidden"  "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"    "units/peasant.lua"
+          "Function"      "RepairingAutocast"
+        }
+      }
+
+      "ThinkInterval" "3"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"    "units/peasant.lua"
+          "Function"      "RepairingAutocast"
+        }
+      }
+    }
+
     "modifier_repairing"
     {
       "IsHidden"        "1"

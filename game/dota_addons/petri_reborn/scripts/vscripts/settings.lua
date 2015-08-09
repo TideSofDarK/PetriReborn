@@ -13,7 +13,7 @@ TREE_REGROW_TIME = 60.0                 -- How long should it take individual tr
 GOLD_PER_TICK = 0                     -- How much gold should players get per tick?
 GOLD_TICK_TIME = 0                      -- How long should we wait in seconds between gold ticks?
 
-RECOMMENDED_BUILDS_DISABLED = true     -- Should we disable the recommened builds for heroes
+RECOMMENDED_BUILDS_DISABLED = false     -- Should we disable the recommened builds for heroes
 CAMERA_DISTANCE_OVERRIDE = 1134.0       -- How far out should we allow the camera to go?  1134 is the default in Dota
 
 MINIMAP_ICON_SIZE = 0.9                   -- What icon size should we use for our heroes?
@@ -41,13 +41,13 @@ END_GAME_ON_KILLS = false                -- Should the game end after a certain 
 KILLS_TO_END_GAME_FOR_TEAM = 8         -- How many kills for a team should signify an end of game?
 
 USE_CUSTOM_HERO_LEVELS = true           -- Should we allow heroes to have custom levels?
-MAX_LEVEL = 1000                        -- What level should we let heroes get to?
+MAX_LEVEL = 50                        -- What level should we let heroes get to?
 USE_CUSTOM_XP_VALUES = true             -- Should we use custom XP values to level up heroes, or the default Dota numbers?
 
 -- Fill this table up with the required XP per level if you want to change it
 XP_PER_LEVEL_TABLE = {}
 for i=1,MAX_LEVEL do
-  XP_PER_LEVEL_TABLE[i] = (i-1) * 100
+	XP_PER_LEVEL_TABLE[i] = (XP_PER_LEVEL_TABLE[i-1] or 0) + (25 * (i-1))
 end
 
 ENABLE_FIRST_BLOOD = false               -- Should we enable first blood for the first kill in this game?

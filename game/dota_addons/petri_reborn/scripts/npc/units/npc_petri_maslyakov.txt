@@ -7,6 +7,7 @@
   "HealthBarOffset"    "240"
 
   "AbilityLayout"    "4"
+  "Ability1" "petri_magic_immune"
 
   "ArmorPhysical"    "2000"
   "MagicalResistance"   "0"

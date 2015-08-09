@@ -4,8 +4,7 @@
   "ID"              "1801"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
-  "AbilityUnitDamageType"     "DAMAGE_TYPE_PURE"  
-  "SpellImmunityType"       "SPELL_IMMUNITY_ENEMIES_YES"
+  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE" 
 
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -27,6 +26,8 @@
   "AbilityCastPoint"        "0.3"
   
   "AbilityCooldown"       "18.0"
+
+  "AbilityDamage"                 "1"
 
   "AbilitySpecial"
   {
@@ -79,8 +80,8 @@
       "StartPosition" "attach_origin"
       "EndRadius"     "%hook_width"
       "FixedDistance" "%hook_distance"
-      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_BOTH"
-      "TargetTypes"   "DOTA_UNIT_TARGET_HERO"
+      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+      "TargetTypes"   "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
       "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
       "HasFrontalCone"    "0"
       "ProvidesVision" "0"

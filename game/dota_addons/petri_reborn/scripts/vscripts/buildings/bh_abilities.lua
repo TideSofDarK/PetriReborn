@@ -1,3 +1,8 @@
+function CancelBuilding(caster, ability, pID, reason)
+	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
+	return false
+end
+
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local hero = player:GetAssignedHero()
@@ -10,63 +15,25 @@ function build( keys )
 	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", ability:GetLevel()-1)
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
-	local enough_lumber
-	local enough_food
-
 	local ability_name = ability:GetName()
+
+	EndCooldown(caster, ability_name)
+	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
+
+	if not CheckBuildingDependencies(pID, ability_name) then
+		return false
+	end
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
-		if GameRules:GetGameTime() < (60 * PETRI_EXIT_MARK) + 30 then
-			Notifications:Top(caster:GetPlayerOwnerID(),{text="#too_early_for_exit", duration=10, style={color="red"}, continue=false})
-
-			PlayerResource:ModifyGold(pID, gold_cost,false,0)
-
-			ability:EndCooldown()
-			return
+		if PETRI_EXIT_ALLOWED == false then
+			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
 	end
 
-	-- Cancel building
-	if player.waitingForBuildHelper == true then
-		PlayerResource:ModifyGold(pID, gold_cost,false,0)
-
-	    player.activeCallbacks.onConstructionCancelled()
-	      
-	    player.activeBuilder:ClearQueue()
-	    player.activeBuilding = nil
-	    player.activeBuilder:Stop()
-	    player.activeBuilder.ProcessingBuilding = false
-
-	    player.waitingForBuildHelper = false
-
-	    CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_force_cancel", {} )
-		return
-	end
-
-	if gold_cost ~= nil then
-		hero.lastSpentGold = gold_cost
-	end
-
-	if lumber_cost ~= nil then
-		enough_lumber = CheckLumber(player, lumber_cost,true)
-	else
-		enough_lumber = true
-	end
-
-	if food_cost ~= nil and food_cost ~= 0 then
-		enough_food = CheckFood(player, food_cost,true)
-	else
-		enough_food = true
-	end
-
-	if enough_food ~= true or enough_lumber ~= true then
-		ReturnGold(player)
-		EndCooldown(caster, ability_name)
-		return
-	else
-		SpendLumber(player, lumber_cost)
-		SpendFood(player, food_cost)
+	-- Cancel building if limit is reached
+	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
+		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
 	end
 
 	player.waitingForBuildHelper = true
@@ -77,7 +44,38 @@ function build( keys )
 
 	end)
 
+	keys:OnPreConstruction(function ()
+        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost 
+        	then
+        	return false
+		else
+			if caster.currentArea ~= nil then
+				if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
+
+					if caster.currentArea.claimers == nil then 
+						Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
+					end
+
+					keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
+					if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
+				else
+					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
+					return false
+				end
+			end
+
+			SpendLumber(player, lumber_cost)
+			SpendFood(player, food_cost)
+
+			PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
+
+			StartCooldown(caster, ability_name)
+		end
+    end)
+
 	keys:OnConstructionStarted(function(unit)
+		hero.buildingCount = hero.buildingCount + 1
+
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
@@ -92,7 +90,10 @@ function build( keys )
 		unit.foodSpent = food_cost
 		-- Very bad solution
 		-- But when construction is started there is no way of cancelling it so...
-		player.activeBuilder.work.callbacks.onConstructionCancelled = nil
+		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
+
+		local building_ability = unit:FindAbilityByName("petri_building")
+		if building_ability then building_ability:SetLevel(1) end
 
 		if caster:GetUnitName() == "npc_dota_hero_rattletrap" then
 			if caster.currentMenu == 1 then
@@ -109,8 +110,12 @@ function build( keys )
 	keys:OnConstructionCompleted(function(unit)
 		InitAbilities(unit)
 
-		if unit:GetUnitName() == "npc_petri_exit" then
-			unit:CastAbilityNoTarget(unit:FindAbilityByName("petri_exit"),caster:GetPlayerOwnerID())
+		AddEntryToDependenciesTable(pID, ability_name, 1)
+
+		if unit:GetUnitName() == "npc_petri_idol" then
+			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
+			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol", origin = unit:GetAbsOrigin()})
+			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol",origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
 		end
 
 		unit:SetMana(unit:GetMaxMana())
@@ -119,29 +124,6 @@ function build( keys )
 
 		if unit.controllableWhenReady then
 			unit:SetControllableByPlayer(keys.caster:GetPlayerOwnerID(), true)
-		end
-		
-		if caster.currentArea ~= nil then
-			if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
-
-				if caster.currentArea.claimers == nil then 
-					Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
-				end
-
-				keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
-				if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
-			else
-				Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
-				
-				ReturnLumber(player)
-				ReturnGold(player)
-				ReturnFood( player )
-
-				if ability:IsNull() ~= true then ability:EndCooldown() end
-
-				-- Destroy unit
-				DestroyEntityBasedOnHealth(caster,unit)
-			end
 		end
 	end)
 
@@ -155,19 +137,9 @@ function build( keys )
 	end)
 
 	keys:OnConstructionFailed(function( building )
-		ReturnLumber(player)
-		ReturnGold(player)
-		ReturnFood( player )
-
-		EndCooldown(caster, ability_name)
 	end)
 
 	keys:OnConstructionCancelled(function( building )
-		ReturnLumber(player)
-		ReturnGold(player)
-		ReturnFood( player )
-
-		EndCooldown(caster, ability_name)
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.
@@ -195,17 +167,21 @@ function create_building_entity( keys )
 end
 
 function builder_queue( keys )
-	local ability = keys.ability
-  local caster = keys.caster  
-
-  if caster.ProcessingBuilding ~= nil then
-    -- caster is probably a builder, stop them
-    player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
-    if player.activeBuilder ~= nil then
-    	player.activeBuilder:ClearQueue()
-    	player.activeBuilder:Stop()
-    	player.activeBuilder.ProcessingBuilding = false
+    local ability = keys.ability
+    local caster = keys.caster  
+    print(caster.lastOrder)
+    if caster.ProcessingBuilding ~= nil
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM
+     then
+        -- caster is probably a builder, stop them
+        player = PlayerResource:GetPlayer(caster:GetMainControllingPlayer())
+        --player.activeBuilding = nil
+        if player.activeBuilder and player.activeBuilder ==caster and IsValidEntity(player.activeBuilder) then
+            player.activeBuilder:ClearQueue()
+            player.activeBuilder:Stop()
+            player.activeBuilder.ProcessingBuilding = false
+        end
     end
-    player.activeBuilding = nil
-  end
 end

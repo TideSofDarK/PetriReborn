@@ -4,7 +4,7 @@
   "Model"           "models/props_gameplay/shopkeeper_fountain/shopkeeper_fountain.vmdl"
   "ModelScale"        "1.0"
   "Level"           "0"
-  "HealthBarOffset"       "140"
+  "HealthBarOffset"       "255"
   "HasInventory"        "0"
 
   "vscripts"                    "units/lab.lua"
@@ -13,10 +13,7 @@
   "Ability1"          "petri_upgrade_concrete"
   "Ability2"          "petri_upgrade_tower_damage"
   "Ability3"          "petri_upgrade_lumber"
-  "Ability4"          "petri_empty1"
-  "Ability5"          "petri_empty2"
-  "Ability6"          "petri_empty3"
-  "Ability7"          "petri_building"
+  "Ability4"          "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"

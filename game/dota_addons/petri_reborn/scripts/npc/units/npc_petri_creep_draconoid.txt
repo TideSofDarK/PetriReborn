@@ -1,8 +1,9 @@
 "npc_petri_creep_draconoid"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
   "ModelScale"        "0.6"
+  "SoundSet"          "Creep_Good_Range"
   "Level"           "6"
   "HealthBarOffset"     "140"
   
@@ -20,9 +21,9 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "100.0"
-  "BountyGoldMax"       "100.0"
-  "BountyXP"          "100"  
+  "BountyGoldMin"       "70.0"
+  "BountyGoldMax"       "70.0"
+  "BountyXP"          "275"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -45,9 +46,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }

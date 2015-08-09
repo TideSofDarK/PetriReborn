@@ -1,6 +1,6 @@
 @define TotalLength: 40s;
 @define TimingFunc: linear;
-@define IterationCount: 1;
+@define IterationCount: infinite;
 @define AnimationDelay: 0s;
 
 .AddonLoadingRoot
@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     background-color: black;
-    overflow: clip;
+/*    overflow: clip;*/
 }
 
 #TitlePanel
@@ -16,13 +16,13 @@
   horizontal-align: left;
   vertical-align: bottom;
   margin-bottom: 150px;
-  margin-left: 100px;
+  margin-left: 74px;
   flow-children: right;
 }
 
 #AddonTitle
 {
-  margin-bottom: -15px;
+  margin-bottom: 90px;
   vertical-align: center;
   text-transform: uppercase;
   font-size: 80px;
@@ -30,39 +30,98 @@
   text-shadow: 2px 2px 2px #000000;
 }
 
-.SeqImg
+.TitleBackground
 {
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 0% 0%;
   background-size: 100% 100%;
 }
 
-#CustomBg
+.Background
 {
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+}
 
-  margin-top: 350px;
-    overflow: clip;
-  pre-transform-scale2d: 1.0;
-  animation-name: gamemode_anim;
+.Petrosyan
+{
+  background-repeat: no-repeat;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+
+  animation-name: gamemode_anim_petrosyan;
+  animation-delay: AnimationDelay;
+  animation-duration: 90s;
+  animation-timing-function: TimingFunc;
+  animation-iteration-count: 1;
+}
+
+.Smoke1
+{
+  background-repeat: repeat-x;
+  background-position: 0% 0%;
+  background-size: 100% 100%;
+
+  animation-name: gamemode_anim_first;
+  animation-delay: AnimationDelay;
+  animation-duration: TotalLength;
+  animation-timing-function: TimingFunc;
+  animation-iteration-count: IterationCount;
+}
+.Smoke2
+{
+  background-repeat: repeat-x;
+  background-position: -1920px 0%;
+  background-size: 100% 100%;
+
+  animation-name: gamemode_anim_second;
   animation-delay: AnimationDelay;
   animation-duration: TotalLength;
   animation-timing-function: TimingFunc;
   animation-iteration-count: IterationCount;
 }
 
-#gamemode
+#CustomBg
 {
-  margin-left: 290px;
-  /*margin-bottom: 0px;*/
-  
+  margin: 0px 0px 0px 0px;
 }
 
-@keyframes 'gamemode_anim'
+#gamemode
+{
+}
+
+@keyframes 'gamemode_anim_first'
 {
   0%
   {
     transform: translateX( 0px ) translateY( 0px );
-    pre-transform-scale2d: .2;
+  }
+
+  100%
+  {
+    transform: translateX( 1920px ) translateY( 0px );
+  }
+}
+
+@keyframes 'gamemode_anim_second'
+{
+  0%
+  {
+    transform: translateX( -1920px ) translateY( 0px );
+  }
+
+  100%
+  {
+    transform: translateX( 0px ) translateY( 0px );
+  }
+}
+
+@keyframes 'gamemode_anim_petrosyan'
+{
+  0%
+  {
+    transform: translateX( -200px ) translateY( 0px );
   }
 
   100%

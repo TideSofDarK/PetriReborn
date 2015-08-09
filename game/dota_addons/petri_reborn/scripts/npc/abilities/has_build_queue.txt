@@ -1,7 +1,7 @@
 // START OF BUILDING HELPER ABILITIES
 "has_build_queue"
 {
-  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "BaseClass" "ability_datadriven"
 
   "Modifiers"
@@ -14,7 +14,7 @@
       {
         "RunScript"
         {
-          "ScriptFile"  "scripts/vscripts/buildings/bh_abilities.lua"
+          "ScriptFile"  "buildings/bh_abilities.lua"
           "Function"    "builder_queue"
         }
       }

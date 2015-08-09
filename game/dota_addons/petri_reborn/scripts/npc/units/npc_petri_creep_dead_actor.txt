@@ -1,8 +1,9 @@
 "npc_petri_creep_dead_actor"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
   "ModelScale"        "1.2"
+  "SoundSet"          "Creep_Good_Melee"  
   "Level"           "3"
   "HealthBarOffset"     "140"
   
@@ -20,9 +21,9 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "8.0"
-  "BountyGoldMax"       "8.0"
-  "BountyXP"          "25"  
+  "BountyGoldMin"       "5.0"
+  "BountyGoldMax"       "5.0"
+  "BountyXP"          "18"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -33,7 +34,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "120"
+  "StatusHealth"        "140"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -45,9 +46,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
-  "Creature"
-  {
-    "DisableClumpingBehavior" "1"
-  }
 }
