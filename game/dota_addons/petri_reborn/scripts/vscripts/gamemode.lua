@@ -324,8 +324,6 @@ function GameMode:InitGameMode()
     end
   end
 
-  PrintTable(GameMode.specialValues)
-
   -- Some way to prevent controlling of disconnected players
   GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
