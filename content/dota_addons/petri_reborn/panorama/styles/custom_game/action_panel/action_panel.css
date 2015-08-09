@@ -1,0 +1,169 @@
+.ActionPanelRoot
+{
+	height: 356px;
+	width: 1500px;
+
+	margin-top: 1px;
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	flow-children: right;
+	margin-bottom: -1px;
+	z-index: 0;
+}
+
+.StandartPanel
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	background-color: #272823;
+}
+
+#MinimapBorder
+{
+	width: 320px;
+	height: 360px;
+
+	background-color: transparent;
+	z-index: 1;
+}
+
+.AspectRatio5x4 #MinimapBorder
+{
+	width: 300px;
+	height: 345px;
+}
+
+#Spacer
+{
+	width: 150px;
+	height: 270px;
+
+	background-color: transparent;
+	margin-left: -24px;
+	z-index: 0;
+}
+
+#SpacerImage
+{
+	z-index: 0;
+}
+
+#Portrait
+{
+	width: 300px;
+	height: 280px;
+
+	margin-left: -60px;
+	background-color: transparent;
+
+	z-index: 1;
+}
+
+.AspectRatio4x3 #Portrait
+{
+	margin-left: -150px;
+}
+
+.AspectRatio5x4 #Portrait
+{
+	width: 280px;
+	height: 270px;
+
+	margin-left: -140px;
+}
+
+#PortraitImage
+{
+	z-index: 1;
+}
+
+#PortraitModel
+{
+	width: 150px;
+	height: 210px;
+
+	margin-left: 80px;
+	background-color: #808080;	
+	z-index: 0;	
+}
+
+.AspectRatio5x4 #PortraitModel
+{
+	width: 125px;
+	height: 200px;
+}
+
+#Center
+{
+	width: 750px;
+	height: 180px;
+
+	margin-left: -55px;
+	margin-top: 1px;
+	background-color: transparent;
+}
+
+.AspectRatio4x3 #Center
+{
+	width: 565px;
+}
+
+.AspectRatio5x4 #Center
+{
+	width: 527px;
+	height: 170px;
+}
+
+#CenterLeft
+{	
+	width: 225px;
+}
+
+.AspectRatio4x3 #CenterLeft
+{
+	width: 245px;
+}
+
+.AspectRatio5x4 #CenterLeft
+{
+	width: 190px;
+}
+
+#CenterLeftImage
+{
+	vertical-align: bottom;
+}
+
+#CenterRight
+{
+	margin-left: -1px;
+	width: 515px;
+
+	margin-left: 220px;
+}
+
+.AspectRatio4x3 #CenterRight
+{
+	margin-left: -1px;
+	width: 410px;
+
+	margin-left: 187px;
+}
+
+.AspectRatio5x4 #CenterRight
+{
+	margin-left: -1px;
+	width: 340px;
+
+	margin-left: 190px;
+	margin-right: -20px;
+}
+
+.Bar
+{
+  	border-style: solid;
+    border-radius: 10px;
+	background-color: #FF0000;    
+}

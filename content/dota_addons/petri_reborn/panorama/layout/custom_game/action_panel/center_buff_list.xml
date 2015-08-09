@@ -1,0 +1,12 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/center_buff_list.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_panel/center/center_buff_list.js" />
+	</scripts>
+	<Panel hittest="false">
+		<Panel id="buffs_list" />
+	</Panel>
+</root>

@@ -1,0 +1,49 @@
+<root>
+    <styles>
+ 		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/scoreboard_styles.css" />
+        <include src="file://{resources}/styles/custom_game/scoreboard.css" />
+    </styles>
+	<script>
+		function ToggleMute()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			if ( playerId !== -1 )
+			{
+				var newIsMuted = !Game.IsPlayerMuted( playerId );
+				Game.SetPlayerMuted( playerId, newIsMuted );
+				$.GetContextPanel().SetHasClass( "player_muted", newIsMuted );
+			}
+		}
+
+		(function()
+		{
+			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
+			$.GetContextPanel().SetHasClass( "player_muted", Game.IsPlayerMuted( playerId ) );
+		})();
+	</script>
+	<Panel class="PlayerRow">
+		<Panel id="PlayerRowContainer">
+			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+				<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
+			</Panel>
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+				<Panel id="PlayerAndHeroName">
+					<Label id="PlayerName" text="AAAAA" />
+				</Panel>
+				<Button id="MuteButton" onactivate="ToggleMute();" />
+			</Panel>
+			<Panel id="GoldContainer" class="ScoreCol_Gold ScoreboardPanel">
+				<Label id="Gold" text="999" />
+			</Panel>
+			<Panel id="LumberContainer" class="ScoreCol_Lumber ScoreboardPanel">
+				<Label id="Lumber" text="999" />
+			</Panel>
+			<Panel id="FoodContainer" class="ScoreCol_Food ScoreboardPanel">
+				<Label id="Food" text="999" />
+			</Panel> 
+		</Panel>
+	</Panel>
+</root>
+
+

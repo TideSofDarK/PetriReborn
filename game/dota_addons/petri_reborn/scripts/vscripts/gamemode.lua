@@ -215,6 +215,9 @@ function SetupUI(newHero)
   --Send gold costs
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
 
+  --Send xp table
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_xp_table", XP_PER_LEVEL_TABLE )
+
   --Update player's UI
   Timers:CreateTimer(0.03,
   function()

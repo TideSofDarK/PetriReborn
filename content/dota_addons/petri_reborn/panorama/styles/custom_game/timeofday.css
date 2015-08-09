@@ -1,0 +1,51 @@
+.TimeOfDay
+{
+    width: 150px;
+    height: 150px;
+    
+    margin-left: 1100px;
+    horizontal-align: left;
+}
+
+#TimeOfDayImage
+{
+    width: 75%;
+    height: 75%;
+
+    margin-top: -30%;
+    margin-left: -5px;
+
+    horizontal-align: center;
+}
+
+
+#TimeOfDayBorderImage
+{
+    width: 100%;
+    height: 58%;
+}
+
+#Time
+{
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+
+    horizontal-align: center;
+
+    margin-top: 10px;
+}
+
+#PetroTime
+{
+    width: 48px;
+    height: 48px;
+
+    margin-left: -6px;
+    margin-bottom: 40%;
+
+    vertical-align: bottom;
+    horizontal-align: center;
+
+    visibility: collapse;
+}

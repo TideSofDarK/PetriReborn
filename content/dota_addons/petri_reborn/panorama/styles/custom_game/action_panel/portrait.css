@@ -1,0 +1,121 @@
+.PortraitLabel
+{
+	color: #FFFFFF;
+	z-index: 3;	
+}
+
+#HeroName
+{
+	horizontal-align: center;
+
+	margin-top: 63px;
+	margin-left: 10px;
+}
+
+#HeroLevel
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	
+	font-weight: bold;
+	margin-left: -140px;
+	margin-bottom: 2px;		
+}
+
+#ExperienceBack
+{
+	width: 120px;
+	height: 4%;
+
+	horizontal-align: center;
+	vertical-align: bottom;
+
+  	border-style: solid;
+    border-radius: 3px;
+
+	margin-bottom: 8px;
+	margin-left: 19px;
+	background-color: #000000;
+	z-index: 1;	
+}
+
+#Experience
+{
+	width: 0%;
+	height: 100%;
+
+	horizontal-align: left;
+
+  	border-style: solid;
+    border-radius: 3px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e3c416 ), to( #b79d0d ) );
+	z-index: 2;	
+}
+
+#ExperienceCount
+{
+	font-size: 14px;
+	horizontal-align: center;
+	vertical-align: bottom;
+
+	font-weight: bold;
+
+	margin-bottom: 4px;
+	margin-left: 25px;
+}
+
+
+#LevelUpButton
+{
+	border: 1px solid black;
+    background-color: #c4a529;
+	width: 135px;
+	height: 30px;
+
+	vertical-align: top;
+
+	margin-top: 30px;
+	margin-left: 85px;
+
+	visibility: collapse;
+	z-index: 2;
+}
+
+.AspectRatio5x4 #LevelUpButton
+{
+	margin-left: 75px;
+}
+
+.could_level_up #LevelUpButton 
+{
+	visibility: visible;
+}
+
+#LevelUpButton:hover
+{
+    background-color: #9e8b2c;
+}
+
+#LevelUpButtonInset
+{
+	width: 100%;
+	height: 100%;
+	border: 2px solid black;
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.9, #c4a529 ), to( #ffffff ) );
+	margin: 1px;
+}
+
+#LevelUpButton:hover #LevelUpButtonInset
+{
+    background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.2, #c4a529 ), color-stop( 0.75, #9e8b2c ), color-stop( 0.8, #c4a529 ), to( #ffffff ) );
+}
+
+#LevelUpButton Label
+{
+	text-transform: uppercase;
+	text-shadow: 0px 1px 3px 2.5 #000000;
+	color: white;
+	vertical-align: center;
+	horizontal-align: center;
+}

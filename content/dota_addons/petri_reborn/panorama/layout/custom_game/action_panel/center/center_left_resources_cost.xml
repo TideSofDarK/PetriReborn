@@ -1,0 +1,24 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/action_panel/abilities_container.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/abilities_container.js" />
+		<include src="file://{resources}/scripts/custom_game/action_panel/center/center_left_resources_cost.js" />		
+	</scripts>
+	<Panel>
+		<Panel id="AbilityCost" >
+	      	<Label text="0" class="GoldText" id="GoldText">
+		    	<Image src="file://{images}/custom_game/custom_variables/gold.png" />
+		    </Label>
+		    <Label text="0" class="LumberText" id="LumberText">
+		    	<Image src="file://{images}/custom_game/custom_variables/lumber.png" />
+		    </Label>
+		    <Label text="0" class="FoodText" id="FoodText">
+		        <Image src="file://{images}/custom_game/custom_variables/food.png" />
+		    </Label>
+		</Panel>
+	</Panel>
+</root>
+
