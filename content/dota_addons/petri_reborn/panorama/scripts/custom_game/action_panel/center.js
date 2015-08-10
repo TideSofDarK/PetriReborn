@@ -1,6 +1,6 @@
 "use strict";
 
-var m_Unit = -1;
+var m_Unit = null;
 
 function LoadUIElements()
 {
@@ -29,9 +29,6 @@ function SetDead( isDead )
 
 function UpdateHealthAndMana()
 {
-	if (m_Unit == -1)
-		return;
-
 	SetDead( !Entities.IsAlive(m_Unit) );
 
 	var healthManaPanel = $( "#HealthAndMana" );
@@ -71,6 +68,7 @@ function UpdateHealthAndMana()
 function UpdateCenter()
 {
 	m_Unit = GameUI.CustomUIConfig().selected_unit;
+
 	UpdateHealthAndMana();
 
 	$( "#BuffPanel" ).data().UpdateBuffs();

@@ -5,7 +5,8 @@
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/UIElements.js" />		
-		<include src="file://{resources}/scripts/custom_game/action_panel/action_panel.js" />
+		<include src="file://{resources}/scripts/custom_game/exec_function.js" />
+		<include src="file://{resources}/scripts/custom_game/action_panel/action_panel.js" />		
 	</scripts>
 	<Panel hittest="false" class="ActionPanelRoot" >
 		<Panel hittest="false" class="StandartPanel" id="MinimapBorder"/>

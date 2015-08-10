@@ -22,8 +22,6 @@ function HidePanels()
 
 	$( "#TotalFoodText" ).SetHasClass( "hide", localPlayerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
 	$( "#TotalLumberText" ).SetHasClass( "hide", localPlayerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
-
-	$.Msg( localPlayerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS );
 }
 
 (function() 

@@ -1,0 +1,50 @@
+<root>
+  <styles>
+     <include src="file://{resources}/styles/custom_game/ability_tooltip.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/ability_tooltip.js" />
+  </scripts>
+  <Panel hittest="false" class="AbilityTooltipRoot">
+    <Image id="TooltipArrow" src="file://{images}/custom_game/tooltip_arrow.png" />
+
+    <Panel hittest="false" id="AbilityTooltip">
+      <Panel id="Header">
+        <Label class="TooltipLabel" id="AbilityName" text="Name" />
+        <Label class="TooltipLabel" id="AbilityLevel" text="Name" />
+        <Panel class="Splitter" />      
+      </Panel>
+
+      <Panel id="Description">
+        <Label class="TooltipLabel" id="AbilityDescription" text="Description" />
+        <Panel class="Splitter" />
+      </Panel>
+
+      <Panel id="Dependencies" />
+      
+      <Panel id="Specials" />
+
+      <Panel id="CooldownAndCosts">
+        <Panel id="Cooldown">
+          <Label text="0" id="CooldownLabel" >
+            <Image class="Icon" id="ImageCD" src="file://{images}/custom_game/icon_cd.png" />
+          </Label>          
+        </Panel>        
+        <Panel id="Costs">
+          <Label text="0" class="Cost" id="GoldText">
+            <Image class="Icon" src="file://{images}/custom_game/custom_variables/gold.png" />
+          </Label>
+          <Label text="0" class="Cost" id="LumberText">
+            <Image class="Icon" src="file://{images}/custom_game/custom_variables/lumber.png" />
+          </Label>
+          <Label text="0" class="Cost" id="FoodText">
+              <Image class="Icon" src="file://{images}/custom_game/custom_variables/food.png" />
+          </Label>
+          <Label text="0" class="Cost" id="ManaText">
+              <Image class="Icon" src="file://{images}/custom_game/icon_mana.png" />
+          </Label>             
+        </Panel>  
+      </Panel>
+    </Panel>
+  </Panel>
+</root>

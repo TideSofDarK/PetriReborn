@@ -1,4 +1,4 @@
-var m_Unit = -1;
+var m_Unit = null;
 var xpTable = {};
 
 function UpdateLevelUpButton()
@@ -18,12 +18,15 @@ function UpdateExperience( unitLevel )
 
 	$( "#ExperienceCount" ).style.visibility = "visible;";
 	$( "#ExperienceCount" ).text = curLevelExp + "/" + maxLevelExp;
-	$( "#Experience" ).style.width = curLevelExp / maxLevelExp * 100 + "%;";
+	//$( "#Experience" ).style.width = curLevelExp / maxLevelExp * 100 + "%;";
 }
 
 function UpdatePortrait()
 {
 	m_Unit = GameUI.CustomUIConfig().selected_unit;
+
+	if (!m_Unit)
+		return;
 
 	var unitLevel = Entities.GetLevel( m_Unit );
 	var unitName = Entities.GetUnitName(m_Unit);
