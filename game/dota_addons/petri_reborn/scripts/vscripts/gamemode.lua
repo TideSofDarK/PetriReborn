@@ -218,6 +218,12 @@ function SetupUI(newHero)
   --Send xp table
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_xp_table", XP_PER_LEVEL_TABLE )
 
+  --Send dependencies
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_dependencies_table", GameMode.DependenciesKVs )
+
+  --Send special values
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
+
   --Update player's UI
   Timers:CreateTimer(0.03,
   function()
@@ -274,7 +280,9 @@ function GameMode:InitGameMode()
 
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
+  GameMode.specialValues = {}
 
+  -- Ability layouts
   for i=1,2 do
     local t = GameMode.UnitKVs
     if i == 2 then
@@ -291,14 +299,27 @@ function GameMode:InitGameMode()
     end
   end
 
+  -- Gold costs
   for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
     if type(ability_info) == "table" then
       if ability_info["AbilityGoldCost"] ~= nil then
         GameMode.abilityGoldCosts[ability_name] = Split(ability_info["AbilityGoldCost"], " ")
-        -- local i = 0
-        -- for c in string.gmatch(ability_info["AbilityGoldCost"], "[^%s]+") do
-        --   GameMode.abilityGoldCosts[i] = c
-        -- end
+      end  
+    end
+  end
+
+  -- Special values
+  for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
+    if type(ability_info) == "table" then
+      if ability_info["AbilitySpecial"] ~= nil then
+        GameMode.specialValues[ability_name] = {}
+        for k,v in pairs(ability_info["AbilitySpecial"]) do
+          for k1,v1 in pairs(v) do
+            if k1 ~= "var_type" and k1 ~= "lumber_cost" and k1 ~= "food_cost" then
+              table.insert(GameMode.specialValues[ability_name], k1)
+            end
+          end
+        end
       end  
     end
   end

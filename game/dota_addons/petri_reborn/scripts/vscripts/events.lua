@@ -85,13 +85,22 @@ function GameMode:OnPlayerReconnect(keys)
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
-      Timers:CreateTimer(1,
+      Timers:CreateTimer(1.25,
       function()
         --Send lumber and food info to users
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
 
         --Send gold costs
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_gold_costs", GameMode.abilityGoldCosts )
+
+        --Send xp table
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_xp_table", XP_PER_LEVEL_TABLE )
+
+        --Send dependencies
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_dependencies_table", GameMode.DependenciesKVs )
+
+        --Send special values
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
 
         --Set correct team
         if hero:GetTeam() == DOTA_TEAM_BADGUYS then
