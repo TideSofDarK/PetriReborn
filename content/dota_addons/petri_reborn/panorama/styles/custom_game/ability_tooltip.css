@@ -1,0 +1,227 @@
+.AbilityTooltipRoot
+{
+	flow-children: right;
+	position: -400px 0px 0px;
+	z-index: 5;
+}
+
+#AbilityTooltip
+{
+	background-color: #2d2d2d;
+	border: 2px solid #000000;
+
+	margin-left: -2px;
+	width: 350px;
+
+	flow-children: down;
+}
+
+#TooltipArrow
+{
+	width: 25px;
+	height: 25px;
+
+	margin-bottom: 25px;
+	vertical-align: bottom;
+}
+
+.Splitter
+{
+	height: 1px;
+	width: 95%;
+
+	border: 1px solid #626262;
+	horizontal-align: center;
+	vertical-align: bottom;
+}
+
+.TooltipLabel
+{
+	color: #ffffff;
+	font-size: 18px;
+
+	horizontal-align: left;
+
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#Header
+{
+	width: 100%;	
+}
+
+#AbilityName
+{
+	vertical-align: middle;
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#AbilityLevel
+{
+	vertical-align: middle;
+	horizontal-align: right;
+
+	color: #e0e0e0;
+	font-size: 14px;
+
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+#AbilityLevel.one_level
+{
+	visibility: collapse;
+}
+
+#Description
+{
+	width: 100%;
+}
+
+#AbilityDescription
+{
+	color: #e0e0e0;
+	font-size: 14px;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#Dependencies
+{
+	width: 100%;
+
+	flow-children: down;
+}
+
+#Dependencies.all_enought
+{
+	visibility: collapse;
+}
+
+.DependenceLabel
+{
+	color: #ff0000;
+	font-size: 16px;
+
+	horizontal-align: right;
+
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.DependenceLabel.isBuild
+{
+	color: #00ff00;
+}
+
+#Specials
+{
+	width: 100%;
+
+	flow-children: down;
+}
+
+#Specials.empty
+{
+	visibility: collapse;
+}
+
+.SpecialsLabel
+{
+	color: #e0e0e0;
+	font-size: 14px;
+
+	horizontal-align: left;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	text-overflow: ellipsis;
+}
+
+#CooldownAndCosts
+{
+	width: 100%;
+}
+
+#Cooldown
+{
+	width: 150px;
+}
+
+#Cooldown.no_cd
+{
+	visibility: collapse;
+}
+
+#CooldownLabel
+{
+	width: 60px;
+	height: 30px;
+  	line-height: 25px;
+
+  	border-style: solid;
+    border-right-width: 10px;
+
+	font-size: 16px;
+    font-weight: bold;
+
+    color: #ffffff;
+
+    border-radius: 6px;
+
+	text-align: right;
+
+	horizontal-align: left;
+	margin-left: 10px;
+}
+
+.Icon
+{
+	width: 20px;
+	height: 20px;
+
+	vertical-align: middle;
+}
+
+#Costs
+{
+	width: 100px;
+
+	horizontal-align: right;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	flow-children: down;
+}
+
+.Cost
+{
+	width: 100%;
+	height: 25px;
+  	line-height: 25px;
+
+  	border-style: solid;
+    border-right-width: 10px;
+
+	font-size: 16px;
+    font-weight: bold;
+
+    color: #ffffff;
+
+    border-radius: 6px;
+
+	text-transform: uppercase;
+
+	text-align: right;
+}
+
+.Cost.null
+{
+	visibility: collapse;
+}

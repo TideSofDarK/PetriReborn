@@ -63,6 +63,32 @@ function ClearCostsPanel()
     costsPanel.FindChild( "FoodText" ).text = 0;
 }
 
+function CheckDependencies()
+{
+	var abilityName = Abilities.GetAbilityName( m_Ability );
+	var abilityLevel = Abilities.GetLevel( m_Ability ); 
+
+	var expr = new RegExp("build");
+	if (!expr.test(abilityName))
+		abilityName += "_" + abilityLevel;
+
+	var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+	if (dependencies == undefined)
+		return true;
+
+	var flag = true;
+	for(var name in dependencies)
+	{
+		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
+		if (table[name] == undefined)
+			return false;
+
+		flag = flag && (table[name] >= dependencies[name]);
+	}
+
+	return flag;
+}
+
 function CheckSpellCost()
 {
 	var gold = Players.GetGold( Players.GetLocalPlayer() );
@@ -103,7 +129,7 @@ function UpdateAbility()
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) );
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost ) );
-	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() );
+	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility() ) );
@@ -143,7 +169,10 @@ function AbilityShowTooltip()
 	//$.DispatchEvent( "DOTAShowAbilityTooltip", abilityButton, abilityName );
 	
 	// If you have an entity index, this will let the tooltip show the correct level / upgrade information
-	$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, m_QueryUnit );
+	//$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, m_QueryUnit );
+
+	var tooltip = GameUI.CustomUIConfig().tooltip;
+	tooltip.data().ShowTooltip(abilityButton, m_Ability);
 }
 
 function AbilityHideTooltip()
@@ -151,7 +180,10 @@ function AbilityHideTooltip()
 	ClearCostsPanel();
 
 	var abilityButton = $( "#AbilityButton" );
-	$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
+	//$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
+
+	var tooltip = GameUI.CustomUIConfig().tooltip;
+	tooltip.data().HideTooltip();
 }
 
 function ActivateAbility()
@@ -162,7 +194,7 @@ function ActivateAbility()
 		return;
 	}
 
-	if (CheckSpellCost())
+	if (CheckSpellCost() && CheckDependencies())
 		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
 }
 
