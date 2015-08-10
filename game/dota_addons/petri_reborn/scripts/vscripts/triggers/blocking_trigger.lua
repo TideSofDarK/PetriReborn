@@ -1,5 +1,4 @@
 function OnStartTouch(trigger)
- 	trigger.activator.currentArea = trigger.caller
  	local unitName = trigger.activator:GetUnitName()
  	if trigger.activator:GetTeam() == DOTA_TEAM_GOODGUYS then
  		if trigger.activator.spawnPosition ~= nil then
