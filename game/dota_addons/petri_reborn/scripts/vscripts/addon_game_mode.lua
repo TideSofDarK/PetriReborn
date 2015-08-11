@@ -87,7 +87,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_gold_bag", context)
   
   -- PARTICLES
-  PrecacheResource("particle_folder", "particles/buildinghelper", context)
+  PrecacheResource("particle", "particles/buildinghelper/ghost_model.vpcf", context)
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf", context)
 
