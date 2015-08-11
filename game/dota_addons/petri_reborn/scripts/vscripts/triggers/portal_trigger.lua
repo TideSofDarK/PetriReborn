@@ -15,7 +15,7 @@ function OnStartTouch(trigger)
 
 			local newPosition = thisEntity:GetAbsOrigin()
 
-			if string.match(trigger.caller:GetName (), "portal_trigger_creep") then
+			if string.match(trigger.caller:GetName (), "portal_trigger_creep") or string.match(trigger.caller:GetName (), "portal_trigger_boss") then
 				trigger.activator.teleportationState = 0
 			end
 
