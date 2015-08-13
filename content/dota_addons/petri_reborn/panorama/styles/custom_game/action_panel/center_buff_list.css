@@ -4,6 +4,17 @@
 	border-radius: 4px;
 }
 
+#CooldownOverlay
+{
+	height: 100%;	
+	width: 100%;
+	horizontal-align: right;
+
+	background-color: #000000DD;
+
+	z-index: 1;
+}
+
 .no_buff.BuffRoot
 {
 	visibility: collapse;

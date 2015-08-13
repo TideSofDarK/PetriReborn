@@ -25,7 +25,8 @@
 			$.DispatchEvent( "DOTAHideBuffTooltip", $.GetContextPanel() );
 		}
 	</script>
-	<Panel class="BuffRoot" hittest="false">
+	<Panel class="BuffRoot" hittest="false" >
+		<Panel id="CooldownOverlay" />
 		<Button id="BuffFrame"
 							onactivate="OnBuffClicked()"
 							onmouseover="BuffShowTooltip()"
@@ -33,7 +34,7 @@
 							>
 			<Panel id="BuffImage">
 				<DOTAAbilityImage id="AbilityImage" />
-				<DOTAItemImage id="ItemImage" scaling="stretch-to-fit-y-preserve-aspect" />
+				<DOTAItemImage id="ItemImage" scaling="stretch-to-fit-y-preserve-aspect"/>
 			</Panel>
 			<Label id="StackCount" />
 		</Button>

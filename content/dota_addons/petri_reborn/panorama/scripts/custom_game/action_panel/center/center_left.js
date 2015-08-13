@@ -17,8 +17,9 @@ function LoadUIElements()
 
 	switch(playerInfo.player_team_id)
 	{
-		case DOTATeam_t.DOTA_TEAM_GOODGUYS: 
-			costsPanel.BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_left_resources_cost.xml", false, false );
+		case DOTATeam_t.DOTA_TEAM_GOODGUYS:
+			// Веронятно не нужна уже 
+			//costsPanel.BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_left_resources_cost.xml", false, false );
 			break;
 		case DOTATeam_t.DOTA_TEAM_BADGUYS:
 		    statsPanel.BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_left_stats.xml", false, false );

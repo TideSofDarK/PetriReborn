@@ -113,11 +113,17 @@
 	border: 2px solid transparent;
 }
 
-.AspectRatio4x3 #AbilityButton,
+.AspectRatio4x3 #AbilityButton
+{
+	width: 60px;
+	height: 60px;
+	border: 1px solid transparent;
+}
+
 .AspectRatio5x4 #AbilityButton
 {
-	width: 52px;
-	height: 52px;
+	width: 51px;
+	height: 51px;
 	border: 1px solid transparent;
 }
 

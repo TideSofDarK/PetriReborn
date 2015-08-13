@@ -195,7 +195,31 @@ function ActivateAbility()
 	}
 
 	if (CheckSpellCost() && CheckDependencies())
+	{
+		//var entities = Players.GetSelectedEntities( Players.GetLocalPlayer() );
+		var unitName = Entities.GetUnitName( m_QueryUnit );
+
+
+		/*for (var entityIndex in entities) 
+		{	
+			var entity = entities[entityIndex];
+			if (Entities.GetUnitName( entity ) == unitName)
+			{
+				var order = {};
+				order.OrderType = dotaunitorder_t.DOTA_UNIT_ORDER_CAST_NO_TARGET;
+				//order.Position = GameUI.GetScreenWorldPosition( GameUI.GetCursorPosition() );
+				order.AbilityIndex = m_Ability;
+				order.OrderIssuer = PlayerOrderIssuer_t.DOTA_ORDER_ISSUER_SELECTED_UNITS;
+				order.Queue = false;
+				order.ShowEffects = false;
+
+				Game.PrepareUnitOrders( order );
+
+				//Abilities.ExecuteAbility( m_Ability, entity, false );
+			}
+		}*/
 		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
+	}
 }
 
 function DoubleClickAbility()

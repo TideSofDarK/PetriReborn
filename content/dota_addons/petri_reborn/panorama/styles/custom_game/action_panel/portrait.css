@@ -12,6 +12,22 @@
 	margin-left: 10px;
 }
 
+.AspectRatio4x3 #HeroName
+{
+	margin-left: -50px;
+}
+
+.AspectRatio5x4 #HeroName
+{
+	margin-left: -40px;
+	margin-top: 60px;	
+}
+
+.AspectRatio16x10 #HeroName
+{
+	margin-left: -35px;	
+}
+
 #HeroLevel
 {
 	horizontal-align: center;
@@ -20,6 +36,17 @@
 	font-weight: bold;
 	margin-left: -140px;
 	margin-bottom: 2px;		
+}
+
+.AspectRatio4x3 #HeroLevel,
+.AspectRatio5x4 #HeroLevel
+{
+	margin-right: 37px;
+}
+
+.AspectRatio16x10 #HeroLevel
+{
+	margin-right: 32px;	
 }
 
 #ExperienceBack
@@ -37,6 +64,15 @@
 	margin-left: 19px;
 	background-color: #000000;
 	z-index: 1;	
+}
+
+.AspectRatio4x3 #ExperienceBack,
+.AspectRatio5x4 #ExperienceBack,
+.AspectRatio16x10 #ExperienceBack
+{
+	width: 110px;
+	margin-right: 52px;
+	margin-bottom: 6px;
 }
 
 #Experience
@@ -65,6 +101,51 @@
 	margin-left: 25px;
 }
 
+.AspectRatio4x3 #ExperienceCount,
+.AspectRatio5x4 #ExperienceCount,
+.AspectRatio16x10 #ExperienceCount,
+{
+	margin-right: 45px;
+	margin-bottom: 3px;
+}
+
+#PortraitBackground
+{
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/portrait_wide.png");
+	z-index: 1;
+}
+
+.AspectRatio4x3 #PortraitBackground,
+.AspectRatio5x4 #PortraitBackground,
+.AspectRatio16x10 #PortraitBackground
+{
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/portrait.png");
+}
+
+#PortraitModel
+{
+	width: 150px;
+	height: 210px;
+
+	margin-left: 80px;
+	background-color: #808080;	
+	z-index: 0;	
+}
+
+.AspectRatio4x3 #PortraitModel,
+.AspectRatio16x10 #PortraitModel
+{
+	width: 130px;
+	margin-left: 20px;	
+}
+
+.AspectRatio5x4 #PortraitModel
+{
+	width: 130px;
+	height: 200px;
+
+	margin-left: 20px;	
+}
 
 #LevelUpButton
 {
@@ -82,9 +163,16 @@
 	z-index: 2;
 }
 
+.AspectRatio4x3 #LevelUpButton,
+.AspectRatio16x10 #LevelUpButton
+{
+	margin-left: 20px;		
+	margin-right: 70px;	
+}
+
 .AspectRatio5x4 #LevelUpButton
 {
-	margin-left: 75px;
+	margin-left: 20px;
 }
 
 .could_level_up #LevelUpButton 
