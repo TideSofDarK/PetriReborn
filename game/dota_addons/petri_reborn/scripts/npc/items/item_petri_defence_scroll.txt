@@ -8,10 +8,10 @@
   "AbilityTextureName"      "item_petri_defence_scroll"
 
   "AbilityCastPoint"              "0"
-  "AbilityCooldown"       "80"
+  "AbilityCooldown"       "100"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "175"
+  "ItemCost"            "375"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
   "ItemInitialCharges" "1"
@@ -25,7 +25,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "armor_bonus"     "500"
+      "armor_bonus"     "900"
     }
     "02"
     {
