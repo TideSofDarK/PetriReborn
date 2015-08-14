@@ -27,6 +27,8 @@ function StartBuildingHelper( params )
       Particles.DestroyParticleEffect(particle, true)
     }
 
+    $("#BuildingHelperBase").hittest = true;
+
     particle = Particles.CreateParticle("particles/buildinghelper/ghost_model.vpcf", ParticleAttachment_t.PATTACH_ABSORIGIN, localHeroIndex);
     Particles.SetParticleControlEnt(particle, 1, entindex, ParticleAttachment_t.PATTACH_ABSORIGIN_FOLLOW, "follow_origin", Entities.GetAbsOrigin(entindex), true)            
     Particles.SetParticleControl(particle, 3, [255,0,0])
@@ -41,23 +43,20 @@ function StartBuildingHelper( params )
     var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
 
     if (size % 2 != 0) {
-      GamePos[0] = SnapToGrid32(GamePos[0])
-      GamePos[1] = SnapToGrid32(GamePos[1])
+      GamePos[0] = SnapToGrid32(GamePos[0]);
+      GamePos[1] = SnapToGrid32(GamePos[1]);
     } else {
-      GamePos[0] = SnapToGrid64(GamePos[0])
-      GamePos[1] = SnapToGrid64(GamePos[1])
+      GamePos[0] = SnapToGrid64(GamePos[0]);
+      GamePos[1] = SnapToGrid64(GamePos[1]);
     }
 
-    Particles.SetParticleControl(particle, 0, GamePos)
-    Particles.SetParticleControl(particle, 2, [0,255,0])
+    if (GamePos[0] > 10000000)
+    {
+      GamePos = [0,0,0];
+    }
 
-    mPos[0] = (mPos[0] * 1.0 / $( "#BuildingHelperBase").desiredlayoutwidth ) * Math.max(1920, $( "#BuildingHelperBase").desiredlayoutwidth );
-    mPos[1] = (mPos[1] * 1.0 / $( "#BuildingHelperBase").desiredlayoutheight) * Math.max(1080, $( "#BuildingHelperBase").desiredlayoutheight);
-
-    $( "#GreenSquare").style['height'] = String(100) + "px;";
-    $( "#GreenSquare").style['width'] = String(100) + "px;";
-    $( "#GreenSquare").style['margin'] = String(mPos[1] - (25 * size)) + "px 0px 0px " + String(mPos[0] - (25 * size)) + "px;";
-    $( "#GreenSquare").style['transform'] = "rotateX( 30deg );";
+    Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1]); // #JustValveThings
+    Particles.SetParticleControl(particle, 2, [0,255,0]);
   }
 }
 
@@ -68,7 +67,8 @@ function SendBuildCommand( params )
   GameEvents.SendCustomGameEventToServer( "building_helper_build_command", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
 
   state = 'disabled'
-  $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;";
+
+  $("#BuildingHelperBase").hittest = false;
 
   Particles.DestroyParticleEffect(particle, true)
 }
@@ -82,8 +82,8 @@ function SendCancelCommand( params )
 }
 
 function Cancel(params) {
+  $("#BuildingHelperBase").hittest = false;
   state = 'disabled'
-  $( "#GreenSquare").style['margin'] = "-1000px 0px 0px 0px;"; 
 
   Particles.DestroyParticleEffect(particle, true)
 }
