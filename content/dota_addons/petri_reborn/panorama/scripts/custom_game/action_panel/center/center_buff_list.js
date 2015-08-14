@@ -42,6 +42,10 @@ function UpdateBuff( buffPanel, queryUnit, buffSerial )
 		buffPanel.SetHasClass( "item_buff", true );
 		buffPanel.SetHasClass( "ability_buff", false );
 	}
+
+	var buffDuration = Buffs.GetDuration( queryUnit, buffSerial);
+	var remainingTime = Buffs.GetRemainingTime( queryUnit, buffSerial );
+	buffPanel.FindChild( "CooldownOverlay" ).style.width = 100 - remainingTime / buffDuration * 100 + "%";
 }
 
 function UpdateBuffs()
@@ -53,7 +57,7 @@ function UpdateBuffs()
 	var queryUnit = GameUI.CustomUIConfig().selected_unit;
 	
 	var nBuffs = Entities.GetNumBuffs( queryUnit );
-	
+
 	// update all the panels
 	var nUsedPanels = 0;
 	for ( var i = 0; i < nBuffs; ++i )

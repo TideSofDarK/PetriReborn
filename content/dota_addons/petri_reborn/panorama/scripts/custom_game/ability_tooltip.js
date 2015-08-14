@@ -40,7 +40,7 @@ function SetPosition()
   var x = (GetOffsetX( m_panel, 0) + m_panel.actuallayoutwidth) * x_mult;
   var y = (GetOffsetY( m_panel, 0) - ( $.GetContextPanel().actuallayoutheight - m_panel.actuallayoutheight )) * y_mult;
 
-  $.GetContextPanel().style.position = x + "px " + y + "px " + "0px;";
+  $.GetContextPanel().style.position = x + "px " + y + "px 0px;";
 }
 
 /*
@@ -216,8 +216,9 @@ function ShowTooltip( panel, abilityID )
   FillSpecials( abilityID );
 
   $.GetContextPanel().visible = true;
+  $.GetContextPanel().style.position = "-1000px 0px 0px;";
 
-  SetPosition();
+  $.Schedule(0.1, SetPosition);
 }
 
 function HideTooltip()

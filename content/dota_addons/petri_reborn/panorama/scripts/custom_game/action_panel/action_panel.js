@@ -1,7 +1,5 @@
 function LoadUIElements()
 {
-    $( "#MinimapBorder" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/minimap_border.xml", false, false );
-    $( "#Spacer" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/spacer.xml", false, false ); 
     $( "#Portrait" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/portrait.xml", false, false );
     $( "#Center" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center.xml", false, false );
 }

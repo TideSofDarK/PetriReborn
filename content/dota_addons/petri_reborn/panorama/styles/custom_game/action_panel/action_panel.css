@@ -20,12 +20,25 @@
 	background-color: #272823;
 }
 
+.SkinPanel
+{
+	width: 100%;
+	height: 100%;
+
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	background-size: 100% 100%;
+	background-color: transparent;
+}
+
 #MinimapBorder
 {
 	width: 320px;
 	height: 360px;
 
-	background-color: transparent;
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/minimapborder.png");
+
 	z-index: 1;
 }
 
@@ -40,14 +53,30 @@
 	width: 150px;
 	height: 270px;
 
-	background-color: transparent;
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/spacer_16_9.png");
 	margin-left: -24px;
 	z-index: 0;
 }
 
-#SpacerImage
+.AspectRatio4x3 #Spacer,
+.AspectRatio5x4 #Spacer
 {
+	width: 50px;
+	height: 290px;
+
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/spacer_16_10.png");
+	margin-left: -24px;
 	z-index: 0;
+}
+
+.AspectRatio16x10 #Spacer
+{
+	width: 70px;
+	height: 290px;
+
+	background-image: url("file://{images}/custom_game/hud_skins/default/actionpanel/spacer_16_10.png");
+	margin-left: -24px;
+	z-index: 0;	
 }
 
 #Portrait
@@ -61,38 +90,20 @@
 	z-index: 1;
 }
 
-.AspectRatio4x3 #Portrait
+.AspectRatio4x3 #Portrait,
+.AspectRatio16x10 #Portrait
 {
-	margin-left: -150px;
+	width: 220px;
+
+	margin-left: -10px;
 }
 
 .AspectRatio5x4 #Portrait
 {
-	width: 280px;
+	width: 220px;
 	height: 270px;
 
-	margin-left: -140px;
-}
-
-#PortraitImage
-{
-	z-index: 1;
-}
-
-#PortraitModel
-{
-	width: 150px;
-	height: 210px;
-
-	margin-left: 80px;
-	background-color: #808080;	
-	z-index: 0;	
-}
-
-.AspectRatio5x4 #PortraitModel
-{
-	width: 125px;
-	height: 200px;
+	margin-left: -10px;
 }
 
 #Center
@@ -107,7 +118,7 @@
 
 .AspectRatio4x3 #Center
 {
-	width: 565px;
+	width: 600px;
 }
 
 .AspectRatio5x4 #Center

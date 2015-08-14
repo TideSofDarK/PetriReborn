@@ -18,7 +18,7 @@ function UpdateExperience( unitLevel )
 
 	$( "#ExperienceCount" ).style.visibility = "visible;";
 	$( "#ExperienceCount" ).text = curLevelExp + "/" + maxLevelExp;
-	//$( "#Experience" ).style.width = curLevelExp / maxLevelExp * 100 + "%;";
+	$( "#Experience" ).style.width = curLevelExp / maxLevelExp * 100 + "%;";
 }
 
 function UpdatePortrait()
