@@ -87,6 +87,11 @@ function SetSelectedUnit()
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
     GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );
 
+	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
+    $.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", UpdateAbilitiesContainer);	
+
+	GameEvents.Subscribe( "dota_player_gained_level", UpdateAbilitiesContainer );
+
 	Update();
 })();
 
