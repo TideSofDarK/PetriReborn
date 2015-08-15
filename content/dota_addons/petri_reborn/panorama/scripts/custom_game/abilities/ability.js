@@ -124,6 +124,10 @@ function UpdateAbility()
 	$( "#AbilityImage" ).contextEntityIndex = m_Ability;
 	$( "#ManaCost" ).text = manaCost;
 
+	$( "#FoodCost" ).text = foodCost;
+	$( "#GoldCost" ).text = goldCost;
+	$( "#LumberCost" ).text = lumberCost;
+
 	if ( Abilities.IsCooldownReady( m_Ability ) )
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
