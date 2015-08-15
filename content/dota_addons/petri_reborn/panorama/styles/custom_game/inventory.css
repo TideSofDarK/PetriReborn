@@ -140,7 +140,7 @@
 {
 	width: 105px;
 	margin-right: -30px;
-	clip: rect( 0%, 70%, 90%, 0% );
+	clip: rect( 0%, 70%, 100%, 0% );
 }
 
 .Charges
