@@ -4,7 +4,6 @@ var m_Ability = -1;
 var m_QueryUnit = -1;
 var m_bInLevelUp = false;
 
-var costsPanel;
 var goldCosts;
 var currentResources = {};
 
@@ -29,38 +28,6 @@ function AutoUpdateAbility()
 {
 	UpdateAbility();
 	$.Schedule( 0.1, AutoUpdateAbility );
-}
-
-function UpdateCostsPanel()
-{
-	if (!costsPanel)
-		return;
-
-    var abilityLevel = Abilities.GetLevel( m_Ability );
-	var manaCost = Abilities.GetManaCost( m_Ability );
-    var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
-    var foodCost = Abilities.GetLevelSpecialValueFor( m_Ability, "food_cost", abilityLevel - 1 );
-    var goldCost = 0;
-
-    try
-    {
-	    goldCost = goldCosts[ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
-    }
-    catch( error ) { }
-
-    costsPanel.FindChild( "GoldText" ).text = goldCost;
-    costsPanel.FindChild( "LumberText" ).text = lumberCost;
-    costsPanel.FindChild( "FoodText" ).text = foodCost;
-}
-
-function ClearCostsPanel()
-{
-	if (!costsPanel)
-		return;
-	
-    costsPanel.FindChild( "GoldText" ).text = 0;
-    costsPanel.FindChild( "LumberText" ).text = 0;
-    costsPanel.FindChild( "FoodText" ).text = 0;
 }
 
 function CheckDependencies()
@@ -126,9 +93,25 @@ function UpdateAbility()
 	var hotkey = Abilities.GetKeybind( m_Ability, m_QueryUnit );
 	var unitMana = Entities.GetMana( m_QueryUnit );
 
+	var abilityLevel = Abilities.GetLevel( m_Ability );
+	var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
+    var foodCost = Abilities.GetLevelSpecialValueFor( m_Ability, "food_cost", abilityLevel - 1 );
+    var goldCost = 0;
+
+    try
+    {
+	    goldCost = GameUI.CustomUIConfig().goldCosts [ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
+    }
+    catch( error ) { }
+
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) );
+	
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost ) );
+	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost ) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost ) );
+	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost ) );
+
 	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
@@ -140,7 +123,7 @@ function UpdateAbility()
 	$( "#AbilityImage" ).abilityname = abilityName;
 	$( "#AbilityImage" ).contextEntityIndex = m_Ability;
 	$( "#ManaCost" ).text = manaCost;
-	
+
 	if ( Abilities.IsCooldownReady( m_Ability ) )
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
@@ -161,8 +144,6 @@ function UpdateAbility()
 
 function AbilityShowTooltip()
 {
-	UpdateCostsPanel();
-
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );
 	// If you don't have an entity, you can still show a tooltip that doesn't account for the entity
@@ -177,8 +158,6 @@ function AbilityShowTooltip()
 
 function AbilityHideTooltip()
 {
-	ClearCostsPanel();
-
 	var abilityButton = $( "#AbilityButton" );
 	//$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
 
@@ -270,8 +249,6 @@ function RebuildAbilityUI()
 
 (function()
 {
-	costsPanel = $.GetContextPanel().GetParent().GetParent().GetParent().GetParent()
-	    	.FindChild( "CenterLeft" ).FindChild( "InfoPanel" ).FindChild( "ResourcesCost" ).FindChild( "AbilityCost" );	
 	$.GetContextPanel().data().SetAbility = SetAbility;
 
 	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild

@@ -1,14 +1,15 @@
 <root>
 	<styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/action_panel/abilities_container.css" />
-		<include src="file://{resources}/styles/custom_game/action_panel/ability.css" />
+		<include src="file://{resources}/styles/custom_game/abilities_container.css" />
+		<include src="file://{resources}/styles/custom_game/ability.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/ability.js" />
+		<include src="file://{resources}/scripts/custom_game/abilities/ability.js" />
 	</scripts>
 	<Panel class="AbilityPanel">
 		<Panel id="UpgradeBorder">
+			
 			<Panel id="AbilityStatusBorder">
 				<Button id="AbilityButton"
 						onmouseover="AbilityShowTooltip()"
@@ -29,6 +30,10 @@
 					<Panel hittest="false" class="LevelPanel" id="AbilityMaxLevelContainer" />
 				</Button>
 			</Panel>
+
+			<Label id="FoodCost" />
+			<Label id="GoldCost" />
+			<Label id="LumberCost" />
 		</Panel>
 
 		<Panel id="Hotkey">

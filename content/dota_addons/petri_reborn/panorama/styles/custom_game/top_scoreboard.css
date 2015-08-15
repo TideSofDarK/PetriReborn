@@ -15,10 +15,14 @@
     vertical-align: top;
 }
 
-.AspectRatio4x3 #TopBarScoreboard,
+.AspectRatio4x3 #TopBarScoreboard
+{
+	margin-left: 160px;
+}
+
 .AspectRatio5x4 #TopBarScoreboard
 {
-	margin-left: 225px;
+	margin-left: 140px;
 }
 
 #ScoreboardContainer
@@ -211,8 +215,8 @@
 
 #HeroIcon
 {
-    width: 64px;
-    height: 36px;
+    width: 55px;
+    height: 30px;
 }
 
 .player_dead #HeroIcon
