@@ -44,7 +44,7 @@
 #FoodCost
 {
 	color: #c0e8fb;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 	text-shadow: 0px 0px 3px 4 #512925ff;
 	margin-right: 3px;
@@ -67,9 +67,9 @@
 #GoldCost
 {
 	color: #ffffffff;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-	text-shadow: 0px 0px 3px 2 #ead023ff;
+	text-shadow: 0px 0px 5px 0 rgb(234, 208, 35);
 	margin-left: 5px;
 	margin-bottom: -11px;
 
@@ -90,7 +90,7 @@
 #LumberCost
 {
 	color: #c0e8fb;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 	text-shadow: 0px 0px 3px 3 #00552Fff;
 	margin-right: 3px;
