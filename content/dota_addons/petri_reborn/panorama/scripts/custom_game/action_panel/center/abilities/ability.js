@@ -126,9 +126,25 @@ function UpdateAbility()
 	var hotkey = Abilities.GetKeybind( m_Ability, m_QueryUnit );
 	var unitMana = Entities.GetMana( m_QueryUnit );
 
+	var abilityLevel = Abilities.GetLevel( m_Ability );
+	var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
+    var foodCost = Abilities.GetLevelSpecialValueFor( m_Ability, "food_cost", abilityLevel - 1 );
+    var goldCost = 0;
+
+    try
+    {
+	    goldCost = GameUI.CustomUIConfig().goldCosts [ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
+    }
+    catch( error ) { }
+
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) );
+	
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost ) );
+	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost ) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost ) );
+	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost ) );
+
 	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
@@ -140,6 +156,10 @@ function UpdateAbility()
 	$( "#AbilityImage" ).abilityname = abilityName;
 	$( "#AbilityImage" ).contextEntityIndex = m_Ability;
 	$( "#ManaCost" ).text = manaCost;
+
+	$( "#FoodCost" ).text = foodCost;
+	$( "#GoldCost" ).text = goldCost;
+	$( "#LumberCost" ).text = lumberCost;
 	
 	if ( Abilities.IsCooldownReady( m_Ability ) )
 	{

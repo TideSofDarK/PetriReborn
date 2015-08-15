@@ -9,6 +9,7 @@
 	</scripts>
 	<Panel class="AbilityPanel">
 		<Panel id="UpgradeBorder">
+			
 			<Panel id="AbilityStatusBorder">
 				<Button id="AbilityButton"
 						onmouseover="AbilityShowTooltip()"
@@ -29,6 +30,10 @@
 					<Panel hittest="false" class="LevelPanel" id="AbilityMaxLevelContainer" />
 				</Button>
 			</Panel>
+
+			<Label id="FoodCost" />
+			<Label id="GoldCost" />
+			<Label id="LumberCost" />
 		</Panel>
 
 		<Panel id="Hotkey">

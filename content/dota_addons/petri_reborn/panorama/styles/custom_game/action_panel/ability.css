@@ -41,6 +41,75 @@
 	z-index: 0.7;
 }
 
+#FoodCost
+{
+	color: #c0e8fb;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow: 0px 0px 3px 4 #512925ff;
+	margin-right: 3px;
+	margin-top: -9px;
+
+	vertical-align: top;
+	horizontal-align: right;
+}
+
+.AspectRatio4x3 #FoodCost
+{
+    font-size: 11px;
+}
+
+.AspectRatio5x4 #FoodCost
+{
+    font-size: 11px;
+}
+
+#GoldCost
+{
+	color: #ffffffff;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow: 0px 0px 3px 2 #ead023ff;
+	margin-left: 5px;
+	margin-bottom: -11px;
+
+	vertical-align: bottom;
+	horizontal-align: left;
+}
+
+.AspectRatio4x3 #GoldCost
+{
+    font-size: 11px;
+}
+
+.AspectRatio5x4 #GoldCost
+{
+    font-size: 11px;
+}
+
+#LumberCost
+{
+	color: #c0e8fb;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow: 0px 0px 3px 3 #00552Fff;
+	margin-right: 3px;
+	margin-bottom: -11px;
+
+	vertical-align: bottom;
+	horizontal-align: right;
+}
+
+.AspectRatio4x3 #LumberCost
+{
+    font-size: 11px;
+}
+
+.AspectRatio5x4 #LumberCost
+{
+    font-size: 11px;
+}
+
 #ManaCost
 {
 	color: #c0e8fb;
@@ -52,6 +121,21 @@
 
 	vertical-align: top;
 	horizontal-align: right;
+}
+
+.no_food_cost #FoodCost
+{
+	visibility: collapse;
+}
+
+.no_gold_cost #GoldCost
+{
+	visibility: collapse;
+}
+
+.no_lumber_cost #LumberCost
+{
+	visibility: collapse;
 }
 
 .no_mana_cost #ManaCost
