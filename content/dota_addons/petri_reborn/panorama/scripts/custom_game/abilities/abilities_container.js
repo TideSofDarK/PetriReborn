@@ -77,6 +77,7 @@ function Update()
 function SetSelectedUnit()
 {
     GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
+	UpdateAbilitiesContainer();
 }
 
 (function()
