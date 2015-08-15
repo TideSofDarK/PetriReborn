@@ -8,7 +8,7 @@
 		<include src="file://{resources}/scripts/custom_game/action_panel/center/center_right.js" />	
 	</scripts>
 	<Panel >
-		<Image hittest="false" id="CenterRightImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/center_right.png" />
+		<!-- <Image hittest="false" id="CenterRightImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/center_right.png" /> -->
 		<Panel id="AbilitiesContainer"/>
 	</Panel>
 </root>

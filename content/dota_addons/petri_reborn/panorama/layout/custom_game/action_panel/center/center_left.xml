@@ -8,12 +8,12 @@
 		<include src="file://{resources}/scripts/custom_game/action_panel/center/center_left.js" />
 	</scripts>
 	<Panel>
-		<Image hittest="false" id="CenterLeftImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/center_left_wide.png" />
+		<!-- <Image hittest="false" id="CenterLeftImage" src="file://{images}/custom_game/hud_skins/default/actionpanel/center_left_wide.png" /> -->
 
 		<Panel id="InfoPanel">
 
-			<Panel id="Info" />
-			<Panel id="Stats" />
+<!-- 			<Panel id="Info" />
+			<Panel id="Stats" /> -->
 			<Panel id="ResourcesCost" />
 		</Panel>
 	</Panel>

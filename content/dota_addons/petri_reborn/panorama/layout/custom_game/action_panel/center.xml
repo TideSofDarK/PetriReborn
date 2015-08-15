@@ -8,14 +8,14 @@
 		<include src="file://{resources}/scripts/custom_game/action_panel/center.js" />		
 	</scripts>
 	<Panel class="CenterPanel">
-		<Panel hittest="false" id="BuffPanel" />
+		<!-- <Panel hittest="false" id="BuffPanel" /> -->
 		<Panel hittest="false" id="CenterLeft" />
 		<Panel hittest="false" id="CenterRight" />
 	
 		<Panel id="RespawnPanel">
 			<Label class="BarLabel" id="RespawnTimer" text="Respawn in 0" />			
 		</Panel>
-		<Panel id="HealthAndMana">
+<!-- 		<Panel id="HealthAndMana">
 			<Label class="BarLabel" id="HealthRegen" text="+0.0" />
 			<Label class="BarLabel" id="HealthCount" text="0/0" />
 			<Label class="BarLabel" id="ManaRegen" text="+0.0" />
@@ -23,7 +23,7 @@
 			
 			<Panel class="Bar" id="Health" />
 			<Panel class="Bar" id="Mana"/> 
-		</Panel>		
+		</Panel>	 -->	
 	</Panel>
 </root>
 

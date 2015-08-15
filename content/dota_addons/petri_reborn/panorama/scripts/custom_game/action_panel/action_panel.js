@@ -1,13 +1,13 @@
 function LoadUIElements()
 {
-    $( "#Portrait" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/portrait.xml", false, false );
+    // $( "#Portrait" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/portrait.xml", false, false );
     $( "#Center" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center.xml", false, false );
 }
 
 // Cascade updating
 function Update()
 {
-    $( "#Portrait" ).data().UpdatePortrait();
+    // $( "#Portrait" ).data().UpdatePortrait();
     $( "#Center" ).data().UpdateCenter();
 
 	$.Schedule( 0.2, Update );

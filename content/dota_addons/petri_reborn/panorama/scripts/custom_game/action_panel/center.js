@@ -4,7 +4,7 @@ var m_Unit = null;
 
 function LoadUIElements()
 {
-	$( "#BuffPanel" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center_buff_list.xml", false, false );
+	// $( "#BuffPanel" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center_buff_list.xml", false, false );
     $( "#CenterLeft" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_left.xml", false, false );
     $( "#CenterRight" ).BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/center_right.xml", false, false );
 }
@@ -16,15 +16,15 @@ function FormatRegen( regen )
 
 function SetDead( isDead )
 {
-	var healthManaPanel = $.GetContextPanel().FindChild( "HealthAndMana" );
-	var respawnPanel = $.GetContextPanel().FindChild( "RespawnPanel" );
+	// var healthManaPanel = $.GetContextPanel().FindChild( "HealthAndMana" );
+	// var respawnPanel = $.GetContextPanel().FindChild( "RespawnPanel" );
 
-	healthManaPanel.SetHasClass("dead", isDead);	
-	respawnPanel.SetHasClass("dead", isDead);
+	// healthManaPanel.SetHasClass("dead", isDead);	
+	// respawnPanel.SetHasClass("dead", isDead);
 
-	var respawnTimer = respawnPanel.FindChild( "RespawnTimer" );
-	var localPlayer = Game.GetLocalPlayerInfo();
-	respawnTimer.text = $.Localize( "#respawn_in" ) + (localPlayer.player_respawn_seconds + 1) + " ..."
+	// var respawnTimer = respawnPanel.FindChild( "RespawnTimer" );
+	// var localPlayer = Game.GetLocalPlayerInfo();
+	// respawnTimer.text = $.Localize( "#respawn_in" ) + (localPlayer.player_respawn_seconds + 1) + " ..."
 }
 
 function UpdateHealthAndMana()
@@ -71,7 +71,7 @@ function UpdateCenter()
 
 	UpdateHealthAndMana();
 
-	$( "#BuffPanel" ).data().UpdateBuffs();
+	// $( "#BuffPanel" ).data().UpdateBuffs();
 	$( "#CenterLeft" ).data().UpdateCenterLeft();
 	$( "#CenterRight" ).data().UpdateCenterRight();
 }

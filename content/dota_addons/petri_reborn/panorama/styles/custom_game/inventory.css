@@ -34,14 +34,14 @@
 	background-color: transparent;
 }
 
-#BackgroundImage
+/*#BackgroundImage
 {
 	width: 475px;
 	height: 290px;
 
 	margin-left: 80px;
 	background-image: url("file://{images}/custom_game/hud_skins/default/inventory/background_wide.png");
-}
+}*/
 
 .AspectRatio4x3 #BackgroundImage
 {
