@@ -1,7 +1,7 @@
 <root>
 	<styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/action_panel/abilities_container.css" />
+		<include src="file://{resources}/styles/custom_game/abilities_container.css" />
 	</styles>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/resources.js" />		

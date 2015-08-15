@@ -39,14 +39,14 @@ function UpdateAbilitiesContainer()
 		if ( ability == -1 )
 			continue;
 
-		if ( !Abilities.IsDisplayedAbility(ability) )
+		if ( !Abilities.IsDisplayedAbility( ability ) )
 			continue;
 		
 		if ( nUsedPanels >= m_AbilityPanels.length )
 		{
 			// create a new panel
 			var abilityPanel = $.CreatePanel( "Panel", abilityListPanel, "" );
-			abilityPanel.BLoadLayout( "file://{resources}/layout/custom_game/action_panel/center/abilities/ability.xml", false, false );
+			abilityPanel.BLoadLayout( "file://{resources}/layout/custom_game/abilities/ability.xml", false, false );
 			m_AbilityPanels.push( abilityPanel );
 		}
 
@@ -67,14 +67,24 @@ function UpdateAbilitiesContainer()
 	// Если есть дочерние панели, то показываем основную
 	if ( nUsedPanels > 0)
 		abilityListPanel.style["visibility"] = "visible";
+
+	$.Schedule( 0.2, UpdateAbilitiesContainer );
+}
+
+function SetSelectedUnit()
+{
+    GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
 }
 
 (function()
 {
-	$.GetContextPanel().data().UpdateAbilitiesContainer = UpdateAbilitiesContainer;	
+	UpdateAbilitiesContainer();
 
 	GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilitiesContainer );
 	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilitiesContainer );
 	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
+
+    GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
+    GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );	
 })();
 

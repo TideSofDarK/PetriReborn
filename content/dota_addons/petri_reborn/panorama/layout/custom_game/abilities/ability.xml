@@ -1,11 +1,11 @@
 <root>
 	<styles>
 		<include src="file://{resources}/styles/dotastyles.css" />
-		<include src="file://{resources}/styles/custom_game/action_panel/abilities_container.css" />
-		<include src="file://{resources}/styles/custom_game/action_panel/ability.css" />
+		<include src="file://{resources}/styles/custom_game/abilities_container.css" />
+		<include src="file://{resources}/styles/custom_game/ability.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/action_panel/center/abilities/ability.js" />
+		<include src="file://{resources}/scripts/custom_game/abilities/ability.js" />
 	</scripts>
 	<Panel class="AbilityPanel">
 		<Panel id="UpgradeBorder">
