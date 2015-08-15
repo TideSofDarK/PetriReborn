@@ -1,7 +1,7 @@
 .InventoryOverlayRoot
 {
-	width: 475px;
-	height: 290px;
+	width: 720px;
+	height: 235px;
 
 	horizontal-align: right;
 	vertical-align: bottom;
@@ -14,22 +14,24 @@
 	margin-left: 10px;
 	margin-bottom: 17px;
 
+	margin-left: 260px;
+
 	vertical-align: bottom;
 }
 
 .AspectRatio4x3 #inventory_items
 {
-	margin-left: 145px;
+	margin-left: 390px;
 }
 
 .AspectRatio5x4 #inventory_items
 {
-	margin-left: 165px;
+	margin-left: 410px;
 }
 
 .AspectRatio16x10 #inventory_items
 {
-	margin-left: 15px;
+	margin-left: 270px;
 }
 
 #stash_row
@@ -39,15 +41,25 @@
 
 	border: 2px solid black;
 
-	margin-bottom: 20px;
-
-	horizontal-align: right;
+	horizontal-align: left;
 	vertical-align: top;
 }
 
 .AspectRatio4x3 #stash_row
 {
-	margin-top: -15px;
+	margin-top: -5px;
+	margin-left: -45px;
+}
+
+.AspectRatio5x4 #stash_row
+{
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+.AspectRatio16x10 #stash_row
+{
+	margin-left: 15px;
 }
 
 #stash_row.empty
@@ -77,16 +89,16 @@
 	margin-right: 4px;
 }
 
-.AspectRatio16x10 .ItemPanel
-{
-	width: 69px;
-	height: 57px;
-}
-
 .AspectRatio5x4 .ItemPanel
 {
 	width: 65px;
 	height: 53px;	
+}
+
+.AspectRatio16x10 .ItemPanel
+{
+	width: 69px;
+	height: 57px;
 }
 
 #ItemImage
