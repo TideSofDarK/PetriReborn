@@ -67,7 +67,10 @@ function UpdateAbilitiesContainer()
 	// Если есть дочерние панели, то показываем основную
 	if ( nUsedPanels > 0)
 		abilityListPanel.style["visibility"] = "visible";
+}
 
+function Update()
+{
 	$.Schedule( 0.2, UpdateAbilitiesContainer );
 }
 
@@ -78,13 +81,11 @@ function SetSelectedUnit()
 
 (function()
 {
-	UpdateAbilitiesContainer();
-
-	GameEvents.Subscribe( "dota_portrait_ability_layout_changed", UpdateAbilitiesContainer );
-	GameEvents.Subscribe( "dota_player_update_query_unit", UpdateAbilitiesContainer );
 	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
-    GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );	
+    GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );
+
+	Update();
 })();
 
