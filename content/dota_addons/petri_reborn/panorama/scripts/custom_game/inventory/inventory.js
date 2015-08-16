@@ -8,12 +8,16 @@ var DOTA_ITEM_STASH_MAX = 12;
 
 function UpdateInventory()
 {
+	var playerHero = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
 	var queryUnit = Players.GetLocalPlayerPortraitUnit();
 	var emptyStash = true;
+
 	for ( var i = 0; i < DOTA_ITEM_STASH_MAX; ++i )
 	{
-		var inventoryPanel = m_InventoryPanels[i]
-		var item = Entities.GetItemInSlot( queryUnit, i );
+		var inventoryPanel = m_InventoryPanels[i];
+		var item = (i >= DOTA_ITEM_STASH_MIN && Entities.GetUnitName(queryUnit) == "npc_petri_janitor") 
+			? Entities.GetItemInSlot( playerHero, i )
+			: Entities.GetItemInSlot( queryUnit, i );
 		inventoryPanel.data().SetItem( queryUnit, item );
 
 		if (i >= DOTA_ITEM_STASH_MIN)
