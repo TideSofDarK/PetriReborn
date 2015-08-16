@@ -57,19 +57,21 @@ function GameMode:OnItemPickedUp(keys)
   DebugPrint( '[BAREBONES] OnItemPickedUp' )
   DebugPrintTable(keys)
 
-  local heroEntity = EntIndexToHScript(keys.HeroEntityIndex)
-  local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
-  local player = PlayerResource:GetPlayer(keys.PlayerID)
-  local itemname = keys.itemname
+  if keys.HeroEntityIndex then
+    local heroEntity = EntIndexToHScript(keys.HeroEntityIndex)
+    local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
+    local player = PlayerResource:GetPlayer(keys.PlayerID)
+    local itemname = keys.itemname
 
-  if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-    if CheckShopType(itemname) ~= 1 then
-      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
+      if CheckShopType(itemname) ~= 1 then
+        heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+      end
     end
-  end
-  if player:GetTeam() == DOTA_TEAM_BADGUYS then 
-    if CheckShopType(itemname) == 1 then
-      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    if player:GetTeam() == DOTA_TEAM_BADGUYS then 
+      if CheckShopType(itemname) == 1 then
+        heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+      end
     end
   end
 end

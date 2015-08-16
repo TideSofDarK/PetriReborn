@@ -21,7 +21,7 @@ function Precache( context )
   PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
 
-  PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
+  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
   PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)

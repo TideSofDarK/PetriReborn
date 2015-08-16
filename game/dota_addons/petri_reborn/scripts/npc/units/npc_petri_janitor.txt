@@ -1,0 +1,49 @@
+"npc_petri_janitor"
+{
+  "BaseClass"     "npc_dota_creature"
+  "Model"      "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl"
+  "ModelScale"    "0.8"
+  "Level"      "1"
+  "HealthBarOffset"    "180"
+  "UnitLabel" "courier"
+
+  "HasInventory"                "1"
+
+  "vscripts"     "units/janitor.lua"
+
+  "AbilityLayout"    "5"
+  "Ability1"     "petri_janitor_transfer_items"
+  "Ability2"      "petri_janitor_take_items_from_stash"
+
+  "ArmorPhysical"    "0"
+  "MagicalResistance"   "0"
+
+  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
+
+  "BountyGoldMin"    "10.0"
+
+  "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+  "RingRadius"    "40"
+  "CollisionSize"    "16"
+  "FormationRank"    "4"
+
+  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+  "MovementSpeed"    "522"
+  "MovementTurnRate"   "0.6"
+
+  "StatusHealth"    "20"
+  "StatusHealthRegen"   "0.0"
+  "StatusMana"    "0"
+  "StatusManaRegen"    "0"
+
+  "VisionDaytimeRange"  "200"
+  "VisionNighttimeRange"  "100"
+
+  "TeamName"     "DOTA_TEAM_BADGUYS"
+  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_COURIER"
+
+  "Creature"
+  {
+    "DisableClumpingBehavior"  "1"
+  }
+}

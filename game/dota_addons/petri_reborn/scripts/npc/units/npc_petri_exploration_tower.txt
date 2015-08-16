@@ -7,9 +7,6 @@
 
   "AbilityLayout"       "4"
   "Ability1"          "petri_exploration_tower_explore_world"
-  "Ability2"          "petri_empty2"
-  "Ability3"          "petri_empty3"
-  "Ability4"          "petri_empty4"
   
   "ArmorPhysical"       "25000000"     
   "MagicalResistance"       "0"     

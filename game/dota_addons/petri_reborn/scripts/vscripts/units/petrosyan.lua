@@ -163,26 +163,22 @@ end
 function SpawnJanitor( keys )
 	local caster = keys.caster
 
-	local janitor = CreateUnitByName("npc_dota_courier", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
+	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
 	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+	janitor:SetOwner(caster)
 
-	UpdateModel(janitor, "models/heroes/death_prophet/death_prophet_ghost.vmdl", 1.0)
-	for i=0,15 do
-		if janitor:GetAbilityByIndex(i) ~= nil then janitor:RemoveAbility(janitor:GetAbilityByIndex(i):GetName())  end
-	end
+	-- UpdateModel(janitor, "models/heroes/death_prophet/death_prophet_ghost.vmdl", 1.0)
+	-- for i=0,15 do
+	-- 	if janitor:GetAbilityByIndex(i) ~= nil then janitor:RemoveAbility(janitor:GetAbilityByIndex(i):GetName())  end
+	-- end
 
-	janitor:AddAbility("courier_transfer_items")
-	janitor:AddAbility("petri_janitor_invisibility")
+	--janitor:AddAbility("courier_transfer_items")
 
-	janitor:GetAbilityByIndex(1):ApplyDataDrivenModifier(janitor, janitor, "modifier_beastmaster_hawk_invisibility", {})
-	
-	InitAbilities(janitor)
+	--InitAbilities(janitor)
 
+	janitor:SetHasInventory(true)
 	janitor:SetMoveCapability(2)
-
-	janitor:SetBaseMoveSpeed(522)
-
-	janitor.spawnPosition = caster:GetAbsOrigin()
+	janitor.spawnPosition = caster.spawnPosition
 end
 
 function ReadBookOfLaugh( keys )

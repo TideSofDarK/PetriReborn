@@ -28,6 +28,11 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
+
+      if purchaser:GetUnitName() == "npc_petri_janitor" then
+        filterTable["units"]["0"] = purchaser:GetOwnerEntity():entindex()
+      end
+
       local item = GetItemByID(filterTable["entindex_ability"])
 
       if OnEnemyShop(purchaser) then
