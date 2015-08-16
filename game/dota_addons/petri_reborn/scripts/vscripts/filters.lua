@@ -3,6 +3,8 @@ function GameMode:FilterExecuteOrder( filterTable )
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
 
+    PrintTable(filterTable)
+
     local issuerUnit
     if units["0"] then
       issuerUnit = EntIndexToHScript(units["0"])
@@ -13,17 +15,27 @@ function GameMode:FilterExecuteOrder( filterTable )
       if filterTable["entindex_target"] >= 6 then
         return false
       elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+        local hero = EntIndexToHScript(filterTable["units"]["0"])
         local ent = EntIndexToHScript(filterTable["units"]["0"])
+
+        if ent:GetUnitName() == "npc_petri_janitor" then
+          filterTable["units"]["0"] = hero:GetOwnerEntity():entindex()
+          hero = ent:GetOwnerEntity()
+        end
 
         if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
           local stashSlot = 6
           for i=6,11 do
-            if ent:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+            if hero:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
               stashSlot = i
               break
             end
           end
-          ent:SwapItems(filterTable["entindex_target"], stashSlot)
+
+          local itemName = hero:GetItemInSlot(stashSlot):GetName()
+
+          hero:RemoveItem(hero:GetItemInSlot(stashSlot))
+          ent:AddItemByName(itemName)
         end
       end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
