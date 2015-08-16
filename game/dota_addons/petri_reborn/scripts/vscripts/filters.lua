@@ -3,8 +3,6 @@ function GameMode:FilterExecuteOrder( filterTable )
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
 
-    PrintTable(filterTable)
-
     local issuerUnit
     if units["0"] then
       issuerUnit = EntIndexToHScript(units["0"])

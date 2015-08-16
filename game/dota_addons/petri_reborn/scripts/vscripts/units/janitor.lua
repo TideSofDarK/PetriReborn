@@ -33,7 +33,7 @@ function TakeItemsFromStash( keys )
 
 	local hero = caster:GetOwner()
 
-	if (hero.spawnPosition - caster:GetAbsOrigin()):Length() > 8 then
+	if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(caster) == false then
 		return false
 	end
 
