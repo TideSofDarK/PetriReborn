@@ -1,17 +1,17 @@
-"item_petri_defence_scroll"
+"item_petri_attack_scroll"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "1995"
+  "ID"              "1980"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_defence_scroll"
+  "AbilityTextureName"      "item_petri_attack_scroll"
 
   "AbilityCastPoint"              "0"
-  "AbilityCooldown"       "100"
+  "AbilityCooldown"       "75"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "375"
+  "ItemCost"            "525"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
   "ItemInitialCharges" "1"
@@ -20,22 +20,29 @@
 
   "SideShop" "1"
 
+  "precache"
+  {
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+    "particle"  "particles/items_fx/aegis_timer_i.vpcf"
+    "particle"  "particles/items_fx/aegis_respawn_aegis_starfall.vpcf"
+  }
+
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "armor_bonus"     "900"
+      "attack_percentage_bonus"     "20"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "radius"     "1000"
+      "radius"     "800"
     }
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "duration"     "6"
+      "duration"     "10"
     }
   }
 
@@ -43,8 +50,8 @@
   {     
     "RunScript"
     {
-      "ScriptFile"  "items/defence_scroll.lua"
-      "Function"    "ApplyBonusArmor"
+      "ScriptFile"  "items/attack_scroll.lua"
+      "Function"    "ApplyBonusDamage"
     }
     "SpendCharge"
     {}
@@ -52,7 +59,7 @@
 
   "Modifiers"
   {
-    "modifier_item_petri_defence_scroll_active"
+    "modifier_item_petri_attack_scroll_active"
     {
       "Duration"                "%duration"
       "Passive"         "0"
@@ -60,12 +67,12 @@
       "IsBuff"          "1"
       "IsDebuff"          "0"
       "IsPurgable"        "0"
-      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectName"              "particles/items_fx/aegis_respawn_aegis_starfall.vpcf"
       "EffectAttachType"        "PATTACH_ABSORIGIN"
           
       "Properties"
       {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_bonus"
+        "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"    "%attack_percentage_bonus"
       }
     }
   }

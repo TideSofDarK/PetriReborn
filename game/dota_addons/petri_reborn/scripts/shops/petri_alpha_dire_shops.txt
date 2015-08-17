@@ -86,6 +86,7 @@
   {
     "item"    "item_petri_trap"
     "item"    "item_petri_defence_scroll"
+    "item"    "item_petri_attack_scroll"
     "item"    "item_petri_alcohol"
   }
 
