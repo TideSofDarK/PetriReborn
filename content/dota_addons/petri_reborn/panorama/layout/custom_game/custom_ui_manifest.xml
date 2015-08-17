@@ -39,7 +39,6 @@
         <CustomUIElement type="HudTopBar" layoutfile="file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard.xml" />
         <CustomUIElement type="EndScreen" layoutfile="file://{resources}/layout/custom_game/end_screen/end_screen.xml" />
 
-		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/inventory/inventory.xml" /> -->
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities/abilities_container.xml" />  
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/resources.xml" />  
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />

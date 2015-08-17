@@ -71,7 +71,7 @@ function UpdateAbilitiesContainer()
 
 function Update()
 {
-	$.Schedule( 0.2, UpdateAbilitiesContainer );
+	$.Schedule( 0.1, UpdateAbilitiesContainer );
 }
 
 function SetSelectedUnit()
