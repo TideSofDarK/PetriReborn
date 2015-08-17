@@ -20,8 +20,7 @@ function Upgrade (event)
 		caster:GetPlayerOwner().sawmill_3 = true
 
 		caster:AddAbility("train_petri_super_peasant")
-		caster:AddAbility("petri_buy_lumber")
-
+		
 		caster:RemoveAbility(ability:GetName())
 	end
 
