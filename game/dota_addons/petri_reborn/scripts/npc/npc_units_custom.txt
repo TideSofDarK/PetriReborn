@@ -1040,10 +1040,10 @@
 	  "HealthBarOffset"       "200"
 	  "HasInventory"        "1"
 	
-	  "AbilityLayout"       "4"
-	  "Ability1"          "building_queue"
-	  "Ability2"          "petri_building"
-	  "Ability3"          "petri_upgrade_sawmill"
+	  "AbilityLayout"       "5"
+	  "Ability1"          "petri_building"
+	  "Ability2"          "petri_upgrade_sawmill"
+	  "Ability3"          "building_queue"
 	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"

@@ -1,0 +1,32 @@
+"petri_make_a_bet"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_make_a_bet"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityCooldown" "0.1"
+
+  "AbilityGoldCost" "100"
+
+  "MaxLevel"            "1"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber"      "10000"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/sawmill.lua"
+      "Function"        "MakeABet"
+    }
+  }
+}

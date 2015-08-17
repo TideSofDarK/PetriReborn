@@ -44,6 +44,8 @@ require('settings')
 require('internal/events')
 require('events')
 
+require('lottery')
+
 require('filters')
 require('commands')
 require('internal/gamemode')
@@ -248,6 +250,18 @@ end
 ]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  Timers:CreateTimer((PETRI_FIRST_LOTTERY_TIME * 60),
+    function()
+      InitLottery()
+
+      Timers:CreateTimer((PETRI_LOTTERY_TIME * 60),
+      function()
+        InitLottery()
+
+        return (PETRI_LOTTERY_TIME * 60)
+      end)
+    end)
   
   Timers:CreateTimer((PETRI_EXIT_MARK * 60),
     function()

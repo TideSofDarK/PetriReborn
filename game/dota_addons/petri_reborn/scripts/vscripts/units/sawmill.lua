@@ -19,9 +19,10 @@ function Upgrade (event)
 
 		caster:GetPlayerOwner().sawmill_3 = true
 
-		caster:AddAbility("train_petri_super_peasant")
-		
 		caster:RemoveAbility(ability:GetName())
+
+		caster:AddAbility("train_petri_super_peasant")
+		caster:AddAbility("petri_make_a_bet")
 	end
 
 	InitAbilities(caster)
@@ -35,11 +36,23 @@ function GetModelNameForLevel(level)
 	end
 end
 
-function BuyLumber(event)
-	local caster = event.caster
-	local ability = event.ability
+function BuyLumber(keys)
+	local caster = keys.caster
+	local ability = keys.ability
 
 	local lumber = ability:GetSpecialValueFor("lumber")
 
 	GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber + lumber
+end
+
+function MakeABet( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+
+	if LOTTERY_STATE == 0 then
+		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(ability:GetGoldCost(-1), false, 0)
+		return false
+	end
+
+	GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + ability:GetGoldCost(-1)
 end
