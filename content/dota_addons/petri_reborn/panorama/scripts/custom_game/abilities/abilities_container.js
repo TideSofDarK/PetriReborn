@@ -10,6 +10,7 @@ function UpdateAbilitiesContainer()
 	if ( !abilityListPanel )
 		return;
 
+
 	// Прячем панель скиллов
 	abilityListPanel.style["visibility"] = "collapse";
 
@@ -71,19 +72,13 @@ function UpdateAbilitiesContainer()
 function Update()
 {
 	UpdateAbilitiesContainer();
-	$.Schedule( 0.2, Update );
+	$.Schedule( 0.07, Update );
 }
 
 function SetSelectedUnit()
 {
     GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
-	UpdateAbilitiesContainer();
-
-	var iPlayerID = Players.GetLocalPlayer();
-	var selectedEntities = Players.GetSelectedEntities( iPlayerID );
-	var mainSelected = Players.GetLocalPlayerPortraitUnit();
-
-	GameEvents.SendCustomGameEventToServer( "update_selected_entities", { pID: iPlayerID, selected_entities: selectedEntities })
+	//UpdateAbilitiesContainer();
 }
 
 (function()
