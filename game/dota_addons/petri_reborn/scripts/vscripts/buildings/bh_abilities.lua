@@ -171,7 +171,7 @@ end
 function builder_queue( keys )
     local ability = keys.ability
     local caster = keys.caster  
-    print(caster.lastOrder)
+    
     if caster.ProcessingBuilding ~= nil
     and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
     and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
