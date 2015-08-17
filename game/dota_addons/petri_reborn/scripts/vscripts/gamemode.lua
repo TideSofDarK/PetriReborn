@@ -15,6 +15,8 @@ START_MINI_ACTORS_GOLD = 15
 
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
+SELECTED_UNITS = {}
+
 local FRIENDS_KVN = {}
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
 

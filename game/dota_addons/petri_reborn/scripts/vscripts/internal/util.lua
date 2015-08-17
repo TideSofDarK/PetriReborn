@@ -1,3 +1,32 @@
+function UnitCanAttackTarget( unit, target )
+  if not unit:HasAttackCapability() or target:IsInvulnerable() or target:IsAttackImmune() or not unit:CanEntityBeSeenByMyTeam(target) then
+    return false
+  end
+
+  return true
+end
+
+function IsMultiOrderAbility( ability )
+  if IsValidEntity(ability) then
+    local ability_name = ability:GetAbilityName()
+    local ability_table = GameMode.AbilityKVs[ability_name]
+
+    if not ability_table then
+      ability_table = GameMode.ItemKVs[ability_name]
+    end
+
+    if ability_table then
+      local AbilityMultiOrder = ability_table["AbilityMultiOrder"]
+      if AbilityMultiOrder and AbilityMultiOrder == 1 then
+        return true
+      end
+    else
+      print("Cant find ability table for "..ability_name)
+    end
+  end
+  return false
+end
+
 -- MODIFIERS
 function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
   local modifier = target:FindModifierByName(modifierName)

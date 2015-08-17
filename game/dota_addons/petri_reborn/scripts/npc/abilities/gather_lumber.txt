@@ -8,6 +8,8 @@
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
 
+  "AbilityMultiOrder" "1"
+
   "AbilityCastPoint"        "0.1"
 
   "OnAbilityPhaseStart"

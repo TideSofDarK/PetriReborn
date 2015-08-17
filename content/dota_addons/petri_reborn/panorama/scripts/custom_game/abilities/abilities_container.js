@@ -78,6 +78,12 @@ function SetSelectedUnit()
 {
     GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
 	UpdateAbilitiesContainer();
+
+	var iPlayerID = Players.GetLocalPlayer();
+	var selectedEntities = Players.GetSelectedEntities( iPlayerID );
+	var mainSelected = Players.GetLocalPlayerPortraitUnit();
+
+	GameEvents.SendCustomGameEventToServer( "update_selected_entities", { pID: iPlayerID, selected_entities: selectedEntities })
 }
 
 (function()

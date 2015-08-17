@@ -3,10 +3,22 @@ function GameMode:FilterExecuteOrder( filterTable )
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
 
+    local abilityIndex = filterTable["entindex_ability"]
+    local targetIndex = filterTable["entindex_target"]
+    local x = tonumber(filterTable["position_x"])
+    local y = tonumber(filterTable["position_y"])
+    local z = tonumber(filterTable["position_z"])
+    local point = Vector(x,y,z)
+
     local issuerUnit
     if units["0"] then
       issuerUnit = EntIndexToHScript(units["0"])
       if issuerUnit then issuerUnit.lastOrder = order_type end
+    end
+
+    if issuerUnit and issuerUnit.skip then
+      issuerUnit.skip = false
+      return true
     end
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
@@ -60,6 +72,40 @@ function GameMode:FilterExecuteOrder( filterTable )
         return false
       end
     elseif order_type == DOTA_UNIT_ORDER_GLYPH then
+      return false
+    elseif (order_type == DOTA_UNIT_ORDER_CAST_TARGET or 
+      order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE
+      or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO) and 
+    (abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex))) then
+
+      local ability = EntIndexToHScript(abilityIndex) 
+      local abilityName = ability:GetAbilityName()
+      local entityList = SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
+
+      for _,entityIndex in pairs(entityList) do
+        local caster = EntIndexToHScript(entityIndex)
+        if caster and caster:HasAbility(abilityName) then
+          local abil = caster:FindAbilityByName(abilityName)
+          if abil and abil:IsFullyCastable() then
+
+            caster.skip = true
+            if order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
+              ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex()})
+            else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
+              ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex()})
+            end
+          end
+        end
+      end
+    elseif order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+      local target = EntIndexToHScript(targetIndex)
+      for n, unit_index in pairs(units) do 
+        local unit = EntIndexToHScript(unit_index)
+        if UnitCanAttackTarget(unit, target) then
+          unit.skip = true
+          ExecuteOrderFromTable({ UnitIndex = unit_index, OrderType = DOTA_UNIT_ORDER_ATTACK_TARGET, TargetIndex = targetIndex, Queue = queue})
+        end
+      end
       return false
     end
 

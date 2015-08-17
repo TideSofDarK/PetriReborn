@@ -482,6 +482,8 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
 	
+	  "AbilityMultiOrder" "1"
+	
 	  "AbilityCastPoint"        "0.1"
 	
 	  "OnAbilityPhaseStart"
@@ -2017,6 +2019,8 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	
+	  "AbilityMultiOrder" "1"
 	
 	  "OnAbilityPhaseStart"
 	  {

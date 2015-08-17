@@ -497,3 +497,9 @@ function GameMode:OnNPCGoalReached(keys)
   local nextGoalEntity = EntIndexToHScript(keys.next_goal_entindex)
   local npc = EntIndexToHScript(keys.npc_entindex)
 end
+
+function GameMode:OnPlayerSelectedEntities( event )
+  local pID = event.pID
+
+  SELECTED_UNITS[pID] = event.selected_entities
+end

@@ -258,6 +258,7 @@ function RebuildAbilityUI()
 	}
 }
 
+
 (function()
 {
 	$.GetContextPanel().data().SetAbility = SetAbility;
