@@ -187,29 +187,8 @@ function ActivateAbility()
 		return;
 	}
 
-	var entities = Players.GetSelectedEntities( Players.GetLocalPlayer() );
-	var unitName = Entities.GetUnitName( m_QueryUnit );
-
-	for (var entityIndex in entities) 
-	{	
-		// select unit and check ability
-		var entity = entities[entityIndex];
-		if (Entities.GetUnitName( entity ) == unitName)
-		{		
-			if (CheckSpellCost() && CheckDependencies())
-			{
-				if ( !Abilities.IsPassive( m_Ability ) )
-				{
-					GameUI.SelectUnit( entity, false );
-					Game.PrepareUnitOrders( GetAbilityOrder( m_Ability ) );
-				}
-			}
-		}
-	}
-
-	// restore selection
-	for (var entityIndex in entities) 
-		GameUI.SelectUnit( entities[entityIndex], true );
+	if (CheckSpellCost() && CheckDependencies())
+		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
 }
 
 function DoubleClickAbility()

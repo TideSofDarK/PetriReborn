@@ -71,7 +71,7 @@ function UpdateAbilitiesContainer()
 
 function Update()
 {
-	$.Schedule( 0.1, UpdateAbilitiesContainer );
+	$.Schedule( 0.2, UpdateAbilitiesContainer );
 }
 
 function SetSelectedUnit()
@@ -82,7 +82,7 @@ function SetSelectedUnit()
 
 (function()
 {
-	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
+	//GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
     GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );
