@@ -2,7 +2,6 @@
 
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
-var updating = false;
 
 function UpdateAbilitiesContainer()
 {
