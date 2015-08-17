@@ -5,6 +5,14 @@
   "AbilityLayout"     "6"
 
   "vscripts" "units/kvn_fan.lua"
+
+  "Ability1"        "petri_open_basic_buildings_menu" 
+  "Ability2"        "petri_open_advanced_buildings_menu" 
+  "Ability3"        "gather_lumber" 
+  "Ability4"        "petri_repair"
+  "Ability5"        "petri_kvn_fan_deny"
+  "Ability6"        "petri_empty1"
+  "Ability7"        "return_resources"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"       "0"

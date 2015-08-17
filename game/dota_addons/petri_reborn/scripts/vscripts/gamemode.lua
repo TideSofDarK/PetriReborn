@@ -271,6 +271,8 @@ function GameMode:InitGameMode()
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
 
+  GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
+
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
@@ -281,6 +283,19 @@ function GameMode:InitGameMode()
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
   GameMode.specialValues = {}
+  GameMode.buildingMenus = {}
+
+  -- KVN Building menus
+  for k,menu in pairs(GameMode.BuildingMenusKVs) do
+    if type(menu) == "table" then
+      GameMode.buildingMenus[k] = {}
+      local i = 1
+      for k1,v1 in pairs(menu) do
+        GameMode.buildingMenus[k][i] = menu[tostring(i)]
+        i = i + 1
+      end
+    end
+  end
 
   -- Ability layouts
   for i=1,2 do

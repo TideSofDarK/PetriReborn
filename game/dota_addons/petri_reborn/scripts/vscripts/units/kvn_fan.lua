@@ -2,36 +2,16 @@ NO_MENU = 0
 BASIC_MENU = 1
 ADVANCED_MENU = 2
 
-NO_MENU_ABILITIES = {"petri_open_basic_buildings_menu",
-					 "petri_open_advanced_buildings_menu",
-					 "gather_lumber",
-					 "petri_repair",
-					 "petri_kvn_fan_deny",
-					 "petri_empty1",
-					 "return_resources"}
-BASIC_MENU_ABILITIES = {"build_petri_tent",
-						"build_petri_sawmill",
-						"build_petri_tower_basic",
-						"build_petri_wall",
-						"petri_empty2",
-						"petri_close_basic_buildings_menu"}
-ADVANCED_MENU_ABILITIES = {	"build_petri_gold_tower",
-							"build_petri_lab",
-							"build_petri_idol",
-							"build_petri_exploration_tree",
-							"build_petri_exit",
-							"petri_close_advanced_buildings_menu"}
-
 function Spawn( event )
-	for i=0, thisEntity:GetAbilityCount()-1 do
-		if thisEntity:GetAbilityByIndex(i) ~= nil then
-			thisEntity:RemoveAbility(thisEntity:GetAbilityByIndex(i):GetName())
-		end
-    end
+	if not GameMode.buildingMenus["kvn_fan_abilities"] then
+		GameMode.buildingMenus["kvn_fan_abilities"] = {}
 
-	for i=1, table.getn(NO_MENU_ABILITIES) do
-		thisEntity:AddAbility(NO_MENU_ABILITIES[i])
-    end
+		for i=0, thisEntity:GetAbilityCount()-1 do
+			if thisEntity:GetAbilityByIndex(i) ~= nil then
+				GameMode.buildingMenus["kvn_fan_abilities"][i+1] = thisEntity:GetAbilityByIndex(i):GetName()
+			end
+	    end
+	end
 
 	InitAbilities(thisEntity)
 end
@@ -90,17 +70,17 @@ end
 function OpenBasicBuildingsMenu(keys)
 	local caster = keys.caster
 
-	for i=1, table.getn(BASIC_MENU_ABILITIES) do
-		caster:AddAbility(BASIC_MENU_ABILITIES[i])
+	for i=1, table.getn(GameMode.buildingMenus["basic_building_menu"]) do
+		caster:AddAbility(GameMode.buildingMenus["basic_building_menu"][i])
     end
 
 	InitAbilities(caster)
 
-	for i=1, table.getn(BASIC_MENU_ABILITIES) do
-		if NO_MENU_ABILITIES[i] == "gather_lumber" then
-			caster:SwapAbilities(GetLumberAbilityName(caster), BASIC_MENU_ABILITIES[i], false, true)
+	for i=1, table.getn(GameMode.buildingMenus["basic_building_menu"]) do
+		if GameMode.buildingMenus["kvn_fan_abilities"][i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), GameMode.buildingMenus["basic_building_menu"][i], false, true)
 		else
-			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], false, true)
+			caster:SwapAbilities(GameMode.buildingMenus["kvn_fan_abilities"][i], GameMode.buildingMenus["basic_building_menu"][i], false, true)
 		end
     end
 
@@ -112,16 +92,16 @@ function CloseBasicBuildingsMenu(keys)
 
 	local lumberAbility = GetLumberAbilityName(caster)
 
-	for i=1, table.getn(BASIC_MENU_ABILITIES) do
-		if NO_MENU_ABILITIES[i] == "gather_lumber" then
-			caster:SwapAbilities(GetLumberAbilityName(caster), BASIC_MENU_ABILITIES[i], true, false)
+	for i=1, table.getn(GameMode.buildingMenus["basic_building_menu"]) do
+		if GameMode.buildingMenus["kvn_fan_abilities"][i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), GameMode.buildingMenus["basic_building_menu"][i], true, false)
 		else
-			caster:SwapAbilities(NO_MENU_ABILITIES[i], BASIC_MENU_ABILITIES[i], true, false)
+			caster:SwapAbilities(GameMode.buildingMenus["kvn_fan_abilities"][i], GameMode.buildingMenus["basic_building_menu"][i], true, false)
 		end
     end
 
-	for i=1, table.getn(BASIC_MENU_ABILITIES) do
-		caster:RemoveAbility(BASIC_MENU_ABILITIES[i])
+	for i=1, table.getn(GameMode.buildingMenus["basic_building_menu"]) do
+		caster:RemoveAbility(GameMode.buildingMenus["basic_building_menu"][i])
     end
 
     caster.currentMenu = 0
@@ -130,17 +110,17 @@ end
 function OpenAdvancedBuildingsMenu(keys)
 	local caster = keys.caster
 
-	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
-		caster:AddAbility(ADVANCED_MENU_ABILITIES[i])
+	for i=1, table.getn(GameMode.buildingMenus["advanced_building_menu"]) do
+		caster:AddAbility(GameMode.buildingMenus["advanced_building_menu"][i])
     end
 
 	InitAbilities(caster)
 
-    for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
-		if NO_MENU_ABILITIES[i] == "gather_lumber" then
-			caster:SwapAbilities(GetLumberAbilityName(caster), ADVANCED_MENU_ABILITIES[i], false, true)
+    for i=1, table.getn(GameMode.buildingMenus["advanced_building_menu"]) do
+		if GameMode.buildingMenus["kvn_fan_abilities"][i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), GameMode.buildingMenus["advanced_building_menu"][i], false, true)
 		else
-			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], false, true)
+			caster:SwapAbilities(GameMode.buildingMenus["kvn_fan_abilities"][i], GameMode.buildingMenus["advanced_building_menu"][i], false, true)
 		end
     end
 
@@ -152,16 +132,16 @@ function CloseAdvancedBuildingsMenu(keys)
 
 	local lumberAbility = GetLumberAbilityName(caster)
 
-	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
-		if NO_MENU_ABILITIES[i] == "gather_lumber" then
-			caster:SwapAbilities(GetLumberAbilityName(caster), ADVANCED_MENU_ABILITIES[i], true, false)
+	for i=1, table.getn(GameMode.buildingMenus["advanced_building_menu"]) do
+		if GameMode.buildingMenus["kvn_fan_abilities"][i] == "gather_lumber" then
+			caster:SwapAbilities(GetLumberAbilityName(caster), GameMode.buildingMenus["advanced_building_menu"][i], true, false)
 		else
-			caster:SwapAbilities(NO_MENU_ABILITIES[i], ADVANCED_MENU_ABILITIES[i], true, false)
+			caster:SwapAbilities(GameMode.buildingMenus["kvn_fan_abilities"][i], GameMode.buildingMenus["advanced_building_menu"][i], true, false)
 		end
     end
 
-	for i=1, table.getn(ADVANCED_MENU_ABILITIES) do
-		caster:RemoveAbility(ADVANCED_MENU_ABILITIES[i])
+	for i=1, table.getn(GameMode.buildingMenus["advanced_building_menu"]) do
+		caster:RemoveAbility(GameMode.buildingMenus["advanced_building_menu"][i])
     end
 
     caster.currentMenu = 0
