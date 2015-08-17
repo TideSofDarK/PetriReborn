@@ -52,11 +52,13 @@ function build( keys )
 			if caster.currentArea ~= nil then
 				if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
 
-					if caster.currentArea.claimers == nil then 
+					if caster.currentArea.claimers == nil or
+						(caster.currentArea.claimers and caster.currentArea.claimers[0] and caster.currentArea.claimers[0]:IsAlive() == false
+							and (not caster.currentArea.claimers[1] or caster.currentArea.claimers[1]:IsAlive() == false)) then 
 						Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
 					end
 
-					keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
+					keys.caster.currentArea.claimers = {}
 					if keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
 				else
 					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})

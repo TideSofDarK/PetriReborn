@@ -13,6 +13,15 @@
   "ItemPermanent"         "0"
   "ItemSellable"                  "0"
 
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "max"    "1"
+    }
+  }
+
   "OnSpellStart"
   {
     "RunScript"
