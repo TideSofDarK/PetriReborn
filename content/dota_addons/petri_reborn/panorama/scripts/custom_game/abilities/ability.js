@@ -5,7 +5,6 @@ var m_QueryUnit = -1;
 var m_bInLevelUp = false;
 
 var goldCosts;
-var currentResources = {};
 
 function SetAbility( ability, queryUnit, bInLevelUp )
 {
@@ -60,7 +59,7 @@ function CheckSpellCost()
 {
 	var gold = Players.GetGold( Players.GetLocalPlayer() );
 
-	currentResources = GameUI.CustomUIConfig().unitResources;
+	var currentResources = GameUI.CustomUIConfig().unitResources;
 	if (!currentResources)
 		currentResources = { "lumber" : 0, "maxFood" : 0, "food" : 0 };
 
@@ -124,6 +123,10 @@ function UpdateAbility()
 	$( "#AbilityImage" ).contextEntityIndex = m_Ability;
 	$( "#ManaCost" ).text = manaCost;
 
+	$( "#FoodCost" ).text = foodCost;
+	$( "#GoldCost" ).text = goldCost;
+	$( "#LumberCost" ).text = lumberCost;
+
 	if ( Abilities.IsCooldownReady( m_Ability ) )
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
@@ -165,6 +168,17 @@ function AbilityHideTooltip()
 	tooltip.data().HideTooltip();
 }
 
+function GetAbilityOrder( abilityID )
+{
+	var order = {
+		OrderType : dotaunitorder_t.DOTA_UNIT_ORDER_CAST_NO_TARGET,
+		AbilityIndex : abilityID,
+		OrderIssuer : PlayerOrderIssuer_t.DOTA_ORDER_ISSUER_SELECTED_UNITS,
+	};
+
+	return order;
+}
+
 function ActivateAbility()
 {
 	if ( m_bInLevelUp )
@@ -173,32 +187,29 @@ function ActivateAbility()
 		return;
 	}
 
-	if (CheckSpellCost() && CheckDependencies())
-	{
-		//var entities = Players.GetSelectedEntities( Players.GetLocalPlayer() );
-		var unitName = Entities.GetUnitName( m_QueryUnit );
+	var entities = Players.GetSelectedEntities( Players.GetLocalPlayer() );
+	var unitName = Entities.GetUnitName( m_QueryUnit );
 
-
-		/*for (var entityIndex in entities) 
-		{	
-			var entity = entities[entityIndex];
-			if (Entities.GetUnitName( entity ) == unitName)
+	for (var entityIndex in entities) 
+	{	
+		// select unit and check ability
+		var entity = entities[entityIndex];
+		if (Entities.GetUnitName( entity ) == unitName)
+		{		
+			if (CheckSpellCost() && CheckDependencies())
 			{
-				var order = {};
-				order.OrderType = dotaunitorder_t.DOTA_UNIT_ORDER_CAST_NO_TARGET;
-				//order.Position = GameUI.GetScreenWorldPosition( GameUI.GetCursorPosition() );
-				order.AbilityIndex = m_Ability;
-				order.OrderIssuer = PlayerOrderIssuer_t.DOTA_ORDER_ISSUER_SELECTED_UNITS;
-				order.Queue = false;
-				order.ShowEffects = false;
-
-				Game.PrepareUnitOrders( order );
-
-				//Abilities.ExecuteAbility( m_Ability, entity, false );
+				if ( !Abilities.IsPassive( m_Ability ) )
+				{
+					GameUI.SelectUnit( entity, false );
+					Game.PrepareUnitOrders( GetAbilityOrder( m_Ability ) );
+				}
 			}
-		}*/
-		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
+		}
 	}
+
+	// restore selection
+	for (var entityIndex in entities) 
+		GameUI.SelectUnit( entities[entityIndex], true );
 }
 
 function DoubleClickAbility()
