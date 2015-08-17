@@ -2,6 +2,7 @@
 
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
+var updating = false;
 
 function UpdateAbilitiesContainer()
 {
@@ -9,6 +10,7 @@ function UpdateAbilitiesContainer()
 	var abilityListPanel = $( "#AbilityList" );
 	if ( !abilityListPanel )
 		return;
+
 
 	// Прячем панель скиллов
 	abilityListPanel.style["visibility"] = "collapse";
@@ -71,13 +73,13 @@ function UpdateAbilitiesContainer()
 function Update()
 {
 	UpdateAbilitiesContainer();
-	$.Schedule( 0.2, Update );
+	$.Schedule( 0.07, Update );
 }
 
 function SetSelectedUnit()
 {
     GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
-	UpdateAbilitiesContainer();
+	//UpdateAbilitiesContainer();
 }
 
 (function()
