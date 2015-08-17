@@ -23,10 +23,8 @@
   "BountyGoldMin"       "5"     
   "BountyGoldMax"       "5"     
 
-  "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
-  "RingRadius"    "90"
-  "CollisionSize"    "16"
-  "FormationRank"    "4"
+  "BoundsHullName"      "DOTA_HULL_SIZE_BUILDING"
+  "RingRadius"        "100"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
   "MovementSpeed"       "0"   

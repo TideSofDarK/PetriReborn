@@ -247,7 +247,6 @@ function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockG
   local building = CreateUnitByName(name, location, false, playersHero, player, playersHero:GetTeamNumber())
   building:SetControllableByPlayer(pID, true)
   building:SetOwner(playersHero)
-  building:SetHullRadius( size * 32 - 32 )
   building.blockers = gridNavBlockers
   building.state = "complete"
 
@@ -415,7 +414,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   -- Spawn the building
   local building = CreateUnitByName(unitName, location, false, playersHero, nil, PlayerResource:GetTeam(pID))
   building:SetControllableByPlayer(pID, true)
-  building:SetHullRadius( (size * 32) - 32 )
   building:SetOwner(PlayerResource:GetPlayer(pID))
 
   building.blockers = gridNavBlockers
@@ -777,41 +775,23 @@ function BuildingHelper:BlockGridNavSquare(size, location)
   end
 
   local gridNavBlockers = {}
-  -- if size % 2 == 1 then
-  --   for x = location.x - (size-2) * 32, location.x + (size-2) * 32, 64 do
-  --     for y = location.y - (size-2) * 32, location.y + (size-2) * 32, 64 do
-  --       local newX = x
-  --       local newY = y
-  --       if location.x > x then newX = x + 1 end
-  --       if location.x < x then newX = x - 1 end
-
-  --       if location.y > y then newY = y + 1 end
-  --       if location.y < y then newY = y - 1 end
-
-  --       local blockerLocation = Vector(newX, newY, location.z)
-  --       local ent = SpawnEntityFromTableSynchronous("point_simple_obstruction", {origin = blockerLocation})
-  --       table.insert(gridNavBlockers, ent)
-  --     end
-  --   end
-  -- else
-  --   for x = location.x - (size / 2) * 32 + 16, location.x + (size / 2) * 32 - 16, 96 do
-  --     for y = location.y - (size / 2) * 32 + 16, location.y + (size / 2) * 32 - 16, 96 do
-  --       local newX = x
-  --       local newY = y
-  --       if location.x > x then newX = x + 1 end
-  --       if location.x < x then newX = x - 1 end
-
-  --       if location.y > y then newY = y + 1 end
-  --       if location.y < y then newY = y - 1 end
-
-  --       print(newX, newY)
-
-  --       local blockerLocation = Vector(newX, newY, location.z)
-  --       local ent = SpawnEntityFromTableSynchronous("point_simple_obstruction", {origin = blockerLocation})
-  --       table.insert(gridNavBlockers, ent)
-  --     end
-  --   end
-  -- end
+  if size % 2 == 1 then
+    for x = location.x - (size-2) * 32, location.x + (size-2) * 32, 64 do
+      for y = location.y - (size-2) * 32, location.y + (size-2) * 32, 64 do
+        local blockerLocation = Vector(x, y, location.z)
+        local ent = SpawnEntityFromTableSynchronous("point_simple_obstruction", {origin = blockerLocation})
+        table.insert(gridNavBlockers, ent)
+      end
+    end
+  else
+    for x = location.x - (size / 2) * 32 + 16, location.x + (size / 2) * 32 - 16, 96 do
+      for y = location.y - (size / 2) * 32 + 16, location.y + (size / 2) * 32 - 16, 96 do
+        local blockerLocation = Vector(x, y, location.z)
+        local ent = SpawnEntityFromTableSynchronous("point_simple_obstruction", {origin = blockerLocation})
+        table.insert(gridNavBlockers, ent)
+      end
+    end
+  end
   return gridNavBlockers
 end
 

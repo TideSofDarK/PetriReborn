@@ -21,6 +21,44 @@ function GameMode:FilterExecuteOrder( filterTable )
       return true
     end
 
+    for n,unit_index in pairs(units) do
+      local unit = EntIndexToHScript(unit_index)
+      local ownerID = unit:GetPlayerOwnerID()
+
+      if PlayerResource:GetConnectionState(ownerID) == 3 or
+        PlayerResource:GetConnectionState(ownerID) == 4
+        then
+        return false
+      end
+    end
+
+    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
+        local ability = EntIndexToHScript(abilityIndex) 
+        local abilityName = ability:GetAbilityName()
+        local entityList = SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
+        if not SELECTED_UNITS then return false end
+        for _,entityIndex in pairs(entityList) do
+            local caster = EntIndexToHScript(entityIndex)
+            if caster and caster:HasAbility(abilityName) then
+                local abil = caster:FindAbilityByName(abilityName)
+                if abil and abil:IsFullyCastable() then
+
+                    caster.skip = true
+                    if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
+                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, Position = point, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+
+                    elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET then
+                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+
+                    else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
+                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+                    end
+                end
+            end
+        end
+        return false
+    end
+
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
       if filterTable["entindex_target"] >= 6 then
         return false
@@ -73,30 +111,6 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     elseif order_type == DOTA_UNIT_ORDER_GLYPH then
       return false
-    elseif (order_type == DOTA_UNIT_ORDER_CAST_TARGET or 
-      order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE
-      or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO) and 
-    (abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex))) then
-
-      local ability = EntIndexToHScript(abilityIndex) 
-      local abilityName = ability:GetAbilityName()
-      local entityList = SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
-
-      for _,entityIndex in pairs(entityList) do
-        local caster = EntIndexToHScript(entityIndex)
-        if caster and caster:HasAbility(abilityName) then
-          local abil = caster:FindAbilityByName(abilityName)
-          if abil and abil:IsFullyCastable() then
-
-            caster.skip = true
-            if order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
-              ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex()})
-            else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
-              ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex()})
-            end
-          end
-        end
-      end
     elseif order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
       local target = EntIndexToHScript(targetIndex)
       for n, unit_index in pairs(units) do 
@@ -107,17 +121,6 @@ function GameMode:FilterExecuteOrder( filterTable )
         end
       end
       return false
-    end
-
-    for n,unit_index in pairs(units) do
-      local unit = EntIndexToHScript(unit_index)
-      local ownerID = unit:GetPlayerOwnerID()
-
-      if PlayerResource:GetConnectionState(ownerID) == 3 or
-        PlayerResource:GetConnectionState(ownerID) == 4
-        then
-        return false
-      end
     end
 
     return true
