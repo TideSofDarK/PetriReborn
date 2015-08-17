@@ -440,8 +440,22 @@ function RepairBy1Percent( event )
 	local maxHealth = target:GetMaxHealth()
 
 	if health < maxHealth then
+		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 then
+			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
-		target:SetHealth(health + 25)
+			local healAmount = 3 + (target:GetMaxHealth() * 0.009)
+			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
+
+			target:Heal(healAmount, caster)
+		else
+	      local newOrder = {
+	        UnitIndex       = caster:entindex(),
+	        OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+	        Position        = caster:GetAbsOrigin(), 
+	        Queue           = 0
+	      }
+	      ExecuteOrderFromTable(newOrder)
+		end
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
 

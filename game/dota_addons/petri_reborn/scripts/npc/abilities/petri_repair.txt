@@ -130,5 +130,10 @@
         }
       }
     }
+
+    "modifier_being_repaired"
+    {
+      "IsHidden"  "1"
+    }
   }
 }

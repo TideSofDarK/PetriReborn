@@ -994,7 +994,6 @@
 	  "Ability1"     "gather_lumber"
 	  "Ability2"     "return_resources"
 	  "Ability3"     "petri_suicide"
-	  "Ability4"          "petri_empty4"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
@@ -1423,8 +1422,10 @@
 	  "BountyGoldMin"       "5"     
 	  "BountyGoldMax"       "5"     
 	
-	  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"      
-	  //"RingRadius"                "70"
+	  "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
+	  "RingRadius"    "90"
+	  "CollisionSize"    "16"
+	  "FormationRank"    "4"
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
 	  "MovementSpeed"       "0"   
@@ -1436,10 +1437,10 @@
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
 	
-	  "TeamName"          "DOTA_TEAM_GOODGUYS"      
-	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
-	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	  "TeamName"     "DOTA_TEAM_GOODGUYS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 	  "VisionDaytimeRange"    "500"   
 	  "VisionNighttimeRange"    "500"   

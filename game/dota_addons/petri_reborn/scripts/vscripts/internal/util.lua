@@ -1,3 +1,37 @@
+-- MODIFIERS
+function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
+  local modifier = target:FindModifierByName(modifierName)
+  if modifier then
+    local stackCount = target:GetModifierStackCount(modifierName, caster)
+
+    target:RemoveModifierByName(modifierName)
+    ability:ApplyDataDrivenModifier(caster, target, modifierName, {duration=time})
+
+    if (stackCount + 1) < maxStacks then
+      target:SetModifierStackCount(modifierName, caster, stackCount + 1)
+    else
+      target:SetModifierStackCount(modifierName, caster, maxStacks)
+    end
+  else
+    ability:ApplyDataDrivenModifier(caster, target, modifierName, {duration=time})
+    target:SetModifierStackCount(modifierName, caster, 1)
+  end
+end
+-- MODIFIERS
+
+function PlusParticle(number, color, duration, caster)
+  POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
+  local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
+  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+  local color = color
+  local lifetime = duration
+  local digits = #tostring(number) + 1
+
+  ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, number, 0 ) )
+  ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
+  ParticleManager:SetParticleControl(pidx, 3, color)
+end
+
 -- NETTABLES
 function GetKeyInNetTable(pID, nettable, k)
   local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))

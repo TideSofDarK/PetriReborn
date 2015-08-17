@@ -1158,6 +1158,8 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "AbilityTextureName"      "antimage_blink"
 	
+	  "MaxLevel" "1"
+	
 	  "precache"
 	  {
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
@@ -2137,6 +2139,11 @@
 	          "Function"    "ToggleOffRepairing"
 	        }
 	      }
+	    }
+	
+	    "modifier_being_repaired"
+	    {
+	      "IsHidden"  "1"
 	    }
 	  }
 	}
