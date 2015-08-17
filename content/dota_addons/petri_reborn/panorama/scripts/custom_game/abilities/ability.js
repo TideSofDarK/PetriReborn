@@ -241,6 +241,6 @@ function RebuildAbilityUI()
 {
 	$.GetContextPanel().data().SetAbility = SetAbility;
 
-	//GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild
+	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild
 	AutoUpdateAbility(); // initial update of dynamic state
 })();
