@@ -3,7 +3,6 @@
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
 
-
 function UpdateAbilitiesContainer()
 {
 	var queryUnit = GameUI.CustomUIConfig().selected_unit;
@@ -71,7 +70,8 @@ function UpdateAbilitiesContainer()
 
 function Update()
 {
-	$.Schedule( 0.2, UpdateAbilitiesContainer );
+	UpdateAbilitiesContainer();
+	$.Schedule( 0.2, Update );
 }
 
 function SetSelectedUnit()
@@ -88,7 +88,7 @@ function SetSelectedUnit()
 
 (function()
 {
-	GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
+	//GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
     GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );
