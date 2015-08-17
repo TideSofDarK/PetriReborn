@@ -93,3 +93,13 @@ function ApplyArmorAura(event)
 		end
 	end
 end
+
+function EarplugUpgrade( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	--hero:RemoveModifierByName("modifier_earplugs")
+	ability:ApplyDataDrivenModifier(caster, hero, "modifier_earplugs", {})
+end

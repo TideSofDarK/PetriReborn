@@ -2914,6 +2914,80 @@
 	    }
 	  }
 	}
+	"petri_upgrade_earplugs"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_earplugs"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityGoldCost"       "50 75 100 125 175 250 420"
+	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1"
+	
+	  "MaxLevel"            "8"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_hp"  "4"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/lab.lua"
+	      "Function"        "EarplugUpgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_earplugs"
+	    {
+	      "Passive"         "0"
+	      "IsHidden"        "1"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
 	"petri_upgrade_gold_tower"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"

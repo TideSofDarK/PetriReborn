@@ -886,7 +886,8 @@
 	  "Ability1"          "petri_upgrade_concrete"
 	  "Ability2"          "petri_upgrade_tower_damage"
 	  "Ability3"          "petri_upgrade_lumber"
-	  "Ability4"          "petri_building"
+	  "Ability4"          "petri_upgrade_earplugs"
+	  "Ability5"          "petri_building"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
