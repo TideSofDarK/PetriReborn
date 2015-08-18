@@ -32,11 +32,14 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     end
 
-    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
+    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) and #units > 1 then
         local ability = EntIndexToHScript(abilityIndex) 
         local abilityName = ability:GetAbilityName()
-        local entityList = SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
-        if not SELECTED_UNITS then return false end
+
+        if not GameMode.SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()] then return false end
+
+        local entityList = GameMode.SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
+        
         for _,entityIndex in pairs(entityList) do
             local caster = EntIndexToHScript(entityIndex)
             if caster and caster:HasAbility(abilityName) then

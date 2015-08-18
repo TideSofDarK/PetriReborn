@@ -15,8 +15,6 @@ START_MINI_ACTORS_GOLD = 15
 
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
-SELECTED_UNITS = {}
-
 local FRIENDS_KVN = {}
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
 
@@ -300,6 +298,8 @@ function GameMode:InitGameMode()
   GameMode.abilityGoldCosts = {}
   GameMode.specialValues = {}
   GameMode.buildingMenus = {}
+
+  GameMode.SELECTED_UNITS = {}
 
   -- KVN Building menus
   for k,menu in pairs(GameMode.BuildingMenusKVs) do
