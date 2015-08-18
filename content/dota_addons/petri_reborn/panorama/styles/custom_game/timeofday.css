@@ -3,8 +3,18 @@
     width: 150px;
     height: 150px;
     
-    margin-left: 1100px;
+    margin-left: 1300px;
     horizontal-align: left;
+}
+
+.AspectRatio4x3 .TimeOfDay
+{
+    margin-left: 1180px;
+}
+
+.AspectRatio5x4 .TimeOfDay
+{
+    margin-left: 1080px;
 }
 
 #TimeOfDayImage
