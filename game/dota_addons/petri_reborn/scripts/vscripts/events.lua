@@ -503,3 +503,10 @@ function GameMode:OnPlayerSelectedEntities( event )
 
   GameMode.SELECTED_UNITS[pID] = event.selected_entities
 end
+
+function GameMode:OnPlayerSendName( event )
+  local pID = event.pID
+  local name = event.name
+
+  GameMode.PETRI_NAME_LIST[pID] = name
+end

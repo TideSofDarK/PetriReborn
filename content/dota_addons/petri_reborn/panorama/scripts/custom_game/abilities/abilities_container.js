@@ -103,6 +103,9 @@ function SetSelectedUnit()
 
 	GameEvents.Subscribe( "dota_player_gained_level", UpdateAbilitiesContainer );
 
+	var iPlayerID = Players.GetLocalPlayer();
+	GameEvents.SendCustomGameEventToServer( "set_player_name", { pID: iPlayerID, name: Game.GetPlayerInfo( iPlayerID ).player_name })
+
 	Update();
 })();
 

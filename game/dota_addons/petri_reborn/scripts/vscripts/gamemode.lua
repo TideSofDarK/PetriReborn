@@ -27,6 +27,8 @@ if GameMode == nil then
     _G.GameMode = class({})
 end
 
+GameMode.PETRI_NAME_LIST = {}
+
 require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')

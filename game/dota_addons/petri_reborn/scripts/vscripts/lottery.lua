@@ -2,14 +2,14 @@ PETRI_FIRST_LOTTERY_TIME = 12
 PETRI_LOTTERY_DURATION = 3
 PETRI_LOTTERY_TIME = 10
 
-LOTTERY_STATE = LOTTERY_STATE or 0
+GameMode.LOTTERY_STATE = GameMode.LOTTERY_STATE or 0
 
 GameMode.CURRENT_BANK = GameMode.CURRENT_BANK or 0
 DEFAULT_BANK_RATE = 100
 PLAY_COUNT = 0
 
 function InitLottery()
-	LOTTERY_STATE = 1
+	GameMode.LOTTERY_STATE = 1
 
 	GameMode.CURRENT_BANK = DEFAULT_BANK_RATE * (PLAY_COUNT+1)
 
@@ -48,11 +48,11 @@ function SelectWinner()
 	Notifications:ClearTopFromTeam(DOTA_TEAM_GOODGUYS)
 
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=GameMode.PETRI_NAME_LIST[winner].." ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="45px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=9, continue=true,  style={color="white", ["font-size"]="45px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(GameMode.CURRENT_BANK).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
 
-	LOTTERY_STATE = 0
+	GameMode.LOTTERY_STATE = 0
 	GameMode.CURRENT_BANK = 0
 	PLAY_COUNT = PLAY_COUNT + 1
 end

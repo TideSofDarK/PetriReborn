@@ -49,7 +49,7 @@ function MakeABet( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
-	if LOTTERY_STATE == 0 then
+	if GameMode.LOTTERY_STATE == 0 then
 		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(ability:GetGoldCost(-1), false, 0)
 		return false
 	end
