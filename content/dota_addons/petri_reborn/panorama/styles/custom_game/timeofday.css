@@ -1,7 +1,7 @@
 .TimeOfDay
 {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     
     margin-left: 1300px;
     horizontal-align: left;
@@ -38,7 +38,7 @@
 #Time
 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
     color: #FFFFFF;
 
     horizontal-align: center;
@@ -48,8 +48,8 @@
 
 #PetroTime
 {
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
 
     margin-left: -6px;
     margin-bottom: 40%;
