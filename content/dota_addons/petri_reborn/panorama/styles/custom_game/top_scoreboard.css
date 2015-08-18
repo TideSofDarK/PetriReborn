@@ -67,7 +67,8 @@
 	padding-right: 2px;
 }
 
-.AspectRatio4x3 .ScoreboardTeamWrapper, .AspectRatio5x4 .ScoreboardTeamWrapper
+.AspectRatio4x3 .ScoreboardTeamWrapper, 
+.AspectRatio5x4 .ScoreboardTeamWrapper
 {
 	padding-left: -5px;
 	padding-right: -5px;
@@ -145,6 +146,11 @@
     background-color: gradient( linear, 64px 0%, 80px 0%, from( black ), to( transparent ) );
 }
 
+.AspectRatio5x4 #TeamDarkenWash
+{
+    height: 34px;
+}
+
 #TeamStatus
 {
     width: 100%;
@@ -177,6 +183,11 @@
     height: 43px;
 }
 
+.AspectRatio5x4 #LocalTeamOverlay
+{
+    height: 33px;	
+}
+
 .ScoreboardTeamWrapper.local_player_team #LocalTeamOverlay
 {
 	box-shadow: -3px -3px 12px 6px #FFFFFF88;
@@ -186,6 +197,12 @@
 {
     border-left: 1px solid black;
     border-right: 1px solid black;
+}
+
+.AspectRatio5x4 .ScoreboardPlayer
+{
+    border-left: 0.1px solid black;
+    border-right: 0.1px solid black;
 }
 
 .ScoreboardPlayerWrapper
@@ -217,6 +234,12 @@
 {
     width: 55px;
     height: 30px;
+}
+
+.AspectRatio5x4 #HeroIcon
+{
+    width: 50px;
+    height: 27px;
 }
 
 .player_dead #HeroIcon
