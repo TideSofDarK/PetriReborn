@@ -23,7 +23,7 @@
   "BountyGoldMin"       "5"     
   "BountyGoldMax"       "5"     
 
-  "BoundsHullName"      "DOTA_HULL_SIZE_BUILDING"
+  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
   "RingRadius"        "100"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     

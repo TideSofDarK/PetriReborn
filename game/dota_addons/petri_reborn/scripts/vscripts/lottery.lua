@@ -47,10 +47,10 @@ function SelectWinner()
 
 	Notifications:ClearTopFromTeam(DOTA_TEAM_GOODGUYS)
 
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=7, continue=false, style={color="white", ["font-size"]="45px"}})
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=winner.." ", 	duration=7, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="45px"}})
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=7, continue=true,  style={color="white", ["font-size"]="45px"}})
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(GameMode.CURRENT_BANK).."$", 				duration=7, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=9, continue=true,  style={color="white", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(GameMode.CURRENT_BANK).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
 
 	LOTTERY_STATE = 0
 	GameMode.CURRENT_BANK = 0

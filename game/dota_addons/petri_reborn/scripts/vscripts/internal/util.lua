@@ -8,6 +8,7 @@ end
 
 function IsMultiOrderAbility( ability )
   if IsValidEntity(ability) then
+    if not ability.GetAbilityName then return false end
     local ability_name = ability:GetAbilityName()
     local ability_table = GameMode.AbilityKVs[ability_name]
 

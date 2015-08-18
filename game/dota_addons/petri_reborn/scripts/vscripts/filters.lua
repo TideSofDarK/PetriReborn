@@ -32,7 +32,7 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     end
 
-    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) and #units > 1 then
+    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
         local ability = EntIndexToHScript(abilityIndex) 
         local abilityName = ability:GetAbilityName()
 
@@ -50,7 +50,7 @@ function GameMode:FilterExecuteOrder( filterTable )
                     if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
                         ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, Position = point, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
 
-                    elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET then
+                    elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
                         ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
 
                     else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO

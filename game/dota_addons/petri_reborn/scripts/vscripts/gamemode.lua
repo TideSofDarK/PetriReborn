@@ -119,6 +119,9 @@ function GameMode:OnHeroInGame(hero)
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
 
+          GameMode.SELECTED_UNITS[pID] = {}
+          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
+
           for k,v in pairs(FRIENDS_KVN) do
             local id = tonumber(k)
 
@@ -158,6 +161,9 @@ function GameMode:OnHeroInGame(hero)
           PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
+
+          GameMode.SELECTED_UNITS[pID] = {} 
+          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
           for k,v in pairs(FRIENDS_PETRI) do
             local id = tonumber(k)

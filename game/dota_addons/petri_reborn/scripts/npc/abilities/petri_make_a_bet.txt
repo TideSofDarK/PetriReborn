@@ -12,15 +12,6 @@
 
   "MaxLevel"            "1"
 
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "lumber"      "10000"
-    }
-  }
-
   "OnSpellStart"
   {
     "RunScript"

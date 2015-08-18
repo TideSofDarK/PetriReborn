@@ -501,5 +501,5 @@ end
 function GameMode:OnPlayerSelectedEntities( event )
   local pID = event.pID
 
-  SELECTED_UNITS[pID] = event.selected_entities
+  GameMode.SELECTED_UNITS[pID] = event.selected_entities
 end

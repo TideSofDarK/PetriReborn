@@ -75,10 +75,20 @@ function Update()
 	$.Schedule( 0.07, Update );
 }
 
-function SetSelectedUnit()
+function SetQueryUnit()
 {
     GameUI.CustomUIConfig().selected_unit = Players.GetLocalPlayerPortraitUnit();
-	//UpdateAbilitiesContainer();
+}
+
+function SetSelectedUnit()
+{
+    SetQueryUnit();
+
+	var iPlayerID = Players.GetLocalPlayer();
+	var selectedEntities = Players.GetSelectedEntities( iPlayerID );
+	var mainSelected = Players.GetLocalPlayerPortraitUnit();
+
+	GameEvents.SendCustomGameEventToServer( "update_selected_entities", { pID: iPlayerID, selected_entities: selectedEntities })
 }
 
 (function()
@@ -86,7 +96,7 @@ function SetSelectedUnit()
 	//GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
-    GameEvents.Subscribe( "dota_player_update_query_unit", SetSelectedUnit );
+    GameEvents.Subscribe( "dota_player_update_query_unit", SetQueryUnit );
 
 	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
     $.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", UpdateAbilitiesContainer);	
