@@ -99,7 +99,7 @@ function FillCosts( abilityID )
 
   var cdPanel = $( "#CooldownAndCosts" ).FindChild( "Cooldown" );
   var cd = Abilities.GetCooldown( abilityID );
-  cdPanel.FindChild( "CooldownLabel").text = cd;
+  cdPanel.FindChild( "CooldownLabel").text = Math.floor(cd * 100) / 100;
   cdPanel.SetHasClass( "no_cd", cd == 0);
 }
 
