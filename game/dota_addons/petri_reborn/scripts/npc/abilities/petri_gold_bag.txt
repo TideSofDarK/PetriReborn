@@ -72,7 +72,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "77"
+      "upgrade_rate"      "74"
     }
     "02"
     {

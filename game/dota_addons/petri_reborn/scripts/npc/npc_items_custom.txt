@@ -105,7 +105,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "attack_percentage_bonus"     "20"
+	      "attack_percentage_bonus"     "80"
 	    }
 	    "02"
 	    {
@@ -517,7 +517,7 @@
 	  "AbilityCooldown"       "100"
 	  "AbilityManaCost"       "0"
 	
-	  "ItemCost"            "375"
+	  "ItemCost"            "285"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "scroll"
 	  "ItemInitialCharges" "1"
@@ -1085,7 +1085,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kvn_medal"
 	
-	  "ItemCost"            "3550"
+	  "ItemCost"            "6950"
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"

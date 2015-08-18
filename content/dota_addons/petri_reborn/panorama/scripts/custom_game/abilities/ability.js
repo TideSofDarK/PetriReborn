@@ -106,9 +106,9 @@ function UpdateAbility()
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) );
 	
-	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost ) );
-	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost ) );
-	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost ) );
+	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined ) );
+	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined ) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined ) );
 	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost ) );
 
 	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() );

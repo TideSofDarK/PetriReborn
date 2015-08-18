@@ -35,7 +35,6 @@ require('libraries/projectiles')
 require('libraries/notifications')
 require('libraries/animations')
 
-require('libraries/FlashUtil')
 require('libraries/buildinghelper')
 require('libraries/dependencies')
 require('buildings/bh_abilities')

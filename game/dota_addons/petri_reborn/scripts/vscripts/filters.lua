@@ -32,7 +32,8 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     end
 
-    if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
+    if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+      if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
         local ability = EntIndexToHScript(abilityIndex) 
         local abilityName = ability:GetAbilityName()
 
@@ -41,25 +42,26 @@ function GameMode:FilterExecuteOrder( filterTable )
         local entityList = GameMode.SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
         
         for _,entityIndex in pairs(entityList) do
-            local caster = EntIndexToHScript(entityIndex)
-            if caster and caster:HasAbility(abilityName) then
-                local abil = caster:FindAbilityByName(abilityName)
-                if abil and abil:IsFullyCastable() then
+          local caster = EntIndexToHScript(entityIndex)
+          if caster and caster:HasAbility(abilityName) then
+            local abil = caster:FindAbilityByName(abilityName)
+            if abil and abil:IsFullyCastable() then
 
-                    caster.skip = true
-                    if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
-                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, Position = point, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+              caster.skip = true
+              if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
+                ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, Position = point, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
 
-                    elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
-                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+              elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
+                ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
 
-                    else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
-                        ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
-                    end
-                end
+              else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
+                ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
+              end
             end
+          end
         end
         return false
+      end
     end
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 

@@ -1,5 +1,8 @@
 function UnitCanAttackTarget( unit, target )
-  if not unit:HasAttackCapability() or target:IsInvulnerable() or target:IsAttackImmune() or not unit:CanEntityBeSeenByMyTeam(target) then
+  if not unit:HasAttackCapability() 
+    or (target.IsInvulnerable and target:IsInvulnerable()) 
+    or (target.IsAttackImmune and target:IsAttackImmune()) 
+    or not unit:CanEntityBeSeenByMyTeam(target) then
     return false
   end
 

@@ -11,7 +11,7 @@
   "AbilityCooldown"       "100"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "375"
+  "ItemCost"            "285"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
   "ItemInitialCharges" "1"

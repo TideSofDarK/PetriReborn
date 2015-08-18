@@ -448,13 +448,7 @@ function RepairBy1Percent( event )
 
 			target:Heal(healAmount, caster)
 		else
-	      local newOrder = {
-	        UnitIndex       = caster:entindex(),
-	        OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-	        Position        = caster:GetAbsOrigin(), 
-	        Queue           = 0
-	      }
-	      ExecuteOrderFromTable(newOrder)
+			caster:Stop()
 		end
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()

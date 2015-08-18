@@ -327,6 +327,33 @@ function BuildingHelper:AddBuilding(keys)
   CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = fMaxScale} )
 end
 
+--[[
+      ValidPosition
+      * Checks GridNav square of certain size at a location
+      * Sends onConstructionFailed if invalid
+]]--
+function BuildingHelper:ValidPosition(size, location, callbacks)
+
+    local halfSide = (size/2)*64
+    local boundingRect = {  leftBorderX = location.x-halfSide, 
+                            rightBorderX = location.x+halfSide, 
+                            topBorderY = location.y+halfSide,
+                            bottomBorderY = location.y-halfSide }
+
+    for x=boundingRect.leftBorderX+32,boundingRect.rightBorderX-32,64 do
+        for y=boundingRect.topBorderY-32,boundingRect.bottomBorderY+32,-64 do
+            local testLocation = Vector(x, y, location.z)
+            if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
+                if callbacks.onConstructionFailed then
+                    callbacks.onConstructionFailed()
+                    return false
+                end
+            end
+        end
+    end
+    return true
+end
+
 
 --[[
       InitializeBuildingEntity
@@ -352,43 +379,14 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   -- Check if the building ability is on cooldown, if it is then it cannot be cast
   local ability = buildingTable:GetVal("AbilityHandle", "handle")
 
-  --if ability ~= nil then
-    --if ability:GetCooldownTimeRemaining() > 0 then
-      -- ParticleManager:DestroyParticle(work.particles, true)
-      -- if callbacks.onConstructionFailed ~= nil then
-      --   callbacks.onConstructionFailed(work)
-      -- end
-      -- return
-   -- end
-  --end
-
-  -- Check gridnav.
-  if size % 2 == 1 then
-    for x = location.x - (size / 2) * 32 , location.x + (size / 2) * 32 , 32 do
-      for y = location.y - (size / 2) * 32 , location.y + (size / 2) * 32 , 32 do
-        local testLocation = Vector(x, y, location.z)
-        if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          ParticleManager:DestroyParticle(work.particles, true)
-          if callbacks.onConstructionFailed ~= nil then
-            callbacks.onConstructionFailed(work)
-          end
-          return
-        end
-      end
+  -- Check gridnav and cancel if invalid
+  if not BuildingHelper:ValidPosition(size, location, callbacks) then
+    -- Remove the model particle and Advance Queue
+    if callbacks.onConstructionFailed ~= nil then
+      callbacks.onConstructionFailed(work)
     end
-  else
-    for x = location.x - (size / 2) * 32 - 16, location.x + (size / 2) * 32 + 16, 32 do
-      for y = location.y - (size / 2) * 32 - 16, location.y + (size / 2) * 32 + 16, 32 do
-        local testLocation = Vector(x, y, location.z)
-         if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          ParticleManager:DestroyParticle(work.particles, true)
-          if callbacks.onConstructionFailed ~= nil then
-            callbacks.onConstructionFailed(work)
-          end
-          return
-        end
-      end
-    end
+    ParticleManager:DestroyParticle(work.particleIndex, true)
+    return
   end
 
   local gridNavBlockers = self:BlockGridNavSquare(size, location)
@@ -412,9 +410,12 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   end
     
   -- Spawn the building
-  local building = CreateUnitByName(unitName, location, false, playersHero, nil, PlayerResource:GetTeam(pID))
+  local building = CreateUnitByName(unitName, OutOfWorldVector, false, playersHero, nil, PlayerResource:GetTeam(pID))
   building:SetControllableByPlayer(pID, true)
   building:SetOwner(PlayerResource:GetPlayer(pID))
+  building:SetHullRadius(building:GetHullRadius()+5)
+
+  Timers:CreateTimer(function() building:SetAbsOrigin(location) end)
 
   building.blockers = gridNavBlockers
   building.buildingTable = buildingTable
@@ -668,33 +669,10 @@ function InitializeBuilder( builder )
       location.y = SnapToGrid64(location.y)
     end
 
-    if size % 2 == 1 then
-    for x = location.x - (size / 2) * 32 , location.x + (size / 2) * 32 , 32 do
-      for y = location.y - (size / 2) * 32 , location.y + (size / 2) * 32 , 32 do
-        local testLocation = Vector(x, y, location.z)
-        if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          if callbacks.onConstructionFailed ~= nil then
-            local work = builder.work
-            callbacks.onConstructionFailed(work)
-          end
-          return
-        end
-      end
+    -- Check gridnav
+    if not BuildingHelper:ValidPosition(size, location, callbacks) then
+        return
     end
-  else
-    for x = location.x - (size / 2) * 32 - 16, location.x + (size / 2) * 32 + 16, 32 do
-      for y = location.y - (size / 2) * 32 - 16, location.y + (size / 2) * 32 + 16, 32 do
-        local testLocation = Vector(x, y, location.z)
-         if GridNav:IsBlocked(testLocation) or GridNav:IsTraversable(testLocation) == false then
-          if callbacks.onConstructionFailed ~= nil then
-            local work = builder.work
-            callbacks.onConstructionFailed(work)
-          end
-          return
-        end
-      end
-    end
-  end
 
     ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 0, location)
 
