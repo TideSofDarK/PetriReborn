@@ -55,5 +55,8 @@ function MakeABet( keys )
 	end
 
 	GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + ability:GetGoldCost(-1)
-	table.insert(GameMode.CURRENT_LOTTERY_PLAYERS, caster:GetPlayerOwnerID())
+
+	if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] then 
+		GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] = caster:GetPlayerOwnerID()
+	end
 end
