@@ -60,33 +60,7 @@ function BuildingHelper:RegisterLeftClick( args )
 
   if cmdPlayer then
     -- NEEDS WORK
-    if cmdPlayer.activeBuilder:HasModifier("modifier_returning_resources")
-    or cmdPlayer.activeBuilder:HasModifier("modifier_chopping_wood")
-    or cmdPlayer.activeBuilder:HasModifier("modifier_gathering_lumber")
-    or cmdPlayer.activeBuilder:HasModifier("modifier_chopping_wood_animation") then
-
-      ToggleAbilityOff(cmdPlayer.activeBuilder:FindAbilityByName("return_resources"))
-      ToggleAbilityOff(cmdPlayer.activeBuilder:FindAbilityByName("gather_lumber"))
-      ToggleAbilityOff(cmdPlayer.activeBuilder:FindAbilityByName("petri_repair"))
-
-      --cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
-
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_repairing")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building")
-      cmdPlayer.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
-
-      -- Fake stop command
-      -- local newOrder = {
-      --   UnitIndex       = cmdPlayer.activeBuilder:entindex(),
-      --   OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-      --   Position        = cmdPlayer.activeBuilder:GetAbsOrigin(), 
-      --   Queue           = 0
-      -- }
-      -- ExecuteOrderFromTable(newOrder)
-    end
+    RemoveGatheringAndRepairingModifiers(cmdPlayer)
 
     cmdPlayer.activeBuilder:AddToQueue(location)
     cmdPlayer.waitingForBuildHelper = true

@@ -1,3 +1,13 @@
+function FakeStopOrder( target )
+  local newOrder = {
+    UnitIndex       = target:entindex(),
+    OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+    Position        = target:GetAbsOrigin(), 
+    Queue           = 0
+  }
+  ExecuteOrderFromTable(newOrder)
+end
+
 function UnitCanAttackTarget( unit, target )
   if not unit:HasAttackCapability() 
     or (target.IsInvulnerable and target:IsInvulnerable()) 
@@ -32,6 +42,30 @@ function IsMultiOrderAbility( ability )
 end
 
 -- MODIFIERS
+function RemoveGatheringAndRepairingModifiers(target)
+  if target.activeBuilder:HasModifier("modifier_returning_resources")
+    or target.activeBuilder:HasModifier("modifier_chopping_wood")
+    or target.activeBuilder:HasModifier("modifier_gathering_lumber")
+    or target.activeBuilder:HasModifier("modifier_chopping_wood_animation")
+    or target.activeBuilder:HasModifier("modifier_returning_resources_on_order_cancel") then
+
+    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("return_resources"))
+    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("gather_lumber"))
+    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("petri_repair"))
+
+    --cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
+    target.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
+    target.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
+    target.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
+
+    target.activeBuilder:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+
+    target.activeBuilder:RemoveModifierByName("modifier_repairing")
+    target.activeBuilder:RemoveModifierByName("modifier_chopping_building")
+    target.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
+  end
+end
+
 function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
   local modifier = target:FindModifierByName(modifierName)
   if modifier then

@@ -2,7 +2,7 @@
 {
   "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
-  "ModelScale"        "0.6"
+  "ModelScale"        "0.5"
   "Level"           "0"
   "HealthBarOffset"       "200"
   "HasInventory"        "1"

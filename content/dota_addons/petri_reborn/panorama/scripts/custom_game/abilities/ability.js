@@ -187,8 +187,17 @@ function ActivateAbility()
 		return;
 	}
 
-	if (CheckSpellCost() && CheckDependencies())
-		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
+	if (CheckSpellCost() && CheckDependencies()) 
+	{
+		if (Abilities.GetAbilityName(m_Ability) == "petri_exploration_tower_explore_world") 
+		{		
+			Abilities.ExecuteAbility( Entities.GetAbilityByName( Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), Abilities.GetAbilityName(m_Ability) ), Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), false );
+		}
+		else 
+		{
+			Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
+		}
+	}
 }
 
 function DoubleClickAbility()

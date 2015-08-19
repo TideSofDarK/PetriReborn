@@ -58,6 +58,8 @@ function ToggleOffGather( event )
 		if event["arg"] then
 			caster:RemoveModifierByName(event["arg"])
 		end
+
+		caster:RemoveModifierByName("modifier_ability_gather_lumber_no_col")
 		
 		caster.target_tree.worker = nil
 
@@ -78,6 +80,8 @@ function ToggleOffReturn( event )
 	
 	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
 	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
+		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
 			if Debug_Peasant then
@@ -157,8 +161,8 @@ function Gather100Lumber( event )
 				print("Gather OFF, Return ON")
 			end
 			--return_ability:SetHidden(false)
-			if return_ability:GetToggleState() == false then
-				return_ability:ToggleAbility()
+			if ability:GetToggleState() == true then
+				ability:ToggleAbility()
 			end
 			--ability:SetHidden(true)
 
@@ -177,9 +181,10 @@ function Gather100Lumber( event )
 
 		-- Return Ability On		
 		caster:CastAbilityNoTarget(return_ability, player)
-		return_ability:ToggleAbility()
 
-		
+		if return_ability:GetToggleState() == false then
+			return_ability:ToggleAbility()
+		end
 	end
 end
 
@@ -199,13 +204,21 @@ function ReturnResources( event )
 
 		-- Set On, Wait one frame, as OnOrder gets executed before this is applied.
 		Timers:CreateTimer(0.03, function() 
+			ability:ApplyDataDrivenModifier(caster, caster, "modifier_returning_resources_on_order_cancel", {})
 			if ability:GetToggleState() == false then
 				ability:ToggleAbility()
+
 				if Debug_Peasant then
 					print("Return Ability Toggled On")
 				end
 			end
 		end)
+
+		-- Timers:CreateTimer(0, function() 
+		-- 	if caster:FindModifierByName("modifier_returning_resources_on_order_cancel") then
+		-- 		return 0.03
+		-- 	end
+		-- end)
 
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
@@ -237,6 +250,7 @@ function CheckBuildingPosition( event )
 	if collision and hero then
 		local pID = hero:GetPlayerID()
 		caster:RemoveModifierByName("modifier_returning_resources")
+		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
 		if Debug_Peasant then
 			print("Removed modifier_returning_resources")
 		end
@@ -413,6 +427,7 @@ function ToggleOffRepairing( event )
 
 	if repair_ability:GetToggleState() == true then
 		repair_ability:ToggleAbility()
+
 		if Debug_Peasant then
 			print("Toggled Off Repairing")
 		end
@@ -477,18 +492,20 @@ function Spawn( t )
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
 
 		local distance = 9999
+		local z = 10
 		local closest_tree = nil
 		local position = thisEntity:GetAbsOrigin()
 
 		if trees then
 			for k, v in pairs(trees) do
 				local this_distance = (position - v:GetAbsOrigin()):Length()
+				local this_z = math.abs(v:GetAbsOrigin()["3"] - print(v:GetAbsOrigin()["2"]))
 
-				if this_distance < distance then
+				if this_z < z and this_distance < distance  then
 					distance = this_distance
-					--if v.worker == nil then
-						closest_tree = v
-					--end
+					z = this_z
+
+					closest_tree = v
 				end
 			end
 

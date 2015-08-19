@@ -532,12 +532,6 @@
 	
 	      "OnOrder"
 	      {
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }  
-	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -556,11 +550,6 @@
 	
 	      "OnOrder"
 	      { 
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }    
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -593,12 +582,6 @@
 	      "IsHidden"        "1"
 	      "OnOrder"
 	      {
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }  
-	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -609,7 +592,6 @@
 	    }
 	  }
 	}
-	// START OF BUILDING HELPER ABILITIES
 	"has_build_queue"
 	{
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
@@ -3219,6 +3201,8 @@
 	  "AbilityChannelTime"      "2.5"
 	  "AbilityUpgradeGoldCost"    "0"
 	
+	  "AbilityMultiOrder" "1"
+	
 	  "MaxLevel"            "4"
 	
 	  "AbilitySpecial"
@@ -3578,10 +3562,9 @@
 	
 	  "Modifiers"
 	  {
-	    "modifier_returning_resources"
+	    "modifier_returning_resources_on_order_cancel"
 	    {
-	      "IsHidden"        "0"
-	      "TextureName"     "furion_sprout"
+	      "IsHidden"        "1"
 	
 	      "ThinkInterval"  "0.03"
 	      "OnIntervalThink"
@@ -3598,15 +3581,14 @@
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
-	          "Function"    "ToggleOffGather"
-	        }
-	
-	        "RunScript"
-	        {
-	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffReturn"
 	        }
-	      }   
+	      }  
+	    }
+	    "modifier_returning_resources"
+	    {
+	      "IsHidden"        "0"
+	      "TextureName"     "furion_sprout"
 	    }
 	  }
 	} 

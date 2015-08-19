@@ -145,9 +145,10 @@ function GameMode:OnHeroInGame(hero)
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(3)
+          newHero:SetAbilityPoints(4)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
@@ -178,7 +179,7 @@ function GameMode:OnHeroInGame(hero)
             GameRules.explorationTowerCreated = true
             Timers:CreateTimer(0.2,
             function()
-              CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+              GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
               end)
           end
        end, pID)
@@ -362,13 +363,13 @@ function GameMode:InitGameMode()
     end
   end
 
-  -- Some way to prevent controlling of disconnected players
+  -- Filter orders
   GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
   -- Fix hero bounties
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
 
-  -- Fix hero bounties
+  -- Fix hero xp bounties
   GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ModifyExperienceFilter"), GameMode)
 
   -- Commands
@@ -394,9 +395,10 @@ function GameMode:ReplaceWithMiniActor(player)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(3)
+      newHero:SetAbilityPoints(4)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
 
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()

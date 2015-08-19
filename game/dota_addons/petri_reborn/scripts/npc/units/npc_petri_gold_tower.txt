@@ -11,11 +11,7 @@
   "AbilityLayout" "4"
   "Ability1"          "petri_get_gold"     
   "Ability2"          "petri_upgrade_gold_tower"     
-  "Ability3"          "petri_empty1"
-  "Ability4"          "petri_empty2"
-  "Ability6"          "petri_empty3"
-  "Ability7"          "petri_empty4"
-  "Ability8"          "petri_building"
+  "Ability3"          "petri_building"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     

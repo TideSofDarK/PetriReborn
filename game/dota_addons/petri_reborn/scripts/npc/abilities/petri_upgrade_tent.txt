@@ -12,6 +12,8 @@
   "AbilityChannelTime"      "2.5"
   "AbilityUpgradeGoldCost"    "0"
 
+  "AbilityMultiOrder" "1"
+
   "MaxLevel"            "4"
 
   "AbilitySpecial"
