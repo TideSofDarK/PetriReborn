@@ -458,12 +458,12 @@ function RepairBy1Percent( event )
 		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 then
 			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
-			local healAmount = 3 + (target:GetMaxHealth() * 0.009)
+			local healAmount = 3 + (target:GetMaxHealth() * 0.01285)
 			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
 
 			target:Heal(healAmount, caster)
 		else
-			caster:Stop()
+			--caster:Stop()
 		end
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
@@ -499,9 +499,9 @@ function Spawn( t )
 		if trees then
 			for k, v in pairs(trees) do
 				local this_distance = (position - v:GetAbsOrigin()):Length()
-				local this_z = math.abs(v:GetAbsOrigin()["3"] - print(v:GetAbsOrigin()["2"]))
+				local this_z = math.abs(v:GetAbsOrigin()["3"] - position["3"])
 
-				if this_z < z and this_distance < distance  then
+				if this_z < 10 and this_distance < distance  then
 					distance = this_distance
 					z = this_z
 
