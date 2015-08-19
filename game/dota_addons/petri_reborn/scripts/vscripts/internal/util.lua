@@ -1,3 +1,13 @@
+function PayGoldCost(ability)
+  local cost = ability:GetGoldCost(ability:GetLevel())
+  if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then
+    ability:PayGoldCost()
+    return true
+  else
+    return false
+  end
+end
+
 function FakeStopOrder( target )
   local newOrder = {
     UnitIndex       = target:entindex(),

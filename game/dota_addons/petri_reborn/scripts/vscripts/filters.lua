@@ -55,7 +55,11 @@ function GameMode:FilterExecuteOrder( filterTable )
                 ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
               else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
                 if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then 
-                  Timers:CreateTimer(function() caster:CastAbilityNoTarget(abil, caster:GetPlayerOwnerID()) end) 
+                  Timers:CreateTimer(function() 
+                    if PayGoldCost(abil) == true then 
+                      caster:CastAbilityNoTarget(abil, caster:GetPlayerOwnerID())
+                    end
+                  end) 
                 else 
                   ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
                 end

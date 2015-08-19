@@ -2733,7 +2733,7 @@
 	    "03"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "attack_rate"             "0 0 0 0 0 0 0"
+	      "attack_rate"             "10 15 20 25 35 45 50"
 	    }
 	    "04"
 	    {
@@ -3468,7 +3468,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 800 1100 1450 2400 4400 6050"
+	      "health_points"        "270 380 590 900 1300 1650 2800 4900 6850"
 	    }
 	    "03"
 	    {

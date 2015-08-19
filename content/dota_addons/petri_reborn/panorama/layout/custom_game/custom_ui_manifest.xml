@@ -43,7 +43,7 @@
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/resources.xml" />  
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />
 
-        <!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" /> -->
+		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" /> -->
 	</Panel>
 </root>
 
