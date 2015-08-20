@@ -139,8 +139,21 @@
 
 	margin-left: 10px;
 	margin-right: 10px;
+}
 
-	text-overflow: ellipsis;
+.SpecialsLabelName
+{
+	color: #e0e0e0;
+	font-size: 14px;
+    font-weight: bold;
+}
+
+.SpecialsLabelColor
+{
+	color: #c0e8fb;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow: 0px 0px 16px 6 #245191;
 }
 
 #CooldownAndCosts
