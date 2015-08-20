@@ -56,9 +56,7 @@ function GameMode:FilterExecuteOrder( filterTable )
               else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
                 if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then 
                   Timers:CreateTimer(function() 
-                    if PayGoldCost(abil) == true then 
-                      caster:CastAbilityNoTarget(abil, caster:GetPlayerOwnerID())
-                    end
+                    caster:CastAbilityNoTarget(abil, caster:GetPlayerOwnerID())
                   end) 
                 else 
                   ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
@@ -123,6 +121,22 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     elseif order_type == DOTA_UNIT_ORDER_GLYPH then
       return false
+    elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
+      local ability = EntIndexToHScript(abilityIndex)
+      if ability and ability.GetAbilityName then
+        local abilityName = ability:GetAbilityName()
+
+        if abilityName == "gather_lumber" then
+          if issuerUnit:FindModifierByName("modifier_returning_resources") then
+            issuerUnit:RemoveModifierByName("modifier_chopping_wood")
+          
+            issuerUnit:CastAbilityNoTarget(issuerUnit:FindAbilityByName("return_resources"), issuer)
+
+            return false
+          end
+          return true
+        end
+      end
     elseif order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
       local ability = EntIndexToHScript(abilityIndex)
       if ability and ability.GetAbilityName then

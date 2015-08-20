@@ -74,6 +74,8 @@ function GetRandomAliveKvnFan()
 
 	local winner = math.random(1, kvnCount)
 
-	if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)]:IsAlive() then return PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner) end
+	if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)]:IsAlive() 
+		and PlayerResource:GetConnectionState(PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)) ~= 4
+		and PlayerResource:GetConnectionState(PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)) ~= 3 then return PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner) end
 	return GetRandomAliveKvnFan()
 end

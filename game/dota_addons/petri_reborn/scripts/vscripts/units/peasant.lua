@@ -22,8 +22,6 @@ function Gather( event )
 			print("Moving to ", target_class)
 		end
 		caster.target_tree = target
-
-
 	end
 
 	caster:RemoveModifierByName("modifier_gathering_lumber")
@@ -33,13 +31,6 @@ function Gather( event )
 	if ability:GetToggleState() == false then
 		ability:ToggleAbility()
 	end
-
-	-- Hide Return
-	--local return_ability = caster:FindAbilityByName("return_resources")
-	--return_ability:SetHidden(true)
-	--ability:SetHidden(false)
-
-	--caster:SwapAbilities("gather_lumber", "return_resources" , true, false)
 
 	if Debug_Peasant then
 		print("Gather ON, Return OFF")
@@ -155,36 +146,12 @@ function Gather100Lumber( event )
 	-- Increase up to the max, or cancel
 	if caster.lumber_gathered < max_lumber_carried then
 
-		-- Fake Toggle the Return ability
-		if return_ability:GetToggleState() == false or return_ability:IsHidden() then
-			if Debug_Peasant then
-				print("Gather OFF, Return ON")
-			end
-			--return_ability:SetHidden(false)
-			if ability:GetToggleState() == true then
-				ability:ToggleAbility()
-			end
-			--ability:SetHidden(true)
-
-			if  caster:FindAbilityByName("gather_lumber"):IsHidden() and
-				 caster:FindAbilityByName("return_resources"):IsHidden() then
-
-			else
-				caster:SwapAbilities("gather_lumber", "return_resources", false, true)
-			end
-			
-		end
 	else
 		local player = caster:GetPlayerOwnerID()
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
-
-		-- Return Ability On		
+	
 		caster:CastAbilityNoTarget(return_ability, player)
-
-		if return_ability:GetToggleState() == false then
-			return_ability:ToggleAbility()
-		end
 	end
 end
 
@@ -277,17 +244,6 @@ function CheckBuildingPosition( event )
 
 		   
 			hero.lumber = hero.lumber + lumber_gathered 
-    		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
-    		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
-
-    		if caster:FindAbilityByName("gather_lumber"):IsHidden() and
-				caster:FindAbilityByName("return_resources"):IsHidden() then
-
-			else
-				caster:SwapAbilities("gather_lumber", "return_resources", true, false)
-			end
-
-    		
 		end
 
 		-- Return Ability Off

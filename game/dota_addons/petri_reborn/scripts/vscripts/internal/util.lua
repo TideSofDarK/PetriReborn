@@ -270,12 +270,14 @@ function StartUpgrading (event)
   local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
+  PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
+
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
-    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false then 
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false 
+    or PlayerResource:GetGold(pID) < gold_cost then
     Timers:CreateTimer(0.06,
       function()
-          PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
           caster:InterruptChannel()
       end
     )
@@ -288,6 +290,8 @@ function StartUpgrading (event)
     caster.lastSpentFood = food_cost
 
     caster.foodSpent = caster.foodSpent + food_cost
+
+    PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
     
     if not event["Permanent"] then
       ability:SetHidden(true)
