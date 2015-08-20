@@ -233,6 +233,9 @@ function HideTooltip()
 }
 
 (function () {
+  GameEvents.Subscribe( "dota_player_update_selected_unit", HideTooltip );
+  GameEvents.Subscribe( "dota_player_update_query_unit", HideTooltip );
+  
   $.GetContextPanel().data().ShowTooltip = ShowTooltip;
   $.GetContextPanel().data().HideTooltip = HideTooltip;
 
