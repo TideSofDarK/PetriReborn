@@ -49,7 +49,7 @@
 						    "StartPosition"  	"follow_origin"
 						    "FixedDistance"  	"1000"
 						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO"
+						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
 						    "HasFrontalCone" 	"1"
 						    "ProvidesVision" 	"0"
 						}     

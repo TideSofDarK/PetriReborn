@@ -1093,6 +1093,7 @@
 	  "Ability4"     "petri_suicide"
 	  "Ability5"     "build_petri_tower_of_evil"
 	  "Ability6"     "return_resources"
+	  "Ability7"     "petri_magic_immunity"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"

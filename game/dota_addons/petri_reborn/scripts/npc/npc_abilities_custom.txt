@@ -1555,6 +1555,26 @@
 	    }
 	  }  
 	}
+	"petri_magic_immunity"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_magic_immunity"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "100"
+	      }
+	    }
+	  }  
+	}
 	"petri_make_a_bet"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -1676,7 +1696,7 @@
 							    "StartPosition"  	"follow_origin"
 							    "FixedDistance"  	"1000"
 							    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-							    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO"
+							    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
 							    "HasFrontalCone" 	"1"
 							    "ProvidesVision" 	"0"
 							}     
