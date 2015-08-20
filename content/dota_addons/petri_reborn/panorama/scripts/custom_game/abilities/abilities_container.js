@@ -10,6 +10,7 @@ function UpdateAbilitiesContainer()
 	if ( !abilityListPanel )
 		return;
 
+	$.GetContextPanel().SetHasClass( "flip", Game.IsHUDFlipped())
 
 	// Прячем панель скиллов
 	abilityListPanel.style["visibility"] = "collapse";

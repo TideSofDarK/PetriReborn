@@ -41,8 +41,25 @@
 	margin-left: 320px;
 }
 
-.AbilitiesRoot
+/* 		Flipped HUD 		*/
+.flip.AbilitiesRoot
 {
+	margin-left: 530px;
+}
+
+.AspectRatio4x3 .flip.AbilitiesRoot
+{
+	margin-left: 430px;
+}
+
+.AspectRatio5x4 .flip.AbilitiesRoot
+{
+	margin-left: 460px;
+}
+
+.AspectRatio16x10 .flip.AbilitiesRoot
+{
+	margin-left: 570px;
 }
 
 #AbilityList

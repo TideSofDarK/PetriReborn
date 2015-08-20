@@ -28,8 +28,6 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		playerPanel.BLoadLayout( scoreboardConfig.playerXmlName, false, false );
 	}
 
-	//playerPanel.BLoadLayoutFromString("<root></root>", true, false);
-
 	playerPanel.SetHasClass( "is_local_player", ( playerId == Game.GetLocalPlayerID() ) );
 	
 	var ultStateOrTime = PlayerUltimateStateOrTime_t.PLAYER_ULTIMATE_STATE_HIDDEN; // values > 0 mean on cooldown for that many seconds

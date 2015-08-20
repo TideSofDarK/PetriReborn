@@ -157,19 +157,24 @@ function FillDependencies( abilityID )
       Специальные значения
 */
 
+function SetHTMLStyle( text, style)
+{
+  return "<span class=\"" + style + "\">" + text + "</span>";
+}
+
 function GetSpecialValuesList( abilityID, name )
 {
   var abilityLevel = Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
-  var str = Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 );
+  var str = SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
   var prevValue = str;
   for (var i = abilityLevel; i < maxAbilityLevel - 1; i++) 
   {
     var curValue = Abilities.GetLevelSpecialValueFor( abilityID, name, i );
     if (curValue != prevValue)
     {
-      str += "/" +  curValue;
+      str += " / " +  curValue;
       prevValue = curValue;
     }
   };
@@ -193,8 +198,9 @@ function FillSpecials( abilityID )
   for(var name in specials)
   {
     var cur_panel = $.CreatePanel( "Label", specialsPanel, "_special_" + name );
-    cur_panel.text = $.Localize( "#DOTA_Tooltip_ability_" + abilityName + "_" + specials[name]) + " " + GetSpecialValuesList(abilityID, specials[name]);
-
+    cur_panel.html = true;
+    cur_panel.text = SetHTMLStyle( $.Localize( "#DOTA_Tooltip_ability_" + abilityName + "_" + specials[name]), "SpecialsLabelName" ) + 
+      " " + GetSpecialValuesList(abilityID, specials[name]);
     cur_panel.AddClass( "SpecialsLabel" );
   }  
 
