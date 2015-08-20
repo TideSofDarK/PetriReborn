@@ -1656,33 +1656,33 @@
 		{
 			"modifier_flat_joke_datadriven"
 			{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
+			    "Passive"   "1"
+			    "IsHidden"  "1"
 	
-		    "OnAttackStart"
-		    {
-	        "Random"
-	        {
-	          "Chance" 	"%crit_chance"
-	          "OnSuccess"
-	          {
-			        "LinearProjectile"
-							{
-						    "Target"		 	"ATTACKER"
-						    "EffectName"     	"particles/petri_flat_joke.vpcf"
-						    "MoveSpeed"      	"1100"
-						    "StartRadius"    	"110"
-						    "EndRadius"      	"300"
-						    "StartPosition"  	"follow_origin"
-						    "FixedDistance"  	"1000"
-						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
-						    "HasFrontalCone" 	"1"
-						    "ProvidesVision" 	"0"
+			    "OnAttackStart"
+			    {
+			        "Random"
+			        {
+			        	"Chance" 	"%crit_chance"
+			        	"OnSuccess"
+			        	{
+			        		"LinearProjectile"
+			        		{
+			        			"Target"		 	"ATTACKER"
+							    "EffectName"     	"particles/petri_flat_joke.vpcf"
+							    "MoveSpeed"      	"1100"
+							    "StartRadius"    	"110"
+							    "EndRadius"      	"300"
+							    "StartPosition"  	"follow_origin"
+							    "FixedDistance"  	"1000"
+							    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							    "TargetTypes"    	"DOTA_UNIT_TARGET_HERO"
+							    "HasFrontalCone" 	"1"
+							    "ProvidesVision" 	"0"
 							}     
-	          }
-	        }
-		    }
+	          			}
+	        		}
+		    	}
 			}
 		}
 	
@@ -2823,8 +2823,6 @@
 	      "Passive"       "0"
 	      "IsHidden"        "0"
 	      "IsDebuff"  "1"
-	
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
 	      "StatusEffectName"     "particles/status_fx/status_effect_armor_dazzle.vpcf"
 	      "StatusEffectPriority" "9"
