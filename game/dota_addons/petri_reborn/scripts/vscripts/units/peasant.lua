@@ -79,7 +79,6 @@ function ToggleOffReturn( event )
 				print("Toggled Off Return")
 			end
 		end
-		caster.skip_order = false
 	end
 end
 
@@ -185,7 +184,7 @@ function ReturnResources( event )
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
 		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
-		caster.skip_order = true
+
 		caster.target_building = building
 	end
 end
