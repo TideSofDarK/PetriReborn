@@ -181,12 +181,6 @@ function ReturnResources( event )
 			end
 		end)
 
-		-- Timers:CreateTimer(0, function() 
-		-- 	if caster:FindModifierByName("modifier_returning_resources_on_order_cancel") then
-		-- 		return 0.03
-		-- 	end
-		-- end)
-
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
@@ -230,18 +224,7 @@ function CheckBuildingPosition( event )
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
-			-- Green Particle Lumber Popup
-			POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-			local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-			local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
-			local color = Vector(10, 200, 90)
-			local lifetime = 3.0
-		    local digits = #tostring(lumber_gathered) + 1
-		    
-		    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, lumber_gathered, 0 ) )
-		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
-		    ParticleManager:SetParticleControl(pidx, 3, color)
-
+		    PlusParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
 		   
 			hero.lumber = hero.lumber + lumber_gathered 
 		end

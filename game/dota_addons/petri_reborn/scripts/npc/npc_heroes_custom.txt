@@ -158,7 +158,7 @@
 	  "MovementTurnRate"      "1.0" 
 	
 	  "StatusHealth"        "10"          
-	  "StatusHealthRegen"     "0.175"
+	  "StatusHealthRegen"     "0.165"
 	  "StatusMana"        "1"              
 	
 	  "VisionDaytimeRange"    "1800"                  

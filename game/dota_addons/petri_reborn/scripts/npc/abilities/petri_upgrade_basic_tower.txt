@@ -572,8 +572,6 @@
       "IsHidden"        "0"
       "IsDebuff"  "1"
 
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-
       "StatusEffectName"     "particles/status_fx/status_effect_armor_dazzle.vpcf"
       "StatusEffectPriority" "9"
       

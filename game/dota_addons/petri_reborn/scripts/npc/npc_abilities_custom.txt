@@ -2998,7 +2998,7 @@
 	      "Passive"         "0"
 	      "IsHidden"        "1"
 	
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 	      
 	      "Properties"
 	      {

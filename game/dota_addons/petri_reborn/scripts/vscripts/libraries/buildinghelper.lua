@@ -400,6 +400,9 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     callbacks.onConstructionStarted(building)
   end
 
+  -- Remove ghost model
+  UTIL_Remove(buildingTable.mgd)
+
   if instantBuild == false then
     building.state = "building"
     

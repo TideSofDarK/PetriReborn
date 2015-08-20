@@ -9,7 +9,9 @@ end
 function Spawn ( entityKeyValues  )
 	Timers:CreateTimer(3.65,
     function()
-    	thisEntity:GetAbilityByIndex(0):ToggleAutoCast()
+    	if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
+    		thisEntity:GetAbilityByIndex(0):ToggleAutoCast()
+    	end
     end)
 end 
 
