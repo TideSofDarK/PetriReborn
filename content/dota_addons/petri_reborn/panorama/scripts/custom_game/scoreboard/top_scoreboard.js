@@ -11,7 +11,7 @@ function UpdateScoreboard()
 {
 	ScoreboardUpdater_SetScoreboardActive( g_ScoreboardHandle, true );
 
- 	$.Schedule( 0.8, UpdateScoreboard );
+ 	$.Schedule( 0.5, UpdateScoreboard );
 }
 
 (function()
