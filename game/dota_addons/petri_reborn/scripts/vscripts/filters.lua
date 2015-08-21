@@ -81,6 +81,10 @@ function GameMode:FilterExecuteOrder( filterTable )
           hero = ent:GetOwnerEntity()
         end
 
+        if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
+          return false
+        end
+
         if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
           local stashSlot = 6
           for i=6,11 do

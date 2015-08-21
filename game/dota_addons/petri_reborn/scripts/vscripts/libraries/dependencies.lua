@@ -1,5 +1,6 @@
-function AddEntryToDependenciesTable(pID, building, level)
-	AddKeyToNetTable(pID, "players_dependencies", building, level or 1)
+function AddEntryToDependenciesTable(pID, entry, level)
+	if (GetKeyInNetTable(pID, "players_dependencies", entry) or 0) >= level then return false end
+	AddKeyToNetTable(pID, "players_dependencies", entry, level or 1)
 end
 
 function CheckBuildingDependencies(pID, building)

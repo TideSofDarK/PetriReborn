@@ -380,7 +380,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "5"
+	      "bonus_all_stats"    "2"
 	    }
 	  }
 	  
@@ -723,7 +723,7 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "hook_distance"   "1300"
+	      "hook_distance"   "1550"
 	    }
 	    "04"
 	    {
@@ -1675,7 +1675,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "24500"
+	      "bonus_damage"      "26500"
 	    }
 	  }
 	
@@ -1924,7 +1924,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "110"
+	      "bonus_damage"      "145"
 	    }
 	  }
 	  
