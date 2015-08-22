@@ -2,7 +2,9 @@
 {
     width: 110px;
     height: 110px;
-    horizontal-align: center;
+    horizontal-align: right;
+    
+    margin-right: 600px;
     
 /*  
     тк убрал топскорбоард нужно централизовать время
