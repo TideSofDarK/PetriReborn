@@ -238,3 +238,8 @@
 {
 	visibility: collapse;
 }
+
+.Cost.not_enought
+{
+	color: #ff0000;
+}

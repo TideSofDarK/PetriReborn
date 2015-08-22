@@ -38,6 +38,9 @@ function CheckDependencies()
 	if (!expr.test(abilityName))
 		abilityName += "_" + abilityLevel;
 
+	if (!GameUI.CustomUIConfig().dependencies)
+		return true;
+	
 	var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
 	if (dependencies == undefined)
 		return true;
