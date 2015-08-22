@@ -85,13 +85,18 @@ function FillCosts( abilityID )
   var foodText = costsPanel.FindChild( "FoodText" );
   var manaText = costsPanel.FindChild( "ManaText" );
 
+  var curRes = GameUI.CustomUIConfig().unitResources;
+
   goldText.text = goldCost;
+  goldText.SetHasClass("not_enought", goldCost > Players.GetGold(Players.GetLocalPlayer()) );
   goldText.SetHasClass("null", goldCost == 0);
 
   lumberText.text = lumberCost;
+  lumberText.SetHasClass("not_enought", lumberCost > curRes["lumber"] );  
   lumberText.SetHasClass("null", lumberCost == 0);
 
   foodText.text = foodCost;
+  foodText.SetHasClass("not_enought", curRes["food"] + foodCost > curRes["maxFood"]);    
   foodText.SetHasClass("null", foodCost == 0);
 
   manaText.text = manaCost;
@@ -167,7 +172,9 @@ function GetSpecialValuesList( abilityID, name )
   var abilityLevel = Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
-  var str = SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
+  var str = abilityLevel == 0 
+    ? Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ) 
+    : SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
   var prevValue = str;
   for (var i = abilityLevel; i < maxAbilityLevel - 1; i++) 
   {
