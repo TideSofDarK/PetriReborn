@@ -45,6 +45,7 @@
     font-size: 20px;
     color: #FFFFFF;
      horizontal-align: center;
+    text-shadow: 1px 1px 1px 2.0 #000;
 /*поднял выше цифры в часах и сделал их крупнее*/
 /*    margin-top: 10px;*/
 }
