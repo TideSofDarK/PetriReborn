@@ -1,13 +1,14 @@
 .PreGameVote_container{
 	vertical-align:middle;
-	margin-left:500px;
+	margin-left:1px;
 	flow-children: down;
 }
 .VoteItem{
 	vertical-align:middle;
 	height:70px;
-	width:320px;
-	background-color:grey;
+	width:500px;
+	background-color:black;
+	opacity:0.87;
 	flow-children: down;
 	
 	margin-bottom:10px;
@@ -19,10 +20,10 @@
 .VoteRadio RadioButton{
 	margin-left:15px;
 	margin-top:5px;
-	background-color:yellow;
+	background-color:grey;
 	opacity:0.77;
-	height:30px;
-	width:60px;
+	height:50px;
+	width:90px;
 	
 	vertical-align:middle;
 }
@@ -38,7 +39,7 @@
 }
 
 #SubmitButton{
-	background-color:yellow;
+	background-color:red;
 	opacity:0.77;
 	height:30px;
 	width:80px;
@@ -51,7 +52,7 @@
 	background-color:white;
 }
 #SubmitButton:disabled{
-	background-color:green;
+	background-color:grey;
 }
 .SubmitPressed{
 

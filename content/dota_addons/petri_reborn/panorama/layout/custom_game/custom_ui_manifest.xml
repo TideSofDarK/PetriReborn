@@ -31,7 +31,7 @@
   	</script>
 	<Panel>
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
-		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/pre_game_vote.xml" />
+		
 	
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_tooltip.xml" /> 		
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 

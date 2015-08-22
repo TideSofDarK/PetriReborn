@@ -1,5 +1,5 @@
 //CustomNetTables.SubscribeNetTableListener( "PreGame_vote", OnNettableChanged );
-var parentPanel = $.GetContextPanel();
+var parentPanel = $('#PreGameVote_container')//$.GetContextPanel();
 var VotesList=[];
 for(var i=0; i<$('#VotesList').GetChildCount(); i++){
 	VotesList.push( $('#VotesList').GetChild(i).id );
