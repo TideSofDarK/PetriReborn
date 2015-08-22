@@ -1,0 +1,62 @@
+.PreGameVote_container{
+	vertical-align:middle;
+	margin-left:500px;
+	flow-children: down;
+}
+.VoteItem{
+	vertical-align:middle;
+	height:70px;
+	width:320px;
+	background-color:grey;
+	flow-children: down;
+	
+	margin-bottom:10px;
+	padding: 5px 5px 5px 5px;
+}
+.VoteRadio{
+	flow-children: right;
+}
+.VoteRadio RadioButton{
+	margin-left:15px;
+	margin-top:5px;
+	background-color:yellow;
+	opacity:0.77;
+	height:30px;
+	width:60px;
+	
+	vertical-align:middle;
+}
+
+.VoteRadio RadioButton:hover{
+	background-color:brown;
+}
+.VoteRadio RadioButton:active{
+	background-color:white;
+}
+.VoteRadio RadioButton:selected{
+	background-color:green;
+}
+
+#SubmitButton{
+	background-color:yellow;
+	opacity:0.77;
+	height:30px;
+	width:80px;
+}
+
+#SubmitButton:hover{
+	background-color:brown;
+}
+#SubmitButton:active{
+	background-color:white;
+}
+#SubmitButton:disabled{
+	background-color:green;
+}
+.SubmitPressed{
+
+}
+
+.winner{
+	border:4px solid red;
+}
