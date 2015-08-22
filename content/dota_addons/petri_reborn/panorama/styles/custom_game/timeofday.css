@@ -2,9 +2,13 @@
 {
     width: 110px;
     height: 110px;
+    horizontal-align: center;
     
+/*  
+    тк убрал топскорбоард нужно централизовать время
     margin-left: 1300px;
     horizontal-align: left;
+*/
 }
 
 .AspectRatio4x3 .TimeOfDay
@@ -38,12 +42,11 @@
 #Time
 {
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
     color: #FFFFFF;
-
-    horizontal-align: center;
-
-    margin-top: 10px;
+     horizontal-align: center;
+/*поднял выше цифры в часах и сделал их крупнее*/
+/*    margin-top: 10px;*/
 }
 
 #PetroTime

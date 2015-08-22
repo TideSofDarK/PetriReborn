@@ -21,9 +21,15 @@
 			var playerId = $.GetContextPanel().GetAttributeInt( "player_id", -1 );
 			$.GetContextPanel().SetHasClass( "player_muted", Game.IsPlayerMuted( playerId ) );
 		})();
+		
+        function PortraitClicked()
+	{
+		// TODO: ctrl and alt click support
+		Players.PlayerPortraitClicked( $.GetContextPanel().GetAttributeInt( "player_id", -1 ), false, false );
+	}
 	</script>
 	<Panel class="PlayerRow">
-		<Panel id="PlayerRowContainer">
+		<Panel id="PlayerRowContainer" onactivate="PortraitClicked();">
 			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
 				<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
 			</Panel>

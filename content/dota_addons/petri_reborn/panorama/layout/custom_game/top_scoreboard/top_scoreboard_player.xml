@@ -4,9 +4,10 @@
 		<include src="file://{resources}/styles/custom_game/top_scoreboard.css" />
 		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
 	</styles>
+	
+<!--Мне кажется что это не нужно, функция "PortraitClicked()" будет перенесена в обычный скорбоард-->
 <!--
-    Мне кажется что это не нужно, функция клик по портрету будет перенесена в обычный скорбоард
-	<script>
+    <script>
 	function PortraitClicked()
 	{
 		// TODO: ctrl and alt click support

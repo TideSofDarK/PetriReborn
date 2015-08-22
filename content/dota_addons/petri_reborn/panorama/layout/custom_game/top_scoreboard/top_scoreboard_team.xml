@@ -4,6 +4,7 @@
 		<include src="file://{resources}/styles/custom_game/top_scoreboard.css" />
 		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
     </styles>
+<!--
 	<Panel hittest="false" class="ScoreboardTeamWrapper">
 		<Panel hittest="false" id="ScoreboardTeam">
 			<Panel id="LocalTeamOverlay" />
@@ -14,5 +15,6 @@
 			</Panel>
 		</Panel>
 	</Panel>
+-->
 </root>
 
