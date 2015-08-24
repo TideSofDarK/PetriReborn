@@ -87,6 +87,7 @@ function GameMode:FilterExecuteOrder( filterTable )
 
         if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
           local stashSlot = 6
+
           for i=6,11 do
             if hero:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
               stashSlot = i
@@ -95,9 +96,13 @@ function GameMode:FilterExecuteOrder( filterTable )
           end
 
           local itemName = hero:GetItemInSlot(stashSlot):GetName()
+          local charges = hero:GetItemInSlot(stashSlot):GetCurrentCharges()
+
+          local newItem = CreateItem(itemName, ent, hero)
+          newItem:SetCurrentCharges(charges)
 
           hero:RemoveItem(hero:GetItemInSlot(stashSlot))
-          ent:AddItemByName(itemName)
+          ent:AddItem(newItem)
         end
       end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then

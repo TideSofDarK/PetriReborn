@@ -364,6 +364,7 @@ function GameMode:OnEntityKilled( keys )
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
+    killedUnit.teleportationState = 0
     killedUnit:SetTimeUntilRespawn(30.0)
     Timers:CreateTimer(30.0,
     function()

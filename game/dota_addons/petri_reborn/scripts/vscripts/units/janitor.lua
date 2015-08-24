@@ -40,7 +40,13 @@ function TakeItemsFromStash( keys )
 	for i=6,11 do
 		local item = hero:GetItemInSlot(i)
 		if item then
-			caster:AddItemByName(item:GetName())
+			local itemName = item:GetName()
+          	local charges = item:GetCurrentCharges()
+
+          	local newItem = CreateItem(itemName, caster, hero)
+          	newItem:SetCurrentCharges(charges)
+
+			caster:AddItem(newItem)
 			hero:RemoveItem(item)
 		end
 	end
@@ -57,7 +63,13 @@ function TakeItemsFromStash( keys )
 					local item = caster:GetItemInSlot(i)
 
 					if item and hero:HasAnyAvailableInventorySpace() then
-						hero:AddItemByName(item:GetName())
+						local itemName = item:GetName()
+			          	local charges = item:GetCurrentCharges()
+
+			          	local newItem = CreateItem(itemName, caster, hero)
+			          	newItem:SetCurrentCharges(charges)
+
+						hero:AddItem(newItem)
 						caster:RemoveItem(item)
 					end
 				end

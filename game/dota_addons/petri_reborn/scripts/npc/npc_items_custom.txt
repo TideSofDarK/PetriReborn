@@ -596,7 +596,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "max"    "1"
+	      "max"    "2"
 	    }
 	  }
 	
@@ -1675,7 +1675,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "26500"
+	      "bonus_damage"      "29500"
 	    }
 	  }
 	
@@ -2214,7 +2214,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "15000"
+	      "bonus_damage"      "17000"
 	    }
 	  }
 	  
@@ -2635,7 +2635,6 @@
 	  "ItemAliases"         "ward"
 	  "ItemInitialCharges"  "2"
 	  "ItemStackable"         "1"
-	  "ItemPermanent"         "0"
 	
 	  "AbilityCastRange" "250"
 	
@@ -2672,7 +2671,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "6"
+	      "bonus_all_stats"    "5"
 	    }
 	    "02"
 	    {

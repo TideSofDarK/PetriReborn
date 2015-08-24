@@ -9,6 +9,8 @@ function build( keys )
 	local pID = player:GetPlayerID()
 	local caster = keys.caster
 
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
 	local ability = keys.ability
 	
 	local gold_cost = ability:GetGoldCost(1)
@@ -50,7 +52,7 @@ function build( keys )
         	return false
 		else
 			if caster.currentArea ~= nil then
-				if CheckAreaClaimers(caster, keys.caster.currentArea.claimers) or caster.currentArea.claimers == nil then
+				if CheckAreaClaimers(hero, caster.currentArea.claimers) or caster.currentArea.claimers == nil then
 
 					if caster.currentArea.claimers == nil or
 						(caster.currentArea.claimers and caster.currentArea.claimers[0] and caster.currentArea.claimers[0]:IsAlive() == false
@@ -58,10 +60,14 @@ function build( keys )
 						Notifications:Top(pID, {text="#area_claimed", duration=4, style={color="white"}, continue=false})
 					end
 
-					keys.caster.currentArea.claimers = keys.caster.currentArea.claimers or {}
-					if keys.caster.currentArea.claimers[0] ~= nil and keys.caster.currentArea.claimers[0]:IsAlive() == false then
-						if not keys.caster.currentArea.claimers[1] or keys.caster.currentArea.claimers[1]:IsAlive() == false then keys.caster.currentArea.claimers[0] = keys.caster end
-					elseif keys.caster.currentArea.claimers[0] == nil then keys.caster.currentArea.claimers[0] = keys.caster end
+					caster.currentArea.claimers = caster.currentArea.claimers or {}
+					if caster.currentArea.claimers[0] ~= nil and caster.currentArea.claimers[0]:IsAlive() == false then
+						if not caster.currentArea.claimers[1] or caster.currentArea.claimers[1]:IsAlive() == false then 
+							caster.currentArea.claimers[0] = hero 
+						end
+					elseif caster.currentArea.claimers[0] == nil then 
+						caster.currentArea.claimers[0] = hero 
+					end
 
 				else
 					Notifications:Top(pID, {text="#you_cant_build", duration=4, style={color="white"}, continue=false})
