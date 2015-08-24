@@ -1,0 +1,44 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/pre_game_vote.css" />	
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/pre_game_vote.js" />
+	</scripts>
+
+	<Panel class="PreGameVote_container">
+		<Panel id="VotesList">
+			<Label id="ExitDelay"/>
+			<Label id="GameDuration"/>
+			<Label id="MiniActors"/>
+		</Panel>
+		<Panel class="VoteItem" id="ExitDelay_container">
+			<Label id="ExitDelay_label" text="Exit build delay" />
+			<Panel class="VoteRadio" id="ExitDelay_RadioButtons">
+				<RadioButton checked='checked' group="ExitDelay_group" id="exit_0" text="Default(20 min)"/>
+				<RadioButton group="ExitDelay_group" id="exit_1" text="23 min"/>
+				<RadioButton group="ExitDelay_group" id="exit_2" text="24 min"/>
+				<RadioButton group="ExitDelay_group" id="exit_3" text="25 min"/>
+			</Panel>
+		</Panel>
+		<Panel class="VoteItem" id="GameDuration_container">
+			<Label id="GameDuration_label" text="Game duration" />
+			<Panel class="VoteRadio" id="GameDuration_RadioButtons">
+				<RadioButton checked="active" group="GameDuration_group" id="game_0" text="Default(100 min)"/>
+				<RadioButton group="GameDuration_group" id="game_1" text="88 min"/>
+				<RadioButton group="GameDuration_group" id="game_2" text="96 min"/>
+				<RadioButton group="GameDuration_group" id="game_3" text="104 min"/>
+			</Panel>
+		</Panel>
+		<Panel class="VoteItem" id="MiniActors_container">
+			<Label id="MiniActors_label" text="Mini-actors" />
+			<Panel class="VoteRadio" id="MiniActors_RadioButtons">
+				<RadioButton checked="active" group="MiniActors_group" id="game_0" text="Default(ON)"/>
+				<RadioButton group="MiniActors_group" id="actors_1" text="OFF"/>
+			</Panel>
+		</Panel>
+		<Button id="SubmitButton"  disabled="false" onactivate="Submit()">
+			<Label id="SubmitButtonLabel" text="Submit" />
+		</Button>
+	</Panel>
+</root>

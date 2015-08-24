@@ -43,6 +43,7 @@ require('settings')
 require('internal/events')
 require('events')
 
+require('PreGameVote')
 require('lottery')
 
 require('filters')
@@ -430,4 +431,11 @@ function PetrosyanWin()
     function()
       GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
     end)
+end
+
+function PreGameVote_results(vote_results)
+	GameRules:SetCustomGameSetupRemainingTime( 15 ) --устанавливает таймер начала игры на 15 секунд в момент, когда голосование окончено. Стоит здесь просто как пример.
+	print("Exit delay winner id is " .. vote_results['ExitDelay'] )
+	print("Game duration winner id is " .. vote_results['GameDuration'] )
+	print("MiniActors winner id is " .. vote_results['MiniActors'] )
 end

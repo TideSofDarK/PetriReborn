@@ -1,0 +1,121 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/play.css" />
+		<include src="file://{resources}/styles/custom_game/team_select.css" />
+		<include src="file://{resources}/styles/custom_game/pre_game_vote.css" />	
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/team_select.js" />
+		<include src="file://{resources}/scripts/custom_game/pre_game_vote.js" />
+	</scripts>
+	<Panel hittest="false" class="TeamSelect">
+		<Panel class="PreGameVote_container" id="PreGameVote_container">
+			<Panel id="VotesList">
+				<Label id="ExitDelay"/>
+				<Label id="GameDuration"/>
+				<Label id="MiniActors"/>
+			</Panel>
+			<Panel class="VoteItem" id="ExitDelay_container">
+				<Label id="ExitDelay_label" text="Exit build delay" />
+				<Panel class="VoteRadio" id="ExitDelay_RadioButtons">
+					<RadioButton checked='checked' group="ExitDelay_group" id="exit_0" text="Default(20 min)"/>
+					<RadioButton group="ExitDelay_group" id="exit_1" text="23 min"/>
+					<RadioButton group="ExitDelay_group" id="exit_2" text="24 min"/>
+					<RadioButton group="ExitDelay_group" id="exit_3" text="25 min"/>
+				</Panel>
+			</Panel>
+			<Panel class="VoteItem" id="GameDuration_container">
+				<Label id="GameDuration_label" text="Game duration" />
+				<Panel class="VoteRadio" id="GameDuration_RadioButtons">
+					<RadioButton checked="active" group="GameDuration_group" id="game_0" text="Default(100 min)"/>
+					<RadioButton group="GameDuration_group" id="game_1" text="88 min"/>
+					<RadioButton group="GameDuration_group" id="game_2" text="96 min"/>
+					<RadioButton group="GameDuration_group" id="game_3" text="104 min"/>
+				</Panel>
+			</Panel>
+			<Panel class="VoteItem" id="MiniActors_container">
+				<Label id="MiniActors_label" text="Mini-actors" />
+				<Panel class="VoteRadio" id="MiniActors_RadioButtons">
+					<RadioButton checked="active" group="MiniActors_group" id="game_0" text="Default(ON)"/>
+					<RadioButton group="MiniActors_group" id="actors_1" text="OFF"/>
+				</Panel>
+			</Panel>
+			<Button id="SubmitButton"  disabled="false" onactivate="Submit()">
+				<Label id="SubmitButtonLabel" text="Submit" />
+			</Button>
+		</Panel>
+		<Panel hittest="false" id="TeamSelectContainer" selectionpos="auto">`
+			<!--Empty space to let the loading screen and chat be visible-->
+			<Panel hittest="false" id="TeamsSelectEmptySpace" />
+
+			<!--Teams List, left hand panel-->
+			<Panel id="TeamsList" >
+				<Panel id="TeamsListGroup" >
+					<Panel id="TeamListHeader">
+						<Label id="TeamListHeaderLabel" text="#custom_game_team_select" />
+						<Image id="TeamListLockedIcon" src="file://{images}/control_icons/lock_small.png" />
+					</Panel>
+					<Panel id="TeamsListRoot" />
+					<Button id="ShuffleTeamAssignmentButton" onactivate="OnShufflePlayersPressed()">
+						<Label text="#custom_game_team_select_shuffle" />
+						<Image src="file://{images}/control_icons/shuffle.psd" />
+					</Button>
+				</Panel>
+			</Panel>
+
+			<!--Game Info and Unassigned players, right hand panel-->
+			<Panel id="GameAndPlayersRoot">
+				
+				<Panel id="GameInfoPanel" >
+					
+					<!--Game mode and map-->
+					<Panel id="CustomGameModeName">
+						<Label id="GameModeNameLabel" text="#addon_game_name" />
+					</Panel>
+					<Panel id="MapInfo">
+						<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
+					</Panel>
+					
+					<!--Countdown timer-->
+					<Panel id="StartGameCountdownTimer">
+						<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+						<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+						<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
+						<Panel id="TimerLabelBox" >
+							<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
+							<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+						</Panel>
+					</Panel>
+					
+				</Panel>
+
+				<!--Unassigned players-->
+				<Panel id="UnassignedPlayerPanel" >
+					<Button id="UnassignedPlayersButton" onactivate="OnLeaveTeamPressed()">
+						<Panel id="UnassignedPlayersHeader">
+							<Label text="#custom_game_team_select_unassigned_players" />
+						</Panel>
+						<Panel id="UnassignedPlayersDivider" />
+						<Panel id="UnassignedPlayersContainer" />
+					</Button>		
+				
+					<Button id="AutoAssignButton" onactivate="OnAutoAssignPressed()">
+						<Image src="file://{images}/control_icons/double_arrow_left.png" />
+						<Label text="#custom_game_team_select_auto_assign" />
+					</Button>
+				</Panel>
+				
+				<!--Start and lock button-->
+				<Button id="LockAndStartButton" class="PlayButton" onactivate="OnLockAndStartPressed()">
+					<Label text="#custom_game_team_select_lock_start" />
+				</Button>
+				<Button id="CancelAndUnlockButton" class="PlayButton" onactivate="OnCancelAndUnlockPressed()">
+					<Label text="#custom_game_team_select_cancel_unlock" />
+				</Button>
+				
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
+
