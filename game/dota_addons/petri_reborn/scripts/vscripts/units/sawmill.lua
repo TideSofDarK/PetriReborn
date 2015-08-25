@@ -22,7 +22,9 @@ function Upgrade (event)
 		caster:RemoveAbility(ability:GetName())
 
 		caster:AddAbility("train_petri_super_peasant")
-		caster:AddAbility("petri_make_a_bet")
+        
+        caster:AddAbility("petri_make_a_bet")
+		
 	end
 
 	InitAbilities(caster)
@@ -48,13 +50,28 @@ end
 function MakeABet( keys )
 	local caster = keys.caster
 	local ability = keys.ability
+    local id = keys.PlayerID
 
 	if GameMode.LOTTERY_STATE == 0 then
 		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(ability:GetGoldCost(-1), false, 0)
 		return false
 	end
 
-	GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + ability:GetGoldCost(-1)
+    
+    if caster:GetPlayerOwnerID() == 0 then GameMode.PlAYER_0_BET = GameMode.PlAYER_0_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 1 then GameMode.PlAYER_1_BET = GameMode.PlAYER_1_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 2 then GameMode.PlAYER_2_BET = GameMode.PlAYER_2_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 3 then GameMode.PlAYER_3_BET = GameMode.PlAYER_3_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 4 then GameMode.PlAYER_4_BET = GameMode.PlAYER_4_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 5 then GameMode.PlAYER_5_BET = GameMode.PlAYER_5_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 6 then GameMode.PlAYER_6_BET = GameMode.PlAYER_6_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 7 then GameMode.PlAYER_7_BET = GameMode.PlAYER_7_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 8 then GameMode.PlAYER_8_BET = GameMode.PlAYER_8_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 9 then GameMode.PlAYER_9_BET = GameMode.PlAYER_9_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 10 then GameMode.PlAYER_10_BET = GameMode.PlAYER_10_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 11 then GameMode.PlAYER_11_BET = GameMode.PlAYER_11_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 12 then GameMode.PlAYER_12_BET = GameMode.PlAYER_12_BET + ability:GetGoldCost(-1) end 
+    if caster:GetPlayerOwnerID() == 13 then GameMode.PlAYER_13_BET = GameMode.PlAYER_13_BET + ability:GetGoldCost(-1) end 
 
 	if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] then 
 		GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] = caster:GetPlayerOwnerID()
