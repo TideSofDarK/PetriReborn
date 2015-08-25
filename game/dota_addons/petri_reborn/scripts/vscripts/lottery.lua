@@ -4,7 +4,7 @@ PETRI_LOTTERY_TIME = 10
 
 GameMode.LOTTERY_STATE = GameMode.LOTTERY_STATE or 0
 
-GameMode.CURRENT_BANK =  0
+GameMode.CURRENT_BANK =  0;
 
 GameMode.CURRENT_LOTTERY_PLAYERS = GameMode.CURRENT_LOTTERY_PLAYERS or {}
 
@@ -78,11 +78,23 @@ GameMode.CURRENT_BANK = GameMode.PlAYER_0_BET + GameMode.PlAYER_1_BET + GameMode
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_3", 				duration=9, continue=false, 	style={color="white", ["font-size"]="40px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=tostring(math.floor(GameMode.CURRENT_BANK/5)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="40px"}})
 
-	GameMode.assignedPlayerHeroes[winner]:ModifyGold(math.floor((GameMode.CURRENT_BANK/3)*2), false, 0)
+	GameMode.assignedPlayerHeroes[winner]:ModifyGold(math.floor((GameMode.CURRENT_BANK/100)*75), false, 0)
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		if v and v ~= winner and PlayerResource:GetTeam(v) == DOTA_TEAM_GOODGUYS then
-			GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0)
+            if v == 1 and GameMode.PlAYER_0_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 2 and GameMode.PlAYER_1_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 3 and GameMode.PlAYER_2_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 4 and GameMode.PlAYER_3_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 5 and GameMode.PlAYER_4_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 6 and GameMode.PlAYER_5_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 7 and GameMode.PlAYER_6_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 8 and GameMode.PlAYER_7_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 9 and GameMode.PlAYER_8_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 10 and GameMode.PlAYER_9_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 11 and GameMode.PlAYER_10_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+            if v == 12 and GameMode.PlAYER_11_BET ~= 0 then GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0) end
+
 		end
 	end
 
