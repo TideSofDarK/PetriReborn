@@ -1,27 +1,27 @@
-PETRI_FIRST_LOTTERY_TIME = 12
-PETRI_LOTTERY_DURATION = 3
+PETRI_FIRST_LOTTERY_TIME = 0
+PETRI_LOTTERY_DURATION = 2
 PETRI_LOTTERY_TIME = 10
 
 GameMode.LOTTERY_STATE = GameMode.LOTTERY_STATE or 0
 
-GameMode.CURRENT_BANK =  0;
+GameMode.CURRENT_BANK =  0
 
 GameMode.CURRENT_LOTTERY_PLAYERS = GameMode.CURRENT_LOTTERY_PLAYERS or {}
 
-GameMode.PlAYER_0_BET = 0;
-GameMode.PlAYER_1_BET = 0;
-GameMode.PlAYER_2_BET = 0;
-GameMode.PlAYER_3_BET = 0;
-GameMode.PlAYER_4_BET = 0;
-GameMode.PlAYER_5_BET = 0;
-GameMode.PlAYER_6_BET = 0;
-GameMode.PlAYER_7_BET = 0;
-GameMode.PlAYER_8_BET = 0;
-GameMode.PlAYER_9_BET = 0;
-GameMode.PlAYER_10_BET = 0;
-GameMode.PlAYER_11_BET = 0;
-GameMode.PlAYER_12_BET = 0;
-GameMode.PlAYER_13_BET = 0;
+GameMode.PlAYER_0_BET = 0
+GameMode.PlAYER_1_BET = 0
+GameMode.PlAYER_2_BET = 0
+GameMode.PlAYER_3_BET = 0
+GameMode.PlAYER_4_BET = 0
+GameMode.PlAYER_5_BET = 0
+GameMode.PlAYER_6_BET = 0
+GameMode.PlAYER_7_BET = 0
+GameMode.PlAYER_8_BET = 0
+GameMode.PlAYER_9_BET = 0
+GameMode.PlAYER_10_BET = 0
+GameMode.PlAYER_11_BET = 0
+GameMode.PlAYER_12_BET = 0
+GameMode.PlAYER_13_BET = 0
 
 DEFAULT_BANK_RATE = 100
 PLAY_COUNT = 0
@@ -62,7 +62,7 @@ function SelectWinner()
     
 GameMode.CURRENT_BANK = GameMode.PlAYER_0_BET + GameMode.PlAYER_1_BET + GameMode.PlAYER_2_BET + GameMode.PlAYER_3_BET + GameMode.PlAYER_4_BET + GameMode.PlAYER_5_BET + GameMode.PlAYER_6_BET + GameMode.PlAYER_7_BET + GameMode.PlAYER_8_BET + GameMode.PlAYER_9_BET + GameMode.PlAYER_10_BET + GameMode.PlAYER_11_BET + GameMode.PlAYER_12_BET + GameMode.PlAYER_13_BET
     
-    Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_bank "..tostring(GameMode.CURRENT_BANK), duration=1, continue=false, style={color="red", ["font-size"]="45px"}})  
+    Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_bank "..tostring(GameMode.CURRENT_BANK), duration=10, continue=false, style={color="red", ["font-size"]="45px"}})  
     
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
     if GameMode.CURRENT_BANK == 0 then Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#no_money_lottery",duration=9, continue=false, style={color="white", ["font-size"]="45px"}}) return false end
