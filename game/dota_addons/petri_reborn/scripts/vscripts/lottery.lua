@@ -1,6 +1,6 @@
-PETRI_FIRST_LOTTERY_TIME = 12
-PETRI_LOTTERY_DURATION = 3
-PETRI_LOTTERY_TIME = 10
+PETRI_FIRST_LOTTERY_TIME = 0
+PETRI_LOTTERY_DURATION = 1
+PETRI_LOTTERY_TIME = 1
 
 GameMode.LOTTERY_STATE = GameMode.LOTTERY_STATE or 0
 
@@ -62,7 +62,8 @@ function SelectWinner()
     
 GameMode.CURRENT_BANK = GameMode.PlAYER_0_BET + GameMode.PlAYER_1_BET + GameMode.PlAYER_2_BET + GameMode.PlAYER_3_BET + GameMode.PlAYER_4_BET + GameMode.PlAYER_5_BET + GameMode.PlAYER_6_BET + GameMode.PlAYER_7_BET + GameMode.PlAYER_8_BET + GameMode.PlAYER_9_BET + GameMode.PlAYER_10_BET + GameMode.PlAYER_11_BET + GameMode.PlAYER_12_BET + GameMode.PlAYER_13_BET
     
-    Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_bank "..tostring(GameMode.CURRENT_BANK), duration=10, continue=false, style={color="red", ["font-size"]="45px"}})  
+    Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_bank", duration=10, continue=false, style={color="white", ["font-size"]="45px"}})  
+    Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=tostring(GameMode.CURRENT_BANK).."$", duration=10, continue=true, style={color="red", ["font-size"]="45px"}})  
     
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
     if GameMode.CURRENT_BANK == 0 then Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#no_money_lottery",duration=9, continue=false, style={color="white", ["font-size"]="45px"}}) return false end
@@ -74,7 +75,7 @@ GameMode.CURRENT_BANK = GameMode.PlAYER_0_BET + GameMode.PlAYER_1_BET + GameMode
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=GameMode.PETRI_NAME_LIST[winner].." ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="50px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=9, continue=true,  style={color="white", ["font-size"]="45px"}})
-	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(math.floor((GameMode.CURRENT_BANK/3)*2)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
+	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(math.floor((GameMode.CURRENT_BANK/100)*75)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_3", 				duration=9, continue=false, 	style={color="white", ["font-size"]="40px"}})
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=tostring(math.floor(GameMode.CURRENT_BANK/5)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="40px"}})
 
