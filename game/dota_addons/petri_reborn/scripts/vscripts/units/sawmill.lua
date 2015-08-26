@@ -53,6 +53,8 @@ function MakeABet( keys )
     local id = keys.PlayerID
 
 	if GameMode.LOTTERY_STATE == 0 then
+        Notifications:ClearBottom()
+        Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#lottery_not_ready", duration=5, style={color="red"}, continue=true})
 		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(ability:GetGoldCost(-1), false, 0)
 		return false
 	end
