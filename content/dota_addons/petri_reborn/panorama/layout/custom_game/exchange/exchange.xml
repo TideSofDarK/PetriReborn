@@ -1,0 +1,53 @@
+<root>
+  <styles>
+     <include src="file://{resources}/styles/custom_game/exchange.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/exchange.js" />
+  </scripts>
+  <Panel hittest="false" class="ExchangeRoot">
+  	<Panel class="DefaultPanel" id="HeaderPanel">
+  		<Label id="HeaderLabel" text="#exchange" />
+  	</Panel>
+
+    <Panel class="Splitter" />  
+
+  	<Panel class="DefaultPanel" id="BankPanel">
+  		<Label class="BankLabel" id="TimeLabel" text="#exchange_time" />
+      <Label class="BankLabel" id="Countdown" text="0" />
+		  <Label class="BankLabel" id="BankLabel" text="#exchange_bank" />
+      <Label class="BankLabel" id="Bank" text="0" />
+  	</Panel>
+    
+    <Panel class="Splitter" />  	
+  	
+  	<Panel class="DefaultPanel" id="BetPanel">
+
+  		<Panel class="DefaultPanel" id="Companies" onactivate="ClickNum()">
+  			<RadioButton class="BetNum" id="Company1">
+  				<Label class="CompanyLabel" text="#exchange_company1" /> 
+  			</RadioButton>
+  			<RadioButton class="BetNum" id="Company2">
+  				<Label class="CompanyLabel" text="#exchange_company2" /> 
+  			</RadioButton>
+  			<RadioButton class="BetNum" id="Company3">
+  				<Label class="CompanyLabel" text="#exchange_company3" /> 
+  			</RadioButton>
+  			<RadioButton class="BetNum" id="Company4">
+  				<Label class="CompanyLabel" text="#exchange_company4" /> 
+  			</RadioButton>
+  		</Panel>
+
+  		<Label id="BetLabel" text="#exchange_bet" />
+
+  		<TextEntry id="BetEntry" multiline="false" textmode="number" text="#exchange_bet_text" 
+  			onmouseover="BetEntryHover()"
+  			onmouseout="BetStopHover()"/>
+
+  		<Button id="MakeBet" onactivate="MakeBetClick()">
+  			<Label id
+          ="MakeBetLabel" text="#exchange_make_bet" /> 
+  		</Button>
+  	</Panel>  	
+  </Panel>
+</root>

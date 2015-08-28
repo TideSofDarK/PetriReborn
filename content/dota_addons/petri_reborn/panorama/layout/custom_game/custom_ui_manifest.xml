@@ -32,18 +32,20 @@
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_tooltip.xml" /> 		
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" /> 
+    	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper.xml" /> 
 
-		<CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />
-		<CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/scoreboard/simple_scoreboard.xml" /> 
-		<CustomUIElement type="HudTopBar" layoutfile="file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard.xml" />
-		<CustomUIElement type="EndScreen" layoutfile="file://{resources}/layout/custom_game/end_screen/end_screen.xml" />
+        <CustomUIElement type="GameInfo" layoutfile="file://{resources}/layout/custom_game/game_info/game_info.xml" />
+        <CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/scoreboard/simple_scoreboard.xml" /> 
+        <CustomUIElement type="HudTopBar" layoutfile="file://{resources}/layout/custom_game/top_scoreboard/top_scoreboard.xml" />
+        <CustomUIElement type="EndScreen" layoutfile="file://{resources}/layout/custom_game/end_screen/end_screen.xml" />
 
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/abilities/abilities_container.xml" />  
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/resources.xml" />  
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />
 
-		<!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" /> -->
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/exchange/exchange.xml" />
+        
+        <!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" /> -->
 	</Panel>
 </root>
 
