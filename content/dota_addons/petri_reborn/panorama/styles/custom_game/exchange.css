@@ -1,0 +1,184 @@
+.Splitter
+{
+	height: 1px;
+	width: 95%;
+
+	border: 1px solid #626262;
+	horizontal-align: center;
+	vertical-align: bottom;
+}
+
+.ExchangeRoot
+{
+	width: 220px;
+
+	horizontal-align: left;
+	vertical-align: middle;
+
+	background-color: #2d2d2d;
+	border: 2px solid #000000;
+
+	flow-children: down;
+}
+
+.DefaultPanel
+{
+	width: 100%;	
+}
+
+#HeaderLabel
+{	
+	color: #ffffff;
+	font-size: 22px;
+
+	horizontal-align: center;
+	vertical-align: middle;	
+}
+
+#BankPanel
+{
+	height: 50px;
+
+	padding: 5px;
+	flow-children: down;	
+}
+
+.BankLabel
+{
+	color: #ffffff;
+	font-size: 18px;
+
+	horizontal-align: left;
+	vertical-align: middle;
+
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#Countdown, 
+#Bank
+{
+	horizontal-align: right;
+	margin-top: -18px;
+}
+
+#BetPanel
+{
+	height: 200px;
+
+	vertical-align: bottom;
+	flow-children: down;	
+}
+
+#BetLabel
+{
+	color: #ffffff;
+	font-size: 18px;
+
+	horizontal-align: left;
+	vertical-align: top;
+
+	margin-left: 10px;
+	margin-right: 10px;	
+}
+
+#Companies
+{
+	width: fit-children;
+
+	margin-bottom: 5px;
+
+	horizontal-align: center;
+	flow-children: down;
+}
+
+.BetNum
+{
+	width: 150px;
+	height: 25px;
+
+	border: 1px solid #000000;
+    border-radius: 6px;
+
+	margin-top: 5px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #979898 ), color-stop( 0.9, #373737 ), to( #000000 ) );
+}
+
+.BetNum:hover
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #6b6b6b ), color-stop( 0.9, #373737 ), to( #000000 ) );
+}
+
+.BetNum.checked
+{	
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #ffe505 ), color-stop( 0.9, #867805 ), to( #000000 ) );
+}
+
+.BetNum.winner
+{	
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #36e600 ), color-stop( 0.95, #165104 ), to( #000000 ) );
+}
+
+.CompanyLabel
+{
+	color: #ffffff;
+	font-size: 18px;
+	text-shadow: 0px 0px 2px 2 #000000;
+
+	horizontal-align: center;
+	vertical-align: middle;	
+}
+
+#BetEntry
+{
+	color: #ffffff;
+	font-size: 18px;
+
+	width: 120px;
+
+	border: 1px solid #000000;
+
+	margin-top: -18px;
+	margin-left: 85px;
+	margin-right: 10px;
+
+	background-color: #1f1f1f;
+}
+
+#MakeBet
+{
+	height: 35px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #979898 ), color-stop( 0.95, #373737 ), to( #000000 ) );
+
+
+	margin-bottom: 10px;
+
+	vertical-align: bottom;
+	horizontal-align: center;
+
+    border-radius: 3px;
+}
+
+#MakeBet:hover
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #6b6b6b ), color-stop( 0.95, #373737 ), to( #000000 ) );
+}
+
+#MakeBet.on_bet
+{
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #36e600 ), color-stop( 0.95, #165104 ), to( #000000 ) );
+}
+
+#MakeBetLabel
+{
+	color: #ffffff;
+	font-size: 18px;
+			
+	vertical-align: middle;
+	horizontal-align: center;
+
+	margin-left: 5px;
+	margin-right: 5px;
+}
