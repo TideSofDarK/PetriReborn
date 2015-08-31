@@ -511,3 +511,20 @@ function GameMode:OnPlayerSendName( event )
 
   GameMode.PETRI_NAME_LIST[pID] = name
 end
+
+function GameMode:OnPlayerMakeBet( event )
+  local pID = event.pID
+  local bet = event.bet
+
+  if GameMode.LOTTERY_STATE == 0 then
+    return false
+  end
+
+  GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + bet
+
+  if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] then 
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] = pID
+  end
+
+  CustomGameEventManager:ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
+end

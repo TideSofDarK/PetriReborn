@@ -1605,29 +1605,6 @@
 	    }
 	  }  
 	}
-	"petri_make_a_bet"
-	{
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_make_a_bet"
-	
-	  "AbilityCastPoint"        "0.0"
-	
-	  "AbilityCooldown" "0.1"
-	
-	  "AbilityGoldCost" "100"
-	
-	  "MaxLevel"            "1"
-	
-	  "OnSpellStart"
-	  {
-	    "RunScript"
-	    {
-	      "ScriptFile"      "units/sawmill.lua"
-	      "Function"        "MakeABet"
-	    }
-	  }
-	}
 	"petri_petrosyan_explore"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -1709,7 +1686,7 @@
 			    "Passive"   "1"
 			    "IsHidden"  "1"
 	
-			    "OnAttackStart"
+			    "OnAttackLanded"
 			    {
 			        "Random"
 			        {
@@ -1745,7 +1722,7 @@
 				"Target"		 "TARGET"
 				"Type"			 "DAMAGE_TYPE_MAGICAL"
 				"Damage"		 "1"
-	    }
+	    	}
 		}
 	}
 	"petri_petrosyan_laugh_burst"
@@ -3052,6 +3029,62 @@
 	      {
 	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
 	      }
+	    }
+	  }
+	}
+	"petri_upgrade_exchange"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_exchange"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityManaCost"       "0"
+	  "AbilityGoldCost"       "0"
+	  "AbilityChannelTime"      "2.5"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilityGoldCost" "100"
+	
+	  "MaxLevel"            "2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "2000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
 	    }
 	  }
 	}

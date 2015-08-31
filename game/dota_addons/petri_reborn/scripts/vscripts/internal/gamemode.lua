@@ -99,6 +99,8 @@ function GameMode:_InitGameMode()
 
   CustomGameEventManager:RegisterListener( "set_player_name", Dynamic_Wrap(GameMode, 'OnPlayerSendName'))
 
+  CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
+
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 
   --ListenToGameEvent('player_spawn', Dynamic_Wrap(GameMode, 'OnPlayerSpawn'), self)

@@ -22,7 +22,7 @@ function Upgrade (event)
 		caster:RemoveAbility(ability:GetName())
 
 		caster:AddAbility("train_petri_super_peasant")
-		caster:AddAbility("petri_make_a_bet")
+		caster:AddAbility("petri_upgrade_exchange")
 	end
 
 	InitAbilities(caster)
@@ -43,20 +43,4 @@ function BuyLumber(keys)
 	local lumber = ability:GetSpecialValueFor("lumber")
 
 	GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber + lumber
-end
-
-function MakeABet( keys )
-	local caster = keys.caster
-	local ability = keys.ability
-
-	if GameMode.LOTTERY_STATE == 0 then
-		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(ability:GetGoldCost(-1), false, 0)
-		return false
-	end
-
-	GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + ability:GetGoldCost(-1)
-
-	if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] then 
-		GameMode.CURRENT_LOTTERY_PLAYERS[tostring(caster:GetPlayerOwnerID())] = caster:GetPlayerOwnerID()
-	end
 end

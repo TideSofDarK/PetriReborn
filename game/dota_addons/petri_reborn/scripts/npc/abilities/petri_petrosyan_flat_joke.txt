@@ -32,7 +32,7 @@
 		    "Passive"   "1"
 		    "IsHidden"  "1"
 
-		    "OnAttackStart"
+		    "OnAttackLanded"
 		    {
 		        "Random"
 		        {
@@ -68,6 +68,6 @@
 			"Target"		 "TARGET"
 			"Type"			 "DAMAGE_TYPE_MAGICAL"
 			"Damage"		 "1"
-    }
+    	}
 	}
 }
