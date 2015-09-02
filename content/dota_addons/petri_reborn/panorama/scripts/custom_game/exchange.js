@@ -68,7 +68,7 @@ function InitExchange( args )
 		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
 		UpdateCountdown();
 
-		$.GetContextPanel().visible = true;
+		$.GetContextPanel().style.visibility = "visible;";
 
 		$( "#Bank" ).text = 0;	
 
@@ -95,7 +95,7 @@ function InitExchange( args )
 
 function HidePanel()
 {
-	$.GetContextPanel().visible = false;	
+	$.GetContextPanel().style.visibility = "collapse;";
 }
 
 function FinishExchange( args )
