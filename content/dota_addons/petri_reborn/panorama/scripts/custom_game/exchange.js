@@ -35,7 +35,7 @@ function MakeBetClick()
 		button.enabled = false;
 		button.SetHasClass("on_bet", true);
 
-  		GameEvents.SendCustomGameEventToServer( "petri_make_ber", { "bet" : bet } );		
+  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "bet" : bet } );		
 	}
 }
 
@@ -60,51 +60,61 @@ function UpdateCountdown()
 
 function InitExchange( args )
 {
-	//args = { "exchinge_time" : 180 };
-	endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
-	UpdateCountdown();
+	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
 
-	$.GetContextPanel().visible = true;
-
-	$( "#Bank" ).text = 0;	
-
-	var makeBet = $( "#BetPanel" ).FindChild( "MakeBet" );
-	makeBet.enabled = true;
-	makeBet.SetHasClass("on_bet", false);
-
-	$( "#BetPanel" ).FindChild( "BetEntry" ).enabled = true;
-	$( "#BetPanel" ).FindChild( "Companies" ).enabled = true;
-	
-	curNum = -1;
-
-	var numbers = $( "#BetPanel" ).FindChild( "Companies" );
-	var childsCount = numbers.GetChildCount();
-	for (var i = 0; i < childsCount; i++) 
+	if (upgrades["petri_upgrade_exchange"] != undefined) 
 	{
-		var num = numbers.GetChild(i);
-		num.checked = false;
-		num.SetHasClass("checked", num.checked);
-		num.SetHasClass("winner", false);
-	};	
+		//args = { "exchinge_time" : 180 };
+		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
+		UpdateCountdown();
+
+		$.GetContextPanel().style.visibility = "visible;";
+
+		$( "#Bank" ).text = 0;	
+
+		var makeBet = $( "#BetPanel" ).FindChild( "MakeBet" );
+		makeBet.enabled = true;
+		makeBet.SetHasClass("on_bet", false);
+
+		$( "#BetPanel" ).FindChild( "BetEntry" ).enabled = true;
+		$( "#BetPanel" ).FindChild( "Companies" ).enabled = true;
+		
+		curNum = -1;
+
+		var numbers = $( "#BetPanel" ).FindChild( "Companies" );
+		var childsCount = numbers.GetChildCount();
+		for (var i = 0; i < childsCount; i++) 
+		{
+			var num = numbers.GetChild(i);
+			num.checked = false;
+			num.SetHasClass("checked", num.checked);
+			num.SetHasClass("winner", false);
+		};	
+	}
 }
 
 function HidePanel()
 {
-	$.GetContextPanel().visible = false;	
+	$.GetContextPanel().style.visibility = "collapse;";
 }
 
 function FinishExchange( args )
 {
-	//args = { "winner" : 2 };
-	var numbers = $( "#BetPanel" ).FindChild( "Companies" );
-	var childsCount = numbers.GetChildCount();
-	for (var i = 0; i < childsCount; i++) 
+	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
+
+	if (upgrades["petri_upgrade_exchange"] != undefined) 
 	{
-		var num = numbers.GetChild(i);
-		num.SetHasClass("winner", i == args["winner"]);
-	};	
-	
-	$.Schedule( 5.0, HidePanel );
+		//args = { "winner" : 2 };
+		var numbers = $( "#BetPanel" ).FindChild( "Companies" );
+		var childsCount = numbers.GetChildCount();
+		for (var i = 0; i < childsCount; i++) 
+		{
+			var num = numbers.GetChild(i);
+			num.SetHasClass("winner", i == args["winner"]);
+		};	
+		
+		$.Schedule( 5.0, HidePanel );
+	}
 }
 
 function UpdateBank( args )
