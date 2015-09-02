@@ -236,6 +236,13 @@
     height: 30px;
 }
 
+#PlayerColor
+{
+    height: 6px;
+    width: 100%;
+    border-bottom: 1px solid #000000;
+}
+
 .AspectRatio5x4 #HeroIcon
 {
     width: 50px;
