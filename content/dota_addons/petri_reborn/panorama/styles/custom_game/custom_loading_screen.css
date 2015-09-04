@@ -11,6 +11,16 @@
 /*    overflow: clip;*/
 }
 
+#Placeholders
+{
+  flow-children: right;
+}
+
+.Placeholder
+{
+  margin-left: 10px;
+}
+
 #TitlePanel
 {
   horizontal-align: left;
