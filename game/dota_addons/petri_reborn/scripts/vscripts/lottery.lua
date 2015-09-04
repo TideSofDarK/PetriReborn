@@ -50,6 +50,21 @@ function SelectWinner()
 
 	CustomGameEventManager:ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
 
+	for i,v in ipairs() do
+		tonumber(i)
+	end
+
+	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+		local pID = tonumber(k)
+		if v == winner then
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(GameMode.CURRENT_BANK/2, false, 0)
+			Notifications:TopToPlayer(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
+			Notifications:TopToPlayer(pID, {text=tostring(GameMode.CURRENT_BANK/2), continue=true, style={color="white", ["font-size"]="45px"}})
+		else
+
+		end
+	end
+
 	-- Notifications:ClearTopFromTeam(DOTA_TEAM_GOODGUYS)
 
 	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})

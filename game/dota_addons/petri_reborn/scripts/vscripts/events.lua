@@ -515,6 +515,7 @@ end
 function GameMode:OnPlayerMakeBet( event )
   local pID = event.pID
   local bet = event.bet
+  local option = event.option
 
   if GameMode.LOTTERY_STATE == 0 then
     return false
@@ -523,7 +524,7 @@ function GameMode:OnPlayerMakeBet( event )
   GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + bet
 
   if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] then 
-    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] = pID
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] = option
   end
 
   CustomGameEventManager:ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )

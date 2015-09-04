@@ -35,7 +35,7 @@ function MakeBetClick()
 		button.enabled = false;
 		button.SetHasClass("on_bet", true);
 
-  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "bet" : bet } );		
+  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "bet" : bet, "option" : (curNum + 1) } );		
 	}
 }
 
