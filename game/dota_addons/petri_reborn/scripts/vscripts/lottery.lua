@@ -55,7 +55,7 @@ function SelectWinner()
 		if v == winner then
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(GameMode.CURRENT_BANK/2, false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", 					duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:Top(pID, {text=tostring(GameMode.CURRENT_BANK/2), duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(math.floor(GameMode.CURRENT_BANK/2)), duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
 
 		end
