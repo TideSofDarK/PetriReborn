@@ -1,3 +1,16 @@
+.ExchangeRoot
+{
+	width: 0px;
+
+	horizontal-align: left;
+	vertical-align: middle;
+
+	background-color: #2d2d2d;
+	border: 2px solid #000000;
+	
+	flow-children: down;
+}
+
 .Splitter
 {
 	height: 1px;
@@ -6,21 +19,6 @@
 	border: 1px solid #626262;
 	horizontal-align: center;
 	vertical-align: bottom;
-}
-
-.ExchangeRoot
-{
-	width: 220px;
-
-	horizontal-align: left;
-	vertical-align: middle;
-
-	background-color: #2d2d2d;
-	border: 2px solid #000000;
-
-	visibility: collapse;
-
-	flow-children: down;
 }
 
 .DefaultPanel

@@ -1,4 +1,4 @@
-PETRI_FIRST_LOTTERY_TIME = 12
+PETRI_FIRST_LOTTERY_TIME = 2
 PETRI_LOTTERY_DURATION = 3
 PETRI_LOTTERY_TIME = 10
 
@@ -16,7 +16,7 @@ function InitLottery()
 
 	GameMode.CURRENT_BANK = DEFAULT_BANK_RATE * (PLAY_COUNT+1)
 
-	CustomGameEventManager:ServerToAllClients("petri_start_exchange", {["exchinge_time"] = PETRI_LOTTERY_DURATION * 60} )
+	CustomGameEventManager:Send_ServerToAllClients("petri_start_exchange", {["exchinge_time"] = PETRI_LOTTERY_DURATION * 60} )
 
 	Timers:CreateTimer((PETRI_LOTTERY_DURATION * 60) - 3,
       function()
@@ -47,19 +47,15 @@ end
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 	local winner = math.random(1, 4)
-
-	CustomGameEventManager:ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
-
-	for i,v in ipairs() do
-		tonumber(i)
-	end
+	
+	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
 		if v == winner then
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(GameMode.CURRENT_BANK/2, false, 0)
-			Notifications:TopToPlayer(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:TopToPlayer(pID, {text=tostring(GameMode.CURRENT_BANK/2), continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text="#win_lottery_1", 					duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(GameMode.CURRENT_BANK/2), duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
 
 		end
@@ -68,7 +64,7 @@ function SelectWinner()
 	-- Notifications:ClearTopFromTeam(DOTA_TEAM_GOODGUYS)
 
 	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=GameMode.PETRI_NAME_LIST[winner].." ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="50px"}})
+	-- Notifications:ToggleAbility()pToTeam(DOTA_TEAM_GOODGUYS, {text=GameMode.PETRI_NAME_LIST[winner].." ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="50px"}})
 	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=9, continue=true,  style={color="white", ["font-size"]="45px"}})
 	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(math.floor((GameMode.CURRENT_BANK/3)*2)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
 	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_3", 				duration=9, continue=false, 	style={color="white", ["font-size"]="40px"}})

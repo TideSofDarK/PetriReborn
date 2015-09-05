@@ -527,5 +527,7 @@ function GameMode:OnPlayerMakeBet( event )
     GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] = option
   end
 
-  CustomGameEventManager:ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
+  GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
+
+  CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
 end

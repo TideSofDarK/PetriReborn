@@ -367,6 +367,8 @@ function OnUpgradeSucceeded(event)
 
   AddEntryToDependenciesTable(pID, ability:GetName(), ability:GetLevel())
 
+  PrintTable(CustomNetTables:GetTableValue( "players_upgrades", tostring(pID) ))
+
   if event["Permanent"] then
     local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))
     tempTable[ability:GetName()] = tempTable[ability:GetName()] + 1

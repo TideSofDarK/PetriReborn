@@ -23,7 +23,7 @@ function MakeBetClick()
 		return;
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
-	var bet = parseInt(betEntry.text, 5);
+	var bet = parseInt(betEntry.text);
 	var playerGold = Players.GetGold(Players.GetLocalPlayer());
 
 	if (bet <= playerGold)
@@ -34,8 +34,8 @@ function MakeBetClick()
 		var button = $( "#BetPanel" ).FindChild( "MakeBet" );
 		button.enabled = false;
 		button.SetHasClass("on_bet", true);
-
-  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "bet" : bet, "option" : (curNum + 1) } );		
+		
+  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "pID" : Players.GetLocalPlayer(), "bet" : bet, "option" : (curNum + 1) } );		
 	}
 }
 
@@ -55,20 +55,23 @@ function ClickNum()
 function UpdateCountdown()
 {
 	$( "#Countdown" ).text = endTime - Math.floor( Game.GetDOTATime( false, false) );
-	$.Schedule( 1.0, UpdateCountdown );
+	if (endTime - Math.floor( Game.GetDOTATime( false, false) ) >= 1) 
+	{
+		$.Schedule( 1.0, UpdateCountdown );
+	} 
 }
 
 function InitExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
-
+	
 	if (upgrades["petri_upgrade_exchange"] != undefined) 
 	{
 		//args = { "exchinge_time" : 180 };
 		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
 		UpdateCountdown();
 
-		$.GetContextPanel().style.visibility = "visible;";
+		$.GetContextPanel().style.width = "220px;";
 
 		$( "#Bank" ).text = 0;	
 
@@ -95,7 +98,7 @@ function InitExchange( args )
 
 function HidePanel()
 {
-	$.GetContextPanel().style.visibility = "collapse;";
+	$.GetContextPanel().style.width = "0px;";
 }
 
 function FinishExchange( args )
