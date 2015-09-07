@@ -84,7 +84,7 @@ function AddStackableModifierWithDuration(caster, target, ability, modifierName,
     target:RemoveModifierByName(modifierName)
     ability:ApplyDataDrivenModifier(caster, target, modifierName, {duration=time})
 
-    if (stackCount + 1) < maxStacks then
+    if (stackCount + 1) <= maxStacks then
       target:SetModifierStackCount(modifierName, caster, stackCount + 1)
     else
       target:SetModifierStackCount(modifierName, caster, stackCount)
