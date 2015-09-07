@@ -190,16 +190,7 @@ function GameMode:ModifyGoldFilter(event)
         if hero then
           PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), event["gold"]/2, false, DOTA_ModifyGold_SharedGold)
 
-          POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-          local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-          local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, hero)
-          local color = Vector(244,201,23)
-          local lifetime = 3.0
-          local digits = #tostring(event["gold"]/2) + 1
-          
-          ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, event["gold"]/2, 0 ) )
-          ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
-          ParticleManager:SetParticleControl(pidx, 3, color)
+          PlusParticle(event["gold"]/2, Vector(244,201,23), 3.0, hero)
         end
       end
       return false
