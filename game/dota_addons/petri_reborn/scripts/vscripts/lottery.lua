@@ -1,4 +1,4 @@
-PETRI_FIRST_LOTTERY_TIME = 2
+PETRI_FIRST_LOTTERY_TIME = 12
 PETRI_LOTTERY_DURATION = 3
 PETRI_LOTTERY_TIME = 10
 
@@ -82,15 +82,4 @@ function SelectWinner()
 	GameMode.LOTTERY_STATE = 0
 	GameMode.CURRENT_BANK = 0
 	PLAY_COUNT = PLAY_COUNT + 1
-end
-
-function GetRandomAliveKvnFan()
-	local kvnCount = PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)
-
-	local winner = math.random(1, kvnCount)
-
-	if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)]:IsAlive() 
-		and PlayerResource:GetConnectionState(PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)) ~= 4
-		and PlayerResource:GetConnectionState(PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner)) ~= 3 then return PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_GOODGUYS, winner) end
-	return GetRandomAliveKvnFan()
 end

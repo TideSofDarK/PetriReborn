@@ -1,5 +1,6 @@
 'use strict';
 
+var upgrade = true;
 var curNum = -1;
 var endTime = 0;
 
@@ -64,9 +65,13 @@ function UpdateCountdown()
 function InitExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
-	
-	if (upgrades["petri_upgrade_exchange"] != undefined) 
+	if (upgrades == undefined)
+		return;
+
+	if (upgrades["petri_upgrade_exchange"] == 1) 
 	{
+		upgrade = true;
+
 		//args = { "exchinge_time" : 180 };
 		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
 		UpdateCountdown();
@@ -105,7 +110,7 @@ function FinishExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
 
-	if (upgrades["petri_upgrade_exchange"] != undefined) 
+	if (upgrades["petri_upgrade_exchange"] == 1 && upgrade == true) 
 	{
 		//args = { "winner" : 2 };
 		var numbers = $( "#BetPanel" ).FindChild( "Companies" );
