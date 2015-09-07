@@ -395,10 +395,11 @@ function GameMode:ReplaceWithMiniActor(player)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(4)
+      newHero:SetAbilityPoints(5)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()
