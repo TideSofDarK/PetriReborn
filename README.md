@@ -1,17 +1,15 @@
-# [Петры Реборн Альфа](http://steamcommunity.com/sharedfiles/filedetails/?id=483720948)
-Римейк пиздатой карты для варика на движке второй доты
+# [Petri Reborn](http://steamcommunity.com/sharedfiles/filedetails/?id=483720948)
+Remake of old wc3-era custom game inspired by Vampirism and Trolls and Elves
+Currently available in Russian, English and Chinese though all three localizations needs work
 
-## Играбельно?
-Well, sort of
+## Links
+ - [Steam Workshop](http://steamcommunity.com/sharedfiles/filedetails/?id=483720948)
+ - [Official Web Page](petry-reborn.ru)
+ - [Twitter](twitter.com/petri_reborn)
 
-## Известные проблемы
- - Кривой оверлей для абилок, чуть позже будет полностью кастомный UI на панораме
- - Билдинг хелпер может глючить, желательно в будущем перейти на что-то свое
-
-## TODO
- - Кастомное UI на панораме
- - Дерево зависимостей и технологий
- - Дождаться клиент-сайд партиклов и сделать нормальную постройку
+## Core developers
+ - [@TideSofDarK](https://github.com/TideSofDarK)
+ - [@K1llMan](https://github.com/K1llMan)
 
 ## Спасибо/Spasibo/Thanks
  - [BMD](https://github.com/bmddota) One of the key people in the community, creator of Barebones
