@@ -4,8 +4,8 @@ Currently available in Russian, English and Chinese though all three localizatio
 
 ## Links
  - [Steam Workshop](http://steamcommunity.com/sharedfiles/filedetails/?id=483720948)
- - [Official Web Page](petry-reborn.ru)
- - [Twitter](twitter.com/petri_reborn)
+ - [Official Web Page](http://petry-reborn.ru)
+ - [Twitter](http://twitter.com/petri_reborn)
 
 ## Core developers
  - [@TideSofDarK](https://github.com/TideSofDarK)
