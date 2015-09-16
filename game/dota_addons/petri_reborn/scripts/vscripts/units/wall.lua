@@ -57,7 +57,7 @@ function Upgrade (event)
 	elseif wall_level == 10 then
 		caster:SetOriginalModel(GetModelNameForLevel(10))
 		caster:SetModel(GetModelNameForLevel(10))
-		caster:SetModelScale(1.8)
+		caster:SetModelScale(2.05)
 
 		caster:SetAngles(-19, -45, -28)
 
