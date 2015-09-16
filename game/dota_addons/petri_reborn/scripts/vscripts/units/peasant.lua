@@ -398,7 +398,7 @@ function RepairBy1Percent( event )
 	local maxHealth = target:GetMaxHealth()
 
 	if health < maxHealth then
-		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 then
+		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
 			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
 			local healAmount = 3 + (target:GetMaxHealth() * 0.01285)
