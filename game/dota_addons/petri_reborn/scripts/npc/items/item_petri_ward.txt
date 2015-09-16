@@ -12,7 +12,8 @@
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
   "ItemInitialCharges"  "2"
-  "ItemStackable"         "1"
+  "ItemStackable"       "1"
+  "ItemPermanent"       "0"
 
   "AbilityCastRange" "250"
 
