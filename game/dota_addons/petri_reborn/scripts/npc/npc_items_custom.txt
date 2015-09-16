@@ -808,7 +808,7 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "hook_distance"   "1550"
+	      "hook_distance"   "2050"
 	    }
 	    "04"
 	    {
