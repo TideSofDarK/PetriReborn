@@ -69,19 +69,15 @@ function GameMode:OnHeroInGame(hero)
 
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
-  if hero:GetClassname() == "npc_dota_hero_viper" then
-    local team = hero:GetTeamNumber()
-    local player = hero:GetPlayerOwner()
-    local pID = player:GetPlayerID()
+  local team = hero:GetTeamNumber()
+  local player = hero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
 
-    InitAbilities(hero)
-    DestroyEntityBasedOnHealth(hero,hero)
+  if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
     local newHero
 
     MoveCamera(pID, hero)
-
-    UTIL_Remove( hero )
 
      -- Init kvn fan
     if team == 2 then
@@ -89,7 +85,7 @@ function GameMode:OnHeroInGame(hero)
        function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+          newHero = hero
 
           InitAbilities(newHero)
 
@@ -140,6 +136,7 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init petrosyan
     if team == 3 then
+      UTIL_Remove(hero) 
       PrecacheUnitByNameAsync(petrosyanHeroName,
        function() 
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
@@ -156,6 +153,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
+
           SetupUI(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
