@@ -51,6 +51,7 @@ function ToggleOffGather( event )
 		end
 
 		caster:RemoveModifierByName("modifier_ability_gather_lumber_no_col")
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 		
 		caster.target_tree.worker = nil
 
@@ -72,6 +73,7 @@ function ToggleOffReturn( event )
 	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
 	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
 		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
@@ -91,7 +93,6 @@ function CheckTreePosition( event )
 
 	if target_class == "ent_dota_tree" then
 		caster:MoveToPosition(target:GetAbsOrigin())
-		--print("Moving to "..target_class)
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
@@ -101,9 +102,12 @@ function CheckTreePosition( event )
 	elseif not caster:HasModifier("modifier_chopping_wood") then
 		caster:RemoveModifierByName("modifier_gathering_lumber")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_wood", {})
-		if Debug_Peasant then
-			print("Reached tree")
-		end
+
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_gather_lumber_rooted", {})
+
+		-- Timers:CreateTimer(0.06, function ()
+		-- 	caster:RemoveModifierByName("modifier_gather_lumber_rooted")
+		-- end)	
 	end
 end
 
@@ -149,6 +153,7 @@ function Gather100Lumber( event )
 		local player = caster:GetPlayerOwnerID()
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 	
 		caster:CastAbilityNoTarget(return_ability, player)
 	end
@@ -183,7 +188,7 @@ function ReturnResources( event )
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
 
 		caster.target_building = building
 	end
