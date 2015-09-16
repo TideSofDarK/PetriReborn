@@ -8,27 +8,27 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "MaxLevel"            "10"
+  "MaxLevel"            "11"
 
-  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0"
-  "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 5750"
+  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0"
+  "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 4950 7450"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000"
+      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "health_points"        "270 380 590 900 1300 1650 2800 4900 6850"
+      "health_points"        "270 380 590 900 1300 1650 2800 4900 6850 8000"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "125 350 875 1300 1700 2200 4000 6000 8000"
+      "armor"        "125 350 875 1300 1700 2200 4000 5500 7000 9500"
     }
   }
 
