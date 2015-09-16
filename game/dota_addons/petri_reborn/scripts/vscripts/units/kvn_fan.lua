@@ -153,7 +153,7 @@ function Deny(keys)
 		damage_type = DAMAGE_TYPE_PURE,
 	}
  
-	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() then
+	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and target:HasAbility("petri_exit") ~= true then
 		ApplyDamage(damageTable)
 	end
 end
