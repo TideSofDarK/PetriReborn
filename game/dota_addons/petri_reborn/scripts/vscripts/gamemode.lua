@@ -16,11 +16,14 @@ START_MINI_ACTORS_GOLD = 15
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
 local FRIENDS_KVN = {}
+FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
+FRIENDS_KVN["41110316"] = "models/heroes/doom/doom.vmdl"
 
 local FRIENDS_PETRI = {}
 FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
 FRIENDS_KVN["63399181"] = "models/heroes/doom/doom.vmdl"
+FRIENDS_KVN["151765071"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
@@ -124,6 +127,12 @@ function GameMode:OnHeroInGame(hero)
 
             if PlayerResource:GetSteamAccountID(pID) == id then
               UpdateModel(newHero, v, 1)
+
+              for k,v in pairs(newHero:GetChildren()) do
+                if v:GetClassname() == "dota_item_wearable" then
+                  v:AddEffects(EF_NODRAW) 
+                end
+              end
             end
           end
        end, pID)
@@ -170,6 +179,12 @@ function GameMode:OnHeroInGame(hero)
 
             if PlayerResource:GetSteamAccountID(pID) == id then
               UpdateModel(newHero, v, 1)
+
+              for k,v in pairs(newHero:GetChildren()) do
+                if v:GetClassname() == "dota_item_wearable" then
+                  v:AddEffects(EF_NODRAW) 
+                end
+              end
             end
           end
 
