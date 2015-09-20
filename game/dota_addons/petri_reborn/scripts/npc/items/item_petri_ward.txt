@@ -30,4 +30,20 @@
     "SpendCharge"
     {}
   }
+
+  "Modifiers"
+  {
+    "modifier_ward_invisibility"
+    {
+      "IsHidden"      "1"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "States"
+      {
+        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  } 
 }

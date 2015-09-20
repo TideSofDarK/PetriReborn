@@ -156,6 +156,8 @@ function SpawnWard(keys)
 
 	local ward = CreateUnitByName("npc_petri_ward", point,  true, nil, caster, DOTA_TEAM_BADGUYS)
 
+	keys.ability:ApplyDataDrivenModifier(caster, ward, "modifier_ward_invisibility", {})
+
 	InitAbilities(ward)
 	StartAnimation(ward, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
