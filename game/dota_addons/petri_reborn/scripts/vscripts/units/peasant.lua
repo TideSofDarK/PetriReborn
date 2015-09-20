@@ -401,7 +401,7 @@ function RepairBy1Percent( event )
 		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
 			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
-			local healAmount = 3 + (target:GetMaxHealth() * 0.01285)
+			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
 			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
 
 			target:Heal(healAmount, caster)

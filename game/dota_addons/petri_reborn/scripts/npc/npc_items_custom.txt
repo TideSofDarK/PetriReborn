@@ -10,7 +10,7 @@
 	  "AbilityTextureName"      "item_petri_alcohol"
 	
 	  "AbilityCastPoint"              "0"
-	  "AbilityCooldown"       "125"
+	  "AbilityCooldown"       "100"
 	  "AbilityManaCost"       "0"
 	
 	  "ItemCost"            "250"
@@ -857,7 +857,7 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "hook_distance"   "2050"
+	      "hook_distance"   "1950"
 	    }
 	    "04"
 	    {
