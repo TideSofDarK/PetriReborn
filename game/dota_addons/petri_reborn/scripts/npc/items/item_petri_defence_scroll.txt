@@ -11,12 +11,14 @@
   "AbilityCooldown"       "100"
   "AbilityManaCost"       "0"
 
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
   "ItemCost"            "285"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
   "ItemInitialCharges" "1"
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+  "ItemKillable"          "1"
 
   "SideShop" "1"
 

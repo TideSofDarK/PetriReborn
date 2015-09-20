@@ -57,11 +57,12 @@ function GameMode:OnItemPickedUp(keys)
   DebugPrint( '[BAREBONES] OnItemPickedUp' )
   DebugPrintTable(keys)
 
+  local itemname = keys.itemname
+  local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
+
   if keys.HeroEntityIndex then
     local heroEntity = EntIndexToHScript(keys.HeroEntityIndex)
-    local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
     local player = PlayerResource:GetPlayer(keys.PlayerID)
-    local itemname = keys.itemname
 
     if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
       if CheckShopType(itemname) ~= 1 then
@@ -355,6 +356,17 @@ function GameMode:OnEntityKilled( keys )
     if hero then
       hero.buildingCount = hero.buildingCount - 1
     end
+
+    local chance = math.random(1, 100)
+    if chance > DEFENCE_SCROLL_CHANCE then
+      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
+    elseif chance > ATTACK_SCROLL_CHANCE then
+      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
+    elseif chance > GOLD_COIN_CHANCE then
+      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
+    elseif chance > WOOD_CHANCE then
+      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+    end
   end
   
   -- Petrosyn is killed
@@ -382,6 +394,10 @@ function GameMode:OnEntityKilled( keys )
     local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
 
     hero.food = hero.food - killedUnit.foodSpent
+  end
+
+  if string.match(killedUnit:GetUnitName (), "cop") then
+    GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].copIsPresent = false
   end
 
   if string.match(killedUnit:GetUnitName (), "peasant") then

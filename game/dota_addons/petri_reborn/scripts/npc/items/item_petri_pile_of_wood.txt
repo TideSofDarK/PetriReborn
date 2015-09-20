@@ -1,0 +1,45 @@
+"item_petri_pile_of_wood"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1977"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_structures/m2_fence_01.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_pile_of_wood"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "1"
+  "ItemPermanent"       "0"
+  "ItemKillable"          "1"
+
+  "ItemCastOnPickup" "1"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "wood_modifier"              "175"
+    }
+  }
+
+  "OnSpellStart"
+  {     
+    "RunScript"
+    {
+      "ScriptFile"  "items/pile_of_wood.lua"
+      "Function"    "Use"
+    }
+    "SpendCharge" 
+    {}
+  }
+}

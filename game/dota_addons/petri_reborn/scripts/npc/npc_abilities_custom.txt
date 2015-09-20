@@ -1301,7 +1301,6 @@
 	      {
 	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
@@ -3553,6 +3552,42 @@
 	      {
 	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"    "%attack_rate"
 	      }
+	    }
+	  }
+	}
+	"petri_upgrade_to_cop"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_to_cop"
+	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
+	
+	  "AbilityGoldCost"       "55"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/cop.lua"
+	      "Function"        "SpawnCop"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/peasant.lua"
+	      "Function"        "Suicide"
 	    }
 	  }
 	}

@@ -116,6 +116,58 @@
 	  "VisionDaytimeRange" "0" 
 	  "VisionNighttimeRange" "0" 
 	}
+	"npc_petri_cop"
+	{
+	  "BaseClass"     "npc_dota_creature"
+	  "Model"      "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl"
+	  "ModelScale"    "1.5"
+	  "Level"      "1"
+	  "HealthBarOffset"    "180"
+	
+	  "vscripts"     "units/cop.lua"
+	
+	  "AbilityLayout"    "4"
+	  "Ability1"         "petri_gold_bag_blink"
+	
+	  "HasInventory"     "1"
+	
+	  "ConsideredHero"        "1"
+	
+	  "ArmorPhysical"    "2"
+	  "MagicalResistance"   "0"
+	
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
+	  "AttackDamageMin"    "228.0"
+	  "AttackDamageMax"    "228.0"
+	
+	  "BountyGoldMin"    "50.0"
+	  "BountyGoldMax"    "100.0"
+	
+	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
+	  "RingRadius"    "60"
+	
+	  "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"    "522"
+	  "MovementTurnRate"   "0.6"
+	
+	  "StatusHealth"    "190"
+	  "StatusHealthRegen"   "1.5"
+	  "StatusMana"    "25"
+	  "StatusManaRegen"    "0"
+	
+	  "VisionDaytimeRange"  "850"
+	  "VisionNighttimeRange"  "850"
+	
+	  "TeamName"     "DOTA_TEAM_GOODGUYS"
+	  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+	  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "DisableClumpingBehavior"  "1"
+	  }
+	}
 	"npc_petri_creep_bad_actor"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
@@ -993,6 +1045,7 @@
 	  "Ability1"     "gather_lumber"
 	  "Ability2"     "return_resources"
 	  "Ability3"     "petri_suicide"
+	  "Ability4"     "petri_upgrade_to_cop"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"

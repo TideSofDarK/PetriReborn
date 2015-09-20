@@ -15,6 +15,12 @@ START_MINI_ACTORS_GOLD = 15
 
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
+DEFENCE_SCROLL_CHANCE = 97
+ATTACK_SCROLL_CHANCE = 91
+GOLD_COIN_CHANCE = 71
+WOOD_CHANCE = 60
+
+
 local FRIENDS_KVN = {}
 FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"

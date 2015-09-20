@@ -105,6 +105,16 @@ function GameMode:FilterExecuteOrder( filterTable )
           ent:AddItem(newItem)
         end
       end
+    elseif order_type == DOTA_UNIT_ORDER_PICKUP_ITEM then
+      local item = EntIndexToHScript(filterTable["entindex_target"]):GetContainedItem()
+
+      if item:IsCastOnPickup() == true then
+        if EntIndexToHScript(units["0"]):GetUnitName() == "npc_petri_cop" then
+          return true
+        else 
+          return false
+        end
+      end
     elseif order_type == DOTA_UNIT_ORDER_PURCHASE_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
 

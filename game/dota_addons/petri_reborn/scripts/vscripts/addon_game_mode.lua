@@ -5,10 +5,13 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
   
   -- ITEMS
-  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+  PrecacheItemByNameSync("item_petri_pile_of_wood", context)
+  PrecacheItemByNameSync("item_petri_gold_coin", context)
   PrecacheItemByNameSync("item_petri_boots", context)
   PrecacheItemByNameSync("item_petri_hook", context)
   PrecacheItemByNameSync("item_petri_alcohol", context)
+  
+  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
   PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
   -- HEROES
@@ -18,6 +21,8 @@ function Precache( context )
   PrecacheResource("model_folder", "models/heroes/storm_spirit", context)
 
   -- UNITS
+  PrecacheResource("model", "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl", context)
+
   PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
 
