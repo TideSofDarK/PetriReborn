@@ -1,7 +1,6 @@
 .AbilityTooltipRoot
 {
 	flow-children: right;
-	position: -400px 0px 0px;
 	z-index: 5;
 }
 
