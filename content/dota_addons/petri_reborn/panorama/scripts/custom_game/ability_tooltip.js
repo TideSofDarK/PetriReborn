@@ -40,7 +40,8 @@ function SetPosition()
   var x = (GetOffsetX( m_panel, 0) + m_panel.actuallayoutwidth) * x_mult;
   var y = (GetOffsetY( m_panel, 0) - ( $.GetContextPanel().actuallayoutheight - m_panel.actuallayoutheight )) * y_mult;
 
-  $.GetContextPanel().style.position = x + "px " + y + "px 0px;";
+  //$.GetContextPanel().style.position = x + "px " + y + "px 0px;"; 
+  SetPositionRotation( $.GetContextPanel(), [x, y], 0 );
 }
 
 /*
@@ -201,7 +202,6 @@ function FillSpecials( abilityID )
   if (specials == undefined || Object.keys(specials).length == 0)
     return;
 
-
   for(var name in specials)
   {
     var cur_panel = $.CreatePanel( "Label", specialsPanel, "_special_" + name );
@@ -216,6 +216,22 @@ function FillSpecials( abilityID )
 }
 
 
+function SetPositionRotation( element, position, rotation ) {
+  var oldPosition = element.data().oldPosition || [0, 0];
+  var oldRotation = element.data().oldRotation || 0;
+
+  //Revert previous transformation
+  element.style.transform = "translate3d(" +
+          -oldPosition[0] + "px, " + -oldPosition[1] + "px, 0px) rotateZ("+(-oldRotation)+"deg)";
+
+  //Apply new transformation
+  element.style.transform = "rotateZ("+rotation+"deg) translate3d(" +
+          position[0] + "px, " + position[1] + "px, 0px)";
+
+  element.data().oldPosition = position;
+  element.data().oldRotation = rotation;
+}
+
 function ShowTooltip( panel, abilityID )
 {
   if (!panel)
@@ -228,10 +244,12 @@ function ShowTooltip( panel, abilityID )
   FillDependencies( abilityID );
   FillSpecials( abilityID );
 
-  $.GetContextPanel().visible = true;
-  $.GetContextPanel().style.position = "-1000px 0px 0px;";
-
+  //$.GetContextPanel().style.position = "-1000px 0px 0px;";
+  SetPositionRotation( $.GetContextPanel(), [-400, 0], 0 );
+  
+  // Delay to recalculate sizes
   $.Schedule(0.1, SetPosition);
+  $.GetContextPanel().visible = true; 
 }
 
 function HideTooltip()
@@ -240,9 +258,11 @@ function HideTooltip()
 }
 
 (function () {
+  SetPositionRotation( $.GetContextPanel(), [-400, 0], 0 );
+
   GameEvents.Subscribe( "dota_player_update_selected_unit", HideTooltip );
   GameEvents.Subscribe( "dota_player_update_query_unit", HideTooltip );
-  
+
   $.GetContextPanel().data().ShowTooltip = ShowTooltip;
   $.GetContextPanel().data().HideTooltip = HideTooltip;
 
