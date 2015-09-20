@@ -15,6 +15,8 @@ START_MINI_ACTORS_GOLD = 15
 
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
+PETRI_MAX_WORKERS = 15
+
 DEFENCE_SCROLL_CHANCE = 97
 ATTACK_SCROLL_CHANCE = 91
 GOLD_COIN_CHANCE = 71
@@ -111,6 +113,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+          newHero.numberOfUnits = 0
 
           newHero.buildingCount = 0
 

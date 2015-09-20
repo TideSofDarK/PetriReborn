@@ -300,6 +300,11 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  if killedUnit.hasNumber == true then
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+    hero.numberOfUnits = hero.numberOfUnits - 1
+  end
+
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
