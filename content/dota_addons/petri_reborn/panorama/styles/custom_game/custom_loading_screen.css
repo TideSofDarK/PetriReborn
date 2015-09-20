@@ -40,6 +40,14 @@
   text-shadow: 2px 2px 2px #000000;
 }
 
+#SocialNetworks
+{
+  width: 750px;
+  height: 300px;
+  margin-top: 550px;
+  margin-left: 25px;
+}
+
 .TitleBackground
 {
   background-repeat: no-repeat;
