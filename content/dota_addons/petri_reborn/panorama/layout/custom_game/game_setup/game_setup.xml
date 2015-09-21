@@ -1,0 +1,41 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/play.css" />
+		<include src="file://{resources}/styles/custom_game/material_design.css" />		
+		<include src="file://{resources}/styles/custom_game/game_setup.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup.js" />
+	</scripts>
+	<Panel hittest="false" class="GameSetup">
+		<Panel hittest="false" class="Paper" id="TeamSelectContainer" selectionpos="auto">
+
+			<Panel hittest="false" class="AppBar" id="AppBar">
+				<Label id="GameModeNameLabel" text="#addon_game_name" />
+				<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
+					
+				<Panel id="StartGameCountdownTimer">
+					<Image id="TimerBg" src="file://{images}/status_icons/timer_background.psd" />
+					<Image id="TimerRing" src="file://{images}/status_icons/timer_ring.psd" />
+					<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
+					<Panel id="TimerLabelBox" >
+						<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
+						<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+					</Panel>
+				</Panel>			
+			</Panel>
+
+			<Panel hittest="false" id="WorkArea">				
+				<Panel hittest="false" class="Paper" id="VotePanel"/>
+
+				<Panel hittest="false" class="Paper" id="PlayersPanel">
+					<Panel hittest="false" id="TeamsListContainer" />
+					<Panel hittest="false" id="PlayersListContainer"/>
+				</Panel>
+			</Panel>
+	
+		</Panel>
+	</Panel>
+</root>
+
