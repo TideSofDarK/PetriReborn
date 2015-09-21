@@ -94,7 +94,17 @@ function GameMode:_InitGameMode()
 
   CustomGameEventManager:RegisterListener( "building_helper_build_command", Dynamic_Wrap(BuildingHelper, "RegisterLeftClick"))
   CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "RegisterRightClick"))
-  
+
+  CustomGameEventManager:RegisterListener( "update_selected_entities", Dynamic_Wrap(GameMode, 'OnPlayerSelectedEntities'))
+
+  CustomGameEventManager:RegisterListener( "set_player_name", Dynamic_Wrap(GameMode, 'OnPlayerSendName'))
+
+  CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
+
+
+  -- Game Setup
+  CustomGameEventManager:RegisterListener( "petri_game_setup_shuffle", Dynamic_Wrap(GameSetup, 'Shuffle'))
+
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 
   --ListenToGameEvent('player_spawn', Dynamic_Wrap(GameMode, 'OnPlayerSpawn'), self)

@@ -1,0 +1,122 @@
+@define Primary50: #E8EAF6;
+@define Primary100: #C5CAE9;
+@define Primary200: #9FA8DA;
+@define Primary300: #7986CB;
+@define Primary400: #5C6BC0;
+@define Primary500: #3F51B5;
+@define Primary600: #3949AB;
+@define Primary700: #303F9F;
+@define Primary800: #283593;
+@define Primary900: #1A237E;
+
+@define AccentsA100: #8C9EFF;
+@define AccentsA200: #536DFE;
+@define AccentsA400: #3D5AFE;
+@define AccentsA700: #0304FF;
+
+// Grey palette
+@define Grey50: #FAFAFA;
+@define Grey100: #F5F5F5;
+@define Grey200: #EEEEEE;
+@define Grey300: #E0E0E0;
+@define Grey400: #BDBDBD;
+@define Grey500: #9E9E9E;
+@define Grey600: #757575;
+@define Grey700: #616161;
+@define Grey800: #424242;
+@define Grey900: #21212;
+
+@define BACKGROUND_COLOR_WHITE: #FFFFFF28;
+
+/*                       Shadow                       */
+.Paper,
+.Button,
+.CircleImage
+{
+	box-shadow: fill #000000ff 0px 2px 2px 0px;
+}
+
+/*                       Paper                        */
+.Paper {
+	border-radius: 2px;
+
+	background-color: Primary50;
+}
+
+/*                       AppBar                       */
+
+.AppBar{
+    width: 100%;
+
+    background-color: Primary500;
+	border-radius: 2px;
+
+    box-shadow: fill #000000ff 0px 4px 8px 0px;
+}
+
+/*                       Button                        */
+
+.Button {
+	margin-top: 5px;
+
+	height: 36px;
+	min-width: 88px;
+
+	border-radius: 4px;
+
+	background-color: Primary600;
+	
+	padding: 8px;
+}
+
+.Button:hover {
+	background-color: Primary700;
+}
+
+.Button:active {
+	box-shadow: fill #000000ff 0px 8px 8px 0px;	
+}
+
+.Button:disabled {
+	background-color: Primary400;
+	box-shadow: fill #000000ff 0px 0px 0px 0px;	
+}
+
+/*                       FlatButton                        */
+.FlatButton {
+	width: 100%;
+	height: 36px;
+	min-width: 88px;
+
+	border-radius: 4px;
+
+	background-color: transparent;
+	
+	padding: 8px;
+}
+
+.FlatButton:hover {
+	background-color: #99999933;
+}
+
+.FlatButton:active {
+	background-color: #99999966;
+}
+
+/*                       Label                        */
+.FlatLabel {
+    color: #000000;
+    font-weight: bold;
+    font-size: 20px;
+
+    horizontal-align: center;
+}
+
+.FlatLabel:disabled {
+	color: #0000004c;
+}
+
+/*						 Circle Image    			  */
+.CircleImage {
+    border-radius: 50%;
+}
