@@ -2,6 +2,8 @@ BAREBONES_DEBUG_SPEW = false
 
 -- Settings time
 
+PETRI_GAME_HAS_STARTED = false
+
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
 PETRI_EXIT_ALLOWED = false
@@ -279,6 +281,8 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
+  PETRI_GAME_HAS_STARTED = true
+
   Timers:CreateTimer((PETRI_FIRST_LOTTERY_TIME * 60),
     function()
       InitLottery()
@@ -310,6 +314,11 @@ end
 
 function GameMode:InitGameMode()
   GameMode = self
+
+  Timers:CreateTimer(function ( )
+    PauseGame(false)
+    if PETIR_GAME_HAS_STARTED == false then return 0.03 end
+  end)
 
   GameMode:_InitGameMode()
 

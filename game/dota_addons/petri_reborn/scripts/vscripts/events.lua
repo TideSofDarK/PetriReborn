@@ -23,8 +23,8 @@ function GameMode:OnGameRulesStateChange(keys)
   GameMode:_OnGameRulesStateChange(keys)
 end
 
-function GameMode:OnPause(keys)
-  --PrintTable(keys)
+function GameMode:OnPause(data)
+  PrintTable(data)
   PauseGame(false) 
 end
 

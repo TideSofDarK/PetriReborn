@@ -47,7 +47,7 @@
     width: 100%;
     height: 40px;
 
-    background-color: #E8EAF6;
+    background-color: #FAFAFA;
 
     flow-children: right;
     vertical-align: top;
@@ -113,6 +113,10 @@ DOTAAvatarImage
     background-image: url( "file://{images}/icon_star.png");
     background-repeat: no-repeat;
     background-size: contain;
+    border-radius: 25px;
+background-color: #424242;
+  opacity:0.9;
+  box-shadow: 0 0 0px #000000;
     overflow: noclip;
     width: 24px;
     height: 24px;
