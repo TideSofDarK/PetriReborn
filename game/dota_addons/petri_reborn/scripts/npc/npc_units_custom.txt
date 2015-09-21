@@ -128,6 +128,7 @@
 	
 	  "AbilityLayout"    "4"
 	  "Ability1"         "petri_gold_bag_blink"
+	  "Ability2"         "petri_mini_actor_phase"
 	
 	  "HasInventory"     "1"
 	
