@@ -101,7 +101,7 @@ PLAYER_COLORS[11]  = { 89.41 * 2.55, 4.90 * 2.55, 34.51 * 2.55 }
 PLAYER_COLORS[12]  = { 40.41 * 2.55, 40.90 * 2.55, 1.51 * 2.55 }
 PLAYER_COLORS[13]  = { 9.41 * 2.55, 4.90 * 2.55, 85.51 * 2.55 }
 
-USE_AUTOMATIC_PLAYERS_PER_TEAM = false   -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
+USE_AUTOMATIC_PLAYERS_PER_TEAM = true   -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 
 CUSTOM_TEAM_PLAYER_COUNT = {}           -- If we're not automatically setting the number of players per team, use this table
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 12
