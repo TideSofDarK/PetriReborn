@@ -92,6 +92,7 @@
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
 	  "ItemKillable"          "1"
+	  "ItemSellable"          "0"
 	
 	  "SideShop" "1"
 	
@@ -527,6 +528,7 @@
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
 	  "ItemKillable"          "1"
+	  "ItemSellable"          "0"
 	
 	  "SideShop" "1"
 	
@@ -665,6 +667,7 @@
 	  "ItemStackable"       "1"
 	  "ItemPermanent"       "0"
 	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "0"
 	
 	  "ItemCastOnPickup" "1"
 	
@@ -673,7 +676,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold_modifier"              "3"
+	      "gold_modifier"              "4"
 	    }
 	  }
 	
@@ -1538,6 +1541,7 @@
 	  "ItemStackable"       "1"
 	  "ItemPermanent"       "0"
 	  "ItemKillable"          "1"
+	  "ItemPurchasable"                "0"
 	
 	  "ItemCastOnPickup" "1"
 	
@@ -1546,7 +1550,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "wood_modifier"              "175"
+	      "wood_modifier"              "195"
 	    }
 	  }
 	
@@ -2837,7 +2841,6 @@
 	    "modifier_ward_invisibility"
 	    {
 	      "IsHidden"      "1"
-	      "Passive"      "1"
 	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 	
 	      "States"

@@ -114,10 +114,10 @@ function Sleep(keys)
 		end
 	end
 
-	for i=0,target:GetModifierCount() do
-		local modifierName = target:GetModifierNameByIndex(i)
-		target:RemoveModifierByName(modifierName)
-	end
+	-- for i=0,target:GetModifierCount() do
+	-- 	local modifierName = target:GetModifierNameByIndex(i)
+	-- 	target:RemoveModifierByName(modifierName)
+	-- end
 end
 
 function Return( keys )

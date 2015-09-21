@@ -3194,7 +3194,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "50 100 175 275 400"
+	  "AbilityGoldCost"       "50 100 150 225 350"
 	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
 	
 	  "MaxLevel"            "6"
@@ -3616,12 +3616,12 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 900 1300 1650 2800 4900 6850 8000"
+	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 350 875 1300 1700 2200 4000 5500 7000 9500"
+	      "armor"        "125 350 875 1300 1950 2575 4000 5500 7000 9500"
 	    }
 	  }
 	

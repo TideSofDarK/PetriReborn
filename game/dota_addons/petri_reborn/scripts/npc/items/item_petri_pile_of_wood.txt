@@ -20,6 +20,7 @@
   "ItemStackable"       "1"
   "ItemPermanent"       "0"
   "ItemKillable"          "1"
+  "ItemPurchasable"                "0"
 
   "ItemCastOnPickup" "1"
 
@@ -28,7 +29,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "wood_modifier"              "175"
+      "wood_modifier"              "195"
     }
   }
 

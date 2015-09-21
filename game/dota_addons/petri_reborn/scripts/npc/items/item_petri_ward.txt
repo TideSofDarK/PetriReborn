@@ -36,7 +36,6 @@
     "modifier_ward_invisibility"
     {
       "IsHidden"      "1"
-      "Passive"      "1"
       "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 
       "States"

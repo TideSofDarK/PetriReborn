@@ -363,14 +363,16 @@ function GameMode:OnEntityKilled( keys )
     end
 
     local chance = math.random(1, 100)
-    if chance > DEFENCE_SCROLL_CHANCE then
-      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
-    elseif chance > ATTACK_SCROLL_CHANCE then
-      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
-    elseif chance > GOLD_COIN_CHANCE then
-      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
-    elseif chance > WOOD_CHANCE then
-      CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+    if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
+      if chance > DEFENCE_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
+      elseif chance > ATTACK_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
+      elseif chance > GOLD_COIN_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
+      elseif chance > WOOD_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+      end
     end
   end
   
