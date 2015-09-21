@@ -1145,8 +1145,9 @@
 	  "Ability3"     "petri_gold_bag_blink"
 	  "Ability4"     "petri_suicide"
 	  "Ability5"     "build_petri_tower_of_evil"
-	  "Ability6"     "return_resources"
-	  "Ability7"     "petri_magic_immunity"
+	  "Ability6"     "petri_upgrade_to_cop"
+	  "Ability7"     "return_resources"
+	  "Ability8"     "petri_magic_immunity"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
