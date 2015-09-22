@@ -22,7 +22,7 @@
     "particle"      "particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf"
   }
   
-  "AbilityCastRange"        "1300"
+  "AbilityCastRange"        "1950"
   "AbilityCastPoint"        "0.3"
   
   "AbilityCooldown"       "18.0"
