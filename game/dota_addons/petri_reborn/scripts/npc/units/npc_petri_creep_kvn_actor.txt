@@ -5,8 +5,6 @@
   "ModelScale"        "1.0"
   "Level"           "4"
   "HealthBarOffset"     "140"
-  
-  "PathfindingSearchDepthScale" "0.5"
 
   "ArmorPhysical"       "3"
   "MagicalResistance"     "0"
@@ -26,8 +24,6 @@
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
-  "CollisionSize"       "31"
-  "FormationRank"       "0"
   
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"       "270"
