@@ -229,6 +229,8 @@ function CheckBuildingPosition( event )
 			caster.lumber_gathered = 0
 
 		    PlusParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
+
+		    caster:EmitSound("ui.inv_pickup_wood")
 		   
 			hero.lumber = hero.lumber + lumber_gathered 
 		end

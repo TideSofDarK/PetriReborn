@@ -6,5 +6,9 @@ function Use( event )
 
 	caster:EmitSound("DOTA_Item.Hand_Of_Midas")
 
-	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), GameRules:GetDOTATime(false,false) * goldModifier  / 60, true, 0)
+	local amount = math.floor(GameRules:GetDOTATime(false,false) * goldModifier  / 60)
+
+	PlusParticle(amount, Vector(244,201,23), 1.0, caster)
+
+	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), amount, true, 0)
 end

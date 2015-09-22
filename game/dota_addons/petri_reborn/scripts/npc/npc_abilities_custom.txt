@@ -3128,7 +3128,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "5 10 15 25 35 45 55 75"
+	  "AbilityGoldCost"       "5 10 18 29 40 53 65 80"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -3562,7 +3562,7 @@
 	  "AbilityTextureName"      "petri_upgrade_to_cop"
 	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
-	  "AbilityGoldCost"       "55"
+	  "AbilityGoldCost"       "50"
 	
 	  "MaxLevel"            "1"
 	

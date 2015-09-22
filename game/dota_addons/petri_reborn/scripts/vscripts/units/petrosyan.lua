@@ -2,16 +2,7 @@ function BonusGoldFromWall(keys)
 	if keys.target:GetUnitName() == "npc_petri_wall" then
 		PlayerResource:ModifyGold(keys.caster:GetPlayerOwnerID(), 1, false, 0)
 
-		POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-		local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-		local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, keys.caster)
-		local color = Vector(244,201,23)
-		local lifetime = 3.0
-	    local digits = #tostring(1) + 1
-	    
-	    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, 1, 0 ) )
-	    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
-	    ParticleManager:SetParticleControl(pidx, 3, color)
+		PlusParticle(1, Vector(244,201,23), 3.0, keys.caster)
 	end
 end
 
