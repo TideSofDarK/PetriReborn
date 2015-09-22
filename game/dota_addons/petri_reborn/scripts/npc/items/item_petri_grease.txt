@@ -16,13 +16,14 @@
   "ItemSellable"          "0"
   "ItemShareability"      "ITEM_FULLY_SHAREABLE"
   "ItemKillable"          "0"
+  "ItemPurchasable"       "0"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor_reducing"    "-750"
+      "armor_reducing"    "-900"
     }
     "02"
     {
@@ -57,8 +58,9 @@
       "IsDebuff"          "0"
       "IsPurgable"        "0"
       "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
-      //"EffectName"              "particles/items_fx/aegis_respawn_aegis_starfall.vpcf"
-      //"EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_stickynapalm.vpcf"
+      "StatusEffectPriority" "9"
 
       "OnAttackLanded"
       {

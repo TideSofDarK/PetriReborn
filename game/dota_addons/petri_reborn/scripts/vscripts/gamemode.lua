@@ -46,7 +46,7 @@ require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
 require('libraries/animations')
-require('libraries/GameSetup')
+--require('libraries/GameSetup')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
@@ -315,10 +315,10 @@ end
 function GameMode:InitGameMode()
   GameMode = self
 
-  Timers:CreateTimer(function ( )
-    PauseGame(false)
-    if PETIR_GAME_HAS_STARTED == false then return 0.03 end
-  end)
+  -- Timers:CreateTimer(function ( )
+  --   PauseGame(false)
+  --   if PETIR_GAME_HAS_STARTED == false then return 0.03 end
+  -- end)
 
   GameMode:_InitGameMode()
 

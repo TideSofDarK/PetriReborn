@@ -193,7 +193,10 @@ function GameMode:ModifyGoldFilter(event)
       Notifications:TopToAll({text=tostring(event["gold"]/2).." ", duration=4, style={color="red"}, continue=true})
       Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
 
-      CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+      if event["gold"] >= 10000 then
+       CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+       Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
+      end
 
       for i=1,PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
         local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)] 
