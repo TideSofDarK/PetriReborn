@@ -3076,7 +3076,7 @@
 	  "AbilityChannelTime"      "2.5"
 	  "AbilityUpgradeGoldCost"    "0"
 	
-	  "AbilityGoldCost" "100"
+	  "AbilityGoldCost" "50"
 	
 	  "MaxLevel"            "2"
 	
