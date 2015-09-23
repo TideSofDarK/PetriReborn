@@ -60,7 +60,7 @@ function BuildingHelper:RegisterLeftClick( args )
 
   if cmdPlayer then
     -- NEEDS WORK
-    RemoveGatheringAndRepairingModifiers(cmdPlayer)
+    RemoveGatheringAndRepairingModifiers(cmdPlayer.activeBuilder)
 
     cmdPlayer.activeBuilder:AddToQueue(location)
     cmdPlayer.waitingForBuildHelper = true

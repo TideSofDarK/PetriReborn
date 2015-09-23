@@ -8,27 +8,32 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "MaxLevel"            "11"
+  "MaxLevel"            "12"
 
-  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0"
-  "AbilityGoldCost"       "0 10 60 290 690 900 1500 3200 4950 7450"
+  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
+  "AbilityGoldCost"       "0 10 60 290 690 900 1500 2800 4000 5900 8000"
+
+  "precache"
+  {
+    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+  }
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000"
+      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000 50000"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000"
+      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000 12500"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "125 350 875 1300 1950 2575 4000 5500 7000 9500"
+      "armor"        "125 295 820 1300 1950 2575 4000 5500 7000 9500 11000"
     }
   }
 
@@ -66,6 +71,15 @@
 
   "Modifiers"
   {
+    "modifier_roshan_gold"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+    
+      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
+      "StatusEffectPriority"  "10"
+    }
     "modifier_wall_notification"
     {
       "Passive"      "1"

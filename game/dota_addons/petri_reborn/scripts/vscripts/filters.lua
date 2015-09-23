@@ -33,7 +33,7 @@ function GameMode:FilterExecuteOrder( filterTable )
     end
 
     if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-      if abilityIndex and abilityIndex ~= 0 and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
+      if abilityIndex and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
         local ability = EntIndexToHScript(abilityIndex) 
         local abilityName = ability:GetAbilityName()
 
@@ -47,7 +47,8 @@ function GameMode:FilterExecuteOrder( filterTable )
             local abil = caster:FindAbilityByName(abilityName)
             if abil and abil:IsFullyCastable() then
 
-              caster.skip = true
+              if issuerUnit ~= caster then caster.skip = true end
+
               if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
                 ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, Position = point, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
               elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then

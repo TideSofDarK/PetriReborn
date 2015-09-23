@@ -957,7 +957,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "10 9 8 8 8 7 6 5 4"
+	  "AbilityCooldown" "11 10 9 8 8 7 7 6 6"
 	
 	  "MaxLevel"            "9"
 	
@@ -1210,7 +1210,7 @@
 	"petri_dummy_invisibility"
 	{
 	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityTextureName" "undying_tombstone"
@@ -2228,11 +2228,17 @@
 	
 	  "precache"
 	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"    
 	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
 	  }
 	
 	  "OnSpellStart"
 	  {
+	    "FireSound"
+	    {
+	        "EffectName"    "Hero_Techies.Suicide"
+	        "Target"        "CASTER"
+	    }
 	    "FireEffect"
 	    {
 	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
@@ -2253,7 +2259,12 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "techies_stasis_trap"
-	  
+	
+	  "precache"
+	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"         
+	  }
+	
 	  "Modifiers"
 	  {
 	    "modifier_trap"
@@ -2281,6 +2292,11 @@
 	              "ScriptFile"  "units/trap.lua"
 	              "Function"    "AddTrap"
 	              "Target"  "TARGET"
+	            }
+	            "FireSound"
+	            {
+	              "EffectName"    "Hero_Techies.StasisTrap.Stun"
+	              "Target"        "TARGET"
 	            }
 	            "RemoveModifier"
 	            {
@@ -3119,6 +3135,86 @@
 	    }
 	  }
 	}
+	"petri_upgrade_eye"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_eye"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityManaCost"       "0"
+	  "AbilityGoldCost"       "1500"
+	  "AbilityChannelTime"      "5.5"
+	
+	  "MaxLevel"  "0"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/status_fx/status_effect_statue.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "50000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_upgraded_eye"
+	      "Target"     "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/exploration_tree.lua"
+	      "Function"        "Upgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_upgraded_eye"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "StatusEffectName"     "particles/status_fx/status_effect_statue.vpcf"
+	      "StatusEffectPriority" "9"
+	
+	    }
+	  }
+	}
 	"petri_upgrade_gold_tower"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -3573,21 +3669,10 @@
 	
 	  "OnSpellStart"
 	  {
-	    "FireEffect"
-	    {
-	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
-	      "EffectAttachType"  "follow_origin"
-	      "Target"            "CASTER"
-	    }
 	    "RunScript"
 	    {
 	      "ScriptFile"      "units/cop.lua"
 	      "Function"        "SpawnCop"
-	    }
-	    "RunScript"
-	    {
-	      "ScriptFile"      "units/peasant.lua"
-	      "Function"        "Suicide"
 	    }
 	  }
 	}
@@ -3601,27 +3686,32 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "11"
+	  "MaxLevel"            "12"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0"
-	  "AbilityGoldCost"       "0 10 60 290 690 900 1500 3200 4950 7450"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
+	  "AbilityGoldCost"       "0 10 60 290 690 900 1500 2800 4000 5900 8000"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000"
+	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000 50000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000"
+	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000 12500"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 350 875 1300 1950 2575 4000 5500 7000 9500"
+	      "armor"        "125 295 820 1300 1950 2575 4000 5500 7000 9500 11000"
 	    }
 	  }
 	
@@ -3659,6 +3749,15 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_roshan_gold"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
+	      "StatusEffectPriority"  "10"
+	    }
 	    "modifier_wall_notification"
 	    {
 	      "Passive"      "1"

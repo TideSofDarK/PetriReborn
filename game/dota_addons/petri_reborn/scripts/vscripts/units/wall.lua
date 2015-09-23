@@ -66,6 +66,18 @@ function Upgrade (event)
 		caster:SetAbsOrigin(oldPos)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+	elseif wall_level == 11 then
+		caster:SetOriginalModel(GetModelNameForLevel(11))
+		caster:SetModel(GetModelNameForLevel(11))
+		caster:SetModelScale(0.81)
+
+		local oldPos = caster:GetAbsOrigin()
+		oldPos.z = oldPos.z - 96
+		caster:SetAbsOrigin(oldPos)
+
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_roshan_gold", {})
+
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	end
 end
 
@@ -107,6 +119,8 @@ function GetModelNameForLevel(level)
 		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
 	elseif level == 10 then
 		return "models/creeps/roshan/aegis.vmdl"
+	elseif level == 11 then
+		return "models/creeps/roshan/roshan.vmdl"
 	end
 end
 

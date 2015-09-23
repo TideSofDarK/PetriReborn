@@ -3,9 +3,10 @@ BAREBONES_DEBUG_SPEW = false
 -- Settings time
 
 PETRI_GAME_HAS_STARTED = false
+PETRI_GAME_HAS_ENDED = false
 
 PETRI_TIME_LIMIT = 96
-PETRI_EXIT_MARK = 24
+PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
 
@@ -22,7 +23,7 @@ PETRI_MAX_WORKERS = 15
 DEFENCE_SCROLL_CHANCE = 98
 ATTACK_SCROLL_CHANCE = 94
 GOLD_COIN_CHANCE = 71
-WOOD_CHANCE = 55
+WOOD_CHANCE = 53
 
 local FRIENDS_KVN = {}
 FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
@@ -88,6 +89,8 @@ function GameMode:OnHeroInGame(hero)
 
   if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
+    hero.spawnPosition = hero:GetAbsOrigin()
+
     local newHero
 
     MoveCamera(pID, hero)
@@ -95,7 +98,7 @@ function GameMode:OnHeroInGame(hero)
      -- Init kvn fan
     if team == 2 then
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-       function() 
+        function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
           newHero = hero
@@ -108,7 +111,7 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
           newHero:AddItemByName("item_petri_trap")
-
+          
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_KVN_GOLD, false)
@@ -146,7 +149,8 @@ function GameMode:OnHeroInGame(hero)
               end
             end
           end
-       end, pID)
+        end, 
+      pID)
     end
 
     local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -310,6 +314,12 @@ function GameMode:OnGameInProgress()
     function()
       PetrosyanWin()
     end)
+
+  -- Tips
+  Timers:CreateTimer(((PETRI_FIRST_LOTTERY_TIME - 2) * 60),
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
 end
 
 function GameMode:InitGameMode()
@@ -443,16 +453,20 @@ end
 function KVNWin(keys)
   local caster = keys.caster
 
-  Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+  if PETRI_GAME_HAS_ENDED == false then
+    PETRI_GAME_HAS_ENDED = true
 
-  for i=1,10 do
-    PlayerResource:SetCameraTarget(i-1, caster)
+    Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+
+    for i=1,10 do
+      PlayerResource:SetCameraTarget(i-1, caster)
+    end
+
+    Timers:CreateTimer(5.0,
+      function()
+        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+      end)
   end
-
-  Timers:CreateTimer(5.0,
-    function()
-      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
-    end)
 end
 
 function PetrosyanWin()

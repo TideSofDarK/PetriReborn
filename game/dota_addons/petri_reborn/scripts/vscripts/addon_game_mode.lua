@@ -73,7 +73,8 @@ function Precache( context )
   PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
   PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
   PrecacheResource("model", "models/creeps/roshan/aegis.vmdl", context)
-
+  PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+  
   -- sawmill
   PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)
   PrecacheResource("model", "models/props_structures/good_barracks_ranged002_lvl2.vmdl", context)

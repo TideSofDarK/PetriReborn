@@ -375,6 +375,10 @@ function GameMode:OnEntityKilled( keys )
       end
     end
   end
+
+  if killedUnit.childEntity then
+    UTIL_Remove(killedUnit.childEntity)
+  end
   
   -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
@@ -547,7 +551,9 @@ function GameMode:OnPlayerMakeBet( event )
   GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + bet
 
   if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] then 
-    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] = option
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]           = {}
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]["option"] = option
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]["bet"]    = bet
   end
 
   GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)

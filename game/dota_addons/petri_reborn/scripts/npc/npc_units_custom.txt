@@ -520,10 +520,8 @@
 	  
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tree_explore"     
-	  "Ability2"          "petri_empty2"
-	  "Ability3"          "petri_empty3"
-	  "Ability4"          "petri_empty4"
-	  "Ability5"          "petri_building"
+	  "Ability2"          "petri_upgrade_eye"
+	  "Ability3"          "petri_building"
 	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -706,6 +704,7 @@
 	  "ModelScale"                "0.3"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "1"
+	  "HealthBarOffset"    "301"
 	  
 	  "vscripts"                    "units/gold_tower.lua"
 	
@@ -1432,6 +1431,7 @@
 	  "ModelScale"                "0.6"
 	  "SoundSet"          "Creep_Good_Range"  
 	  "Level"           "1"
+	  "HealthBarOffset"    "301"
 	  
 	  "AbilityLayout"     "4"
 	  "Ability1"        "petri_upgrade_wall"

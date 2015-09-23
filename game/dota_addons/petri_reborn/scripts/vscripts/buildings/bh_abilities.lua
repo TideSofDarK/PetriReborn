@@ -94,6 +94,8 @@ function build( keys )
 			Timers:CreateTimer(600, function() dummy:RemoveSelf() end)
 		end
 
+		caster:EmitSound("ui.inv_pickup_wood")
+
 		-- Unit is the building be built.
 		-- Play construction sound
 		-- FindClearSpace for the builder

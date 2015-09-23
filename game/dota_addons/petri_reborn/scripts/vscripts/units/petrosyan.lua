@@ -105,6 +105,8 @@ function Sleep(keys)
 		end
 	end
 
+	RemoveGatheringAndRepairingModifiers(target)
+
 	-- for i=0,target:GetModifierCount() do
 	-- 	local modifierName = target:GetModifierNameByIndex(i)
 	-- 	target:RemoveModifierByName(modifierName)

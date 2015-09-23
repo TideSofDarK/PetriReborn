@@ -1,5 +1,5 @@
 PETRI_FIRST_LOTTERY_TIME = 12
-PETRI_LOTTERY_DURATION = 3
+PETRI_LOTTERY_DURATION = 2
 PETRI_LOTTERY_TIME = 10
 
 GameMode.LOTTERY_STATE = GameMode.LOTTERY_STATE or 0
@@ -52,32 +52,16 @@ function SelectWinner()
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
-		if v == winner then
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(GameMode.CURRENT_BANK/2, false, 0)
+		if v["option"] == winner then
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 4), false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:Top(pID, {text=tostring(math.floor(GameMode.CURRENT_BANK/2)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(math.floor(v["bet"] * 4)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 0.5), false, 0)
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:Top(pID, {text=tostring(math.floor(GameMode.CURRENT_BANK/10)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(math.floor(v["bet"] * 0.5)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		end
 	end
-
-	-- Notifications:ClearTopFromTeam(DOTA_TEAM_GOODGUYS)
-
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_1", 								duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-	-- Notifications:ToggleAbility()pToTeam(DOTA_TEAM_GOODGUYS, {text=GameMode.PETRI_NAME_LIST[winner].." ", 	duration=9, continue=true, 	style={color="rgb("..PLAYER_COLORS[winner][1]..", "..PLAYER_COLORS[winner][2]..", "..PLAYER_COLORS[winner][3]..")", ["font-size"]="50px"}})
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_2", 								duration=9, continue=true,  style={color="white", ["font-size"]="45px"}})
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=" "..tostring(math.floor((GameMode.CURRENT_BANK/3)*2)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="45px"}})
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#win_lottery_3", 				duration=9, continue=false, 	style={color="white", ["font-size"]="40px"}})
-	-- Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text=tostring(math.floor(GameMode.CURRENT_BANK/5)).."$", 				duration=9, continue=true, 	style={color="yellow", ["font-size"]="40px"}})
-
-	-- GameMode.assignedPlayerHeroes[winner]:ModifyGold(math.floor((GameMode.CURRENT_BANK/3)*2), false, 0)
-
-	-- for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
-	-- 	if v and v ~= winner and PlayerResource:GetTeam(v) == DOTA_TEAM_GOODGUYS then
-	-- 		GameMode.assignedPlayerHeroes[v]:ModifyGold(GameMode.CURRENT_BANK/5, false, 0)
-	-- 	end
-	-- end
 
 	GameMode.CURRENT_LOTTERY_PLAYERS = {}
 	GameMode.LOTTERY_STATE = 0

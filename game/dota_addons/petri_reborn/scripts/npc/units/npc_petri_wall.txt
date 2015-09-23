@@ -5,6 +5,7 @@
   "ModelScale"                "0.6"
   "SoundSet"          "Creep_Good_Range"  
   "Level"           "1"
+  "HealthBarOffset"    "301"
   
   "AbilityLayout"     "4"
   "Ability1"        "petri_upgrade_wall"

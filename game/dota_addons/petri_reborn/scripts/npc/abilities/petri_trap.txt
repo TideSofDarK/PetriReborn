@@ -5,7 +5,12 @@
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName" "techies_stasis_trap"
-  
+
+  "precache"
+  {
+    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"         
+  }
+
   "Modifiers"
   {
     "modifier_trap"
@@ -33,6 +38,11 @@
               "ScriptFile"  "units/trap.lua"
               "Function"    "AddTrap"
               "Target"  "TARGET"
+            }
+            "FireSound"
+            {
+              "EffectName"    "Hero_Techies.StasisTrap.Stun"
+              "Target"        "TARGET"
             }
             "RemoveModifier"
             {

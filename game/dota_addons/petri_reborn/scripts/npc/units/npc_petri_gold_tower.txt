@@ -5,6 +5,7 @@
   "ModelScale"                "0.3"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "1"
+  "HealthBarOffset"    "301"
   
   "vscripts"                    "units/gold_tower.lua"
 

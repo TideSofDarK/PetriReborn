@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "AbilityCooldown" "10 9 8 8 8 7 6 5 4"
+  "AbilityCooldown" "11 10 9 8 8 7 7 6 6"
 
   "MaxLevel"            "9"
 

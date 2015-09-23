@@ -52,27 +52,33 @@ function IsMultiOrderAbility( ability )
 end
 
 -- MODIFIERS
-function RemoveGatheringAndRepairingModifiers(target)
-  if target.activeBuilder:HasModifier("modifier_returning_resources")
-    or target.activeBuilder:HasModifier("modifier_chopping_wood")
-    or target.activeBuilder:HasModifier("modifier_gathering_lumber")
-    or target.activeBuilder:HasModifier("modifier_chopping_wood_animation")
-    or target.activeBuilder:HasModifier("modifier_returning_resources_on_order_cancel") then
+function RemoveInvuModifiers(target)
+  target:RemoveModifierByName("modifier_item_petri_cola_active")
+  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_stats_datadriven")
+  target:RemoveModifierByName("modifier_item_petri_magic_shield_active")
+end
 
-    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("return_resources"))
-    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("gather_lumber"))
-    ToggleAbilityOff(target.activeBuilder:FindAbilityByName("petri_repair"))
+function RemoveGatheringAndRepairingModifiers(target)
+  if target:HasModifier("modifier_returning_resources")
+    or target:HasModifier("modifier_chopping_wood")
+    or target:HasModifier("modifier_gathering_lumber")
+    or target:HasModifier("modifier_chopping_wood_animation")
+    or target:HasModifier("modifier_returning_resources_on_order_cancel") then
+
+    ToggleAbilityOff(target:FindAbilityByName("return_resources"))
+    ToggleAbilityOff(target:FindAbilityByName("gather_lumber"))
+    ToggleAbilityOff(target:FindAbilityByName("petri_repair"))
 
     --cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
-    target.activeBuilder:RemoveModifierByName("modifier_chopping_wood")
-    target.activeBuilder:RemoveModifierByName("modifier_gathering_lumber")
-    target.activeBuilder:RemoveModifierByName("modifier_chopping_wood_animation")
+    target:RemoveModifierByName("modifier_chopping_wood")
+    target:RemoveModifierByName("modifier_gathering_lumber")
+    target:RemoveModifierByName("modifier_chopping_wood_animation")
 
-    target.activeBuilder:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+    target:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
 
-    target.activeBuilder:RemoveModifierByName("modifier_repairing")
-    target.activeBuilder:RemoveModifierByName("modifier_chopping_building")
-    target.activeBuilder:RemoveModifierByName("modifier_chopping_building_animation")
+    target:RemoveModifierByName("modifier_repairing")
+    target:RemoveModifierByName("modifier_chopping_building")
+    target:RemoveModifierByName("modifier_chopping_building_animation")
   end
 end
 
@@ -366,8 +372,6 @@ function OnUpgradeSucceeded(event)
   caster:SetModifierStackCount("modifier_upgrade", caster, caster:GetModifierStackCount("modifier_upgrade", caster) + 1)
 
   AddEntryToDependenciesTable(pID, ability:GetName(), ability:GetLevel())
-
-  PrintTable(CustomNetTables:GetTableValue( "players_upgrades", tostring(pID) ))
 
   if event["Permanent"] then
     local tempTable = CustomNetTables:GetTableValue("players_upgrades", tostring(pID))

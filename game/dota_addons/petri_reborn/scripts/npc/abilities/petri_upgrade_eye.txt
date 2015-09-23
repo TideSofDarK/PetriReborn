@@ -1,0 +1,80 @@
+"petri_upgrade_eye"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "petri_upgrade_eye"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityManaCost"       "0"
+  "AbilityGoldCost"       "1500"
+  "AbilityChannelTime"      "5.5"
+
+  "MaxLevel"  "0"
+
+  "precache"
+  {
+    "particle"  "particles/status_fx/status_effect_statue.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "50000"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_upgraded_eye"
+      "Target"     "CASTER"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "units/exploration_tree.lua"
+      "Function"        "Upgrade"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_upgraded_eye"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_statue.vpcf"
+      "StatusEffectPriority" "9"
+
+    }
+  }
+}
