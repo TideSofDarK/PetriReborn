@@ -188,8 +188,8 @@ end
 function ReadComedyStory( keys )
 	local caster = keys.caster
 
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + 575)
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 575)
+	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + 17000)
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 17000)
 
 	caster:CalculateStatBonus()
 end

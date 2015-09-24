@@ -1,7 +1,7 @@
 "npc_petri_creep_draconoid"
 {
   "BaseClass"         "npc_dota_base_additive"
-  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+  "Model"           "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl"
   "ModelScale"        "0.6"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "6"

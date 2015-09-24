@@ -217,7 +217,7 @@
 	"npc_petri_creep_dead_actor"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
-	  "Model"           "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"
+	  "Model"           "models/items/undying/idol_of_ruination/ruin_wight_minion_gold.vmdl"
 	  "ModelScale"        "1.2"
 	  "SoundSet"          "Creep_Good_Melee"  
 	  "Level"           "3"
@@ -262,7 +262,7 @@
 	"npc_petri_creep_draconoid"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
-	  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+	  "Model"           "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl"
 	  "ModelScale"        "0.6"
 	  "SoundSet"          "Creep_Good_Range"
 	  "Level"           "6"
