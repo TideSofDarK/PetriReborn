@@ -142,14 +142,15 @@ DOTAAvatarImage
 #TeamsListContainer 
 {
     width: 100%;
-
+    
+    padding: 5px;
     flow-children: down;
 }
 
 /*          TeamInfo                          */
 .TeamContainer
 {
-    margin: 10px;
+    margin: 5px;
     width: 100%;
 
     border-radius: 4px;
@@ -200,11 +201,12 @@ DOTAAvatarImage
     height: 100%;
     width: 55%;
 
+    padding: 5px;
     flow-children: down;
 }
 
 .VoteContainer {
-    margin: 10px;
+    margin: 5px;
     width: 100%;
 
     border-radius: 4px;

@@ -1,6 +1,6 @@
 BAREBONES_DEBUG_SPEW = false
 
--- Settings time
+-- Settings time 
 
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 24
