@@ -22,7 +22,7 @@ function ShuffleList( count )
   if shuffleTimes == 3 then
     Timers:CreateTimer(2.0, 
       function() 
-        CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(hostPlayerID), "petri_end_shuffle", { } )
+        CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
       end);
   end
 end
