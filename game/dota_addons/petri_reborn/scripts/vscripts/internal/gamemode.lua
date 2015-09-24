@@ -102,7 +102,7 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
 
   -- Game Setup
-  --CustomGameEventManager:RegisterListener( "petri_game_setup_shuffle", Dynamic_Wrap(GameSetup, 'Shuffle'))
+  CustomGameEventManager:RegisterListener( "petri_game_setup_shuffle", Dynamic_Wrap(GameSetup, 'Shuffle'))
 
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 
