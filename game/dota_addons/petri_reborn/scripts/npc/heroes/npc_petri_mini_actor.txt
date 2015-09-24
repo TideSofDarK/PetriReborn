@@ -13,6 +13,7 @@
   "Ability4"        "petri_petrosyan_return"
   "Ability5"        "petri_exploration_tower_explore_world"
   "Ability6"        "petri_mini_actor_phase"
+  "Ability7"        "attribute_bonus"
 
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"

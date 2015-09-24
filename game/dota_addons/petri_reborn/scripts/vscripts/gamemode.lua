@@ -325,11 +325,6 @@ end
 function GameMode:InitGameMode()
   GameMode = self
 
-  -- Timers:CreateTimer(function ( )
-  --   PauseGame(false)
-  --   if PETIR_GAME_HAS_STARTED == false then return 0.03 end
-  -- end)
-
   GameMode:_InitGameMode()
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
