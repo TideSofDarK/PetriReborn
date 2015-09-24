@@ -47,7 +47,7 @@ require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
 require('libraries/animations')
---require('libraries/GameSetup')
+require('libraries/GameSetup')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')

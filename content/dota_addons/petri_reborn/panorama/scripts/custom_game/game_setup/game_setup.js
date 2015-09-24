@@ -48,10 +48,10 @@ function UpdateTimer()
 	var mapInfo = Game.GetMapInfo();
 	$( "#MapInfoLabel" ).SetDialogVariable( "map_name", mapInfo.map_display_name );
 
-
+	var timer = Math.max( 0, Math.floor( transitionTime - gameTime ) );
 	if ( transitionTime >= 0 ) 
 	{
-		$( "#StartGameCountdownTimer" ).SetDialogVariableInt( "countdown_timer_seconds", Math.max( 0, Math.floor( transitionTime - gameTime ) ) );
+		$( "#StartGameCountdownTimer" ).SetDialogVariableInt( "countdown_timer_seconds", timer );
 		$( "#StartGameCountdownTimer" ).SetHasClass( "countdown_active", true );
 		$( "#StartGameCountdownTimer" ).SetHasClass( "countdown_inactive", false );
 	}
@@ -64,6 +64,10 @@ function UpdateTimer()
 	var autoLaunch = Game.GetAutoLaunchEnabled();
 	$( "#StartGameCountdownTimer" ).SetHasClass( "auto_start", autoLaunch );
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
+
+	if (timer < 1)
+		if ($( "#VotePanel" ).data().ShowNextVote != null)
+			$( "#VotePanel" ).data().ShowNextVote();
 
 	$.Schedule( 0.1, UpdateTimer );
 }
@@ -220,6 +224,7 @@ function LoadUI()
 	CreatePlayerList();
 	CreateTeamList(); 
 	//CreateVote();
+
 	Shuff();
 
 	var playerInfo = Game.GetLocalPlayerInfo();
@@ -227,7 +232,7 @@ function LoadUI()
 	{
 		Game.SetAutoLaunchEnabled( false );
 		Game.SetRemainingSetupTime( 10 );
-	}	
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -241,5 +246,7 @@ function LoadUI()
 	GameEvents.Subscribe( "petri_set_shuffled_list", Shuffle );
 	GameEvents.Subscribe( "petri_end_shuffle", AssignTeams );
 
-	$.Schedule(1, LoadUI);	
+	$.Schedule(1, LoadUI);
+
+	Game.PlayerJoinTeam( DOTATeam_t.DOTA_TEAM_NOTEAM );
 })();
