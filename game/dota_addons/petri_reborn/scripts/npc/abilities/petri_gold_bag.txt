@@ -6,7 +6,7 @@
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
   "AbilityCastPoint"        "0.0"
-  "AbilityCooldown"        "5.725"
+  "AbilityCooldown"        "6.025"
 
   "MaxLevel"            "1"
 
@@ -43,7 +43,7 @@
         }
       }
 
-      "ThinkInterval" "5.75" // whatever
+      "ThinkInterval" "6.05" // whatever
       "OnIntervalThink"
       {
         "RunScript"

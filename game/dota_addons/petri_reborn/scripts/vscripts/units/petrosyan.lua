@@ -99,13 +99,13 @@ function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
 
-	for i=0,target:GetAbilityCount() do
+	RemoveGatheringAndRepairingModifiers(target)
+
+	for i=0,target:GetAbilityCount()-1 do
 		if target:GetAbilityByIndex(i) ~= nil and target:GetAbilityByIndex(i):GetToggleState() then
 			target:GetAbilityByIndex(i):ToggleAbility()
 		end
 	end
-
-	RemoveGatheringAndRepairingModifiers(target)
 
 	-- for i=0,target:GetModifierCount() do
 	-- 	local modifierName = target:GetModifierNameByIndex(i)

@@ -63,6 +63,9 @@ function RemoveGatheringAndRepairingModifiers(target)
     or target:HasModifier("modifier_chopping_wood")
     or target:HasModifier("modifier_gathering_lumber")
     or target:HasModifier("modifier_chopping_wood_animation")
+    or target:HasModifier("modifier_chopping_building_animation")
+    or target:HasModifier("modifier_chopping_building")
+    or target:HasModifier("modifier_repairing")
     or target:HasModifier("modifier_returning_resources_on_order_cancel") then
 
     ToggleAbilityOff(target:FindAbilityByName("return_resources"))

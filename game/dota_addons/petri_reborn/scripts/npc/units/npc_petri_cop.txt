@@ -16,12 +16,12 @@
 
   "ConsideredHero"        "1"
 
-  "ArmorPhysical"    "228"
+  "ArmorPhysical"    "1488"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
-  "AttackDamageMin"    "322.0"
-  "AttackDamageMax"    "322.0"
+  "AttackDamageMin"    "228.0"
+  "AttackDamageMax"    "228.0"
 
   "BountyGoldMin"    "175.0"
   "BountyGoldMax"    "200.0"
@@ -33,8 +33,8 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "900"
-  "StatusHealthRegen"   "5"
+  "StatusHealth"    "2500"
+  "StatusHealthRegen"   "10"
   "StatusMana"    "25"
   "StatusManaRegen"    "0"
 

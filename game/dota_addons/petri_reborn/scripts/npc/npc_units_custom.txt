@@ -134,12 +134,12 @@
 	
 	  "ConsideredHero"        "1"
 	
-	  "ArmorPhysical"    "228"
+	  "ArmorPhysical"    "1488"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
-	  "AttackDamageMin"    "322.0"
-	  "AttackDamageMax"    "322.0"
+	  "AttackDamageMin"    "228.0"
+	  "AttackDamageMax"    "228.0"
 	
 	  "BountyGoldMin"    "175.0"
 	  "BountyGoldMax"    "200.0"
@@ -151,8 +151,8 @@
 	  "MovementSpeed"    "522"
 	  "MovementTurnRate"   "0.6"
 	
-	  "StatusHealth"    "900"
-	  "StatusHealthRegen"   "5"
+	  "StatusHealth"    "2500"
+	  "StatusHealthRegen"   "10"
 	  "StatusMana"    "25"
 	  "StatusManaRegen"    "0"
 	
@@ -273,8 +273,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "60000.0"
-	  "AttackDamageMax"     "72500.0"
+	  "AttackDamageMin"     "70000.0"
+	  "AttackDamageMax"     "75500.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -291,7 +291,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "23750"
+	  "StatusHealth"        "28750"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -517,6 +517,7 @@
 	  "ModelScale"                "2.4"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
+	  "HealthBarOffset"    "280"
 	  
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tree_explore"     
@@ -1271,6 +1272,7 @@
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
 	  "UnitLabel"         "npc_petri_tower_basic"
+	  "HealthBarOffset"    "180"
 	
 	  "AbilityLayout"     "4"
 	  "Ability1"        "petri_upgrade_basic_tower"
@@ -1346,8 +1348,8 @@
 	  "AttackDamageMax"            "300"
 	  "AttackRate"                 "0.8"
 	  "AttackAnimationPoint"       "0.75"
-	  "AttackAcquisitionRange"     "800"
-	  "AttackRange"                "900"
+	  "AttackAcquisitionRange"     "600"
+	  "AttackRange"                "700"
 	  "AttackRangeBuffer"          "250"
 	
 	  "ProjectileModel"            "particles/units/heroes/hero_pugna/pugna_base_attack.vpcf"
