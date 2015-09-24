@@ -246,7 +246,7 @@ function LoadUI()
 	GameEvents.Subscribe( "petri_set_shuffled_list", Shuffle );
 	GameEvents.Subscribe( "petri_end_shuffle", AssignTeams );
 
-	$.Schedule(1, LoadUI);
+	$.Schedule(2, LoadUI);
 
 	Game.PlayerJoinTeam( DOTATeam_t.DOTA_TEAM_NOTEAM );
 })();
