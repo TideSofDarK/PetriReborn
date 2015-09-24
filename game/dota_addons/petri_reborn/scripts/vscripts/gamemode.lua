@@ -1,9 +1,12 @@
 BAREBONES_DEBUG_SPEW = false
 
--- Settings time 
+-- Settings time
+
+PETRI_GAME_HAS_STARTED = false
+PETRI_GAME_HAS_ENDED = false
 
 PETRI_TIME_LIMIT = 96
-PETRI_EXIT_MARK = 24
+PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
 PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
 
@@ -15,25 +18,37 @@ START_MINI_ACTORS_GOLD = 15
 
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
+PETRI_MAX_WORKERS = 15
+
+DEFENCE_SCROLL_CHANCE = 98
+ATTACK_SCROLL_CHANCE = 94
+GOLD_COIN_CHANCE = 71
+WOOD_CHANCE = 53
+
 local FRIENDS_KVN = {}
+FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
 FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
+FRIENDS_KVN["41110316"] = "models/heroes/doom/doom.vmdl"
 
 local FRIENDS_PETRI = {}
 FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
 FRIENDS_KVN["63399181"] = "models/heroes/doom/doom.vmdl"
+FRIENDS_KVN["151765071"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
 
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
 end
 
+GameMode.PETRI_NAME_LIST = {}
+
 require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
 require('libraries/animations')
+--require('libraries/GameSetup')
 
-require('libraries/FlashUtil')
 require('libraries/buildinghelper')
 require('libraries/dependencies')
 require('buildings/bh_abilities')
@@ -41,6 +56,8 @@ require('buildings/bh_abilities')
 require('settings')
 require('internal/events')
 require('events')
+
+require('lottery')
 
 require('filters')
 require('commands')
@@ -66,27 +83,25 @@ function GameMode:OnHeroInGame(hero)
 
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
-  if hero:GetClassname() == "npc_dota_hero_viper" then
-    local team = hero:GetTeamNumber()
-    local player = hero:GetPlayerOwner()
-    local pID = player:GetPlayerID()
+  local team = hero:GetTeamNumber()
+  local player = hero:GetPlayerOwner()
+  local pID = player:GetPlayerID()
 
-    InitAbilities(hero)
-    DestroyEntityBasedOnHealth(hero,hero)
+  if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
+
+    hero.spawnPosition = hero:GetAbsOrigin()
 
     local newHero
 
     MoveCamera(pID, hero)
 
-    UTIL_Remove( hero )
-
      -- Init kvn fan
     if team == 2 then
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-       function() 
+        function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+          newHero = hero
 
           InitAbilities(newHero)
 
@@ -96,7 +111,7 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
           newHero:AddItemByName("item_petri_trap")
-
+          
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_KVN_GOLD, false)
@@ -104,6 +119,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+          newHero.numberOfUnits = 0
 
           newHero.buildingCount = 0
 
@@ -117,14 +133,24 @@ function GameMode:OnHeroInGame(hero)
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
 
+          GameMode.SELECTED_UNITS[pID] = {}
+          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
+
           for k,v in pairs(FRIENDS_KVN) do
             local id = tonumber(k)
 
             if PlayerResource:GetSteamAccountID(pID) == id then
               UpdateModel(newHero, v, 1)
+
+              for k,v in pairs(newHero:GetChildren()) do
+                if v:GetClassname() == "dota_item_wearable" then
+                  v:AddEffects(EF_NODRAW) 
+                end
+              end
             end
           end
-       end, pID)
+        end, 
+      pID)
     end
 
     local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -134,14 +160,16 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init petrosyan
     if team == 3 then
+      UTIL_Remove(hero) 
       PrecacheUnitByNameAsync(petrosyanHeroName,
        function() 
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(3)
+          newHero:SetAbilityPoints(4)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
@@ -149,6 +177,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
+
           SetupUI(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
@@ -157,11 +186,20 @@ function GameMode:OnHeroInGame(hero)
           PLAYER_COLORS[pID][2],
           PLAYER_COLORS[pID][3])
 
+          GameMode.SELECTED_UNITS[pID] = {} 
+          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
+
           for k,v in pairs(FRIENDS_PETRI) do
             local id = tonumber(k)
 
             if PlayerResource:GetSteamAccountID(pID) == id then
               UpdateModel(newHero, v, 1)
+
+              for k,v in pairs(newHero:GetChildren()) do
+                if v:GetClassname() == "dota_item_wearable" then
+                  v:AddEffects(EF_NODRAW) 
+                end
+              end
             end
           end
 
@@ -169,7 +207,7 @@ function GameMode:OnHeroInGame(hero)
             GameRules.explorationTowerCreated = true
             Timers:CreateTimer(0.2,
             function()
-              CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, nil, nil, DOTA_TEAM_BADGUYS )
+              GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
               end)
           end
        end, pID)
@@ -246,6 +284,20 @@ end
 ]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  PETRI_GAME_HAS_STARTED = true
+
+  Timers:CreateTimer((PETRI_FIRST_LOTTERY_TIME * 60),
+    function()
+      InitLottery()
+
+      Timers:CreateTimer((PETRI_LOTTERY_TIME * 60),
+      function()
+        InitLottery()
+
+        return (PETRI_LOTTERY_TIME * 60)
+      end)
+    end)
   
   Timers:CreateTimer((PETRI_EXIT_MARK * 60),
     function()
@@ -262,14 +314,27 @@ function GameMode:OnGameInProgress()
     function()
       PetrosyanWin()
     end)
+
+  -- Tips
+  Timers:CreateTimer(((PETRI_FIRST_LOTTERY_TIME - 2) * 60),
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
 end
 
 function GameMode:InitGameMode()
   GameMode = self
 
+  -- Timers:CreateTimer(function ( )
+  --   PauseGame(false)
+  --   if PETIR_GAME_HAS_STARTED == false then return 0.03 end
+  -- end)
+
   GameMode:_InitGameMode()
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
+
+  GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
 
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 
@@ -281,6 +346,21 @@ function GameMode:InitGameMode()
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
   GameMode.specialValues = {}
+  GameMode.buildingMenus = {}
+
+  GameMode.SELECTED_UNITS = {}
+
+  -- KVN Building menus
+  for k,menu in pairs(GameMode.BuildingMenusKVs) do
+    if type(menu) == "table" then
+      GameMode.buildingMenus[k] = {}
+      local i = 1
+      for k1,v1 in pairs(menu) do
+        GameMode.buildingMenus[k][i] = menu[tostring(i)]
+        i = i + 1
+      end
+    end
+  end
 
   -- Ability layouts
   for i=1,2 do
@@ -324,13 +404,13 @@ function GameMode:InitGameMode()
     end
   end
 
-  -- Some way to prevent controlling of disconnected players
+  -- Filter orders
   GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
   -- Fix hero bounties
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
 
-  -- Fix hero bounties
+  -- Fix hero xp bounties
   GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ModifyExperienceFilter"), GameMode)
 
   -- Commands
@@ -356,9 +436,11 @@ function GameMode:ReplaceWithMiniActor(player)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(3)
+      newHero:SetAbilityPoints(5)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()
@@ -371,16 +453,20 @@ end
 function KVNWin(keys)
   local caster = keys.caster
 
-  Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+  if PETRI_GAME_HAS_ENDED == false then
+    PETRI_GAME_HAS_ENDED = true
 
-  for i=1,10 do
-    PlayerResource:SetCameraTarget(i-1, caster)
+    Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+
+    for i=1,10 do
+      PlayerResource:SetCameraTarget(i-1, caster)
+    end
+
+    Timers:CreateTimer(5.0,
+      function()
+        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+      end)
   end
-
-  Timers:CreateTimer(5.0,
-    function()
-      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
-    end)
 end
 
 function PetrosyanWin()

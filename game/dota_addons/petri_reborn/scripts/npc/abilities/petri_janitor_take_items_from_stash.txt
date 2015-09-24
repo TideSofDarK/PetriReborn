@@ -1,0 +1,39 @@
+"petri_janitor_take_items_from_stash"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityCastPoint"        "0"
+  "AbilityCooldown"       "0"
+  "AbilityCastRange"        "100"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+  "MaxLevel"            "1"
+
+  "AbilityTextureName"      "courier_take_stash_items"
+
+  "AbilityManaCost"       "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/janitor.lua"
+      "Function"    "TakeItemsFromStash"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_on_order_cancel"
+    {
+      "IsHidden"        "1"
+      "OnOrder"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/janitor.lua"
+          "Function"    "CancelTransferItems"
+        }
+      }
+    }
+  }
+}

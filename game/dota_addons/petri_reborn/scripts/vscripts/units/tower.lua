@@ -137,23 +137,9 @@ function DeathTowerOnOrbImpact(keys)
 	local ability = keys.ability
 
 	if not target:IsMagicImmune() then
+		local modifierName = "modifier_death_tower_corruption"
 		local maxStacks = ability:GetLevelSpecialValueFor("armor_reduction_stacks", ability:GetLevel()-2)
 
-		local modifier = target:FindModifierByName("modifier_death_tower_corruption")
-		if modifier then
-			local stackCount = target:GetModifierStackCount("modifier_death_tower_corruption", caster)
-
-			target:RemoveModifierByName("modifier_death_tower_corruption")
-			keys.ability:ApplyDataDrivenModifier(keys.caster, target, "modifier_death_tower_corruption", {duration=10})
-
-			if (stackCount + 1) < maxStacks then
-				target:SetModifierStackCount("modifier_death_tower_corruption", caster, stackCount + 1)
-			else
-				target:SetModifierStackCount("modifier_death_tower_corruption", caster, maxStacks)
-			end
-		else
-			keys.ability:ApplyDataDrivenModifier(keys.caster, target, "modifier_death_tower_corruption", {duration=10})
-			target:SetModifierStackCount("modifier_death_tower_corruption", caster, 1)
-		end
+		AddStackableModifierWithDuration(target, target, ability, modifierName, 10, maxStacks)
 	end
 end

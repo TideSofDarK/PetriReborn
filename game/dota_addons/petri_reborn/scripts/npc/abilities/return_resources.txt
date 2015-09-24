@@ -23,10 +23,9 @@
 
   "Modifiers"
   {
-    "modifier_returning_resources"
+    "modifier_returning_resources_on_order_cancel"
     {
-      "IsHidden"        "0"
-      "TextureName"     "furion_sprout"
+      "IsHidden"        "1"
 
       "ThinkInterval"  "0.03"
       "OnIntervalThink"
@@ -43,15 +42,14 @@
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
-          "Function"    "ToggleOffGather"
-        }
-
-        "RunScript"
-        {
-          "ScriptFile"  "units/peasant.lua"
           "Function"    "ToggleOffReturn"
         }
-      }   
+      }  
+    }
+    "modifier_returning_resources"
+    {
+      "IsHidden"        "0"
+      "TextureName"     "furion_sprout"
     }
   }
 } 

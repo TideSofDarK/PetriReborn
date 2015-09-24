@@ -25,7 +25,7 @@
 		function UpdateTime()
 		{
 			var time = Math.floor( Game.GetDOTATime( false, false) );
-			$( "#Time" ).text = new Date(0, 0, 0, 0, 0, time ).toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, "$1");
+			$( "#Time" ).text = new Date(0, 0, 0, 0, 0, time ).toTimeString().replace(/.*(\d{2}:\d{2}).*/, "$1");
 
 			var daySec = time % 480;
 			if ( daySec > 240 )

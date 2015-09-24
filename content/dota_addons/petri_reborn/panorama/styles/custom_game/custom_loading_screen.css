@@ -11,6 +11,16 @@
 /*    overflow: clip;*/
 }
 
+#Placeholders
+{
+  flow-children: right;
+}
+
+.Placeholder
+{
+  margin-left: 10px;
+}
+
 #TitlePanel
 {
   horizontal-align: left;
@@ -28,6 +38,14 @@
   font-size: 80px;
   color: #cccccc;
   text-shadow: 2px 2px 2px #000000;
+}
+
+#SocialNetworks
+{
+  width: 750px;
+  height: 300px;
+  margin-top: 490px;
+  margin-left: 25px;
 }
 
 .TitleBackground

@@ -7,12 +7,14 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "5 10 15 30 35 45 55 75"
+  "AbilityGoldCost"       "5 10 18 29 40 53 65 80"
 
   "AbilityManaCost"       "0"
   
   "AbilityChannelTime"      "1.0"
   "AbilityUpgradeGoldCost"    "0"
+
+  "AbilityMultiOrder" "1"
 
   "MaxLevel"            "9"
 
@@ -26,7 +28,7 @@
     "02"
     { 
       "var_type"  "FIELD_INTEGER"
-      "lumber_cost" "1250 2500 5000 7500 10000 15000 20000 25000"
+      "lumber_cost" "1250 2250 4500 7000 10000 15000 20000 25000"
     }
   }
 

@@ -5,10 +5,13 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
   
   -- ITEMS
-  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+  PrecacheItemByNameSync("item_petri_pile_of_wood", context)
+  PrecacheItemByNameSync("item_petri_gold_coin", context)
   PrecacheItemByNameSync("item_petri_boots", context)
   PrecacheItemByNameSync("item_petri_hook", context)
   PrecacheItemByNameSync("item_petri_alcohol", context)
+  
+  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
   PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
 
   -- HEROES
@@ -18,10 +21,12 @@ function Precache( context )
   PrecacheResource("model_folder", "models/heroes/storm_spirit", context)
 
   -- UNITS
+  PrecacheResource("model", "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl", context)
+
   PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
   PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
 
-  PrecacheResource("model", "models/heroes/death_prophet/death_prophet_ghost.vmdl", context)
+  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
   PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)
@@ -67,7 +72,9 @@ function Precache( context )
   PrecacheResource("model", "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl", context)
   PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
   PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
-
+  PrecacheResource("model", "models/creeps/roshan/aegis.vmdl", context)
+  PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+  
   -- sawmill
   PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)
   PrecacheResource("model", "models/props_structures/good_barracks_ranged002_lvl2.vmdl", context)
@@ -87,7 +94,11 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_gold_bag", context)
   
   -- PARTICLES
+  PrecacheResource("particle", "particles/units/heroes/hero_tinker/tinker_laser.vpcf", context)
+  
   PrecacheResource("particle", "particles/buildinghelper/ghost_model.vpcf", context)
+  PrecacheResource("particle", "particles/buildinghelper/square_sprite.vpcf", context)
+  
   PrecacheResource("particle", "particles/econ/events/nexon_hero_compendium_2014/teleport_end_ground_flash_nexon_hero_cp_2014.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_base_attack.vpcf", context)
 

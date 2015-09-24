@@ -72,7 +72,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "77"
+      "upgrade_rate"      "74"
     }
     "02"
     {
@@ -138,6 +138,8 @@
   "BaseClass"       "ability_datadriven"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityTextureName"      "antimage_blink"
+
+  "MaxLevel" "1"
 
   "precache"
   {

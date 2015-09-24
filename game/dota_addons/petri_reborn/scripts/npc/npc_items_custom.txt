@@ -10,7 +10,7 @@
 	  "AbilityTextureName"      "item_petri_alcohol"
 	
 	  "AbilityCastPoint"              "0"
-	  "AbilityCooldown"       "125"
+	  "AbilityCooldown"       "100"
 	  "AbilityManaCost"       "0"
 	
 	  "ItemCost"            "250"
@@ -67,6 +67,88 @@
 	      "States"
 	      {
 	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	"item_petri_attack_scroll"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1980"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_attack_scroll"
+	
+	  "AbilityCastPoint"              "0"
+	  "AbilityCooldown"       "75"
+	  "AbilityManaCost"       "0"
+	
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemCost"            "525"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "scroll"
+	  "ItemInitialCharges" "1"
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	  "ItemKillable"          "1"
+	  "ItemSellable"          "0"
+	
+	  "SideShop" "1"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_legion_commander.vsndevts"
+	    "particle"  "particles/items_fx/aegis_timer_i.vpcf"
+	    "particle"  "particles/items_fx/aegis_respawn_aegis_starfall.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "attack_percentage_bonus"     "80"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"     "800"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "duration"     "10"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {     
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/attack_scroll.lua"
+	      "Function"    "ApplyBonusDamage"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_attack_scroll_active"
+	    {
+	      "Duration"                "%duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items_fx/aegis_respawn_aegis_starfall.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	          
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"    "%attack_percentage_bonus"
 	      }
 	    }
 	  }
@@ -301,7 +383,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "5"
+	      "bonus_all_stats"    "2"
 	    }
 	  }
 	  
@@ -438,12 +520,15 @@
 	  "AbilityCooldown"       "100"
 	  "AbilityManaCost"       "0"
 	
-	  "ItemCost"            "375"
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemCost"            "285"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "scroll"
 	  "ItemInitialCharges" "1"
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
+	  "ItemKillable"          "1"
+	  "ItemSellable"          "0"
 	
 	  "SideShop" "1"
 	
@@ -483,7 +568,7 @@
 	    {
 	      "Duration"                "%duration"
 	      "Passive"         "0"
-	      "IsHidden"          "1"
+	      "IsHidden"          "0"
 	      "IsBuff"          "1"
 	      "IsDebuff"          "0"
 	      "IsPurgable"        "0"
@@ -511,6 +596,15 @@
 	
 	  "ItemPermanent"         "0"
 	  "ItemSellable"                  "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max"    "2"
+	    }
+	  }
 	
 	  "OnSpellStart"
 	  {
@@ -549,6 +643,139 @@
 	    }
 	    "SpendCharge"
 	    {}
+	  }
+	}
+	"item_petri_gold_coin"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1978"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"                   "models/props_gameplay/gold_coin001.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_gold_coin"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "0"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "1"
+	  "ItemPermanent"       "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "0"
+	
+	  "ItemCastOnPickup" "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "gold_modifier"              "10"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {     
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/gold_coin.lua"
+	      "Function"    "Use"
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	}
+	"item_petri_grease"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1979"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"                   "models/props_gameplay/red_box.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_grease"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "100"
+	  "AbilityManaCost"       "0"
+	
+	  "ItemQuality"           "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemKillable"          "0"
+	  "ItemPurchasable"       "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "armor_reducing"    "-900"
+	    }
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "corruption_duration"    "1"
+	    }
+	    "03"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "duration"    "75"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {     
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_grease"
+	      "Target"     "CASTER"
+	      "Duration"    "%duration"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_grease"
+	    {
+	      "Duration"                "%duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "StatusEffectName"     "particles/status_fx/status_effect_stickynapalm.vpcf"
+	      "StatusEffectPriority" "9"
+	
+	      "OnAttackLanded"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/grease.lua"
+	          "Function"    "OnGreaseHit"
+	        }
+	      }
+	    }
+	
+	    "modifier_grease_corruption"
+	    {
+	      "Duration"              "%corruption_duration"
+	      "Passive"               "0"
+	      "IsHidden"              "0"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reducing"
+	      }
+	    }
 	  }
 	}
 	"item_petri_helmet"
@@ -613,7 +840,7 @@
 	    "particle"      "particles/units/heroes/hero_pudge/pudge_meathook_impact.vpcf"
 	  }
 	  
-	  "AbilityCastRange"        "1300"
+	  "AbilityCastRange"        "1950"
 	  "AbilityCastPoint"        "0.3"
 	  
 	  "AbilityCooldown"       "18.0"
@@ -635,7 +862,7 @@
 	    "03"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "hook_distance"   "1300"
+	      "hook_distance"   "1950"
 	    }
 	    "04"
 	    {
@@ -997,7 +1224,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kvn_medal"
 	
-	  "ItemCost"            "850"
+	  "ItemCost"            "6950"
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"
@@ -1150,10 +1377,23 @@
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1509"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_mega_sith"
+	
+	  "AbilityCastRange"              "600"
+	  "AbilityCastPoint"              "0.01"
+	
+	  "AbilityCooldown"               "80.0"
+	
+	  "AbilityDamage"                 "9"
+	
+	  "AbilityManaCost"               "750"
 	
 	  "ItemCost"            "0"
 	  "ItemShopTags"          "mana_pool;str"
@@ -1175,12 +1415,62 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_mana"    "5000"
+	      "bonus_mana"    "3000"
 	    }
 	    "04"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "dodge_chance"    "30"
+	      "dodge_chance"    "35"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "soundfile"                 "soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+	    "particle"                  "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
+	  }
+	  
+	  "OnAbilityPhaseStart"
+	  {
+	    "FireSound"
+	    {
+	      "Target"                "CASTER"
+	      "EffectName"            "Hero_Tinker.LaserAnim"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "Target"                "CASTER"
+	      "EffectName"            "Hero_Tinker.Laser"
+	    }
+	
+	    "TrackingProjectile"
+	    {
+	      "Target"                "TARGET"
+	      "EffectName"            "particles/units/heroes/hero_tinker/tinker_laser.vpcf"
+	      "MoveSpeed"             "1100"
+	      "Dodgeable"             "1"
+	      "ProvidesVision"        "0"
+	      "SourceAttachment"      "DOTA_PROJECTILE_ATTACHMENT_ATTACK_2"
+	    }
+	
+	    "Damage"
+	    {
+	      "Target"        "TARGET"
+	      "Damage"        "%AbilityDamage"
+	      "Type"          "DAMAGE_TYPE_PURE"
+	    }
+	  }
+	  
+	  "OnProjectileHitUnit"
+	  {
+	    "FireSound"
+	    {
+	      "Target"                "CASTER"
+	      "EffectName"            "Hero_Tinker.LaserImpact"
 	    }
 	  }
 	  
@@ -1229,6 +1519,52 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_stone_of_power;item_petri_supervest"
+	  }
+	}
+	"item_petri_pile_of_wood"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1977"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"                   "models/props_structures/m2_fence_01.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_pile_of_wood"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "0"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "1"
+	  "ItemPermanent"       "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"                "0"
+	
+	  "ItemCastOnPickup" "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "wood_modifier"              "195"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {     
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/pile_of_wood.lua"
+	      "Function"    "Use"
+	    }
+	    "SpendCharge" 
+	    {}
 	  }
 	}
 	"item_petri_magic_shield"
@@ -1524,7 +1860,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "24500"
+	      "bonus_damage"      "29500"
 	    }
 	  }
 	
@@ -1571,7 +1907,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_stone_of_power"
 	
-	  "ItemCost"            "5800"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          "str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "stone of power"
@@ -1773,7 +2109,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "110"
+	      "bonus_damage"      "145"
 	    }
 	  }
 	  
@@ -2063,7 +2399,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "15000"
+	      "bonus_damage"      "17000"
 	    }
 	  }
 	  
@@ -2110,7 +2446,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trap"
 	
-	  "ItemCost"            "425"
+	  "ItemCost"            "450"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -2123,7 +2459,7 @@
 	
 	  "AbilityCastRange" "250"
 	
-	  "AbilityCooldown"       "1.0"
+	  "AbilityCooldown"       "75.0"
 	
 	  "OnSpellStart"
 	  {
@@ -2483,8 +2819,8 @@
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
 	  "ItemInitialCharges"  "2"
-	  "ItemStackable"         "1"
-	  "ItemPermanent"         "0"
+	  "ItemStackable"       "1"
+	  "ItemPermanent"       "0"
 	
 	  "AbilityCastRange" "250"
 	
@@ -2501,6 +2837,21 @@
 	    "SpendCharge"
 	    {}
 	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_ward_invisibility"
+	    {
+	      "IsHidden"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  } 
 	}
 	"item_petri_zirconia_armor"
 	{
@@ -2521,7 +2872,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "6"
+	      "bonus_all_stats"    "5"
 	    }
 	    "02"
 	    {

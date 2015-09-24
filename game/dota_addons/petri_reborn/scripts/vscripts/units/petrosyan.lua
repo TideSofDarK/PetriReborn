@@ -2,16 +2,7 @@ function BonusGoldFromWall(keys)
 	if keys.target:GetUnitName() == "npc_petri_wall" then
 		PlayerResource:ModifyGold(keys.caster:GetPlayerOwnerID(), 1, false, 0)
 
-		POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-		local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-		local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, keys.caster)
-		local color = Vector(244,201,23)
-		local lifetime = 3.0
-	    local digits = #tostring(1) + 1
-	    
-	    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, 1, 0 ) )
-	    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
-	    ParticleManager:SetParticleControl(pidx, 3, color)
+		PlusParticle(1, Vector(244,201,23), 3.0, keys.caster)
 	end
 end
 
@@ -114,10 +105,12 @@ function Sleep(keys)
 		end
 	end
 
-	for i=0,target:GetModifierCount() do
-		local modifierName = target:GetModifierNameByIndex(i)
-		target:RemoveModifierByName(modifierName)
-	end
+	RemoveGatheringAndRepairingModifiers(target)
+
+	-- for i=0,target:GetModifierCount() do
+	-- 	local modifierName = target:GetModifierNameByIndex(i)
+	-- 	target:RemoveModifierByName(modifierName)
+	-- end
 end
 
 function Return( keys )
@@ -156,6 +149,8 @@ function SpawnWard(keys)
 
 	local ward = CreateUnitByName("npc_petri_ward", point,  true, nil, caster, DOTA_TEAM_BADGUYS)
 
+	keys.ability:ApplyDataDrivenModifier(caster, ward, "modifier_ward_invisibility", {})
+
 	InitAbilities(ward)
 	StartAnimation(ward, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
@@ -163,26 +158,22 @@ end
 function SpawnJanitor( keys )
 	local caster = keys.caster
 
-	local janitor = CreateUnitByName("npc_dota_courier", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
+	local janitor = CreateUnitByName("npc_petri_janitor", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_BADGUYS)
 	janitor:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+	janitor:SetOwner(caster)
 
-	UpdateModel(janitor, "models/heroes/death_prophet/death_prophet_ghost.vmdl", 1.0)
-	for i=0,15 do
-		if janitor:GetAbilityByIndex(i) ~= nil then janitor:RemoveAbility(janitor:GetAbilityByIndex(i):GetName())  end
-	end
+	-- UpdateModel(janitor, "models/heroes/death_prophet/death_prophet_ghost.vmdl", 1.0)
+	-- for i=0,15 do
+	-- 	if janitor:GetAbilityByIndex(i) ~= nil then janitor:RemoveAbility(janitor:GetAbilityByIndex(i):GetName())  end
+	-- end
 
-	janitor:AddAbility("courier_transfer_items")
-	janitor:AddAbility("petri_janitor_invisibility")
+	--janitor:AddAbility("courier_transfer_items")
 
-	janitor:GetAbilityByIndex(1):ApplyDataDrivenModifier(janitor, janitor, "modifier_beastmaster_hawk_invisibility", {})
-	
-	InitAbilities(janitor)
+	--InitAbilities(janitor)
 
+	janitor:SetHasInventory(true)
 	janitor:SetMoveCapability(2)
-
-	janitor:SetBaseMoveSpeed(522)
-
-	janitor.spawnPosition = caster:GetAbsOrigin()
+	janitor.spawnPosition = caster.spawnPosition
 end
 
 function ReadBookOfLaugh( keys )

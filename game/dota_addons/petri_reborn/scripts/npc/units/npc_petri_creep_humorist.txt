@@ -5,8 +5,6 @@
   "ModelScale"        "1.1"
   "Level"           "5"
   "HealthBarOffset"     "140"
-  
-  "PathfindingSearchDepthScale" "0.5"
 
   "ArmorPhysical"       "3"
   "MagicalResistance"     "0"
@@ -14,26 +12,24 @@
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
   "AttackDamageMin"     "14500.0"
-  "AttackDamageMax"     "14500.0"
+  "AttackDamageMax"     "17500.0"
   "AttackRate"        "0.5"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "45.0"
-  "BountyGoldMax"       "45.0"
+  "BountyGoldMin"       "39.0"
+  "BountyGoldMax"       "40.0"
   "BountyXP"          "150"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
-  "CollisionSize"       "31"
-  "FormationRank"       "0"
   
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "9875"
+  "StatusHealth"        "11875"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

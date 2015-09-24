@@ -23,8 +23,8 @@ function GameMode:OnGameRulesStateChange(keys)
   GameMode:_OnGameRulesStateChange(keys)
 end
 
-function GameMode:OnPause(keys)
-  --PrintTable(keys)
+function GameMode:OnPause(data)
+  PrintTable(data)
   PauseGame(false) 
 end
 
@@ -57,19 +57,22 @@ function GameMode:OnItemPickedUp(keys)
   DebugPrint( '[BAREBONES] OnItemPickedUp' )
   DebugPrintTable(keys)
 
-  local heroEntity = EntIndexToHScript(keys.HeroEntityIndex)
-  local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
-  local player = PlayerResource:GetPlayer(keys.PlayerID)
   local itemname = keys.itemname
+  local itemEntity = EntIndexToHScript(keys.ItemEntityIndex)
 
-  if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-    if CheckShopType(itemname) ~= 1 then
-      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+  if keys.HeroEntityIndex then
+    local heroEntity = EntIndexToHScript(keys.HeroEntityIndex)
+    local player = PlayerResource:GetPlayer(keys.PlayerID)
+
+    if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
+      if CheckShopType(itemname) ~= 1 then
+        heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+      end
     end
-  end
-  if player:GetTeam() == DOTA_TEAM_BADGUYS then 
-    if CheckShopType(itemname) == 1 then
-      heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+    if player:GetTeam() == DOTA_TEAM_BADGUYS then 
+      if CheckShopType(itemname) == 1 then
+        heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
+      end
     end
   end
 end
@@ -297,6 +300,11 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  if killedUnit.hasNumber == true then
+    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+    hero.numberOfUnits = hero.numberOfUnits - 1
+  end
+
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
@@ -353,6 +361,23 @@ function GameMode:OnEntityKilled( keys )
     if hero then
       hero.buildingCount = hero.buildingCount - 1
     end
+
+    local chance = math.random(1, 100)
+    if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
+      if chance > DEFENCE_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
+      elseif chance > ATTACK_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
+      elseif chance > GOLD_COIN_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
+      elseif chance > WOOD_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+      end
+    end
+  end
+
+  if killedUnit.childEntity then
+    UTIL_Remove(killedUnit.childEntity)
   end
   
   -- Petrosyn is killed
@@ -362,6 +387,7 @@ function GameMode:OnEntityKilled( keys )
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
+    killedUnit.teleportationState = 0
     killedUnit:SetTimeUntilRespawn(30.0)
     Timers:CreateTimer(30.0,
     function()
@@ -379,6 +405,10 @@ function GameMode:OnEntityKilled( keys )
     local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
 
     hero.food = hero.food - killedUnit.foodSpent
+  end
+
+  if string.match(killedUnit:GetUnitName (), "cop") then
+    GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].copIsPresent = false
   end
 
   if string.match(killedUnit:GetUnitName (), "peasant") then
@@ -494,4 +524,39 @@ function GameMode:OnNPCGoalReached(keys)
   local goalEntity = EntIndexToHScript(keys.goal_entindex)
   local nextGoalEntity = EntIndexToHScript(keys.next_goal_entindex)
   local npc = EntIndexToHScript(keys.npc_entindex)
+end
+
+function GameMode:OnPlayerSelectedEntities( event )
+  local pID = event.pID
+
+  GameMode.SELECTED_UNITS[pID] = event.selected_entities
+end
+
+function GameMode:OnPlayerSendName( event )
+  local pID = event.pID
+  local name = event.name
+
+  GameMode.PETRI_NAME_LIST[pID] = name
+end
+
+function GameMode:OnPlayerMakeBet( event )
+  local pID = event.pID
+  local bet = event.bet
+  local option = event.option
+
+  if GameMode.LOTTERY_STATE == 0 then
+    return false
+  end
+
+  GameMode.CURRENT_BANK = GameMode.CURRENT_BANK + bet
+
+  if not GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)] then 
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]           = {}
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]["option"] = option
+    GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]["bet"]    = bet
+  end
+
+  GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
+
+  CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
 end

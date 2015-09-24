@@ -482,6 +482,8 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
 	
+	  "AbilityMultiOrder" "1"
+	
 	  "AbilityCastPoint"        "0.1"
 	
 	  "OnAbilityPhaseStart"
@@ -500,6 +502,18 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_gather_lumber_rooted"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+	      "States"
+	      {
+	        //"MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
 	    "modifier_ability_gather_lumber_no_col"
 	    {
 	      "Passive"         "1"
@@ -530,12 +544,6 @@
 	
 	      "OnOrder"
 	      {
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }  
-	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -554,11 +562,6 @@
 	
 	      "OnOrder"
 	      { 
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }    
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -591,12 +594,6 @@
 	      "IsHidden"        "1"
 	      "OnOrder"
 	      {
-	        "RemoveModifier"
-	        {
-	          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-	          "Target"    "CASTER"
-	        }  
-	
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
@@ -607,7 +604,6 @@
 	    }
 	  }
 	}
-	// START OF BUILDING HELPER ABILITIES
 	"has_build_queue"
 	{
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
@@ -767,26 +763,29 @@
 	{
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
 	  "AbilityTextureName"      ""
 	  
 	  "Modifiers"
 	  {
-	    "unit_properties"
+	    "modifier_building"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"  
 	      "States"
 	      {
-	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
-	        //"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+	        //"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
 	      }
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
 	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "0.1"
 	      }
 	    }
 	  }
@@ -958,7 +957,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "10 9 8 8 8 7 6 5 4"
+	  "AbilityCooldown" "11 10 9 8 8 7 7 6 6"
 	
 	  "MaxLevel"            "9"
 	
@@ -1091,7 +1090,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "77"
+	      "upgrade_rate"      "74"
 	    }
 	    "02"
 	    {
@@ -1158,6 +1157,8 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "AbilityTextureName"      "antimage_blink"
 	
+	  "MaxLevel" "1"
+	
 	  "precache"
 	  {
 	    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
@@ -1209,7 +1210,7 @@
 	"petri_dummy_invisibility"
 	{
 	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityTextureName" "undying_tombstone"
@@ -1300,7 +1301,7 @@
 	      {
 	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_PROPERTY_PERSISTENT_INVISIBILITY"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }  
@@ -1357,6 +1358,114 @@
 	      }
 	    }
 	  }  
+	}
+	"petri_invulnerable_creep"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"      ""
+	  
+	  "Modifiers"
+	  {
+	    "modifier_invulnerable_creep"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"  
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "0.1"
+	      }
+	    }
+	  }
+	}
+	"petri_janitor_take_items_from_stash"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "100"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityTextureName"      "courier_take_stash_items"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/janitor.lua"
+	      "Function"    "TakeItemsFromStash"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_on_order_cancel"
+	    {
+	      "IsHidden"        "1"
+	      "OnOrder"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/janitor.lua"
+	          "Function"    "CancelTransferItems"
+	        }
+	      }
+	    }
+	  }
+	}
+	"petri_janitor_transfer_items"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityCastPoint"        "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityCastRange"        "100"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "MaxLevel"            "1"
+	
+	  "AbilityTextureName"      "courier_transfer_items"
+	
+	  "AbilityManaCost"       "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/janitor.lua"
+	      "Function"    "TransferItems"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_on_order_cancel"
+	    {
+	      "IsHidden"        "1"
+	      "OnOrder"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/janitor.lua"
+	          "Function"    "CancelTransferItems"
+	        }
+	      }
+	    }
+	  }
 	}
 	"petri_open_basic_buildings_menu"
 	{
@@ -1488,6 +1597,45 @@
 	    }
 	  }  
 	}
+	"petri_magic_immunity"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_magic_immunity"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS" "100"
+	      }
+	    }
+	  }  
+	}
+	"petri_mini_actor_phase"
+	{
+	  "BaseClass" "ability_datadriven"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  
+	  "Modifiers"
+	  {
+	    "modifier_mini_actor_phase"
+	    {
+	      "Passive"                   "1"
+	      "IsHidden"                  "1"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"      "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }  
+	}
 	"petri_petrosyan_explore"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -1566,33 +1714,33 @@
 		{
 			"modifier_flat_joke_datadriven"
 			{
-		    "Passive"   "1"
-		    "IsHidden"  "1"
+			    "Passive"   "1"
+			    "IsHidden"  "1"
 	
-		    "OnAttackStart"
-		    {
-	        "Random"
-	        {
-	          "Chance" 	"%crit_chance"
-	          "OnSuccess"
-	          {
-			        "LinearProjectile"
-							{
-						    "Target"		 	"ATTACKER"
-						    "EffectName"     	"particles/petri_flat_joke.vpcf"
-						    "MoveSpeed"      	"1100"
-						    "StartRadius"    	"110"
-						    "EndRadius"      	"300"
-						    "StartPosition"  	"follow_origin"
-						    "FixedDistance"  	"1000"
-						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
-						    "HasFrontalCone" 	"1"
-						    "ProvidesVision" 	"0"
+			    "OnAttackLanded"
+			    {
+			        "Random"
+			        {
+			        	"Chance" 	"%crit_chance"
+			        	"OnSuccess"
+			        	{
+			        		"LinearProjectile"
+			        		{
+			        			"Target"		 	"ATTACKER"
+							    "EffectName"     	"particles/petri_flat_joke.vpcf"
+							    "MoveSpeed"      	"1100"
+							    "StartRadius"    	"110"
+							    "EndRadius"      	"300"
+							    "StartPosition"  	"follow_origin"
+							    "FixedDistance"  	"1000"
+							    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
+							    "HasFrontalCone" 	"1"
+							    "ProvidesVision" 	"0"
 							}     
-	          }
-	        }
-		    }
+	          			}
+	        		}
+		    	}
 			}
 		}
 	
@@ -1605,7 +1753,7 @@
 				"Target"		 "TARGET"
 				"Type"			 "DAMAGE_TYPE_MAGICAL"
 				"Damage"		 "1"
-	    }
+	    	}
 		}
 	}
 	"petri_petrosyan_laugh_burst"
@@ -1938,6 +2086,8 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 	
+	  "AbilityMultiOrder" "1"
+	
 	  "OnAbilityPhaseStart"
 	  {
 	    "RunScript"
@@ -2060,6 +2210,11 @@
 	        }
 	      }
 	    }
+	
+	    "modifier_being_repaired"
+	    {
+	      "IsHidden"  "1"
+	    }
 	  }
 	}
 	"petri_suicide"
@@ -2073,11 +2228,17 @@
 	
 	  "precache"
 	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"    
 	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
 	  }
 	
 	  "OnSpellStart"
 	  {
+	    "FireSound"
+	    {
+	        "EffectName"    "Hero_Techies.Suicide"
+	        "Target"        "CASTER"
+	    }
 	    "FireEffect"
 	    {
 	      "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
@@ -2098,7 +2259,12 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "techies_stasis_trap"
-	  
+	
+	  "precache"
+	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"         
+	  }
+	
 	  "Modifiers"
 	  {
 	    "modifier_trap"
@@ -2126,6 +2292,11 @@
 	              "ScriptFile"  "units/trap.lua"
 	              "Function"    "AddTrap"
 	              "Target"  "TARGET"
+	            }
+	            "FireSound"
+	            {
+	              "EffectName"    "Hero_Techies.StasisTrap.Stun"
+	              "Target"        "TARGET"
 	            }
 	            "RemoveModifier"
 	            {
@@ -2636,7 +2807,7 @@
 	    "03"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "attack_rate"             "0 0 0 0 0 0 0"
+	      "attack_rate"             "10 15 20 25 35 45 50"
 	    }
 	    "04"
 	    {
@@ -2726,8 +2897,6 @@
 	      "Passive"       "0"
 	      "IsHidden"        "0"
 	      "IsDebuff"  "1"
-	
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	
 	      "StatusEffectName"     "particles/status_fx/status_effect_armor_dazzle.vpcf"
 	      "StatusEffectPriority" "9"
@@ -2836,6 +3005,216 @@
 	    }
 	  }
 	}
+	"petri_upgrade_earplugs"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_earplugs"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityGoldCost"       "50 75 100 125 175 250 420"
+	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1"
+	
+	  "MaxLevel"            "8"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "bonus_hp"  "4"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/lab.lua"
+	      "Function"        "EarplugUpgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_earplugs"
+	    {
+	      "Passive"         "0"
+	      "IsHidden"        "1"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE | MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
+	"petri_upgrade_exchange"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_exchange"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityManaCost"       "0"
+	  "AbilityGoldCost"       "0"
+	  "AbilityChannelTime"      "2.5"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilityGoldCost" "50"
+	
+	  "MaxLevel"            "2"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "2000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	      "Permanent"       "1"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	      "Permanent"       "1"
+	    }
+	  }
+	}
+	"petri_upgrade_eye"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_eye"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityManaCost"       "0"
+	  "AbilityGoldCost"       "1500"
+	  "AbilityChannelTime"      "5.5"
+	
+	  "MaxLevel"  "0"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/status_fx/status_effect_statue.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "50000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_upgraded_eye"
+	      "Target"     "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/exploration_tree.lua"
+	      "Function"        "Upgrade"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_upgraded_eye"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "StatusEffectName"     "particles/status_fx/status_effect_statue.vpcf"
+	      "StatusEffectPriority" "9"
+	
+	    }
+	  }
+	}
 	"petri_upgrade_gold_tower"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -2845,12 +3224,14 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "5 10 15 30 35 45 55 75"
+	  "AbilityGoldCost"       "5 10 18 29 40 53 65 80"
 	
 	  "AbilityManaCost"       "0"
 	  
 	  "AbilityChannelTime"      "1.0"
 	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilityMultiOrder" "1"
 	
 	  "MaxLevel"            "9"
 	
@@ -2864,7 +3245,7 @@
 	    "02"
 	    { 
 	      "var_type"  "FIELD_INTEGER"
-	      "lumber_cost" "1250 2500 5000 7500 10000 15000 20000 25000"
+	      "lumber_cost" "1250 2250 4500 7000 10000 15000 20000 25000"
 	    }
 	  }
 	
@@ -2909,7 +3290,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "50 100 175 275 400"
+	  "AbilityGoldCost"       "50 100 150 225 350"
 	  "AbilityChannelTime"      "2.8 2.9 3.0 3.1 3.2"
 	
 	  "MaxLevel"            "6"
@@ -3027,6 +3408,8 @@
 	  "AbilityGoldCost"       "0"
 	  "AbilityChannelTime"      "2.5"
 	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilityMultiOrder" "1"
 	
 	  "MaxLevel"            "4"
 	
@@ -3208,7 +3591,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "35000 70000 140000 200000"
+	      "lumber_cost"        "35000 70000 140000 285000"
 	    }
 	    "02"
 	    {
@@ -3268,6 +3651,31 @@
 	    }
 	  }
 	}
+	"petri_upgrade_to_cop"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_to_cop"
+	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
+	
+	  "AbilityGoldCost"       "50"
+	
+	  "MaxLevel"            "1"
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/cop.lua"
+	      "Function"        "SpawnCop"
+	    }
+	  }
+	}
 	"petri_upgrade_wall"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
@@ -3278,27 +3686,32 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "10"
+	  "MaxLevel"            "12"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0"
-	  "AbilityGoldCost"       "0 10 60 270 550 900 1500 3200 5750"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
+	  "AbilityGoldCost"       "0 10 60 290 690 900 1500 2800 4000 5900 8000"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+	  }
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000"
+	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000 50000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 800 1100 1450 2400 4400 6050"
+	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000 12500"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 350 875 1300 1700 2200 4000 6000 8000"
+	      "armor"        "125 295 820 1300 1950 2575 4000 5500 7000 9500 11000"
 	    }
 	  }
 	
@@ -3336,6 +3749,15 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_roshan_gold"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
+	      "StatusEffectPriority"  "10"
+	    }
 	    "modifier_wall_notification"
 	    {
 	      "Passive"      "1"
@@ -3387,10 +3809,9 @@
 	
 	  "Modifiers"
 	  {
-	    "modifier_returning_resources"
+	    "modifier_returning_resources_on_order_cancel"
 	    {
-	      "IsHidden"        "0"
-	      "TextureName"     "furion_sprout"
+	      "IsHidden"        "1"
 	
 	      "ThinkInterval"  "0.03"
 	      "OnIntervalThink"
@@ -3407,15 +3828,14 @@
 	        "RunScript"
 	        {
 	          "ScriptFile"  "units/peasant.lua"
-	          "Function"    "ToggleOffGather"
-	        }
-	
-	        "RunScript"
-	        {
-	          "ScriptFile"  "units/peasant.lua"
 	          "Function"    "ToggleOffReturn"
 	        }
-	      }   
+	      }  
+	    }
+	    "modifier_returning_resources"
+	    {
+	      "IsHidden"        "0"
+	      "TextureName"     "furion_sprout"
 	    }
 	  }
 	} 

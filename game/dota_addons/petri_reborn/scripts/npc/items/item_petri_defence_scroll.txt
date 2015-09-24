@@ -11,12 +11,15 @@
   "AbilityCooldown"       "100"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "375"
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemCost"            "285"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
   "ItemInitialCharges" "1"
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+  "ItemKillable"          "1"
+  "ItemSellable"          "0"
 
   "SideShop" "1"
 
@@ -56,7 +59,7 @@
     {
       "Duration"                "%duration"
       "Passive"         "0"
-      "IsHidden"          "1"
+      "IsHidden"          "0"
       "IsBuff"          "1"
       "IsDebuff"          "0"
       "IsPurgable"        "0"

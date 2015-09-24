@@ -10,6 +10,18 @@
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
     </Panel>
+
+    <Panel id="Placeholders" >
+      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+    </Panel>
+
+    <Panel id="SocialNetworks" >
+      <Image class="Placeholder" src="file://{images}/custom_game/sn/sn.png" />
+    </Panel>
+
     <Panel id="TitlePanel">
       <Label id="AddonTitle" text="#addon_game_name" style="" />
     </Panel>

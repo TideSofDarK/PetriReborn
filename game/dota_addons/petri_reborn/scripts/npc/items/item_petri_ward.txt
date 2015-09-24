@@ -12,8 +12,8 @@
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
   "ItemInitialCharges"  "2"
-  "ItemStackable"         "1"
-  "ItemPermanent"         "0"
+  "ItemStackable"       "1"
+  "ItemPermanent"       "0"
 
   "AbilityCastRange" "250"
 
@@ -30,4 +30,19 @@
     "SpendCharge"
     {}
   }
+
+  "Modifiers"
+  {
+    "modifier_ward_invisibility"
+    {
+      "IsHidden"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "States"
+      {
+        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  } 
 }

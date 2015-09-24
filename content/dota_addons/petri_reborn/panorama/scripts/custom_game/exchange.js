@@ -1,5 +1,6 @@
 'use strict';
 
+var upgrade = true;
 var curNum = -1;
 var endTime = 0;
 
@@ -23,7 +24,7 @@ function MakeBetClick()
 		return;
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
-	var bet = parseInt(betEntry.text, 5);
+	var bet = parseInt(betEntry.text);
 	var playerGold = Players.GetGold(Players.GetLocalPlayer());
 
 	if (bet <= playerGold)
@@ -34,8 +35,8 @@ function MakeBetClick()
 		var button = $( "#BetPanel" ).FindChild( "MakeBet" );
 		button.enabled = false;
 		button.SetHasClass("on_bet", true);
-
-  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "bet" : bet } );		
+		
+  		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "pID" : Players.GetLocalPlayer(), "bet" : bet, "option" : (curNum + 1) } );		
 	}
 }
 
@@ -55,20 +56,27 @@ function ClickNum()
 function UpdateCountdown()
 {
 	$( "#Countdown" ).text = endTime - Math.floor( Game.GetDOTATime( false, false) );
-	$.Schedule( 1.0, UpdateCountdown );
+	if (endTime - Math.floor( Game.GetDOTATime( false, false) ) >= 1) 
+	{
+		$.Schedule( 1.0, UpdateCountdown );
+	} 
 }
 
 function InitExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
+	if (upgrades == undefined)
+		return;
 
-	if (upgrades["petri_upgrade_exchange"] != undefined) 
+	if (upgrades["petri_upgrade_exchange"] == 1) 
 	{
+		upgrade = true;
+
 		//args = { "exchinge_time" : 180 };
 		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
 		UpdateCountdown();
 
-		$.GetContextPanel().style.visibility = "visible;";
+		$.GetContextPanel().style.width = "220px;";
 
 		$( "#Bank" ).text = 0;	
 
@@ -95,14 +103,14 @@ function InitExchange( args )
 
 function HidePanel()
 {
-	$.GetContextPanel().style.visibility = "collapse;";
+	$.GetContextPanel().style.width = "0px;";
 }
 
 function FinishExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
 
-	if (upgrades["petri_upgrade_exchange"] != undefined) 
+	if (upgrades["petri_upgrade_exchange"] == 1 && upgrade == true) 
 	{
 		//args = { "winner" : 2 };
 		var numbers = $( "#BetPanel" ).FindChild( "Companies" );

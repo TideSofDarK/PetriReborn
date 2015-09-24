@@ -10,6 +10,11 @@
 	//	"File"		"Example"
 	//	"Depth"		"50"
 	//}
+	"1"
+    {
+        "File"      "CustomUI" //for example: "UI1", if your swf file is called UI1.swf
+        "Depth"     "51"
+    }
 }
 
 // =============================================

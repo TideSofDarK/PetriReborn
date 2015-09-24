@@ -5,9 +5,7 @@
   "ModelScale"        "0.6"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "6"
-  "HealthBarOffset"     "140"
-  
-  "PathfindingSearchDepthScale" "0.5"
+  "HealthBarOffset"     "160"
 
   "ArmorPhysical"       "15"
   "MagicalResistance"     "0"
@@ -15,7 +13,7 @@
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
   "AttackDamageMin"     "60000.0"
-  "AttackDamageMax"     "65000.0"
+  "AttackDamageMax"     "72500.0"
   "AttackRate"        "0.3"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -27,14 +25,12 @@
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
-  "CollisionSize"       "31"
-  "FormationRank"       "0"
   
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "14750"
+  "StatusHealth"        "23750"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

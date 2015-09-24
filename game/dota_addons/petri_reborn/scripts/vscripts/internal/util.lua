@@ -1,3 +1,120 @@
+function PayGoldCost(ability)
+  local cost = ability:GetGoldCost(ability:GetLevel())
+  if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then
+    ability:PayGoldCost()
+    return true
+  else
+    return false
+  end
+end
+
+function FakeStopOrder( target )
+  local newOrder = {
+    UnitIndex       = target:entindex(),
+    OrderType       = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+    Position        = target:GetAbsOrigin(), 
+    Queue           = 0
+  }
+  ExecuteOrderFromTable(newOrder)
+end
+
+function UnitCanAttackTarget( unit, target )
+  if not unit:HasAttackCapability() 
+    or (target.IsInvulnerable and target:IsInvulnerable()) 
+    or (target.IsAttackImmune and target:IsAttackImmune()) 
+    or not unit:CanEntityBeSeenByMyTeam(target) then
+    return false
+  end
+
+  return true
+end
+
+function IsMultiOrderAbility( ability )
+  if IsValidEntity(ability) then
+    if not ability.GetAbilityName then return false end
+    local ability_name = ability:GetAbilityName()
+    local ability_table = GameMode.AbilityKVs[ability_name]
+
+    if not ability_table then
+      ability_table = GameMode.ItemKVs[ability_name]
+    end
+
+    if ability_table then
+      local AbilityMultiOrder = ability_table["AbilityMultiOrder"]
+      if AbilityMultiOrder and AbilityMultiOrder == 1 then
+        return true
+      end
+    else
+      print("Cant find ability table for "..ability_name)
+    end
+  end
+  return false
+end
+
+-- MODIFIERS
+function RemoveInvuModifiers(target)
+  target:RemoveModifierByName("modifier_item_petri_cola_active")
+  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_stats_datadriven")
+  target:RemoveModifierByName("modifier_item_petri_magic_shield_active")
+end
+
+function RemoveGatheringAndRepairingModifiers(target)
+  if target:HasModifier("modifier_returning_resources")
+    or target:HasModifier("modifier_chopping_wood")
+    or target:HasModifier("modifier_gathering_lumber")
+    or target:HasModifier("modifier_chopping_wood_animation")
+    or target:HasModifier("modifier_returning_resources_on_order_cancel") then
+
+    ToggleAbilityOff(target:FindAbilityByName("return_resources"))
+    ToggleAbilityOff(target:FindAbilityByName("gather_lumber"))
+    ToggleAbilityOff(target:FindAbilityByName("petri_repair"))
+
+    --cmdPlayer.activeBuilder:RemoveModifierByName("modifier_returning_resources")
+    target:RemoveModifierByName("modifier_chopping_wood")
+    target:RemoveModifierByName("modifier_gathering_lumber")
+    target:RemoveModifierByName("modifier_chopping_wood_animation")
+
+    target:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+
+    target:RemoveModifierByName("modifier_repairing")
+    target:RemoveModifierByName("modifier_chopping_building")
+    target:RemoveModifierByName("modifier_chopping_building_animation")
+  end
+end
+
+function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
+  local modifier = target:FindModifierByName(modifierName)
+  if modifier then
+    local stackCount = target:GetModifierStackCount(modifierName, caster)
+
+    target:RemoveModifierByName(modifierName)
+    ability:ApplyDataDrivenModifier(caster, target, modifierName, {duration=time})
+
+    if (stackCount + 1) <= maxStacks then
+      target:SetModifierStackCount(modifierName, caster, stackCount + 1)
+    else
+      target:SetModifierStackCount(modifierName, caster, stackCount)
+    end
+  else
+    ability:ApplyDataDrivenModifier(caster, target, modifierName, {duration=time})
+    target:SetModifierStackCount(modifierName, caster, 1)
+  end
+end
+-- MODIFIERS
+
+function PlusParticle(number, color, duration, caster)
+  POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
+  local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
+  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+  local color = color
+  local lifetime = duration
+  local digits = #tostring(number) + 1
+
+  ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, number, 0 ) )
+  ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
+  ParticleManager:SetParticleControl(pidx, 3, color)
+end
+
 -- NETTABLES
 function GetKeyInNetTable(pID, nettable, k)
   local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
@@ -82,7 +199,7 @@ end
 function CheckKVN()
   local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
   for k,v in pairs(kvns) do
-    if v:IsAlive() then return false end
+    if v:IsAlive() and PlayerResource:GetConnectionState(v:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then return false end
   end
   return true
 end
@@ -159,12 +276,14 @@ function StartUpgrading (event)
   local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
+  PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
+
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
-    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false then 
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false 
+    or PlayerResource:GetGold(pID) < gold_cost then
     Timers:CreateTimer(0.06,
       function()
-          PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
           caster:InterruptChannel()
       end
     )
@@ -177,6 +296,8 @@ function StartUpgrading (event)
     caster.lastSpentFood = food_cost
 
     caster.foodSpent = caster.foodSpent + food_cost
+
+    PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
     
     if not event["Permanent"] then
       ability:SetHidden(true)
