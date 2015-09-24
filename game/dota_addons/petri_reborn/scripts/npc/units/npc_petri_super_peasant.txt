@@ -14,10 +14,9 @@
   "Ability3"     "petri_gold_bag_blink"
   "Ability4"     "petri_suicide"
   "Ability5"     "build_petri_tower_of_evil"
-  "Ability6"     "petri_empty2"
-  "Ability7"     "petri_empty3"
-  "Ability8"     "petri_empty4"
-  "Ability9"     "return_resources"
+  "Ability6"     "petri_upgrade_to_cop"
+  "Ability7"     "return_resources"
+  "Ability8"     "petri_magic_immunity"
 
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
@@ -36,7 +35,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "220"
+  "StatusHealth"    "5"
   "StatusHealthRegen"   "0.25"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"

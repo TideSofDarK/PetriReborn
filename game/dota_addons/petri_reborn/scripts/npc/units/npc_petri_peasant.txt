@@ -12,7 +12,7 @@
   "Ability1"     "gather_lumber"
   "Ability2"     "return_resources"
   "Ability3"     "petri_suicide"
-  "Ability4"          "petri_empty4"
+  "Ability4"     "petri_upgrade_to_cop"
 
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
@@ -31,7 +31,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "220"
+  "StatusHealth"    "5"
   "StatusHealthRegen"   "0.25"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"

@@ -481,7 +481,7 @@
     "03"
     {
       "var_type"                "FIELD_INTEGER"
-      "attack_rate"             "0 0 0 0 0 0 0"
+      "attack_rate"             "10 15 20 25 35 45 50"
     }
     "04"
     {
@@ -571,8 +571,6 @@
       "Passive"       "0"
       "IsHidden"        "0"
       "IsDebuff"  "1"
-
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
       "StatusEffectName"     "particles/status_fx/status_effect_armor_dazzle.vpcf"
       "StatusEffectPriority" "9"

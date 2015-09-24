@@ -9,11 +9,17 @@
 
   "precache"
   {
+    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"    
     "particle"    "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
   }
 
   "OnSpellStart"
   {
+    "FireSound"
+    {
+        "EffectName"    "Hero_Techies.Suicide"
+        "Target"        "CASTER"
+    }
     "FireEffect"
     {
       "EffectName"        "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"

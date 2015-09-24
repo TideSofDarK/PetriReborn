@@ -2,15 +2,15 @@
 {
   "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
-  "ModelScale"        "0.6"
+  "ModelScale"        "0.5"
   "Level"           "0"
   "HealthBarOffset"       "200"
   "HasInventory"        "1"
 
-  "AbilityLayout"       "4"
-  "Ability1"          "building_queue"
-  "Ability2"          "petri_building"
-  "Ability3"          "petri_upgrade_sawmill"
+  "AbilityLayout"       "5"
+  "Ability1"          "petri_building"
+  "Ability2"          "petri_upgrade_sawmill"
+  "Ability3"          "building_queue"
 
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"

@@ -29,33 +29,33 @@
 	{
 		"modifier_flat_joke_datadriven"
 		{
-	    "Passive"   "1"
-	    "IsHidden"  "1"
+		    "Passive"   "1"
+		    "IsHidden"  "1"
 
-	    "OnAttackStart"
-	    {
-        "Random"
-        {
-          "Chance" 	"%crit_chance"
-          "OnSuccess"
-          {
-		        "LinearProjectile"
-						{
-					    "Target"		 	"ATTACKER"
-					    "EffectName"     	"particles/petri_flat_joke.vpcf"
-					    "MoveSpeed"      	"1100"
-					    "StartRadius"    	"110"
-					    "EndRadius"      	"300"
-					    "StartPosition"  	"follow_origin"
-					    "FixedDistance"  	"1000"
-					    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
-					    "HasFrontalCone" 	"1"
-					    "ProvidesVision" 	"0"
+		    "OnAttackLanded"
+		    {
+		        "Random"
+		        {
+		        	"Chance" 	"%crit_chance"
+		        	"OnSuccess"
+		        	{
+		        		"LinearProjectile"
+		        		{
+		        			"Target"		 	"ATTACKER"
+						    "EffectName"     	"particles/petri_flat_joke.vpcf"
+						    "MoveSpeed"      	"1100"
+						    "StartRadius"    	"110"
+						    "EndRadius"      	"300"
+						    "StartPosition"  	"follow_origin"
+						    "FixedDistance"  	"1000"
+						    "TargetTeams"    	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
+						    "HasFrontalCone" 	"1"
+						    "ProvidesVision" 	"0"
 						}     
-          }
-        }
-	    }
+          			}
+        		}
+	    	}
 		}
 	}
 
@@ -68,6 +68,6 @@
 			"Target"		 "TARGET"
 			"Type"			 "DAMAGE_TYPE_MAGICAL"
 			"Damage"		 "1"
-    }
+    	}
 	}
 }

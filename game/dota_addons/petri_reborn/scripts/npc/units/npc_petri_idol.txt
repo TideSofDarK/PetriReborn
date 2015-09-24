@@ -10,7 +10,8 @@
   "vscripts"                    "units/idol.lua"
 
   "AbilityLayout"       "4"
-  "Ability1"          "petri_building"
+  "Ability1"          "petri_buy_lumber"
+  "Ability2"          "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"

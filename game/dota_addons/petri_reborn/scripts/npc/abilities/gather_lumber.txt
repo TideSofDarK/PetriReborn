@@ -8,6 +8,8 @@
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_BOTH"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_TREE | DOTA_UNIT_TARGET_BUILDING"
 
+  "AbilityMultiOrder" "1"
+
   "AbilityCastPoint"        "0.1"
 
   "OnAbilityPhaseStart"
@@ -26,6 +28,18 @@
 
   "Modifiers"
   {
+    "modifier_gather_lumber_rooted"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+      "States"
+      {
+        //"MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
     "modifier_ability_gather_lumber_no_col"
     {
       "Passive"         "1"
@@ -56,12 +70,6 @@
 
       "OnOrder"
       {
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-          "Target"    "CASTER"
-        }  
-
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
@@ -80,11 +88,6 @@
 
       "OnOrder"
       { 
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-          "Target"    "CASTER"
-        }    
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
@@ -117,12 +120,6 @@
       "IsHidden"        "1"
       "OnOrder"
       {
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_ability_gather_lumber_no_col"
-          "Target"    "CASTER"
-        }  
-
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"

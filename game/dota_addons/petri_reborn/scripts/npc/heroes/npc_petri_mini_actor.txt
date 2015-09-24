@@ -11,6 +11,8 @@
   "Ability2"        "petri_petrosyan_laugh_burst" 
   "Ability3"        "petri_petrosyan_wind_walk"
   "Ability4"        "petri_petrosyan_return"
+  "Ability5"        "petri_exploration_tower_explore_world"
+  "Ability6"        "petri_mini_actor_phase"
 
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"

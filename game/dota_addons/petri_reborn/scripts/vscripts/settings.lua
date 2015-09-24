@@ -5,8 +5,8 @@ ENABLE_HERO_RESPAWN = false              -- Should the heroes automatically resp
 UNIVERSAL_SHOP_MODE = false             -- Should the main shop contain Secret Shop items as well as regular items
 ALLOW_SAME_HERO_SELECTION = true        -- Should we let people select the same hero as each other
 
-HERO_SELECTION_TIME = 5.0              -- How long should we let people select their hero?
-PRE_GAME_TIME = 5.0                    -- How long after people select their heroes should the horn blow and the game start?
+HERO_SELECTION_TIME = 0.0              -- How long should we let people select their hero?
+PRE_GAME_TIME = 0.0                    -- How long after people select their heroes should the horn blow and the game start?
 POST_GAME_TIME = 10.0                   -- How long should we let people look at the scoreboard before closing the server automatically?
 TREE_REGROW_TIME = 60.0                 -- How long should it take individual trees to respawn after being cut down/destroyed?
 
@@ -57,7 +57,7 @@ SHOW_ONLY_PLAYER_INVENTORY = false      -- Should we only allow players to see t
 DISABLE_STASH_PURCHASING = false        -- Should we prevent players from being able to buy items into their stash when not at a shop?
 DISABLE_ANNOUNCER = false               -- Should we disable the announcer from working in the game?
 
-FORCE_PICKED_HERO = "npc_dota_hero_viper"				-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
+FORCE_PICKED_HERO = "npc_dota_hero_rattletrap"				-- What hero should we force all players to spawn as? (e.g. "npc_dota_hero_axe").  Use nil to allow players to pick their own hero.
 
 FIXED_RESPAWN_TIME = 20                 -- What time should we use for a fixed respawn timer?  Use -1 to keep the default dota behavior.
 FOUNTAIN_CONSTANT_MANA_REGEN = -1       -- What should we use for the constant fountain mana regen?  Use -1 to keep the default dota behavior.
@@ -98,9 +98,11 @@ PLAYER_COLORS[8]  = { 58.43 * 2.55, 58.82 * 2.55, 59.21 * 2.55 }
 PLAYER_COLORS[9]  = { 49.41 * 2.55, 74.90 * 2.55, 94.51 * 2.55 }
 PLAYER_COLORS[10]  = { 29.41 * 2.55, 74.90 * 2.55, 54.51 * 2.55 }
 PLAYER_COLORS[11]  = { 89.41 * 2.55, 4.90 * 2.55, 34.51 * 2.55 }
+PLAYER_COLORS[12]  = { 40.41 * 2.55, 40.90 * 2.55, 1.51 * 2.55 }
+PLAYER_COLORS[13]  = { 9.41 * 2.55, 4.90 * 2.55, 85.51 * 2.55 }
 
 USE_AUTOMATIC_PLAYERS_PER_TEAM = false   -- Should we set the number of players to 10 / MAX_NUMBER_OF_TEAMS?
 
 CUSTOM_TEAM_PLAYER_COUNT = {}           -- If we're not automatically setting the number of players per team, use this table
-CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 10
+CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_GOODGUYS] = 12
 CUSTOM_TEAM_PLAYER_COUNT[DOTA_TEAM_BADGUYS]  = 2

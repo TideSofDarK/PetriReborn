@@ -10,6 +10,13 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	if hero.numberOfUnits >= PETRI_MAX_WORKERS then
+		Notifications:Top(caster:GetPlayerOwnerID(),{text="#max_number_of_workers", duration=3, style={color="red"}, continue=false})
+		return false
+	end
+
 	-- Initialize queue
 	if not ability.queue then
 		ability.queue = {}
@@ -51,10 +58,13 @@ function SetOwner( event )
 	local caster = event.caster
 	local target = event.target
 
-	print(tonumber(event.food))
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
 	target.foodSpent = tonumber(event.food)
-	target:SetOwner(caster:GetOwner())
+	target:SetOwner(hero)
+
+	target.hasNumber = true
+	hero.numberOfUnits = hero.numberOfUnits + 1
 end
 
 -- Destroys an item on the buildings inventory, refunding full cost of purchasing and reordering the queue

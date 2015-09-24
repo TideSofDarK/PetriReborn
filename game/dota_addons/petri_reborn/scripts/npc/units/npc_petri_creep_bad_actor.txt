@@ -6,8 +6,6 @@
   "Level"           "1"
   "HealthBarOffset"     "140"
   "GameSoundsFile"      "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
-  
-  "PathfindingSearchDepthScale" "0.5"
 
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
@@ -27,8 +25,6 @@
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
-  "CollisionSize"       "31"
-  "FormationRank"       "0"
   
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"       "270"

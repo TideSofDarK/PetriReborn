@@ -3,8 +3,9 @@ function Spawn( keys )
 	thisEntity:SetAngles(0, -90, 0)
 
 	Timers:CreateTimer(tonumber(GameMode.AbilityKVs["build_petri_lab"]["BuildTime"]) + 0.1, function()
-		local pID = thisEntity:GetPlayerOwnerID()
-		if pID ~= -1 then
+		if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
+			local pID = thisEntity:GetPlayerOwnerID()
+
 			local level = GetUpgradeLevelForPlayer("petri_upgrade_concrete", pID)
 			thisEntity:FindAbilityByName("petri_upgrade_concrete"):SetLevel(level+1)
 			HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_concrete"))
@@ -92,4 +93,18 @@ function ApplyArmorAura(event)
 			end
 		end
 	end
+end
+
+function EarplugUpgrade( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+	--hero:RemoveModifierByName("modifier_earplugs")
+	--if not hero:FindModifierByName("modifier_earplugs") then
+	ability:ApplyDataDrivenModifier(hero, hero, "modifier_earplugs", {})
+	--end
+
+	hero:SetModifierStackCount("modifier_earplugs", hero, ability:GetLevel())
 end

@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_trap"
 
-  "ItemCost"            "425"
+  "ItemCost"            "450"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -20,7 +20,7 @@
 
   "AbilityCastRange" "250"
 
-  "AbilityCooldown"       "1.0"
+  "AbilityCooldown"       "75.0"
 
   "OnSpellStart"
   {

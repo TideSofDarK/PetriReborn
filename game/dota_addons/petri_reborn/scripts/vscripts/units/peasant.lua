@@ -22,8 +22,6 @@ function Gather( event )
 			print("Moving to ", target_class)
 		end
 		caster.target_tree = target
-
-
 	end
 
 	caster:RemoveModifierByName("modifier_gathering_lumber")
@@ -33,13 +31,6 @@ function Gather( event )
 	if ability:GetToggleState() == false then
 		ability:ToggleAbility()
 	end
-
-	-- Hide Return
-	--local return_ability = caster:FindAbilityByName("return_resources")
-	--return_ability:SetHidden(true)
-	--ability:SetHidden(false)
-
-	--caster:SwapAbilities("gather_lumber", "return_resources" , true, false)
 
 	if Debug_Peasant then
 		print("Gather ON, Return OFF")
@@ -58,6 +49,9 @@ function ToggleOffGather( event )
 		if event["arg"] then
 			caster:RemoveModifierByName(event["arg"])
 		end
+
+		caster:RemoveModifierByName("modifier_ability_gather_lumber_no_col")
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 		
 		caster.target_tree.worker = nil
 
@@ -78,13 +72,15 @@ function ToggleOffReturn( event )
 	
 	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
 	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
+		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
+
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
 			if Debug_Peasant then
 				print("Toggled Off Return")
 			end
 		end
-		caster.skip_order = false
 	end
 end
 
@@ -97,7 +93,6 @@ function CheckTreePosition( event )
 
 	if target_class == "ent_dota_tree" then
 		caster:MoveToPosition(target:GetAbsOrigin())
-		--print("Moving to "..target_class)
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
@@ -107,9 +102,12 @@ function CheckTreePosition( event )
 	elseif not caster:HasModifier("modifier_chopping_wood") then
 		caster:RemoveModifierByName("modifier_gathering_lumber")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_wood", {})
-		if Debug_Peasant then
-			print("Reached tree")
-		end
+
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_gather_lumber_rooted", {})
+
+		-- Timers:CreateTimer(0.06, function ()
+		-- 	caster:RemoveModifierByName("modifier_gather_lumber_rooted")
+		-- end)	
 	end
 end
 
@@ -151,35 +149,13 @@ function Gather100Lumber( event )
 	-- Increase up to the max, or cancel
 	if caster.lumber_gathered < max_lumber_carried then
 
-		-- Fake Toggle the Return ability
-		if return_ability:GetToggleState() == false or return_ability:IsHidden() then
-			if Debug_Peasant then
-				print("Gather OFF, Return ON")
-			end
-			--return_ability:SetHidden(false)
-			if return_ability:GetToggleState() == false then
-				return_ability:ToggleAbility()
-			end
-			--ability:SetHidden(true)
-
-			if  caster:FindAbilityByName("gather_lumber"):IsHidden() and
-				 caster:FindAbilityByName("return_resources"):IsHidden() then
-
-			else
-				caster:SwapAbilities("gather_lumber", "return_resources", false, true)
-			end
-			
-		end
 	else
 		local player = caster:GetPlayerOwnerID()
 
 		caster:RemoveModifierByName("modifier_chopping_wood")
-
-		-- Return Ability On		
+		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
+	
 		caster:CastAbilityNoTarget(return_ability, player)
-		return_ability:ToggleAbility()
-
-		
 	end
 end
 
@@ -199,8 +175,10 @@ function ReturnResources( event )
 
 		-- Set On, Wait one frame, as OnOrder gets executed before this is applied.
 		Timers:CreateTimer(0.03, function() 
+			ability:ApplyDataDrivenModifier(caster, caster, "modifier_returning_resources_on_order_cancel", {})
 			if ability:GetToggleState() == false then
 				ability:ToggleAbility()
+
 				if Debug_Peasant then
 					print("Return Ability Toggled On")
 				end
@@ -210,8 +188,8 @@ function ReturnResources( event )
 		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
 		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
 
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_TARGET, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
-		caster.skip_order = true
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
+
 		caster.target_building = building
 	end
 end
@@ -237,6 +215,7 @@ function CheckBuildingPosition( event )
 	if collision and hero then
 		local pID = hero:GetPlayerID()
 		caster:RemoveModifierByName("modifier_returning_resources")
+		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
 		if Debug_Peasant then
 			print("Removed modifier_returning_resources")
 		end
@@ -249,31 +228,11 @@ function CheckBuildingPosition( event )
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
-			-- Green Particle Lumber Popup
-			POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-			local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-			local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
-			local color = Vector(10, 200, 90)
-			local lifetime = 3.0
-		    local digits = #tostring(lumber_gathered) + 1
+		    PlusParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
 		    
-		    ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, lumber_gathered, 0 ) )
-		    ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
-		    ParticleManager:SetParticleControl(pidx, 3, color)
-
+		    EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "ui.inv_pickup_wood", caster) 
 		   
 			hero.lumber = hero.lumber + lumber_gathered 
-    		--print("Lumber Gained. " .. hero:GetUnitName() .. " is currently at " .. hero.lumber)
-    		--FireGameEvent('cgm_player_lumber_changed', { player_ID = pID, lumber = hero.lumber })
-
-    		if caster:FindAbilityByName("gather_lumber"):IsHidden() and
-				caster:FindAbilityByName("return_resources"):IsHidden() then
-
-			else
-				caster:SwapAbilities("gather_lumber", "return_resources", true, false)
-			end
-
-    		
 		end
 
 		-- Return Ability Off
@@ -413,6 +372,7 @@ function ToggleOffRepairing( event )
 
 	if repair_ability:GetToggleState() == true then
 		repair_ability:ToggleAbility()
+
 		if Debug_Peasant then
 			print("Toggled Off Repairing")
 		end
@@ -440,8 +400,16 @@ function RepairBy1Percent( event )
 	local maxHealth = target:GetMaxHealth()
 
 	if health < maxHealth then
+		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
+			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
-		target:SetHealth(health + 25)
+			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
+			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
+
+			target:Heal(healAmount, caster)
+		else
+			--caster:Stop()
+		end
 	else
 		local player = caster:GetPlayerOwner():GetPlayerID()
 
@@ -469,18 +437,20 @@ function Spawn( t )
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
 
 		local distance = 9999
+		local z = 10
 		local closest_tree = nil
 		local position = thisEntity:GetAbsOrigin()
 
 		if trees then
 			for k, v in pairs(trees) do
 				local this_distance = (position - v:GetAbsOrigin()):Length()
+				local this_z = math.abs(v:GetAbsOrigin()["3"] - position["3"])
 
-				if this_distance < distance then
+				if this_z < 10 and this_distance < distance  then
 					distance = this_distance
-					--if v.worker == nil then
-						closest_tree = v
-					--end
+					z = this_z
+
+					closest_tree = v
 				end
 			end
 

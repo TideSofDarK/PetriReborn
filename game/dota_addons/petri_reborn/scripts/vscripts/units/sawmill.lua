@@ -19,10 +19,10 @@ function Upgrade (event)
 
 		caster:GetPlayerOwner().sawmill_3 = true
 
-		caster:AddAbility("train_petri_super_peasant")
-		caster:AddAbility("petri_buy_lumber")
-
 		caster:RemoveAbility(ability:GetName())
+
+		caster:AddAbility("train_petri_super_peasant")
+		caster:AddAbility("petri_upgrade_exchange")
 	end
 
 	InitAbilities(caster)
@@ -36,9 +36,9 @@ function GetModelNameForLevel(level)
 	end
 end
 
-function BuyLumber(event)
-	local caster = event.caster
-	local ability = event.ability
+function BuyLumber(keys)
+	local caster = keys.caster
+	local ability = keys.ability
 
 	local lumber = ability:GetSpecialValueFor("lumber")
 

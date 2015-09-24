@@ -80,7 +80,7 @@ function CheckSpellCost()
 
     return !(manaCost > Entities.GetMana( m_QueryUnit ) ||
     	lumberCost > currentResources["lumber"] ||
-    	currentResources["maxFood"] < currentResources["food"] + foodCost ||
+    	(foodCost != 0 && currentResources["maxFood"] < currentResources["food"] + foodCost) ||
     	goldCost > gold);
 }
 

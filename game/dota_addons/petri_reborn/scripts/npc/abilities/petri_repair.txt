@@ -8,6 +8,8 @@
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 
+  "AbilityMultiOrder" "1"
+
   "OnAbilityPhaseStart"
   {
     "RunScript"
@@ -129,6 +131,11 @@
           "Function"    "ToggleOffRepairing"
         }
       }
+    }
+
+    "modifier_being_repaired"
+    {
+      "IsHidden"  "1"
     }
   }
 }
