@@ -453,7 +453,7 @@ function KVNWin(keys)
 
     Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
-    for i=1,10 do
+    for i=1,14 do
       PlayerResource:SetCameraTarget(i-1, caster)
     end
 
