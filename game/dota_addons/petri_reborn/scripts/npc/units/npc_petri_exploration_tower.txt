@@ -5,7 +5,7 @@
   "ModelScale"                "0.8"
   "Level"           "1"
 
-  "HealthBarOffset"    "200"
+  "HealthBarOffset"    "290"
 
   "AbilityLayout"       "4"
   "Ability1"          "petri_exploration_tower_explore_world"

@@ -12,7 +12,20 @@ function AddNotification(msg, panel) {
   //$.Msg(msg)
 
   msg.continue = msg.continue || false;
-  //msg.continue = true;
+
+  if (msg.disabled_players != undefined) {
+    for (var i = 0; i < 12; i++) {
+      if (msg.disabled_players[i] != undefined && parseInt(msg.disabled_players[i]) == Players.GetLocalPlayer()) {
+        return false;
+      }
+    }
+  }
+
+  if (msg.loc_check == true) {
+    if ($.Localize(msg.text) == msg.text.replace("#", "")) {
+      return false;
+    }
+  }
 
   if (lastNotification != null && msg.continue) 
     newNotification = false;

@@ -177,7 +177,7 @@ end
 
 function Notifications:TopToTeam(team, table)
   if table.text ~= nil then
-    CustomGameEventManager:Send_ServerToTeam(team, "top_notification", {text=table.text, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
+    CustomGameEventManager:Send_ServerToTeam(team, "top_notification", {disabled_players = table.disabled_players, loc_check = table.loc_check, text=table.text, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
   elseif table.hero ~= nil then
     CustomGameEventManager:Send_ServerToTeam(team, "top_notification", {hero=table.hero, imagestyle=table.imagestyle, duration=table.duration, class=table.class, style=table.style, continue=table.continue} )
   elseif table.image ~= nil then

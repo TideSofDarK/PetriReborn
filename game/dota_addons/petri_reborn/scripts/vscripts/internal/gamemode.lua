@@ -101,6 +101,10 @@ function GameMode:_InitGameMode()
 
   CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
 
+  -- Player said something
+  CustomGameEventManager:RegisterListener( "player_chat", Dynamic_Wrap(GameMode, 'OnPlayerSay'))
+  ListenToGameEvent("player_chat", Dynamic_Wrap(GameMode, 'OnPlayerSay'), self)
+
   -- Game Setup
   CustomGameEventManager:RegisterListener( "petri_game_setup_shuffle", Dynamic_Wrap(GameSetup, 'Shuffle'))
 

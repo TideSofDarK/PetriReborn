@@ -2,6 +2,8 @@ BAREBONES_DEBUG_SPEW = false
 
 -- Settings time
 
+DISABLED_HINTS_PLAYERS = {}
+
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
@@ -320,6 +322,16 @@ function GameMode:OnGameInProgress()
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
+
+  -- Petrosyan tutorial
+  tutorial_time = 0
+  Timers:CreateTimer(
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {disabled_players = DISABLED_HINTS_PLAYERS, loc_check = true, text="#petrosyans_tip_"..tostring(tutorial_time), duration=10, style={color="white", ["font-size"]="45px"}})
+
+      tutorial_time = tutorial_time + 5
+      return 5
+    end)
 end
 
 function GameMode:InitGameMode()
@@ -416,7 +428,7 @@ function GameMode:InitGameMode()
   BuildingHelper:Init()
 end
 
-function GameMode:ReplaceWithMiniActor(player)
+function GameMode:ReplaceWithMiniActor(player, gold)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
 
@@ -424,9 +436,10 @@ function GameMode:ReplaceWithMiniActor(player)
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD, 0)
-      GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
 
+      GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
+      
       newHero:SetTeam(DOTA_TEAM_BADGUYS)
 
       newHero:RespawnHero(false, false, false)
@@ -453,7 +466,7 @@ function KVNWin(keys)
 
     Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
-    for i=1,14 do
+    for i=1,12 do
       PlayerResource:SetCameraTarget(i-1, caster)
     end
 

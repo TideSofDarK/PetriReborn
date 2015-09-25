@@ -171,7 +171,7 @@
 	}
 	"npc_petri_creep_bad_actor"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "1"
@@ -216,12 +216,14 @@
 	}
 	"npc_petri_creep_dead_actor"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/items/undying/idol_of_ruination/ruin_wight_minion_gold.vmdl"
 	  "ModelScale"        "1.2"
 	  "SoundSet"          "Creep_Good_Melee"  
 	  "Level"           "3"
 	  "HealthBarOffset"     "140"
+	
+	  "Ability1"  "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "2"
 	  "MagicalResistance"     "0"
@@ -261,12 +263,14 @@
 	}
 	"npc_petri_creep_draconoid"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl"
 	  "ModelScale"        "0.6"
 	  "SoundSet"          "Creep_Good_Range"
 	  "Level"           "6"
 	  "HealthBarOffset"     "160"
+	
+	  "Ability1"  "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "15"
 	  "MagicalResistance"     "0"
@@ -306,7 +310,7 @@
 	}
 	"npc_petri_creep_good_actor"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "2"
@@ -350,11 +354,13 @@
 	}
 	"npc_petri_creep_humorist"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"
 	  "ModelScale"        "1.1"
 	  "Level"           "5"
 	  "HealthBarOffset"     "140"
+	
+	  "Ability1"  "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "3"
 	  "MagicalResistance"     "0"
@@ -394,11 +400,13 @@
 	}
 	"npc_petri_creep_kvn_actor"
 	{
-	  "BaseClass"         "npc_dota_base_additive"
+	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
 	  "ModelScale"        "1.0"
 	  "Level"           "4"
 	  "HealthBarOffset"     "140"
+	
+	  "Ability1"  "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "3"
 	  "MagicalResistance"     "0"
@@ -484,7 +492,7 @@
 	  "ModelScale"                "0.8"
 	  "Level"           "1"
 	
-	  "HealthBarOffset"    "200"
+	  "HealthBarOffset"    "290"
 	
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tower_explore_world"
@@ -1043,7 +1051,7 @@
 	
 	  "StatusHealth"    "5"
 	  "StatusHealthRegen"   "0.25"
-	  "StatusMana"    "0"
+	  "StatusMana"    "5"
 	  "StatusManaRegen"    "0"
 	
 	  "VisionDaytimeRange"  "800"
@@ -1145,7 +1153,7 @@
 	
 	  "StatusHealth"    "5"
 	  "StatusHealthRegen"   "0.25"
-	  "StatusMana"    "0"
+	  "StatusMana"    "5"
 	  "StatusManaRegen"    "0"
 	
 	  "VisionDaytimeRange"  "800"

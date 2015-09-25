@@ -1,10 +1,12 @@
 "npc_petri_creep_kvn_actor"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
   "ModelScale"        "1.0"
   "Level"           "4"
   "HealthBarOffset"     "140"
+
+  "Ability1"  "petri_creep_swipes"
 
   "ArmorPhysical"       "3"
   "MagicalResistance"     "0"

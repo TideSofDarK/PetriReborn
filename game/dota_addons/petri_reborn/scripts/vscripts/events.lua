@@ -308,7 +308,6 @@ function GameMode:OnEntityKilled( keys )
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
-    
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
@@ -328,7 +327,7 @@ function GameMode:OnEntityKilled( keys )
     end
 
     if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) ~= DOTA_CONNECTION_STATE_ABANDONED then
-      GameMode:ReplaceWithMiniActor(killedUnit:GetPlayerOwner())
+      GameMode:ReplaceWithMiniActor(killedUnit:GetPlayerOwner(), killedUnit:GetGold())
     end
 
     Timers:CreateTimer(1.0,
@@ -559,4 +558,13 @@ function GameMode:OnPlayerMakeBet( event )
   GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
 
   CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
+end
+
+function GameMode:OnPlayerSay( event )
+  local pID = event.userid
+  local text = event.text
+
+  if text == "-disablehints" then
+    table.insert(DISABLED_HINTS_PLAYERS, pID-1)
+  end
 end

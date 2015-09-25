@@ -12,14 +12,12 @@
     </Panel>
 
     <Panel id="Placeholders" >
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/vova.jpg" />
       <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
     </Panel>
 
     <Panel id="SocialNetworks" >
-      <Image class="Placeholder" src="file://{images}/custom_game/sn/sn.png" />
+      <Image src="file://{images}/custom_game/sn/sn.png" />
     </Panel>
 
     <Panel id="TitlePanel">
