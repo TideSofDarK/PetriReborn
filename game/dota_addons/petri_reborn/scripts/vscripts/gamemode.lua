@@ -81,17 +81,15 @@ end
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
-  hero:SetGold(0, false)
-
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
   local team = hero:GetTeamNumber()
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
-
+  print(pID)
   if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
-    hero.spawnPosition = hero:GetAbsOrigin()
+    GameMode.assignedPlayerHeroes[pID] = "temp"
 
     local newHero
 
@@ -99,11 +97,12 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init kvn fan
     if team == 2 then
+      UTIL_Remove(hero) 
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
         function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = hero
+          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
           InitAbilities(newHero)
 
