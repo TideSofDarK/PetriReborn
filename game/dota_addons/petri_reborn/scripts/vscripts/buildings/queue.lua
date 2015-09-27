@@ -10,10 +10,13 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
 
+	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
 	if hero.numberOfUnits >= PETRI_MAX_WORKERS then
 		Notifications:Top(caster:GetPlayerOwnerID(),{text="#max_number_of_workers", duration=3, style={color="red"}, continue=false})
+		if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end
 		return false
 	end
 
@@ -26,10 +29,11 @@ function EnqueueUnit( event, food )
 	if #ability.queue < 6 then
 
 		if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
-			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
 			return 
 		else
+			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 0)
 			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
+			hero.numberOfUnits = hero.numberOfUnits + 1
 		end
 
 		local ability_name = ability:GetAbilityName()
@@ -49,7 +53,6 @@ function EnqueueUnit( event, food )
 		Notifications:Bottom(player, {text="#queue_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
 
 		-- Refund with message
- 		PlayerResource:ModifyGold(player, gold_cost, false, 0)
 		FireGameEvent( 'custom_error_show', { player_ID = player, _error = "Queue is full" } )		
 	end
 end
@@ -64,7 +67,6 @@ function SetOwner( event )
 	target:SetOwner(hero)
 
 	target.hasNumber = true
-	hero.numberOfUnits = hero.numberOfUnits + 1
 end
 
 -- Destroys an item on the buildings inventory, refunding full cost of purchasing and reordering the queue
@@ -81,6 +83,8 @@ function DequeueUnit( event )
 	local train_ability_name = string.gsub(item_ability_name, "item_", "")
 	local train_ability = caster:FindAbilityByName(train_ability_name)
 	local gold_cost = train_ability:GetGoldCost( train_ability:GetLevel() - 1 )
+	
+	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
 	if Debug_Queue then
 		print("Start dequeue")
@@ -106,6 +110,8 @@ function DequeueUnit( event )
 	            
 	            -- Refund ability cost
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
+
+	            hero.numberOfUnits = hero.numberOfUnits - 1
 
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()

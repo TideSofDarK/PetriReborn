@@ -3,10 +3,10 @@
 	"TeamCount"		"2"
 	"petri_alpha"
 	{
-		"MaxPlayers"		"12"
+		"MaxPlayers"		"14"
 	}
 	"petri_alpha_dire"
 	{
-		"MaxPlayers"		"12"
+		"MaxPlayers"		"14"
 	}
 }

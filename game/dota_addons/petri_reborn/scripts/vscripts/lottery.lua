@@ -8,6 +8,7 @@ GameMode.CURRENT_BANK = GameMode.CURRENT_BANK or 0
 
 GameMode.CURRENT_LOTTERY_PLAYERS = GameMode.CURRENT_LOTTERY_PLAYERS or {}
 
+LOTTERY_START_TIME = 0
 DEFAULT_BANK_RATE = 500
 PLAY_COUNT = 0
 
@@ -16,7 +17,9 @@ function InitLottery()
 
 	GameMode.CURRENT_BANK = DEFAULT_BANK_RATE * (PLAY_COUNT+1)
 
-	CustomGameEventManager:Send_ServerToAllClients("petri_start_exchange", {["exchinge_time"] = PETRI_LOTTERY_DURATION * 60} )
+	LOTTERY_START_TIME = GameRules:GetDOTATime(false, false) 
+
+	CustomGameEventManager:Send_ServerToAllClients("petri_start_exchange", {["exchange_time"] = PETRI_LOTTERY_DURATION * 60} )
 
 	Timers:CreateTimer((PETRI_LOTTERY_DURATION * 60) - 3,
       function()
@@ -48,12 +51,12 @@ function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 	local winner = math.random(1, 4)
 	
-	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
+	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner + 1} )
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
 		if v["option"] == winner then
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 4), false, 0)
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 3), false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(math.floor(v["bet"] * 4)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else

@@ -62,18 +62,26 @@ function UpdateCountdown()
 	} 
 }
 
+function ForceInitExchange(args) 
+{
+	if ($.GetContextPanel().style.width == null) 
+	{
+		InitExchange( args );
+	}
+}
+
 function InitExchange( args )
 {
 	var upgrades = CustomNetTables.GetTableValue( "players_upgrades", Players.GetLocalPlayer().toString() )
 	if (upgrades == undefined)
 		return;
 
-	if (upgrades["petri_upgrade_exchange"] == 1) 
+	if (upgrades["petri_upgrade_exchange"] >= 1) 
 	{
 		upgrade = true;
 
 		//args = { "exchinge_time" : 180 };
-		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchinge_time"];
+		endTime = Math.floor( Game.GetDOTATime( false, false) ) + args["exchange_time"];
 		UpdateCountdown();
 
 		$.GetContextPanel().style.width = "220px;";
@@ -133,6 +141,7 @@ function UpdateBank( args )
 
 (function () {
   	GameEvents.Subscribe( "petri_start_exchange", InitExchange );
+  	GameEvents.Subscribe( "petri_force_start_exchange", ForceInitExchange );
   	GameEvents.Subscribe( "petri_bank_updated", UpdateBank );
   	GameEvents.Subscribe( "petri_finish_exchange", FinishExchange );
 })();

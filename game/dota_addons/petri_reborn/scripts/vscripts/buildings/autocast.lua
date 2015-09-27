@@ -17,8 +17,13 @@ function BuildingAutocast( event )
 		if not IsChanneling( caster ) then
 			if ability:IsOwnersGoldEnough( player ) then
 				if CheckFood(hero,ability:GetLevelSpecialValueFor("food_cost", 1), false) == true then
-					caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
-					print("Autocasting ",ability:GetAbilityName())
+					local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+
+					if hero.numberOfUnits < PETRI_MAX_WORKERS then
+						caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
+					else
+						if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end
+					end
 				end	
 			end
 		end

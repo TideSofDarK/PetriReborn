@@ -48,6 +48,11 @@
   {
     "RunScript"
     {
+      "ScriptFile"  "units/sawmill.lua"
+      "Function"    "UpgradeExchange"
+    }
+    "RunScript"
+    {
       "ScriptFile"      "internal/util.lua"
       "Function"        "OnUpgradeSucceeded"
       "Permanent"       "1"

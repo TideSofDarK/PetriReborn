@@ -361,6 +361,10 @@ function GameMode:OnEntityKilled( keys )
       hero.buildingCount = hero.buildingCount - 1
     end
 
+    if killedUnit.minimapIcon then
+      UTIL_Remove(killedUnit.minimapIcon)
+    end
+
     local chance = math.random(1, 100)
     if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
       if chance > DEFENCE_SCROLL_CHANCE then

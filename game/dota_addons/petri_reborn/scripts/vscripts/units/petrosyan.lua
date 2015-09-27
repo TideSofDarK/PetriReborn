@@ -47,6 +47,16 @@ function FarSight( event )
 		end
 	end
 
+	local units = FindUnitsInRadius(DOTA_TEAM_BADGUYS, target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER,false)
+
+	for i,v in ipairs(units) do
+		if v:HasAbility("petri_building") == true then
+			if not v.minimapIcon then
+				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+			end
+		end
+	end
+
 	-- Vision
 	if level == 1 then
 		local dummy = CreateUnitByName("petri_dummy_600vision", target, false, caster, caster, caster:GetTeamNumber())

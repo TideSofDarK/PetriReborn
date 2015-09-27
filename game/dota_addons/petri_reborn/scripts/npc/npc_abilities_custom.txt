@@ -1419,7 +1419,7 @@
 	  }  
 	}
 	
-	"petri_dummy_portal_icon_passive"
+	"petri_dummy_icon_passive"
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -3213,6 +3213,11 @@
 	  
 	  "OnChannelSucceeded"
 	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/sawmill.lua"
+	      "Function"    "UpgradeExchange"
+	    }
 	    "RunScript"
 	    {
 	      "ScriptFile"      "internal/util.lua"
