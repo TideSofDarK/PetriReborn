@@ -55,14 +55,17 @@ function SelectWinner()
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
+		local prize
 		if v["option"] == winner then
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 3), false, 0)
+			prize = math.floor(v["bet"] * 2) + math.floor(GameMode.CURRENT_BANK * 0.4)
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:Top(pID, {text=tostring(math.floor(v["bet"] * 4)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(math.floor(v["bet"] * 0.5), false, 0)
+			prize = math.floor(v["bet"] * 0.5) + math.floor(GameMode.CURRENT_BANK * 0.2)
+			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
-			Notifications:Top(pID, {text=tostring(math.floor(v["bet"] * 0.5)).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
+			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		end
 	end
 
