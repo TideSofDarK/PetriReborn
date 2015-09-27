@@ -15,7 +15,7 @@ function AddNotification(msg, panel) {
 
   if (msg.disabled_players != undefined) {
     for (var i = 0; i < 12; i++) {
-      if (msg.disabled_players[i] != undefined && parseInt(msg.disabled_players[i]) == Players.GetLocalPlayer()) {
+      if (msg.disabled_players[i] != undefined && parseInt(msg.disabled_players[i]) + 1 == Players.GetLocalPlayer()) {
         return false;
       }
     }

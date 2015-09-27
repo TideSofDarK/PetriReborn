@@ -569,6 +569,6 @@ function GameMode:OnPlayerSay( event )
   local text = event.text
 
   if text == "-disablehints" then
-    table.insert(DISABLED_HINTS_PLAYERS, pID-1)
+    table.insert(DISABLED_HINTS_PLAYERS, pID)
   end
 end
