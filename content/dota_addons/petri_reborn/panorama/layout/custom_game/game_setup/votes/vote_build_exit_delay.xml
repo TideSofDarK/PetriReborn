@@ -10,14 +10,14 @@
 		<Panel id="VoteHeader" >
 			<Label class="VoteQuestionLabel" text="Vote question" />			
 		</Panel>
-		<Panel class="Paper" id="VoteVariants">
-			<Button class="FlatButton" onactivate="Vote('build_exit', 20)">
+		<Panel class="Paper" id="VoteVariants" param="build_exit_delay">
+			<Button class="FlatButton" value="20" default="true">
 				<Label class="FlatLabel" text="Variant1" />
 			</Button>
-			<Button class="FlatButton">
+			<Button class="FlatButton" value="24">
 				<Label class="FlatLabel" text="Text" />
 			</Button>
-			<Button class="FlatButton">
+			<Button class="FlatButton" value="26">
 				<Label class="FlatLabel" text="Text" />
 			</Button>						
 		</Panel>

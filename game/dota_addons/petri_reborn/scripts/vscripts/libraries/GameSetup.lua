@@ -27,7 +27,7 @@ function ShuffleList( count )
   end
 end
 
-function GameSetup:Shuffle( args )
+function GameSetup:ShuffleRandom( args )
   shuffleTimes = 0;
   hostPlayerID = args['PlayerID'];
 
@@ -37,4 +37,17 @@ function GameSetup:Shuffle( args )
         ShuffleList( args['CurrentPlayers'] ) 
       end);
   end
+end
+
+function GameSetup:ShuffleHost()
+  CustomGameEventManager:Send_ServerToAllClients("petri_host_shuffle", { } )
+end
+
+function GameSetup:ShuffleSetHostList( args )
+  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["list"] = args["list"] } );
+  
+  Timers:CreateTimer(2.0, 
+    function() 
+      CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
+    end);
 end

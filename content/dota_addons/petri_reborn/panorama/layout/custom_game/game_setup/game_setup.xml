@@ -9,7 +9,7 @@
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup.js" />
 	</scripts>
 	<Panel hittest="false" class="GameSetup">
-		<Panel hittest="false" class="Paper" id="TeamSelectContainer" selectionpos="auto">
+		<Panel hittest="false" class="Paper" id="TeamSelectContainer">
 
 			<Panel hittest="false" class="AppBar" id="AppBar">
 				<Label id="GameModeNameLabel" text="#addon_game_name" />
