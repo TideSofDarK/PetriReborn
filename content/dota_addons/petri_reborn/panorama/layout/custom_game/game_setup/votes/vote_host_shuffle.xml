@@ -1,0 +1,23 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/material_design.css" />	
+		<include src="file://{resources}/styles/custom_game/game_setup.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_host.js" />
+	</scripts>
+	<Panel hittest="false" class="VoteContainer">
+		<Panel id="VoteHeader" >
+			<Label class="VoteQuestionLabel" text="#vote_host_shuffle_q" />			
+		</Panel>
+		<Panel class="Paper" id="VoteVariants">
+			<Button class="FlatButton" value="host">
+				<Label class="FlatLabel" text="#vote_host_shuffle_host" />
+			</Button>
+			<Button class="FlatButton" value="random" default="true">
+				<Label class="FlatLabel" text="#vote_host_shuffle_random" />
+			</Button>				
+		</Panel>
+	</Panel>
+</root>
+

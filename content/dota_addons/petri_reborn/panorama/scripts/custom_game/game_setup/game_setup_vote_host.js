@@ -1,13 +1,19 @@
 "use strict";
+var isHost = false;
 
 function Vote( value )
 {
-	var variants = $("#VoteVariants");
-	variants.enabled = false;
+	if (!isHost)
+		return;
 
-	var param = variants.GetAttributeString("param", "non_param")
+	if (value == "host")
+		GameEvents.SendCustomGameEventToServer( "petri_game_setup_host_shuffle", { } );
 
-	GameEvents.SendCustomGameEventToServer( "petri_vote", { param : value } );
+	if (value == "random")
+	{
+		Game.SetRemainingSetupTime( 10 );
+		GameEvents.SendCustomGameEventToServer( "petri_game_setup_random_shuffle", { "CurrentPlayers" : Game.GetAllPlayerIDs().length } );
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -45,4 +51,9 @@ function SetClickHandler()
 	$.GetContextPanel().data().IsVoted = false;
 
 	SetClickHandler();
+
+	var playerInfo = Game.GetLocalPlayerInfo();
+	isHost = playerInfo.player_has_host_privileges;
+	if (!isHost)
+		$.GetContextPanel().visible = false;
 })();
