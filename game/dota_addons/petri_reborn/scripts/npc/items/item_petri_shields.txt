@@ -18,7 +18,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "10"
+      "bonus_armor"      "15"
     }
     "02"
     {
@@ -85,7 +85,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "130"
+  "ItemCost"            "180"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

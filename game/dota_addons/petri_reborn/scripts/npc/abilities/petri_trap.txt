@@ -6,6 +6,8 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName" "techies_stasis_trap"
 
+  "MaxLevel"            "1"
+
   "precache"
   {
     "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"         

@@ -1,8 +1,18 @@
 function BonusGoldFromWall(keys)
-	if keys.target:GetUnitName() == "npc_petri_wall" then
-		PlayerResource:ModifyGold(keys.caster:GetPlayerOwnerID(), 1, false, 0)
+	local caster = keys.caster
+	local target = keys.target
 
-		PlusParticle(1, Vector(244,201,23), 3.0, keys.caster)
+	if target:GetUnitName() == "npc_petri_wall" then
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, 0)
+
+		PlusParticle(1, Vector(244,201,23), 3.0, caster)
+	end
+	print(caster:GetAverageTrueAttackDamage()) 
+	if target:HasAbility("petri_creep_pendant") == true 
+	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 110, false, 0)
+
+		PlusParticle(90, Vector(244,201,23), 1.0, caster)
 	end
 end
 

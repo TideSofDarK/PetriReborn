@@ -777,7 +777,7 @@
 	      {
 	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
 	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
-	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+	        //"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
 	        "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
 	      }
 	      "Properties"
@@ -818,6 +818,80 @@
 	    {
 	      "ScriptFile"      "units/sawmill.lua"
 	      "Function"        "BuyLumber"
+	    }
+	  }
+	}
+	"petri_creep_pendant"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlag"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"            "rubick_empty1" 
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage"      "117999"
+	    }
+	  }
+	
+	  "OnProjectileHitUnit"
+	  {
+	    "DeleteOnHit"   "1"
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"    "units/creep.lua"
+	      "Function"      "SplitShotDamage"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_pendant"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "OnAttack"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/creep.lua"
+	          "Function"      "SplitShot"
+	          "projectile" "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
+	        }
+	      } 
+	      
+	      "OnAttacked"
+	      {
+	        "Heal"
+	        {
+	          "Target"        "CASTER"
+	          "HealAmount"  "%attack_damage"
+	        }
+	      }
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+	        //"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+	      }
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "0.1"
+	      }
 	    }
 	  }
 	}
@@ -1043,7 +1117,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "11 10 9 8 8 7 7 6 6"
+	  "AbilityCooldown" "11 10 9 8 8 7 7 6 4"
 	
 	  "MaxLevel"            "9"
 	
@@ -1176,12 +1250,12 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "74"
+	      "upgrade_rate"      "90"
 	    }
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_limit"      "295"
+	      "upgrade_limit"      "305"
 	    }
 	  }
 	
@@ -1297,8 +1371,6 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityTextureName" "undying_tombstone"
 	  
 	  "Modifiers"
@@ -2345,6 +2417,8 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "techies_stasis_trap"
+	
+	  "MaxLevel"            "1"
 	
 	  "precache"
 	  {

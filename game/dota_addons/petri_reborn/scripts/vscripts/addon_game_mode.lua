@@ -28,6 +28,7 @@ function Precache( context )
 
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
+  PrecacheResource("model", "models/props_structures/tower_dragon_white.vmdl", context)
   PrecacheResource("model", "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl", context)

@@ -2,8 +2,6 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
   "AbilityTextureName" "undying_tombstone"
   
   "Modifiers"

@@ -14,8 +14,8 @@
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "70000.0"
-  "AttackDamageMax"     "75500.0"
+  "AttackDamageMin"     "35000.0"
+  "AttackDamageMax"     "37500.0"
   "AttackRate"        "0.3"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -37,8 +37,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "600"
-  "VisionNighttimeRange"    "600"
+  "VisionDaytimeRange"    "400"
+  "VisionNighttimeRange"    "400"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

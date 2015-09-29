@@ -256,8 +256,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -280,8 +280,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "130.0"
-	  "AttackDamageMax"     "190.0"
+	  "AttackDamageMin"     "98.0"
+	  "AttackDamageMax"     "98.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -303,8 +303,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -327,8 +327,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "70000.0"
-	  "AttackDamageMax"     "75500.0"
+	  "AttackDamageMin"     "35000.0"
+	  "AttackDamageMax"     "37500.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -350,8 +350,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -394,8 +394,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -417,8 +417,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "14500.0"
-	  "AttackDamageMax"     "17500.0"
+	  "AttackDamageMin"     "10875.0"
+	  "AttackDamageMax"     "13125.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -440,8 +440,58 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
+	
+	  "TeamName"          "DOTA_TEAM_NEUTRALS"
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
+	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	}
+	"npc_petri_creep_kivin"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/props_structures/tower_dragon_white.vmdl"
+	  "ModelScale"        "1.0"
+	  "SoundSet"          "Creep_Good_Range"
+	  "Level"           "7"
+	  "HealthBarOffset"     "290"
+	
+	  "Ability1"  "petri_creep_pendant"
+	
+	  "ArmorPhysical"       "1488"
+	  "MagicalResistance"     "0"
+	
+	  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
+	  "AttackDamageMin"            "150000.0"
+	  "AttackDamageMax"            "150000.0"
+	  "AttackRate"                 "0.3"
+	  "AttackAnimationPoint"       "0.39"
+	  "AttackAcquisitionRange"     "200"
+	  "AttackRange"                "200"
+	  "AttackRangeBuffer"          "200"
+	
+	  "ProjectileModel"            "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
+	  "ProjectileSpeed"            "1400"
+	
+	  "BountyGoldMin"       "70.0"
+	  "BountyGoldMax"       "100.0"
+	  "BountyXP"          "475"  
+	
+	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
+	  "RingRadius"        "50"
+	  
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+	  "MovementSpeed"       "310"
+	  "MovementTurnRate"      "0.5"
+	
+	  "StatusHealth"        "188750"
+	  "StatusHealthRegen"     "0"
+	  "StatusMana"        "0"
+	  "StatusManaRegen"     "0"
+	
+	  "VisionDaytimeRange"    "200"
+	  "VisionNighttimeRange"    "200"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -463,8 +513,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "1990.0"
-	  "AttackDamageMax"     "2400.0"
+	  "AttackDamageMin"     "1650.0"
+	  "AttackDamageMax"     "1650.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -486,8 +536,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "600"
-	  "VisionNighttimeRange"    "600"
+	  "VisionDaytimeRange"    "400"
+	  "VisionNighttimeRange"    "400"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
