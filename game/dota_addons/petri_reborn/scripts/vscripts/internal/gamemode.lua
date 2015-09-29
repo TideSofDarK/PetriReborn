@@ -90,7 +90,7 @@ function GameMode:_InitGameMode()
   ListenToGameEvent("dota_player_selected_custom_team", Dynamic_Wrap(GameMode, 'OnPlayerSelectedCustomTeam'), self)
   ListenToGameEvent("dota_npc_goal_reached", Dynamic_Wrap(GameMode, 'OnNPCGoalReached'), self)
 
-  --ListenToGameEvent("dota_pause_event", Dynamic_Wrap(GameMode, 'OnPause'), self)
+  ListenToGameEvent("dota_pause_event", Dynamic_Wrap(GameMode, 'OnPause'), self)
 
   CustomGameEventManager:RegisterListener( "building_helper_build_command", Dynamic_Wrap(BuildingHelper, "RegisterLeftClick"))
   CustomGameEventManager:RegisterListener( "building_helper_cancel_command", Dynamic_Wrap(BuildingHelper, "RegisterRightClick"))
@@ -101,8 +101,11 @@ function GameMode:_InitGameMode()
 
   CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
 
+
   -- Game Setup
-  --CustomGameEventManager:RegisterListener( "petri_game_setup_shuffle", Dynamic_Wrap(GameSetup, 'Shuffle'))
+  CustomGameEventManager:RegisterListener( "petri_game_setup_random_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleRandom'))
+  CustomGameEventManager:RegisterListener( "petri_game_setup_host_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleHost'))
+  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))  
 
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 

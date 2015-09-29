@@ -1,4 +1,5 @@
 "use strict";
+var isHostShuffle = false;
 
 //--------------------------------------------------------------------------------------------------
 // Handler for when the Lock and Start button is pressed
@@ -66,58 +67,29 @@ function UpdateTimer()
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
 
 	if (timer < 1)
-		if ($( "#VotePanel" ).data().ShowNextVote != null)
-			$( "#VotePanel" ).data().ShowNextVote();
+	{
+		if (isHostShuffle)
+		{
+			SendHostShuffleList();
+			isHostShuffle = false;
+			Game.SetRemainingSetupTime( 10 );
+		}
+		else
+		{
+			// Vote changes
+			if ($( "#VotePanel" ).data().ShowNextVote != null)
+				$( "#VotePanel" ).data().ShowNextVote();
+		}
+	}
 
 	$.Schedule( 0.1, UpdateTimer );
 }
 
 //--------------------------------------------------------------------------------------------------
-// Shuffle players list
-//--------------------------------------------------------------------------------------------------
-function Shuff()
-{ 
-	GameEvents.SendCustomGameEventToServer( "petri_game_setup_shuffle", { "CurrentPlayers" : Game.GetAllPlayerIDs().length } );
-}
-
-function ClearStyle()
-{
-	var playersPanel = $( "#TeamSelectContainer" ).FindChild("WorkArea").FindChild("PlayersPanel").FindChild("PlayersListContainer");
-	var childCount = playersPanel.GetChildCount();
-
-	var count = playersPanel.GetChildCount();
-	
-	for (var i = 0; i < count; i++)
-		playersPanel.GetChild(i).SetHasClass( "upPaper", false )
-}
-
-function Shuffle( args )
-{
-	ClearStyle();
-
-	var shuffleList = args["list"];
-	if (!shuffleList)
-		return;
-
-	var playersPanel = $( "#TeamSelectContainer" ).FindChild("WorkArea").FindChild("PlayersPanel").FindChild("PlayersListContainer");
-	var childCount = playersPanel.GetChildCount();
-
-	var count = shuffleList.length;
-	
-	for (var i = 0; i < childCount; i++) {
-		var panel1 = playersPanel.GetChild(i == 0 ? i : shuffleList[i - 1]);
-		var panel2 = playersPanel.GetChild(i);
- 
-		panel1.SetHasClass("upPaper", true);
-		panel2.SetHasClass("upPaper", true);
-
-		playersPanel.MoveChildAfter( panel1, panel2 );
-	}
-}
-
-
-//--------------------------------------------------------------------------------------------------
 // Fill panels content
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+// Votes list
 //--------------------------------------------------------------------------------------------------
 function CreateVote()
 {
@@ -125,11 +97,15 @@ function CreateVote()
 	votePanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_votes.xml", false, false );
 }
 
+//--------------------------------------------------------------------------------------------------
+// Players list
+//--------------------------------------------------------------------------------------------------
 function CreatePlayerList()
 {
 	var playersPanel = $( "#PlayersListContainer");
-
 	var playerIDs = Game.GetAllPlayerIDs();
+	
+	// Testing list
 	/*
 	var playerID = playerIDs[0];
 
@@ -137,10 +113,25 @@ function CreatePlayerList()
 		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + i );
 		playerPanel.SetAttributeInt( "player_id", playerID );
 		playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_player.xml", false, false );
-		playerPanel.SetParent( playersPanel );
 		playerPanel.SetHasClass("transition", true);
+		playerPanel.SetParent( playersPanel );
 		playerPanel.FindChild("PlayerName").text =  i;
-	};*/
+
+		var executeCapture = (function(panel) { 
+			return function() {
+
+				var isPetr = panel.GetAttributeString("IsPetr", "false");
+				if (isPetr == "false")
+					panel.SetAttributeString("IsPetr", "true");
+				else
+					panel.SetAttributeString("IsPetr", "false");
+
+				panel.FindChild("Petro").SetHasClass("visible", isPetr == "true");
+			}
+		} (playerPanel));
+
+		playerPanel.SetPanelEvent("onmouseactivate", executeCapture);
+	}*/
  
 	for(var id of playerIDs)
 	{
@@ -153,6 +144,10 @@ function CreatePlayerList()
 	}
 }
 
+
+//--------------------------------------------------------------------------------------------------
+// Teams list
+//--------------------------------------------------------------------------------------------------
 function CreateTeamList()
 {
 	var teamsPanel = $( "#TeamsListContainer");
@@ -185,7 +180,10 @@ function AssignTeams()
 
 	for(var i = 0; i < players.length; i++)
 	{
-		var priorTeam = i % teamsCount;
+		// Priority by visibility of petr icon
+		var priorTeam = players[i].FindChild("Petro").visible 
+			? (i + 1) % teamsCount 
+			: i % teamsCount;
 		var team = teamsPanel.GetChild(priorTeam);
 		players[i].SetHasClass("transition", false);
 
@@ -205,6 +203,8 @@ function AssignTeams()
 					if (team.data().CanAddPlayers())
 						players[i].SetParent(team.FindChild("PlayerList"));
 		 		};
+		 		
+ 		players[i].FindChild("Petro").visible = false;
  	}
 
  	var playerID = Game.GetLocalPlayerID();
@@ -223,16 +223,118 @@ function LoadUI()
 {
 	CreatePlayerList();
 	CreateTeamList(); 
-	//CreateVote();
-
-	Shuff();
+	CreateVote();
 
 	var playerInfo = Game.GetLocalPlayerInfo();
 	if (playerInfo.player_has_host_privileges)
 	{
+		// Shuffle handlers
+		GameEvents.Subscribe( "petri_host_shuffle", HostShuffle );		
+		
 		Game.SetAutoLaunchEnabled( false );
-		Game.SetRemainingSetupTime( 10 );
+		Game.SetRemainingSetupTime( 5 );
 	}
+}
+
+//--------------------------------------------------------------------------------------------------
+// Shuffles
+//--------------------------------------------------------------------------------------------------
+function ClearStyle()
+{
+	var playersPanel = $( "#TeamSelectContainer" ).FindChild("WorkArea").FindChild("PlayersPanel").FindChild("PlayersListContainer");
+	var childCount = playersPanel.GetChildCount();
+
+	var count = playersPanel.GetChildCount();
+	
+	for (var i = 0; i < count; i++)
+		playersPanel.GetChild(i).SetHasClass( "upPaper", false )
+}
+
+function ShuffleList( args )
+{
+	ClearStyle();
+
+	var shuffleList = args["list"];
+	if (!shuffleList)
+		return;
+
+	var playersPanel = $( "#TeamSelectContainer" ).FindChild("WorkArea").FindChild("PlayersPanel").FindChild("PlayersListContainer");
+	var childCount = playersPanel.GetChildCount();
+
+	var count = shuffleList.length;
+	var players = [];
+	for (var i = 0; i < playersPanel.GetChildCount(); i++)
+		players.push(playersPanel.GetChild(i));
+
+
+	if (childCount > 1)
+		for (var i = 0; i < childCount; i++) {
+			var panel1 = players[i == 0 ? i : shuffleList[i - 1]];
+			var panel2 = players[shuffleList[i]];
+	 
+			panel1.SetHasClass("upPaper", true);
+			panel2.SetHasClass("upPaper", true);
+
+			playersPanel.MoveChildAfter( panel2, panel1 );
+		}
+}
+
+function SendHostShuffleList()
+{
+	var playersPanel = $( "#PlayersListContainer");
+	var childCount = playersPanel.GetChildCount();
+
+	// Form team lists
+	var petrList = [];
+	var kvnList = [];
+	for (var i = 0; i < childCount; i++) {
+		var playerPanel = playersPanel.GetChild(i);
+		var isPetr = playerPanel.GetAttributeString("IsPetr", "false");
+		if (playerPanel.FindChild("Petro").visible)
+			petrList.push(i);
+		else
+			kvnList.push(i);		
+	}
+
+	// Merge lists
+	var list = [];
+	for (var i = 0; i < childCount; i++) {
+		var array = i % 2 
+				? (petrList.length > 0 ? petrList : kvnList)
+				: (kvnList.length > 0 ? kvnList : petrList);
+
+		if (array.length > 0)
+			list.push(array.pop());
+	};
+
+	GameEvents.SendCustomGameEventToServer( "petri_game_setup_set_host_list", { "list" : list } );
+}
+
+function HostShuffle()
+{
+	var playersPanel = $( "#PlayersListContainer");
+	var childCount = playersPanel.GetChildCount();
+
+	for (var i = 0; i < childCount; i++) {
+		var playerPanel = playersPanel.GetChild(i);
+
+		var click = (function(panel) { 
+			return function() {
+				var isPetr = panel.GetAttributeString("IsPetr", "false");
+				if (isPetr == "false")
+					panel.SetAttributeString("IsPetr", "true");
+				else
+					panel.SetAttributeString("IsPetr", "false");
+
+				panel.FindChild("Petro").SetHasClass("visible", isPetr == "true");
+			}
+		} (playerPanel));
+
+		playerPanel.SetPanelEvent("onmouseactivate", click);
+	}
+
+	Game.SetRemainingSetupTime( 10 );
+	isHostShuffle = true;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -243,10 +345,10 @@ function LoadUI()
 	// Start updating the timer, this function will schedule itself to be called periodically
 	UpdateTimer();
 
-	GameEvents.Subscribe( "petri_set_shuffled_list", Shuffle );
+	GameEvents.Subscribe( "petri_set_shuffled_list", ShuffleList );
 	GameEvents.Subscribe( "petri_end_shuffle", AssignTeams );
 
-	$.Schedule(1, LoadUI);
+	$.Schedule(2.0, LoadUI);
 
 	Game.PlayerJoinTeam( DOTATeam_t.DOTA_TEAM_NOTEAM );
 })();

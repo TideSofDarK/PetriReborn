@@ -7,9 +7,10 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_player.js" />
 	</scripts>
-	<Panel class="TeamSelectPlayer">
-		<DOTAAvatarImage class="CircleImage" id="PlayerAvatar" />
-		<Label id="PlayerIsHostPanel" />
-		<Label id="PlayerName" text="PLAYER_NAME" />
+	<Panel hittest="true" class="TeamSelectPlayer">
+		<DOTAAvatarImage hittest="false" class="CircleImage" id="PlayerAvatar" />
+		<Label hittest="false" id="PlayerIsHostPanel" />
+		<Label hittest="false" id="PlayerName" text="PLAYER_NAME" />
+		<Image hittest="false" id="Petro" src="file://{images}/custom_game/timeofday/petrotime.png" />
 	</Panel>
 </root>
