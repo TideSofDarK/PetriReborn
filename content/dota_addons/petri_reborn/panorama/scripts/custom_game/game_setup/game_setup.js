@@ -181,9 +181,7 @@ function AssignTeams()
 	for(var i = 0; i < players.length; i++)
 	{
 		// Priority by visibility of petr icon
-		var priorTeam = players[i].FindChild("Petro").visible 
-			? (i + 1) % teamsCount 
-			: i % teamsCount;
+		var priorTeam = i % teamsCount;
 		var team = teamsPanel.GetChild(priorTeam);
 		players[i].SetHasClass("transition", false);
 
@@ -203,7 +201,7 @@ function AssignTeams()
 					if (team.data().CanAddPlayers())
 						players[i].SetParent(team.FindChild("PlayerList"));
 		 		};
-		 		
+
  		players[i].FindChild("Petro").visible = false;
  	}
 
