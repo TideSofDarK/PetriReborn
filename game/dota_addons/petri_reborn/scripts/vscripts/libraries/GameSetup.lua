@@ -2,6 +2,7 @@ GameSetup = {}
 
 local shuffleTimes = 0;
 local hostPlayerID = -1;
+local petrCount = 2;
 
 function ShuffleList( count )
   local a = {}
@@ -16,7 +17,17 @@ function ShuffleList( count )
       a[i] = d;
   end
 
-  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["list"] = a } );
+  local petr = { };
+  for i = 0, petrCount - 1 do
+    petr[i] = a[i];
+  end
+
+  local kvn = {};
+  for i = petrCount, count - petrCount - 1 do
+    kvn[i - petrCount] = a[i];
+  end
+  
+  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn, ["petr"] = petr } );
   shuffleTimes = shuffleTimes + 1;
 
   if shuffleTimes == 3 then
@@ -44,7 +55,7 @@ function GameSetup:ShuffleHost()
 end
 
 function GameSetup:ShuffleSetHostList( args )
-  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["list"] = args["list"] } );
+  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = args["kvn"],  ["petr"] = args["petr"] });
   
   Timers:CreateTimer(2.0, 
     function() 
