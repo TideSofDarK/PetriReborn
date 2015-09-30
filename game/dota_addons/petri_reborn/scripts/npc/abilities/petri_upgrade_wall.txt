@@ -11,7 +11,7 @@
   "MaxLevel"            "12"
 
   "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
-  "AbilityGoldCost"       "0 10 60 290 690 900 1200 2550 4000 5500 7750"
+  "AbilityGoldCost"       "0 11 60 290 690 900 1200 2550 4000 5500 7750"
 
   "precache"
   {
