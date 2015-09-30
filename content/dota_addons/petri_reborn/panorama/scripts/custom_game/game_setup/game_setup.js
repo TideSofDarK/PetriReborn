@@ -108,7 +108,6 @@ function CreatePlayerList()
 	// Testing list
 	/*
 	var playerID = playerIDs[0];
-
 	for (var i = 0; i < 14; i++) {
 		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + i );
 		playerPanel.SetAttributeInt( "player_id", playerID );
@@ -180,27 +179,24 @@ function AssignTeams()
 
 	for(var i = 0; i < players.length; i++)
 	{
-		// Priority by visibility of petr icon
-		var priorTeam = i % teamsCount;
-		var team = teamsPanel.GetChild(priorTeam);
 		players[i].SetHasClass("transition", false);
 
-		// try to add player in prior team
-		if (team.data().CanAddPlayers())
+		var team = null;
+		if(players[i].GetAttributeString("IsPetr", "false") == "true")
 		{
-			players[i].SetParent(team.FindChild("PlayerList"));
+			team = teamsPanel.GetChild(1);
+			if (!team.data().CanAddPlayers())
+				team = teamsPanel.GetChild(0)
 		}
 		else
-			// add to another
-	 		for (var j = 0; j < teamsCount; j++) 
-	 			if (j != priorTeam)
-		 		{
-					team = teamsPanel.GetChild(j);
+		{
+			team = teamsPanel.GetChild(0);
+			if (!team.data().CanAddPlayers())
+				team = teamsPanel.GetChild(1)
+		}
 
-					// try to add player in prior team
-					if (team.data().CanAddPlayers())
-						players[i].SetParent(team.FindChild("PlayerList"));
-		 		};
+		if (team)
+			players[i].SetParent(team.FindChild("PlayerList"));
 
  		players[i].FindChild("Petro").visible = false;
  	}
@@ -252,11 +248,25 @@ function ShuffleList( args )
 {
 	ClearStyle();
 
-	var shuffleList = args["list"];
-	if (!shuffleList)
+	if (!args)
 		return;
 
 	var playersPanel = $( "#TeamSelectContainer" ).FindChild("WorkArea").FindChild("PlayersPanel").FindChild("PlayersListContainer");
+	var shuffleList = [];
+
+	// Set team number
+	for(var num in args["petr"]) 
+	{
+		playersPanel.FindChild("Player_" + args["petr"][num]).SetAttributeString("IsPetr", "true");
+		shuffleList.push(args["petr"][num]);
+	}
+
+	for(var num in args["kvn"])
+	{
+		playersPanel.FindChild("Player_" + args["kvn"][num]).SetAttributeString("IsPetr", "false")
+		shuffleList.push(args["kvn"][num]);
+	}
+
 	var childCount = playersPanel.GetChildCount();
 
 	var count = shuffleList.length;
@@ -294,18 +304,7 @@ function SendHostShuffleList()
 			kvnList.push(i);		
 	}
 
-	// Merge lists
-	var list = [];
-	for (var i = 0; i < childCount; i++) {
-		var array = i % 2 
-				? (petrList.length > 0 ? petrList : kvnList)
-				: (kvnList.length > 0 ? kvnList : petrList);
-
-		if (array.length > 0)
-			list.push(array.pop());
-	};
-
-	GameEvents.SendCustomGameEventToServer( "petri_game_setup_set_host_list", { "list" : list } );
+	GameEvents.SendCustomGameEventToServer( "petri_game_setup_set_host_list", { "kvn" : kvnList, "petr" : petrList } );
 }
 
 function HostShuffle()
