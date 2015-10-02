@@ -107,7 +107,12 @@ function GameMode:_InitGameMode()
   -- Game Setup
   CustomGameEventManager:RegisterListener( "petri_game_setup_random_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleRandom'))
   CustomGameEventManager:RegisterListener( "petri_game_setup_host_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleHost'))
-  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))  
+  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
+
+  -- Votes
+  CustomGameEventManager:RegisterListener( "petri_send_vote_freeze", Dynamic_Wrap(GameSetup, 'VoteFreeze'))
+  CustomGameEventManager:RegisterListener( "petri_send_vote_unfreeze", Dynamic_Wrap(GameSetup, 'VoteUnfreeze'))  
+  CustomGameEventManager:RegisterListener( "petri_vote", Dynamic_Wrap(GameSetup, 'Vote'))  
 
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 

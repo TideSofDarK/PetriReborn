@@ -1,18 +1,29 @@
 <root>
 	<styles>
-		<include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/material_design.css" />	
 		<include src="file://{resources}/styles/custom_game/game_setup.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_team.js" />
+		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
 	</scripts>
 	<Panel hittest="false" class="VoteContainer">
 		<Panel id="VoteHeader" >
-			<Label id="VoteQuestion" text="Vote question" />			
+			<Label class="VoteQuestionLabel" text="#vote_build_delay_q" />			
 		</Panel>
-		<Panel class="Paper">
-			<Button class="FlatButton"/>
+		<Panel class="Paper" id="VoteVariants" param="build_exit_delay">
+			<Button class="FlatButton" value="24" default="true">
+				<Label class="FlatLabel" text="#vote_build_delay_24" />
+			</Button>
+			<Button class="FlatButton" value="26">
+				<Label class="FlatLabel" text="#vote_build_delay_26" />
+			</Button>
+			<Button class="FlatButton" value="28">
+				<Label class="FlatLabel" text="#vote_build_delay_28" />
+			</Button>
+			<Button class="FlatButton" value="30">
+				<Label class="FlatLabel" text="#vote_build_delay_30" />
+			</Button>						
+
 		</Panel>
 	</Panel>
 </root>
