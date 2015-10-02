@@ -8,18 +8,22 @@
 	</scripts>
 	<Panel hittest="false" class="VoteContainer">
 		<Panel id="VoteHeader" >
-			<Label class="VoteQuestionLabel" text="Vote question" />			
+			<Label class="VoteQuestionLabel" text="#vote_build_delay_q" />			
 		</Panel>
 		<Panel class="Paper" id="VoteVariants" param="build_exit_delay">
-			<Button class="FlatButton" value="20" default="true">
-				<Label class="FlatLabel" text="Variant1" />
-			</Button>
-			<Button class="FlatButton" value="24">
-				<Label class="FlatLabel" text="Text" />
+			<Button class="FlatButton" value="24" default="true">
+				<Label class="FlatLabel" text="#vote_build_delay_24" />
 			</Button>
 			<Button class="FlatButton" value="26">
-				<Label class="FlatLabel" text="Text" />
+				<Label class="FlatLabel" text="#vote_build_delay_26" />
+			</Button>
+			<Button class="FlatButton" value="28">
+				<Label class="FlatLabel" text="#vote_build_delay_28" />
+			</Button>
+			<Button class="FlatButton" value="30">
+				<Label class="FlatLabel" text="#vote_build_delay_30" />
 			</Button>						
+
 		</Panel>
 	</Panel>
 </root>

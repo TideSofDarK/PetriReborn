@@ -3,16 +3,21 @@
 var currentVoteNum = 0;
 var currentVotePanel = null;
 var isHost = false;
+var isFreeze = false;
 
 // Layout file, time for vote
 var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10 ],
-	/*[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10 ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 15 ]*/
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10 ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10 ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10 ],
 ]; 
 
 function ShowNextVote()
 {
+	if (isFreeze)
+		return;
+
 	// Default vote
 	if (currentVotePanel)
 		if (!currentVotePanel.data().IsVoted)
@@ -44,6 +49,31 @@ function SetCurrentVote( currentVoteNumber )
 	currentVoteNum = currentVoteNumber;
 }
 
+//--------------------------------------------------------------------------------------------------
+// Vote freezing
+//--------------------------------------------------------------------------------------------------
+function FreezeVote()
+{
+	if (isHost)
+		GameEvents.SendCustomGameEventToServer( "petri_send_vote_freeze", { } );
+}
+
+function UnfreezeVote()
+{
+	if (isHost)
+		GameEvents.SendCustomGameEventToServer( "petri_send_vote_unfreeze", { } );
+}
+
+function SetFreeze()
+{
+	isFreeze = true;
+}
+
+function SetUnfreeze()
+{
+	isFreeze = false;
+}
+
 (function ()
 {
 	var playerInfo = Game.GetLocalPlayerInfo();
@@ -52,5 +82,10 @@ function SetCurrentVote( currentVoteNumber )
 		Game.SetAutoLaunchEnabled( false );
 
 	$.GetContextPanel().data().ShowNextVote = ShowNextVote;
+	$.GetContextPanel().data().FreezeVote = FreezeVote;
+	$.GetContextPanel().data().UnfreezeVote = UnfreezeVote;
+
 	GameEvents.Subscribe( "petri_vote_current_vote", SetCurrentVote );
+	GameEvents.Subscribe( "petri_vote_freeze", SetFreeze );
+	GameEvents.Subscribe( "petri_vote_unfreeze", SetUnfreeze );
 })();

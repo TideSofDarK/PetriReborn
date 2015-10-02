@@ -224,6 +224,7 @@ DOTAAvatarImage
 
     padding: 5px;
     flow-children: down;
+    overflow: squish scroll;
 }
 
 .VoteContainer {

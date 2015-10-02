@@ -71,15 +71,13 @@ function UpdateTimer()
 		if (isHostShuffle)
 		{
 			SendHostShuffleList();
-			isHostShuffle = false;
 			Game.SetRemainingSetupTime( 10 );
+			$( "#VotePanel" ).data().UnfreezeVote();
+			isHostShuffle = false;
 		}
-		else
-		{
-			// Vote changes
-			if ($( "#VotePanel" ).data().ShowNextVote != null)
-				$( "#VotePanel" ).data().ShowNextVote();
-		}
+
+		if ($( "#VotePanel" ).data().ShowNextVote != null)
+			$( "#VotePanel" ).data().ShowNextVote();
 	}
 
 	$.Schedule( 0.1, UpdateTimer );
@@ -257,14 +255,22 @@ function ShuffleList( args )
 	// Set team number
 	for(var num in args["petr"]) 
 	{
-		playersPanel.FindChild("Player_" + args["petr"][num]).SetAttributeString("IsPetr", "true");
-		shuffleList.push(args["petr"][num]);
+		var panel = playersPanel.FindChild("Player_" + args["petr"][num]);
+		if (panel)
+		{
+			panel.SetAttributeString("IsPetr", "true");
+			shuffleList.push(args["petr"][num]);
+		}
 	}
 
 	for(var num in args["kvn"])
 	{
-		playersPanel.FindChild("Player_" + args["kvn"][num]).SetAttributeString("IsPetr", "false")
-		shuffleList.push(args["kvn"][num]);
+		var panel = playersPanel.FindChild("Player_" + args["kvn"][num]);
+		if (panel)
+		{
+			panel.SetAttributeString("IsPetr", "false")
+			shuffleList.push(args["kvn"][num]);
+		}
 	}
 
 	var childCount = playersPanel.GetChildCount();
@@ -332,6 +338,7 @@ function HostShuffle()
 
 	Game.SetRemainingSetupTime( 10 );
 	isHostShuffle = true;
+	$( "#VotePanel" ).data().FreezeVote();
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -8,18 +8,21 @@
 	</scripts>
 	<Panel hittest="false" class="VoteContainer">
 		<Panel id="VoteHeader" >
-			<Label class="VoteQuestionLabel" text="Vote question" />			
+			<Label class="VoteQuestionLabel" text="#vote_game_length_q" />			
 		</Panel>
-		<Panel class="Paper" id="VoteVariants">
-			<Button class="FlatButton" onactivate="Vote('build_exit', 20)">
-				<Label class="FlatLabel" text="Variant1" />
+		<Panel class="Paper" id="VoteVariants" param="game_length">
+			<Button class="FlatButton" value="88">
+				<Label class="FlatLabel" text="#vote_game_length_88" />
 			</Button>
-			<Button class="FlatButton">
-				<Label class="FlatLabel" text="Text" />
+			<Button class="FlatButton" value="96">
+				<Label class="FlatLabel" text="#vote_game_length_96" />
 			</Button>
-			<Button class="FlatButton">
-				<Label class="FlatLabel" text="Text" />
-			</Button>						
+			<Button class="FlatButton" value="100" default="true">
+				<Label class="FlatLabel" text="#vote_game_length_100" />
+			</Button>
+			<Button class="FlatButton" value="104">
+				<Label class="FlatLabel" text="#vote_game_length_104" />
+			</Button>
 		</Panel>
 	</Panel>
 </root>

@@ -1,8 +1,19 @@
 GameSetup = {}
 
+------------------------------------------------------------------------
+-- Shuffles
+------------------------------------------------------------------------
 local shuffleTimes = 0;
 local hostPlayerID = -1;
 local petrCount = 2;
+
+function GetArraySize( array )
+  count = 0
+  for k,v in pairs( array ) do
+    count = count + 1
+  end
+  return count
+end
 
 function ShuffleList( count )
   local a = {}
@@ -18,13 +29,17 @@ function ShuffleList( count )
   end
 
   local petr = { };
-  for i = 0, petrCount - 1 do
-    petr[i] = a[i];
-  end
-
-  local kvn = {};
-  for i = petrCount, count - petrCount - 1 do
-    kvn[i - petrCount] = a[i];
+  local kvn = { };
+  for i = 0, count - 1 do
+    if math.fmod(i, 2) == 0 then
+      if GetArraySize( petr ) < petrCount then
+        table.insert(petr, a[i])
+      else
+        table.insert(kvn, a[i])
+      end
+    else
+      table.insert(kvn, a[i])
+    end
   end
   
   CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn, ["petr"] = petr } );
@@ -61,4 +76,19 @@ function GameSetup:ShuffleSetHostList( args )
     function() 
       CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
     end);
+end
+
+------------------------------------------------------------------------
+-- Votes
+------------------------------------------------------------------------
+function GameSetup:VoteFreeze()
+  CustomGameEventManager:Send_ServerToAllClients( "petri_vote_freeze", { });
+end
+
+function GameSetup:VoteUnfreeze()
+  CustomGameEventManager:Send_ServerToAllClients( "petri_vote_unfreeze", { });
+end
+
+-- Main vote handler
+function GameSetup:Vote( args )
 end
