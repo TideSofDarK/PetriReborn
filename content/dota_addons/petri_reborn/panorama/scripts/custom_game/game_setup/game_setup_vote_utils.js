@@ -6,8 +6,10 @@ function Vote( value )
 	variants.enabled = false;
 
 	var param = variants.GetAttributeString("param", "non_param")
+	var params = {};
+	params[param] = value;
 
-	GameEvents.SendCustomGameEventToServer( "petri_vote", { param : value } );
+	GameEvents.SendCustomGameEventToServer( "petri_vote", params );
 }
 
 //--------------------------------------------------------------------------------------------------
