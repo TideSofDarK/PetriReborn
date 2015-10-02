@@ -197,7 +197,13 @@ end
 
 function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
+
+  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
+  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+
   if event.reason_const == DOTA_ModifyGold_HeroKill then
+    if GameRules:GetDOTATime(false, false) < 120 then return false end
+
     event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and

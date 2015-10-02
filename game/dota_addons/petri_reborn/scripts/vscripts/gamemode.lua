@@ -120,6 +120,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+          newHero.allEarnedGold = 0
           newHero.numberOfUnits = 0
 
           newHero.buildingCount = 0
@@ -178,6 +179,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
+          newHero.allEarnedGold = 0
 
           SetupUI(newHero)
 
@@ -446,7 +448,7 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       newHero:SetAbilityPoints(5)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
       Timers:CreateTimer(0.03, function ()

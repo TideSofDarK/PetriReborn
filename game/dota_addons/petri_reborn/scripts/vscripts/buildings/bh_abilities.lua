@@ -90,8 +90,8 @@ function build( keys )
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
-			local dummy = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-			Timers:CreateTimer(600, function() dummy:RemoveSelf() end)
+			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+			Timers:CreateTimer(600, function() unit.childEntity:RemoveSelf() end)
 		end
 
 		caster:EmitSound("ui.inv_pickup_wood")
