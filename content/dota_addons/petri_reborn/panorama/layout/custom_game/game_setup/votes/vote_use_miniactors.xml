@@ -10,7 +10,7 @@
 		<Panel id="VoteHeader" >
 			<Label class="VoteQuestionLabel" text="#vote_use_miniactors_q" />			
 		</Panel>
-		<Panel class="Paper" id="VoteVariants" param="game_length">
+		<Panel class="Paper" id="VoteVariants" param="use_miniactors">
 			<Button class="FlatButton" value="true" default="true">
 				<Label class="FlatLabel" text="#vote_use_miniactors_use" />
 			</Button>
