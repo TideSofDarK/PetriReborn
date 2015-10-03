@@ -506,7 +506,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
             callbacks.onConstructionCompleted(building)
           end
           building.constructionCompleted = true
-          print("[BuildingHelper] HP was off by:", fMaxHealth - fAddedHealth)
+
           building.state = "complete"
           building.bUpdatingHealth = false
           -- clean up the timer if we don't need it.
@@ -536,8 +536,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
             end
           end
         else
-          -- clean up the timer if we don't need it.
-          print("[BuildingHelper] Scale was off by:", fMaxScale - fCurrentScale)
           building:SetModelScale(fMaxScale)
           return nil
         end

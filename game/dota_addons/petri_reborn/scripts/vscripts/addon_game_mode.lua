@@ -28,10 +28,11 @@ function Precache( context )
 
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
-  PrecacheResource("model", "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl", context)
+  PrecacheResource("model", "models/props_structures/tower_dragon_white.vmdl", context)
+  PrecacheResource("model", "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl", context)
-  PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl", context)
+  PrecacheResource("model", "models/items/undying/idol_of_ruination/ruin_wight_minion_gold.vmdl", context)
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl", context)
   PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl", context)
@@ -62,6 +63,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
   
   -- wall
+  PrecacheResource("model", "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl", context)
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
   PrecacheResource("model", "models/props_rock/riveredge_rock008a.vmdl", context)
   PrecacheResource("model", "models/heroes/oracle/crystal_ball.vmdl", context)

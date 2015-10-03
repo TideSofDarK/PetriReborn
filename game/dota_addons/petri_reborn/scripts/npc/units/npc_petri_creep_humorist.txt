@@ -1,18 +1,20 @@
 "npc_petri_creep_humorist"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"
   "ModelScale"        "1.1"
   "Level"           "5"
   "HealthBarOffset"     "140"
+
+  "Ability1"  "petri_creep_swipes"
 
   "ArmorPhysical"       "3"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "14500.0"
-  "AttackDamageMax"     "17500.0"
+  "AttackDamageMin"     "10875.0"
+  "AttackDamageMax"     "13125.0"
   "AttackRate"        "0.5"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -34,8 +36,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "600"
-  "VisionNighttimeRange"    "600"
+  "VisionDaytimeRange"    "400"
+  "VisionNighttimeRange"    "400"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

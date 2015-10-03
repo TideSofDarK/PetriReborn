@@ -2,6 +2,8 @@ BAREBONES_DEBUG_SPEW = false
 
 -- Settings time
 
+DISABLED_HINTS_PLAYERS = {}
+
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
@@ -79,17 +81,15 @@ end
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
-  hero:SetGold(0, false)
-
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
   local team = hero:GetTeamNumber()
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
-
+  print(pID)
   if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
-    hero.spawnPosition = hero:GetAbsOrigin()
+    GameMode.assignedPlayerHeroes[pID] = "temp"
 
     local newHero
 
@@ -97,11 +97,12 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init kvn fan
     if team == 2 then
+      UTIL_Remove(hero) 
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
         function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = hero
+          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
           InitAbilities(newHero)
 
@@ -119,6 +120,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.bonusLumber = 0
           newHero.food = 0
           newHero.maxFood = 10
+          newHero.allEarnedGold = 0
           newHero.numberOfUnits = 0
 
           newHero.buildingCount = 0
@@ -177,6 +179,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.lumber = 0
           newHero.food = 0
           newHero.maxFood = 0
+          newHero.allEarnedGold = 0
 
           SetupUI(newHero)
 
@@ -320,15 +323,20 @@ function GameMode:OnGameInProgress()
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#lottery_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
+
+  -- Petrosyan tutorial
+  tutorial_time = 0
+  Timers:CreateTimer(
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {disabled_players = DISABLED_HINTS_PLAYERS, loc_check = true, text="#petrosyans_tip_"..tostring(tutorial_time), duration=10, style={color="white", ["font-size"]="45px"}})
+
+      tutorial_time = tutorial_time + 5
+      return 5
+    end)
 end
 
 function GameMode:InitGameMode()
   GameMode = self
-
-  -- Timers:CreateTimer(function ( )
-  --   PauseGame(false)
-  --   if PETIR_GAME_HAS_STARTED == false then return 0.03 end
-  -- end)
 
   GameMode:_InitGameMode()
 
@@ -421,7 +429,7 @@ function GameMode:InitGameMode()
   BuildingHelper:Init()
 end
 
-function GameMode:ReplaceWithMiniActor(player)
+function GameMode:ReplaceWithMiniActor(player, gold)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
 
@@ -429,9 +437,10 @@ function GameMode:ReplaceWithMiniActor(player)
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD, 0)
-      GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
 
+      GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
+      
       newHero:SetTeam(DOTA_TEAM_BADGUYS)
 
       newHero:RespawnHero(false, false, false)
@@ -439,7 +448,7 @@ function GameMode:ReplaceWithMiniActor(player)
       newHero:SetAbilityPoints(5)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
       Timers:CreateTimer(0.03, function ()
@@ -458,7 +467,7 @@ function KVNWin(keys)
 
     Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
-    for i=1,10 do
+    for i=1,14 do
       PlayerResource:SetCameraTarget(i-1, caster)
     end
 

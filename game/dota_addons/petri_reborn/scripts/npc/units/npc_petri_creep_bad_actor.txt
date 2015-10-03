@@ -1,6 +1,6 @@
 "npc_petri_creep_bad_actor"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
   "ModelScale"        "1.0"
   "Level"           "1"
@@ -35,8 +35,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "600"
-  "VisionNighttimeRange"    "600"
+  "VisionDaytimeRange"    "400"
+  "VisionNighttimeRange"    "400"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

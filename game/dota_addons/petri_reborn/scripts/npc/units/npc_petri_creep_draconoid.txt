@@ -1,19 +1,21 @@
 "npc_petri_creep_draconoid"
 {
-  "BaseClass"         "npc_dota_base_additive"
-  "Model"           "models/items/dragon_knight/dragon_immortal_1/dragon_immortal_1.vmdl"
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl"
   "ModelScale"        "0.6"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "6"
   "HealthBarOffset"     "160"
+
+  "Ability1"  "petri_creep_swipes"
 
   "ArmorPhysical"       "15"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "60000.0"
-  "AttackDamageMax"     "72500.0"
+  "AttackDamageMin"     "35000.0"
+  "AttackDamageMax"     "37500.0"
   "AttackRate"        "0.3"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -30,13 +32,13 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "23750"
+  "StatusHealth"        "28750"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "600"
-  "VisionNighttimeRange"    "600"
+  "VisionDaytimeRange"    "400"
+  "VisionNighttimeRange"    "400"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

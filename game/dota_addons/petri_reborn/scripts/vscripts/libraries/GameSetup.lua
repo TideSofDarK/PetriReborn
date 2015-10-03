@@ -1,4 +1,5 @@
 GameSetup = {}
+GameSetup.votes = {}
 
 ------------------------------------------------------------------------
 -- Shuffles
@@ -91,4 +92,39 @@ end
 
 -- Main vote handler
 function GameSetup:Vote( args )
+  local pID
+  local voteName
+  local value
+
+  for k,v in pairs(args) do
+    if k == "PlayerID" then
+      pID = v
+    else
+      voteName = k
+      value = v
+    end
+  end
+
+  GameSetup.votes[voteName] = GameSetup.votes[voteName] or {}
+  GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] or 0
+  GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] + 1
+end
+
+-- End vote handler
+function GameSetup:VoteEnd( args )
+  local results = {}
+  for k,v in pairs(GameSetup.votes) do
+    results[k] = 0
+
+    local maxVotes = 0
+
+    for option,votes in pairs(v) do
+      if votes > maxVotes then 
+        maxVotes = votes
+        results[k] = option
+      end
+    end
+  end
+
+  CustomGameEventManager:Send_ServerToAllClients("petri_vote_results", {["results"] = results} )
 end

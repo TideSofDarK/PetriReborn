@@ -1,6 +1,6 @@
 "npc_petri_creep_good_actor"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl"
   "ModelScale"        "1.0"
   "Level"           "2"
@@ -34,8 +34,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "600"
-  "VisionNighttimeRange"    "600"
+  "VisionDaytimeRange"    "400"
+  "VisionNighttimeRange"    "400"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

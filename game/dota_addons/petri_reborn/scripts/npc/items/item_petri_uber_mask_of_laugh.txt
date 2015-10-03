@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_uber_mask_of_laugh"
 
-  "AbilityCooldown"       "65"
+  "AbilityCooldown"       "60"
   
   "ItemCost"            "487"
   "ItemShopTags"          "unique"

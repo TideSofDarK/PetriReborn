@@ -109,10 +109,23 @@ function GameMode:FilterExecuteOrder( filterTable )
     elseif order_type == DOTA_UNIT_ORDER_PICKUP_ITEM then
       local item = EntIndexToHScript(filterTable["entindex_target"]):GetContainedItem()
 
+      local purchaser = EntIndexToHScript(units["0"])
+
       if item:IsCastOnPickup() == true then
         if EntIndexToHScript(units["0"]):GetUnitName() == "npc_petri_cop" then
           return true
         else 
+          return false
+        end
+      end
+
+      if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then 
+        if CheckShopType(item:GetName()) ~= 1 then
+          return false
+        end
+      end
+      if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then 
+        if CheckShopType(item:GetName()) == 1 then
           return false
         end
       end
@@ -184,7 +197,13 @@ end
 
 function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
+
+  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
+  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+
   if event.reason_const == DOTA_ModifyGold_HeroKill then
+    if GameRules:GetDOTATime(false, false) < 120 then return false end
+
     event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and

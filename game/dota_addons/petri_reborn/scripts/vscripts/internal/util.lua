@@ -63,6 +63,9 @@ function RemoveGatheringAndRepairingModifiers(target)
     or target:HasModifier("modifier_chopping_wood")
     or target:HasModifier("modifier_gathering_lumber")
     or target:HasModifier("modifier_chopping_wood_animation")
+    or target:HasModifier("modifier_chopping_building_animation")
+    or target:HasModifier("modifier_chopping_building")
+    or target:HasModifier("modifier_repairing")
     or target:HasModifier("modifier_returning_resources_on_order_cancel") then
 
     ToggleAbilityOff(target:FindAbilityByName("return_resources"))
@@ -199,7 +202,7 @@ end
 function CheckKVN()
   local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
   for k,v in pairs(kvns) do
-    if v:IsAlive() and PlayerResource:GetConnectionState(v:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then return false end
+    if v:IsAlive() == true and PlayerResource:GetConnectionState(v:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then return false end
   end
   return true
 end

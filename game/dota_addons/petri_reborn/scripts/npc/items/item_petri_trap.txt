@@ -18,9 +18,9 @@
   
   "SideShop" "1"
 
-  "AbilityCastRange" "250"
+  "AbilityCastRange" "450"
 
-  "AbilityCooldown"       "75.0"
+  "AbilityCooldown"       "90.0"
 
   "OnSpellStart"
   {

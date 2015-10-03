@@ -777,8 +777,7 @@
 	      {
 	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
 	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
-	        //"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
-	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+	        //"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
 	        "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED" // GridNav is blocked
 	      }
 	      "Properties"
@@ -819,6 +818,167 @@
 	    {
 	      "ScriptFile"      "units/sawmill.lua"
 	      "Function"        "BuyLumber"
+	    }
+	  }
+	}
+	"petri_creep_pendant"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlag"         "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"            "rubick_empty1" 
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "damage"      "117999"
+	    }
+	  }
+	
+	  "OnProjectileHitUnit"
+	  {
+	    "DeleteOnHit"   "1"
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"    "units/creep.lua"
+	      "Function"      "SplitShotDamage"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_pendant"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "OnAttack"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/creep.lua"
+	          "Function"      "SplitShot"
+	          "projectile" "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
+	        }
+	      } 
+	      
+	      "OnAttacked"
+	      {
+	        "Heal"
+	        {
+	          "Target"        "CASTER"
+	          "HealAmount"  "%attack_damage"
+	        }
+	      }
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+	        //"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+	      }
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
+	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
+	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "0.1"
+	      }
+	    }
+	  }
+	}
+	"petri_creep_swipes"
+	{
+	  "BaseClass"             "ability_datadriven"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	          
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "reset_time"                    "10"
+	    }
+	    "02"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "max_stacks"                    "25"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	      "particle"                          "particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf"
+	      "particle"                          "particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_creep_swipes_caster"
+	    {
+	      "Passive"                       "1"
+	      "IsHidden"                      "1"
+	      "IsPurgable"                    "0"
+	    
+	      "OnAttackLanded"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"            "units/creep.lua"
+	          "Function"              "Attack"
+	        }
+	      }
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"            "units/creep.lua"
+	          "Function"              "ApplyDamageReduction"
+	        }
+	      }
+	    }
+	
+	    "modifier_damage_reduction"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "-1"
+	      }
+	    }
+	    
+	    "modifier_creep_swipes_target"
+	    {
+	      "IsHidden"                  "1"
+	      "IsPurgable"                "0"
+	      "IsDebuff"                  "1"
+	
+	      "EffectName"                "particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+	      "EffectAttachType"          "follow_overhead"
+	      
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "Target"                "TARGET"
+	          "EffectName"            "particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf"
+	          "EffectAttachType"      "follow_overhead"
+	        }
+	      }
 	    }
 	  }
 	}
@@ -957,7 +1117,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "11 10 9 8 8 7 7 6 6"
+	  "AbilityCooldown" "11 10 9 8 8 7 7 6 4"
 	
 	  "MaxLevel"            "9"
 	
@@ -1024,7 +1184,7 @@
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
-	  "AbilityCooldown"        "5.725"
+	  "AbilityCooldown"        "6.025"
 	
 	  "MaxLevel"            "1"
 	
@@ -1061,7 +1221,7 @@
 	        }
 	      }
 	
-	      "ThinkInterval" "5.75" // whatever
+	      "ThinkInterval" "6.05" // whatever
 	      "OnIntervalThink"
 	      {
 	        "RunScript"
@@ -1090,12 +1250,12 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "74"
+	      "upgrade_rate"      "90"
 	    }
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_limit"      "295"
+	      "upgrade_limit"      "305"
 	    }
 	  }
 	
@@ -1211,8 +1371,6 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ALLY"
-	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityTextureName" "undying_tombstone"
 	  
 	  "Modifiers"
@@ -1333,7 +1491,7 @@
 	  }  
 	}
 	
-	"petri_dummy_portal_icon_passive"
+	"petri_dummy_icon_passive"
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -1355,6 +1513,7 @@
 	        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }  
@@ -2259,6 +2418,9 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "techies_stasis_trap"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	
+	  "MaxLevel"            "1"
 	
 	  "precache"
 	  {
@@ -2283,6 +2445,7 @@
 	            "Radius"  "100"
 	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	            "Types"   "DOTA_UNIT_TARGET_HERO"
+	            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	          }
 	          
 	          "Action"
@@ -3129,6 +3292,11 @@
 	  {
 	    "RunScript"
 	    {
+	      "ScriptFile"  "units/sawmill.lua"
+	      "Function"    "UpgradeExchange"
+	    }
+	    "RunScript"
+	    {
 	      "ScriptFile"      "internal/util.lua"
 	      "Function"        "OnUpgradeSucceeded"
 	      "Permanent"       "1"
@@ -3463,29 +3631,29 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "80 100 110 130 150 170 190 350 450 650 850 1000"
-	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6"
+	  "AbilityGoldCost"       "80 100 110 130 150 170 190 350 450 650 850 1000 1750 3200"
+	  "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8"
 	
-	  "MaxLevel"            "13"
+	  "MaxLevel"            "15"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 10000"
+	      "lumber_cost"        "1000 2000 4000 8000 12000 16000 21000 30500 40000 50000 75000 10000 20000 30000"
 	    }
 	
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_damage"  "10 20 45 90 120 155 195 275 385 450 550 650"
+	      "bonus_damage"  "10 20 45 90 120 155 195 275 385 450 550 650 1150 2050"
 	    }
 	
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_range"  "5 10 20 30 40 50 60 70 80 90 100 110"
+	      "bonus_range"  "0 5 5 10 20 30 40 50 60 70 80 90 100 110"
 	    }
 	
 	   "04"
@@ -3583,6 +3751,8 @@
 	  
 	  "AbilityChannelTime"      "1.0"
 	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilityMultiOrder" "1"
 	
 	  "MaxLevel"            "4"
 	
@@ -3686,10 +3856,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "12"
+	  "MaxLevel"            "13"
 	
 	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
-	  "AbilityGoldCost"       "0 10 60 290 690 900 1500 2800 4000 5900 8000"
+	  "AbilityGoldCost"       "0 11 60 120 170 690 900 1200 2550 4000 5500 7750"
 	
 	  "precache"
 	  {
@@ -3701,17 +3871,17 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000 50000"
+	      "lumber_cost"        "500 1000 2000 4000 6000 12000 16000 20000 24000 26000 30000 50000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000 12500"
+	      "health_points"        "270 380 590 750 900 1300 1650 2800 4900 7850 10000 12500"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 295 820 1300 1950 2575 4000 5500 7000 9500 11000"
+	      "armor"        "125 295 820 1060 1300 1950 2575 4000 5500 7000 9500 11000"
 	    }
 	  }
 	

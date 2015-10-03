@@ -1,8 +1,19 @@
 function BonusGoldFromWall(keys)
-	if keys.target:GetUnitName() == "npc_petri_wall" then
-		PlayerResource:ModifyGold(keys.caster:GetPlayerOwnerID(), 1, false, 0)
+	local caster = keys.caster
+	local target = keys.target
 
-		PlusParticle(1, Vector(244,201,23), 3.0, keys.caster)
+	if target:GetUnitName() == "npc_petri_wall" then
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, 0)
+
+		PlusParticle(1, Vector(244,201,23), 3.0, caster)
+	end
+
+	if target:HasAbility("petri_creep_pendant") == true 
+	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
+		
+		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(110, false, DOTA_ModifyGold_CreepKill )
+		caster.allEarnedGold = caster.allEarnedGold + 110
+		PlusParticle(110, Vector(244,201,23), 1.0, caster)
 	end
 end
 
@@ -44,6 +55,16 @@ function FarSight( event )
 			local fxIndex = ParticleManager:CreateParticleForPlayer( particleName, PATTACH_WORLDORIGIN, v, PlayerResource:GetPlayer( v:GetPlayerID() ) )
 			ParticleManager:SetParticleControl( fxIndex, 0, target )
 			ParticleManager:SetParticleControl( fxIndex, 1, Vector(reveal_radius,0,reveal_radius) )
+		end
+	end
+
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
+
+	for i,v in ipairs(units) do
+		if v:HasAbility("petri_building") == true then
+			if not v.minimapIcon then
+				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+			end
 		end
 	end
 
@@ -99,13 +120,13 @@ function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
 
-	for i=0,target:GetAbilityCount() do
+	RemoveGatheringAndRepairingModifiers(target)
+
+	for i=0,target:GetAbilityCount()-1 do
 		if target:GetAbilityByIndex(i) ~= nil and target:GetAbilityByIndex(i):GetToggleState() then
 			target:GetAbilityByIndex(i):ToggleAbility()
 		end
 	end
-
-	RemoveGatheringAndRepairingModifiers(target)
 
 	-- for i=0,target:GetModifierCount() do
 	-- 	local modifierName = target:GetModifierNameByIndex(i)
@@ -188,8 +209,8 @@ end
 function ReadComedyStory( keys )
 	local caster = keys.caster
 
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + 575)
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 575)
+	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + 17000)
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + 17000)
 
 	caster:CalculateStatBonus()
 end

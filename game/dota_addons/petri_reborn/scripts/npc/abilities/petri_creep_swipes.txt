@@ -1,0 +1,87 @@
+"petri_creep_swipes"
+{
+  "BaseClass"             "ability_datadriven"
+  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+          
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "reset_time"                    "10"
+    }
+    "02"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "max_stacks"                    "25"
+    }
+  }
+
+  "precache"
+  {
+      "particle"                          "particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf"
+      "particle"                          "particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+  }
+  
+  "Modifiers"
+  {
+    "modifier_creep_swipes_caster"
+    {
+      "Passive"                       "1"
+      "IsHidden"                      "1"
+      "IsPurgable"                    "0"
+    
+      "OnAttackLanded"
+      {
+        "RunScript"
+        {
+          "ScriptFile"            "units/creep.lua"
+          "Function"              "Attack"
+        }
+      }
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"            "units/creep.lua"
+          "Function"              "ApplyDamageReduction"
+        }
+      }
+    }
+
+    "modifier_damage_reduction"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+    
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "-1"
+      }
+    }
+    
+    "modifier_creep_swipes_target"
+    {
+      "IsHidden"                  "1"
+      "IsPurgable"                "0"
+      "IsDebuff"                  "1"
+
+      "EffectName"                "particles/units/heroes/hero_ursa/ursa_fury_swipes_debuff.vpcf"
+      "EffectAttachType"          "follow_overhead"
+      
+      "OnCreated"
+      {
+        "AttachEffect"
+        {
+          "Target"                "TARGET"
+          "EffectName"            "particles/units/heroes/hero_ursa/ursa_fury_swipes.vpcf"
+          "EffectAttachType"      "follow_overhead"
+        }
+      }
+    }
+  }
+}

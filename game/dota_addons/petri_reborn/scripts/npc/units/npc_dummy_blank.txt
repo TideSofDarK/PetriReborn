@@ -72,7 +72,7 @@
   "SoundSet" "Creep_Good_Range" 
   "Level" "0"
 
-  "Ability1"          "petri_dummy_portal_icon_passive"    
+  "Ability1"          "petri_dummy_icon_passive"    
 
   "MinimapIcon"         "minimap_ping"
   "MinimapIconSize"       "555"
@@ -107,6 +107,56 @@
   "StatusManaRegen" "0" 
   
   "TeamName" "DOTA_TEAM_NEUTRALS" 
+  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  
+  "VisionDaytimeRange" "0" 
+  "VisionNighttimeRange" "0" 
+}
+
+"npc_dummy_enemy_building_icon"
+{
+  "BaseClass" "npc_dota_building" 
+  "Model" "models/development/invisiblebox.vmdl" 
+  "SoundSet" "Creep_Good_Range" 
+  "Level" "0"
+
+  "Ability1"          "petri_dummy_icon_passive"    
+
+  "MinimapIcon"         "minimap_sword"
+  "MinimapIconSize"       "420"
+  
+  "ArmorPhysical" "0" 
+  "MagicalResistance" "0" 
+  
+  "AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+  
+  "AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+  "AttributeBaseStrength" "0"
+  "AttributeStrengthGain" "0"
+  "AttributeBaseIntelligence" "0"
+  "AttributeIntelligenceGain" "0"
+  "AttributeBaseAgility" "0"
+  "AttributeAgilityGain" "0"
+  
+  "BountyXP" "0" 
+  "BountyGoldMin" "0" 
+  "BountyGoldMax" "0" 
+  
+  "BoundsHullName" "DOTA_HULL_SIZE_SMALL" 
+  
+  "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_GROUND" 
+  "MovementSpeed" "450" 
+  "MovementTurnRate" "10" 
+  "FollowRange" "250" 
+
+  "StatusHealth" "1" 
+  "StatusHealthRegen" "0" 
+  "StatusMana" "0" 
+  "StatusManaRegen" "0" 
+  
+  "TeamName" "DOTA_TEAM_BADGUYS" 
   "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
   "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
   "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
