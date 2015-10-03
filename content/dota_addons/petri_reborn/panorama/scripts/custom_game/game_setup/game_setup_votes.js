@@ -5,12 +5,12 @@ var currentVotePanel = null;
 var isHost = false;
 var isFreeze = false;
 
-// Layout file, time for vote
+// Layout file, time for vote, state description
 var votePanels = [
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10 ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10 ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10 ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10 ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10, "#game_setup_host_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10, "#game_setup_build_delay_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10, "#game_setup_game_length_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ],
 ]; 
 
 function ShowNextVote()
@@ -37,6 +37,12 @@ function ShowNextVote()
 				// Vote sync event
 				GameEvents.SendCustomGameEventToServer( "petri_vote_current_number", { "vote_number" : currentVoteNum } );
 				Game.SetRemainingSetupTime( vote[1] );
+			}
+
+			if ($.GetContextPanel().data().SetStateDescription)
+			{
+				if (vote[2])
+					$.GetContextPanel().data().SetStateDescription( vote[2] );
 			}
 		}
 		
