@@ -71,7 +71,6 @@
 	{
 	  "BaseClass" "npc_dota_building" 
 	  "Model" "models/development/invisiblebox.vmdl" 
-	  "SoundSet" "Creep_Good_Range" 
 	  "Level" "0"
 	
 	  "Ability1"          "petri_dummy_icon_passive"    
@@ -109,9 +108,6 @@
 	  "StatusManaRegen" "0" 
 	  
 	  "TeamName" "DOTA_TEAM_NEUTRALS" 
-	  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-	  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
-	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
 	  
 	  "VisionDaytimeRange" "0" 
 	  "VisionNighttimeRange" "0" 
@@ -121,7 +117,6 @@
 	{
 	  "BaseClass" "npc_dota_building" 
 	  "Model" "models/development/invisiblebox.vmdl" 
-	  "SoundSet" "Creep_Good_Range" 
 	  "Level" "0"
 	
 	  "Ability1"          "petri_dummy_icon_passive"    
@@ -159,9 +154,6 @@
 	  "StatusManaRegen" "0" 
 	  
 	  "TeamName" "DOTA_TEAM_BADGUYS" 
-	  "CombatClassAttack" "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-	  "CombatClassDefend" "DOTA_COMBAT_CLASS_DEFEND_SOFT"
-	  "UnitRelationshipClass" "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
 	  
 	  "VisionDaytimeRange" "0" 
 	  "VisionNighttimeRange" "0" 

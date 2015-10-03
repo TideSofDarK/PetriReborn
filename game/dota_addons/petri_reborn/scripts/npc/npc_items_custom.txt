@@ -770,6 +770,9 @@
 	      "Duration"              "%corruption_duration"
 	      "Passive"               "0"
 	      "IsHidden"              "0"
+	
+	      "IsDebuff"          "1"
+	      "IsPurgable"        "0"
 	      
 	      "Properties"
 	      {
@@ -2445,6 +2448,16 @@
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trap"
+	
+	  "precache"
+	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"       
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+	    "particle"      "particles/status_fx/status_effect_techies_stasis.vpcf"
+	    "model"         "models/heroes/techies/fx_techiesfx_stasis.vmdl"    
+	  }
 	
 	  "ItemCost"            "450"
 	  "ItemShopTags"        "consumable"
