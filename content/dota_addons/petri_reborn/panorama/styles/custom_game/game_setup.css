@@ -264,6 +264,10 @@ DOTAAvatarImage
     background-color: #FFC107;
 }
 
+.FlatButton.wrong {
+    visibility: collapse;
+}
+
 #GameModeNameLabel 
 {
     margin-left: 30px;

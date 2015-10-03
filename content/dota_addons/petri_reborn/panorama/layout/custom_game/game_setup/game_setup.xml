@@ -21,7 +21,7 @@
 					<Label id="TeamSelectTimer" text="#custom_game_team_select_timer" />
 					<Panel id="TimerLabelBox" >
 						<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
-						<Label id="TimerLabelGameStart" text="#custom_game_team_select_starting" />
+						<Label id="TimerLabelGameStart"/>
 					</Panel>
 				</Panel>			
 			</Panel>
