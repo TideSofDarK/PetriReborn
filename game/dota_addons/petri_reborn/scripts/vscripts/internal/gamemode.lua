@@ -113,7 +113,7 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_send_vote_freeze", Dynamic_Wrap(GameSetup, 'VoteFreeze'))
   CustomGameEventManager:RegisterListener( "petri_send_vote_unfreeze", Dynamic_Wrap(GameSetup, 'VoteUnfreeze'))  
   CustomGameEventManager:RegisterListener( "petri_vote", Dynamic_Wrap(GameSetup, 'Vote'))
-  --CustomGameEventManager:RegisterListener( "petri_vote_end", Dynamic_Wrap(GameSetup, 'VoteEnd'))  
+  CustomGameEventManager:RegisterListener( "petri_vote_end", Dynamic_Wrap(GameSetup, 'VoteEnd'))  
 
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 
