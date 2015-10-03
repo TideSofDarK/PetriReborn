@@ -160,17 +160,20 @@
 	width: 100%;
 }
 
-#Cooldown
+#Timers
 {
 	width: 150px;
+	flow-children: down;
 }
 
-#Cooldown.no_cd
+#CooldownLabel.no_cd,
+#ChannelLabel.no_channel
 {
 	visibility: collapse;
 }
 
-#CooldownLabel
+#CooldownLabel,
+#ChannelLabel
 {
 	width: 60px;
 	height: 30px;
