@@ -10,11 +10,28 @@ var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10, "#game_setup_host_vote" ],
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10, "#game_setup_build_delay_vote" ],
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10, "#game_setup_game_length_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ]
 ]; 
 
 function ShowNextVote()
 {
+	if (currentVoteNum > votePanels.length)
+		return
+
+	// End of votes
+	if (currentVoteNum == votePanels.length)
+	{
+		if (isHost)
+		{
+			$.GetContextPanel().data().SetStateDescription( "#game_setup_start" );			
+			Game.SetRemainingSetupTime( 10 );
+			GameEvents.SendCustomGameEventToServer( "petri_vote_end", { } );
+		}
+
+		currentVoteNum++;
+		return;
+	}
+
 	if (isFreeze)
 		return;
 
@@ -80,6 +97,36 @@ function SetUnfreeze()
 	isFreeze = false;
 }
 
+//--------------------------------------------------------------------------------------------------
+// Vote results
+//--------------------------------------------------------------------------------------------------
+function ShowVoteResults( args )
+{
+	var childCount = $.GetContextPanel().GetChildCount();
+	
+	// Update all panels
+	for (var i = 0; i < childCount; i++) {
+		var votePanel = $.GetContextPanel().GetChild(i).FindChild( "VoteVariants" );
+		if (!votePanel)
+			continue;
+
+		var param = votePanel.GetAttributeString("param", "");
+		if (param == "")
+			continue;
+
+		var variantsCount = votePanel.GetChildCount();
+		// Update all variants
+		for (var j = 0; j < variantsCount; j++) {
+			var variantPanel = votePanel.GetChild(j);
+			var value = variantPanel.GetAttributeString("value", "");
+
+			var isWrongVariant = args["results"][param] != value;
+			variantPanel.SetHasClass("wrong", isWrongVariant);
+			variantPanel.SetHasClass("selected", false);
+		};
+	};
+}
+
 (function ()
 {
 	var playerInfo = Game.GetLocalPlayerInfo();
@@ -94,4 +141,6 @@ function SetUnfreeze()
 	GameEvents.Subscribe( "petri_vote_current_vote", SetCurrentVote );
 	GameEvents.Subscribe( "petri_vote_freeze", SetFreeze );
 	GameEvents.Subscribe( "petri_vote_unfreeze", SetUnfreeze );
+
+	GameEvents.Subscribe( "petri_vote_results", ShowVoteResults );
 })();
