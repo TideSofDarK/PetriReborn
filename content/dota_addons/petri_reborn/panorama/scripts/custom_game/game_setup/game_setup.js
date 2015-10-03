@@ -2,23 +2,14 @@
 var isHostShuffle = false;
 
 //--------------------------------------------------------------------------------------------------
-// Handler for when the Lock and Start button is pressed
+// Setting state description
 //--------------------------------------------------------------------------------------------------
-function OnLockAndStartPressed()
+function SetStateDescription( desc )
 {
-	// Don't allow a forced start if there are unassigned players
-	if ( Game.GetUnassignedPlayerIDs().length > 0  )
-		return;
-
-	// Lock the team selection so that no more team changes can be made
-	Game.SetTeamSelectionLocked( true );
-	
-	// Disable the auto start count down
-	Game.SetAutoLaunchEnabled( false );
-
-	// Set the remaining time before the game starts
-	Game.SetRemainingSetupTime( 4 ); 
+	var label = $( "#TimerLabelGameStart" );
+	label.text = $.Localize( desc );
 }
+
 
 //--------------------------------------------------------------------------------------------------
 // Check to see if the local player has host privileges and set the 'player_has_host_privileges' on
@@ -84,84 +75,6 @@ function UpdateTimer()
 }
 
 //--------------------------------------------------------------------------------------------------
-// Fill panels content
-//--------------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------------
-// Votes list
-//--------------------------------------------------------------------------------------------------
-function CreateVote()
-{
-	var votePanel = $( "#VotePanel");
-	votePanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_votes.xml", false, false );
-}
-
-//--------------------------------------------------------------------------------------------------
-// Players list
-//--------------------------------------------------------------------------------------------------
-function CreatePlayerList()
-{
-	var playersPanel = $( "#PlayersListContainer");
-	var playerIDs = Game.GetAllPlayerIDs();
-	
-	// Testing list
-	/*
-	var playerID = playerIDs[0];
-	for (var i = 0; i < 14; i++) {
-		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + i );
-		playerPanel.SetAttributeInt( "player_id", playerID );
-		playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_player.xml", false, false );
-		playerPanel.SetHasClass("transition", true);
-		playerPanel.SetParent( playersPanel );
-		playerPanel.FindChild("PlayerName").text =  i;
-
-		var executeCapture = (function(panel) { 
-			return function() {
-
-				var isPetr = panel.GetAttributeString("IsPetr", "false");
-				if (isPetr == "false")
-					panel.SetAttributeString("IsPetr", "true");
-				else
-					panel.SetAttributeString("IsPetr", "false");
-
-				panel.FindChild("Petro").SetHasClass("visible", isPetr == "true");
-			}
-		} (playerPanel));
-
-		playerPanel.SetPanelEvent("onmouseactivate", executeCapture);
-	}*/
- 
-	for(var id of playerIDs)
-	{
-		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + id );
-		playerPanel.SetAttributeInt( "player_id", id );
-		playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_player.xml", false, false );
-
-		playerPanel.AddClass("playerInfo");
-		playerPanel.SetParent( playersPanel );
-	}
-}
-
-
-//--------------------------------------------------------------------------------------------------
-// Teams list
-//--------------------------------------------------------------------------------------------------
-function CreateTeamList()
-{
-	var teamsPanel = $( "#TeamsListContainer");
-
-	var teamIDs = Game.GetAllTeamIDs();
-
-	for ( var teamID of teamIDs )
-	{
-		var teamNode = $.CreatePanel( "Panel", teamsPanel, "Team_" + teamID );
-
-		teamNode.SetAttributeInt( "team_id", teamID );
-		teamNode.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_team.xml", false, false ); 
-		teamNode.SetParent( teamsPanel );
-	}
-}
-
-//--------------------------------------------------------------------------------------------------
 // Team assignment
 //--------------------------------------------------------------------------------------------------
 function AssignTeams()
@@ -211,23 +124,6 @@ function AssignTeams()
  	}
 }
 
-function LoadUI()
-{
-	CreatePlayerList();
-	CreateTeamList(); 
-	CreateVote();
-
-	var playerInfo = Game.GetLocalPlayerInfo();
-	if (playerInfo.player_has_host_privileges)
-	{
-		// Shuffle handlers
-		GameEvents.Subscribe( "petri_host_shuffle", HostShuffle );		
-		
-		Game.SetAutoLaunchEnabled( false );
-		Game.SetRemainingSetupTime( 5 );
-	}
-}
-
 //--------------------------------------------------------------------------------------------------
 // Shuffles
 //--------------------------------------------------------------------------------------------------
@@ -244,6 +140,7 @@ function ClearStyle()
 
 function ShuffleList( args )
 {
+	SetStateDescription( "#game_setup_shuffling" );
 	ClearStyle();
 
 	if (!args)
@@ -336,9 +233,110 @@ function HostShuffle()
 		playerPanel.SetPanelEvent("onmouseactivate", click);
 	}
 
+	SetStateDescription( "#game_setup_host_select_petrosyan" );
 	Game.SetRemainingSetupTime( 10 );
 	isHostShuffle = true;
 	$( "#VotePanel" ).data().FreezeVote();
+}
+
+//--------------------------------------------------------------------------------------------------
+// Fill panels content
+//--------------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
+// Votes list
+//--------------------------------------------------------------------------------------------------
+function CreateVote()
+{
+	var votePanel = $( "#VotePanel");
+	votePanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_votes.xml", false, false );
+	votePanel.data().SetStateDescription = SetStateDescription;
+}
+
+//--------------------------------------------------------------------------------------------------
+// Players list
+//--------------------------------------------------------------------------------------------------
+function CreatePlayerList()
+{
+	var playersPanel = $( "#PlayersListContainer");
+	var playerIDs = Game.GetAllPlayerIDs();
+	
+	// Testing list
+	/*
+	var playerID = playerIDs[0];
+	for (var i = 0; i < 14; i++) {
+		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + i );
+		playerPanel.SetAttributeInt( "player_id", playerID );
+		playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_player.xml", false, false );
+		playerPanel.SetHasClass("transition", true);
+		playerPanel.SetParent( playersPanel );
+		playerPanel.FindChild("PlayerName").text =  i;
+
+		var executeCapture = (function(panel) { 
+			return function() {
+
+				var isPetr = panel.GetAttributeString("IsPetr", "false");
+				if (isPetr == "false")
+					panel.SetAttributeString("IsPetr", "true");
+				else
+					panel.SetAttributeString("IsPetr", "false");
+
+				panel.FindChild("Petro").SetHasClass("visible", isPetr == "true");
+			}
+		} (playerPanel));
+
+		playerPanel.SetPanelEvent("onmouseactivate", executeCapture);
+	}*/
+ 
+	for(var id of playerIDs)
+	{
+		var playerPanel = $.CreatePanel( "Panel", playersPanel, "Player_" + id );
+		playerPanel.SetAttributeInt( "player_id", id );
+		playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_player.xml", false, false );
+
+		playerPanel.AddClass("playerInfo");
+		playerPanel.SetParent( playersPanel );
+	}
+}
+
+
+//--------------------------------------------------------------------------------------------------
+// Teams list
+//--------------------------------------------------------------------------------------------------
+function CreateTeamList()
+{
+	var teamsPanel = $( "#TeamsListContainer");
+
+	var teamIDs = Game.GetAllTeamIDs();
+
+	for ( var teamID of teamIDs )
+	{
+		var teamNode = $.CreatePanel( "Panel", teamsPanel, "Team_" + teamID );
+
+		teamNode.SetAttributeInt( "team_id", teamID );
+		teamNode.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_team.xml", false, false ); 
+		teamNode.SetParent( teamsPanel );
+	}
+}
+
+//--------------------------------------------------------------------------------------------------
+// Init UI
+//--------------------------------------------------------------------------------------------------
+function LoadUI()
+{
+	CreatePlayerList();
+	CreateTeamList(); 
+	CreateVote();
+
+	var playerInfo = Game.GetLocalPlayerInfo();
+	if (playerInfo.player_has_host_privileges)
+	{
+		// Shuffle handlers
+		GameEvents.Subscribe( "petri_host_shuffle", HostShuffle );		
+		
+		SetStateDescription( "#game_setup_state_prevote" )
+		Game.SetAutoLaunchEnabled( false );
+		Game.SetRemainingSetupTime( 5 );
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
