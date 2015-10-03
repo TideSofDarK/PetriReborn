@@ -102,7 +102,6 @@ function SetUnfreeze()
 //--------------------------------------------------------------------------------------------------
 function ShowVoteResults( args )
 {
-	$.Msg(args)
 	var childCount = $.GetContextPanel().GetChildCount();
 	
 	// Update all panels
