@@ -103,10 +103,16 @@ function FillCosts( abilityID )
   manaText.text = manaCost;
   manaText.SetHasClass("null", manaCost == 0);
 
-  var cdPanel = $( "#CooldownAndCosts" ).FindChild( "Cooldown" );
+  var timers = $( "#CooldownAndCosts" ).FindChild( "Timers" );
   var cd = Abilities.GetCooldown( abilityID );
-  cdPanel.FindChild( "CooldownLabel").text = Math.floor(cd * 100) / 100;
+  var cdPanel = timers.FindChild( "CooldownLabel");
+  cdPanel.text = Math.floor(cd * 100) / 100;
   cdPanel.SetHasClass( "no_cd", cd == 0);
+
+  var channel = Abilities.GetChannelTime( abilityID );
+  var channelPanel = timers.FindChild( "ChannelLabel");
+  channelPanel.text = Math.floor(channel * 100) / 100;
+  channelPanel.SetHasClass( "no_channel", channel == 0);  
 }
 
 /*

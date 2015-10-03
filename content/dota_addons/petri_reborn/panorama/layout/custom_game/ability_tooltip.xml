@@ -25,10 +25,13 @@
       <Panel id="Specials" />
 
       <Panel id="CooldownAndCosts">
-        <Panel id="Cooldown">
+        <Panel id="Timers">
           <Label text="0" id="CooldownLabel" >
             <Image class="Icon" id="ImageCD" src="file://{images}/custom_game/icon_cd.png" />
-          </Label>          
+          </Label>
+          <Label text="0" id="ChannelLabel" >
+            <Image class="Icon" id="ImageChannel" src="file://{images}/custom_game/icon_channel.png" />
+          </Label>
         </Panel>        
         <Panel id="Costs">
           <Label text="0" class="Cost" id="GoldText">
