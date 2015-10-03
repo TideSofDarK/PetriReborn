@@ -1,4 +1,5 @@
 GameSetup = {}
+GameSetup.votes = {}
 
 ------------------------------------------------------------------------
 -- Shuffles
@@ -104,7 +105,26 @@ function GameSetup:Vote( args )
     end
   end
 
-  GameSetup[voteName] = GameSetup[voteName] or {}
-  GameSetup[voteName][value] = GameSetup[voteName][value] or 0
-  GameSetup[voteName][value] = GameSetup[voteName][value] + 1
+  GameSetup.votes[voteName] = GameSetup.votes[voteName] or {}
+  GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] or 0
+  GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] + 1
+end
+
+-- End vote handler
+function GameSetup:VoteEnd( args )
+  local results = {}
+  for k,v in pairs(GameSetup.votes) do
+    results[k] = 0
+
+    local maxVotes = 0
+
+    for option,votes in pairs(v) do
+      if votes > maxVotes then 
+        maxVotes = votes
+        results[k] = option
+      end
+    end
+  end
+
+  CustomGameEventManager:Send_ServerToAllClients("petri_vote_results", {["results"] = results} )
 end
