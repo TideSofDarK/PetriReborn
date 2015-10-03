@@ -2417,6 +2417,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "techies_stasis_trap"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	
 	  "MaxLevel"            "1"
 	
@@ -2443,6 +2444,7 @@
 	            "Radius"  "100"
 	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	            "Types"   "DOTA_UNIT_TARGET_HERO"
+	            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	          }
 	          
 	          "Action"
@@ -3853,10 +3855,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "12"
+	  "MaxLevel"            "13"
 	
 	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
-	  "AbilityGoldCost"       "0 11 60 290 690 900 1200 2550 4000 5500 7750"
+	  "AbilityGoldCost"       "0 11 60 120 170 690 900 1200 2550 4000 5500 7750"
 	
 	  "precache"
 	  {
@@ -3868,17 +3870,17 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "500 1000 4000 8000 12000 16000 20000 24000 26000 30000 50000"
+	      "lumber_cost"        "500 1000 2000 4000 6000 12000 16000 20000 24000 26000 30000 50000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "270 380 590 900 1300 1650 2800 4900 7850 10000 12500"
+	      "health_points"        "270 380 590 750 900 1300 1650 2800 4900 7850 10000 12500"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 295 820 1300 1950 2575 4000 5500 7000 9500 11000"
+	      "armor"        "125 295 820 1060 1300 1950 2575 4000 5500 7000 9500 11000"
 	    }
 	  }
 	

@@ -127,7 +127,7 @@
 	  "Ability1"          "petri_dummy_icon_passive"    
 	
 	  "MinimapIcon"         "minimap_sword"
-	  "MinimapIconSize"       "490"
+	  "MinimapIconSize"       "420"
 	  
 	  "ArmorPhysical" "0" 
 	  "MagicalResistance" "0" 

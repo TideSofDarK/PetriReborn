@@ -8,7 +8,7 @@
   "AbilityTextureName"      "item_petri_defence_scroll"
 
   "AbilityCastPoint"              "0"
-  "AbilityCooldown"       "100"
+  "AbilityCooldown"       "120"
   "AbilityManaCost"       "0"
 
   "ItemShareability"      "ITEM_FULLY_SHAREABLE"
@@ -28,7 +28,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "armor_bonus"     "900"
+      "armor_bonus"     "5000"
     }
     "02"
     {
@@ -38,7 +38,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "duration"     "6"
+      "duration"     "5"
     }
   }
 

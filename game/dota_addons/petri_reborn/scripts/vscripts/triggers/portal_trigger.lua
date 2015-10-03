@@ -7,13 +7,19 @@ function CheckFarmPlaces(trigger, activator)
 		if GameRules:GetDOTATime(false, false) > 1200 
 			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 25000 then 
 			return false 
-		else return true end
+		else 
+			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+			return true 
+		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_c") then
 		if GameRules:GetDOTATime(false, false) > 1680 
 			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 60000 then 
 			return false 
-		else return true end
+		else 
+			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+			return true 
+		end
 	end
 end
 

@@ -5,6 +5,7 @@
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName" "techies_stasis_trap"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 
   "MaxLevel"            "1"
 
@@ -31,6 +32,7 @@
             "Radius"  "100"
             "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
             "Types"   "DOTA_UNIT_TARGET_HERO"
+            "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
           }
           
           "Action"

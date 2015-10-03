@@ -7,12 +7,13 @@ function BonusGoldFromWall(keys)
 
 		PlusParticle(1, Vector(244,201,23), 3.0, caster)
 	end
-	print(caster:GetAverageTrueAttackDamage()) 
+
 	if target:HasAbility("petri_creep_pendant") == true 
 	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 110, false, 0)
-
-		PlusParticle(90, Vector(244,201,23), 1.0, caster)
+		
+		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(110, false, DOTA_ModifyGold_CreepKill )
+		caster.allEarnedGold = caster.allEarnedGold + 110
+		PlusParticle(110, Vector(244,201,23), 1.0, caster)
 	end
 end
 
@@ -57,7 +58,7 @@ function FarSight( event )
 		end
 	end
 
-	local units = FindUnitsInRadius(DOTA_TEAM_BADGUYS, target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER,false)
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
 
 	for i,v in ipairs(units) do
 		if v:HasAbility("petri_building") == true then

@@ -25,17 +25,15 @@ function Upgrade (event)
 	elseif wall_level == 4 then
 		caster:SetOriginalModel(GetModelNameForLevel(4))
 		caster:SetModel(GetModelNameForLevel(4))
-		caster:SetModelScale(4.3)
+		caster:SetModelScale(2.4)
 	elseif wall_level == 5 then
 		caster:SetOriginalModel(GetModelNameForLevel(5))
 		caster:SetModel(GetModelNameForLevel(5))
-		caster:SetModelScale(3.0)
+		caster:SetModelScale(4.3)
 	elseif wall_level == 6 then
 		caster:SetOriginalModel(GetModelNameForLevel(6))
 		caster:SetModel(GetModelNameForLevel(6))
-		caster:SetModelScale(1.2)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+		caster:SetModelScale(3.0)
 	elseif wall_level == 7 then
 		caster:SetOriginalModel(GetModelNameForLevel(7))
 		caster:SetModel(GetModelNameForLevel(7))
@@ -45,7 +43,7 @@ function Upgrade (event)
 	elseif wall_level == 8 then
 		caster:SetOriginalModel(GetModelNameForLevel(8))
 		caster:SetModel(GetModelNameForLevel(8))
-		caster:SetModelScale(1.3)
+		caster:SetModelScale(1.2)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 	elseif wall_level == 9 then
@@ -57,6 +55,12 @@ function Upgrade (event)
 	elseif wall_level == 10 then
 		caster:SetOriginalModel(GetModelNameForLevel(10))
 		caster:SetModel(GetModelNameForLevel(10))
+		caster:SetModelScale(1.3)
+
+		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+	elseif wall_level == 11 then
+		caster:SetOriginalModel(GetModelNameForLevel(11))
+		caster:SetModel(GetModelNameForLevel(11))
 		caster:SetModelScale(2.05)
 
 		caster:SetAngles(-19, -45, -28)
@@ -66,9 +70,9 @@ function Upgrade (event)
 		caster:SetAbsOrigin(oldPos)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-	elseif wall_level == 11 then
-		caster:SetOriginalModel(GetModelNameForLevel(11))
-		caster:SetModel(GetModelNameForLevel(11))
+	elseif wall_level == 12 then
+		caster:SetOriginalModel(GetModelNameForLevel(12))
+		caster:SetModel(GetModelNameForLevel(12))
 		caster:SetModelScale(0.81)
 
 		local oldPos = caster:GetAbsOrigin()
@@ -106,20 +110,22 @@ function GetModelNameForLevel(level)
 	elseif level == 3 then
 		return "models/props_magic/bad_crystals002.vmdl"
 	elseif level == 4 then
-		return "models/heroes/oracle/crystal_ball.vmdl"
+		return "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"
 	elseif level == 5 then
-		return "models/props_items/bloodstone.vmdl"
+		return "models/heroes/oracle/crystal_ball.vmdl"
 	elseif level == 6 then
-		return "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
+		return "models/props_items/bloodstone.vmdl"
 	elseif level == 7 then
-		return "models/heroes/undying/undying_flesh_golem.vmdl"
+		return "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
 	elseif level == 8 then
-		return "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
+		return "models/heroes/undying/undying_flesh_golem.vmdl"
 	elseif level == 9 then
-		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
+		return "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
 	elseif level == 10 then
-		return "models/creeps/roshan/aegis.vmdl"
+		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
 	elseif level == 11 then
+		return "models/creeps/roshan/aegis.vmdl"
+	elseif level == 12 then
 		return "models/creeps/roshan/roshan.vmdl"
 	end
 end

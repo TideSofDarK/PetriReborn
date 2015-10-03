@@ -63,6 +63,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
   
   -- wall
+  PrecacheResource("model", "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl", context)
   PrecacheResource("model", "models/props_debris/merchant_debris_chest002.vmdl", context)
   PrecacheResource("model", "models/props_rock/riveredge_rock008a.vmdl", context)
   PrecacheResource("model", "models/heroes/oracle/crystal_ball.vmdl", context)

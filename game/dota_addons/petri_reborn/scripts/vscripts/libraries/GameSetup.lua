@@ -91,4 +91,20 @@ end
 
 -- Main vote handler
 function GameSetup:Vote( args )
+  local pID
+  local voteName
+  local value
+
+  for k,v in pairs(args) do
+    if k == "PlayerID" then
+      pID = v
+    else
+      voteName = k
+      value = v
+    end
+  end
+
+  GameSetup[voteName] = GameSetup[voteName] or {}
+  GameSetup[voteName][value] = GameSetup[voteName][value] or 0
+  GameSetup[voteName][value] = GameSetup[voteName][value] + 1
 end
