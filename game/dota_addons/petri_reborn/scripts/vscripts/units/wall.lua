@@ -21,46 +21,64 @@ function Upgrade (event)
 		caster:SetOriginalModel(GetModelNameForLevel(2))
 		caster:SetModel(GetModelNameForLevel(2))
 		caster:SetModelScale(0.8)
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 3 then
 		caster:SetOriginalModel(GetModelNameForLevel(3))
 		caster:SetModel(GetModelNameForLevel(3))
 		caster:SetModelScale(2.4)
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 4 then
 		caster:SetOriginalModel(GetModelNameForLevel(4))
 		caster:SetModel(GetModelNameForLevel(4))
 		caster:SetModelScale(2.4)
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 5 then
 		caster:SetOriginalModel(GetModelNameForLevel(5))
 		caster:SetModel(GetModelNameForLevel(5))
 		caster:SetModelScale(4.3)
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 6 then
 		caster:SetOriginalModel(GetModelNameForLevel(6))
 		caster:SetModel(GetModelNameForLevel(6))
 		caster:SetModelScale(3.0)
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 7 then
 		caster:SetOriginalModel(GetModelNameForLevel(7))
 		caster:SetModel(GetModelNameForLevel(7))
 		caster:SetModelScale(1.2)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 8 then
 		caster:SetOriginalModel(GetModelNameForLevel(8))
 		caster:SetModel(GetModelNameForLevel(8))
 		caster:SetModelScale(1.2)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 9 then
 		caster:SetOriginalModel(GetModelNameForLevel(9))
 		caster:SetModel(GetModelNameForLevel(9))
 		caster:SetModelScale(1.3)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 10 then
 		caster:SetOriginalModel(GetModelNameForLevel(10))
 		caster:SetModel(GetModelNameForLevel(10))
 		caster:SetModelScale(1.3)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 11 then
 		caster:SetOriginalModel(GetModelNameForLevel(11))
 		caster:SetModel(GetModelNameForLevel(11))
@@ -73,6 +91,8 @@ function Upgrade (event)
 		caster:SetAbsOrigin(oldPos)
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	elseif wall_level == 12 then
 		caster:SetOriginalModel(GetModelNameForLevel(12))
 		caster:SetModel(GetModelNameForLevel(12))
@@ -85,6 +105,8 @@ function Upgrade (event)
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_roshan_gold", {})
 
 		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+
+		caster:UpgradeAbility(caster:FindAbilityByName("petri_wall_glyph"))
 	end
 end
 
