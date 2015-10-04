@@ -1,14 +1,17 @@
-"item_petri_defence_scroll"
+"item_petri_evasion_scroll"
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1995"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+  "Model"             "models/props_gameplay/recipe.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_defence_scroll"
+  "AbilityTextureName"      "item_petri_evasion_scroll"
 
+  "AbilityCastRange" "550"
   "AbilityCastPoint"              "0"
-  "AbilityCooldown"       "120"
+  "AbilityCooldown"       "240"
   "AbilityManaCost"       "0"
 
   "ItemShareability"      "ITEM_FULLY_SHAREABLE"
@@ -23,39 +26,39 @@
 
   "SideShop" "1"
 
+  "precache"
+  {
+      "particle"          "particles/items_fx/cyclone.vpcf"
+  }
+
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "armor_bonus"     "5000"
+      "dodge_chance"     "20"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "radius"     "1000"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "duration"     "5"
+      "duration"     "7"
     }
   }
 
   "OnSpellStart"
   {     
-    "RunScript"
+    "ApplyModifier"
     {
-      "ScriptFile"  "items/defence_scroll.lua"
-      "Function"    "ApplyBonusArmor"
+      "ModifierName"  "modifier_evasion_scroll"
+      "Target"     "TARGET"
+      "Duration"    "%duration"
     }
-    "SpendCharge"
-    {}
+    "SpendCharge" {}
   }
 
   "Modifiers"
   {
-    "modifier_item_petri_defence_scroll_active"
+    "modifier_evasion_scroll"
     {
       "Duration"                "%duration"
       "Passive"         "0"
@@ -63,12 +66,12 @@
       "IsBuff"          "1"
       "IsDebuff"          "0"
       "IsPurgable"        "0"
-      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
-      "EffectAttachType"        "PATTACH_ABSORIGIN"
+      "EffectName"            "particles/items_fx/cyclone.vpcf"
+      "EffectAttachType"      "follow_origin"
           
       "Properties"
       {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_bonus"
+        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%dodge_chance"
       }
     }
   }

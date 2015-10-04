@@ -1493,15 +1493,16 @@
 	"petri_dummy_icon_passive"
 	{
 	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "AbilityTextureName" "riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
 	    "modifier_dummy_icon_passive"
 	    {
-	      "Passive" "1"
 	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 	
 	      "States"
@@ -1512,7 +1513,6 @@
 	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
 	      }
@@ -3862,7 +3862,7 @@
 	
 	  "MaxLevel"            "13"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
 	  "AbilityGoldCost"       "0 11 60 120 170 690 900 1200 2550 4000 5500 7750"
 	
 	  "precache"
@@ -3954,6 +3954,105 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
+	      }
+	    }
+	  }
+	}
+	"petri_wall_glyph"
+	{
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityTextureName"      "petri_wall_glyph"
+	  "AOERadius"                     "%radius"
+	
+	  "AbilityCastPoint"              "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "0"
+	
+	  "MaxLevel" "12"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/aegis_lvl_1000_ambient.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "armor_bonus"     "150 175 200 225 250 1200 5000 5250 5500 5750 6000 6500"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "radius"     "1000"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "duration"     "10 6 6 6 6 6 6 5 5 5 5 5"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max_charges"     "2"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "time"     "120"
+	    }
+	  }
+	
+	  "OnUpgrade"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"            "units/wall.lua"
+	      "Function"              "GlyphStartCharge"
+	      "modifier_name"         "modifier_glyph_stack_counter"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {     
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/wall.lua"
+	      "Function"    "ApplyBonusArmor"
+	      "modifier_name"         "modifier_glyph_stack_counter"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_glyph_stack_counter"
+	    {
+	      "Passive"               "1"
+	      "IsHidden"              "0"
+	      "IsPurgable"            "0"
+	      "IsDebuff"              "0"
+	    }
+	    "modifier_glyph_tooltip"
+	    {
+	        "IsPurgable"    "0"
+	        "IsDebuff"      "0"
+	    }
+	    "modifier_glyph"
+	    {
+	      "Duration"                "%duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"            "particles/items_fx/aegis_lvl_1000_ambient.vpcf"
+	      "EffectAttachType"      "follow_origin"
+	          
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_bonus"
 	      }
 	    }
 	  }

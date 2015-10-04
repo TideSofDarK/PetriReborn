@@ -17,7 +17,7 @@ function CheckFarmPlaces(trigger, activator)
 			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 60000 then 
 			return false 
 		else 
-			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_3_notification", duration=4, style={color="white", ["font-size"]="45px"}})
 			return true 
 		end
 	end

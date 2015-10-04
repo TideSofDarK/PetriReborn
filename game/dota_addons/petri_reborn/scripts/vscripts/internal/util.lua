@@ -54,7 +54,7 @@ end
 -- MODIFIERS
 function RemoveInvuModifiers(target)
   target:RemoveModifierByName("modifier_item_petri_cola_active")
-  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_stats_datadriven")
+  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_active")
   target:RemoveModifierByName("modifier_item_petri_magic_shield_active")
 end
 

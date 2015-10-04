@@ -63,7 +63,7 @@ function FarSight( event )
 	for i,v in ipairs(units) do
 		if v:HasAbility("petri_building") == true then
 			if not v.minimapIcon then
-				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, caster, caster, caster:GetTeamNumber())
+				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, v, v, DOTA_TEAM_GOODGUYS)
 			end
 		end
 	end

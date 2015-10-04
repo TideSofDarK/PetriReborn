@@ -367,8 +367,8 @@ function GameMode:OnEntityKilled( keys )
 
     local chance = math.random(1, 100)
     if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
-      if chance > DEFENCE_SCROLL_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
+      if chance > EVASION_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_evasion_scroll", nil, nil)) 
       elseif chance > ATTACK_SCROLL_CHANCE then
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
       elseif chance > GOLD_COIN_CHANCE then

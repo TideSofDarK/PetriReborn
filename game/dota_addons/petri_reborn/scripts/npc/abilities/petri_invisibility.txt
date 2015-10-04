@@ -125,15 +125,16 @@
 "petri_dummy_icon_passive"
 {
   "BaseClass" "ability_datadriven"
-  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "AbilityTextureName" "riki_permanent_invisibility"
   
   "Modifiers"
   {
     "modifier_dummy_icon_passive"
     {
-      "Passive" "1"
       "IsHidden"      "1"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
       "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 
       "States"
@@ -144,7 +145,6 @@
         "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
       }
