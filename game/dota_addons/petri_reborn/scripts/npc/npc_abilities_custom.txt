@@ -820,6 +820,30 @@
 	    }
 	  }
 	}
+	"petri_cop"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"      ""
+	  
+	  "Modifiers"
+	  {
+	    "modifier_cop"
+	    {
+	      "IsHidden"      "1"
+	      "Passive"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
 	"petri_creep_pendant"
 	{
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
