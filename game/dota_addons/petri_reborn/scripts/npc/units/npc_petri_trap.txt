@@ -3,7 +3,7 @@
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/heroes/techies/fx_techiesfx_stasis.vmdl"
   "ModelScale"        "1.0"
-  "Level"           "0"
+  "Level"           "4"
   "HealthBarOffset"       "140"
   "HasInventory"        "0"
 

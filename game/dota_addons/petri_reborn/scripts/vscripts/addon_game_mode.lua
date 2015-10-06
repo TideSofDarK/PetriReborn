@@ -114,6 +114,13 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", context)
 
   PrecacheResource("particle", "particles/generic_gameplay/dropped_item.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado_child.vpcf", context)
+  PrecacheResource("particle", "particles/items_fx/cyclone.vpcf", context)
+
+  -- SOUNDS
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)
 end
 
 function Activate()

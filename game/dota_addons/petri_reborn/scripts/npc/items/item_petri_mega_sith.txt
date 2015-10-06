@@ -5,7 +5,7 @@
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
   "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
 
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"

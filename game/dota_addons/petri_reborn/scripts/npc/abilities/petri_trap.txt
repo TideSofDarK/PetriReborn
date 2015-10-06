@@ -43,11 +43,6 @@
               "Function"    "AddTrap"
               "Target"  "TARGET"
             }
-            "FireSound"
-            {
-              "EffectName"    "Hero_Techies.StasisTrap.Stun"
-              "Target"        "TARGET"
-            }
             "RemoveModifier"
             {
               "ModifierName"  "modifier_trap"

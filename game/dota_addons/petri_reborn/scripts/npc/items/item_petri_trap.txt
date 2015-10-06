@@ -30,7 +30,7 @@
 
   "AbilityCastRange" "450"
 
-  "AbilityCooldown"       "90.0"
+  "AbilityCooldown"       "150.0"
 
   "OnSpellStart"
   {

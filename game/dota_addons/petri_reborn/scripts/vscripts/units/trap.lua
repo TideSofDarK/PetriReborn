@@ -8,6 +8,7 @@ function AddTrap(event)
 			RemoveInvuModifiers(target)
 
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_techies_stasis_trap_stunned", { duration = 5})
+			EmitSoundOn("Hero_Techies.StasisTrap.Stun", caster) 
 			DestroyEntityBasedOnHealth(caster,caster)
 		end
 	end)

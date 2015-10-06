@@ -24,7 +24,7 @@ function MakeBetClick()
 		return;
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
-	var bet = parseInt(betEntry.text);
+	var bet = Math.abs(parseInt(betEntry.text));
 	var playerGold = Players.GetGold(Players.GetLocalPlayer());
 
 	if (bet <= playerGold)

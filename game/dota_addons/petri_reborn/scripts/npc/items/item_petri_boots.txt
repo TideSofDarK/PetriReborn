@@ -34,6 +34,11 @@
       "var_type"        "FIELD_INTEGER"
       "duration"      "2"
     }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "magical_resist"      "65"
+    }
   }
 
   "OnSpellStart"
@@ -110,7 +115,8 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_movespeed"
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"        "%bonus_movespeed"
+        "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_ITEM_UNIQUE"  "%magical_resist"
       }
     }
   }
