@@ -1,6 +1,6 @@
 <root>
     <styles>
- 		<include src="file://{resources}/styles/dotastyles.css" />
+    	<include src="file://{resources}/styles/custom_game/material_design.css" />
 		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
         <include src="file://{resources}/styles/custom_game/simple_scoreboard.css" />
     </styles>
@@ -22,15 +22,16 @@
 			$.GetContextPanel().SetHasClass( "player_muted", Game.IsPlayerMuted( playerId ) );
 		})();
 	</script>
-	<Panel class="PlayerRow">
+	<Panel class="PlayerRow DarkTheme Cards z-index1">
 		<Panel id="PlayerRowContainer">
-			<Panel id="Hero" class="ScoreCol_Hero ScoreboardPanel">
+			<Panel hittest="false" id="PlayerColor" />
+			<Panel id="Hero" class="ScoreCol_Hero">
 				<Image id="HeroIcon" heroimagestyle="landscape" scaling="stretch-to-fit-preserve-aspect" />
 			</Panel>
-			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails ScoreboardPanel">
+			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails">
 				<Panel id="PlayerAndHeroName">
-					<Label id="PlayerName" text="AAAAA" />
-					<Label id="HeroNameAndDescription" text="#custom_scoreboard_hero_name_and_desc" />
+					<Label class="DarkTheme PrimaryText" id="PlayerName" text="AAAAA" />
+					<Label class="DarkTheme SecondaryText" id="HeroNameAndDescription" text="#custom_scoreboard_hero_name_and_desc" />
 				</Panel>
 				<Button id="MuteButton" onactivate="ToggleMute();" />
 			</Panel>

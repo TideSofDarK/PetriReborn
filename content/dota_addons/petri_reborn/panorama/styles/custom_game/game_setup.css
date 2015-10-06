@@ -25,9 +25,9 @@
 }
 
 #AppBar {
+    width: 100%;
     height: 130px;
     flow-children: down;
-    z-index: 1;
 }
 
 #WorkArea
@@ -56,8 +56,6 @@
 {
     width: 100%;
     height: 40px;
-
-    background-color: #E8EAF6;
 
     flow-children: right;
     vertical-align: top;
@@ -151,13 +149,13 @@ DOTAAvatarImage
 
 #PlayerName
 {
-    color: #000000;
     vertical-align:middle;
     margin: 3px;
     width: fill-parent-flow( 1 );
     white-space: nowrap;
 
     font-weight: bold;
+    font-size: 16px;
 }
 
 #TeamsListContainer 
@@ -173,9 +171,6 @@ DOTAAvatarImage
 {
     margin: 5px;
     width: 100%;
-
-    border-radius: 4px;
-    box-shadow: fill #000000ff 0px 2px 2px 0px;
 
     visibility: collapse;
 
@@ -199,7 +194,7 @@ DOTAAvatarImage
 {
     color: #000000;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     text-transform: uppercase;
     white-space: nowrap;
     width: 100%;
@@ -231,9 +226,6 @@ DOTAAvatarImage
     margin: 5px;
     width: 100%;
 
-    border-radius: 4px;
-    box-shadow: fill #000000ff 0px 2px 2px 0px;
-
     flow-children: down;
 }
 
@@ -241,8 +233,6 @@ DOTAAvatarImage
     width: 100%;
 
     padding: 5px;
-
-    background-color: #E91E63;
 }
 
 .VoteQuestionLabel {
@@ -255,13 +245,27 @@ DOTAAvatarImage
     vertical-align: middle;
 }
 
+.FlatLabel {
+    font-weight: bold;
+    font-size: 20px;
+
+    horizontal-align: center;
+}
+
 #VoteVariants {
     width: 100%;
     flow-children: down;    
 }
 
+.FlatButton {
+    width: 100%;
+    height: 36px;
+    
+    padding: 8px;
+}
+
 .FlatButton.selected {
-    background-color: #FFC107;
+    background-color: #607D8B;
 }
 
 .FlatButton.wrong {

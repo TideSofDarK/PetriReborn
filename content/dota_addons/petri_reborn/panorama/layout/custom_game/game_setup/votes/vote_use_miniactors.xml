@@ -6,16 +6,16 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
 	</scripts>
-	<Panel hittest="false" class="VoteContainer">
-		<Panel id="VoteHeader" >
+	<Panel hittest="false" class="VoteContainer rounded z-index1">
+		<Panel class="DarkTheme Primary500" id="VoteHeader" >
 			<Label class="VoteQuestionLabel" text="#vote_use_miniactors_q" />			
 		</Panel>
-		<Panel class="Paper" id="VoteVariants" param="use_miniactors">
-			<Button class="FlatButton" value="true" default="true">
-				<Label class="FlatLabel" text="#vote_use_miniactors_use" />
+		<Panel class="DarkTheme Cards" id="VoteVariants" param="use_miniactors">
+			<Button class="DarkTheme FlatButton" value="true" default="true">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_use_miniactors_use" />
 			</Button>
-			<Button class="FlatButton" value="false">
-				<Label class="FlatLabel" text="#vote_use_miniactors_not_use" />
+			<Button class="DarkTheme FlatButton" value="false">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_use_miniactors_not_use" />
 			</Button>
 		</Panel>
 	</Panel>

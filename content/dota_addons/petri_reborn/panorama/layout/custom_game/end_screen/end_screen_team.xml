@@ -1,12 +1,13 @@
 <root>
     <styles>
  		<include src="file://{resources}/styles/dotastyles.css" />
+		<include src="file://{resources}/styles/custom_game/material_design.css" />
         <include src="file://{resources}/styles/custom_game/end_screen.css" />
     </styles>
-	<Panel hittest="false" class="FlyoutTeam">
+	<Panel hittest="false" class="FlyoutTeam rounded z-index1">
+		<Panel hittest="false" id="TeamColor"/>
 		<Panel class="FlyoutTeamData">
 			<Panel class="TeamInfo ScoreCol_TeamInfo">
-				<Panel id="TeamColor_GradentFromTransparentLeft" />
 				<Panel id="TeamLogo" />
 			</Panel>
 			<Panel id="PlayersContainer" />

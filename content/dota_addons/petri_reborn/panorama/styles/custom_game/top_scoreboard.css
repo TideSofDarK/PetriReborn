@@ -135,18 +135,19 @@
 
 #TeamLogo
 {
-    height: 100%;
-	width: 84px;
+	width: 64px;
+	vertical-align: middle;
+	z-index: 2;
 }
 
-#TeamDarkenWash
+
+#TeamColor
 {
     width: 100%;
     height: 42px;
-    background-color: gradient( linear, 64px 0%, 80px 0%, from( black ), to( transparent ) );
 }
 
-.AspectRatio5x4 #TeamDarkenWash
+.AspectRatio5x4 #TeamColor
 {
     height: 34px;
 }
@@ -161,16 +162,13 @@
 {
     padding-left: 64px;
     flow-children: right;
-}
-
-#TeamColorBar
-{
+    z-index: 1;
 }
 
 #TeamOverlayBar
 {
     width: 100%;
-    height: 48px;
+    height: 42px;
 }
 
 .ScoreboardTeamWrapper.local_player_team #TeamOverlayBar
@@ -223,24 +221,17 @@
     flow-children: down;
 }
 
-#PlayerColorBar
+#PlayerColorBar,
+#PlayerColor
 {
     height: 6px;
     width: 100%;
-    border-bottom: 1px solid #000000;
 }
 
 #HeroIcon
 {
     width: 55px;
     height: 30px;
-}
-
-#PlayerColor
-{
-    height: 6px;
-    width: 100%;
-    border-bottom: 1px solid #000000;
 }
 
 .AspectRatio5x4 #HeroIcon

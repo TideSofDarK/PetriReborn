@@ -78,6 +78,7 @@
 
 #CloseButton Label
 {
+	font-size: 18px;
     horizontal-align: center;
 	vertical-align: center;
 	color: #6f6f6f;
@@ -139,10 +140,11 @@
 	height: 100%;
 }
 
-#TeamColor_GradentFromTransparentLeft
+#TeamColor
 {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 
 .FlyoutPlayer
@@ -157,6 +159,8 @@
 #PlayersContainer
 {
     flow-children: down;
+    background-color: #E8EAF6;
+    z-index: 1;    
 }
 
 .local_player_team #PlayersContainer
@@ -221,8 +225,6 @@
 .ScoreboardPanel
 {
     background-color: BACKGROUND_COLOR;
-	margin-top: 1px;
-	margin-left: 1px;
 	height: 100%;
 }
 
@@ -274,24 +276,30 @@
 {
 }
 
+#PlayerColor
+{
+    height: 100%;
+    width: 8px;
+
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
 #PlayerName
 {
 	font-size: 14px;
 	font-weight: bold;
-	margin-bottom: -4px;
-	margin-top: 0px;
-	padding-left: 4px;
-	color: #cccccc;
+	margin-top: 2px;
 	white-space: nowrap;
+	padding-left: 4px;
 }
 
 #HeroNameAndDescription
 {
-	padding-left: 4px;
 	font-size: 13px;
-	text-shadow: 2px 2px 2px black;
-	margin-top: 0px;
-	color: #999999;
+	margin-bottom: 1px;
+	padding-left: 4px;
+
 	vertical-align: bottom;
 }
 
@@ -319,7 +327,7 @@
 
 	vertical-align: middle;
 
-	background-color: BACKGROUND_COLOR;
+	background-color: transparent;
 }
 
 .is_local_player Label
@@ -329,7 +337,7 @@
 
 .ScoreCol_TeamInfo
 {
-	width: 80px;
+	width: 64px;
 }
 
 .ScoreCol_PlayerDetails
