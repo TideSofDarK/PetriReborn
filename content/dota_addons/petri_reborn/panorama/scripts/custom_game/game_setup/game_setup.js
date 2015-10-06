@@ -107,7 +107,10 @@ function AssignTeams()
 		}
 
 		if (team)
+		{
+			players[i].SetHasClass("Cards", true);
 			players[i].SetParent(team.FindChild("PlayerList"));
+		}
 
  		players[i].FindChild("Petro").visible = false;
  	}

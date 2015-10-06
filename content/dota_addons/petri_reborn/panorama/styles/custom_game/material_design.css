@@ -24,99 +24,164 @@
 @define Grey600: #757575;
 @define Grey700: #616161;
 @define Grey800: #424242;
-@define Grey900: #21212;
+@define Grey900: #021212;
+
+// Simple colors
+@define White: #FFFFFF;
+@define Black: #000000;
 
 @define BACKGROUND_COLOR_WHITE: #FFFFFF28;
 
-/*                       Shadow                       */
-.Paper,
-.Button,
-.CircleImage
+/* 					Light theme 						*/
+.LightTheme { }
+
+.LightTheme.Background
 {
-	box-shadow: fill #000000ff 0px 2px 2px 0px;
+	background-color: Grey50;
 }
 
-/*                       Paper                        */
-.Paper {
-	border-radius: 2px;
-
-	background-color: Primary50;
+.LightTheme.Cards
+{
+	background-color: White;
 }
 
-/*                       AppBar                       */
-
-.AppBar{
-    width: 100%;
-
-    background-color: Primary500;
-	border-radius: 2px;
-
-    box-shadow: fill #000000ff 0px 4px 8px 0px;
+.LightTheme.AppBar
+{
+	background-color: Grey100;
 }
 
-/*                       Button                        */
+.LightTheme.StatusBar
+{
+	background-color: Grey300;
+}
 
-.Button {
-	margin-top: 5px;
+.LightTheme.PrimaryText
+{
+	color: Black;
+	opacity: 0.87;
+}
 
-	height: 36px;
-	min-width: 88px;
+.LightTheme.SecondaryText
+{
+	color: Black;
+	opacity: 0.54;
+}
 
-	border-radius: 4px;
+.LightTheme.HintText
+{
+	color: Black;
+	opacity: 0.38;
+}
 
+
+/* 					Dark theme 							*/
+.DarkTheme { }
+
+.DarkTheme.Background
+{
+	background-color: #303030;
+}
+
+.DarkTheme.Cards
+{
+	background-color: Grey800;
+}
+
+.DarkTheme.AppBar
+{
+	background-color: Grey900;
+}
+
+.DarkTheme.StatusBar
+{
+	background-color: Black;
+}
+
+.DarkTheme.Primary500
+{
+	background-color: Primary500;
+}
+
+.DarkTheme.PrimaryText
+{
+	color: White;
+}
+
+.DarkTheme.SecondaryText
+{
+	color: White;
+	opacity: 0.7;
+}
+
+.DarkTheme.HintText
+{
+	color: White;
+	opacity: 0.3;
+}
+
+.DarkTheme.FlatButton
+{
+	background-color: transparent;
+}
+
+.DarkTheme.FlatButton:hover
+{
+	background-color: #CCCCCC25;
+}
+
+.DarkTheme.FlatButton:active
+{
+	background-color: #CCCCCC40;
+}
+
+.DarkTheme.Button
+{
+	margin: 2px;
+	min-height: 36px;
+	background-color: Primary500;
+}
+
+.DarkTheme.Button:hover
+{
 	background-color: Primary600;
-	
-	padding: 8px;
 }
 
-.Button:hover {
+.DarkTheme.Button:active
+{
 	background-color: Primary700;
 }
 
-.Button:active {
-	box-shadow: fill #000000ff 0px 8px 8px 0px;	
+.DarkTheme.Button:disabled
+{
+	background-color: #FFFFFF1E;
 }
 
-.Button:disabled {
-	background-color: Primary400;
-	box-shadow: fill #000000ff 0px 0px 0px 0px;	
+/* 						  Shapes 					  */
+.rounded
+{
+	border-radius: 2px;	
 }
 
-/*                       FlatButton                        */
-.FlatButton {
-	width: 100%;
-	height: 36px;
-	min-width: 88px;
-
-	border-radius: 4px;
-
-	background-color: transparent;
-	
-	padding: 8px;
+.circle
+{
+	border-radius: 50%;
 }
 
-.FlatButton:hover {
-	background-color: #99999933;
+/*                       Shadows                       */
+.z-index1
+{
+	box-shadow: fill #000000DD 0px 2px 6px 0px;
+	z-index: 1;
 }
 
-.FlatButton:active {
-	background-color: #99999966;
+.z-index2
+{
+	box-shadow: fill #000000DD 0px 8px 12px 0px;
+	z-index: 2;
 }
 
-/*                       Label                        */
-.FlatLabel {
-    color: #000000;
-    font-weight: bold;
-    font-size: 20px;
-
-    horizontal-align: center;
-}
-
-.FlatLabel:disabled {
-	color: #0000004c;
-}
-
-/*						 Circle Image    			  */
-.CircleImage {
-    border-radius: 50%;
+.z-index3
+{
+	box-shadow: fill #000000DD 0px 14px 18px 0px;
+	z-index: 3;
 }

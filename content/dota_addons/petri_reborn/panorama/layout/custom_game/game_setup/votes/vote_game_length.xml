@@ -6,22 +6,22 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
 	</scripts>
-	<Panel hittest="false" class="VoteContainer">
-		<Panel id="VoteHeader" >
+	<Panel hittest="false" class="VoteContainer rounded z-index1">
+		<Panel class="DarkTheme Primary500" id="VoteHeader" >
 			<Label class="VoteQuestionLabel" text="#vote_game_length_q" />			
 		</Panel>
-		<Panel class="Paper" id="VoteVariants" param="game_length">
-			<Button class="FlatButton" value="88">
-				<Label class="FlatLabel" text="#vote_game_length_88" />
+		<Panel class="DarkTheme Cards" id="VoteVariants" param="game_length">
+			<Button class="DarkTheme FlatButton" value="88">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_game_length_88" />
 			</Button>
-			<Button class="FlatButton" value="96">
-				<Label class="FlatLabel" text="#vote_game_length_96" />
+			<Button class="DarkTheme FlatButton" value="96">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_game_length_96" />
 			</Button>
-			<Button class="FlatButton" value="100" default="true">
-				<Label class="FlatLabel" text="#vote_game_length_100" />
+			<Button class="DarkTheme FlatButton" value="100" default="true">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_game_length_100" />
 			</Button>
-			<Button class="FlatButton" value="104">
-				<Label class="FlatLabel" text="#vote_game_length_104" />
+			<Button class="DarkTheme FlatButton" value="104">
+				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_game_length_104" />
 			</Button>
 		</Panel>
 	</Panel>

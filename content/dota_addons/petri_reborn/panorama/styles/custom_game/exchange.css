@@ -4,26 +4,19 @@
 
 	horizontal-align: left;
 	vertical-align: middle;
-
-	background-color: #2d2d2d;
-	border: 2px solid #000000;
 	
 	flow-children: down;
 }
 
-.Splitter
-{
-	height: 1px;
-	width: 95%;
-
-	border: 1px solid #626262;
-	horizontal-align: center;
-	vertical-align: bottom;
-}
-
 .DefaultPanel
 {
-	width: 100%;	
+	width: 100%;
+	background-color: transparent;
+}
+
+#HeaderPanel
+{
+	height: 30px;
 }
 
 #HeaderLabel
@@ -64,7 +57,7 @@
 
 #BetPanel
 {
-	height: 200px;
+	height: 240px;
 
 	vertical-align: bottom;
 	flow-children: down;	
@@ -92,32 +85,19 @@
 	flow-children: down;
 }
 
-.BetNum
+.DarkTheme.Button
 {
-	width: 150px;
-	height: 25px;
-
-	border: 1px solid #000000;
-    border-radius: 6px;
-
-	margin-top: 5px;
-
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #979898 ), color-stop( 0.9, #373737 ), to( #000000 ) );
+	width: 160px;
 }
 
-.BetNum:hover
-{
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #6b6b6b ), color-stop( 0.9, #373737 ), to( #000000 ) );
-}
-
-.BetNum.checked
+.DarkTheme.Button.checked
 {	
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #ffe505 ), color-stop( 0.9, #867805 ), to( #000000 ) );
+	background-color: #607D8B;
 }
 
-.BetNum.winner
+.DarkTheme.Button.winner
 {	
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #36e600 ), color-stop( 0.95, #165104 ), to( #000000 ) );
+	background-color: #43A047;
 }
 
 .CompanyLabel
@@ -150,25 +130,12 @@
 {
 	height: 35px;
 
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.1, #979898 ), color-stop( 0.95, #373737 ), to( #000000 ) );
-
-
 	margin-bottom: 10px;
 
 	vertical-align: bottom;
 	horizontal-align: center;
 
     border-radius: 3px;
-}
-
-#MakeBet:hover
-{
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #6b6b6b ), color-stop( 0.95, #373737 ), to( #000000 ) );
-}
-
-#MakeBet.on_bet
-{
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.05, #36e600 ), color-stop( 0.95, #165104 ), to( #000000 ) );
 }
 
 #MakeBetLabel

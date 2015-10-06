@@ -9,9 +9,9 @@
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup.js" />
 	</scripts>
 	<Panel hittest="false" class="GameSetup">
-		<Panel hittest="false" class="Paper" id="TeamSelectContainer">
+		<Panel hittest="false" id="TeamSelectContainer">
 
-			<Panel hittest="false" class="AppBar" id="AppBar">
+			<Panel hittest="false" class="DarkTheme Primary500 z-index3" id="AppBar">
 				<Label id="GameModeNameLabel" text="#addon_game_name" />
 				<Label id="MapInfoLabel" text="#LoadingScreenMapInfo" />
 					
@@ -23,13 +23,13 @@
 						<Label id="TimerLabelAutoStart" text="#custom_game_team_select_auto_start" />
 						<Label id="TimerLabelGameStart"/>
 					</Panel>
-				</Panel>			
+				</Panel>
 			</Panel>
 
 			<Panel hittest="false" id="WorkArea">				
-				<Panel hittest="false" class="Paper" id="VotePanel"/>
+				<Panel hittest="false" class="DarkTheme Background z-index1" id="VotePanel"/>
 
-				<Panel hittest="false" class="Paper" id="PlayersPanel">
+				<Panel hittest="false" class="DarkTheme Background z-index1" id="PlayersPanel">
 					<Panel hittest="false" id="TeamsListContainer" />
 					<Panel hittest="false" id="PlayersListContainer"/>
 				</Panel>

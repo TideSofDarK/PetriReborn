@@ -34,7 +34,6 @@ function MakeBetClick()
 
 		var button = $( "#BetPanel" ).FindChild( "MakeBet" );
 		button.enabled = false;
-		button.SetHasClass("on_bet", true);
 		
   		GameEvents.SendCustomGameEventToServer( "petri_make_bet", { "pID" : Players.GetLocalPlayer(), "bet" : bet, "option" : (curNum + 1) } );		
 	}
