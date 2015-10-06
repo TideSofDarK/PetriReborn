@@ -200,7 +200,7 @@ end
 function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockGridNav, size)
   
   local pID = player:GetPlayerID()
-  local playersHero = player:GetAssignedHero()
+  local playersHero = GameMode.assignedPlayerHeroes[player:GetPlayerID()]
   
   local gridNavBlockers = nil
   if blockGridNav then
