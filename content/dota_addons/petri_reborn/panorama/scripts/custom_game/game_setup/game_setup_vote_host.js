@@ -11,6 +11,7 @@ function Vote( value )
 
 	if (value == "random")
 	{
+		$.GetContextPanel().GetParent().data().UnfreezeVote();
 		Game.SetRemainingSetupTime( 10 );
 		GameEvents.SendCustomGameEventToServer( "petri_game_setup_random_shuffle", { "CurrentPlayers" : Game.GetAllPlayerIDs().length } );
 	}
@@ -56,4 +57,6 @@ function SetClickHandler()
 	isHost = playerInfo.player_has_host_privileges;
 	if (!isHost)
 		$.GetContextPanel().visible = false;
+
+	$.GetContextPanel().GetParent().data().FreezeVote();
 })();

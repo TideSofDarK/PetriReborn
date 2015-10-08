@@ -15,6 +15,14 @@ var votePanels = [
 
 function ShowNextVote()
 {
+	// Default vote
+	if (currentVotePanel)
+		if (!currentVotePanel.data().IsVoted)
+			currentVotePanel.data().VoteDefault();
+
+	if (isFreeze)
+		return;
+	
 	if (currentVoteNum > votePanels.length)
 		return
 
@@ -31,14 +39,6 @@ function ShowNextVote()
 		currentVoteNum++;
 		return;
 	}
-
-	if (isFreeze)
-		return;
-
-	// Default vote
-	if (currentVotePanel)
-		if (!currentVotePanel.data().IsVoted)
-			currentVotePanel.data().VoteDefault();
 
 	var vote = votePanels[currentVoteNum];
 	if (vote)
