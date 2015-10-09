@@ -21,6 +21,10 @@ function GameMode:_InitGameMode()
   GameRules:SetFirstBloodActive( ENABLE_FIRST_BLOOD )
   GameRules:SetHideKillMessageHeaders( HIDE_KILL_BANNERS )
 
+  -- State jumping fix
+  SendToServerConsole("dota_surrender_on_disconnect 0")
+  SendToServerConsole( 'customgamesetup_set_auto_launch_delay 300' )
+  Convars:SetInt( 'dota_auto_surrender_all_disconnected_timeout', 7200 )
 
   -- This is multiteam configuration stuff
   if USE_AUTOMATIC_PLAYERS_PER_TEAM then
