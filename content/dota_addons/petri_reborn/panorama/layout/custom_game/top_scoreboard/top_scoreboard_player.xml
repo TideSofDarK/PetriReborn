@@ -1,9 +1,11 @@
 <root>
 	<styles>
-		<include src="file://{resources}/styles/dotastyles.css" />
 		<include src="file://{resources}/styles/custom_game/top_scoreboard.css" />
 		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
 	</styles>
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/scoreboard/simple_scoreboard_updater.js" />
+	</scripts>	
 	<script>
 	function PortraitClicked()
 	{
@@ -16,7 +18,7 @@
 			<Label hittest="false" id="RespawnTimer" />
 		</Panel>
 		<Panel hittest="false" class="ScoreboardPlayer">
-			<Button class="PlayerPortraitWrapper" onmouseactivate="PortraitClicked();">
+			<Button class="PlayerPortraitWrapper" onmouseactivate="PortraitClicked();" oncontextmenu="ShowContextMenu();">
 				<Panel hittest="false" id="PlayerColorBar" />
 				<Image hittest="false" id="HeroIcon" />
 				<Panel hittest="false" id="PlayerColor" />

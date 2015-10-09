@@ -47,6 +47,7 @@ function ShowNextVote()
 		{
 			var votePanel = $.CreatePanel( "Panel", $.GetContextPanel(), "" );
 			votePanel.BLoadLayout( vote[0], false, false );
+			votePanel.AddClass("show_vote");
 			currentVotePanel = votePanel;
 			
 			if (isHost)

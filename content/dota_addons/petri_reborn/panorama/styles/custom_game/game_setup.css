@@ -245,6 +245,32 @@ DOTAAvatarImage
     vertical-align: middle;
 }
 
+.show_vote
+{
+    animation-duration: 0.75s;
+    animation-timing-function: ease-out;
+    animation-name: ShowVote;
+}
+
+@keyframes 'ShowVote'
+{
+    0%
+    {
+       transform: translatey( -30px );
+        opacity: 0;
+    }
+
+    70%
+    {
+        transform: translatey( 0px );      
+    }
+
+    100%
+    {
+        opacity: 1;
+    }
+}
+
 .FlatLabel {
     font-weight: bold;
     font-size: 20px;

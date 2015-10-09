@@ -141,6 +141,7 @@ function FillDependencies( abilityID )
     abilityName += "_" + abilityLevel;
 
   var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+  dependPanel.SetHasClass( "all_enought", dependencies == undefined);
   if (dependencies == undefined)
     return;
 
@@ -160,9 +161,6 @@ function FillDependencies( abilityID )
   }
   
   dependPanel.SetHasClass( "all_enought", isAllDependencies );
-
-  var splitter = $.CreatePanel( "Panel", dependPanel, undefined ); 
-  splitter.AddClass( "Splitter" );
 }
 
 /*
@@ -215,10 +213,7 @@ function FillSpecials( abilityID )
     cur_panel.text = SetHTMLStyle( $.Localize( "#DOTA_Tooltip_ability_" + abilityName + "_" + specials[name]), "SpecialsLabelName" ) + 
       " " + GetSpecialValuesList(abilityID, specials[name]);
     cur_panel.AddClass( "SpecialsLabel" );
-  }  
-
-  var splitter = $.CreatePanel( "Panel", specialsPanel, undefined ); 
-  splitter.AddClass( "Splitter" );    
+  }
 }
 
 
