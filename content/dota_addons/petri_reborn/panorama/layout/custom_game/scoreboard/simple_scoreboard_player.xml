@@ -4,6 +4,9 @@
 		<include src="file://{resources}/styles/custom_game/simple_scoreboard_styles.css" />
         <include src="file://{resources}/styles/custom_game/simple_scoreboard.css" />
     </styles>
+    <scripts>
+		<include src="file://{resources}/scripts/custom_game/scoreboard/simple_scoreboard_updater.js" />
+	</scripts>
 	<script>
 		function ToggleMute()
 		{
@@ -30,7 +33,7 @@
 			</Panel>
 			<Panel id="PlayerDetailsContainer" class="ScoreCol_PlayerDetails">
 				<Panel id="PlayerAndHeroName">
-					<Label class="DarkTheme PrimaryText" id="PlayerName" text="AAAAA" />
+					<Label class="DarkTheme PrimaryText" id="PlayerName" text="AAAAA" onactivate="" oncontextmenu="ShowContextMenu();"/>
 					<Label class="DarkTheme SecondaryText" id="HeroNameAndDescription" text="#custom_scoreboard_hero_name_and_desc" />
 				</Panel>
 				<Button id="MuteButton" onactivate="ToggleMute();" />

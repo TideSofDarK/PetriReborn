@@ -1,37 +1,22 @@
 .AbilityTooltipRoot
 {
+	padding: 5px;
 	flow-children: right;
 	z-index: 5;
 }
 
 #AbilityTooltip
 {
-	background-color: #2d2d2d;
-	border: 2px solid #000000;
-
 	margin-left: -2px;
 	width: 350px;
 
 	flow-children: down;
 }
 
-#TooltipArrow
+.Cards
 {
-	width: 25px;
-	height: 25px;
-
-	margin-bottom: 25px;
-	vertical-align: bottom;
-}
-
-.Splitter
-{
-	height: 1px;
-	width: 95%;
-
-	border: 1px solid #626262;
-	horizontal-align: center;
-	vertical-align: bottom;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .TooltipLabel
@@ -85,8 +70,8 @@
 	color: #e0e0e0;
 	font-size: 14px;
 
-	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
 #Dependencies

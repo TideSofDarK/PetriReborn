@@ -394,3 +394,17 @@ function stableCompareFunc( a, b )
 		return 0;
 	}
 };
+
+//=============================================================================
+//=============================================================================
+function ShowContextMenu()
+{
+	var contextMenu = $.CreatePanel( "DOTAContextMenuScript", $.GetContextPanel(), "" );
+	// Remove default context menu
+	var menu = contextMenu.GetContentsPanel().GetParent();
+	menu.RemoveAndDeleteChildren();
+
+	var content = $.CreatePanel( "Panel", menu, "" ); 
+	content.BLoadLayout( "file://{resources}/layout/custom_game/scoreboard/scoreboard_context_menu.xml", false, false );
+	content.AddClass("show_menu");
+}
