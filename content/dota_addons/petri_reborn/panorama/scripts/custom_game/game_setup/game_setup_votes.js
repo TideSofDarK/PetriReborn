@@ -15,6 +15,14 @@ var votePanels = [
 
 function ShowNextVote()
 {
+	// Default vote
+	if (currentVotePanel)
+		if (!currentVotePanel.data().IsVoted)
+			currentVotePanel.data().VoteDefault();
+
+	if (isFreeze)
+		return;
+	
 	if (currentVoteNum > votePanels.length)
 		return
 
@@ -32,14 +40,6 @@ function ShowNextVote()
 		return;
 	}
 
-	if (isFreeze)
-		return;
-
-	// Default vote
-	if (currentVotePanel)
-		if (!currentVotePanel.data().IsVoted)
-			currentVotePanel.data().VoteDefault();
-
 	var vote = votePanels[currentVoteNum];
 	if (vote)
 	{
@@ -47,6 +47,7 @@ function ShowNextVote()
 		{
 			var votePanel = $.CreatePanel( "Panel", $.GetContextPanel(), "" );
 			votePanel.BLoadLayout( vote[0], false, false );
+			votePanel.AddClass("show_vote");
 			currentVotePanel = votePanel;
 			
 			if (isHost)

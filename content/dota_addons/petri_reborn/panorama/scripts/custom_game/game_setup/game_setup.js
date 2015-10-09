@@ -338,8 +338,8 @@ function LoadUI()
 		
 		SetStateDescription( "#game_setup_state_prevote" )
 		Game.SetAutoLaunchEnabled( false );
-		Game.SetRemainingSetupTime( 5 );
-	}
+		Game.SetRemainingSetupTime( 10 );
+	}	
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -347,7 +347,7 @@ function LoadUI()
 //--------------------------------------------------------------------------------------------------
 (function()
 {
-	// Start updating the timer, this function will schedule itself to be called periodically
+	// Start updating the timer, this function will schedule itself to be called periodically	
 	UpdateTimer();
 
 	GameEvents.Subscribe( "petri_set_shuffled_list", ShuffleList );
