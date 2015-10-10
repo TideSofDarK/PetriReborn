@@ -339,6 +339,7 @@ function LoadUI()
 		SetStateDescription( "#game_setup_state_prevote" )
 		Game.SetAutoLaunchEnabled( false );
 		Game.SetRemainingSetupTime( 10 );
+		$( "#VotePanel" ).data().UnfreezeVote();
 	}	
 }
 

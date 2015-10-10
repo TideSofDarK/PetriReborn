@@ -3,7 +3,7 @@
 var currentVoteNum = 0;
 var currentVotePanel = null;
 var isHost = false;
-var isFreeze = false;
+var isFreeze = true;
 
 // Layout file, time for vote, state description
 var votePanels = [
