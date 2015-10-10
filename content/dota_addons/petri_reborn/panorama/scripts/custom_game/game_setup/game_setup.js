@@ -120,6 +120,7 @@ function AssignTeams()
  	{
 		var curTeam = teamsPanel.GetChild(i);
 		curTeam.SetHasClass("show", true);
+		curTeam.AddClass("show_vote");
 		var playerPanel = curTeam.FindChild("PlayerList").FindChild("Player_" + playerID);
 
 		if (playerPanel)
@@ -339,6 +340,7 @@ function LoadUI()
 		SetStateDescription( "#game_setup_state_prevote" )
 		Game.SetAutoLaunchEnabled( false );
 		Game.SetRemainingSetupTime( 10 );
+		$( "#VotePanel" ).data().UnfreezeVote();
 	}	
 }
 
