@@ -120,6 +120,7 @@ function AssignTeams()
  	{
 		var curTeam = teamsPanel.GetChild(i);
 		curTeam.SetHasClass("show", true);
+		curTeam.AddClass("show_vote");
 		var playerPanel = curTeam.FindChild("PlayerList").FindChild("Player_" + playerID);
 
 		if (playerPanel)
