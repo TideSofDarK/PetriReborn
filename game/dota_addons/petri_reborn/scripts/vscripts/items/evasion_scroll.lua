@@ -94,7 +94,11 @@ function TornadoHit(keys)
 	local ability = keys.ability
 	local caster = keys.caster
 	local target = keys.target
+
+    local buff_duration = ability:GetLevelSpecialValueFor("duration", -1)
+
     if target:HasAbility("petri_building") == true then
-    	ability:ApplyDataDrivenModifier(caster, target, "modifier_evasion_scroll", {duration = -1})
+        target:RemoveModifierByName("modifier_evasion_scroll")
+    	ability:ApplyDataDrivenModifier(caster, target, "modifier_evasion_scroll", {duration = buff_duration})
     end
 end
