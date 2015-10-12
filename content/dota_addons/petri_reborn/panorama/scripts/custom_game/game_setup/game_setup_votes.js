@@ -15,14 +15,14 @@ var votePanels = [
 
 function ShowNextVote()
 {
+	if (isFreeze)
+		return;
+
 	// Default vote
 	if (currentVotePanel)
 		if (!currentVotePanel.data().IsVoted)
 			currentVotePanel.data().VoteDefault();
 
-	if (isFreeze)
-		return;
-	
 	if (currentVoteNum > votePanels.length)
 		return
 
@@ -52,9 +52,14 @@ function ShowNextVote()
 			
 			if (isHost)
 			{
+				// Freeze vote to avoid multiply function call
+				FreezeVote();
+
 				// Vote sync event
 				GameEvents.SendCustomGameEventToServer( "petri_vote_current_number", { "vote_number" : currentVoteNum } );
 				Game.SetRemainingSetupTime( vote[1] );
+
+				UnfreezeVote();
 			}
 
 			if ($.GetContextPanel().data().SetStateDescription)
