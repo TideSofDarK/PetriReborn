@@ -105,9 +105,9 @@ function CheckTreePosition( event )
 
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_gather_lumber_rooted", {})
 
-		-- Timers:CreateTimer(0.06, function ()
-		-- 	caster:RemoveModifierByName("modifier_gather_lumber_rooted")
-		-- end)	
+		Timers:CreateTimer(0.06, function ()
+			caster:RemoveModifierByName("modifier_gather_lumber_rooted")
+		end)	
 	end
 end
 
@@ -309,17 +309,17 @@ function StartRepairing(event)
 
 	if target:GetUnitName() == "npc_petri_exit" then return end
 
-	if target:GetHealthPercent() == 100 then
-		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
-		return
-	end
+	-- if target:GetHealthPercent() == 100 then
+	-- 	Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
+	-- 	return
+	-- end
 
 	if target:HasAbility("petri_building") ~= true then
 		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
 		return
 	end
 	
-	if target:GetHealthPercent() < 100 and target:HasAbility("petri_building") then
+	if target:HasAbility("petri_building") then
 		caster:MoveToNPC(target)
 		caster.repairingTarget = target
 
@@ -373,6 +373,8 @@ function ToggleOffRepairing( event )
 	if repair_ability:GetToggleState() == true then
 		repair_ability:ToggleAbility()
 
+		caster:RemoveModifierByName("petri_repair_rooted")
+
 		if Debug_Peasant then
 			print("Toggled Off Repairing")
 		end
@@ -399,28 +401,39 @@ function RepairBy1Percent( event )
 	local health = target:GetHealth()
 	local maxHealth = target:GetMaxHealth()
 
-	if health < maxHealth then
+	-- if health < maxHealth then
 		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
+			ability:ApplyDataDrivenModifier(caster, caster, "petri_repair_rooted", {})
+
+			Timers:CreateTimer(0.06, function ()
+				caster:RemoveModifierByName("petri_repair_rooted")
+			end)	
+
 			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
 
 			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
+
+			if health == maxHealth then
+				healAmount = 0
+			end
+
 			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
 
 			target:Heal(healAmount, caster)
 		else
 			--caster:Stop()
 		end
-	else
-		local player = caster:GetPlayerOwner():GetPlayerID()
+	-- else
+	-- 	local player = caster:GetPlayerOwner():GetPlayerID()
 
-		ability:ToggleAbility()
+	-- 	ability:ToggleAbility()
 
-		caster:RemoveModifierByName("modifier_chopping_building")
-		caster:RemoveModifierByName("modifier_repairing")
-		caster:RemoveModifierByName("modifier_chopping_building_animation")
+	-- 	caster:RemoveModifierByName("modifier_chopping_building")
+	-- 	caster:RemoveModifierByName("modifier_repairing")
+	-- 	caster:RemoveModifierByName("modifier_chopping_building_animation")
 
-		RepairingAutocast( event )
-	end
+	-- 	RepairingAutocast( event )
+	-- end
 end
 
 -- Misc
