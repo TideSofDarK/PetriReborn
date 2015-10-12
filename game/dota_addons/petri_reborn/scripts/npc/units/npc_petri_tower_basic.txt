@@ -1,7 +1,7 @@
 "npc_petri_tower_basic"
 {
   "BaseClass"         "npc_dota_base_additive"  
-  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
+  "Model"           "models/heroes/omniknight/omniknight.vmdl"  
   "ModelScale"                "0.29"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "0"

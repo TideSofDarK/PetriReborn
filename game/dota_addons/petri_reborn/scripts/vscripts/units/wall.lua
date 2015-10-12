@@ -10,6 +10,8 @@ function Upgrade (event)
 
 	caster:SetAngles(0, -90, 0)
 
+	caster:RemoveModifierByName("modifier_building")
+
 	if wall_level == 1 then
 		caster:SetOriginalModel(GetModelNameForLevel(1))
 		caster:SetModel(GetModelNameForLevel(1))

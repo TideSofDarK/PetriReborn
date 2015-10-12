@@ -290,6 +290,14 @@ function BuildingHelper:AddBuilding(keys)
   -- Create model ghost dummy out of the map, then make pretty particles
   player.activeBuildingTable.mgd = CreateUnitByName(unitName, OutOfWorldVector, false, nil, nil, builder:GetTeam())
 
+  if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_tower_basic" then
+    UpdateModel(player.activeBuildingTable.mgd, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
+  end
+
+  if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_wall" then
+    UpdateModel(player.activeBuildingTable.mgd, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
+  end
+
   --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
   player.activeBuildingTable.modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, player.activeBuildingTable.mgd, player)
   ParticleManager:SetParticleControlEnt(player.activeBuildingTable.modelParticle, 1, player.activeBuildingTable.mgd, 1, "follow_origin", player.activeBuildingTable.mgd:GetAbsOrigin(), true)            
@@ -389,6 +397,14 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building:SetOwner(PlayerResource:GetPlayer(pID))
   building:SetHullRadius(building:GetHullRadius()+5)
 
+  if building:GetUnitName() == "npc_petri_tower_basic" then
+    UpdateModel(building, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
+  end
+
+  if building:GetUnitName() == "npc_petri_wall" then
+    UpdateModel(building, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
+  end
+
   Timers:CreateTimer(function() building:SetAbsOrigin(location) end)
 
   building.blockers = gridNavBlockers
@@ -453,7 +469,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     end
 
     -- Update model size, starting with an initial size
-    local fInitialModelScale = 0.2
+    local fInitialModelScale = 0.03
 
     -- scale to add every frame, distributed by build time
     local fScaleInterval = (fMaxScale-fInitialModelScale) / (buildTime / fserverFrameRate)

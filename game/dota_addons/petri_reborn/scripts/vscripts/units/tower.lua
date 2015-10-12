@@ -29,6 +29,11 @@ function UpgradeIce (event)
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
 
+	caster:AddAbility("petri_animated_tower")
+	InitAbilities(caster)
+
+	caster:RemoveModifierByName("modifier_building")
+
 	UpdateAttributes(TOWER_ICE, ability)
 end
 
@@ -42,6 +47,11 @@ function UpgradeFire (event)
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_ice_tower")
+
+	caster:AddAbility("petri_animated_tower")
+	InitAbilities(caster)
+
+	caster:RemoveModifierByName("modifier_building")
 
 	UpdateAttributes(TOWER_FIRE, ability)
 end
@@ -110,15 +120,15 @@ function UpdateAttributes(tower, ability)
 	elseif tower == TOWER_FIRE then
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_crits", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
+		--StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_ICE then
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_skadi", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
+		--StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_DEATH then 
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_death_tower", {})
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
+		--StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	end
 
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_attack_speed", {})

@@ -410,7 +410,17 @@ function GameMode:OnEntityKilled( keys )
     hero.food = hero.food - killedUnit.foodSpent
   end
 
-  if string.match(killedUnit:GetUnitName (), "cop") then
+  if killedUnit:GetUnitName () == "npc_petri_cop_trap" then
+    local damageTable = {
+        victim = killerEntity,
+        attacker = killedUnit,
+        damage = 100,
+        damage_type = DAMAGE_TYPE_PURE,
+    }
+    ApplyDamage(damageTable)
+  end
+
+  if killedUnit:GetUnitName () == "npc_petri_cop" then
     GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].copIsPresent = false
   end
 

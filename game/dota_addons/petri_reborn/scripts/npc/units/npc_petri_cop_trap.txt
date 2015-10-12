@@ -1,15 +1,15 @@
-"npc_petri_trap"
+"npc_petri_cop_trap"
 {
   "BaseClass"         "npc_dota_creature"
-  "Model"           "models/heroes/techies/fx_techiesfx_stasis.vmdl"
-  "ModelScale"        "1.0"
-  "Level"           "4"
-  "HealthBarOffset"       "140"
+  "Model"           "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+  "ModelScale"        "1.85"
+  "Level"           "1"
+  "HealthBarOffset"       "180"
   "HasInventory"        "0"
 
   "AbilityLayout"       "4"
-  "Ability1"  "petri_invisibility"
-  "Ability2"  "petri_trap"
+  "Ability1"  "petri_cop_trap"
+  "Ability2"  "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
@@ -22,16 +22,14 @@
   "BountyGoldMin"       "20.0"
   "BountyGoldMax"       "20.0"
 
-  "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
-  "RingRadius"        "10"
-  "CollisionSize"       "2"
+  "BoundsHullName"    "DOTA_HULL_SIZE_HERO"    
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
   "MovementSpeed"         "0"   
   "MovementTurnRate"    "0.0"  
   "HasAggressiveStance"     "0"
   
-  "StatusHealth"        "1"
+  "StatusHealth"        "100"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"       "0"

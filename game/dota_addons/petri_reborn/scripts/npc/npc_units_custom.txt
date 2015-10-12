@@ -251,7 +251,10 @@
 	
 	  "AbilityLayout"    "4"
 	  "Ability1"         "petri_gold_bag_blink"
-	  "Ability2"         "petri_cop"
+	  "Ability2"         "build_petri_cop_trap"
+	  "Ability3"         "petri_empty1"
+	  "Ability4"         "petri_empty2"
+	  "Ability5"         "petri_cop"
 	
 	  "HasInventory"     "1"
 	
@@ -291,6 +294,50 @@
 	  {
 	    "DisableClumpingBehavior"  "1"
 	  }
+	}
+	"npc_petri_cop_trap"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "Model"           "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+	  "ModelScale"        "1.85"
+	  "Level"           "1"
+	  "HealthBarOffset"       "180"
+	  "HasInventory"        "0"
+	
+	  "AbilityLayout"       "4"
+	  "Ability1"  "petri_cop_trap"
+	  "Ability2"  "petri_building"
+	  
+	  "ArmorPhysical"       "0"
+	  "MagicalResistance"     "0"
+	
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackDamageMin"       "0"
+	  "AttackDamageMax"       "0"
+	
+	  "BountyGoldMin"       "20.0"
+	  "BountyGoldMax"       "20.0"
+	
+	  "BoundsHullName"    "DOTA_HULL_SIZE_HERO"    
+	
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+	  "MovementSpeed"         "0"   
+	  "MovementTurnRate"    "0.0"  
+	  "HasAggressiveStance"     "0"
+	  
+	  "StatusHealth"        "100"
+	  "StatusHealthRegen"     "0"
+	  "StatusMana"        "0"
+	  "StatusManaRegen"       "0"
+	
+	  "VisionDaytimeRange"    "170"
+	  "VisionNighttimeRange"    "170"
+	
+	  "TeamName"          "DOTA_TEAM_GOODGUYS"
+	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 	}
 	"npc_petri_creep_bad_actor"
 	{
@@ -1448,7 +1495,7 @@
 	"npc_petri_tower_basic"
 	{
 	  "BaseClass"         "npc_dota_base_additive"  
-	  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"  
+	  "Model"           "models/heroes/omniknight/omniknight.vmdl"  
 	  "ModelScale"                "0.29"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
@@ -1599,8 +1646,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"       "0"
 	
-	  "VisionDaytimeRange"    "1700"
-	  "VisionNighttimeRange"    "1700"
+	  "VisionDaytimeRange"    "170"
+	  "VisionNighttimeRange"    "170"
 	
 	  "TeamName"          "DOTA_TEAM_GOODGUYS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -1610,7 +1657,7 @@
 	"npc_petri_wall"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
-	  "Model"           "models/props_debris/merchant_debris_chest002.vmdl"  
+	  "Model"           "models/heroes/omniknight/omniknight.vmdl"  
 	  "ModelScale"                "0.6"
 	  "SoundSet"          "Creep_Good_Range"  
 	  "Level"           "1"
@@ -1619,11 +1666,19 @@
 	  "AbilityLayout"     "4"
 	  "Ability1"        "petri_upgrade_wall"
 	  "Ability2"          "petri_building"
+	  "Ability3"        "petri_animated_tower"
 	  
 	  "ArmorPhysical"       "1"     
 	  "MagicalResistance"       "0"     
 	
-	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+	  "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
+	  "AttackDamageMin"    "0.0"
+	  "AttackDamageMax"    "0.0"
+	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackRate"    "1"
+	  "AttackAnimationPoint"  "0.433"
+	  "AttackAcquisitionRange" "500"
+	  "AttackRange"     "90"  
 	
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "5"     
@@ -1633,8 +1688,8 @@
 	  "RingRadius"        "100"
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
-	  "MovementSpeed"       "0"   
-	  "MovementTurnRate"      "0.0"   
+	  "MovementSpeed"       "250"   
+	  "MovementTurnRate"      "0.8"   
 	  "FollowRange"       "0"   
 	
 	  "StatusHealth"        "30"     

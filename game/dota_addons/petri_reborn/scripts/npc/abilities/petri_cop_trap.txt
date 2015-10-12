@@ -1,0 +1,51 @@
+"petri_cop_trap"
+{
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "BaseClass"           "ability_datadriven"
+  "MaxLevel" "1"
+  "AbilityTextureName"      ""
+
+  "precache"
+  {
+    "particle"  "particles/items_fx/blademail.vpcf"
+  }
+
+  "OnUpgrade"
+  {
+    "DelayedAction"
+    {
+      "Delay"     "0.2"
+      "Action"    
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_cop_trap"
+          "Target"     "CASTER"
+        }
+      }
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_cop_trap"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "EffectName"            "particles/items_fx/blademail.vpcf"
+      "EffectAttachType"      "follow_origin"
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/cop_trap.lua"
+          "Function"    "OnAttacked"
+          "damage"  "%attack_damage"
+        }
+      }
+    }
+  }
+}

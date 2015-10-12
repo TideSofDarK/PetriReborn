@@ -37,6 +37,42 @@
 	    }
 	  }
 	}
+	"build_petri_cop_trap"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "build_petri_cop_trap"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "5.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_cop_trap"
+	  "AbilityCooldown"       "0"
+	  "AbilityGoldCost"       "200"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	  }
+	}
 	"build_petri_exit"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -765,12 +801,21 @@
 	  "BaseClass"           "ability_datadriven"
 	  "MaxLevel" "1"
 	  "AbilityTextureName"      ""
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_building"
+	      "Target"     "CASTER"
+	    }
+	  }
 	  
 	  "Modifiers"
 	  {
 	    "modifier_building"
 	    {
-	      "Passive"     "1"
+	      "Passive"     "0"
 	      "IsHidden"      "1"
 	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"  
 	      "States"
@@ -784,6 +829,37 @@
 	        "MODIFIER_PROPERTY_DISABLE_TURNING" "1"
 	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "1"
 	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "0.1"
+	      }
+	    }
+	  }
+	}
+	
+	"petri_animated_tower"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"      ""
+	  
+	  "Modifiers"
+	  {
+	    "modifier_animated_tower"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"  
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_DISABLED" // Prevents moving
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"  "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_DISABLE_TURNING" "0"
+	        "MODIFIER_PROPERTY_IGNORE_CAST_ANGLE" "0"
+	        "MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE" "280"
 	      }
 	    }
 	  }
@@ -840,6 +916,57 @@
 	      {
 	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	"petri_cop_trap"
+	{
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "BaseClass"           "ability_datadriven"
+	  "MaxLevel" "1"
+	  "AbilityTextureName"      ""
+	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/blademail.vpcf"
+	  }
+	
+	  "OnUpgrade"
+	  {
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.2"
+	      "Action"    
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_cop_trap"
+	          "Target"     "CASTER"
+	        }
+	      }
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_cop_trap"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "EffectName"            "particles/items_fx/blademail.vpcf"
+	      "EffectAttachType"      "follow_origin"
+	
+	      "OnAttacked"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/cop_trap.lua"
+	          "Function"    "OnAttacked"
+	          "damage"  "%attack_damage"
+	        }
 	      }
 	    }
 	  }

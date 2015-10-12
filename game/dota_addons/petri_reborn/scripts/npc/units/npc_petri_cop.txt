@@ -10,7 +10,10 @@
 
   "AbilityLayout"    "4"
   "Ability1"         "petri_gold_bag_blink"
-  "Ability2"         "petri_cop"
+  "Ability2"         "build_petri_cop_trap"
+  "Ability3"         "petri_empty1"
+  "Ability4"         "petri_empty2"
+  "Ability5"         "petri_cop"
 
   "HasInventory"     "1"
 

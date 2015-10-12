@@ -21,6 +21,8 @@ function Precache( context )
   PrecacheResource("model_folder", "models/heroes/storm_spirit", context)
 
   -- UNITS
+  PrecacheResource("model", "models/items/rattletrap/cog_tesla/cog_tesla.vmdl", context)
+
   PrecacheResource("model", "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl", context)
 
   PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
