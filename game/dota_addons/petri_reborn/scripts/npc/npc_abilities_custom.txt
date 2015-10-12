@@ -509,7 +509,7 @@
 	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
 	      "States"
 	      {
-	        //"MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
 	        //"MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
@@ -2291,6 +2291,18 @@
 	
 	  "Modifiers"
 	  {
+	    "petri_repair_rooted"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
+	      "States"
+	      {
+	        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
+	        //"MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
 	    "modifier_repairing_autocast_aura"
 	    {
 	      "Passive" "1"
