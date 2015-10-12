@@ -4,7 +4,7 @@
   "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
   "ModelScale"        "0.5"
   "Level"           "0"
-  "HealthBarOffset"       "200"
+  "HealthBarOffset"       "230"
   "HasInventory"        "1"
 
   "AbilityLayout"       "5"

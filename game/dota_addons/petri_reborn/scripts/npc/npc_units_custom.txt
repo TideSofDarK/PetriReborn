@@ -698,7 +698,7 @@
 	  "ModelScale"                "2.4"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
-	  "HealthBarOffset"    "280"
+	  "HealthBarOffset"    "320"
 	  
 	  "AbilityLayout"       "4"
 	  "Ability1"          "petri_exploration_tree_explore"     
@@ -1246,7 +1246,7 @@
 	  "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
 	  "ModelScale"        "0.5"
 	  "Level"           "0"
-	  "HealthBarOffset"       "200"
+	  "HealthBarOffset"       "230"
 	  "HasInventory"        "1"
 	
 	  "AbilityLayout"       "5"
