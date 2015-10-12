@@ -1,4 +1,8 @@
 "use strict";
+
+var PREPARE_TIME = 5;
+var SELECT_PETR_TIME = 10;
+
 var isHostShuffle = false;
 
 //--------------------------------------------------------------------------------------------------
@@ -238,7 +242,7 @@ function HostShuffle()
 	}
 
 	SetStateDescription( "#game_setup_host_select_petrosyan" );
-	Game.SetRemainingSetupTime( 10 );
+	Game.SetRemainingSetupTime( SELECT_PETR_TIME );
 	isHostShuffle = true;
 	$( "#VotePanel" ).data().FreezeVote();
 }
@@ -339,7 +343,7 @@ function LoadUI()
 		
 		SetStateDescription( "#game_setup_state_prevote" )
 		Game.SetAutoLaunchEnabled( false );
-		Game.SetRemainingSetupTime( 10 );
+		Game.SetRemainingSetupTime( PREPARE_TIME );
 		$( "#VotePanel" ).data().UnfreezeVote();
 	}	
 }
