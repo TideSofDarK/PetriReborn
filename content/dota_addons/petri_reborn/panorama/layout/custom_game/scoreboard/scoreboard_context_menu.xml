@@ -8,8 +8,11 @@
 	</scripts>
 	<Panel class="Container">
 		<Panel class="DarkTheme Cards z-index1" id="Contents">
+			<Panel class="DarkTheme Primary500 z-index1" id="NamePanel">
+				<Label class="DarkTheme PrimaryText" id="PlayerName" text="Player" />
+			</Panel>
 			<Button class="DarkTheme FlatButton ContextButton" id="VoteKick" onmouseactivate="VoteKick();">
-				<Label class="DarkTheme PrimaryText MenuLabel" text="Vote kick" />
+				<Label class="DarkTheme PrimaryText MenuLabel" text="#vote_kick" />
 			</Button>
 		</Panel>
 	</Panel>
