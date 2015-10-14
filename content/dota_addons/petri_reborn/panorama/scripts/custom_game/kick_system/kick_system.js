@@ -4,11 +4,17 @@ var lastVoteTime = {};
 function AddVoteKickPanel( args )
 {
 	var playerID = args["KickPlayerID"];
+	lastVoteTime[playerID] = Game.GetGameTime();
+
+	var localPlayer = Players.GetLocalPlayer();
+	if (localPlayer == args["KickPlayerID"] || localPlayer == args["VoteInitiator"])
+		return;
+
 	var playerPanel = $.CreatePanel( "Panel", $( "#KickList" ), "Player_" + playerID );
 	playerPanel.SetAttributeInt("PlayerID", playerID);
 	playerPanel.BLoadLayout( "file://{resources}/layout/custom_game/kick_system/kick_system_player.xml", false, false );
 
-	lastVoteTime[playerID] = Game.GetGameTime();
+
 }
 
 // Check kick rules
