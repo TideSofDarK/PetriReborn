@@ -9,7 +9,7 @@ function DismissMenu()
 
 function VoteKick()
 {
-	GameEvents.SendCustomGameEventToServer( "petri_start_vote_kick", { "KickPlayerID" : playerID } );
+	GameEvents.SendCustomGameEventToServer( "petri_start_vote_kick", { "KickPlayerID" : playerID, "VoteInitiator": Players.GetLocalPlayer() } );
 	DismissMenu();	
 }
 

@@ -6,23 +6,14 @@ function KickSystem:StartVoteKick( args )
 	local playerID = args["KickPlayerID"]
 	local teamID = PlayerResource:GetPlayer(playerID):GetTeamNumber()
 
-	local allHeroes = HeroList:GetAllHeroes()
-		for _, v in pairs( allHeroes ) do
-			local curPlayerID = v:GetPlayerID()
-			if curPlayerID then
-				if curPlayerID ~= playerID and curPlayerID ~= args["PlayerID"] and PlayerResource:GetPlayer(curPlayerID):GetTeamNumber() == teamID then
-					CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(curPlayerID), "petri_vote_kick", {["KickPlayerID"] = playerID } )
-			end
-		end
-	end
+	CustomGameEventManager:Send_ServerToTeam(teamID, "petri_vote_kick", {["KickPlayerID"] = playerID, ["VoteInitiator"] = args["VoteInitiator"]} )
+	KickSystem.votes[ playerID ] = 1;
 
-  KickSystem.votes[ playerID ] = 1;
-
-  -- Check vote after 11 seconds
-  Timers:CreateTimer(11.0, 
-	function() 
-	  KickSystem:VoteResult( playerID )
-	end);
+	-- Check vote after 11 seconds
+	Timers:CreateTimer(11.0, 
+		function() 
+		  KickSystem:VoteResult( playerID )
+		end);
 end
 
 -- Votes count
