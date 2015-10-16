@@ -18,18 +18,22 @@ function BonusGoldFromWall(keys)
 end
 
 function ModifierSuperLifesteal(keys)
-	if keys.target:HasAbility("petri_building") then
-		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
-	else
-		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+	if keys.target:HasAbility("petri_cop_trap") == false then
+		if keys.target:HasAbility("petri_building") then
+			keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
+		else
+			keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+		end
 	end
 end
 
 function ModifierLifesteal(keys)
-	if keys.target:HasAbility("petri_building") then
-		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
-	else
-		keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+	if keys.target:HasAbility("petri_cop_trap") == false then
+		if keys.target:HasAbility("petri_building") then
+			keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building", {duration = 0.03})
+		else
+			keys.ability:ApplyDataDrivenModifier(keys.attacker, keys.attacker, "modifier_item_petri_mask_of_laugh_datadriven_lifesteal", {duration = 0.03})
+		end
 	end
 end
 
@@ -221,6 +225,40 @@ function ReadComedyBook( keys )
 	caster:SetBaseStrength(caster:GetBaseStrength() + 25)
 
 	caster:CalculateStatBonus()
+end
+
+function BuySnares( keys )
+	local caster = keys.caster
+	local player = keys.caster:GetPlayerOwner()
+	local pID = player:GetPlayerID()
+	local ability = keys.ability
+	
+	local sleep_ability = caster:FindAbilityByName("petri_petrosyan_sleep")
+	if sleep_ability then
+		caster:AddAbility("petri_petrosyan_snare_1")
+		caster:FindAbilityByName("petri_petrosyan_snare_1"):UpgradeAbility(false)
+		caster:SwapAbilities("petri_petrosyan_sleep", "petri_petrosyan_snare_1", false, true)
+		caster:RemoveAbility("petri_petrosyan_sleep")
+	else
+		PlayerResource:ModifyGold(pID, keys.ItemCost, false, 7)
+	end
+end
+
+function BuyUpgradedSnares( keys )
+	local caster = keys.caster
+	local player = keys.caster:GetPlayerOwner()
+	local pID = player:GetPlayerID()
+	local ability = keys.ability
+	
+	local snare_ability = caster:FindAbilityByName("petri_petrosyan_snare_1")
+	if snare_ability then
+		caster:AddAbility("petri_petrosyan_snare_2")
+		caster:FindAbilityByName("petri_petrosyan_snare_2"):UpgradeAbility(false)
+		caster:SwapAbilities("petri_petrosyan_snare_1", "petri_petrosyan_snare_2", false, true)
+		caster:RemoveAbility("petri_petrosyan_snare_1")
+	else
+		PlayerResource:ModifyGold(pID, keys.ItemCost, false, 7)
+	end
 end
 
 function OnAwake( keys )

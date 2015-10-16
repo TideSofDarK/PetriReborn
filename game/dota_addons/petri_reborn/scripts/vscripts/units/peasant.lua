@@ -339,7 +339,7 @@ function CheckRepairingTargetPosition( event )
 	local ability = event.ability
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 210
+	local collision = distance < 250
 	if not collision then
 
 	elseif not caster:HasModifier("modifier_chopping_building") then

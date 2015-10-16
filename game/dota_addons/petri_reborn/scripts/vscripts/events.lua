@@ -305,6 +305,8 @@ function GameMode:OnEntityKilled( keys )
     hero.numberOfUnits = hero.numberOfUnits - 1
   end
 
+  UnfreezeAnimation(killedUnit)
+
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})

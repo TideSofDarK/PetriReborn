@@ -121,8 +121,15 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado_child.vpcf", context)
   PrecacheResource("particle", "particles/items_fx/cyclone.vpcf", context)
 
+  PrecacheResource("particle", "particles/items_fx/blademail.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf", context)
+
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
 end
 
 function Activate()

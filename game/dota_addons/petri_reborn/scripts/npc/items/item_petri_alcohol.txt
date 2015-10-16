@@ -45,6 +45,13 @@
       "Target"      "CASTER"
       "ModifierName"    "modifier_item_petri_alcohol_active"
     }
+
+    "RemoveModifier"
+    {
+      "ModifierName"  "modifier_snare"
+      "Target"     "TARGET"
+    }
+    
     "SpendCharge"
     {}
   }
@@ -65,6 +72,7 @@
       "States"
       {
         "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }

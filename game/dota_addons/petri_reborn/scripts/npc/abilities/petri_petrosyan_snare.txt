@@ -1,0 +1,181 @@
+"petri_petrosyan_snare_1"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+  "AbilityTextureName" "meepo_earthbind"
+
+  "MaxLevel" "1"
+
+  "AbilityCastRange"        "650"
+
+  "AbilityCooldown"       "25"
+
+  "AbilityManaCost" "15" 
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "duration"      "9"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "TrackingProjectile"
+    {
+      "Target"                "TARGET"
+      "EffectName"            "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+      "Dodgeable"             "0"
+      "ProvidesVision"        "1"
+      "VisionRadius"          "0"
+      "MoveSpeed"             "1500"
+      "SourceAttachment"      "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    }
+    "FireSound"
+    {
+      "EffectName"            "Hero_NagaSiren.Ensnare.Cast"
+      "Target"                "CASTER"
+    }
+  }
+
+  "OnProjectileHitUnit"
+  {
+    "DeleteOnHit"   "1"
+
+    "FireSound"
+    {
+        "EffectName"            "Hero_NagaSiren.Ensnare.Target"
+        "Target"                "TARGET"
+    }
+
+    "ApplyModifier"
+    {
+        "Target"                "TARGET"
+        "ModifierName"          "modifier_snare"
+    }
+
+    "Damage"
+    {
+      "Target"    "TARGET"
+      "Type"      "DAMAGE_TYPE_MAGICAL"
+      "Damage"    "1"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_snare"
+    {
+      "IsHidden"      "1"
+      "IsDebuff"      "1"
+      "IsPurgable"    "1"
+
+      "Duration"      "%duration"
+
+      "States"
+      {
+        "MODIFIER_STATE_ROOTED"     "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_SILENCED"     "MODIFIER_STATE_VALUE_ENABLED"
+      }
+
+      "EffectName"            "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+      "EffectAttachType"      "follow_origin"
+    }
+  }   
+}
+
+"petri_petrosyan_snare_2"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+  "AbilityTextureName" "naga_siren_ensnare"
+
+  "MaxLevel" "1"
+
+  "AbilityCastRange"        "650"
+
+  "AbilityCooldown"       "35"
+
+  "AbilityManaCost" "15" 
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "duration"      "19"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "TrackingProjectile"
+    {
+      "Target"                "TARGET"
+      "EffectName"            "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf"
+      "Dodgeable"             "0"
+      "ProvidesVision"        "1"
+      "VisionRadius"          "0"
+      "MoveSpeed"             "1500"
+      "SourceAttachment"      "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    }
+    "FireSound"
+    {
+      "EffectName"            "Hero_NagaSiren.Ensnare.Cast"
+      "Target"                "CASTER"
+    }
+  }
+
+  "OnProjectileHitUnit"
+  {
+    "DeleteOnHit"   "1"
+
+    "FireSound"
+    {
+        "EffectName"            "Hero_NagaSiren.Ensnare.Target"
+        "Target"                "TARGET"
+    }
+
+    "ApplyModifier"
+    {
+        "Target"                "TARGET"
+        "ModifierName"          "modifier_snare"
+    }
+
+    "Damage"
+    {
+      "Target"    "TARGET"
+      "Type"      "DAMAGE_TYPE_MAGICAL"
+      "Damage"    "1"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_snare"
+    {
+      "IsHidden"      "1"
+      "IsDebuff"      "1"
+      "IsPurgable"    "1"
+
+      "Duration"      "%duration"
+
+      "States"
+      {
+        "MODIFIER_STATE_ROOTED"     "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_SILENCED"     "MODIFIER_STATE_VALUE_ENABLED"
+      }
+
+      "EffectName"            "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf"
+      "EffectAttachType"      "follow_origin"
+    }
+  }   
+}

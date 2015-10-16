@@ -5,9 +5,18 @@
   "MaxLevel" "1"
   "AbilityTextureName"      ""
 
-  "precache"
+  "AbilitySpecial"
   {
-    "particle"  "particles/items_fx/blademail.vpcf"
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack_slow"       "-25"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "move_slow"         "-60"
+    }
   }
 
   "OnUpgrade"
@@ -28,6 +37,23 @@
   
   "Modifiers"
   {
+    "modifier_poison"
+    {
+      "Duration"  "5"
+      "IsDebuff"  "1"
+      "IsHidden"  "1"
+
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "EffectName"    "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+      "EffectAttachType"  "follow_origin"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_slow"
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%move_slow"
+      }
+    }
     "modifier_cop_trap"
     {
       "Passive"     "1"
@@ -43,7 +69,6 @@
         {
           "ScriptFile"  "units/cop_trap.lua"
           "Function"    "OnAttacked"
-          "damage"  "%attack_damage"
         }
       }
     }

@@ -92,3 +92,89 @@
   }
 }
 
+"item_petri_snares_1"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1976"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_snares"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+
+  "ItemCost"            "500"
+
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"                "1"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+  "ItemCastOnPickup"    "1"
+
+  "OnSpellStart"
+  {
+    "SpendCharge"
+    {}
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "BuySnares"
+      "ItemCost"  "500"
+    }
+  }
+}
+
+"item_petri_snares_2"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1975"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_snares_2"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+
+  "ItemCost"            "3100"
+
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"                "1"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+  "ItemCastOnPickup"    "1"
+
+  "OnSpellStart"
+  {
+    "SpendCharge"
+    {}
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "BuyUpgradedSnares"
+      "ItemCost"  "3100"
+    }
+  }
+}
+

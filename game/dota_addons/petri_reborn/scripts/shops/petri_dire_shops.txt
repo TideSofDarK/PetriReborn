@@ -8,6 +8,8 @@
     "item"        "item_petri_book_of_laugh"
     "item"        "item_petri_comedy_book"
     "item"        "item_petri_comedy_story"
+    "item"        "item_petri_snares_1"
+    "item"        "item_petri_snares_2"
   }
 
   "attributes"

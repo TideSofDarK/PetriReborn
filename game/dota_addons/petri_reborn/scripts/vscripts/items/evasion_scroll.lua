@@ -6,7 +6,7 @@ function EvasionTornado(keys)
     local tornado_landing_damage_bonus = keys.ability:GetLevelSpecialValueFor("wex_damage", -1)
     
     local tornado_dummy_unit = CreateUnitByName("npc_dummy_unit", caster_origin, false, nil, nil, keys.caster:GetTeam())
-    local emp_unit_ability = keys.ability
+    local emp_unit_ability = tornado_dummy_unit:AddItemByName("item_petri_evasion_scroll")
    	emp_unit_ability:ApplyDataDrivenModifier(tornado_dummy_unit, tornado_dummy_unit, "modifier_tornado_unit_ability", {duration = -1})
 
     tornado_dummy_unit:EmitSound("Hero_Invoker.Tornado")  --Emit a sound that will follow the tornado.

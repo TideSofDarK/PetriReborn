@@ -10,6 +10,7 @@
   "AbilityLayout"       "4"
   "Ability1"  "petri_cop_trap"
   "Ability2"  "petri_building"
+  "Ability3"  "petri_suicide"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"

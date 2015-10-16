@@ -16,13 +16,16 @@
   "ItemQuality"         "consumable"
   "ItemPermanent"         "0"
   "ItemSellable"          "0"
-  "ItemInitialCharges"  "1"
-  "ItemStackable"       "1"
-  "ItemPermanent"       "0"
   "ItemKillable"          "1"
   "ItemPurchasable"       "0"
 
-  "ItemCastOnPickup" "1"
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+  "ItemCastOnPickup"    "1"
 
   "AbilitySpecial"
   {
@@ -34,13 +37,14 @@
   }
 
   "OnSpellStart"
-  {     
+  {    
+    "SpendCharge" 
+    {}
     "RunScript"
     {
       "ScriptFile"  "items/gold_coin.lua"
       "Function"    "Use"
     }
-    "SpendCharge" 
-    {}
+
   }
 }

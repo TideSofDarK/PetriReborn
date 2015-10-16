@@ -16,7 +16,7 @@
   //"CancelsBuildingGhost"      "0" //bool
   // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
   "UnitName"            "npc_petri_cop_trap"
-  "AbilityCooldown"       "0"
+  "AbilityCooldown"       "10"
   "AbilityGoldCost"       "200"
   // End of BuildingHelper info
 

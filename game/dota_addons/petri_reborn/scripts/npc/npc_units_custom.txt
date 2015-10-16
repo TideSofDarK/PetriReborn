@@ -7,7 +7,8 @@
 	  "Model"           "models/development/invisiblebox.vmdl"  // Model.
 	  "SoundSet"          "Creep_Good_Range"          // Name of sound set.
 	  "Level"           "0"
-	  "UnitLabel"         "healing_ward"
+	  
+	  "HasInventory"     "1"
 	
 	  // Armor
 	  //----------------------------------------------------------------
@@ -249,12 +250,14 @@
 	
 	  "vscripts"     "units/cop.lua"
 	
-	  "AbilityLayout"    "4"
+	  "AbilityLayout"    "6"
 	  "Ability1"         "petri_gold_bag_blink"
 	  "Ability2"         "build_petri_cop_trap"
 	  "Ability3"         "petri_empty1"
 	  "Ability4"         "petri_empty2"
-	  "Ability5"         "petri_cop"
+	  "Ability5"         "petri_empty3"
+	  "Ability6"         "petri_empty4"
+	  "Ability7"         "petri_cop"
 	
 	  "HasInventory"     "1"
 	
@@ -307,6 +310,7 @@
 	  "AbilityLayout"       "4"
 	  "Ability1"  "petri_cop_trap"
 	  "Ability2"  "petri_building"
+	  "Ability3"  "petri_suicide"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
@@ -1500,7 +1504,7 @@
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
 	  "UnitLabel"         "npc_petri_tower_basic"
-	  "HealthBarOffset"    "180"
+	  "HealthBarOffset"    "195"
 	
 	  "AbilityLayout"     "4"
 	  "Ability1"        "petri_upgrade_basic_tower"

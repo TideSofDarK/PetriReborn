@@ -51,7 +51,26 @@ function BuildingHelper:RegisterLeftClick( args )
 
   --get the player that sent the command
   local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
+
+  local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, location, nil, 130, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
   
+  if #units > 0 then
+    if cmdPlayer then
+      cmdPlayer.activeBuilder:ClearQueue()
+      cmdPlayer.activeBuilding = nil
+      cmdPlayer.activeBuilder:Stop()
+      cmdPlayer.activeBuilder.ProcessingBuilding = false
+
+      cmdPlayer.waitingForBuildHelper = false
+
+      if cmdPlayer.activeCallbacks.onConstructionCancelled ~= nil then
+        cmdPlayer.activeCallbacks.onConstructionCancelled()
+      end
+
+      return false
+    end
+  end
+
   if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
     cmdPlayer.activeBuilder:AddAbility("has_build_queue")
     local abil = cmdPlayer.activeBuilder:FindAbilityByName("has_build_queue")

@@ -1,11 +1,6 @@
 function OnAttacked( keys )
 	local attacker = keys.attacker
+	local ability = keys.ability
 
-	local damageTable = {
-	    victim = attacker,
-	    attacker = keys.caster,
-	    damage = keys.damage,
-	    damage_type = DAMAGE_TYPE_PHYSICAL,
-	}
-	ApplyDamage(damageTable)
+	ability:ApplyDataDrivenModifier(attacker, attacker, "modifier_poison", {})
 end

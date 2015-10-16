@@ -186,6 +186,7 @@ function builder_queue( keys )
     if caster.ProcessingBuilding ~= nil
     and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
     and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_PICKUP_ITEM
     and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM
      then
         -- caster is probably a builder, stop them

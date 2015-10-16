@@ -108,6 +108,7 @@
       "VisionDistance"                            "%vision_distance"
       "EndVisionDuration"                         "%end_vision_duration"
     }
+    "SpendCharge" {}
   }
 
   "OnProjectileHitUnit"

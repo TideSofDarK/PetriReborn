@@ -10,7 +10,7 @@ function SpawnCop( keys )
 		return false
 	end
 
-	local cop = CreateUnitByName("npc_petri_cop", caster:GetAbsOrigin(), true, nil, GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], DOTA_TEAM_GOODGUYS)
+	local cop = CreateUnitByName("npc_petri_cop", caster:GetAbsOrigin(), true, GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], DOTA_TEAM_GOODGUYS)
 	cop:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 
 	if caster:HasAbility("petri_suicide") == true then
