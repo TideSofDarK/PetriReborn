@@ -9,8 +9,9 @@
 
   "AbilityLayout"       "4"
   "Ability1"  "petri_cop_trap"
-  "Ability2"  "petri_building"
+  "Ability2"  "petri_upgrade_cop_trap"
   "Ability3"  "petri_suicide"
+  "Ability4"  "petri_building"
   
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
@@ -32,7 +33,7 @@
   
   "StatusHealth"        "100"
   "StatusHealthRegen"     "0"
-  "StatusMana"        "0"
+  "StatusMana"        "10"
   "StatusManaRegen"       "0"
 
   "VisionDaytimeRange"    "170"

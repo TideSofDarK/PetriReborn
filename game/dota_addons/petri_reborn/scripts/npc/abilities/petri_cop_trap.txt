@@ -2,20 +2,29 @@
 {
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "BaseClass"           "ability_datadriven"
-  "MaxLevel" "1"
+  "MaxLevel" "2"
   "AbilityTextureName"      ""
 
   "AbilitySpecial"
   {
     "01"
     {
+      "var_type"      "FIELD_INTEGER"
+      "duration"      "5 10"
+    }
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
       "var_type"          "FIELD_INTEGER"
-      "attack_slow"       "-25"
+      "attack_slow"       "-25 -50"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "move_slow"         "-60"
+      "move_slow"         "-60 -100"
     }
   }
 
@@ -39,7 +48,7 @@
   {
     "modifier_poison"
     {
-      "Duration"  "5"
+      "Duration"  "%duration"
       "IsDebuff"  "1"
       "IsHidden"  "1"
 
@@ -70,6 +79,81 @@
           "ScriptFile"  "units/cop_trap.lua"
           "Function"    "OnAttacked"
         }
+      }
+    }
+  }
+}
+
+"petri_upgrade_cop_trap"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "MaxLevel" "1"
+  "AbilityTextureName"      "rattletrap_power_cogs"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityManaCost"       "0"
+  "AbilityChannelTime"      "4.5"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "AbilityGoldCost" "1000"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/cop_trap.lua"
+      "Function"    "Upgrade"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_upgraded"
+      "Target"     "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_upgraded"
+    {
+      "IsBuff"  "1"
+      "IsHidden"  "1"
+
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "EffectName"              "particles/items_fx/immunity_sphere_buff.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_DISABLED"
       }
     }
   }

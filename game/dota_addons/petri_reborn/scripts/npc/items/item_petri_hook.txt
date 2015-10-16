@@ -177,6 +177,7 @@
 
     "modifier_meat_hook_target_datadriven"
     {
+      "IsHidden"  "1" 
       "IsDebuff"        "1"
       "OverrideAnimation"   "ACT_DOTA_FLAIL"
 
@@ -188,6 +189,7 @@
 
     "modifier_meat_hook_dummy_datadriven"
     {
+      "IsHidden"  "1" 
       "States"
       {
         "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
