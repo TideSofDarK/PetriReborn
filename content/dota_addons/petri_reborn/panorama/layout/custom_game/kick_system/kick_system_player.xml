@@ -1,0 +1,22 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/material_design.css" />			
+		<include src="file://{resources}/styles/custom_game/kick_system.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/kick_system/kick_system_player.js" />
+	</scripts>
+	<Panel hittest="true" class="PlayerPanel DarkTheme Cards rounded z-index1">
+		<Panel hittest="false" class="AvatarPanel circle" id="AvatarPanel">
+			<Panel hittest="false" class="circle" id="PlayerColor" />
+			<DOTAAvatarImage hittest="false" class="circle" id="PlayerAvatar" />
+		</Panel>
+		<Label hittest="false" class="DarkTheme PrimaryText" id="PlayerName" text="PLAYER_NAME" />
+		<Button class="DarkTheme FlatButton rounded" id="ButtonClose" onactivate="Close();" >
+			<Image class="icon" id="ImageClose" src="file://{images}/custom_game/close.png" />
+		</Button>		
+		<Button class="DarkTheme FlatButton rounded" id="ButtonKick" onactivate="VoteKick();" >
+			<Image class="icon" id="ImageKick" src="file://{images}/custom_game/thumb_down.png" />					
+		</Button>
+	</Panel>
+</root>

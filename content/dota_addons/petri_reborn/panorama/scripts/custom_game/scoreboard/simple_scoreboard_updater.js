@@ -404,7 +404,10 @@ function ShowContextMenu()
 	var menu = contextMenu.GetContentsPanel().GetParent();
 	menu.RemoveAndDeleteChildren();
 
-	var content = $.CreatePanel( "Panel", menu, "" ); 
+	var content = $.CreatePanel( "Panel", menu, "" );
+	var playerID = $.GetContextPanel().GetAttributeInt("player_id", -1);
+	content.SetAttributeInt("PlayerID", playerID);	
+	
 	content.BLoadLayout( "file://{resources}/layout/custom_game/scoreboard/scoreboard_context_menu.xml", false, false );
 	content.AddClass("show_menu");
 }

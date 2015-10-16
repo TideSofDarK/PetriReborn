@@ -11,10 +11,10 @@
 			<Label class="VoteQuestionLabel" text="#vote_host_shuffle_q" />			
 		</Panel>
 		<Panel class="DarkTheme Cards" id="VoteVariants">
-			<Button class="DarkTheme FlatButton" value="host">
+			<Button class="DarkTheme FlatButton" value="host" default="true">
 				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_host" />
 			</Button>
-			<Button class="DarkTheme FlatButton" value="random" default="true">
+			<Button class="DarkTheme FlatButton" value="random">
 				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_random" />
 			</Button>				
 		</Panel>
