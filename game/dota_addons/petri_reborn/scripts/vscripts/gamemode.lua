@@ -50,6 +50,7 @@ require('libraries/projectiles')
 require('libraries/notifications')
 require('libraries/animations')
 require('libraries/GameSetup')
+require('libraries/KickSystem')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
