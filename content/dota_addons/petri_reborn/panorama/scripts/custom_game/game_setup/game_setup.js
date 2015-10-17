@@ -63,10 +63,6 @@ function UpdateTimer()
 
 	if (timer < 1)
 	{
-		if ($( "#VotePanel" ).data().IsLastVote)
-			if (!$( "#VotePanel" ).data().IsLastVote())
-				Game.SetRemainingSetupTime( -1 );
-
 		if (isHostShuffle)
 		{
 			SendHostShuffleList();
@@ -75,13 +71,11 @@ function UpdateTimer()
 			isHostShuffle = false;
 		}
 
-		if ($( "#VotePanel" ).data().ShowNextVote)
+		if ($( "#VotePanel" ).data().ShowNextVote != null)
 			$( "#VotePanel" ).data().ShowNextVote();
-
-		$.Schedule( 0.1, UpdateTimer );
 	}
-	else
-		$.Schedule( 0.1, UpdateTimer );
+
+	$.Schedule( 0.1, UpdateTimer );
 }
 
 //--------------------------------------------------------------------------------------------------
