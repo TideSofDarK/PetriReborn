@@ -79,14 +79,15 @@ ENABLED_RUNES[DOTA_RUNE_BOUNTY] = true
 
 MAX_NUMBER_OF_TEAMS = 2                -- How many potential teams can be in this game mode?
 USE_CUSTOM_TEAM_COLORS = true          -- Should we use custom team colors?
-USE_CUSTOM_TEAM_COLORS_FOR_PLAYERS = true          -- Should we use custom team colors to color the players/minimap?
 
 TEAM_COLORS = {}                        -- If USE_CUSTOM_TEAM_COLORS is set, use these colors.
 TEAM_COLORS[DOTA_TEAM_GOODGUYS] = { 61, 210, 150 } 
 TEAM_COLORS[DOTA_TEAM_BADGUYS]  = { 243, 201, 9 }
 
+USE_CUSTOM_COLORS_FOR_PLAYERS = true
+
 PLAYER_COLORS = {}
-PLAYER_COLORS[0] = { 100 * 2.55, 1.17, 1.17 }
+PLAYER_COLORS[0] = { 100 * 2.55, 0, 0 }
 PLAYER_COLORS[1]  = { 0, 25.88 * 2.55, 100 }
 PLAYER_COLORS[2]  = { 9.8 * 2.55, 90.2  * 2.55, 72.55  * 2.55}
 PLAYER_COLORS[3]  = { 32.94 * 2.55, 0, 50.59 * 2.55}

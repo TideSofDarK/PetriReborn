@@ -133,10 +133,6 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
-          PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
-          PLAYER_COLORS[pID][2],
-          PLAYER_COLORS[pID][3])
-
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
@@ -186,10 +182,6 @@ function GameMode:OnHeroInGame(hero)
           SetupUI(newHero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
-
-          PlayerResource:SetCustomPlayerColor(pID,PLAYER_COLORS[pID][1], 
-          PLAYER_COLORS[pID][2],
-          PLAYER_COLORS[pID][3])
 
           GameMode.SELECTED_UNITS[pID] = {} 
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
