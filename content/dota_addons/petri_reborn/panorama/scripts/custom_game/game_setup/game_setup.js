@@ -335,13 +335,14 @@ function LoadUI()
 	CreateTeamList(); 
 	CreateVote();
 
+	SetStateDescription( "#game_setup_state_prevote" )
+	
 	var playerInfo = Game.GetLocalPlayerInfo();
 	if (playerInfo.player_has_host_privileges)
 	{
 		// Shuffle handlers
 		GameEvents.Subscribe( "petri_host_shuffle", HostShuffle );		
 		
-		SetStateDescription( "#game_setup_state_prevote" )
 		Game.SetAutoLaunchEnabled( false );
 		Game.SetRemainingSetupTime( PREPARE_TIME );
 		$( "#VotePanel" ).data().UnfreezeVote();
