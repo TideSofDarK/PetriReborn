@@ -29,9 +29,11 @@ function ShowNextVote()
 	// End of votes
 	if (currentVoteNum == votePanels.length)
 	{
+		if ($.GetContextPanel().data().SetStateDescription)
+			$.GetContextPanel().data().SetStateDescription( "#game_setup_start" );
+					
 		if (isHost)
 		{
-			$.GetContextPanel().data().SetStateDescription( "#game_setup_start" );			
 			Game.SetRemainingSetupTime( 10 );
 			GameEvents.SendCustomGameEventToServer( "petri_vote_end", { } );
 		}
