@@ -19,7 +19,7 @@
   
   "Modifiers"
   {
-    "modifier_item_petri_kvn_medal_datadriven"
+    "modifier_kvn_medal_active"
     {
       "Passive"     "1"
       "IsHidden"      "1"

@@ -1,3 +1,43 @@
+function GetGoldModifier()
+  local time = math.floor(GameRules:GetDOTATime(false, false) / 60)
+
+  if time > 40 then
+    return 20.0
+  elseif time > 36 and time <= 40 then
+    return 16.0
+  elseif time > 32 and time <= 36 then
+    return 10.0
+  elseif time > 24 and time <= 28 then
+    return 6.0
+  elseif time > 20 and time <= 24 then
+    return 4.0
+  elseif time > 16 and time <= 20 then
+    return 3.0
+  elseif time > 12 and time <= 16 then
+    return 1.33
+  elseif time > 8 and time <= 12 then
+    return 1.0
+  elseif time > 4 and time <= 8 then
+    return 0.66
+  elseif time >= 2 and time <= 4 then
+    return 0.33
+  elseif time < 2 then
+    return 0.0 
+  end
+  return 1.0
+end
+
+function GiveSharedGoldToTeam(gold, team)
+  for i=1,PlayerResource:GetPlayerCountForTeam(team) do
+    local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)] 
+    if hero then
+      PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+
+      PlusParticle(gold, Vector(244,201,23), 3.0, hero)
+    end
+  end
+end
+
 function PayGoldCost(ability)
   local cost = ability:GetGoldCost(ability:GetLevel())
   if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then

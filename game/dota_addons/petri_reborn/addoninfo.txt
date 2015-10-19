@@ -1,11 +1,11 @@
 "AddonInfo"
 {
 	"TeamCount"		"2"
-	"petri_radiant"
+	"petri_1_radiant"
 	{
 		"MaxPlayers"		"14"
 	}
-	"petri_dire"
+	"petri_2_dire"
 	{
 		"MaxPlayers"		"14"
 	}

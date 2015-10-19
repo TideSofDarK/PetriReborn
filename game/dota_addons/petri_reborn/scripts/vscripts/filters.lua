@@ -198,14 +198,29 @@ end
 function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
 
-  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
-  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+  if GameMode.assignedPlayerHeroes[event.player_id_const] then
+    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
+    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+  end
 
   if event.reason_const == DOTA_ModifyGold_HeroKill then
     if GameRules:GetDOTATime(false, false) < 120 then return false end
 
-    event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
+    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
+      GiveSharedGoldToTeam(90 * GetGoldModifier(), DOTA_TEAM_BADGUYS)
+    end
+
+    return false
+  elseif event.reason_const == DOTA_ModifyGold_Unspecified then
+    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
+      if GameRules:GetDOTATime(false, false) < 120 then return false end
+      print(GetGoldModifier())
+      GiveSharedGoldToTeam(event["gold"] * GetGoldModifier(), DOTA_TEAM_BADGUYS)
+
+      return false
+    end
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
+    
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
       event["gold"] >= 5000 then -- boss
 

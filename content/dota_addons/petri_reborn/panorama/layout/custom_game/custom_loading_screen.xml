@@ -11,9 +11,12 @@
       <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
     </Panel>
 
-    <Panel id="Placeholders" >
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/vova.jpg" />
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+    <Panel id="PlaceholdersRoot" >
+      <Panel id="Placeholders" >
+        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/vova.jpg" />
+        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/nazar.png" />
+        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      </Panel>
     </Panel>
 
     <Panel id="SocialNetworks" >

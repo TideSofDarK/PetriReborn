@@ -3,7 +3,7 @@ function BonusGoldFromWall(keys)
 	local target = keys.target
 
 	if target:GetUnitName() == "npc_petri_wall" then
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, 0)
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, DOTA_ModifyGold_SharedGold)
 
 		PlusParticle(1, Vector(244,201,23), 3.0, caster)
 	end

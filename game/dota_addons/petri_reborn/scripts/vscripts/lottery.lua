@@ -57,12 +57,12 @@ function SelectWinner()
 		local pID = tonumber(k)
 		local prize
 		if v["option"] == winner then
-			prize = math.floor(v["bet"] * 2) + math.floor(GameMode.CURRENT_BANK * 0.4)
+			prize = math.min(math.floor(v["bet"] * 1.7) + math.floor(GameMode.CURRENT_BANK * 0.2), math.floor(v["bet"] * 5))
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
-			prize = math.floor(v["bet"] * 0.5) + math.floor(GameMode.CURRENT_BANK * 0.2)
+			prize = math.min(math.floor(v["bet"] * 0.7) + math.floor(GameMode.CURRENT_BANK * 0.1), math.floor(v["bet"] * 3))
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})

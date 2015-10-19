@@ -2458,7 +2458,7 @@
 	  {
 	    "modifier_snare"
 	    {
-	      "IsHidden"      "1"
+	      "IsHidden"      "0"
 	      "IsDebuff"      "1"
 	      "IsPurgable"    "1"
 	
@@ -2489,7 +2489,7 @@
 	
 	  "AbilityCastRange"        "1000"
 	
-	  "AbilityCooldown"       "35"
+	  "AbilityCooldown"       "22"
 	
 	  "AbilityManaCost" "15" 
 	
@@ -2498,7 +2498,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "duration"      "19"
+	      "duration"      "14"
 	    }
 	  }
 	
@@ -2549,7 +2549,7 @@
 	  {
 	    "modifier_snare"
 	    {
-	      "IsHidden"      "1"
+	      "IsHidden"      "0"
 	      "IsDebuff"      "1"
 	      "IsPurgable"    "1"
 	
@@ -4338,7 +4338,7 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "125 295 820 1060 1300 1950 2575 4000 5250 7000 9750 11000"
+	      "armor"        "125 295 820 1060 1300 1950 2575 4250 5250 7000 9750 11000"
 	    }
 	  }
 	

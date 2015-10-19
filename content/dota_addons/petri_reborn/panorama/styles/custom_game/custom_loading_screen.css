@@ -11,9 +11,20 @@
 /*    overflow: clip;*/
 }
 
+#PlaceholdersRoot
+{
+
+}
+
 #Placeholders
 {
   flow-children: right;
+}
+
+.PlaceholderSmall
+{
+  width: 270px;
+  height: 150px;
 }
 
 .Placeholder
