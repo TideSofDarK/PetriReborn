@@ -23,14 +23,13 @@ function IsAllowedToKick( playerID )
 	var localPlayerInfo = Game.GetLocalPlayerInfo();
 	var playerInfo = Game.GetPlayerInfo( playerID );
 	var gameTime = Game.GetGameTime();
-	var heroName = Players.GetPlayerSelectedHero( playerID );
-	
-	return heroName != "npc_dota_hero_brewmaster" &&  heroName != "npc_dota_hero_death_prophet" &&			// only mini actors or kvn
-		!playerInfo.player_has_host_privileges &&															// only not host
+
+
+	return !playerInfo.player_has_host_privileges &&														// only not host
 		localPlayerInfo.player_id != playerID &&															// not yourself
 		localPlayerInfo.player_team_id == playerInfo.player_team_id &&										// only your tean
-		(lastVoteTime[playerID] != null && lastVoteTime[playerID] + 30 > gameTime) &&						// only every 30 second
-		gameTime > 240;																						// after 4 min
+		(lastVoteTime[playerID] == undefined || lastVoteTime[playerID] + 30 < gameTime) &&					// only every 30 second
+		gameTime > 240;																						// after 4 minutes
 }
 
 (function () {

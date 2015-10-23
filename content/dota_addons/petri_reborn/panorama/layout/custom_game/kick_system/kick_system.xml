@@ -6,7 +6,7 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/kick_system/kick_system.js" />
 	</scripts>
-	<Panel hittest="true" class="KickListRoot">
-		<Panel hittest="true" class="KickList" id="KickList" /> 
-	</Panel>
+	<Panel hittest="false" class="KickListRoot">
+		<Panel hittest="false" class="KickList" id="KickList" /> 
+	</Panel> 
 </root>
