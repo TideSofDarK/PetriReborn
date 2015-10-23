@@ -49,8 +49,6 @@ function Msg()
 
 function ShowVote( args )
 {
-	Msg("Show vote ", args["vote_number"])
-
 	var currentVoteNum = args["vote_number"];
 	if (currentVoteNum > votePanels.length)
 		return;
@@ -79,6 +77,7 @@ function ShowVote( args )
 			var votePanel = $.CreatePanel( "Panel", $.GetContextPanel(), "" );
 			votePanel.BLoadLayout( vote[0], false, false );
 			votePanel.AddClass("show_vote");
+			votePanel.data().SetVoteTime(vote[1]);
 			currentVotePanel = votePanel;
 		}
 }
@@ -151,7 +150,6 @@ function GetTimer()
 
 function SyncTimer( args )
 {
-	Msg("Sync timer: ", Game.GetGameTime());
 	var clientTime = Game.GetGameTime();
 	timer = clientTime + args["length"] - (clientTime - args["host_time"]);
 
@@ -165,21 +163,14 @@ function SyncTimer( args )
 //--------------------------------------------------------------------------------------------------
 function ShowNextVote()
 {
-	// Default vote
-	if (currentVotePanel)
-		if (!currentVotePanel.data().IsVoted)
-			currentVotePanel.data().VoteDefault();
-
 	if (isFreeze)
 		return;
 
 	if (votePanels[hostVoteNum])
 		SetTimer( votePanels[hostVoteNum][1], votePanels[hostVoteNum][2] )
+
 	if (hostVoteNum < votePanels.length + 1)
-	{
-		Msg("Send show vote ", hostVoteNum);		
 		SendEventHostToClients( "petri_vote_current_vote", { "vote_number" : hostVoteNum++ } );
-	}
 }
 
 (function ()

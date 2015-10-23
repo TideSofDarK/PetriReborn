@@ -1,5 +1,6 @@
 "use strict";
 var isHost = false;
+var syncDelay = 1;
 
 function Vote( value )
 {
@@ -32,7 +33,7 @@ function SetClickHandler()
 		// Click event
 		var click = (function( panel ) { 
 			return function() {
-				$.GetContextPanel().data().IsVoted = true;
+				$.GetContextPanel().IsVoted = true;
 				panel.SetHasClass("selected", true);
 				$("#VoteVariants").enabled = false;
 
@@ -41,15 +42,24 @@ function SetClickHandler()
 		} (child));
 
 		if (isDefault == "true")
-			$.GetContextPanel().data().VoteDefault = click;
+			$.GetContextPanel().VoteDefault = click;
 
 		child.SetPanelEvent("onmouseactivate", click);
 	};	
 }
 
+function SetVoteTime( time )
+{
+	$.Schedule( time - syncDelay, function(){
+		if (!$.GetContextPanel().IsVoted)
+			$.GetContextPanel().VoteDefault();
+	});
+}
+
 (function ()
 {
-	$.GetContextPanel().data().IsVoted = false;
+	$.GetContextPanel().IsVoted = false;
+	$.GetContextPanel().data().SetVoteTime = SetVoteTime;
 
 	SetClickHandler();
 
