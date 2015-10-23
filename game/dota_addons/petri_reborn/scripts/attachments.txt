@@ -1,0 +1,147 @@
+"Attachments"
+{
+
+	"models/heroes/lina/lina.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/wraith_king/wraith_king.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/wraith_king/sundered_armor/sundered_armor.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-104"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"0"
+				"yaw"		"-1"
+				"XPos"		"8"
+			}
+			"models/items/wraith_king/deadreborn_head/deadreborn_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-90"
+				"roll"		"0"
+				"ZPos"		"-119"
+				"YPos"		"-4"
+				"yaw"		"-27"
+				"XPos"		"18"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/dragon_knight/oblivion_blazer_offhand/oblivion_blazer_offhand.vmdl"
+			{
+				"scale"		"0.80000001192093"
+				"pitch"		"-249"
+				"roll"		"79"
+				"ZPos"		"-67"
+				"YPos"		"-91"
+				"yaw"		"-180"
+				"XPos"		"3"
+			}
+			"models/heroes/visage/visage_skullfx.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"7"
+				"roll"		"-102"
+				"ZPos"		"13"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"-1"
+			}
+		}
+		"attach_right_eye"
+		{
+			"models/items/wraith_king/sk_dreadknight_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"361"
+				"roll"		"-272"
+				"ZPos"		"-149"
+				"YPos"		"48"
+				"yaw"		"-268"
+				"XPos"		"27"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/nerubian_assassin/artificial_metamorphosis_misc/artificial_metamorphosis_misc.vmdl"
+			{
+				"scale"		"0.89999997615814"
+				"pitch"		"-14"
+				"roll"		"-89"
+				"ZPos"		"-64"
+				"YPos"		"135"
+				"yaw"		"-187"
+				"XPos"		"122"
+			}
+			"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
+			{
+				"scale"		"0.89999997615814"
+				"pitch"		"188"
+				"roll"		"-91"
+				"ZPos"		"0"
+				"YPos"		"5"
+				"yaw"		"-92"
+				"XPos"		"-51"
+			}
+		}
+	}
+	"models/heroes/crystal_maiden/crystal_maiden.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/omniknight/omniknightwings.vmdl"
+			{
+				"scale"		"0.31"
+				"pitch"		"-77"
+				"roll"		"0"
+				"ZPos"		"35"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/lina/hairoftheslayerr/hairoftheslayerr.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-14"
+				"roll"		"0"
+				"ZPos"		"-181"
+				"YPos"		"0"
+				"yaw"		"7"
+				"XPos"		"4"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"133"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"-90"
+				"XPos"		"-43"
+			}
+		}
+	}
+}

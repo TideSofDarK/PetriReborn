@@ -207,20 +207,19 @@ function GameMode:ModifyGoldFilter(event)
     if GameRules:GetDOTATime(false, false) < 120 then return false end
 
     if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
-      GiveSharedGoldToTeam(90 * GetGoldModifier(), DOTA_TEAM_BADGUYS)
+      GiveSharedGoldToTeam(math.floor(90 * GetGoldModifier()), DOTA_TEAM_BADGUYS)
     end
 
     return false
   elseif event.reason_const == DOTA_ModifyGold_Unspecified then
     if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
       if GameRules:GetDOTATime(false, false) < 120 then return false end
-      print(GetGoldModifier())
-      GiveSharedGoldToTeam(event["gold"] * GetGoldModifier(), DOTA_TEAM_BADGUYS)
+
+      GiveSharedGoldToTeam(math.floor(event["gold"] * GetGoldModifier()), DOTA_TEAM_BADGUYS)
 
       return false
     end
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
-    
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
       event["gold"] >= 5000 then -- boss
 
@@ -233,14 +232,7 @@ function GameMode:ModifyGoldFilter(event)
        Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
       end
 
-      for i=1,PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
-        local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)] 
-        if hero then
-          PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), event["gold"]/2, false, DOTA_ModifyGold_SharedGold)
-
-          PlusParticle(event["gold"]/2, Vector(244,201,23), 3.0, hero)
-        end
-      end
+      GiveSharedGoldToTeam(math.floor(event["gold"]/2), DOTA_TEAM_BADGUYS)
       return false
     end
   end

@@ -1020,7 +1020,7 @@
 	  "AbilityChannelTime"      "4.5"
 	  "AbilityUpgradeGoldCost"    "0"
 	
-	  "AbilityGoldCost" "1000"
+	  "AbilityGoldCost" "1500"
 	
 	  "OnSpellStart"
 	  {
@@ -1066,7 +1066,7 @@
 	      "IsBuff"  "1"
 	      "IsHidden"  "1"
 	
-	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 	
 	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 	
@@ -2882,6 +2882,8 @@
 	  "AbilityTextureName" "techies_stasis_trap"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	
+	  "AoeRadius" "100"
+	
 	  "MaxLevel"            "1"
 	
 	  "precache"
@@ -2926,6 +2928,35 @@
 	          }      
 	        }     
 	      }   
+	    }
+	    "modifier_evasion_stacks"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/trap.lua"
+	          "Function"    "OnStacksCreated"
+	        }
+	      }
+	
+	      "OnAttacked"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/trap.lua"
+	          "Function"    "OnAttacked"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "100000"
+	      }
 	    }
 	  }   
 	}

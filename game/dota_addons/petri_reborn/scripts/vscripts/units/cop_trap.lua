@@ -20,8 +20,8 @@ function Upgrade( keys )
 		caster:SetModelScale(2.1)
 		caster:CreatureLevelUp(1) 
 
-		caster:SetMaxHealth(250)
-		caster:SetHealth(250)
+		caster:SetBaseMaxHealth(350)
+		caster:SetHealth(350)
 
 		caster:RemoveAbility("petri_upgrade_cop_trap")
 	end

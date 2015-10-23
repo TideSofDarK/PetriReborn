@@ -27,17 +27,6 @@ ATTACK_SCROLL_CHANCE = 94
 GOLD_COIN_CHANCE = 71
 WOOD_CHANCE = 53
 
-local FRIENDS_KVN = {}
-FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
-FRIENDS_KVN["50163929"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
-FRIENDS_KVN["41110316"] = "models/heroes/doom/doom.vmdl"
-FRIENDS_KVN["99924802"] = "models/heroes/doom/doom.vmdl"
-
-local FRIENDS_PETRI = {}
-FRIENDS_KVN["96571761"] = "models/heroes/doom/doom.vmdl"
-FRIENDS_KVN["63399181"] = "models/heroes/doom/doom.vmdl"
-FRIENDS_KVN["151765071"] = "models/heroes/terrorblade/terrorblade_arcana.vmdl"
-
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
@@ -49,6 +38,7 @@ require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
+require('libraries/attachments')
 require('libraries/animations')
 require('libraries/GameSetup')
 require('libraries/KickSystem')
@@ -133,22 +123,10 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
+          SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
-
-          for k,v in pairs(FRIENDS_KVN) do
-            local id = tonumber(k)
-
-            if PlayerResource:GetSteamAccountID(pID) == id then
-              UpdateModel(newHero, v, 1)
-
-              for k,v in pairs(newHero:GetChildren()) do
-                if v:GetClassname() == "dota_item_wearable" then
-                  v:AddEffects(EF_NODRAW) 
-                end
-              end
-            end
-          end
         end, 
       pID)
     end
@@ -186,19 +164,7 @@ function GameMode:OnHeroInGame(hero)
           GameMode.SELECTED_UNITS[pID] = {} 
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
-          for k,v in pairs(FRIENDS_PETRI) do
-            local id = tonumber(k)
-
-            if PlayerResource:GetSteamAccountID(pID) == id then
-              UpdateModel(newHero, v, 1)
-
-              for k,v in pairs(newHero:GetChildren()) do
-                if v:GetClassname() == "dota_item_wearable" then
-                  v:AddEffects(EF_NODRAW) 
-                end
-              end
-            end
-          end
+          SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyans")
 
           if GameRules.explorationTowerCreated == nil then
             GameRules.explorationTowerCreated = true
@@ -338,6 +304,8 @@ function GameMode:InitGameMode()
 
   GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
 
+  GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
+
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
@@ -409,10 +377,10 @@ function GameMode:InitGameMode()
   -- Filter orders
   GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( GameMode, "FilterExecuteOrder" ), self )
 
-  -- Fix hero bounties
+  -- Fix gold bounties
   GameRules:GetGameModeEntity():SetModifyGoldFilter(Dynamic_Wrap(GameMode, "ModifyGoldFilter"), GameMode)
 
-  -- Fix hero xp bounties
+  -- Fix xp bounties
   GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ModifyExperienceFilter"), GameMode)
 
   -- Commands
@@ -451,6 +419,33 @@ function GameMode:ReplaceWithMiniActor(player, gold)
     end
     , 
   player:GetPlayerID())
+end
+
+function SetupCustomSkin(hero, steamID, key)
+  for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
+    local id = tonumber(k)
+
+    if steamID == id then
+
+      for k1,v1 in pairs(hero:GetChildren()) do
+        if v1:GetClassname() == "dota_item_wearable" then
+          v1:AddEffects(EF_NODRAW) 
+        end
+      end
+
+      for k2,v2 in pairs(v) do
+        if v2 == "model" then
+          UpdateModel(hero, k2, 1)
+        end
+      end
+
+      for k2,v2 in pairs(v) do
+        if v2 ~= "model" then
+          Attachments:AttachProp(hero, v2, k2, 1.0)
+        end
+      end
+    end
+  end
 end
 
 function KVNWin(keys)

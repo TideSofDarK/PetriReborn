@@ -415,7 +415,7 @@ function GameMode:OnEntityKilled( keys )
   if killedUnit:GetUnitName () == "npc_petri_cop_trap" then
     local level = killedUnit:FindAbilityByName("petri_cop_trap"):GetLevel()
     local dmg = 100
-    if level == 2 then dmg = 250 end
+    if level == 2 then dmg = 350 end
     local damageTable = {
         victim = killerEntity,
         attacker = killedUnit,

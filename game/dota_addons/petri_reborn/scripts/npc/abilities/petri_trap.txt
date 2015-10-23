@@ -7,6 +7,8 @@
   "AbilityTextureName" "techies_stasis_trap"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 
+  "AoeRadius" "100"
+
   "MaxLevel"            "1"
 
   "precache"
@@ -51,6 +53,35 @@
           }      
         }     
       }   
+    }
+    "modifier_evasion_stacks"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/trap.lua"
+          "Function"    "OnStacksCreated"
+        }
+      }
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/trap.lua"
+          "Function"    "OnAttacked"
+        }
+      }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "100000"
+      }
     }
   }   
 }

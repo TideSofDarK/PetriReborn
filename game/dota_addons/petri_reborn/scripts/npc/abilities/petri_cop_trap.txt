@@ -98,7 +98,7 @@
   "AbilityChannelTime"      "4.5"
   "AbilityUpgradeGoldCost"    "0"
 
-  "AbilityGoldCost" "1000"
+  "AbilityGoldCost" "1500"
 
   "OnSpellStart"
   {
@@ -144,7 +144,7 @@
       "IsBuff"  "1"
       "IsHidden"  "1"
 
-      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 
       "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 
