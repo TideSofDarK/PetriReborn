@@ -11,8 +11,8 @@ function Vote( value )
 
 	if (value == "random")
 	{
+		$.GetContextPanel().GetParent().data().SetTimer( 10, "#game_setup_shuffling" );		
 		$.GetContextPanel().GetParent().data().UnfreezeVote();
-		Game.SetRemainingSetupTime( 10 );
 		GameEvents.SendCustomGameEventToServer( "petri_game_setup_random_shuffle", { "CurrentPlayers" : Game.GetAllPlayerIDs().length } );
 	}
 }

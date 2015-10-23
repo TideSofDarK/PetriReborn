@@ -82,14 +82,6 @@ end
 ------------------------------------------------------------------------
 -- Votes
 ------------------------------------------------------------------------
-function GameSetup:VoteFreeze()
-  CustomGameEventManager:Send_ServerToAllClients( "petri_vote_freeze", { });
-end
-
-function GameSetup:VoteUnfreeze()
-  CustomGameEventManager:Send_ServerToAllClients( "petri_vote_unfreeze", { });
-end
-
 -- Main vote handler
 function GameSetup:Vote( args )
   local pID
@@ -127,4 +119,21 @@ function GameSetup:VoteEnd( args )
   end
 
   CustomGameEventManager:Send_ServerToAllClients("petri_vote_results", {["results"] = results} )
+end
+
+------------------------------------------------------------------------
+-- Utils
+------------------------------------------------------------------------
+-- Send event to all clients from host
+function GameSetup:ToAllClients( args )
+  local eventName = args["event_name"]
+  local eventArgs = {}
+
+  for argName,argValue in pairs(args) do
+    if argName ~= "event_name" then
+      eventArgs[argName] = argValue
+    end
+  end
+
+  CustomGameEventManager:Send_ServerToAllClients(eventName, eventArgs)
 end

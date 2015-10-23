@@ -14,7 +14,6 @@ function SetStateDescription( desc )
 	label.text = $.Localize( desc );
 }
 
-
 //--------------------------------------------------------------------------------------------------
 // Check to see if the local player has host privileges and set the 'player_has_host_privileges' on
 // the root panel if so, this allows buttons to only be displayed for the host.
@@ -36,16 +35,17 @@ function CheckForHostPrivileges()
 //--------------------------------------------------------------------------------------------------
 function UpdateTimer()
 {
-	var gameTime = Game.GetGameTime();
-	var transitionTime = Game.GetStateTransitionTime();
-
 	CheckForHostPrivileges();
 	
 	var mapInfo = Game.GetMapInfo();
 	$( "#MapInfoLabel" ).SetDialogVariable( "map_name", mapInfo.map_display_name );
 
-	var timer = Math.max( 0, Math.floor( transitionTime - gameTime ) );
-	if ( transitionTime >= 0 ) 
+	var timer = 0;
+
+	if ($( "#VotePanel" ).data().GetTimer)
+		timer = $( "#VotePanel" ).data().GetTimer();
+
+	if ( timer >= 0 ) 
 	{
 		$( "#StartGameCountdownTimer" ).SetDialogVariableInt( "countdown_timer_seconds", timer );
 		$( "#StartGameCountdownTimer" ).SetHasClass( "countdown_active", true );
@@ -61,12 +61,12 @@ function UpdateTimer()
 	$( "#StartGameCountdownTimer" ).SetHasClass( "auto_start", autoLaunch );
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
 
-	if (timer < 1)
+	if (timer == 0)
 	{
 		if (isHostShuffle)
 		{
 			SendHostShuffleList();
-			Game.SetRemainingSetupTime( 10 );
+			$( "#VotePanel" ).data().SetTimer( 10, "#game_setup_shuffling" );
 			$( "#VotePanel" ).data().UnfreezeVote();
 			isHostShuffle = false;
 		}
@@ -148,7 +148,6 @@ function ClearStyle()
 
 function ShuffleList( args )
 {
-	SetStateDescription( "#game_setup_shuffling" );
 	ClearStyle();
 
 	if (!args)
@@ -241,8 +240,7 @@ function HostShuffle()
 		playerPanel.SetPanelEvent("onmouseactivate", click);
 	}
 
-	SetStateDescription( "#game_setup_host_select_petrosyan" );
-	Game.SetRemainingSetupTime( SELECT_PETR_TIME );
+	$( "#VotePanel" ).data().SetTimer( SELECT_PETR_TIME, "#game_setup_host_select_petrosyan" );
 	isHostShuffle = true;
 	$( "#VotePanel" ).data().FreezeVote();
 }
@@ -335,8 +333,6 @@ function LoadUI()
 	CreateTeamList(); 
 	CreateVote();
 
-	SetStateDescription( "#game_setup_state_prevote" )
-	
 	var playerInfo = Game.GetLocalPlayerInfo();
 	if (playerInfo.player_has_host_privileges)
 	{
@@ -344,9 +340,10 @@ function LoadUI()
 		GameEvents.Subscribe( "petri_host_shuffle", HostShuffle );		
 		
 		Game.SetAutoLaunchEnabled( false );
-		Game.SetRemainingSetupTime( PREPARE_TIME );
-		$( "#VotePanel" ).data().UnfreezeVote();
-	}	
+	}
+
+	$( "#VotePanel" ).data().UnfreezeVote();
+	$( "#VotePanel" ).data().SetTimer( PREPARE_TIME, "#game_setup_state_prevote" );	
 }
 
 //--------------------------------------------------------------------------------------------------

@@ -1,9 +1,15 @@
 "use strict";
 
-var currentVoteNum = 0;
+var isDebug = true;
+
+var AFTER_VOTE_TIME = 10;
+
+var hostVoteNum = 0;
 var currentVotePanel = null;
 var isHost = false;
-var isFreeze = true;
+var isFreeze = false;
+
+var timer = 0;
 
 // Layout file, time for vote, state description
 var votePanels = [
@@ -13,28 +19,49 @@ var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ]
 ]; 
 
-function ShowNextVote()
+//--------------------------------------------------------------------------------------------------
+// Utils
+//--------------------------------------------------------------------------------------------------
+function SendEventHostToClients( eventName, args )
 {
-	if (isFreeze)
+	if (!isHost)
 		return;
 
-	// Default vote
-	if (currentVotePanel)
-		if (!currentVotePanel.data().IsVoted)
-			currentVotePanel.data().VoteDefault();
+	var eventArgs = args;
+	eventArgs["event_name"] = eventName;
+	GameEvents.SendCustomGameEventToServer( "petri_client_to_all_clients", eventArgs );
+}
 
+function Msg()
+{
+	if (isDebug)
+	{
+		var str = "";
+		for (var v of arguments)
+			str += v;
+		$.Msg(str);
+	}
+}
+
+//--------------------------------------------------------------------------------------------------
+// End utils
+//--------------------------------------------------------------------------------------------------
+
+function ShowVote( args )
+{
+	Msg("Show vote ", args["vote_number"])
+
+	var currentVoteNum = args["vote_number"];
 	if (currentVoteNum > votePanels.length)
-		return
+		return;
 
 	// End of votes
 	if (currentVoteNum == votePanels.length)
 	{
-		if ($.GetContextPanel().data().SetStateDescription)
-			$.GetContextPanel().data().SetStateDescription( "#game_setup_start" );
-					
+		SetTimer( AFTER_VOTE_TIME, "#game_setup_start" );
 		if (isHost)
 		{
-			Game.SetRemainingSetupTime( 10 );
+			Game.SetRemainingSetupTime( AFTER_VOTE_TIME );
 			GameEvents.SendCustomGameEventToServer( "petri_vote_end", { } );
 		}
 
@@ -42,42 +69,18 @@ function ShowNextVote()
 		return;
 	}
 
+	if (isFreeze)
+		return;
+
 	var vote = votePanels[currentVoteNum];
 	if (vote)
-	{
 		if (vote[0] != "")
 		{
 			var votePanel = $.CreatePanel( "Panel", $.GetContextPanel(), "" );
 			votePanel.BLoadLayout( vote[0], false, false );
 			votePanel.AddClass("show_vote");
 			currentVotePanel = votePanel;
-			
-			if (isHost)
-			{
-				// Freeze vote to avoid multiply function call
-				FreezeVote();
-
-				// Vote sync event
-				GameEvents.SendCustomGameEventToServer( "petri_vote_current_number", { "vote_number" : currentVoteNum } );
-				Game.SetRemainingSetupTime( vote[1] );
-
-				UnfreezeVote();
-			}
-
-			if ($.GetContextPanel().data().SetStateDescription)
-			{
-				if (vote[2])
-					$.GetContextPanel().data().SetStateDescription( vote[2] );
-			}
 		}
-		
-		currentVoteNum++;
-	}
-}
-
-function SetCurrentVote( currentVoteNumber )
-{
-	currentVoteNum = currentVoteNumber;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -85,14 +88,12 @@ function SetCurrentVote( currentVoteNumber )
 //--------------------------------------------------------------------------------------------------
 function FreezeVote()
 {
-	if (isHost)
-		GameEvents.SendCustomGameEventToServer( "petri_send_vote_freeze", { } );
+	SendEventHostToClients( "petri_vote_freeze", { } );
 }
 
 function UnfreezeVote()
 {
-	if (isHost)
-		GameEvents.SendCustomGameEventToServer( "petri_send_vote_unfreeze", { } );
+	SendEventHostToClients( "petri_vote_unfreeze", { } );
 }
 
 function SetFreeze()
@@ -135,6 +136,52 @@ function ShowVoteResults( args )
 	};
 }
 
+//--------------------------------------------------------------------------------------------------
+// Timer functions
+//--------------------------------------------------------------------------------------------------
+function SetTimer( time, description )
+{
+	SendEventHostToClients( "petri_vote_sync_timer", { "host_time" : Game.GetGameTime(), "length" : time, "desc" : description } )
+}
+
+function GetTimer()
+{
+	return Math.max( 0, Math.floor( timer - Game.GetGameTime() ) );
+}
+
+function SyncTimer( args )
+{
+	Msg("Sync timer: ", Game.GetGameTime());
+	var clientTime = Game.GetGameTime();
+	timer = clientTime + args["length"] - (clientTime - args["host_time"]);
+
+	// Update state description
+	if ($.GetContextPanel().data().SetStateDescription)
+		$.GetContextPanel().data().SetStateDescription( args["desc"] );	
+}
+
+//--------------------------------------------------------------------------------------------------
+// Show vote
+//--------------------------------------------------------------------------------------------------
+function ShowNextVote()
+{
+	// Default vote
+	if (currentVotePanel)
+		if (!currentVotePanel.data().IsVoted)
+			currentVotePanel.data().VoteDefault();
+
+	if (isFreeze)
+		return;
+
+	if (votePanels[hostVoteNum])
+		SetTimer( votePanels[hostVoteNum][1], votePanels[hostVoteNum][2] )
+	if (hostVoteNum < votePanels.length + 1)
+	{
+		Msg("Send show vote ", hostVoteNum);		
+		SendEventHostToClients( "petri_vote_current_vote", { "vote_number" : hostVoteNum++ } );
+	}
+}
+
 (function ()
 {
 	var playerInfo = Game.GetLocalPlayerInfo();
@@ -146,7 +193,11 @@ function ShowVoteResults( args )
 	$.GetContextPanel().data().FreezeVote = FreezeVote;
 	$.GetContextPanel().data().UnfreezeVote = UnfreezeVote;
 
-	GameEvents.Subscribe( "petri_vote_current_vote", SetCurrentVote );
+	$.GetContextPanel().data().SetTimer = SetTimer;
+	$.GetContextPanel().data().GetTimer = GetTimer;
+
+	GameEvents.Subscribe( "petri_vote_sync_timer", SyncTimer );
+	GameEvents.Subscribe( "petri_vote_current_vote", ShowVote );
 	GameEvents.Subscribe( "petri_vote_freeze", SetFreeze );
 	GameEvents.Subscribe( "petri_vote_unfreeze", SetUnfreeze );
 
