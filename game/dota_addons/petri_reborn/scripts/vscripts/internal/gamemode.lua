@@ -113,9 +113,10 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_game_setup_host_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleHost'))
   CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
 
+
   -- Votes
-  CustomGameEventManager:RegisterListener( "petri_send_vote_freeze", Dynamic_Wrap(GameSetup, 'VoteFreeze'))
-  CustomGameEventManager:RegisterListener( "petri_send_vote_unfreeze", Dynamic_Wrap(GameSetup, 'VoteUnfreeze'))  
+  CustomGameEventManager:RegisterListener( "petri_client_to_all_clients", Dynamic_Wrap(GameSetup, 'ToAllClients'))
+
   CustomGameEventManager:RegisterListener( "petri_vote", Dynamic_Wrap(GameSetup, 'Vote'))
   CustomGameEventManager:RegisterListener( "petri_vote_end", Dynamic_Wrap(GameSetup, 'VoteEnd'))  
 
