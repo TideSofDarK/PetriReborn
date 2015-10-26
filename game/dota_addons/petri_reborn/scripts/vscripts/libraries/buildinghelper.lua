@@ -19,6 +19,56 @@ end
 MODEL_ALPHA = 100 -- Defines the transparency of the ghost model.
 
 
+--[[
+      Check grid quad
+]]--
+function BuildingHelper:ValidGridPosition(size, location)
+
+    local halfSide = (size/2)*64
+    local boundingRect = {  leftBorderX = location.x-halfSide, 
+                            rightBorderX = location.x+halfSide, 
+                            topBorderY = location.y+halfSide,
+                            bottomBorderY = location.y-halfSide }
+
+    local quads = {};
+    local i = 0;
+    for x=boundingRect.leftBorderX+32,boundingRect.rightBorderX-32,64 do
+        for y=boundingRect.topBorderY-32,boundingRect.bottomBorderY+32,-64 do
+            local testLocation = Vector(x, y, location.z)
+            quads[i] = GridNav:IsBlocked(testLocation) or not GridNav:IsTraversable(testLocation) 
+            i = i + 1
+        end
+    end
+    return quads
+end
+
+function BuildingHelper:CheckPosition( args )
+  local x = args['X']
+  local y = args['Y']
+  local z = args['Z']
+  local location = Vector(x, y, z)
+
+  local player = PlayerResource:GetPlayer(args["PlayerID"])
+
+  local buildingTable = player.activeBuildingTable
+  local fMaxScale = buildingTable:GetVal("MaxScale", "float")
+  local size = buildingTable:GetVal("BuildingSize", "number")
+  local callbacks = player.activeCallbacks
+
+  if size % 2 ~= 0 then
+    location.x = SnapToGrid32(location.x)
+    location.y = SnapToGrid32(location.y)
+  else
+    location.x = SnapToGrid64(location.x)
+    location.y = SnapToGrid64(location.y)
+  end
+
+  -- Check gridnav
+  local validQuad = BuildingHelper:ValidGridPosition(size, location)
+  
+  CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_grid_validation", validQuad )
+end
+
 
 function BuildingHelper:Init(...)
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
