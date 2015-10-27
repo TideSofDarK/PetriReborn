@@ -1,0 +1,897 @@
+"item_petri_candy"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1970"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_halloween_candy_corn"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "10"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "0"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+  "ItemCastOnPickup"    "0"
+
+  "OnSpellStart"
+  {    
+    "SpendCharge" 
+    {}
+    "RunScript"
+    {
+      "ScriptFile"  "items/candy.lua"
+      "Function"    "Use"
+    }
+    "FireEffect"
+    {
+      "EffectName"        "particles/hw_fx/hw_rosh_death_candy.vpcf"
+      "EffectAttachType"  "follow_origin"
+      "Target"            "CASTER"
+    }
+  }
+}
+
+"item_petri_candy_1_kvn"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1969"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_1"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "240"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "625"
+  "AbilityCastPoint"              "0.45"
+  "AOERadius"                     "150"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "SideShop" "1"
+  "ItemCost" "200"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {    
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"    "POINT"
+        "Radius"   "150"
+        "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "Types"   "DOTA_UNIT_TARGET_ALL"
+      }
+    
+      "Action"    
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_healing"
+          "Target"     "TARGET"
+          "Duration"    "20"
+        }
+      }
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_healing"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_chemical_rage.vpcf"      
+      "StatusEffectPriority"  "10"
+
+      "ThinkInterval"         "1.0"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "items/candy.lua"
+          "Function"    "CandyRepair"
+        }
+      }
+    }
+  }
+}
+
+"item_petri_candy_2_kvn"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1968"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_2"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "180"
+  "AbilityManaCost"       "10"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "SideShop" "1"
+  "ItemCost" "500"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {    
+    "RunScript"
+    {
+      "ScriptFile"  "items/candy.lua"
+      "Function"    "CandyBonusKVNDamage"
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_bonus_damage"
+    {
+      "Duration"  "10"
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_veil.vpcf"      
+      "StatusEffectPriority"  "10"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+      }
+    }
+  }
+}
+
+"item_petri_candy_3_kvn"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1967"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_3"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "720"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "0"
+  "AbilityCastPoint"              "0.0"
+  "AOERadius"                     "500"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "SideShop" "1"
+  "ItemCost" "270"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "precache"
+  {
+    "soundfile"         "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+    "particle"          "particles/items2_fx/heavens_halberd.vpcf"
+    "particle"          "particles/items2_fx/heavens_halberd_debuff.vpcf"
+  }
+
+  "OnSpellStart"
+  {    
+    "FireSound"
+    {
+      "EffectName"    "Hero_KeeperOfTheLight.BlindingLight"
+      "Target"        "CASTER"
+    }
+    "FireEffect"
+    {
+      "EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
+      "EffectAttachType"  "start_at_customorigin"
+      "TargetPoint"       "POINT"
+
+      "ControlPoints"
+      {
+        "01"    "POINT"
+        "02"    "500 0 0"
+      }
+    }
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"    "POINT"
+        "Radius"   "500"
+        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"   "DOTA_UNIT_TARGET_HERO"
+      }
+    
+      "Action"    
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "TARGET"
+          "Duration"    "3"
+        }
+      }
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_blinding_light"
+    {
+      "Passive"           "0"
+      "IsHidden"          "1"
+      "IsDebuff"          "1"
+
+      "EffectName"        "particles/items2_fx/heavens_halberd_debuff.vpcf"
+      "EffectAttachType"  "follow_origin"
+
+      "States"
+      {
+        "MODIFIER_STATE_DISARMED"    "MODIFIER_STATE_VALUE_ENABLED"
+      }         
+    }
+  }
+}
+
+"item_petri_candy_4_kvn"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1966"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_4"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "120"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "100"
+  "AbilityCastPoint"              "0.0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "SideShop" "1"
+  "ItemCost" "170"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {    
+    "RunScript"
+    {
+      "ScriptFile"  "items/candy.lua"
+      "Function"    "CandyForceStaff"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_stunned"
+      "Target"     "TARGET"
+      "Duration"    "0.5"
+    }
+    "FireSound"
+    {
+      "EffectName"    "Hero_Lina.DragonSlave"
+      "Target"        "TARGET"
+    }
+    "TrackingProjectile"
+    {
+      "Target"            "TARGET"
+      "EffectName"        "particles/hw_fx/hw_candy_projectile.vpcf"
+      "Dodgeable"         "0"
+      "ProvidesVision"    "0"
+      "MoveSpeed"         "400"
+      "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    }
+    "SpendCharge" 
+    {}
+  }
+}
+
+"item_petri_candy_5_kvn"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1965"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_3"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "240"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "690"
+  "AbilityCastPoint"              "0.0"
+  "AOERadius"                     "75"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "0"
+
+  "SideShop" "1"
+  "ItemCost" "600"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {
+    "DelayedAction"
+    {
+      "Delay"     "1.77"
+      "Action"    
+      {
+        "FireEffect"
+        {
+          "EffectName"    "particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
+          "EffectAttachType"  "start_at_customorigin"
+          "TargetPoint"       "POINT"
+
+          "ControlPoints"
+          {
+            "01"    "POINT"
+          }
+        }
+
+        "DelayedAction"
+        {
+          "Delay"     "0.3"
+          "Action"    
+          {
+            "FireSound"
+            {
+              "EffectName"    "Ability.StarfallImpact"
+              "Target"        "TARGET"
+            }
+            "ActOnTargets"
+            {
+              "Target"
+              {
+                "Center"    "POINT"
+                "Radius"   "75"
+                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"   "DOTA_UNIT_TARGET_HERO"
+              }
+            
+              "Action"    
+              {
+                "RunScript"
+                {
+                  "ScriptFile"  "items/candy.lua"
+                  "Function"    "CandyStar"
+                }
+              }
+            }
+            "SpendCharge" 
+            {}
+          }
+        }
+      }
+    }
+
+    "FireSound"
+    {
+      "EffectName"    "Ability.Starfall"
+      "Target"        "TARGET"
+    }
+
+    "FireEffect"
+    {
+      "EffectName"    "particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf"
+      "EffectAttachType"  "start_at_customorigin"
+      "TargetPoint"       "POINT"
+
+      "ControlPoints"
+      {
+        "01"    "POINT"
+      }
+    }
+  }
+}
+
+"item_petri_candy_1_petri"
+{
+  "BaseClass"       "item_datadriven"
+  "ID"              "1964"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityTextureName"      "item_candy_1"
+
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "0"
+
+  "ItemCost" "1200"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityCooldown"       "240"
+  "AbilitySharedCooldown"         "blink"
+  
+  "AbilityManaCost"       "10"
+  
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "blink_range"     "2150"
+    }
+    
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "min_blink_range"   "200"
+    }
+
+    "03"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "blink_damage_cooldown"         "5"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "items/dagger.lua"
+      "Function"    "Blink"
+      "Target"    "POINT"
+    }
+
+    "FireSound"
+    {
+      "EffectName"  "Hero_Antimage.Blink_out"
+      "Target"    "CASTER"
+    }
+
+    "FireSound"
+    {
+      "EffectName"  "Hero_Antimage.Blink_in"
+      "Target"    "CASTER"
+    }
+
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_stunned"
+      "Target"     "CASTER"
+      "Duration"    "6"
+    }
+
+    "SpendCharge" 
+    {}
+  }
+}
+
+"item_petri_candy_2_petri"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1963"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_2"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "240"
+  "AbilityManaCost"       "10"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "ItemCost" "300"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {    
+    "RunScript"
+    {
+      "ScriptFile"  "items/candy.lua"
+      "Function"    "CandyBonusPetriDamage"
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_bonus_damage"
+    {
+      "Duration"  "120"
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+      }
+    }
+  }
+}
+
+"item_petri_candy_3_petri"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1962"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_3"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "40"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "1000"
+  "AbilityCastPoint"              "0.45"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "ItemCost" "170"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_hunger"
+      "Target"     "TARGET"
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_hunger"
+    {
+      "Passive"      "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "1"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_battle_hunger.vpcf"      
+      "StatusEffectPriority"  "10"
+
+      "ThinkInterval"         "1.0"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "items/candy.lua"
+          "Function"    "CandyHungerDamage"
+        }
+      }
+    }
+  }
+}
+
+"item_petri_candy_4_petri"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1961"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_BASIC"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_4"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "420"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "0"
+  "AbilityCastPoint"              "0.0"
+  "AOERadius"                     "650"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "1"
+
+  "ItemCost" "450"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {  
+    "RunScript"
+    {
+      "ScriptFile"  "items/candy.lua"
+      "Function"    "CandyMintStorm"
+      "Target"    "POINT"
+    }
+    "ActOnTargets"
+    {
+      "Target"
+      {
+        "Center"    "POINT"
+        "Radius"   "650"
+        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "Types"   "DOTA_UNIT_TARGET_BASIC"
+      }
+    
+      "Action"    
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_petrosyan_silence"
+          "Target"     "TARGET"
+          "Duration"    "15"
+        }
+      }
+    }
+    "SpendCharge" 
+    {}
+  }
+
+  "Modifiers"
+  {
+    "modifier_petrosyan_silence"
+    {
+      "Passive"           "0"
+      "IsHidden"          "1"
+      "IsDebuff"          "1"
+
+      "EffectName"        "particles/status_fx/status_effect_frost.vpcf"
+      "EffectAttachType"  "follow_origin"
+
+      "States"
+      {
+        "MODIFIER_STATE_SILENCED"    "MODIFIER_STATE_VALUE_ENABLED"
+      }         
+    }
+  }
+}
+
+"item_petri_candy_5_petri"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "1960"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_candy_5"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "60"
+  "AbilityManaCost"       "10"
+
+  "AbilityCastRange"              "800"
+  "AbilityCastPoint"              "0.0"
+  "AOERadius"                     "75"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "1"
+  "ItemDroppable"         "0"
+
+  "ItemCost" "200"
+
+  "ItemStackable" "1"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "OnSpellStart"
+  {
+    "DelayedAction"
+    {
+      "Delay"     "1.77"
+      "Action"    
+      {
+        "FireEffect"
+        {
+          "EffectName"    "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+          "EffectAttachType"  "start_at_customorigin"
+          "TargetPoint"       "POINT"
+
+          "ControlPoints"
+          {
+            "01"    "POINT"
+          }
+        }
+
+        "DelayedAction"
+        {
+          "Delay"     "0.3"
+          "Action"    
+          {
+            "FireSound"
+            {
+              "EffectName"    "Hero_Zuus.LightningBolt"
+              "Target"        "TARGET"
+            }
+            "ActOnTargets"
+            {
+              "Target"
+              {
+                "Center"    "POINT"
+                "Radius"   "75"
+                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                "Types"   "DOTA_UNIT_TARGET_HERO"
+              }
+            
+              "Action"    
+              {
+                "RunScript"
+                {
+                  "ScriptFile"  "items/candy.lua"
+                  "Function"    "CandyLightning"
+                }
+              }
+            }
+            "SpendCharge" 
+            {}
+          }
+        }
+      }
+    }
+
+    "FireEffect"
+    {
+      "EffectName"    "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_lightning_ti_5.vpcf"
+      "EffectAttachType"  "start_at_customorigin"
+      "TargetPoint"       "POINT"
+
+      "ControlPoints"
+      {
+        "01"    "POINT"
+      }
+    }
+  }
+}

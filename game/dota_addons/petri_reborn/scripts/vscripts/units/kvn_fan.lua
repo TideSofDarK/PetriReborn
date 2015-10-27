@@ -154,6 +154,9 @@ function Deny(keys)
 	}
  
 	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and target:HasAbility("petri_exit") ~= true and target:HasAbility("petri_cop_trap") ~= true then
+		if caster:HasModifier("modifier_hunger") == true then
+			caster:RemoveModifierByName("modifier_hunger")
+		end
 		ApplyDamage(damageTable)
 	end
 end

@@ -120,12 +120,12 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
 
       if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then 
-        if CheckShopType(item:GetName()) ~= 1 then
+        if CheckShopType(item:GetName(), "SideShop") == false then
           return false
         end
       end
       if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then 
-        if CheckShopType(item:GetName()) == 1 then
+        if CheckShopType(item:GetName(), "SecretShop") == false then
           return false
         end
       end

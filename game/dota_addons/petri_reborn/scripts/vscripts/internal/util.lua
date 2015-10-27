@@ -185,12 +185,10 @@ function GetItemByID(id)
   end
 end
 
-function CheckShopType(item)
+function CheckShopType(item, itemType)
   for k,v in pairs(GameMode.ItemKVs) do
     if k == item then 
-      if v["SideShop"] then return 1
-      elseif v["SecretShop"] then return 2
-      else return 0 end
+      if v[itemType] or v["ItemShareability"] == "ITEM_FULLY_SHAREABLE" then return true end
     end
   end
 end

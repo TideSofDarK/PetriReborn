@@ -40,7 +40,7 @@
 
   "StatusHealth"    "2500"
   "StatusHealthRegen"   "10"
-  "StatusMana"    "25"
+  "StatusMana"    "5"
   "StatusManaRegen"    "0"
 
   "VisionDaytimeRange"  "850"

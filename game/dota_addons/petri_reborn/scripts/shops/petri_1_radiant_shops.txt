@@ -42,7 +42,11 @@
 
   "support"
   {
-    "item"    "ITEM_NAME"
+    "item"    "item_petri_candy_1_petri"
+    "item"    "item_petri_candy_2_petri"
+    "item"    "item_petri_candy_3_petri"
+    "item"    "item_petri_candy_4_petri"
+    "item"    "item_petri_candy_5_petri"
   }
 
   "magics"
@@ -90,6 +94,11 @@
     "item"    "item_petri_evasion_scroll"
     "item"    "item_petri_attack_scroll"
     "item"    "item_petri_alcohol"
+    "item"    "item_petri_candy_1_kvn"
+    "item"    "item_petri_candy_2_kvn"
+    "item"    "item_petri_candy_3_kvn"
+    "item"    "item_petri_candy_4_kvn"
+    "item"    "item_petri_candy_5_kvn"
   }
 
  //Sideshop Page 2

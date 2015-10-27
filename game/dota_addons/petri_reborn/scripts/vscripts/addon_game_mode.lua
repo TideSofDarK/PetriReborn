@@ -146,10 +146,37 @@ function Precache( context )
 
   PrecacheResource("particle", "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", context)
 
+  PrecacheResource("particle", "particles/status_fx/status_effect_chemical_rage.vpcf", context)
+
+  PrecacheResource("particle", "particles/status_fx/status_effect_veil.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf", context)
+
+  PrecacheResource("particle", "particles/status_fx/status_effect_burn.vpcf", context)
+
+  PrecacheResource("particle", "particles/hw_fx/hw_candy_projectile.vpcf", context)
+
+  PrecacheResource("particle", "particles/hw_fx/hw_rosh_death_candy.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf", context)
+
+  PrecacheResource("particle", "particles/status_fx/status_effect_battle_hunger.vpcf", context)
+
+  PrecacheResource("particle", "particles/status_fx/status_effect_frost.vpcf", context)
+
+  PrecacheResource("particle", "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_freezing_field_snow_arcana1.vpcf", context)
+
+  PrecacheResource("particle", "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_lightning_ti_5.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf", context)
+
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts", context)
 end
 
 function Activate()
