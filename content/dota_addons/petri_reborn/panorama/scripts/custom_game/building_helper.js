@@ -8,8 +8,6 @@ var gridParticles;
 // Ghost Building Preferences
 var GRID_ALPHA = 30 // Defines the transparency of the ghost squares
 
-var gridColor = {};
-
 function StartBuildingHelper( params )
 {
     if (params !== undefined)
@@ -58,9 +56,6 @@ function StartBuildingHelper( params )
         var mPos = GameUI.GetCursorPosition();
         var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
 
-        // Check GridNav
-        GameEvents.SendCustomGameEventToServer( "building_helper_check_grid", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
-
         if (GamePos[0] > 10000000) // fix for borderless windowed players
         {
           GamePos = [0,0,0];
@@ -85,14 +80,24 @@ function StartBuildingHelper( params )
                 {
                     var pos = [x,y,GamePos[2]]
                     var gridParticle = gridParticles[part]
-                    Particles.SetParticleControl(gridParticle, 0, pos) ;
-                    Particles.SetParticleControl(gridParticle, 2, gridColor[part])      
+                    Particles.SetParticleControl(gridParticle, 0, pos)     
                     part++;
 
                     if (part>size*size)
                     {
                         return
                     }    
+
+                    var screenX = Game.WorldToScreenX( pos[0], pos[1], pos[2] );
+                    var screenY = Game.WorldToScreenY( pos[0], pos[1], pos[2] );
+                    var mouseEntities = GameUI.FindScreenEntities( [screenX,screenY] );
+
+                    // Color
+                    if (mouseEntities.length > 0)
+                    {
+                        color = [255,0,0]
+                    }
+                    Particles.SetParticleControl(gridParticle, 2, color)            
                 }
             }      
 
@@ -127,26 +132,9 @@ function Cancel() {
   $("#BuildingHelperBase").hittest = false;
 }
 
-function GetGridColor( value )
-{
-    return value == 0
-        ? [0, 255, 0]
-        : [255, 0, 0];    
-}
-
-function GridValidation( args )
-{
-    gridColor[0] = GetGridColor( args["0"] );
-    gridColor[1] = GetGridColor( args["1"] );
-    gridColor[2] = GetGridColor( args["2"] );
-    gridColor[3] = GetGridColor( args["3"] );
-}
-
 (function () {
   GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
   GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
-
-  GameEvents.Subscribe( "building_helper_grid_validation", GridValidation);
 })();
 
 function SnapToGrid(vec, size) {

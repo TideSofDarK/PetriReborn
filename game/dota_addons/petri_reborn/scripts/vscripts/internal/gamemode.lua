@@ -124,8 +124,6 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_vote_kick_agree", Dynamic_Wrap(KickSystem, 'VoteKickAgree'))
   CustomGameEventManager:RegisterListener( "petri_vote_kick_disagree", Dynamic_Wrap(KickSystem, 'VoteKickDisagree'))
 
-  CustomGameEventManager:RegisterListener( "building_helper_check_grid", Dynamic_Wrap(BuildingHelper, 'CheckPosition'))
-
   --ListenToGameEvent("dota_tutorial_shop_toggled", Dynamic_Wrap(GameMode, 'OnShopToggled'), self)
 
   --ListenToGameEvent('player_spawn', Dynamic_Wrap(GameMode, 'OnPlayerSpawn'), self)
