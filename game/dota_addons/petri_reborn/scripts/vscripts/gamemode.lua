@@ -125,6 +125,7 @@ function GameMode:OnHeroInGame(hero)
 
           Timers:CreateTimer(function (  )
             SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+            SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
           end)
 
           GameMode.SELECTED_UNITS[pID] = {}
@@ -319,6 +320,7 @@ function GameMode:InitGameMode()
   GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
 
   GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
+  GameMode.VIPItemsKVs = LoadKeyValues("scripts/kv/vip_items.kv")
 
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
 
@@ -457,6 +459,22 @@ function SetupCustomSkin(hero, steamID, key)
         if v2 ~= "model" then
           Attachments:AttachProp(hero, v2, k2, 1.0)
         end
+      end
+
+      for k1,v1 in pairs(hero:GetChildren()) do
+        if v1:GetClassname() == "dota_item_wearable" then
+          v1:AddEffects(EF_NODRAW) 
+        end
+      end
+    end
+  end
+end
+
+function SetupVIPItems(hero, steamID)
+  for k,v in pairs(GameMode.VIPItemsKVs) do
+    if k == tostring(steamID) then
+      for item,count in pairs(v) do
+        hero:AddItemByName(item)
       end
     end
   end

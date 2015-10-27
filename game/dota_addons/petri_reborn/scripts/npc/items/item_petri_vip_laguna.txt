@@ -1,0 +1,97 @@
+"item_petri_vip_laguna"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1971"
+  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
+
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_sheepstick"
+  
+  "AbilityCastRange"              "1000"
+  "AbilityCastPoint"              "0.45"
+
+  "AbilityCooldown"               "0.0"
+
+  "AbilityManaCost"               "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"                  "FIELD_INTEGER"
+      "damage"                    "2000"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "FireSound"
+    {
+      "EffectName"    "Ability.LagunaBladeImpact"
+      "Target"        "TARGET"
+    }
+
+    "FireSound"
+    {
+      "EffectName"    "Ability.LagunaBlade"
+      "Target"        "CASTER"
+    }
+
+    "FireEffect"
+    {
+      "EffectName"    "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+      "EffectAttachType"  "start_at_customorigin"
+      
+
+      "ControlPointEntities"
+      {
+        "CASTER"    "attach_attack1"
+        "TARGET"    "attach_hitloc"
+      }
+    }
+
+    "ApplyModifier"
+    {
+      "ModifierName"      "modifier_laguna_blade_datadriven"
+      "Target"            "TARGET"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_vip_stats"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+      "IsBuff"      "1"
+    
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_BONUS" "75000"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "5000" 
+      }
+    }
+    "modifier_laguna_blade_datadriven"
+    {
+      "IsHidden"  "1"
+      "Duration"  "0.1"
+
+      "OnDestroy"
+      {
+        "Damage"
+        {
+          "Target"    "TARGET"
+          "Type"      "DAMAGE_TYPE_MAGICAL"
+          "Damage"    "%damage"
+        }
+      }
+    }
+  }
+}
