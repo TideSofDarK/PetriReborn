@@ -25,6 +25,10 @@
   "ItemStackable"       "1"
   "ItemSellable"        "0"
   "ItemPermanent"       "0"
+
+  "ItemStockMax" "8" 
+  "ItemStockTime" "90"
+  "ItemStockInitial" "6"
   
   "SideShop" "1"
 

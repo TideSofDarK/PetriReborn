@@ -1290,6 +1290,36 @@
 	  "AbilityTextureName"            "rubick_empty1"
 	  "IsHidden"         "1"
 	}
+	"petri_sword_attack_sound"
+	{
+	  "BaseClass"                     "ability_datadriven"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+	
+	  "precache"
+	  {
+	    "soundfile"             "soundevents/game_sounds_heroes/game_sounds_kunkka.vsndevts"
+	  }
+	    
+	  "Modifiers"
+	  {
+	    "modifier_sword_attack_sound"
+	    {
+	      "Passive"                       "1"
+	      "IsHidden"                      "1"
+	      "IsPurgable"                    "0"
+	
+	      "OnAttackLanded"
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"            "Hero_Kunkka.Attack"
+	          "Target"                "CASTER"
+	        }
+	      }
+	    }
+	  }
+	}
 	"petri_exit"
 	{
 	  "BaseClass" "ability_datadriven"

@@ -20,10 +20,6 @@
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
 	
-	  "ItemStockMax" "2" 
-	  "ItemStockTime" "125"
-	  "ItemStockInitial" "1"
-	
 	  "SideShop" "1"
 	
 	  "precache"
@@ -2669,6 +2665,10 @@
 	  "ItemStackable"       "1"
 	  "ItemSellable"        "0"
 	  "ItemPermanent"       "0"
+	
+	  "ItemStockMax" "8" 
+	  "ItemStockTime" "90"
+	  "ItemStockInitial" "6"
 	  
 	  "SideShop" "1"
 	
