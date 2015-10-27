@@ -144,9 +144,12 @@ function Precache( context )
 
   PrecacheResource("particle", "particles/items_fx/immunity_sphere_buff.vpcf", context)
 
+  PrecacheResource("particle", "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", context)
+
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts", context)
 end
 
 function Activate()
