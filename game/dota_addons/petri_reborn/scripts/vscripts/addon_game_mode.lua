@@ -2,6 +2,8 @@ require('internal/util')
 require('gamemode')
 
 function Precache( context )
+  SendToServerConsole( "dota_combine_models 0" )
+  
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
   
   -- ITEMS
@@ -47,22 +49,17 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
 
   -- Custom skins
-  PrecacheResource("model", "models/heroes/lina/lina.vmdl", context)
-  PrecacheResource("model", "models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl", context)
-
-  PrecacheResource("model", "models/heroes/wraith_king/wraith_king.vmdl", context)
-  PrecacheResource("model", "models/items/wraith_king/sundered_armor/sundered_armor.vmdl", context)
-  PrecacheResource("model", "models/items/wraith_king/deadreborn_head/deadreborn_head.vmdl", context)
-  PrecacheResource("model", "models/items/dragon_knight/oblivion_blazer_offhand/oblivion_blazer_offhand.vmdl", context)
-  PrecacheResource("model", "models/heroes/visage/visage_skullfx.vmdl", context)
-  PrecacheResource("model", "models/items/wraith_king/sk_dreadknight_shoulder.vmdl", context)
-  PrecacheResource("model", "models/items/nerubian_assassin/artificial_metamorphosis_misc/artificial_metamorphosis_misc.vmdl", context)
-  PrecacheResource("model", "models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl", context)
-
-  PrecacheResource("model", "models/heroes/crystal_maiden/crystal_maiden.vmdl", context)
-  PrecacheResource("model", "models/heroes/omniknight/omniknightwings.vmdl", context)
-  PrecacheResource("model", "models/items/lina/hairoftheslayerr/hairoftheslayerr.vmdl", context)
-  PrecacheResource("model", "models/items/abaddon/mistblade/mistblade.vmdl", context)
+  local AttachmentDatabase = LoadKeyValues("scripts/attachments.txt")
+  for k,model in pairs(AttachmentDatabase) do
+    PrecacheResource("model", k, context)
+    for pointName,pointTable in pairs(model) do
+      for modelName,modelTable in pairs(pointTable) do
+        if string.match(modelName, "vmdl") then
+          PrecacheResource("model", modelName, context)
+        end
+      end
+    end
+  end
 
   -- BUILDINGS
   -- idol
