@@ -123,7 +123,9 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
-          SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+          Timers:CreateTimer(function (  )
+            SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+          end)
 
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
@@ -164,7 +166,17 @@ function GameMode:OnHeroInGame(hero)
           GameMode.SELECTED_UNITS[pID] = {} 
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
-          SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyans")
+          Timers:CreateTimer(function (  )
+            if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
+              SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
+
+              -- newHero:AddAbility("petri_sword_attack_sound")
+              -- newHero:SetAbilityPoints(2)
+              -- newHero:UpgradeAbility(newHero:FindAbilityByName("petri_sword_attack_sound"))
+            else
+              SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
+            end
+          end)
 
           if GameRules.explorationTowerCreated == nil then
             GameRules.explorationTowerCreated = true
@@ -297,6 +309,8 @@ end
 
 function GameMode:InitGameMode()
   GameMode = self
+
+  SendToServerConsole( "dota_combine_models 0" )
 
   GameMode:_InitGameMode()
 

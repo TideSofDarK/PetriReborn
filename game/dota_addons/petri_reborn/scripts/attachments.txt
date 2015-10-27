@@ -1,6 +1,5 @@
 "Attachments"
 {
-
 	"models/heroes/lina/lina.vmdl"
 	{
 	  	"attach_head"
@@ -21,6 +20,16 @@
 	{
 		"attach_hitloc"
 		{
+			"models/items/wraith_king/sundered_back/sundered_back.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-104"
+			    "roll"  "0"
+			    "yaw"  "-1"
+			    "YPos"  "0"
+			    "ZPos"  "-121"
+			    "XPos"  "8"
+		   	}
 			"models/items/wraith_king/sundered_armor/sundered_armor.vmdl"
 			{
 				"scale"		"1"
@@ -141,6 +150,341 @@
 				"YPos"		"0"
 				"yaw"		"-90"
 				"XPos"		"-43"
+			}
+		}
+	}
+	"models/heroes/meepo/meepo.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/meepo/shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-63"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-80"
+				"XPos"		"12"
+			}
+			"models/heroes/items/hat_test/hat_test.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-92"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"5"
+				"ZPos"		"-110"
+				"XPos"		"9"
+			}
+			"models/items/meepo/colossal_crystal_chorus/colossal_crystal_chorus.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-63"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-80"
+				"XPos"		"12"
+			}		
+		}
+		"attach_attack2"
+		{
+			"models/heroes/techies/fx_techies_remotebomb.vmdl"
+			{
+				"scale"		"0.1"
+				"pitch"		"184"
+				"roll"		"0"
+				"yaw"		"-196"
+				"YPos"		"-35"
+				"ZPos"		"-31"
+				"XPos"		"2"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/axe_practos_weapon/axe_practos_weapon.vmdl"
+			{
+				"scale"		"0.35"
+				"pitch"		"0"
+				"roll"		"89"
+				"yaw"		"-84"
+				"YPos"		"113"
+				"ZPos"		"-49"
+				"XPos"		"-3"
+			}
+		}
+	}
+	"models/heroes/doom/doom.vmdl"
+	{
+		"attach_mouth"
+		{
+			"models/items/doom/free2play_head_closed_hyhy/free2play_head_closed_hyhy.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-99"
+				"roll"		"0"
+				"ZPos"		"-25"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"213"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/doom/fallen_sword/fallen_sword.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-102"
+				"YPos"		"56"
+				"yaw"		"90"
+				"XPos"		"-22"
+			}
+			"models/items/dragon_knight/fireborn_shield/fireborn_shield.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"78"
+				"roll"		"63"
+				"ZPos"		"-2"
+				"YPos"		"-81"
+				"yaw"		"-47"
+				"XPos"		"153"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/doom/abysswings/abysswings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-175"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-25"
+			}
+			"models/items/doom/abysstail/abysstail.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"4"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+			"models/items/chaos_knight/rising_chaos_shield/rising_chaos_shield.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"14"
+				"roll"		"215"
+				"ZPos"		"-50"
+				"YPos"		"-34"
+				"yaw"		"90"
+				"XPos"		"58"
+			}
+			"models/items/doom/abyssshoulders/abyssshoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-22"
+			}
+			"models/items/doom/abyssbelt/abyssbelt.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+		}
+	}
+	"models/heroes/axe/axe.vmdl"
+	{
+		"attach_hitloc"
+		{
+			
+			"models/items/axe/molten_claw/molten_claw.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-84"
+				"roll"		"0"
+				"ZPos"		"-134"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+			"models/items/sniper/wildwest_weapon/wildwest_weapon.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-14"
+			    "YPos"  "62"
+			    "yaw"  "-208"
+			    "XPos"  "-18"
+			}
+		}
+		"attach_weapon"
+		{
+			"models/items/axe/redstone_axe/redstone_axe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-26"
+				"roll"		"63"
+				"ZPos"		"-30"
+				"YPos"		"66"
+				"yaw"		"-136"
+				"XPos"		"72"
+			}
+		}
+		"attach_mouth"
+		{
+			"models/items/axe/shout_mask/shout_mask.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-143"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-28"
+			}
+		}
+	}
+	"models/heroes/queenofpain/queenofpain.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/queenofpain/wings_of_vincere/wings_of_vincere.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-131"
+				"roll"		"0"
+				"ZPos"		"-128"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+			"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-123"
+				"roll"		"0"
+				"ZPos"		"-134"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"5"
+				"roll"		"-25"
+				"ZPos"		"-79"
+				"YPos"		"56"
+				"yaw"		"160"
+				"XPos"		"-37.5"
+			}
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "270"
+			    "roll"  "0"
+			    "ZPos"  "27"
+			    "YPos"  "-20"
+			    "yaw"  "180"
+			    "XPos"  "28"
+			}
+			"models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"256"
+				"roll"		"180"
+				"ZPos"		"-38"
+				"YPos"		"26"
+				"yaw"		"4"
+				"XPos"		"19"
+			}
+		}
+		"mouth"
+		{
+			"models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-32"
+				"roll"		"0"
+				"ZPos"		"-158"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-11"
+			}
+		}
+	}
+	"models/heroes/life_stealer/life_stealer.vmdl"
+	{
+		"attach_hitloc"
+		{
+			
+			"models/items/lifestealer/redrage_battlewings/redrage_battlewings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-82"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-54"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/blood_seeker/blood_seeker_executioner_weapon/blood_seeker_executioner_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"37"
+				"roll"		"-142"
+				"ZPos"		"-58"
+				"YPos"		"41"
+				"yaw"		"-34"
+				"XPos"		"-10"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/heroes/blood_seeker/weapon_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-230"
+				"roll"		"19"
+				"ZPos"		"-70"
+				"YPos"		"-39"
+				"yaw"		"266"
+				"XPos"		"-19"
+			}
+		}
+		"attach_jaw"
+		{
+			"models/items/lifestealer/transmuted_armaments_head/transmuted_armaments_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-95"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-82"
 			}
 		}
 	}
