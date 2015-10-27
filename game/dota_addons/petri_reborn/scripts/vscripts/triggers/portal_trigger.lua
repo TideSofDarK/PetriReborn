@@ -1,7 +1,15 @@
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
 	if string.match(triggerName, "portal_trigger_creep") then
-		if GameRules:IsDaytime() ~= true then return true end
+		if GameRules:IsDaytime() ~= true then 
+			return true 
+		else
+			if string.match(triggerName, "portal_trigger_creep3") then
+				if GameRules:GetDOTATime(false, false) < 384 then
+					return true 
+				end
+			end
+		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_b") then
 		if GameRules:GetDOTATime(false, false) > 1200 
