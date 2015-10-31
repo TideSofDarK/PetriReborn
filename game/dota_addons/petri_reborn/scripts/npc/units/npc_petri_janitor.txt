@@ -1,8 +1,8 @@
 "npc_petri_janitor"
 {
   "BaseClass"     "npc_dota_creature"
-  "Model"      "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl"
-  "ModelScale"    "0.8"
+  "Model"      "models/items/courier/babka_bewitcher/babka_bewitcher_flying.vmdl"
+  "ModelScale"    "1.1"
   "Level"      "1"
   "HealthBarOffset"    "180"
   "UnitLabel" "courier"

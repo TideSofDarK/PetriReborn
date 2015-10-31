@@ -10,7 +10,10 @@ function BonusGoldFromWall(keys)
 
 	if target:HasAbility("petri_creep_pendant") == true 
 	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
-		
+		if caster:HasModifier("modifier_bonus_damage") then
+			caster:RemoveModifierByName("modifier_bonus_damage")
+		end
+
 		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(110, false, DOTA_ModifyGold_CreepKill )
 		caster.allEarnedGold = caster.allEarnedGold + 110
 		PlusParticle(110, Vector(244,201,23), 1.0, caster)

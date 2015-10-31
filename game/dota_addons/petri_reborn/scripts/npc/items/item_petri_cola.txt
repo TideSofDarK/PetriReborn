@@ -54,6 +54,15 @@
       "EffectAttachType"        "PATTACH_ABSORIGIN"
 
       "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "CASTER"
+        }
+      }
           
       "States"
       {

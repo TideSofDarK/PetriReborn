@@ -242,7 +242,7 @@ function Split(s, delimiter)
 end
 
 function CheckKVN()
-  local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
+  local kvns = Entities:FindAllByName("npc_dota_hero_riki")
   for k,v in pairs(kvns) do
     if v:IsAlive() == true and PlayerResource:GetConnectionState(v:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then return false end
   end

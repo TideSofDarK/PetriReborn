@@ -308,7 +308,7 @@ function GameMode:OnEntityKilled( keys )
   UnfreezeAnimation(killedUnit)
 
   -- KVN fan is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
+  if killedUnit:GetUnitName() == "npc_dota_hero_riki" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
@@ -382,7 +382,7 @@ function GameMode:OnEntityKilled( keys )
 
     chance = math.random(1, 100)
     if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
-      if chance < 40 then
+      if chance <= 50 then
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin() + Vector(math.random(-30, 30), math.random(-30, 30), math.random(-30, 30)), CreateItem("item_petri_candy", nil, nil)) 
       end
     end
@@ -393,9 +393,9 @@ function GameMode:OnEntityKilled( keys )
   end
   
   -- Petrosyn is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
-  killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
-  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit"  then
+  if killedUnit:GetUnitName() == "npc_dota_hero_night_stalker" or
+  killedUnit:GetUnitName() == "npc_dota_hero_queenofpain" or
+  killedUnit:GetUnitName() == "npc_dota_hero_pugna"  then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end

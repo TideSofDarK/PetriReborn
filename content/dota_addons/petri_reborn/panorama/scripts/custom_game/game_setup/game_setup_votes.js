@@ -2,7 +2,7 @@
 
 var isDebug = true;
 
-var AFTER_VOTE_TIME = 10;
+var AFTER_VOTE_TIME = 25;
 
 var hostVoteNum = 0;
 var currentVotePanel = null;
@@ -14,9 +14,9 @@ var timer = 0;
 // Layout file, time for vote, state description
 var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10, "#game_setup_host_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10, "#game_setup_build_delay_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10, "#game_setup_game_length_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ]
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 5, "#game_setup_build_delay_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 5, "#game_setup_game_length_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 5, "#game_setup_use_miniactors_vote" ]
 ]; 
 
 //--------------------------------------------------------------------------------------------------

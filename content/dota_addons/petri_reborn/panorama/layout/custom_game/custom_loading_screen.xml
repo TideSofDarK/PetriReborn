@@ -4,8 +4,7 @@
   </styles>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
-      <Image class="Background" src="file://{images}/custom_game/loading_screen/petri_background.png" />
-      <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" />
+      <Image class="Background" src="file://{images}/custom_game/loading_screen/halloween.png" />
       <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
@@ -16,7 +15,7 @@
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/hatler.png" />
         <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/nazar.png" />
         <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
-        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+        <!-- <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" /> -->
       </Panel>
     </Panel>
 

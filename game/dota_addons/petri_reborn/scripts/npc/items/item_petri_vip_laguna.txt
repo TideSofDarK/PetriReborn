@@ -4,8 +4,8 @@
   "ID"              "1971"
   "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
-  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
   "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
   "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
@@ -13,6 +13,8 @@
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_sheepstick"
+
+  "ItemPurchasable"       "0"
   
   "AbilityCastRange"              "1000"
   "AbilityCastPoint"              "0.45"
@@ -88,7 +90,7 @@
         "Damage"
         {
           "Target"    "TARGET"
-          "Type"      "DAMAGE_TYPE_MAGICAL"
+          "Type"      "DAMAGE_TYPE_PURE"
           "Damage"    "%damage"
         }
       }

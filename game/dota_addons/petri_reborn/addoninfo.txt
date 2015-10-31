@@ -5,7 +5,11 @@
 	{
 		"MaxPlayers"		"14"
 	}
-	"petri_2_dire"
+	"petri_2_radiant"
+	{
+		"MaxPlayers"		"14"
+	}
+	"petri_3_radiant"
 	{
 		"MaxPlayers"		"14"
 	}

@@ -2,10 +2,17 @@
 
 "CustomHeroList"
 {
-  "npc_dota_hero_rattletrap" "1"
-  "npc_dota_hero_storm_spirit" "1"
-  "npc_dota_hero_death_prophet" "1"
-  "npc_dota_hero_brewmaster" "1"
+  "npc_dota_hero_rattletrap" "0"
+  "npc_dota_hero_riki" "1"
+
+  "npc_dota_hero_storm_spirit" "0"
+  "npc_dota_hero_pugna" "1"
+
+  "npc_dota_hero_death_prophet" "0"
+  "npc_dota_hero_queenofpain" "1"
+
+  "npc_dota_hero_brewmaster" "0"
+  "npc_dota_hero_night_stalker" "1"
 
   "npc_dota_hero_ancient_apparition" "0"
   "npc_dota_hero_antimage" "0"
@@ -36,13 +43,10 @@
   "npc_dota_hero_morphling" "0"
   "npc_dota_hero_necrolyte" "0"
   "npc_dota_hero_nevermore" "0"
-  "npc_dota_hero_night_stalker" "0"
   "npc_dota_hero_omniknight" "0"
   "npc_dota_hero_puck" "0"
   "npc_dota_hero_pudge" "0"
-  "npc_dota_hero_pugna" "0"
   "npc_dota_hero_razor" "0"
-  "npc_dota_hero_riki" "0"
   "npc_dota_hero_sand_king" "0"
   "npc_dota_hero_shadow_shaman" "0"
   "npc_dota_hero_slardar" "0"
@@ -61,7 +65,6 @@
   "npc_dota_hero_zuus" "0"
   "npc_dota_hero_broodmother" "0"
   "npc_dota_hero_skeleton_king" "0"
-  "npc_dota_hero_queenofpain" "0"
   "npc_dota_hero_huskar" "0"
   "npc_dota_hero_jakiro" "0"
   "npc_dota_hero_batrider" "0"

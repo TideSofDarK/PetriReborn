@@ -58,8 +58,7 @@ require('commands')
 require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
-  DebugPrint("[BAREBONES] Performing Post-Load precache")    
-  
+  DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
 
 function GameMode:OnFirstPlayerLoaded()
@@ -79,7 +78,7 @@ function GameMode:OnHeroInGame(hero)
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
   print(pID)
-  if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
+  if hero:GetClassname() == "npc_dota_hero_riki" and not GameMode.assignedPlayerHeroes[pID] then
 
     GameMode.assignedPlayerHeroes[pID] = "temp"
 
@@ -90,11 +89,11 @@ function GameMode:OnHeroInGame(hero)
      -- Init kvn fan
     if team == 2 then
       UTIL_Remove(hero) 
-      PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-        function() 
+      -- PrecacheUnitByNameAsync("npc_dota_hero_riki",
+      --   function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+          newHero = CreateHeroForPlayer("npc_dota_hero_riki", player)
 
           InitAbilities(newHero)
 
@@ -104,7 +103,8 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
           newHero:AddItemByName("item_petri_trap")
-          
+          newHero:AddItemByName("item_petri_candy_4_kvn")
+
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_KVN_GOLD, false)
@@ -130,20 +130,20 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
-        end, 
-      pID)
+        -- end, 
+      -- pID)
     end
 
-    local petrosyanHeroName = "npc_dota_hero_brewmaster"
+    local petrosyanHeroName = "npc_dota_hero_night_stalker"
     if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
-      petrosyanHeroName = "npc_dota_hero_death_prophet"
+      petrosyanHeroName = "npc_dota_hero_queenofpain"
     end
 
      -- Init petrosyan
     if team == 3 then
       UTIL_Remove(hero) 
-      PrecacheUnitByNameAsync(petrosyanHeroName,
-       function() 
+      -- PrecacheUnitByNameAsync(petrosyanHeroName,
+      --  function() 
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
@@ -168,7 +168,7 @@ function GameMode:OnHeroInGame(hero)
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
           Timers:CreateTimer(function (  )
-            if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
+            if petrosyanHeroName ~= "npc_dota_hero_queenofpain" then
               SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
 
               -- newHero:AddAbility("petri_sword_attack_sound")
@@ -186,7 +186,7 @@ function GameMode:OnHeroInGame(hero)
               GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
               end)
           end
-       end, pID)
+       -- end, pID)
     end
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
@@ -402,7 +402,6 @@ function GameMode:InitGameMode()
   -- Commands
   Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
   Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
-  --Convars:RegisterCommand( "dota_sf_hud_force_captainsmode", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 end
@@ -411,11 +410,11 @@ function GameMode:ReplaceWithMiniActor(player, gold)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
 
-  PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
+  PrecacheUnitByNameAsync("npc_dota_hero_pugna",
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_pugna", START_MINI_ACTORS_GOLD + gold, 0)
 
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
       

@@ -21,7 +21,9 @@ function GetGold( event )
 
 	local gold = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	
-	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + gold, false)
+	if caster:IsSilenced() == false then
+		PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + gold, false)
+	end
 end
 
 function ToggleUpgrading ( event   )

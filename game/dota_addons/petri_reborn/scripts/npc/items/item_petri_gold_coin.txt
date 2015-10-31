@@ -3,7 +3,7 @@
   "BaseClass"               "item_datadriven"
   "ID"                      "1978"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-  "Model"                   "models/props_gameplay/gold_coin001.vmdl" 
+  "Model"                   "models/props_gameplay/pumpkin_rune.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_gold_coin"
 

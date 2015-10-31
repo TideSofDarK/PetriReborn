@@ -2,10 +2,9 @@
 {
 	"npc_petri_elena"
 	{
-	  "override_hero"     "npc_dota_hero_death_prophet"
+	  "override_hero"     "npc_dota_hero_queenofpain"
 	
 	  "HasInventory"          "1"
-	  "ConsideredHero"        "1"
 	
 	  "AbilityLayout" "6"
 	
@@ -63,7 +62,7 @@
 	}
 	"npc_petri_kvn_fan"
 	{
-	  "override_hero"     "npc_dota_hero_rattletrap"
+	  "override_hero"     "npc_dota_hero_riki"
 	
 	  "HealthBarOffset"    "240"
 	
@@ -125,10 +124,9 @@
 	}
 	"npc_petri_mini_actor"
 	{
-	  "override_hero"     "npc_dota_hero_storm_spirit"
+	  "override_hero"     "npc_dota_hero_pugna"
 	
 	  "HasInventory"          "1"
-	  "ConsideredHero"        "1"
 	
 	  "AbilityLayout" "4"
 	
@@ -179,7 +177,7 @@
 	}
 	"npc_petri_petrosyan"
 	{
-	  "override_hero"     "npc_dota_hero_brewmaster"
+	  "override_hero"     "npc_dota_hero_night_stalker"
 	
 	  "HealthBarOffset"    "275"
 	

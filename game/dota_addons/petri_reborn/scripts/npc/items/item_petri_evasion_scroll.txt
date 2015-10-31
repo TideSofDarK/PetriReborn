@@ -96,6 +96,12 @@
     }
   }
 
+  "precache"
+  {
+    "particle"  "particles/items_fx/cyclone.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+  }
+
   "OnSpellStart"
   {
     "RunScript"
