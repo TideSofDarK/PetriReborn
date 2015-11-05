@@ -390,7 +390,7 @@
   "SideShop" "1"
   "ItemCost" "75"
 
-  "ItemStackable" "1"
+  "ItemStackable" "0"
   "ItemPermanent" "0"
   "ItemInitialCharges" "1"
   "ItemDisplayCharges" "1"
@@ -589,7 +589,7 @@
   "ID"              "1964"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityTextureName"      "item_candy_1"
-   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
 
   "ItemShareability"      "ITEM_FULLY_SHAREABLE"
@@ -620,13 +620,18 @@
   "AbilitySharedCooldown"         "blink"
   
   "AbilityManaCost"       "10"
+
+  "precache"
+  {
+    "soundfile"  "soundevents/voscripts/game_sounds_vo_crystalmaiden.vsndevts"
+  }
   
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "blink_range"     "600"
+      "blink_range"     "500"
     }
     
     "02"
@@ -676,11 +681,17 @@
       "Target"    "CASTER"
     }
 
+    "FireSound"
+    {
+      "EffectName"  "crystalmaiden_cm_scream_01"
+      "Target"    "CASTER"
+    }
+
     "ApplyModifier"
     {
       "ModifierName"  "modifier_stunned"
       "Target"     "CASTER"
-      "Duration"    "8"
+      "Duration"    "9"
     }
 
     "SpendCharge" 
@@ -895,7 +906,7 @@
   "ItemPurchasable"       "1"
   "ItemDroppable"         "1"
 
-  "ItemCost" "700"
+  "ItemCost" "250"
 
   "ItemStackable" "1"
   "ItemPermanent" "0"

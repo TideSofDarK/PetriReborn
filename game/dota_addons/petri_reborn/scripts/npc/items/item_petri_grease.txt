@@ -16,7 +16,16 @@
   "ItemSellable"          "0"
   "ItemShareability"      "ITEM_FULLY_SHAREABLE"
   "ItemKillable"          "0"
-  "ItemPurchasable"       "0"
+  "ItemPurchasable"       "1"
+
+  "ItemCost"            "25"
+  "ItemShopTags"          "hard_to_tag"
+  "ItemQuality"         "component"
+  "ItemAliases"         "grease"
+
+  "ItemStockMax" "10" 
+  "ItemStockTime" "1680"
+  "ItemStockInitial" "0"
 
   "AbilitySpecial"
   {

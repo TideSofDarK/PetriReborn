@@ -3,7 +3,7 @@ function Use( keys )
 	
 	if caster:GetTeamNumber() == DOTA_TEAM_BADGUYS then
 		local chance = math.random(1, 100)
-		if chance > 80  then
+		if chance > 90  then
 			CreateItemOnPositionSync(caster:GetAbsOrigin(), CreateItem("item_petri_candy_1_petri", caster, caster)) 
 		elseif chance > 60 then
 			CreateItemOnPositionSync(caster:GetAbsOrigin(), CreateItem("item_petri_candy_2_petri", caster, caster)) 
@@ -243,4 +243,11 @@ function CandyReleaseSleep(keys)
 		v:RemoveModifierByName("petri_petrosyan_sleep")
 		v:RemoveModifierByName("modifier_snare")
 	end
+
+	EmitSoundOnLocationWithCaster(target, "General.PingAttack", caster)
+
+	Timers:CreateTimer(0.3, function (  )
+		EmitSoundOnLocationWithCaster(target, "General.PingAttack", caster)
+	end)
+	MinimapEvent(DOTA_TEAM_GOODGUYS, caster, target.x, target.y, DOTA_MINIMAP_EVENT_ENEMY_TELEPORTING, 1 )
 end

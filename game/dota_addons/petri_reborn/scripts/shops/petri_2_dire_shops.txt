@@ -47,6 +47,7 @@
     "item"    "item_petri_candy_3_petri"
     "item"    "item_petri_candy_4_petri"
     "item"    "item_petri_candy_5_petri"
+    "item"    "item_petri_grease"
   }
 
   "magics"
@@ -63,8 +64,8 @@
     "item"    "item_petri_shield_of_hell"
     "item"    "item_petri_shield_of_heaven"
     "item"    "item_petri_best_shield"
-      
     "item"    "item_petri_mega_sith"
+    "item"    "item_petri_jedi"
   }
 
   "weapons"

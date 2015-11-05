@@ -282,7 +282,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_lab"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "25"
+	  "AbilityGoldCost"       "50"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1022,6 +1022,11 @@
 	
 	  "AbilityGoldCost" "1500"
 	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/immunity_sphere_buff.vpcf"
+	  }
+	
 	  "OnSpellStart"
 	  {
 	    "RunScript"
@@ -1656,6 +1661,59 @@
 	    }
 	  }
 	}
+	"petri_gold_tick"
+	{
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	    
+	    "AbilityCastRange"              "650"
+	
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                      "FIELD_INTEGER"
+	            "gold_per_second"      "1"
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_gold_tick"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	    
+	            "ThinkInterval" "1.00" 
+	            "OnIntervalThink"
+	            {
+	                "ActOnTargets"
+	                {
+	                    "Target"
+	                    {
+	                        "Center"      "TARGET"
+	                        "Radius"     "650"
+	                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                        "Types"     "DOTA_UNIT_TARGET_ALL"
+	                        "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	                    }
+	                
+	                    "Action"    
+	                    {
+	                        "RunScript"
+	                        {
+	                            "ScriptFile"        "units/creep.lua"
+	                            "Function"          "KivinGoldTick"
+	                        }
+	                    }
+	                }
+	            }
+	        }
+	    }
+	}
+	
 	"petri_dummy_invisibility"
 	{
 	  "BaseClass" "ability_datadriven"
@@ -1749,6 +1807,11 @@
 	        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "172"
 	      }
 	    }
 	  }  

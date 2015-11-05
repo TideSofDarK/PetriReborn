@@ -2,17 +2,17 @@
 
 "CustomHeroList"
 {
-  "npc_dota_hero_rattletrap" "0"
-  "npc_dota_hero_riki" "1"
+  "npc_dota_hero_rattletrap" "1"
+  "npc_dota_hero_riki" "0"
 
-  "npc_dota_hero_storm_spirit" "0"
-  "npc_dota_hero_pugna" "1"
+  "npc_dota_hero_storm_spirit" "1"
+  "npc_dota_hero_pugna" "0"
 
-  "npc_dota_hero_death_prophet" "0"
-  "npc_dota_hero_queenofpain" "1"
+  "npc_dota_hero_death_prophet" "1"
+  "npc_dota_hero_queenofpain" "0"
 
-  "npc_dota_hero_brewmaster" "0"
-  "npc_dota_hero_night_stalker" "1"
+  "npc_dota_hero_brewmaster" "1"
+  "npc_dota_hero_night_stalker" "0"
 
   "npc_dota_hero_ancient_apparition" "0"
   "npc_dota_hero_antimage" "0"

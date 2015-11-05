@@ -2,7 +2,7 @@
 
 var isDebug = true;
 
-var AFTER_VOTE_TIME = 25;
+var AFTER_VOTE_TIME = 5;
 
 var hostVoteNum = 0;
 var currentVotePanel = null;

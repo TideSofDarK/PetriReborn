@@ -77,8 +77,8 @@ function GameMode:OnHeroInGame(hero)
   local team = hero:GetTeamNumber()
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
-  print(pID)
-  if hero:GetClassname() == "npc_dota_hero_riki" and not GameMode.assignedPlayerHeroes[pID] then
+ 
+  if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
     GameMode.assignedPlayerHeroes[pID] = "temp"
 
@@ -89,11 +89,11 @@ function GameMode:OnHeroInGame(hero)
      -- Init kvn fan
     if team == 2 then
       UTIL_Remove(hero) 
-      -- PrecacheUnitByNameAsync("npc_dota_hero_riki",
-      --   function() 
+      PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+        function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = CreateHeroForPlayer("npc_dota_hero_riki", player)
+          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
 
           InitAbilities(newHero)
 
@@ -130,20 +130,20 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
-        -- end, 
-      -- pID)
+        end, 
+      pID)
     end
 
-    local petrosyanHeroName = "npc_dota_hero_night_stalker"
+    local petrosyanHeroName = "npc_dota_hero_brewmaster"
     if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
-      petrosyanHeroName = "npc_dota_hero_queenofpain"
+      petrosyanHeroName = "npc_dota_hero_death_prophet"
     end
 
      -- Init petrosyan
     if team == 3 then
       UTIL_Remove(hero) 
-      -- PrecacheUnitByNameAsync(petrosyanHeroName,
-      --  function() 
+      PrecacheUnitByNameAsync(petrosyanHeroName,
+       function() 
           newHero = CreateHeroForPlayer(petrosyanHeroName, player)
 
           -- It's dangerous to go alone, take this
@@ -168,7 +168,7 @@ function GameMode:OnHeroInGame(hero)
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
           Timers:CreateTimer(function (  )
-            if petrosyanHeroName ~= "npc_dota_hero_queenofpain" then
+            if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
               SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
 
               -- newHero:AddAbility("petri_sword_attack_sound")
@@ -186,7 +186,7 @@ function GameMode:OnHeroInGame(hero)
               GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
               end)
           end
-       -- end, pID)
+       end, pID)
     end
     --print("Player with ID: ")
     --print(PlayerResource:GetSteamAccountID(pID))
@@ -410,11 +410,13 @@ function GameMode:ReplaceWithMiniActor(player, gold)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
 
-  PrecacheUnitByNameAsync("npc_dota_hero_pugna",
+  PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_pugna", START_MINI_ACTORS_GOLD + gold, 0)
+      SendToServerConsole( "dota_combine_models 0" )
+
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
 
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
       
@@ -428,6 +430,14 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
+      SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
+
+      for k,v in pairs(newHero:GetChildren()) do
+        if v:GetClassname() == "dota_item_wearable" then
+          v:AddEffects(EF_NODRAW) 
+        end
+      end
+
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()
       end)
@@ -437,17 +447,16 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 end
 
 function SetupCustomSkin(hero, steamID, key)
+  for k,v in pairs(hero:GetChildren()) do
+    if v:GetClassname() == "dota_item_wearable" then
+      v:AddEffects(EF_NODRAW) 
+    end
+  end
+
   for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
     local id = tonumber(k)
 
     if steamID == id then
-
-      for k1,v1 in pairs(hero:GetChildren()) do
-        if v1:GetClassname() == "dota_item_wearable" then
-          v1:AddEffects(EF_NODRAW) 
-        end
-      end
-
       for k2,v2 in pairs(v) do
         if v2 == "model" then
           UpdateModel(hero, k2, 1)
@@ -456,14 +465,24 @@ function SetupCustomSkin(hero, steamID, key)
 
       for k2,v2 in pairs(v) do
         if v2 ~= "model" then
-          Attachments:AttachProp(hero, v2, k2, 1.0)
+          Attachments:AttachProp(hero, v2, k2, nil)
         end
       end
 
-      for k1,v1 in pairs(hero:GetChildren()) do
-        if v1:GetClassname() == "dota_item_wearable" then
-          v1:AddEffects(EF_NODRAW) 
-        end
+      return true
+    end
+  end
+
+  if GameMode.CustomSkinsKVs[key]["default"] then
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+      if v2 == "model" then
+        UpdateModel(hero, k2, 1)
+      end
+    end
+
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+      if v2 ~= "model" then
+        Attachments:AttachProp(hero, v2, k2, nil)
       end
     end
   end

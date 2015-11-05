@@ -1,0 +1,53 @@
+"petri_gold_tick"
+{
+    "BaseClass"             "ability_datadriven"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+    
+    "AbilityCastRange"              "650"
+
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                      "FIELD_INTEGER"
+            "gold_per_second"      "1"
+        }
+    }
+
+    "Modifiers"
+    {
+        "modifier_gold_tick"
+        {
+            "Passive"           "1"
+            "IsHidden"          "1"
+    
+            "ThinkInterval" "1.00" 
+            "OnIntervalThink"
+            {
+                "ActOnTargets"
+                {
+                    "Target"
+                    {
+                        "Center"      "TARGET"
+                        "Radius"     "650"
+                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+                        "Types"     "DOTA_UNIT_TARGET_ALL"
+                        "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+                    }
+                
+                    "Action"    
+                    {
+                        "RunScript"
+                        {
+                            "ScriptFile"        "units/creep.lua"
+                            "Function"          "KivinGoldTick"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

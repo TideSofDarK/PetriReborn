@@ -37,6 +37,12 @@ function GameMode:OnNPCSpawned(keys)
   GameMode:_OnNPCSpawned(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
+  if npc:GetUnitName() == "npc_dota_courier" then
+    npc:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+    UpdateModel(npc, "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", 0.8)
+    npc:AddAbility("petri_janitor_invisibility")
+    InitAbilities( npc )
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
@@ -85,6 +91,12 @@ function GameMode:OnPlayerReconnect(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
+
+  for k,v in pairs(hero:GetChildren()) do
+    if v:GetClassname() == "dota_item_wearable" then
+      v:AddEffects(EF_NODRAW) 
+    end
+  end
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
@@ -308,7 +320,7 @@ function GameMode:OnEntityKilled( keys )
   UnfreezeAnimation(killedUnit)
 
   -- KVN fan is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_riki" then
+  if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
     GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
@@ -347,6 +359,11 @@ function GameMode:OnEntityKilled( keys )
           end)
       end
     end)
+  end
+
+  -- Eye is killed
+  if killedUnit:GetUnitName() == "npc_petri_exploration_tree" then
+    GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].eyeWasBuilt = false
   end
 
   -- Idol is killed
@@ -393,9 +410,9 @@ function GameMode:OnEntityKilled( keys )
   end
   
   -- Petrosyn is killed
-  if killedUnit:GetUnitName() == "npc_dota_hero_night_stalker" or
-  killedUnit:GetUnitName() == "npc_dota_hero_queenofpain" or
-  killedUnit:GetUnitName() == "npc_dota_hero_pugna"  then
+  if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
+  killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
+  killedUnit:GetUnitName() == "npc_dota_hero_storm_spirit"  then
     -- if killerEntity:GetPlayerOwnerID() ~= nil then
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end

@@ -23,6 +23,12 @@
 
   "AbilityManaCost"               "0"
 
+  "precache"
+  {
+    "particle"  "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+  }
+
   "AbilitySpecial"
   {
     "01"
