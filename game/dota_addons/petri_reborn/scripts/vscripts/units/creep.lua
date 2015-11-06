@@ -118,7 +118,7 @@ function KivinGoldTick(keys)
     local target = keys.target
     local ability = keys.ability
 
-    if GameRules:IsDaytime() == false then
+    if GameRules:IsDaytime() == false and target:IsRealHero() == true then
         PlayerResource:ModifyGold(target:GetPlayerOwnerID(), GetGoldTickModifier(), false, 0) 
         PlusParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
     end
