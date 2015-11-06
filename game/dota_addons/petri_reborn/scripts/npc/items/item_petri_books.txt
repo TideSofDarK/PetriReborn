@@ -105,7 +105,7 @@
   "AbilityCooldown"       "0"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "2000"
+  "ItemCost"            "500"
 
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
@@ -148,7 +148,7 @@
   "AbilityCooldown"       "0"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "2000"
+  "ItemCost"            "3100"
 
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
