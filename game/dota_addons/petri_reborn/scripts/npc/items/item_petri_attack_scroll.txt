@@ -11,7 +11,7 @@
   "AbilityCooldown"       "75"
   "AbilityManaCost"       "0"
 
-  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
   "ItemCost"            "525"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"

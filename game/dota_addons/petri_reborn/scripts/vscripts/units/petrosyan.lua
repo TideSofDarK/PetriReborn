@@ -10,10 +10,13 @@ function BonusGoldFromWall(keys)
 
 	if target:HasAbility("petri_creep_pendant") == true 
 	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
-		
-		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(110, false, DOTA_ModifyGold_CreepKill )
-		caster.allEarnedGold = caster.allEarnedGold + 110
-		PlusParticle(110, Vector(244,201,23), 1.0, caster)
+		if caster:HasModifier("modifier_bonus_damage") then
+			caster:RemoveModifierByName("modifier_bonus_damage")
+		end
+
+		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(180, false, DOTA_ModifyGold_CreepKill )
+		caster.allEarnedGold = caster.allEarnedGold + 180
+		PlusParticle(180, Vector(244,201,23), 1.0, caster)
 	end
 end
 
@@ -232,6 +235,8 @@ function BuySnares( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()
 	local ability = keys.ability
+
+	caster = GameMode.assignedPlayerHeroes[pID]
 	
 	local sleep_ability = caster:FindAbilityByName("petri_petrosyan_sleep")
 	if sleep_ability then
@@ -249,6 +254,8 @@ function BuyUpgradedSnares( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()
 	local ability = keys.ability
+
+	caster = GameMode.assignedPlayerHeroes[pID]
 	
 	local snare_ability = caster:FindAbilityByName("petri_petrosyan_snare_1")
 	if snare_ability then
@@ -268,5 +275,14 @@ function OnAwake( keys )
 		GameRules.firstPetrosyanIsAwake = true
 		Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#petrosyan_is_awake", duration=4, style={color="red", ["font-size"]="45px"}})
 		print("First petrosyan is awake")
+	end
+end
+
+function JediAura( keys )
+	local caster = keys.caster
+	local target = keys.target
+
+	if target:GetUnitName() == "npc_petri_trap" then
+		DestroyEntityBasedOnHealth(caster, target)
 	end
 end

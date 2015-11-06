@@ -20,7 +20,9 @@ function GetGold( event )
 	local ability = event.ability
 
 	local pID = caster:GetPlayerOwnerID()
-	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + tonumber(event["gold"]), false)
+	if caster:IsSilenced() == false then
+		PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + tonumber(event["gold"]), false)
+	end
 end
 
 function Upgrade ( event   )

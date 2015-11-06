@@ -1,5 +1,5 @@
 function CancelBuilding(caster, ability, pID, reason)
-	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
+	if reason ~= "" then Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false}) end
 	return false
 end
 
@@ -36,6 +36,11 @@ function build( keys )
 	-- Cancel building if limit is reached
 	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
 		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
+	end
+
+	-- Cancel building if eye was already built
+	if ability:GetName() == "build_petri_exploration_tree" and hero.eyeWasBuilt == true then
+		return CancelBuilding(caster, ability, pID, "")
 	end
 
 	player.waitingForBuildHelper = true
@@ -86,6 +91,10 @@ function build( keys )
 
 	keys:OnConstructionStarted(function(unit)
 		hero.buildingCount = hero.buildingCount + 1
+
+		if unit:GetUnitName() == "npc_petri_exploration_tree" then
+			hero.eyeWasBuilt = true
+		end
 
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})

@@ -243,7 +243,7 @@
 	"npc_petri_cop"
 	{
 	  "BaseClass"     "npc_dota_creature"
-	  "Model"      "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl"
+	  "Model"      "models/items/courier/pumpkin_courier/pumpkin_courier.vmdl"
 	  "ModelScale"    "1.5"
 	  "Level"      "2"
 	  "HealthBarOffset"    "180"
@@ -282,8 +282,8 @@
 	
 	  "StatusHealth"    "2500"
 	  "StatusHealthRegen"   "10"
-	  "StatusMana"    "25"
-	  "StatusManaRegen"    "0"
+	  "StatusMana"    "5"
+	  "StatusManaRegen"    "5"
 	
 	  "VisionDaytimeRange"  "850"
 	  "VisionNighttimeRange"  "850"
@@ -560,7 +560,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "11875"
+	  "StatusHealth"        "13375"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -583,6 +583,7 @@
 	  "HealthBarOffset"     "290"
 	
 	  "Ability1"  "petri_creep_pendant"
+	  "Ability2"  "petri_gold_tick"
 	
 	  "ArmorPhysical"       "1488"
 	  "MagicalResistance"     "0"
@@ -831,6 +832,18 @@
 	  
 	  "VisionDaytimeRange"    "1800"   
 	  "VisionNighttimeRange"    "1800"   
+	}
+	
+	"petri_dummy_300vision"
+	{
+	  "BaseClass"         "npc_dota_creature"
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+	  "VisionDaytimeRange"    "300" 
+	  "VisionNighttimeRange"    "300"
+	  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+	  "AbilityLayout"       "4"
+	  "Ability1"          "petri_dummy_invisibility"
 	}
 	
 	"petri_dummy_600vision"
@@ -1085,8 +1098,8 @@
 	"npc_petri_janitor"
 	{
 	  "BaseClass"     "npc_dota_creature"
-	  "Model"      "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl"
-	  "ModelScale"    "0.8"
+	  "Model"      "models/items/courier/babka_bewitcher/babka_bewitcher_flying.vmdl"
+	  "ModelScale"    "1.1"
 	  "Level"      "1"
 	  "HealthBarOffset"    "180"
 	  "UnitLabel" "courier"

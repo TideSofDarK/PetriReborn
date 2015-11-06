@@ -112,3 +112,14 @@ function SplitShotDamage( keys )
 
     ApplyDamage(damage_table)
 end
+
+function KivinGoldTick(keys)
+    local caster = keys.caster
+    local target = keys.target
+    local ability = keys.ability
+
+    if GameRules:IsDaytime() == false then
+        PlayerResource:ModifyGold(target:GetPlayerOwnerID(), GetGoldTickModifier(), false, 0) 
+        PlusParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
+    end
+end

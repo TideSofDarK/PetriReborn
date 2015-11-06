@@ -1,7 +1,7 @@
 "npc_petri_cop"
 {
   "BaseClass"     "npc_dota_creature"
-  "Model"      "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl"
+  "Model"      "models/items/courier/pumpkin_courier/pumpkin_courier.vmdl"
   "ModelScale"    "1.5"
   "Level"      "2"
   "HealthBarOffset"    "180"
@@ -40,8 +40,8 @@
 
   "StatusHealth"    "2500"
   "StatusHealthRegen"   "10"
-  "StatusMana"    "25"
-  "StatusManaRegen"    "0"
+  "StatusMana"    "5"
+  "StatusManaRegen"    "5"
 
   "VisionDaytimeRange"  "850"
   "VisionNighttimeRange"  "850"

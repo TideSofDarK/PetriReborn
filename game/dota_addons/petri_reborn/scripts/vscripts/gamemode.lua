@@ -58,8 +58,7 @@ require('commands')
 require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
-  DebugPrint("[BAREBONES] Performing Post-Load precache")    
-  
+  DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
 
 function GameMode:OnFirstPlayerLoaded()
@@ -78,7 +77,7 @@ function GameMode:OnHeroInGame(hero)
   local team = hero:GetTeamNumber()
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
-  print(pID)
+ 
   if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
     GameMode.assignedPlayerHeroes[pID] = "temp"
@@ -104,7 +103,8 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
           newHero:AddItemByName("item_petri_trap")
-          
+          newHero:AddItemByName("item_petri_candy_4_kvn")
+
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_KVN_GOLD, false)
@@ -402,7 +402,6 @@ function GameMode:InitGameMode()
   -- Commands
   Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
   Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
-  --Convars:RegisterCommand( "dota_sf_hud_force_captainsmode", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 end
@@ -414,6 +413,8 @@ function GameMode:ReplaceWithMiniActor(player, gold)
   PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
+
+      SendToServerConsole( "dota_combine_models 0" )
 
       local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
 
@@ -429,6 +430,14 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
 
+      SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
+
+      for k,v in pairs(newHero:GetChildren()) do
+        if v:GetClassname() == "dota_item_wearable" then
+          v:AddEffects(EF_NODRAW) 
+        end
+      end
+
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()
       end)
@@ -438,17 +447,16 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 end
 
 function SetupCustomSkin(hero, steamID, key)
+  for k,v in pairs(hero:GetChildren()) do
+    if v:GetClassname() == "dota_item_wearable" then
+      v:AddEffects(EF_NODRAW) 
+    end
+  end
+
   for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
     local id = tonumber(k)
 
     if steamID == id then
-
-      for k1,v1 in pairs(hero:GetChildren()) do
-        if v1:GetClassname() == "dota_item_wearable" then
-          v1:AddEffects(EF_NODRAW) 
-        end
-      end
-
       for k2,v2 in pairs(v) do
         if v2 == "model" then
           UpdateModel(hero, k2, 1)
@@ -457,14 +465,24 @@ function SetupCustomSkin(hero, steamID, key)
 
       for k2,v2 in pairs(v) do
         if v2 ~= "model" then
-          Attachments:AttachProp(hero, v2, k2, 1.0)
+          Attachments:AttachProp(hero, v2, k2, nil)
         end
       end
 
-      for k1,v1 in pairs(hero:GetChildren()) do
-        if v1:GetClassname() == "dota_item_wearable" then
-          v1:AddEffects(EF_NODRAW) 
-        end
+      return true
+    end
+  end
+
+  if GameMode.CustomSkinsKVs[key]["default"] then
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+      if v2 == "model" then
+        UpdateModel(hero, k2, 1)
+      end
+    end
+
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+      if v2 ~= "model" then
+        Attachments:AttachProp(hero, v2, k2, nil)
       end
     end
   end

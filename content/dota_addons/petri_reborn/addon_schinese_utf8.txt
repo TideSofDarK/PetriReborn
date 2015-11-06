@@ -1,0 +1,561 @@
+﻿"lang"
+{
+  "Language"      "Chinese"
+  "Tokens"
+  {
+    "DOTA_Item_Build_1st_Day"   "第一天"
+    "DOTA_Item_Build_1st_Night" "第一夜"
+    "DOTA_Item_Build_2nd_Day" "第二天"
+    "DOTA_Item_Build_3rd_Day" "第三天"
+    "DOTA_Item_Build_4th_Day" "第四天"
+
+    // ******************** HEROES ********************
+    "npc_dota_hero_death_prophet"                                                     "艾琳娜"
+    "npc_dota_hero_brewmaster"                                                        "佩托西奥"
+    "npc_dota_hero_rattletrap"                                                        "搞笑天才"
+    "npc_dota_hero_storm_spirit"                                                      "仆人"
+
+    // ******************** UNITS ********************
+    "npc_dummy_blank"                                                                 "空白傀儡"
+    "npc_petri_creep_bad_actor"                                                       "糟糕的演员"
+    "npc_petri_creep_dead_actor"                                                      "死掉的演员"
+    "npc_petri_creep_draconoid"                                                       "搞笑的迷你龙"
+    "npc_petri_creep_good_actor"                                                      "有趣的演员"
+    "npc_petri_creep_humorist"                                                        "单口相声"
+    "npc_petri_creep_kvn_actor"                                                       "蒂姆和埃里克的员工"
+    "npc_petri_exit"                                                                  "出口"
+    "npc_petri_exploration_tower"                                                     "侦察塔"
+    "npc_petri_exploration_tree"                                                      "索伦之眼"
+    "npc_petri_flying_dummy"                                                          "飞行傀儡"
+    "npc_petri_gold_bag"                                                              "一大袋金币"
+    "npc_petri_gold_tower"                                                            "金币塔"
+    "npc_petri_gusman"                                                                "监督员"
+    "npc_petri_janitor"                                                               "清洁工"
+    "npc_petri_lab"                                                                   "监工"
+    "npc_petri_maslyakov"                                                             "吉米卡尔"
+    "npc_petri_peasant"                                                               "勤劳的苦工"
+    "npc_petri_sawmill"                                                               "公司"
+    "npc_petri_super_peasant"                                                         "超级苦工"
+    "npc_petri_svetlakov"                                                             "帅哥"
+    "npc_petri_tent"                                                                  "小屋"
+    "npc_petri_tower_basic"                                                           "基础塔"
+    "npc_petri_tower_of_evil"                                                         "邪恶之塔"
+    "npc_petri_wall"                                                                  "墙"
+    "npc_petri_petrosyan"                                                             "精彩的单口相声"
+    "npc_petri_kvn_fan"                                                               "搞笑天才"
+    "npc_petri_mini_actor"                                                            "仆人"
+
+    // ******************** ABILITY MODIFIERS ********************
+    "DOTA_Tooltip_modifier_upgrade"                                                   "升级"
+    "DOTA_Tooltip_modifier_upgrade_Description"                                       ""
+    "DOTA_Tooltip_ability_petri_invisibility"                                         "隐身"
+    "DOTA_Tooltip_ability_petri_invisibility_Description"                             "啊"
+
+    "DOTA_Tooltip_unit_properties"                                                    "单位属性"
+    "DOTA_Tooltip_unit_properties_Description"                                        ""
+
+    "DOTA_Tooltip_modifier_gold_bag"                                                  "一满袋金币"
+    "DOTA_Tooltip_modifier_gold_bag_Description"                                      "呃，给你好多金币！"
+
+    "DOTA_Tooltip_sleep_modifier"                                                     "瞌睡"
+    "DOTA_Tooltip_sleep_modifier_Description"                                         "你的笑话好无聊，我快睡着了！"
+
+    "DOTA_Tooltip_dummy_sleep_modifier"                                               "瞌睡"
+    "DOTA_Tooltip_dummy_sleep_modifier_Description"                                   "蒂姆和埃里克的这个帮手睡着了，所以你逃过了试镜。但是你还是要找到他们，然后逗他们乐！"
+
+    "DOTA_Tooltip_modifier_wind_walk"                                                 "隐身"
+    "DOTA_Tooltip_modifier_wind_walk_Description"                                     "为了您的健康，史提夫布鲁尔创造了这个隐身披风"
+
+    "DOTA_Tooltip_modifier_skadi_cold_attack"                                         "慢一点"
+    "DOTA_Tooltip_modifier_skadi_cold_attack_Description"                             "这是你的减速傀儡"
+
+    "DOTA_Tooltip_modifier_death_tower_corruption"                                    "垂死挣扎之塔"
+    "DOTA_Tooltip_modifier_death_tower_corruption_Description"                        "你真硬！"
+
+    "DOTA_Tooltip_modifier_returning_resources"                                       "运送木头"
+    "DOTA_Tooltip_modifier_returning_resources_Description"                           "他正在运木头呢"
+
+
+    // ******************** ITEM MODIFIERS ********************
+    "DOTA_Tooltip_modifier_item_petri_cola_active"                                    "可口可乐"
+    "DOTA_Tooltip_modifier_item_petri_cola_active_Description"                        "好爽"
+
+    "DOTA_Tooltip_modifier_meat_hook_target_datadriven"                               "钩子"
+    "DOTA_Tooltip_modifier_meat_hook_target_datadriven_Description"                   "过来！"
+
+    "DOTA_Tooltip_modifier_meat_hook_dummy_datadriven"                                "瞅啥"
+    "DOTA_Tooltip_modifier_meat_hook_dummy_datadriven_Description"                    ""
+
+    "DOTA_Tooltip_modifier_item_petri_magic_shield_active"                            "擦，有盾"
+    "DOTA_Tooltip_modifier_item_petri_magic_shield_active_Description"                ""
+
+    "DOTA_Tooltip_modifier_item_petri_uber_mask_of_laugh_active"                      "狂笑面具"
+    "DOTA_Tooltip_modifier_item_petri_uber_mask_of_laugh_active_Description"          ""
+
+
+    // ******************** ABILITIES ********************
+    "DOTA_Tooltip_ability_petri_buy_lumber"                                           "购买木头"
+    "DOTA_Tooltip_ability_petri_buy_lumber_Description"                               "买吧买吧"
+    "DOTA_Tooltip_ability_petri_buy_lumber_lumber"                                    "木头:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_concrete_bonus_armor"                         "护甲:"
+
+    "DOTA_Tooltip_ability_petri_trap"                                                 "陷阱"
+    "DOTA_Tooltip_ability_petri_trap_Description"                                     "这真的是个陷阱"
+
+    "DOTA_Tooltip_ability_petri_upgrade_lumber"                                       "升级伐木"
+    "DOTA_Tooltip_ability_petri_upgrade_lumber_Description"                           "木工，哈"
+    "DOTA_Tooltip_ability_petri_upgrade_lumber_bonus_lumber"                          "额外的木头:"
+
+    "DOTA_Tooltip_ability_petri_kvn_fan_deny"                                         "摧毁建筑"
+    "DOTA_Tooltip_ability_petri_kvn_fan_deny_Description"                             ""
+
+    "DOTA_Tooltip_ability_building_queue"                                             "建造队列"
+    "DOTA_Tooltip_ability_building_queue_Description"                                 ""
+
+    "DOTA_Tooltip_ability_build_petri_exit"                                           "建造出口"
+    "DOTA_Tooltip_ability_build_petri_exit_Description"                               "如果搞笑天才们建造了一个出口，他们就能躲过追杀！"
+    "DOTA_Tooltip_ability_build_petri_exit_lumber_cost"                               "木头:"
+
+    "DOTA_Tooltip_ability_build_petri_exploration_tree"                               "索伦之眼"
+    "DOTA_Tooltip_ability_build_petri_exploration_tree_Description"                   "这玩意儿眼神特别好"
+
+    "DOTA_Tooltip_ability_build_petri_gold_tower"                                     "建造金币塔"
+    "DOTA_Tooltip_ability_build_petri_gold_tower_Description"                         "给你钱，还能升级"
+    "DOTA_Tooltip_ability_build_petri_gold_tower_food_cost"                           "人口:"
+    "DOTA_Tooltip_ability_build_petri_gold_tower_lumber_cost"                         "木头:"
+
+    "DOTA_Tooltip_ability_build_petri_lab"                                            "监工"
+    "DOTA_Tooltip_ability_build_petri_lab_Description"                                "他能让你所有的苦工努力工作！"
+    "DOTA_Tooltip_ability_build_petri_lab_lumber_cost"                                "木头:"
+
+    "DOTA_Tooltip_ability_build_petri_sawmill"                                        "建造公司"
+    "DOTA_Tooltip_ability_build_petri_sawmill_Description"                            "在这儿你能储存木头，还能雇佣工人"
+
+    "DOTA_Tooltip_ability_build_petri_tent"                                           "建造小屋"
+    "DOTA_Tooltip_ability_build_petri_tent_Description"                               "房子越好，住的人就越多"
+
+    "DOTA_Tooltip_ability_build_petri_tower_basic"                                    "建造基础塔"
+    "DOTA_Tooltip_ability_build_petri_tower_basic_Description"                        "多功能设施"
+    "DOTA_Tooltip_ability_build_petri_tower_basic_lumber_cost"                        "木头:"
+
+    "DOTA_Tooltip_ability_build_petri_tower_of_evil"                                  "建造邪恶之塔"
+    "DOTA_Tooltip_ability_build_petri_tower_of_evil_Description"                      "超屌！"
+
+    "DOTA_Tooltip_ability_build_petri_wall"                                           "建造墙"
+    "DOTA_Tooltip_ability_build_petri_wall_Description"                               "阻止史提夫的唯一方法"
+    "DOTA_Tooltip_ability_build_petri_wall_lumber_cost"                               "木头:"
+
+    "DOTA_Tooltip_ability_gather_lumber"                                              "采集木头"
+    "DOTA_Tooltip_ability_gather_lumber_Description"                                  "采集木头."
+
+    "DOTA_Tooltip_ability_has_build_queue"                                            "已有建造队列"
+    "DOTA_Tooltip_ability_has_build_queue_Description"                                ""
+
+    "DOTA_Tooltip_ability_move_to_point_100"                                          "100分"
+    "DOTA_Tooltip_ability_move_to_point_100_Description"                              ""
+
+    "DOTA_Tooltip_ability_move_to_point_150"                                          "150分"
+    "DOTA_Tooltip_ability_move_to_point_150_Description"                              ""
+
+    "DOTA_Tooltip_ability_move_to_point_200"                                          "200分"
+    "DOTA_Tooltip_ability_move_to_point_200_Description"                              ""
+
+    "DOTA_Tooltip_ability_move_to_point_250"                                          "250分"
+    "DOTA_Tooltip_ability_move_to_point_250_Description"                              ""
+
+    "DOTA_Tooltip_ability_move_to_point_300"                                          "300分"
+    "DOTA_Tooltip_ability_move_to_point_300_Description"                              ""
+
+    "DOTA_Tooltip_ability_move_to_point_70"                                           "70分"
+    "DOTA_Tooltip_ability_move_to_point_70_Description"                               ""
+
+    "DOTA_Tooltip_ability_petri_building"                                             "皮特里建筑"
+    "DOTA_Tooltip_ability_petri_building_Description"                                 ""
+
+    "DOTA_Tooltip_ability_petri_dummy_invisibility"                                   "皮特里隐形傀儡"
+    "DOTA_Tooltip_ability_petri_dummy_invisibility_Description"                       ""
+
+    "DOTA_Tooltip_ability_petri_empty1"                                               ""
+    "DOTA_Tooltip_ability_petri_empty1_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_empty2"                                               ""
+    "DOTA_Tooltip_ability_petri_empty2_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_empty3"                                               ""
+    "DOTA_Tooltip_ability_petri_empty3_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_empty4"                                               ""
+    "DOTA_Tooltip_ability_petri_empty4_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_empty5"                                               ""
+    "DOTA_Tooltip_ability_petri_empty5_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_empty6"                                               ""
+    "DOTA_Tooltip_ability_petri_empty6_Description"                                   ""
+
+    "DOTA_Tooltip_ability_petri_exploration_tower_explore_world"                      "看一下"
+    "DOTA_Tooltip_ability_petri_exploration_tower_explore_world_Description"          "让你能看到全图"
+
+    "DOTA_Tooltip_ability_petri_exploration_tree_explore"                             "瞄一眼"
+    "DOTA_Tooltip_ability_petri_exploration_tree_explore_Description"                 "在地图上瞄一眼"
+
+    "DOTA_Tooltip_ability_petri_get_gold"                                             "领工资"
+    "DOTA_Tooltip_ability_petri_get_gold_Description"                                 "不干活就能领钱多好"
+    "DOTA_Tooltip_ability_petri_get_gold_gold"                                        "给你钱:"
+
+    "DOTA_Tooltip_ability_petri_gold_bag_get_gold"                                    "领工资"
+    "DOTA_Tooltip_ability_petri_gold_bag_get_gold_Description"                        "加薪"
+
+    "DOTA_Tooltip_ability_petri_upgrade_gold_bag"                                     "升级钱袋"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_bag_Description"                         "钱袋总是满，好烦啊"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_bag_upgrade_rate"                        "升级速度:"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_bag_upgrade_limit"                       "升级上限:"
+
+    "DOTA_Tooltip_ability_petri_gold_bag_blink"                                       "蚊子?"
+    "DOTA_Tooltip_ability_petri_gold_bag_blink_Description"                           "啥啊!"
+    "DOTA_Tooltip_ability_petri_gold_bag_blink_blink_range"                           "距离:"
+    "DOTA_Tooltip_ability_petri_gold_bag_blink_min_blink_range"                       "最小距离:"
+
+    "DOTA_Tooltip_ability_petri_janitor_truesight"                                    "真视"
+    "DOTA_Tooltip_ability_petri_janitor_truesight_Description"                        ""
+
+    "DOTA_Tooltip_ability_petri_open_basic_buildings_menu"                            "基础建筑"
+    "DOTA_Tooltip_ability_petri_open_basic_buildings_menu_Description"                ""
+
+    "DOTA_Tooltip_ability_petri_open_advanced_buildings_menu"                         "高级建筑"
+    "DOTA_Tooltip_ability_petri_open_advanced_buildings_menu_Description"             ""
+
+    "DOTA_Tooltip_ability_petri_close_basic_buildings_menu"                           "关闭"
+    "DOTA_Tooltip_ability_petri_close_basic_buildings_menu_Description"               ""
+
+    "DOTA_Tooltip_ability_petri_close_advanced_buildings_menu"                        "关闭"
+    "DOTA_Tooltip_ability_petri_close_advanced_buildings_menu_Description"            ""
+
+    "DOTA_Tooltip_ability_petri_petrosyan_explore"                                    "探索者"
+    "DOTA_Tooltip_ability_petri_petrosyan_explore_Description"                        "照亮一小块地形"
+    "DOTA_Tooltip_ability_petri_petrosyan_explore_aoe_radius"                         "范围: "
+
+    "DOTA_Tooltip_ability_petri_petrosyan_flat_joke"                                  "糟糕的笑话"
+    "DOTA_Tooltip_ability_petri_petrosyan_flat_joke_Description"                      "你有概率说一个超级无聊的笑话，然后所有人都笑了。。。"
+    "DOTA_Tooltip_ability_petri_petrosyan_flat_joke_joke_damage"                      "伤害: "
+    "DOTA_Tooltip_ability_petri_petrosyan_flat_joke_crit_chance"                      "概率:"
+
+    "DOTA_Tooltip_ability_petri_petrosyan_laugh_burst"                                "让自己笑"
+    "DOTA_Tooltip_ability_petri_petrosyan_laugh_burst_Description"                    "哈哈哈哈哈"
+    "DOTA_Tooltip_ability_petri_petrosyan_laugh_burst_heal"                           "治疗:"
+
+    "DOTA_Tooltip_ability_petri_petrosyan_return"                                     "滚蛋"
+    "DOTA_Tooltip_ability_petri_petrosyan_return_Description"                         "是时候滚蛋了"
+
+    "DOTA_Tooltip_ability_petri_petrosyan_sleep"                                      "昏睡"
+    "DOTA_Tooltip_ability_petri_petrosyan_sleep_Description"                          "让目标睡着"
+    "DOTA_Tooltip_ability_petri_petrosyan_sleep_duration"                             "持续时间:"
+
+    "DOTA_Tooltip_ability_petri_petrosyan_wind_walk"                                  "隐身"
+    "DOTA_Tooltip_ability_petri_petrosyan_wind_walk_Description"                      "无人知晓"
+    "DOTA_Tooltip_ability_petri_petrosyan_wind_walk_duration"                         "持续时间:"
+
+    "DOTA_Tooltip_ability_petri_repair"                                               "修一修"
+    "DOTA_Tooltip_ability_petri_repair_Description"                                   "修理"
+
+    "DOTA_Tooltip_ability_petri_suicide"                                              "自杀"
+    "DOTA_Tooltip_ability_petri_suicide_Description"                                  "自杀一记"
+
+    "DOTA_Tooltip_ability_petri_upgrade_basic_tower"                                  "简单升级"
+    "DOTA_Tooltip_ability_petri_upgrade_basic_tower_Description"                      "不要紧"
+    "DOTA_Tooltip_ability_petri_upgrade_basic_tower_lumber_cost"                      "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_basic_tower_attack"                           "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_basic_tower_attack_rate"                      "攻击速度百分比:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_elements_tower"                               "元素塔"
+    "DOTA_Tooltip_ability_petri_upgrade_elements_tower_Description"                   ""
+    "DOTA_Tooltip_ability_petri_upgrade_elements_tower_lumber_cost"                   "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_elements_tower_attack"                        "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_elements_tower_attack_rate"                   "增加攻速:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower"                                   "火之塔"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_Description"                       "能暴击"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_lumber_cost"                       "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_attack"                            "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_attack_rate"                       "增加攻速:"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_chance"                            "暴击概率:"
+    "DOTA_Tooltip_ability_petri_upgrade_fire_tower_crit"                              "暴击伤害:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower"                                    "霜冻塔"
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower_Description"                        "霜冻很厉害，你的敌人会被减速"
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower_lumber_cost"                        "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower_attack"                             "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower_attack_rate"                        "攻速:"
+    "DOTA_Tooltip_ability_petri_upgrade_ice_tower_slow_rate"                          "减缓:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower"                                  "防御塔"
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower_Description"                      "能减甲"
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower_lumber_cost"                      "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower_attack"                           "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower_attack_rate"                      "增加攻击速度:"
+    "DOTA_Tooltip_ability_petri_upgrade_death_tower_armor_reduction"                  "减甲:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_concrete"                                     "水泥拼图"
+    "DOTA_Tooltip_ability_petri_upgrade_concrete_Description"                         "加固你的墙"
+    "DOTA_Tooltip_ability_petri_upgrade_concrete_lumber_cost"                         "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_concrete_bonus_armor_percent"                 "增加防御:"
+    "DOTA_Tooltip_ability_petri_upgrade_concrete_aura_range"                          "光环范围:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage"                                  "核反应堆"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage_Description"                      "我就是核弹！"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage_lumber_cost"                      "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage_bonus_damage"                 "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage_bonus_range"                 "距离:"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_damage_aura_range"                          "光环范围:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_gold_tower"                                   "高级金币塔"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_tower_Description"                       "给你更多的钱"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_tower_food_cost"                         "人口:"
+    "DOTA_Tooltip_ability_petri_upgrade_gold_tower_lumber_cost"                       "木头:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_sawmill"                                      "欧式修缮"
+    "DOTA_Tooltip_ability_petri_upgrade_sawmill_Description"                          "让你的设施变得更好"
+    "DOTA_Tooltip_ability_petri_upgrade_sawmill_lumber_cost"                          "木头:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_tent"         "小屋变大屋"
+    "DOTA_Tooltip_ability_petri_upgrade_tent_Description"   "每次升级增加30点人口"
+    "DOTA_Tooltip_ability_petri_upgrade_tent_lumber_cost"   "木头:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_tower_of_evil"                                "更厉害的塔"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_of_evil_Description"                    "让你的塔像DAVE一样危险"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_of_evil_lumber_cost"                    "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_of_evil_attack"                         "伤害:"
+    "DOTA_Tooltip_ability_petri_upgrade_tower_of_evil_attack_rate"                    "攻速:"
+
+    "DOTA_Tooltip_ability_petri_upgrade_wall"                                         "加固墙"
+    "DOTA_Tooltip_ability_petri_upgrade_wall_Description"                             "没有它，你会死的！"
+    "DOTA_Tooltip_ability_petri_upgrade_wall_lumber_cost"                             "木头:"
+    "DOTA_Tooltip_ability_petri_upgrade_wall_health_points"                           "血量:"
+    "DOTA_Tooltip_ability_petri_upgrade_wall_armor"                                   "防御:"
+
+    "DOTA_Tooltip_ability_return_resources"                                           "运回木头"
+    "DOTA_Tooltip_ability_return_resources_Description"                               ""
+
+    "DOTA_Tooltip_ability_train_petri_peasant"                                        "雇佣苦工"
+    "DOTA_Tooltip_ability_train_petri_peasant_Description"                            "BOOM IN A SHOT"
+    "DOTA_Tooltip_ability_train_petri_peasant_food_cost"                              "人口:"
+
+    "DOTA_Tooltip_ability_train_petri_super_peasant"                                  "训练超级苦工"
+    "DOTA_Tooltip_ability_train_petri_super_peasant_Description"                      "能修理"
+    "DOTA_Tooltip_ability_train_petri_super_peasant_food_cost"                        "人口:"
+
+
+    // ******************** ITEMS ********************
+    "DOTA_Tooltip_ability_item_petri_trap"                                            "陷阱"
+    "DOTA_Tooltip_ability_item_petri_trap_Description"                                "制造陷阱"
+    "DOTA_Tooltip_ability_item_petri_book_of_laugh"                                   "最好的笑话合集"
+    "DOTA_Tooltip_ability_item_petri_book_of_laugh_Description"                       "让你升5级"
+
+    "DOTA_Tooltip_ability_item_petri_comedy_story"                                    "日式卡通漫画"
+    "DOTA_Tooltip_ability_item_petri_comedy_story_Description"                        "给你加攻击"
+
+    "DOTA_Tooltip_ability_item_petri_comedy_book"                                     "M&E的喜剧"
+    "DOTA_Tooltip_ability_item_petri_comedy_book_Description"                         "给你加属性"
+
+    "DOTA_Tooltip_ability_item_petri_bracer"                                          "能量手环"
+    "DOTA_Tooltip_ability_item_petri_bracer_Description"                              "这个东西真的有用！所有的名人都在用！"
+    "DOTA_Tooltip_ability_item_petri_bracer_bonus_all_stats"                          "增加属性:"
+
+    "DOTA_Tooltip_ability_item_petri_butt"                                            "烟头"
+    "DOTA_Tooltip_ability_item_petri_butt_Description"                                "加血上限"
+    "DOTA_Tooltip_ability_item_petri_butt_bonus_health"                               "血量:"
+
+    "DOTA_Tooltip_ability_item_petri_cola"                                            "可乐"
+    "DOTA_Tooltip_ability_item_petri_cola_Description"                                ""
+    "DOTA_Tooltip_ability_item_petri_cola_buff_duration"                              "持续时间:"
+
+    "DOTA_Tooltip_ability_item_petri_give_permission_to_build"                        "让你能建造"
+    "DOTA_Tooltip_ability_item_petri_give_permission_to_build_Description"            "如果你是组团玩"
+
+    "DOTA_Tooltip_ability_item_petri_gold_bag"                                        "金币袋"
+    "DOTA_Tooltip_ability_item_petri_gold_bag_Description"                            "钱能生钱,多多益善"
+
+    "DOTA_Tooltip_ability_item_petri_helmet"                                          "头盔"
+    "DOTA_Tooltip_ability_item_petri_helmet_Description"                              "哈密瓜做的头盔"
+    "DOTA_Tooltip_ability_item_petri_helmet_bonus_armor"                              "防御:"
+
+    "DOTA_Tooltip_ability_item_petri_hook"                                            "钩子"
+    "DOTA_Tooltip_ability_item_petri_hook_Description"                                "IMBA的钩子"
+    "DOTA_Tooltip_ability_item_petri_hook_hook_distance"                              "持续时间:"
+
+    "DOTA_Tooltip_ability_item_petri_janitor"                                         "邪恶的清洁工"
+    "DOTA_Tooltip_ability_item_petri_janitor_Description"                             ""
+
+    "DOTA_Tooltip_ability_item_petri_kvn_fan_blink"                                   "跳刀"
+    "DOTA_Tooltip_ability_item_petri_kvn_fan_blink_Description"                       "如果你想逃离海上飞机就用它"
+    "DOTA_Tooltip_ability_item_petri_kvn_fan_blink_blink_range"                       "距离:"
+
+    "DOTA_Tooltip_ability_item_petri_kvn_medal"                                       "金色艺人勋章"
+    "DOTA_Tooltip_ability_item_petri_kvn_medal_Description"                           "使你免收邪恶魔法（就像黑魂里的护符一样没用）"
+
+    "DOTA_Tooltip_ability_item_petri_mask_of_laugh"                                   "欢笑面具"
+    "DOTA_Tooltip_ability_item_petri_mask_of_laugh_Description"                       "欢笑能延续你的生命"
+    "DOTA_Tooltip_ability_item_petri_mask_of_laugh_lifesteal_percent"                 "肉体吸血:"
+    "DOTA_Tooltip_ability_item_petri_mask_of_laugh_lifesteal_percent_building"        "建筑吸血:"
+
+    "DOTA_Tooltip_ability_item_petri_megahammer"                                      "巨斧"
+    "DOTA_Tooltip_ability_item_petri_megahammer_Description"                          "没有它，怎么砸墙！"
+    "DOTA_Tooltip_ability_item_petri_megahammer_bonus_damage"                         "伤害:"
+
+    "DOTA_Tooltip_ability_item_petri_mega_sith"                                       "西斯武士"
+    "DOTA_Tooltip_ability_item_petri_mega_sith_Description"                           "让你变成天行者"
+    "DOTA_Tooltip_ability_item_petri_mega_sith_bonus_strength"                        "力量:"
+    "DOTA_Tooltip_ability_item_petri_mega_sith_bonus_armor"                           "防御:"
+    "DOTA_Tooltip_ability_item_petri_mega_sith_bonus_mana"                            "魔法值:"
+    "DOTA_Tooltip_ability_item_petri_mega_sith_dodge_chance"                          "闪避:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_mega_sith"                                "西斯武士配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_mega_sith_Description"                    ""
+
+    "DOTA_Tooltip_ability_item_petri_magic_shield"                                    "魔法护盾"
+    "DOTA_Tooltip_ability_item_petri_magic_shield_Description"                        "短暂无敌，并且增加属性"
+    "DOTA_Tooltip_ability_item_petri_magic_shield_bonus_armor"                        "防御:"
+    "DOTA_Tooltip_ability_item_petri_magic_shield_bonus_health"                       "血量:"
+    "DOTA_Tooltip_ability_item_petri_magic_shield_invu_duration"                      "持续时间:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_magic_shield"                             "魔法护盾配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_magic_shield_Description"                 ""
+
+    "DOTA_Tooltip_ability_item_petri_shield_of_nature"                                "自然护盾"
+    "DOTA_Tooltip_ability_item_petri_shield_of_nature_Description"                    "这可是个好东西"
+    "DOTA_Tooltip_ability_item_petri_shield_of_nature_bonus_armor"                    "防御:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_nature"                         "自然护盾配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_nature_Description"             ""
+
+    "DOTA_Tooltip_ability_item_petri_shield_of_hell"                                  "精致的地狱护盾"
+    "DOTA_Tooltip_ability_item_petri_shield_of_hell_Description"                      "盔甲"
+    "DOTA_Tooltip_ability_item_petri_shield_of_hell_bonus_armor"                      "防御:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_hell"                           "精致的地狱护盾配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_hell_Description"               ""
+
+    "DOTA_Tooltip_ability_item_petri_shield_of_heaven"                                "神之盾"
+    "DOTA_Tooltip_ability_item_petri_shield_of_heaven_Description"                    "内含神之力"
+    "DOTA_Tooltip_ability_item_petri_shield_of_heaven_bonus_armor"                    "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_heaven"                         "神之盾配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_shield_of_heaven_Description"             ""
+
+    "DOTA_Tooltip_ability_item_petri_best_shield"                                     "强力护盾"
+    "DOTA_Tooltip_ability_item_petri_best_shield_Description"                         "没有一个人能打破它"
+    "DOTA_Tooltip_ability_item_petri_best_shield_bonus_armor"                         "防御:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_best_shield"                              "强力护盾配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_best_shield_Description"                  ""
+
+    "DOTA_Tooltip_ability_item_petri_stone_of_power"                                  "战斗牛奶"
+    "DOTA_Tooltip_ability_item_petri_stone_of_power_Description"                      "现在你可以像一只奶牛那样战斗！"
+    "DOTA_Tooltip_ability_item_petri_stone_of_power_bonus_strength"                   "增加力量:"
+
+    "DOTA_Tooltip_ability_item_petri_simple_sword"                                    "钝剑"
+    "DOTA_Tooltip_ability_item_petri_simple_sword_Description"                        "伤害不高"
+    "DOTA_Tooltip_ability_item_petri_simple_sword_bonus_damage"                       "伤害:"
+
+    "DOTA_Tooltip_ability_item_petri_hyperubersword"                                  "尤伯剑"
+    "DOTA_Tooltip_ability_item_petri_hyperubersword_Description"                      "超酷的剑"
+    "DOTA_Tooltip_ability_item_petri_hyperubersword_bonus_damage"                     "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_hyperubersword"                           "尤伯剑配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_hyperubersword_Description"               ""
+
+    "DOTA_Tooltip_ability_item_petri_kladenets_sword"                                 "风暴剑"
+    "DOTA_Tooltip_ability_item_petri_kladenets_sword_Description"                     "云之剑，因为一些原因变成了红色"
+    "DOTA_Tooltip_ability_item_petri_kladenets_sword_bonus_damage"                    "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_kladenets_sword"                          "风暴剑配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_kladenets_sword_Description"              ""
+
+    "DOTA_Tooltip_ability_item_petri_perfect_sword"                                   "绝世好剑"
+    "DOTA_Tooltip_ability_item_petri_perfect_sword_Description"                       "物超所值"
+    "DOTA_Tooltip_ability_item_petri_perfect_sword_bonus_damage"                      "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_perfect_sword"                            "绝世好剑配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_perfect_sword_Description"                ""
+
+    "DOTA_Tooltip_ability_item_petri_titan_sword"                                     "泰坦剑"
+    "DOTA_Tooltip_ability_item_petri_titan_sword_Description"                         "游戏中最好的剑!"
+    "DOTA_Tooltip_ability_item_petri_titan_sword_bonus_damage"                        "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_titan_sword"                              "泰坦剑配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_titan_sword_Description"                  ""
+
+    "DOTA_Tooltip_ability_item_petri_magic_axe"                                       "魔法斧头"
+    "DOTA_Tooltip_ability_item_petri_magic_axe_Description"                           "非常强大的斧头"
+    "DOTA_Tooltip_ability_item_petri_magic_axe_bonus_damage"                          "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_magic_axe"                                "魔法斧头配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_magic_axe_Description"                    ""
+
+    "DOTA_Tooltip_ability_item_petri_grond"                                           "葛龙德"
+    "DOTA_Tooltip_ability_item_petri_grond_Description"                               "出自魔戒"
+    "DOTA_Tooltip_ability_item_petri_grond_bonus_damage"                              "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_grond"                                    "葛龙德配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_grond_Description"                        ""
+
+    "DOTA_Tooltip_ability_item_petri_thunder"                                         "雷神斧"
+    "DOTA_Tooltip_ability_item_petri_thunder_Description"                             "eboshir (eboshit)"
+    "DOTA_Tooltip_ability_item_petri_thunder_bonus_damage"                            "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_thunder"                                  "雷神斧配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_thunder_Description"                      ""
+
+    "DOTA_Tooltip_ability_item_petri_trident"                                         "邪恶之平凡的三叉戟"
+    "DOTA_Tooltip_ability_item_petri_trident_Description"                             "邪恶之平凡"
+    "DOTA_Tooltip_ability_item_petri_trident_bonus_damage"                            "伤害:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_trident"                                  "邪恶之平凡的三叉戟 (配方)"
+    "DOTA_Tooltip_ability_item_recipe_petri_trident_Description"                      ""
+
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh"                              "欢笑面具 (高级)"
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh_Description"                  "不错的奖励，你每次攻击墙时都能获得1枚金币"
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh_lifesteal_percent"            "肉体吸血:"
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh_lifesteal_percent_building"   "建筑吸血:"
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh_invu_duration"                "持续时间:"
+    "DOTA_Tooltip_ability_item_petri_uber_mask_of_laugh_bonus_all_stats"              "属性提升:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_uber_mask_of_laugh"                       "欢笑面具 (高级)配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_uber_mask_of_laugh_Description"           ""
+
+    "DOTA_Tooltip_ability_item_petri_vest"                                            "钝甲"
+    "DOTA_Tooltip_ability_item_petri_vest_Description"                                "轻松加甲"
+    "DOTA_Tooltip_ability_item_petri_vest_bonus_armor"                                "防御:"
+
+    "DOTA_Tooltip_ability_item_petri_supervest"                                       "背甲"
+    "DOTA_Tooltip_ability_item_petri_supervest_Description"                           "普通的背甲"
+    "DOTA_Tooltip_ability_item_petri_supervest_bonus_armor"                           "防御:"
+
+    "DOTA_Tooltip_ability_item_petri_supermegavest"                                   "迪克甲"
+    "DOTA_Tooltip_ability_item_petri_supermegavest_Description"                       "超级护甲"
+    "DOTA_Tooltip_ability_item_petri_supermegavest_bonus_armor"                       "防御:"
+
+    "DOTA_Tooltip_ability_item_petri_superthing"                                      "顶呱呱"
+    "DOTA_Tooltip_ability_item_petri_superthing_Description"                          "一个特别好的东西？"
+    "DOTA_Tooltip_ability_item_petri_superthing_bonus_armor"                          "防御:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_superthing"                               "顶呱呱配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_superthing_Description"                   ""
+
+    "DOTA_Tooltip_ability_item_petri_zirconia_armor"                                  "能量手环"
+    "DOTA_Tooltip_ability_item_petri_zirconia_armor_Description"                      "可能真的有用"
+    "DOTA_Tooltip_ability_item_petri_zirconia_armor_bonus_all_stats"                  "属性提升:"
+    "DOTA_Tooltip_ability_item_petri_zirconia_armor_bonus_armor"                      "防御:"
+
+    "DOTA_Tooltip_ability_item_recipe_petri_zirconia_armor"                           "能量手环配方"
+    "DOTA_Tooltip_ability_item_recipe_petri_zirconia_armor_Description"               ""
+
+    "DOTA_Tooltip_ability_item_train_petri_peasant"                                   "KVN哔"
+    "DOTA_Tooltip_ability_item_train_petri_peasant_Description"                       ""
+
+    "DOTA_Tooltip_ability_item_train_petri_super_peasant"                             "KCN-骗子"
+    "DOTA_Tooltip_ability_item_train_petri_super_peasant_Description"                 ""
+
+  }
+}

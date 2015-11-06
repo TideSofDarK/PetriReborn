@@ -1,5 +1,97 @@
 "Attachments"
 {
+	"Particles"
+	{
+		"models/items/axe/shout_mask/shout_mask.vmdl"
+		{
+			"particles/econ/items/axe/axe_helm_shoutmask/axe_shout_mask_ambient.vpcf"
+			{
+				"2"		"attach_mouth"
+				"1"		"attach_eye_l"
+				"0"		"attach_eye_r"
+			}
+		}
+		"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
+	  	{
+	   		"particles/econ/items/wraith_king/wraith_king_winterblight_weapon/wraith_king_winterblight_ambient.vpcf"
+		   	{
+			    "2"  "attach_mouth"
+			    "1"  "attach_eye_l"
+			    "0"  "attach_eye_r"
+		   	}
+	  	}
+	}
+	"models/creeps/roshan/roshan.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/props_gameplay/halloween_candy.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"23"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"35"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/props_structures/pumpkin003.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"180"
+				"roll"		"90"
+				"ZPos"		"9"
+				"YPos"		"4"
+				"yaw"		"0"
+				"XPos"		"39"
+			}
+		}
+	}	
+	"models/heroes/drow/drow.vmdl"
+	{
+		"attach_eye_l"
+		{
+			"models/items/pudge/the_ol_choppers_shoulder/the_ol_choppers_shoulder.vmdl"
+			{
+				"scale"		"0.50"
+				"pitch"		"49"
+				"roll"		"180"
+				"ZPos"		"-147"
+				"YPos"		"-14"
+				"yaw"		"-84"
+				"XPos"		"7"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/sniper/wildwest_weapon/wildwest_weapon.vmdl"
+			{
+				"scale"		"0.70"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"-29"
+				"YPos"		"21"
+				"yaw"		"270"
+				"XPos"		"-128"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
+			{
+				"scale"		"0.2"
+				"pitch"		"180"
+				"roll"		"55"
+				"ZPos"		"21"
+				"YPos"		"0"
+				"yaw"		"271"
+				"XPos"		"0"
+			}
+		}
+	}
 	"models/heroes/lina/lina.vmdl"
 	{
 	  	"attach_head"
@@ -15,6 +107,87 @@
 			    "XPos"  "3"
 	   		}
 	  	}
+	}
+	"models/heroes/ursa/ursa.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/ursa/scarf_alpine.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-51"
+				"roll"		"0"
+				"ZPos"		"-114"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/ursa/hat_alpine.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-9"
+				"roll"		"0"
+				"ZPos"		"-141"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-69"
+			}
+		}
+	}
+	"models/heroes/rikimaru/rikimaru.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/heroes/troll_warlord/troll_warlord_axe_melee_r.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-10"
+				"YPos"		"3"
+				"yaw"		"180"
+				"XPos"		"6"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/axe/skullsplitter/skullsplitter.vmdl"
+			{
+				"scale"		"0.38"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-128"
+				"YPos"		"124"
+				"yaw"		"90"
+				"XPos"		"4"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/shredder/top_hat_of_the_steam_chopper/top_hat_of_the_steam_chopper.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"35"
+				"roll"		"113"
+				"ZPos"		"-133"
+				"YPos"		"21"
+				"yaw"		"96"
+				"XPos"		"7"
+			}
+			"models/props_gameplay/halloween_candy.vmdl"
+			{
+				"scale"		"0.3"
+				"pitch"		"132"
+				"roll"		"0"
+				"ZPos"		"44"
+				"YPos"		"-81"
+				"yaw"		"28"
+				"XPos"		"9"
+			}
+		}
 	}
 	"models/heroes/wraith_king/wraith_king.vmdl"
 	{
@@ -192,7 +365,7 @@
 		{
 			"models/heroes/techies/fx_techies_remotebomb.vmdl"
 			{
-				"scale"		"0.1"
+				"scale"		"0.3"
 				"pitch"		"184"
 				"roll"		"0"
 				"yaw"		"-196"
@@ -384,6 +557,16 @@
 				"yaw"		"0"
 				"XPos"		"0"
 			}
+			"models/items/queenofpain/sinners_embrace_back/sinners_embrace_back.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-124"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"2"
+			}
 		}
 		"attach_attack1"
 		{
@@ -417,6 +600,16 @@
 				"yaw"		"4"
 				"XPos"		"19"
 			}
+			"models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"-39"
+				"YPos"		"27"
+				"yaw"		"0"
+				"XPos"		"22"
+			}
 		}
 		"mouth"
 		{
@@ -426,6 +619,16 @@
 				"pitch"		"-32"
 				"roll"		"0"
 				"ZPos"		"-158"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-11"
+			}
+			"models/items/queenofpain/dotapit_s3_abyssal_temptress_head/dotapit_s3_abyssal_temptress_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-31"
+				"roll"		"0"
+				"ZPos"		"-152"
 				"YPos"		"0"
 				"yaw"		"0"
 				"XPos"		"-11"
@@ -487,5 +690,24 @@
 				"XPos"		"-82"
 			}
 		}
+	}
+	"models/heroes/nightstalker/nightstalker.vmdl"
+	{
+	 	"attach_hitloc"
+		{
+	   		"models/items/nightstalker/black_nihility/black_nihility_back.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-78"
+			    "roll"  "0"
+			    "ZPos"  "-132"
+			    "YPos"  "-1"
+			    "yaw"  "0"
+			    "XPos"  "7"
+		   	}
+	  	}
+	}
+	"models/heroes/bane/bane.vmdl"
+	{
 	}
 }

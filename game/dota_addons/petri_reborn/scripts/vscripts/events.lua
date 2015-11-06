@@ -37,6 +37,12 @@ function GameMode:OnNPCSpawned(keys)
   GameMode:_OnNPCSpawned(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
+  if npc:GetUnitName() == "npc_dota_courier" then
+    npc:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+    UpdateModel(npc, "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", 0.8)
+    npc:AddAbility("petri_janitor_invisibility")
+    InitAbilities( npc )
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
@@ -65,12 +71,12 @@ function GameMode:OnItemPickedUp(keys)
     local player = PlayerResource:GetPlayer(keys.PlayerID)
 
     if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-      if CheckShopType(itemname) ~= 1 then
+      if CheckShopType(itemname, "SideShop") == false then
         heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
       end
     end
     if player:GetTeam() == DOTA_TEAM_BADGUYS then 
-      if CheckShopType(itemname) == 1 then
+      if CheckShopType(itemname, "SecretShop") == false then
         heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
       end
     end
@@ -85,6 +91,12 @@ function GameMode:OnPlayerReconnect(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
+
+  for k,v in pairs(hero:GetChildren()) do
+    if v:GetClassname() == "dota_item_wearable" then
+      v:AddEffects(EF_NODRAW) 
+    end
+  end
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
@@ -349,6 +361,11 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
+  -- Eye is killed
+  if killedUnit:GetUnitName() == "npc_petri_exploration_tree" then
+    GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].eyeWasBuilt = false
+  end
+
   -- Idol is killed
   if killedUnit:GetUnitName() == "npc_petri_idol" then
     if killedUnit.newShopTarget then UTIL_Remove(killedUnit.newShopTarget) end
@@ -377,6 +394,13 @@ function GameMode:OnEntityKilled( keys )
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
       elseif chance > WOOD_CHANCE then
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+      end
+    end
+
+    chance = math.random(1, 100)
+    if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
+      if chance <= 50 then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin() + Vector(math.random(-30, 30), math.random(-30, 30), math.random(-30, 30)), CreateItem("item_petri_candy", nil, nil)) 
       end
     end
   end

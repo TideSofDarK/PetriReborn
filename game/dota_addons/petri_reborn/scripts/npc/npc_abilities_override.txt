@@ -7,6 +7,8 @@
     "ItemPurchasable"                "0"
     "ItemDroppable"                    "0"
   }
+
+  "item_petri_janitor" "REMOVE"
   
   "item_blink"      "REMOVE"
   "item_blades_of_attack"     "REMOVE"
@@ -54,7 +56,12 @@
   "item_ward_sentry"      "REMOVE"
   "item_tango"      "REMOVE"
   "item_tango_single"     "REMOVE"
-  "item_courier"      "REMOVE"
+  "item_courier"
+  {
+    "ItemCost" "15"
+    "ItemStockInitial"        "5"
+    "ItemStockTime"         "75.0"
+  }
   "item_tpscroll"     "REMOVE"
   "item_recipe_travel_boots"      "REMOVE"
   "item_travel_boots"     "REMOVE"
@@ -91,7 +98,7 @@
   "item_mekansm"      "REMOVE"
   "item_recipe_vladmir"     "REMOVE"
   "item_vladmir"      "REMOVE"
-  "item_flying_courier"     "REMOVE"
+  "item_flying_courier" "REMOVE"
   "item_recipe_buckler"     "REMOVE"
   "item_buckler"      "REMOVE"
   "item_recipe_ring_of_basilius"      "REMOVE"

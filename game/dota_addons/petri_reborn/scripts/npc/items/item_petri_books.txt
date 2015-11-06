@@ -105,7 +105,7 @@
   "AbilityCooldown"       "0"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "500"
+  "ItemCost"            "2000"
 
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
@@ -130,7 +130,7 @@
     {
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "BuySnares"
-      "ItemCost"  "500"
+      "ItemCost"  "2000"
     }
   }
 }
@@ -148,7 +148,7 @@
   "AbilityCooldown"       "0"
   "AbilityManaCost"       "0"
 
-  "ItemCost"            "3100"
+  "ItemCost"            "2000"
 
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
@@ -173,7 +173,7 @@
     {
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "BuyUpgradedSnares"
-      "ItemCost"  "3100"
+      "ItemCost"  "2000"
     }
   }
 }

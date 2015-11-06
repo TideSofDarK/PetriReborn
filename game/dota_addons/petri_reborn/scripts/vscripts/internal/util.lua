@@ -1,3 +1,34 @@
+function GetGoldTickModifier()
+  local time = math.floor(GameRules:GetDOTATime(false, false) / 60)
+
+  if time >= 40 then
+    return 0.0
+  elseif time >= 33 and time < 40 then
+    return 50.0
+  elseif time >= 32 and time < 33 then
+    return 0.0
+  elseif time >= 28 and time < 32 then
+    return 25.0
+  elseif time >= 24 and time < 28 then
+    return 0.0
+  elseif time >= 20 and time < 24 then
+    return 10.0
+  elseif time >= 16 and time < 20 then
+    return 0.0
+  elseif time >= 12 and time < 16 then
+    return 4.0
+  elseif time >= 8 and time < 12 then
+    return 0.0
+  elseif time >= 4 and time < 8 then
+    return 1.0
+  elseif time >= 2 and time < 4 then
+    return 0.0
+  elseif time < 2 then
+    return 0.0 
+  end
+  return 1.0
+end
+
 function GetGoldModifier()
   local time = math.floor(GameRules:GetDOTATime(false, false) / 60)
 
@@ -7,6 +38,8 @@ function GetGoldModifier()
     return 8.0
   elseif time > 32 and time <= 36 then
     return 5.0
+  elseif time > 28 and time <= 32 then
+    return 4.0
   elseif time > 24 and time <= 28 then
     return 3.0
   elseif time > 20 and time <= 24 then
@@ -185,14 +218,18 @@ function GetItemByID(id)
   end
 end
 
-function CheckShopType(item)
+function CheckShopType(item, itemType)
   for k,v in pairs(GameMode.ItemKVs) do
     if k == item then 
-      if v["SideShop"] then return 1
-      elseif v["SecretShop"] then return 2
-      else return 0 end
+      if itemType == "SecretShop" then 
+        if not v["SideShop"] then
+          return true
+        end
+      end
+      if v[itemType] or v["ItemShareability"] == "ITEM_FULLY_SHAREABLE" then return true end
     end
   end
+  return false
 end
 -- ITEMS
 

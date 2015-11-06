@@ -4,7 +4,7 @@
   {
     "item"        "item_petri_ward"
     "item"        "item_petri_cola"
-    "item"        "item_petri_janitor"
+    "item"        "item_courier"
     "item"        "item_petri_book_of_laugh"
     "item"        "item_petri_comedy_book"
     "item"        "item_petri_comedy_story"
@@ -42,7 +42,7 @@
 
   "support"
   {
-    "item"    "ITEM_NAME"
+    "item"    "item_petri_grease"
   }
 
   "magics"
@@ -59,8 +59,8 @@
     "item"    "item_petri_shield_of_hell"
     "item"    "item_petri_shield_of_heaven"
     "item"    "item_petri_best_shield"
-      
     "item"    "item_petri_mega_sith"
+    "item"    "item_petri_jedi"
   }
 
   "weapons"

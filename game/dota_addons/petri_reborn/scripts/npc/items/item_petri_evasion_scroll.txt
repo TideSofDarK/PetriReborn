@@ -15,7 +15,7 @@
   "AbilityCooldown"       "180"
   "AbilityManaCost"       "0"
 
-  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
   "ItemCost"            "285"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"
@@ -94,6 +94,13 @@
       "var_type"        "FIELD_INTEGER"
       "duration"     "7"
     }
+  }
+
+  "precache"
+  {
+    "particle"  "particles/items_fx/cyclone.vpcf"
+    "particle"  "particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
   }
 
   "OnSpellStart"

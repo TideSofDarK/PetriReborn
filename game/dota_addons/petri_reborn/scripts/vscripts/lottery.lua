@@ -49,7 +49,29 @@ end
 
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
-	local winner = math.random(1, 4)
+
+	local options = {}
+	for i=1,4 do
+		options[i] = 0
+	end
+
+	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+		local pID = tonumber(k)
+		local bet = v["bet"]
+		local option = v["option"]
+
+		options[option] = options[option] or 0
+		options[option] = options[option] + 1
+	end
+
+	local key, min = 9999, options[1]
+	for k, v in ipairs(options) do
+	    if options[k] < min then
+	        key, min = k, v
+	    end
+	end
+
+	local winner = key
 	
 	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner + 1} )
 

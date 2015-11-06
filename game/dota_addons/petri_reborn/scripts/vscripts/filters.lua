@@ -120,12 +120,12 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
 
       if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then 
-        if CheckShopType(item:GetName()) ~= 1 then
+        if CheckShopType(item:GetName(), "SideShop") == false then
           return false
         end
       end
       if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then 
-        if CheckShopType(item:GetName()) == 1 then
+        if CheckShopType(item:GetName(), "SecretShop") == false then
           return false
         end
       end
@@ -138,13 +138,17 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       local item = GetItemByID(filterTable["entindex_ability"])
 
-      if OnEnemyShop(purchaser) then
-        Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
-        return false
-      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        if not item["SideShop"] or OnKVNSideShop( purchaser ) == false then return false end
-      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
-        if item["SideShop"] then return false end
+      if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS and (filterTable["entindex_ability"] == 45 or filterTable["entindex_ability"] == 84) then return false end
+
+      if item then
+        if OnEnemyShop(purchaser) then
+          Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
+          return false
+        elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+          if item["SideShop"] ~= 1 or OnKVNSideShop( purchaser ) == false then return false end
+        elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+          if item["SideShop"] then return false end
+        end
       end
     elseif order_type == DOTA_UNIT_ORDER_SELL_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
@@ -230,6 +234,11 @@ function GameMode:ModifyGoldFilter(event)
       if event["gold"] >= 10000 then
        CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
        Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
+      end
+      if event["gold"] >= 20000 then
+        for i=1,5 do
+          CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+        end
       end
 
       GiveSharedGoldToTeam(math.floor(event["gold"]/2), DOTA_TEAM_BADGUYS)
