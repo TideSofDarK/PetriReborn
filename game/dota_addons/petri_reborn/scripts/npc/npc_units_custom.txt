@@ -381,8 +381,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -428,8 +428,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -475,8 +475,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -519,8 +519,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -565,8 +565,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
@@ -662,8 +662,8 @@
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
 	
-	  "VisionDaytimeRange"    "400"
-	  "VisionNighttimeRange"    "400"
+	  "VisionDaytimeRange"    "800"
+	  "VisionNighttimeRange"    "800"
 	
 	  "TeamName"          "DOTA_TEAM_NEUTRALS"
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
