@@ -447,12 +447,6 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 end
 
 function SetupCustomSkin(hero, steamID, key)
-  for k,v in pairs(hero:GetChildren()) do
-    if v:GetClassname() == "dota_item_wearable" then
-      v:AddEffects(EF_NODRAW) 
-    end
-  end
-
   for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
     local id = tonumber(k)
 
@@ -466,6 +460,12 @@ function SetupCustomSkin(hero, steamID, key)
       for k2,v2 in pairs(v) do
         if v2 ~= "model" then
           Attachments:AttachProp(hero, v2, k2, nil)
+        end
+      end
+
+      for k1,v1 in pairs(hero:GetChildren()) do
+        if v1:GetClassname() == "dota_item_wearable" then
+          v1:AddEffects(EF_NODRAW) 
         end
       end
 
