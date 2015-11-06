@@ -101,7 +101,7 @@ function BuildingHelper:RegisterLeftClick( args )
   --get the player that sent the comman
   local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
 
-  local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, location, nil, 130, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
+  local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, location, nil, 130, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
   
   if #units > 0 then
     if cmdPlayer then
