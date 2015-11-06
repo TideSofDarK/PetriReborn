@@ -52,14 +52,17 @@ function StartBuildingHelper( params )
     } 
     
     if (state == 'active')
+        CheckMousePos();
+}
+
+var oldPos = null;
+var positionChecked = false;
+function CheckMousePos()
+{
+    if (state == 'active')
     {
-        $.Schedule(1/60, StartBuildingHelper);
-
-        var mPos = GameUI.GetCursorPosition();
-        var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
-
-        // Check GridNav
-        GameEvents.SendCustomGameEventToServer( "building_helper_check_grid", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
+        var mousePos = GameUI.GetCursorPosition();
+        var GamePos = Game.ScreenXYToWorld(mousePos[0], mousePos[1]);
 
         if (GamePos[0] > 10000000) // fix for borderless windowed players
         {
@@ -69,6 +72,20 @@ function StartBuildingHelper( params )
         if ( GamePos !== null ) 
         {
             SnapToGrid(GamePos, size)
+
+            // Check GridNav once if mouse stopped
+            if (oldPos != null && oldPos[0] == GamePos[0] && oldPos[1] == GamePos[1])
+            {
+                if (!positionChecked)
+                {
+                    GameEvents.SendCustomGameEventToServer( "building_helper_check_grid", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
+                    positionChecked = true;
+                }
+            }
+            else
+                positionChecked = false;
+
+            oldPos = GamePos;
 
             var color = [0,255,0]
             var part = 0
@@ -87,7 +104,7 @@ function StartBuildingHelper( params )
                     var gridParticle = gridParticles[part]
                     Particles.SetParticleControl(gridParticle, 0, pos) ;
                     Particles.SetParticleControl(gridParticle, 2, gridColor[part])      
-                    part++;
+                    part++; 
 
                     if (part>size*size)
                     {
@@ -99,6 +116,8 @@ function StartBuildingHelper( params )
             // Update the model particle
             Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1])
         }
+
+        $.Schedule(1/30, CheckMousePos);    
     }
 }
 

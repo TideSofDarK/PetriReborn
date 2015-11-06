@@ -69,7 +69,6 @@ function BuildingHelper:CheckPosition( args )
   CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_grid_validation", validQuad )
 end
 
-
 function BuildingHelper:Init(...)
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
   GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
@@ -99,7 +98,7 @@ function BuildingHelper:RegisterLeftClick( args )
   local z = args['Z']
   local location = Vector(x, y, z)
 
-  --get the player that sent the command
+  --get the player that sent the comman
   local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
 
   local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, location, nil, 130, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
@@ -694,7 +693,6 @@ end
       * Manages each workers build queue
 ]]--
 function InitializeBuilder( builder )
-  
   builder.ProcessingBuilding = false
 
   if builder.buildingQueue == nil then
