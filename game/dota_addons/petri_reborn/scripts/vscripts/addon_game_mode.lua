@@ -12,18 +12,6 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_alcohol", context)
   PrecacheItemByNameSync("item_petri_vip_laguna", context)
   PrecacheItemByNameSync("item_petri_evasion_scroll", context)
-
-  PrecacheItemByNameSync("item_petri_candy_1_kvn", context)
-  PrecacheItemByNameSync("item_petri_candy_2_kvn", context)
-  PrecacheItemByNameSync("item_petri_candy_3_kvn", context)
-  PrecacheItemByNameSync("item_petri_candy_4_kvn", context)
-  PrecacheItemByNameSync("item_petri_candy_5_kvn", context)
-
-  PrecacheItemByNameSync("item_petri_candy_1_petri", context)
-  PrecacheItemByNameSync("item_petri_candy_2_petri", context)
-  PrecacheItemByNameSync("item_petri_candy_3_petri", context)
-  PrecacheItemByNameSync("item_petri_candy_4_petri", context)
-  PrecacheItemByNameSync("item_petri_candy_5_petri", context)
   
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
 
