@@ -130,7 +130,7 @@
     {
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "BuySnares"
-      "ItemCost"  "2000"
+      "ItemCost"  "500"
     }
   }
 }
@@ -173,7 +173,7 @@
     {
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "BuyUpgradedSnares"
-      "ItemCost"  "2000"
+      "ItemCost"  "3100"
     }
   }
 }
