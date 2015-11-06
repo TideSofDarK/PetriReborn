@@ -290,13 +290,13 @@
 		{
 			"models/heroes/omniknight/omniknightwings.vmdl"
 			{
-				"scale"		"0.31"
-				"pitch"		"-77"
-				"roll"		"0"
-				"ZPos"		"35"
-				"YPos"		"0"
-				"yaw"		"0"
-				"XPos"		"0"
+			    "scale"  "0.48"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "28"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-15"
 			}
 		}
 		"attach_head"
