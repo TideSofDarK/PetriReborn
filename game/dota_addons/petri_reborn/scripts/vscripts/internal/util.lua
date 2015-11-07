@@ -19,7 +19,9 @@ function GetGoldTickModifier()
     return 4.0
   elseif time >= 8 and time < 12 then
     return 0.0
-  elseif time >= 4 and time < 8 then
+  elseif time >= 6 and time < 8 then
+    return 2.0
+  elseif time >= 4 and time < 6 then
     return 1.0
   elseif time >= 2 and time < 4 then
     return 0.0
