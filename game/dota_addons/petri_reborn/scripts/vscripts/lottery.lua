@@ -115,7 +115,7 @@ function SelectWinner()
 				for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 					if winner == v["option"] then 
 						v["prize"] = math.min( math.floor((v["bet"] * allMoney) / allBets[winner]), math.floor(v["bet"] * (#GameMode.CURRENT_LOTTERY_PLAYERS / allOptions[v["option"]])))
-					elseif
+					else
 						v["prize"] = math.max( math.floor((v["bet"] / allMoney) * allBets[winner]), math.floor(v["bet"] * (allOptions[v["option"]] / #GameMode.CURRENT_LOTTERY_PLAYERS)))
 					end
 				end
