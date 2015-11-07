@@ -47,44 +47,95 @@ function InitLottery()
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#init_lottery", duration=7, style={color="white", ["font-size"]="45px"}})
 end
 
+function RandomChange (percent)
+  assert(percent >= 0 and percent <= 100) 
+  return percent >= math.random(1, 100)
+end
+
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 
-	local options = {}
-	for i=1,4 do
-		options[i] = 0
-	end
+	local winner = math.random(1,4)
 
+	-- Check for same option
+	local sameOption = true
+	local option
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
-		local bet = v["bet"]
-		local option = v["option"]
-
-		options[option] = options[option] or 0
-		options[option] = options[option] + 1
+		option = option or v["option"]
+		if option ~= v["option"] then 
+			sameOption = false
+			break
+		end
 	end
 
-	local key, min = 9999, options[1]
-	for k, v in ipairs(options) do
-	    if options[k] < min then
-	        key, min = k, v
-	    end
-	end
+	-- First variant
+	if sameOption == true or RandomChange(10) == true then
+		for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+			if RandomChange(13) == true then
+				v["prize"] = math.floor(v["bet"] * 0.7)
+			elseif RandomChange(17) == true then
+				v["prize"] = math.floor(v["bet"] * 1.5)
+			elseif RandomChange(30) == true then
+				v["prize"] = math.floor(v["bet"] * 0.92)
+			else
+				v["prize"] = math.floor(v["bet"] * 1.15)
+			end
+		end
+	else -- Second variant
+		local allBets = {}
+		local allOptions = {}
+		local allMoney = 0
+		for i=1,4 do
+			for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+				if i == v["option"] then 
+					allBets[i] = allBets[i] or 0
+					allOptions[i] = allOptions[i] or 0
 
-	local winner = key
+					allBets[i] = allBets[i] + math.floor(v["bet"])
+					allOptions[i] = allOptions[i] + 1
+					allMoney = allMoney + math.floor(v["bet"])
+				end
+			end
+		end
+
+		local allChances = {}
+		local order = {}
+		for i=1,4 do
+			table.insert(allChances, math.floor((allBets[i] / allMoney) * 100))
+			order[math.floor((allBets[i] / allMoney) * 100)] = i
+		end
+
+		table.sort (allChances)
+
+		for i,v in ipairs(allChances) do
+			if RandomChange(v) == true then
+				winner = order[v]
+
+				for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+					if winner == v["option"] then 
+						v["prize"] = math.min( math.floor((v["bet"] * allMoney) / allBets[winner]), math.floor(v["bet"] * (#GameMode.CURRENT_LOTTERY_PLAYERS / allOptions[v["option"]])))
+					elseif
+						v["prize"] = math.max( math.floor((v["bet"] / allMoney) * allBets[winner]), math.floor(v["bet"] * (allOptions[v["option"]] / #GameMode.CURRENT_LOTTERY_PLAYERS)))
+					end
+				end
+
+				break
+			end
+		end
+	end
 	
-	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner + 1} )
+	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
-		local prize
-		if v["option"] == winner then
-			prize = math.min(math.floor(v["bet"] * 1.7) + math.floor(GameMode.CURRENT_BANK * 0.2), math.floor(v["bet"] * 5))
+		local prize = v["prize"]
+		local bet = v["bet"]
+		if prize > bet then
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
-			prize = math.min(math.floor(v["bet"] * 0.7) + math.floor(GameMode.CURRENT_BANK * 0.1), math.floor(v["bet"] * 3))
 			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
