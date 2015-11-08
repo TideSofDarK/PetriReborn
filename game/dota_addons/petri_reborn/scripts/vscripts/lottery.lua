@@ -55,7 +55,7 @@ end
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 
-	local winner = math.random(1,4)
+	local winner
 
 	-- Check for same option
 	local sameOption = true
@@ -72,6 +72,7 @@ function SelectWinner()
 	-- First variant
 	if sameOption == true or RandomChange(10) == true then
 		for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+			winner = v["option"]
 			if RandomChange(13) == true then
 				v["prize"] = math.floor(v["bet"] * 0.7)
 			elseif RandomChange(17) == true then
@@ -101,22 +102,29 @@ function SelectWinner()
 
 		local allChances = {}
 		local order = {}
+		local step = 1
 		for i=1,4 do
-			table.insert(allChances, math.floor((allBets[i] / allMoney) * 100))
-			order[math.floor((allBets[i] / allMoney) * 100)] = i
+			if allBets[i] then
+				table.insert(allChances, math.floor((allBets[i] / allMoney) * 100))
+				order[math.floor((allBets[i] / allMoney) * 100)] = i
+			else 
+				table.insert(allChances, step + 1)
+				order[step + 1] = i
+				step = step + 1
+			end
 		end
 
 		table.sort (allChances)
 
 		for i,v in ipairs(allChances) do
-			if RandomChange(v) == true then
-				winner = order[v]
+			if RandomChange(v) == true or i == #allChances then
+				winner = winner or order[v]
 
-				for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
-					if winner == v["option"] then 
-						v["prize"] = math.min( math.floor((v["bet"] * allMoney) / allBets[winner]), math.floor(v["bet"] * (#GameMode.CURRENT_LOTTERY_PLAYERS / allOptions[v["option"]])))
+				for k1,v1 in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
+					if winner == v1["option"] then 
+						v1["prize"] = math.min( math.floor((v1["bet"] * allMoney) / allBets[winner]), math.floor(v1["bet"] * (#GameMode.CURRENT_LOTTERY_PLAYERS / allOptions[v1["option"]])))
 					else
-						v["prize"] = math.max( math.floor((v["bet"] / allMoney) * allBets[winner]), math.floor(v["bet"] * (allOptions[v["option"]] / #GameMode.CURRENT_LOTTERY_PLAYERS)))
+						v1["prize"] = math.max( math.floor((v1["bet"] / allMoney) * allBets[winner]), math.floor(v1["bet"] * (allOptions[v1["option"]] / #GameMode.CURRENT_LOTTERY_PLAYERS)))
 					end
 				end
 
@@ -125,7 +133,7 @@ function SelectWinner()
 		end
 	end
 	
-	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner} )
+	CustomGameEventManager:Send_ServerToAllClients("petri_finish_exchange", {["winner"] = winner - 1} )
 
 	for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 		local pID = tonumber(k)
@@ -140,6 +148,7 @@ function SelectWinner()
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		end
+		GameMode.assignedPlayerHeroes[pID]:EmitSound("DOTA_Item.Hand_Of_Midas")
 	end
 
 	GameMode.CURRENT_LOTTERY_PLAYERS = {}

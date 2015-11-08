@@ -49,9 +49,10 @@ function UpgradeExchange( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
-	local time = math.floor((PETRI_LOTTERY_DURATION * 60) - (GameRules:GetDOTATime(false, false) - LOTTERY_START_TIME))
-	print(time)
-	if time >= 10 then
-		CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(), "petri_force_start_exchange", {["exchange_time"] = time } )
+	if GameMode.LOTTERY_STATE == 1 then
+		local time = math.floor((PETRI_LOTTERY_DURATION * 60) - (GameRules:GetDOTATime(false, false) - LOTTERY_START_TIME))
+		if time >= 10 then
+			CustomGameEventManager:Send_ServerToPlayer(caster:GetPlayerOwner(), "petri_force_start_exchange", {["exchange_time"] = time } )
+		end
 	end
 end

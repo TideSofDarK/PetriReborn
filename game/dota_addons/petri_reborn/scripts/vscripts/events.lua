@@ -592,6 +592,7 @@ function GameMode:OnPlayerMakeBet( event )
   end
 
   GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
+  GameMode.assignedPlayerHeroes[pID]:EmitSound("DOTA_Item.Hand_Of_Midas")
 
   CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
 end
