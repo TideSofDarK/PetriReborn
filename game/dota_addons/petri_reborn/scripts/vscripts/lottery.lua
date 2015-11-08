@@ -55,7 +55,7 @@ end
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 
-	local winner
+	local winner = math.random(1,4)
 
 	-- Check for same option
 	local sameOption = true
