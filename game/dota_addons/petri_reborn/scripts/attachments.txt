@@ -11,6 +11,14 @@
 				"0"		"attach_eye_r"
 			}
 		}
+				"models/heroes/terrorblade/demon.vmdl"
+		{
+			"particles/units/heroes/hero_terrorblade/terrorblade_demon_wing_trail.vpcf"
+			{
+				"0"		"attach_attack2"
+				"0"		"attach_attack1"
+			}
+		}
 		"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
 	  	{
 	   		"particles/econ/items/wraith_king/wraith_king_winterblight_weapon/wraith_king_winterblight_ambient.vpcf"
@@ -50,6 +58,226 @@
 			}
 		}
 	}	
+	"models/heroes/lich/lich.vmdl"
+	{
+		"attach_portrait"
+		{
+			"models/items/lich/imperialists_frost_biter/imperialists_frost_biter.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-238"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"12"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/lich/the_deadwinter_head/the_deadwinter_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-10"
+				"roll"		"0"
+				"ZPos"		"-211"
+				"YPos"		"4"
+				"yaw"		"-16"
+				"XPos"		"7"
+			}
+		}
+		"attach_legfrost"
+		{
+			"models/items/lich/imperialists_mana_chamber/imperialists_mana_chamber.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-1"
+				"YPos"		"-3"
+				"yaw"		"0"
+				"XPos"		"2"
+			}
+		}
+	}
+	"models/heroes/warlock/warlock.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivist_shoulders/archivist_shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-90"
+				"roll"		"0"
+				"ZPos"		"-122"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"7"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivist_head/archivist_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-82"
+				"roll"		"0"
+				"ZPos"		"-124"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"4"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivists_robe/archivists_robe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-77"
+				"roll"		"0"
+				"ZPos"		"-104"
+				"YPos"		"-2"
+				"yaw"		"-5"
+				"XPos"		"-2"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivist_facebag/archivist_facebag.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-98"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"-9"
+				"yaw"		"-11"
+				"XPos"		"3"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/warlock/archivist_lantern/archivist_lantern.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-5"
+				"YPos"		"3"
+				"yaw"		"0"
+				"XPos"		"-4"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/warlock/ceaseless/ceaseless.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"135"
+				"roll"		"45"
+				"ZPos"		"-189"
+				"YPos"		"-72"
+				"yaw"		"180"
+				"XPos"		"-35"
+			}
+		}
+	}
+	"models/heroes/necrolyte/necrolyte.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/necrolyte/heretic_head/heretic_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-69"
+				"roll"		"0"
+				"ZPos"		"-146"
+				"YPos"		"1.91"
+				"yaw"		"36"
+				"XPos"		"-6"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/necrolyte/heretic_hood/heretic_hood.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-69"
+				"roll"		"0"
+				"ZPos"		"-146"
+				"YPos"		"1.91"
+				"yaw"		"36"
+				"XPos"		"-6"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/necrolyte/heretic_shoulder/heretic_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-62"
+				"roll"		"0"
+				"ZPos"		"-123"
+				"YPos"		"0"
+				"yaw"		"5"
+				"XPos"		"19"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/necrolyte/heretic_weapon/heretic_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-102"
+				"YPos"		"32"
+				"yaw"		"180"
+				"XPos"		"-20"
+			}
+		}
+	}
+	"models/heroes/shadow_fiend/shadow_fiend.vmdl"
+	{
+		"attach_eyeL"
+		{
+			"models/heroes/shadow_fiend/shadow_fiend_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-62"
+				"roll"		"-90"
+				"ZPos"		"-174"
+				"YPos"		"-6"
+				"yaw"		"0"
+				"XPos"		"1"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/shadow_fiend/arms_deso/arms_deso.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"256"
+				"roll"		"90"
+				"ZPos"		"-103"
+				"YPos"		"-2"
+				"yaw"		"176"
+				"XPos"		"-1"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/heroes/shadow_fiend/shadow_fiend_shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-77"
+				"roll"		"90"
+				"ZPos"		"-116"
+				"YPos"		"0"
+				"yaw"		"180"
+				"XPos"		"3"
+			}
+		}
+	}
 	"models/heroes/drow/drow.vmdl"
 	{
 		"attach_eye_l"
@@ -134,6 +362,129 @@
 				"YPos"		"0"
 				"yaw"		"0"
 				"XPos"		"-69"
+			}
+		}
+	}
+	"models/heroes/pudge/pudge.vmdl"
+	{
+		"attach_arm_chain_lf"
+		{
+			"models/items/pudge/ftp_dendi_shoulder/ftp_dendi_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-51"
+				"roll"		"0"
+				"ZPos"		"-114"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+		}
+		"attach_eye_l"
+		{
+			"models/items/pudge/ftp_dendi_head/ftp_dendi_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-147"
+				"YPos"		"8.4"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+		}
+		"attach_arm_chain_rt"
+		{
+			"models/items/pudge/ftp_dendi_arm/ftp_dendi_arm.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-147"
+				"YPos"		"8.4"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/pudge/ftp_dendi_back/ftp_dendi_back.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-116"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"12"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/pudge/ftp_dendi_belt/ftp_dendi_belt.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"76"
+				"ZPos"		"-99"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"6"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/pudge/ftp_dendi_offhand/ftp_dendi_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"-90"
+				"ZPos"		"-100"
+				"YPos"		"-166"
+				"yaw"		"90"
+				"XPos"		"15"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/pudge/ftp_dendi_weapon/ftp_dendi_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"3"
+				"yaw"		"270"
+				"XPos"		"-77"
+			}
+		}
+	}
+	"models/heroes/vengeful/vengeful.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+			{
+				"scale"		"0"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-141"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-77"
+				"YPos"		"89"
+				"yaw"		"72"
+				"XPos"		"6"
 			}
 		}
 	}
@@ -284,6 +635,77 @@
 			}
 		}
 	}
+	"models/heroes/beastmaster/beastmaster.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
+			{
+				"scale"		"0.8"
+				"pitch"		"-6"
+				"roll"		"180"
+				"ZPos"		"-85"
+				"YPos"		"-138"
+				"yaw"		"55"
+				"XPos"		"-13"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/harbingerwar_weapon/harbingerwar_weapon.vmdl"
+			{
+				"scale"		"0.90"
+				"pitch"		"21"
+				"roll"		"0"
+				"ZPos"		"-58"
+				"YPos"		"123"
+				"yaw"		"253"
+				"XPos"		"2"
+			}
+		}
+	}
+	"models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
+			{
+			    "scale"  "0"
+			    "pitch"  "-104"
+			    "roll"  "0"
+			    "ZPos"  "-116"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-1"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-144"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
+			{
+				"scale"		"0.45"
+				"pitch"		"0"
+				"roll"		"-14"
+				"ZPos"		"-76"
+				"YPos"		"56"
+				"yaw"		"-90"
+				"XPos"		"-124"
+			}
+		}
+	}
 	"models/heroes/crystal_maiden/crystal_maiden.vmdl"
 	{
 		"attach_hitloc"
@@ -330,6 +752,16 @@
 	{
 		"attach_hitloc"
 		{
+			"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"-90"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-113"
+				"XPos"		"5"
+			}
 			"models/heroes/meepo/shoulders.vmdl"
 			{
 				"scale"		"1"
