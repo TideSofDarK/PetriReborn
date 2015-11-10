@@ -47,15 +47,11 @@ function InitLottery()
 	Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#init_lottery", duration=7, style={color="white", ["font-size"]="45px"}})
 end
 
-function RandomChange (percent)
-  assert(percent >= 0 and percent <= 100) 
-  return percent >= math.random(1, 100)
-end
-
 function SelectWinner()
 	if PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS) == 0 then return false end
 
 	local winner = math.random(1,4)
+	local participants = GetTableLength( GameMode.CURRENT_LOTTERY_PLAYERS )
 
 	-- Check for same option
 	local sameOption = true
@@ -88,6 +84,8 @@ function SelectWinner()
 		local allOptions = {}
 		local allMoney = 0
 		for i=1,4 do
+			allBets[i] = allBets[i] or 0
+			allOptions[i] = allOptions[i] or 0
 			for k,v in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 				if i == v["option"] then 
 					allBets[i] = allBets[i] or 0
@@ -117,14 +115,14 @@ function SelectWinner()
 		table.sort (allChances)
 
 		for i,v in ipairs(allChances) do
-			if RandomChange(v) == true or i == #allChances then
+			if RandomChange(v) == true or i == GetTableLength( allChances ) then
 				winner = winner or order[v]
 
 				for k1,v1 in pairs(GameMode.CURRENT_LOTTERY_PLAYERS) do
 					if winner == v1["option"] then 
-						v1["prize"] = math.min( math.floor((v1["bet"] * allMoney) / allBets[winner]), math.floor(v1["bet"] * (#GameMode.CURRENT_LOTTERY_PLAYERS / allOptions[v1["option"]])))
+						v1["prize"] = math.min( math.floor((v1["bet"] * allMoney) / allBets[winner]), math.floor(v1["bet"] * (participants / allOptions[v1["option"]])))
 					else
-						v1["prize"] = math.max( math.floor((v1["bet"] / allMoney) * allBets[winner]), math.floor(v1["bet"] * (allOptions[v1["option"]] / #GameMode.CURRENT_LOTTERY_PLAYERS)))
+						v1["prize"] = math.max( math.floor((v1["bet"] / allMoney) * allBets[winner]), math.floor(v1["bet"] * (allOptions[v1["option"]] / participants)))
 					end
 				end
 

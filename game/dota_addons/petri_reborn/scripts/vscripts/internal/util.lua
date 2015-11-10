@@ -173,7 +173,7 @@ function GetModifierCountByName(caster, target, modifierBuffName)
       currentStack = currentStack + 1
     end
   end
-  
+
   return currentStack
 end
 
@@ -611,6 +611,21 @@ function DebugPrintTable(...)
   if spew == 1 then
     PrintTable(...)
   end
+end
+
+function RandomChange (percent)
+  assert(percent >= 0 and percent <= 100) 
+  return percent >= math.random(1, 100)
+end
+
+function GetTableLength( t )
+  local length = 0
+
+  for k,v in pairs(t) do
+    length = length + 1
+  end
+
+  return length
 end
 
 function PrintTable(t, indent, done)
