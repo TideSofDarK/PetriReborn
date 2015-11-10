@@ -336,6 +336,214 @@
 	   		}
 	  	}
 	}
+		"models/heroes/life_stealer/life_stealer.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_barracks001_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_tower_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/coffin002.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/faceless_rex/faceless_rex.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/g1_courier/g1_courier_flying.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/nexon_turtle_17_gold/nexon_turtle_17_gold.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/techies/bigshot/fx_bigshot_stasis.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_ancient002.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/wards/stonebound_ward/stonebound_ward.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/invoker/forge_spirit/dark_sorcerer_forge_spirit/dark_sorcerer_forge_spirit.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_ancient_hulk.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+			"models/heroes/terrorblade/demon.vmdl"
+	{
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/terrorblade/endless_purgatory_weapon/endless_purgatory_weapon.vmdl"
+	   		{
+			    "scale"  "0.1"
+			    "pitch"  "180"
+			    "roll"  "90"
+			    "ZPos"  "-169"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-14"
+	   		}
+	  	}
+	}
 	"models/heroes/ursa/ursa.vmdl"
 	{
 		"attach_hitloc"
@@ -465,7 +673,7 @@
 		{
 			"models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
 			{
-				"scale"		"0"
+				"scale"		"1"
 				"pitch"		"0"
 				"roll"		"0"
 				"ZPos"		"-141"
@@ -639,15 +847,25 @@
 	{
 		"attach_attack2"
 		{
-			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
+			"models/items/centaur/graspofgluttony_weapon/graspofgluttony_weapon.vmdl"
 			{
 				"scale"		"0.8"
-				"pitch"		"-6"
-				"roll"		"180"
-				"ZPos"		"-85"
-				"YPos"		"-138"
-				"yaw"		"55"
-				"XPos"		"-13"
+				"pitch"		"180"
+				"roll"		"0"
+				"ZPos"		"-63"
+				"YPos"		"-142"
+				"yaw"		"214"
+				"XPos"		"-9"
+			}
+			"models/items/tuskarr/barrierrogue_tusk_weapon/barrierrogue_tusk_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-14"
+				"roll"		"173"
+				"ZPos"		"19"
+				"YPos"		"5"
+				"yaw"		"28"
+				"XPos"		"6"
 			}
 		}
 		"attach_attack1"
@@ -661,6 +879,16 @@
 				"YPos"		"123"
 				"yaw"		"253"
 				"XPos"		"2"
+			}
+			"models/items/sven/revenge_weapon/revenge_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-48"
+				"roll"		"280"
+				"ZPos"		"-103"
+				"YPos"		"-29"
+				"yaw"		"-147"
+				"XPos"		"-21"
 			}
 		}
 	}
