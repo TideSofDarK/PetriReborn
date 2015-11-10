@@ -11,7 +11,7 @@
 				"0"		"attach_eye_r"
 			}
 		}
-				"models/heroes/terrorblade/demon.vmdl"
+		"models/heroes/terrorblade/demon.vmdl"
 		{
 			"particles/units/heroes/hero_terrorblade/terrorblade_demon_wing_trail.vpcf"
 			{
