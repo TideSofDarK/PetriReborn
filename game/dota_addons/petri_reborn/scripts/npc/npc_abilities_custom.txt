@@ -1530,7 +1530,7 @@
 	
 	"petri_upgrade_gold_bag"
 	{
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      "petri_upgrade_gold_tower"
 	
@@ -1567,7 +1567,7 @@
 	    "RunScript"
 	    {
 	      "ScriptFile"      "units/gold_bag.lua"
-	      "Function"        "ToggleUpgrading"
+	      "Function"        "UpgradeOnce"
 	    }
 	  }
 	
@@ -1581,16 +1581,8 @@
 	
 	    "modifier_gold_bag_upgrading_autocast"
 	    {
+	      "Passive"   "1"
 	      "IsHidden"  "1"
-	
-	      "OnCreated"
-	      {
-	        "RunScript"
-	        {
-	          "ScriptFile"    "units/gold_bag.lua"
-	          "Function"      "Upgrade"
-	        }
-	      }
 	
 	      "ThinkInterval" "1.0"
 	      "OnIntervalThink"

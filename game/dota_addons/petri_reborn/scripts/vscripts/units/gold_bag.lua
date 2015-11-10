@@ -45,6 +45,10 @@ function Upgrade( event )
 	local ability = event.ability
 	local pID = caster:GetPlayerOwnerID()
 
+	if ability:GetAutoCastState() == false then
+		return false
+	end
+
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	local gold = PlayerResource:GetGold(pID)
 
@@ -67,6 +71,35 @@ function Upgrade( event )
 
 			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
 			ability:ToggleAbility()
+
+			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+		end
+	end
+end
+
+function UpgradeOnce( event )
+	local caster = event.caster
+	local ability = event.ability
+	local pID = caster:GetPlayerOwnerID()
+
+	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
+	local gold = PlayerResource:GetGold(pID)
+
+	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
+
+	if gold >= upgradeRate then
+		PlayerResource:SpendGold(pID, upgradeRate, 0)
+
+		GameMode.assignedPlayerHeroes[pID].goldBagStacks = goldModifier+1
+
+		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
+
+		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
+			caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
+
+			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
+			ToggleAbilityAutocastOff(ability)
 
 			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
 		end

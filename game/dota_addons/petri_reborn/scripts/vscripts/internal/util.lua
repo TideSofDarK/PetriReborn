@@ -251,6 +251,12 @@ function CheckShopType(item, itemType)
 end
 -- ITEMS
 
+function ToggleAbilityAutocastOff(ability)
+  if ability:GetAutoCastState() == true then 
+      ability:ToggleAutoCast()
+  end
+end
+
 function ToggleAbilityOff(ability)
   if ability:GetToggleState() == true then 
       ability:ToggleAbility()  
