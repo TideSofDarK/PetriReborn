@@ -118,6 +118,27 @@ function GameSetup:VoteEnd( args )
     end
   end
 
+  for k,v in pairs(results) do
+    if k == "bonus_item" then
+      if v == "trap" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_trap"
+        GameMode.KVN_BONUS_ITEM["count"] = 1
+      end
+      if v == "2_attack" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_attack_scroll"
+        GameMode.KVN_BONUS_ITEM["count"] = 2
+      end
+      if v == "2_evasion" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_evasion_scroll"
+        GameMode.KVN_BONUS_ITEM["count"] = 2
+      end
+      if v == "3_alcohol" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_alcohol"
+        GameMode.KVN_BONUS_ITEM["count"] = 3
+      end
+    end
+  end
+
   CustomGameEventManager:Send_ServerToAllClients("petri_vote_results", {["results"] = results} )
 end
 

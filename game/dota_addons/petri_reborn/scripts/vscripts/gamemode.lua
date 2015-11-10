@@ -34,6 +34,8 @@ end
 
 GameMode.PETRI_NAME_LIST = {}
 
+GameMode.KVN_BONUS_ITEM = {}
+
 require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
@@ -104,6 +106,12 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_gold_bag")
           newHero:AddItemByName("item_petri_trap")
           newHero:AddItemByName("item_petri_candy_4_kvn")
+
+          if GameMode.KVN_BONUS_ITEM then
+            for i=1,GameMode.KVN_BONUS_ITEM["count"] do
+              newHero:AddItemByName(GameMode.KVN_BONUS_ITEM["item"])
+            end
+          end
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
