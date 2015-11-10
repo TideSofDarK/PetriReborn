@@ -161,6 +161,22 @@ function RemoveGatheringAndRepairingModifiers(target)
   end
 end
 
+function GetModifierCountByName(caster, target, modifierBuffName)
+  local modifierCount = target:GetModifierCount()
+  local modifierName
+  local currentStack = 0
+
+  for i = 0, modifierCount do
+    modifierName = target:GetModifierNameByIndex(i)
+
+    if modifierName == modifierBuffName then
+      currentStack = currentStack + 1
+    end
+  end
+  
+  return currentStack
+end
+
 function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
   local modifier = target:FindModifierByName(modifierName)
   if modifier then

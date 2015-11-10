@@ -386,7 +386,7 @@ function RepairBy1Percent( event )
 	local ability = event.ability
 	local target = caster.repairingTarget
 
-	if not target or not target:IsAlive() then 
+	if target:IsNull() == true or not target or not target:IsAlive() then 
 		ability:ToggleAbility()
 
 		caster:RemoveModifierByName("modifier_chopping_building")
@@ -402,16 +402,21 @@ function RepairBy1Percent( event )
 	local maxHealth = target:GetMaxHealth()
 
 	-- if health < maxHealth then
-		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
+		if GetModifierCountByName(target,target,"modifier_being_repaired") < 4 then
 			ability:ApplyDataDrivenModifier(caster, caster, "petri_repair_rooted", {})
 
 			Timers:CreateTimer(0.06, function ()
 				caster:RemoveModifierByName("petri_repair_rooted")
 			end)	
 
-			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
+			ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
 
 			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
+
+			if caster:IsHero() == true and GetModifierCountByName(target,target,"modifier_being_repaired") <= 1 then
+				ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
+				healAmount = healAmount + healAmount
+			end
 
 			if health == maxHealth then
 				healAmount = 0

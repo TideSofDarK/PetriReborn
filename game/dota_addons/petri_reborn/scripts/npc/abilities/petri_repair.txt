@@ -148,6 +148,10 @@
     "modifier_being_repaired"
     {
       "IsHidden"  "1"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "Duration"  "1.0"
     }
   }
 }
