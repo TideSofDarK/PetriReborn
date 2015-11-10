@@ -70,6 +70,7 @@ function CheckSpellCost()
 	var manaCost = Abilities.GetManaCost( m_Ability );
     var lumberCost = Abilities.GetLevelSpecialValueFor( m_Ability, "lumber_cost", abilityLevel - 1 );
     var foodCost = Abilities.GetLevelSpecialValueFor( m_Ability, "food_cost", abilityLevel - 1 );
+    var isActivated =  	Abilities.IsActivated( m_Ability );
     var goldCost = 0;
 
     try
@@ -78,7 +79,7 @@ function CheckSpellCost()
     }
     catch( error ) { }
 
-    return !(manaCost > Entities.GetMana( m_QueryUnit ) ||
+    return !isActivated || !(manaCost > Entities.GetMana( m_QueryUnit ) ||
     	lumberCost > currentResources["lumber"] ||
     	(foodCost != 0 && currentResources["maxFood"] < currentResources["food"] + foodCost) ||
     	goldCost > gold);
@@ -100,6 +101,8 @@ function UpdateAbility()
     var foodCost = Abilities.GetLevelSpecialValueFor( m_Ability, "food_cost", abilityLevel - 1 );
     var goldCost = 0;
 
+    var isActivated = Abilities.IsActivated( m_Ability );
+
     try
     {
 	    goldCost = GameUI.CustomUIConfig().goldCosts [ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
@@ -107,17 +110,17 @@ function UpdateAbility()
     catch( error ) { }
 
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
-	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) );
+	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) || isActivated == false);
 	
-	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined ) );
-	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined ) );
-	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined ) );
-	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost ) );
+	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined || isActivated == false) );
+	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined || isActivated == false) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false) );
+	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false) );
 
-	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() );
+	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() || isActivated == false);
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
-	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility() ) );
+	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility()  ) );
 
 	abilityButton.enabled = ( isCastable || m_bInLevelUp );
 	
@@ -130,7 +133,7 @@ function UpdateAbility()
 	$( "#GoldCost" ).text = goldCost;
 	$( "#LumberCost" ).text = lumberCost;
 
-	if ( Abilities.IsCooldownReady( m_Ability ) )
+	if ( Abilities.IsCooldownReady( m_Ability ))
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
 		$.GetContextPanel().SetHasClass( "in_cooldown", false );

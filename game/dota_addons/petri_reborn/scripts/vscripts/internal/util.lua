@@ -402,7 +402,7 @@ function StartUpgrading (event)
     PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
     
     if not event["Permanent"] then
-      ability:SetHidden(true)
+      ability:SetActivated(false)
     else 
       local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
       local abilityName = ability:GetName()
@@ -410,7 +410,7 @@ function StartUpgrading (event)
       for k,v in pairs(all) do
         if v:HasAbility(abilityName) then
           local a = v:FindAbilityByName(abilityName)
-          a:SetHidden(true)
+          a:SetActivated(false)
         end
       end
     end
@@ -436,7 +436,7 @@ function StopUpgrading(event)
   caster.lastSpentFood = 0
 
   if not event["Permanent"] then
-    ability:SetHidden(false)
+    ability:SetActivated(true)
   else 
     local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
     local abilityName = ability:GetName()
@@ -444,7 +444,7 @@ function StopUpgrading(event)
     for k,v in pairs(all) do
       if v:HasAbility(abilityName) then
         local a = v:FindAbilityByName(abilityName)
-        a:SetHidden(false)
+        a:SetActivated(true)
       end
     end
   end
@@ -491,7 +491,7 @@ function OnUpgradeSucceeded(event)
         if level+1 == a:GetMaxLevel() then
           a:SetHidden(true)
         else 
-          a:SetHidden(false)
+          a:SetActivated(true)
         end
       end
     end
@@ -499,7 +499,7 @@ function OnUpgradeSucceeded(event)
     if level+1 == ability:GetMaxLevel() then
       ability:SetHidden(true)
     else 
-      ability:SetHidden(false)
+      ability:SetActivated(true)
     end
   end
 end
