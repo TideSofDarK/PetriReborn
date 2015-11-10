@@ -35,6 +35,8 @@ end
 GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
+GameMode.KVN_BONUS_ITEM["item"] = ""
+GameMode.KVN_BONUS_ITEM["count"] = 0
 
 require('libraries/timers')
 require('libraries/physics')
