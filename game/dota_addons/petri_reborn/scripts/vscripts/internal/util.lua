@@ -64,11 +64,13 @@ end
 
 function GiveSharedGoldToTeam(gold, team)
   for i=1,PlayerResource:GetPlayerCountForTeam(team) do
-    local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)] 
-    if IsValidEntity(hero) == true and hero.GetPlayerOwnerID then
-      PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+    if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)]  then
+      local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)] 
+      if IsValidEntity(hero) == true and hero.GetPlayerOwnerID then
+        PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
 
-      PlusParticle(gold, Vector(244,201,23), 3.0, hero)
+        PlusParticle(gold, Vector(244,201,23), 3.0, hero)
+      end
     end
   end
 end

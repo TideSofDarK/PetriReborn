@@ -358,23 +358,26 @@ function BuildingHelper:AddBuilding(keys)
   -- Create model ghost dummy out of the map, then make pretty particles
   player.activeBuildingTable.mgd = CreateUnitByName(unitName, OutOfWorldVector, false, nil, nil, builder:GetTeam())
 
+  local customScale = fMaxScale
+
   if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_tower_basic" then
     UpdateModel(player.activeBuildingTable.mgd, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
+  elseif player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_wall" then
+    UpdateModel(player.activeBuildingTable.mgd, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
+  else
+    customScale = SetCustomBuildingModel(player.activeBuildingTable.mgd, PlayerResource:GetSteamAccountID(player:GetPlayerID()))
   end
 
-  if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_wall" then
-    UpdateModel(player.activeBuildingTable.mgd, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
-  end
 
   --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
   player.activeBuildingTable.modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, player.activeBuildingTable.mgd, player)
   ParticleManager:SetParticleControlEnt(player.activeBuildingTable.modelParticle, 1, player.activeBuildingTable.mgd, 1, "follow_origin", player.activeBuildingTable.mgd:GetAbsOrigin(), true)            
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 3, Vector(MODEL_ALPHA,0,0))
-  ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 4, Vector(fMaxScale,0,0))
+  ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 4, Vector(customScale,0,0))
 
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 2, Vector(0,255,0))
 
-  CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = fMaxScale} )
+  CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = customScale} )
 end
 
 --[[
@@ -465,12 +468,14 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building:SetOwner(PlayerResource:GetPlayer(pID))
   building:SetHullRadius(building:GetHullRadius()+5)
 
+  local customScale
+
   if building:GetUnitName() == "npc_petri_tower_basic" then
     UpdateModel(building, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
-  end
-
-  if building:GetUnitName() == "npc_petri_wall" then
+  elseif building:GetUnitName() == "npc_petri_wall" then
     UpdateModel(building, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
+  else
+    customScale = SetCustomBuildingModel(building, PlayerResource:GetSteamAccountID(pID))
   end
 
   Timers:CreateTimer(function() building:SetAbsOrigin(location) end)
@@ -532,6 +537,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     local bScale = buildingTable:GetVal("Scale", "bool")
     -- the amount to scale to.
     local fMaxScale = buildingTable:GetVal("MaxScale", "float")
+    if customScale then fMaxScale = customScale end
     if fMaxScale == nil then
       fMaxScale = 1
     end

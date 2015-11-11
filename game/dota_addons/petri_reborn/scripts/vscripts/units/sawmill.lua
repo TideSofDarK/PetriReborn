@@ -25,6 +25,8 @@ function Upgrade (event)
 		caster:AddAbility("petri_upgrade_exchange")
 	end
 
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), sawmill_level+1)
+
 	InitAbilities(caster)
 end
 

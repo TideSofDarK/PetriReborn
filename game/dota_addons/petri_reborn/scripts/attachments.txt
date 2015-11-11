@@ -263,9 +263,6 @@
 				"yaw"		"176"
 				"XPos"		"-1"
 			}
-		}
-		"attach_hitloc"
-		{
 			"models/heroes/shadow_fiend/shadow_fiend_shoulders.vmdl"
 			{
 				"scale"		"1"
@@ -934,6 +931,7 @@
 			}
 		}
 	}
+	
 	"models/heroes/crystal_maiden/crystal_maiden.vmdl"
 	{
 		"attach_hitloc"
@@ -1350,6 +1348,22 @@
 				"XPos"		"-82"
 			}
 		}
+	}
+	"models/development/invisiblebox.vmdl"
+	{
+	 	"attach_origin"
+		{
+	   		"models/props_structures/coffin002.vmdl"
+		   	{
+			    "scale"  "1.7"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "180"
+			    "XPos"  "0"
+		   	}
+	  	}
 	}
 	"models/heroes/nightstalker/nightstalker.vmdl"
 	{

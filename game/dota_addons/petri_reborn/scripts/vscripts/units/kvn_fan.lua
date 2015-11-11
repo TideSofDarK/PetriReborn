@@ -21,6 +21,7 @@ function SpawnTrap(keys)
 	local caster = keys.caster
 
 	local trap = CreateUnitByName("npc_petri_trap", point,  true, nil, caster, caster:GetTeam())
+	SetCustomBuildingModel(trap, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
 
 	InitAbilities(trap)
 	trap:AddNewModifier(trap, nil, "modifier_kill", {duration = 240})
@@ -122,6 +123,7 @@ function SpawnGoldBag( keys )
 	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
+	SetCustomBuildingModel(bag, PlayerResource:GetSteamAccountID(pID))
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()
 

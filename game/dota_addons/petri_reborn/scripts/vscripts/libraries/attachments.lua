@@ -474,6 +474,9 @@ function Attachments:AttachProp(unit, attachPoint, model, scale, properties)
 
     --local new_prop = Entities:CreateByClassname("prop_dynamic")
     local prop = nil
+
+    unit.attachedModels = unit.attachedModels or {}
+
     if model.GetName and IsValidEntity(model) then
       prop = model
     else
@@ -510,6 +513,7 @@ function Attachments:AttachProp(unit, attachPoint, model, scale, properties)
       else        
         prop:SetParent(unit, attachPoint)
       end
+      table.insert(unit.attachedModels, prop)
     end
 
 

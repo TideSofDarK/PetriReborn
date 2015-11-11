@@ -46,6 +46,7 @@ require('libraries/attachments')
 require('libraries/animations')
 require('libraries/GameSetup')
 require('libraries/KickSystem')
+require('libraries/CustomBuildings')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
@@ -106,8 +107,6 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
-          newHero:AddItemByName("item_petri_trap")
-          newHero:AddItemByName("item_petri_candy_4_kvn")
 
           if GameMode.KVN_BONUS_ITEM then
             for i=1,GameMode.KVN_BONUS_ITEM["count"] do
@@ -330,6 +329,7 @@ function GameMode:InitGameMode()
   GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
 
   GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
+  GameMode.CustomBuildingsKVs = LoadKeyValues("scripts/kv/custom_buildings.kv")
   GameMode.VIPItemsKVs = LoadKeyValues("scripts/kv/vip_items.kv")
 
   GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
