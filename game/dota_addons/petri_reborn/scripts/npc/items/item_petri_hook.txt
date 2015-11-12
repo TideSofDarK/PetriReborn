@@ -13,6 +13,7 @@
   "ItemCost"            "16000"
   "ItemQuality"         "secret_shop"
   "ItemAliases"         "hook"
+  "ItemSellable"  "0"
   "SecretShop" "1"
   
   "precache"

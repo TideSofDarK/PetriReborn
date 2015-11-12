@@ -11,6 +11,7 @@
   "ItemShopTags"          "hard_to_tag"
   "ItemQuality"         "component"
   "ItemAliases"         "kvn medal"
+  "ItemSellable"  "0"
 
   "precache"
   {
