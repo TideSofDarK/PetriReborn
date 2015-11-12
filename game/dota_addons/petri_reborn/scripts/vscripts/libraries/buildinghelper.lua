@@ -358,7 +358,7 @@ function BuildingHelper:AddBuilding(keys)
   -- Create model ghost dummy out of the map, then make pretty particles
   player.activeBuildingTable.mgd = CreateUnitByName(unitName, OutOfWorldVector, false, nil, nil, builder:GetTeam())
 
-  local customScale = fMaxScale
+  local customScale
 
   if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_tower_basic" then
     UpdateModel(player.activeBuildingTable.mgd, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
@@ -368,16 +368,17 @@ function BuildingHelper:AddBuilding(keys)
     customScale = SetCustomBuildingModel(player.activeBuildingTable.mgd, PlayerResource:GetSteamAccountID(player:GetPlayerID()))
   end
 
+  if customScale then fMaxScale = customScale end
 
   --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
   player.activeBuildingTable.modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, player.activeBuildingTable.mgd, player)
   ParticleManager:SetParticleControlEnt(player.activeBuildingTable.modelParticle, 1, player.activeBuildingTable.mgd, 1, "follow_origin", player.activeBuildingTable.mgd:GetAbsOrigin(), true)            
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 3, Vector(MODEL_ALPHA,0,0))
-  ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 4, Vector(customScale,0,0))
+  ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 4, Vector(fMaxScale,0,0))
 
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 2, Vector(0,255,0))
 
-  CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = customScale} )
+  CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = fMaxScale} )
 end
 
 --[[

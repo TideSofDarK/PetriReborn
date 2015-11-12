@@ -1,4 +1,5 @@
 function SetCustomBuildingModel(building, steamID, level)
+	if not GameMode.CustomBuildingsKVs[tostring(steamID)] then return nil end
 	for k,v in pairs(GameMode.CustomBuildingsKVs[tostring(steamID)]) do
 		local name = building:GetUnitName()
 		if level then name = name.."_"..level end
