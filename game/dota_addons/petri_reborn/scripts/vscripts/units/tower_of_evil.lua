@@ -14,6 +14,8 @@ function Upgrade ( event   )
 		caster:SetModelScale(0.8)
 	end
 
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
+
 	local attack = ability:GetLevelSpecialValueFor("attack", tower_level)
 	local attack_rate = ability:GetLevelSpecialValueFor("attack_rate", tower_level)
 

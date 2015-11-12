@@ -451,6 +451,10 @@ function Spawn( t )
 
 	thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
 
+	Timers:CreateTimer(function ( )
+		SetCustomBuildingModel(thisEntity, PlayerResource:GetSteamAccountID(thisEntity:GetPlayerOwnerID()))
+	end)
+
 	Timers:CreateTimer(0.2, function()
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)
 

@@ -7,9 +7,18 @@ function SetCustomBuildingModel(building, steamID, level)
 		if k == name then
 			if type(v)=="table" then
 				local scale = building:GetModelScale()
+
+				local yaw = building:GetAngles()[2]
+
 				for k2,v2 in pairs(v) do
 			        if v2 == "scale" then
 			        	scale = tonumber(k2)
+			        end
+			    end
+
+			    for k2,v2 in pairs(v) do
+			        if v2 == "yaw" then
+			        	yaw = tonumber(k2)
 			        end
 			    end
 
@@ -30,6 +39,8 @@ function SetCustomBuildingModel(building, steamID, level)
 			        	Attachments:AttachProp(building, v2, k2, nil)
 			        end
 			    end
+
+			    building:SetAngles(building:GetAngles()[1], yaw, building:GetAngles()[3])
 
 			    return scale
 			else 

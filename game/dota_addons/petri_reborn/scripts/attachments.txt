@@ -127,9 +127,6 @@
 				"yaw"		"-7"
 				"XPos"		"4"
 			}
-		}
-		"attach_hitloc"
-		{
 			"models/items/warlock/archivists_robe/archivists_robe.vmdl"
 			{
 				"scale"		"1"
@@ -140,9 +137,6 @@
 				"yaw"		"-5"
 				"XPos"		"-2"
 			}
-		}
-		"attach_hitloc"
-		{
 			"models/items/warlock/archivist_facebag/archivist_facebag.vmdl"
 			{
 				"scale"		"1"
@@ -509,7 +503,7 @@
 	   		}
 	  	}
 	}
-	"models/creeps/lane_creeps/creep_dire_hulk/creep_dire_ancient_hulk.vmdl"
+	"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
 	{
 	  	"attach_head"
 	  	{
@@ -525,7 +519,23 @@
 	   		}
 	  	}
 	}
-			"models/heroes/terrorblade/demon.vmdl"
+	"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/terrorblade/demon.vmdl"
 	{
 	  	"attach_hitloc"
 	  	{
@@ -572,19 +582,6 @@
 	}
 	"models/heroes/pudge/pudge.vmdl"
 	{
-		"attach_arm_chain_lf"
-		{
-			"models/items/pudge/ftp_dendi_shoulder/ftp_dendi_shoulder.vmdl"
-			{
-				"scale"		"1"
-				"pitch"		"-51"
-				"roll"		"0"
-				"ZPos"		"-114"
-				"YPos"		"0"
-				"yaw"		"0"
-				"XPos"		"7"
-			}
-		}
 		"attach_eye_l"
 		{
 			"models/items/pudge/ftp_dendi_head/ftp_dendi_head.vmdl"
@@ -603,12 +600,12 @@
 			"models/items/pudge/ftp_dendi_arm/ftp_dendi_arm.vmdl"
 			{
 				"scale"		"1"
-				"pitch"		"0"
-				"roll"		"0"
+				"pitch"		"202"
+				"roll"		"-77"
 				"ZPos"		"-147"
-				"YPos"		"8.4"
-				"yaw"		"0"
-				"XPos"		"-43"
+				"YPos"		"42"
+				"yaw"		"69"
+				"XPos"		"17"
 			}
 		}
 		"attach_hitloc"
@@ -623,9 +620,6 @@
 				"yaw"		"90"
 				"XPos"		"12"
 			}
-		}
-		"attach_hitloc"
-		{
 			"models/items/pudge/ftp_dendi_belt/ftp_dendi_belt.vmdl"
 			{
 				"scale"		"1"
@@ -636,18 +630,25 @@
 				"yaw"		"90"
 				"XPos"		"6"
 			}
-		}
-		"attach_attack2"
-		{
+			"models/items/pudge/ftp_dendi_shoulder/ftp_dendi_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"14"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"4"
+				"yaw"		"104"
+				"XPos"		"6"
+			}
 			"models/items/pudge/ftp_dendi_offhand/ftp_dendi_offhand.vmdl"
 			{
 				"scale"		"1"
 				"pitch"		"0"
-				"roll"		"-90"
-				"ZPos"		"-100"
-				"YPos"		"-166"
-				"yaw"		"90"
-				"XPos"		"15"
+				"roll"		"-11"
+				"ZPos"		"-8"
+				"YPos"		"-52"
+				"yaw"		"111"
+				"XPos"		"-19"
 			}
 		}
 		"attach_attack1"
