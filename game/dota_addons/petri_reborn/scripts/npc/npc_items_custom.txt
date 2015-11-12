@@ -3302,7 +3302,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_nature"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "4500"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of nature"
@@ -3359,7 +3359,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_hell"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "7000"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of hell"
@@ -3416,7 +3416,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_heaven"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "8500"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of heaven"
@@ -3473,7 +3473,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_best_shield"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "31121"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "best shield"
@@ -3901,7 +3901,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_grond"
 	
-	  "ItemCost"            "7088"
+	  "ItemCost"            "5321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "grond"
@@ -3959,7 +3959,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_thunder"
 	
-	  "ItemCost"            "14176"
+	  "ItemCost"            "9121"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "thunder"
@@ -4017,7 +4017,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trident"
 	
-	  "ItemCost"            "19176"
+	  "ItemCost"            "14121"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "trident"
@@ -4409,7 +4409,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_superthing"
 	
-	  "ItemCost"            "2400"
+	  "ItemCost"            "2750"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "superthing"

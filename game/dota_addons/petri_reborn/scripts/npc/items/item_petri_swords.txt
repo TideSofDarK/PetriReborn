@@ -335,7 +335,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_grond"
 
-  "ItemCost"            "7088"
+  "ItemCost"            "5321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "grond"
@@ -393,7 +393,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_thunder"
 
-  "ItemCost"            "14176"
+  "ItemCost"            "9121"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "thunder"
@@ -451,7 +451,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_trident"
 
-  "ItemCost"            "19176"
+  "ItemCost"            "14121"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "trident"

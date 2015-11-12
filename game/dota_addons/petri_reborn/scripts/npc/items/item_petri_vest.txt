@@ -124,7 +124,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_superthing"
 
-  "ItemCost"            "2400"
+  "ItemCost"            "2750"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "superthing"
