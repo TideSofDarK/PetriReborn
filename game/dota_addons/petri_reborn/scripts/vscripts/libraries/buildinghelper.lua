@@ -360,13 +360,7 @@ function BuildingHelper:AddBuilding(keys)
 
   local customScale
 
-  if player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_tower_basic" then
-    UpdateModel(player.activeBuildingTable.mgd, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
-  elseif player.activeBuildingTable.mgd:GetUnitName() == "npc_petri_wall" then
-    UpdateModel(player.activeBuildingTable.mgd, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
-  else
-    customScale = SetCustomBuildingModel(player.activeBuildingTable.mgd, PlayerResource:GetSteamAccountID(player:GetPlayerID()))
-  end
+  customScale = SetCustomBuildingModel(player.activeBuildingTable.mgd, PlayerResource:GetSteamAccountID(player:GetPlayerID()))
 
   if customScale then fMaxScale = customScale end
 
@@ -471,13 +465,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
   local customScale
 
-  if building:GetUnitName() == "npc_petri_tower_basic" then
-    UpdateModel(building, "models/props_structures/wooden_sentry_tower001.vmdl", 1.0)
-  elseif building:GetUnitName() == "npc_petri_wall" then
-    UpdateModel(building, "models/props_debris/merchant_debris_chest002.vmdl", 1.0)
-  else
-    customScale = SetCustomBuildingModel(building, PlayerResource:GetSteamAccountID(pID))
-  end
+  customScale = SetCustomBuildingModel(building, PlayerResource:GetSteamAccountID(pID))
 
   Timers:CreateTimer(function() building:SetAbsOrigin(location) end)
 

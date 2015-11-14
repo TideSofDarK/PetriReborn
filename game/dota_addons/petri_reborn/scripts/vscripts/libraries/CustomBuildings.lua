@@ -1,6 +1,13 @@
 function SetCustomBuildingModel(building, steamID, level)
+	ParseCustomBuldingKVs("default", building, steamID, level)
+
 	if not GameMode.CustomBuildingsKVs[tostring(steamID)] then return nil end
-	for k,v in pairs(GameMode.CustomBuildingsKVs[tostring(steamID)]) do
+
+	return ParseCustomBuldingKVs(tostring(steamID), building, steamID, level)
+end
+
+function ParseCustomBuldingKVs(key, building, steamID, level)
+	for k,v in pairs(GameMode.CustomBuildingsKVs[key]) do
 		local name = building:GetUnitName()
 		if level then name = name.."_"..level end
 
@@ -44,12 +51,11 @@ function SetCustomBuildingModel(building, steamID, level)
 
 			    return scale
 			else 
-				UpdateModel(building, v, 1)
+				UpdateModel(building, v, building:GetModelScale())
 
-				return 1
+				return building:GetModelScale()
 			end
 			break
 		end
 	end
-	return 0
 end
