@@ -19,6 +19,29 @@
 				"0"		"attach_attack1"
 			}
 		}
+		"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+		{
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_flek.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_black.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_feather.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_smoke.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+		}
 		"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
 	  	{
 	   		"particles/econ/items/wraith_king/wraith_king_winterblight_weapon/wraith_king_winterblight_ambient.vpcf"
@@ -325,9 +348,42 @@
 			    "yaw"  "-80"
 			    "XPos"  "3"
 	   		}
+			"models/items/lina/x_hair_xxx/x_hair_xxx.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "126"
+			    "ZPos"  "4"
+			    "YPos"  "0"
+			    "yaw"  "-90"
+			    "XPos"  "185"
+	   		}
+	  	}
+		"attach_hitloc"
+	  	{
+	   		"models/heroes/lina/lina_belt.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-123"
+			    "roll"  "0"
+			    "ZPos"  "-149"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+			"models/items/lina/x_necklace_xxx/x_necklace_xxx.vmdl"
+	   		{
+			    "scale"  "-1.2"
+			    "pitch"  "-35"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "158"
+	   		}
 	  	}
 	}
-		"models/heroes/life_stealer/life_stealer.vmdl"
+	"models/heroes/life_stealer/life_stealer.vmdl"
 	{
 	  	"attach_head"
 	  	{
@@ -907,6 +963,16 @@
 		}
 		"attach_head"
 		{
+			"models/items/crystal_maiden/lusciouslocks_head/lusciouslocks_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-157"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
 			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
 			{
 				"scale"		"1"
@@ -920,6 +986,16 @@
 		}
 		"attach_attack1"
 		{
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"105"
+				"roll"		"-2"
+				"ZPos"		"0"
+				"YPos"		"-2"
+				"yaw"		"-90"
+				"XPos"		"-71"
+			}
 			"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
 			{
 				"scale"		"0.45"
@@ -1272,6 +1348,16 @@
 		}
 		"mouth"
 		{
+			"models/items/queenofpain/shadeofagony/shadeofagony.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-151"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-5"
+			}
 			"models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl"
 			{
 				"scale"		"1"
