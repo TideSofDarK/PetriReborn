@@ -18,7 +18,15 @@ function ParseCustomBuldingKVs(entry, building, level)
 
 	local yaw = building:GetAngles()[2]
 
+	local attack_speed = building:GetBaseAttackTime()
+
 	if type(v)=="table" then
+		for k2,v2 in pairs(v) do
+	        if v2 == "attack_speed" then
+	        	attack_speed = tonumber(k2)
+	        end
+	    end
+
 		for k2,v2 in pairs(v) do
 	        if v2 == "scale" then
 	        	scale = tonumber(k2)
@@ -48,6 +56,8 @@ function ParseCustomBuldingKVs(entry, building, level)
 	        	Attachments:AttachProp(building, v2, k2, nil)
 	        end
 	    end
+
+	    building:SetBaseAttackTime(attack_speed)
 
 	    building:SetAngles(building:GetAngles()[1], yaw, building:GetAngles()[3])
 	else 
