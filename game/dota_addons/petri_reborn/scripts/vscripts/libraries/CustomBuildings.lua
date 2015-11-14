@@ -5,20 +5,20 @@ function SetCustomBuildingModel(building, steamID, level)
 
 	local defaultScale = ParseCustomBuldingKVs(GameMode.CustomBuildingsKVs["default"][name], building, level)
 
-	if not GameMode.CustomBuildingsKVs[key][name] then return defaultScale end
+	if not GameMode.CustomBuildingsKVs[key] or not GameMode.CustomBuildingsKVs[key][name] then return defaultScale end
 
 	return ParseCustomBuldingKVs(GameMode.CustomBuildingsKVs[key][name], building, level)
 end
 
 function ParseCustomBuldingKVs(entry, building, level)
-	local v = entry
-	if not v then return 1.0 end
-
 	local scale = building:GetModelScale()
-
+	
 	local yaw = building:GetAngles()[2]
 
 	local attack_speed = building:GetBaseAttackTime()
+
+	local v = entry
+	if not v then return scale end
 
 	if type(v)=="table" then
 		for k2,v2 in pairs(v) do
