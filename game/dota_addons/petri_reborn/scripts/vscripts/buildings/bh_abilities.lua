@@ -134,10 +134,8 @@ function build( keys )
 
 		AddEntryToDependenciesTable(pID, ability_name, 1)
 
-		if unit:GetUnitName() == "npc_petri_idol" then
-			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
-			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol", origin = unit:GetAbsOrigin()})
-			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol",origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
+		if unit.onBuildingCompleted then
+			unit.onBuildingCompleted(unit)
 		end
 
 		unit:SetMana(unit:GetMaxMana())
