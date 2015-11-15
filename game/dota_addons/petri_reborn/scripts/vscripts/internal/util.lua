@@ -1,5 +1,5 @@
 function GetGoldTickModifier()
-  local time = math.floor(GameRules:GetDOTATime(false, false) / 60)
+  local time = GameMode.PETRI_TRUE_TIME
 
   if time >= 40 then
     return 0.0
@@ -32,7 +32,7 @@ function GetGoldTickModifier()
 end
 
 function GetGoldModifier()
-  local time = math.floor(GameRules:GetDOTATime(false, false) / 60)
+  local time = GameMode.PETRI_TRUE_TIME
 
   if time > 40 then
     return 10.0

@@ -32,6 +32,8 @@ if GameMode == nil then
     _G.GameMode = class({})
 end
 
+GameMode.PETRI_TRUE_TIME = 0
+
 GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
@@ -271,6 +273,12 @@ function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
   PETRI_GAME_HAS_STARTED = true
+
+  Timers:CreateTimer(1.0,
+    function()
+      GameMode.PETRI_TRUE_TIME = GameMode.PETRI_TRUE_TIME + 1
+      return 1.0
+    end)
 
   Timers:CreateTimer((PETRI_FIRST_LOTTERY_TIME * 60),
     function()

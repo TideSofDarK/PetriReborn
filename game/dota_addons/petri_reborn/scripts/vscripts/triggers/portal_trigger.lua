@@ -5,14 +5,14 @@ function CheckFarmPlaces(trigger, activator)
 			return true 
 		else
 			if string.match(triggerName, "portal_trigger_creep3") then
-				if GameRules:GetDOTATime(false, false) < 384 then
+				if GameMode.PETRI_TRUE_TIME < 384 then
 					return true 
 				end
 			end
 		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_b") then
-		if GameRules:GetDOTATime(false, false) > 1200 
+		if GameMode.PETRI_TRUE_TIME > 1200 
 			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 25000 then 
 			return false 
 		else 
@@ -21,7 +21,7 @@ function CheckFarmPlaces(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_c") then
-		if GameRules:GetDOTATime(false, false) > 1680 
+		if GameMode.PETRI_TRUE_TIME > 1680 
 			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 60000 then 
 			return false 
 		else 

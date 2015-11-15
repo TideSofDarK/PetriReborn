@@ -17,7 +17,7 @@ function InitLottery()
 
 	GameMode.CURRENT_BANK = DEFAULT_BANK_RATE * (PLAY_COUNT+1)
 
-	LOTTERY_START_TIME = GameRules:GetDOTATime(false, false) 
+	LOTTERY_START_TIME = GameMode.PETRI_TRUE_TIME
 
 	CustomGameEventManager:Send_ServerToAllClients("petri_start_exchange", {["exchange_time"] = PETRI_LOTTERY_DURATION * 60} )
 
