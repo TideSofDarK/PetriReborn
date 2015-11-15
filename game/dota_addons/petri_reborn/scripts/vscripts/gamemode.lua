@@ -128,6 +128,8 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.buildingCount = 0
 
+          newHero.uniqueUnitList = {}
+
           SetupUI(newHero)
           SetupUpgrades(newHero)
           SetupDependencies(newHero)

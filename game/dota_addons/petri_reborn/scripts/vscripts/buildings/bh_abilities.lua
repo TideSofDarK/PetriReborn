@@ -18,6 +18,7 @@ function build( keys )
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
 	local ability_name = ability:GetName()
+	local unit_name = GameMode.AbilityKVs[ability_name]["UnitName"]
 
 	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
@@ -39,8 +40,10 @@ function build( keys )
 	end
 
 	-- Cancel building if eye was already built
-	if ability:GetName() == "build_petri_exploration_tree" and hero.eyeWasBuilt == true then
-		return CancelBuilding(caster, ability, pID, "")
+	for k,v in pairs(hero.uniqueUnitList) do
+		if k == unit_name and v == true then
+			return CancelBuilding(caster, ability, pID, "")
+		end
 	end
 
 	player.waitingForBuildHelper = true
@@ -92,8 +95,8 @@ function build( keys )
 	keys:OnConstructionStarted(function(unit)
 		hero.buildingCount = hero.buildingCount + 1
 
-		if unit:GetUnitName() == "npc_petri_exploration_tree" then
-			hero.eyeWasBuilt = true
+		if GameMode.UnitKVs[unit_name]["Unique"] == 1 then
+			hero.uniqueUnitList[unit_name] = true
 		end
 
 		if unit:GetUnitName() == "npc_petri_exit" then

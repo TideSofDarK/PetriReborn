@@ -312,8 +312,9 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
   if killedUnit.hasNumber == true then
-    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
     hero.numberOfUnits = hero.numberOfUnits - 1
   end
 
@@ -364,6 +365,10 @@ function GameMode:OnEntityKilled( keys )
   -- Eye is killed
   if killedUnit:GetUnitName() == "npc_petri_exploration_tree" then
     GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].eyeWasBuilt = false
+  end
+
+  if GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] == 1 then
+    hero.uniqueUnitList[killedUnit:GetUnitName()] = false
   end
 
   -- Idol is killed
