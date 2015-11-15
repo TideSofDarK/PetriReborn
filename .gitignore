@@ -16,6 +16,8 @@
 
 *.sublime-workspace
 
+settings.kv
+
 # not sure...
 # game/dota_addons/petri_reborn/scripts/npc/abilities
 # game/dota_addons/petri_reborn/scripts/npc/heroes
