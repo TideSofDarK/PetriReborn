@@ -11,33 +11,9 @@
 				"0"		"attach_eye_r"
 			}
 		}
-		"models/heroes/terrorblade/demon.vmdl"
-		{
-			"particles/units/heroes/hero_terrorblade/terrorblade_demon_wing_trail.vpcf"
-			{
-				"0"		"attach_attack2"
-				"0"		"attach_attack1"
-			}
-		}
 		"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
 		{
 			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient.vpcf"
-			{
-				"0"		"attach_origin"
-			}
-			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_flek.vpcf"
-			{
-				"0"		"attach_origin"
-			}
-			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_black.vpcf"
-			{
-				"0"		"attach_origin"
-			}
-			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_feather.vpcf"
-			{
-				"0"		"attach_origin"
-			}
-			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient_smoke.vpcf"
 			{
 				"0"		"attach_origin"
 			}
@@ -1055,15 +1031,15 @@
 	{
 		"attach_hitloc"
 		{
-			"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+			"models/items/queenofpain/pw_lava_wings/queenofpain_back.vmdl"
 			{
 				"scale"		"0.9"
-				"pitch"		"-90"
+				"pitch"		"14"
 				"roll"		"0"
 				"yaw"		"0"
 				"YPos"		"0"
-				"ZPos"		"-113"
-				"XPos"		"5"
+				"ZPos"		"-8"
+				"XPos"		"-121"
 			}
 			"models/heroes/meepo/shoulders.vmdl"
 			{
@@ -1435,22 +1411,6 @@
 				"XPos"		"-82"
 			}
 		}
-	}
-	"models/development/invisiblebox.vmdl"
-	{
-	 	"attach_origin"
-		{
-	   		"models/props_structures/coffin002.vmdl"
-		   	{
-			    "scale"  "1.7"
-			    "pitch"  "0"
-			    "roll"  "0"
-			    "ZPos"  "0"
-			    "YPos"  "0"
-			    "yaw"  "180"
-			    "XPos"  "0"
-		   	}
-	  	}
 	}
 	"models/heroes/nightstalker/nightstalker.vmdl"
 	{
