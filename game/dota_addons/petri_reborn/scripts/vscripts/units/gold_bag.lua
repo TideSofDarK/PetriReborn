@@ -22,7 +22,7 @@ function GetGold( event )
 	local gold = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	
 	if caster:IsSilenced() == false then
-		PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + gold, false)
+		PlayerResource:ModifyGold(pID, gold, false, 0)
 	end
 end
 
@@ -66,14 +66,7 @@ function Upgrade( event )
 
 		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
 
-		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
-			caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
-
-			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
-			ability:ToggleAbility()
-
-			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
-		end
+		CheckLimit( caster, ability, upgradeLimit, GameMode.assignedPlayerHeroes[pID] )
 	end
 end
 
@@ -95,13 +88,23 @@ function UpgradeOnce( event )
 
 		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
 
-		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
-			caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
+		CheckLimit( caster, ability, upgradeLimit, GameMode.assignedPlayerHeroes[pID] )
+	end
+end
 
-			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
-			ToggleAbilityAutocastOff(ability)
+function CheckLimit( caster, ability, upgradeLimit, hero )
+	if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
+		caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
 
-			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+		caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
+		ability:ToggleAbility()
+
+		caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+
+		if not hero.bagRecord then
+			local time = GameMode.PETRI_TRUE_TIME
+			hero.bagRecord = string.format("%.2d:%.2d", time/60%60, time%60)
+			print(hero.bagRecord)
 		end
 	end
 end
