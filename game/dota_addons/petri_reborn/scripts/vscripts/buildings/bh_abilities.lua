@@ -105,14 +105,8 @@ function build( keys )
 
 		caster:EmitSound("ui.inv_pickup_wood")
 
-		-- Unit is the building be built.
-		-- Play construction sound
-		-- FindClearSpace for the builder
 		FindClearSpaceForUnit(keys.caster, keys.caster:GetAbsOrigin(), true)
 		unit.foodSpent = food_cost
-		-- Very bad solution
-		-- But when construction is started there is no way of cancelling it so...
-		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
 
 		local building_ability = unit:FindAbilityByName("petri_building")
 		if building_ability then building_ability:SetLevel(1) end

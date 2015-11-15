@@ -39,8 +39,9 @@ function GivePermissionToBuild( keys )
 
 	if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
 		if target.currentArea == caster.currentArea then
-			if caster.currentArea.claimers[0] == caster and #caster.currentArea.claimers < 3 then
-				caster.currentArea.claimers[#caster.currentArea.claimers + 1] = target
+			if caster.currentArea.claimers[0] == caster and GetTableLength( caster.currentArea.claimers ) < 3 then
+				print(GetTableLength( caster.currentArea.claimers ))
+				caster.currentArea.claimers[GetTableLength( caster.currentArea.claimers ) + 1] = target
 			end
 		end
 	end
