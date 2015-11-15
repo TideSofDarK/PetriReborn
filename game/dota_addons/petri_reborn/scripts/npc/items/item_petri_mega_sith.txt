@@ -20,7 +20,8 @@
 
   "AbilityManaCost"               "750"
 
-  "ItemCost"            "0"
+  "ItemCost"            "11750"
+  "ItemSellable"      "0"
   "ItemShopTags"          "mana_pool;str"
   "ItemQuality"         "unique"
   "ItemAliases"         "mega sith"
