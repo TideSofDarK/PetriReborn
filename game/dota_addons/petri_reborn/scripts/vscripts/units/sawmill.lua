@@ -44,7 +44,10 @@ function BuyLumber(keys)
 
 	local lumber = ability:GetSpecialValueFor("lumber")
 
-	GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()].lumber + lumber
+	caster:EmitSound("ui.inv_pickup_wood")
+	PlusParticle(lumber, Vector(10, 200, 90), 3.0, caster)
+
+	AddLumber( caster:GetPlayerOwner(), lumber )
 end
 
 function UpgradeExchange( keys )

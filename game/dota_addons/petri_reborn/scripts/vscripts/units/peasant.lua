@@ -232,7 +232,7 @@ function CheckBuildingPosition( event )
 		    
 		    EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "ui.inv_pickup_wood", caster) 
 		   
-			hero.lumber = hero.lumber + lumber_gathered 
+			AddLumber( hero:GetPlayerOwner(), lumber_gathered )
 		end
 
 		-- Return Ability Off

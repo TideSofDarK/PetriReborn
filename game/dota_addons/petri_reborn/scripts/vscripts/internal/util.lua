@@ -520,6 +520,14 @@ end
 
 -- End of upgrades
 
+function AddLumber( player, amount )
+  local playerID = player:GetPlayerID() 
+  local hero = player:GetAssignedHero() 
+
+  hero.lumber = hero.lumber + amount
+  hero.allGatheredLumber = hero.allGatheredLumber + amount
+end
+
 function ReturnGold(player)
   local playerID = player:GetPlayerID() 
   local hero = player:GetAssignedHero() 

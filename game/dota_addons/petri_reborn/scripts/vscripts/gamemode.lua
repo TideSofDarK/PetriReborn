@@ -124,6 +124,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.food = 0
           newHero.maxFood = 10
           newHero.allEarnedGold = 0
+          newHero.allGatheredLumber = 0
           newHero.numberOfUnits = 0
 
           newHero.buildingCount = 0

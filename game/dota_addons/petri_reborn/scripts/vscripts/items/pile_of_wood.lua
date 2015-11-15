@@ -12,5 +12,5 @@ function Use( event )
 
 	PlusParticle(amount, Vector(10, 200, 90), 1.0, caster)
 
-	hero.lumber = hero.lumber + amount
+	AddLumber( hero:GetPlayerOwner(), amount )
 end
