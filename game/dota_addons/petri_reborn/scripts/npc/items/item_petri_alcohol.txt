@@ -43,10 +43,10 @@
       "ModifierName"    "modifier_item_petri_alcohol_active"
     }
 
-    "RemoveModifier"
+    "RunScript"
     {
-      "ModifierName"  "modifier_snare"
-      "Target"     "CASTER"
+      "ScriptFile"  "items/alcohol.lua"
+      "Function"    "RemoveSnare"
     }
     
     "SpendCharge"
