@@ -15,7 +15,7 @@ var timer = 0;
 var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10, "#game_setup_host_vote" ],
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 5, "#game_setup_build_delay_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_bonus_item.xml", 10, "#game_setup_game_length_vote" ],
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_bonus_item.xml", 10, "#game_setup_bonus_item_vote" ],
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 5, "#game_setup_use_miniactors_vote" ]
 ]; 
 
