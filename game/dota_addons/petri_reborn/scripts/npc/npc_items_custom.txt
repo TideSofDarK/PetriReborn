@@ -48,7 +48,7 @@
 	    "RemoveModifier"
 	    {
 	      "ModifierName"  "modifier_snare"
-	      "Target"     "TARGET"
+	      "Target"     "CASTER"
 	    }
 	    
 	    "SpendCharge"
