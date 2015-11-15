@@ -1,7 +1,16 @@
 function Spawn( keys )
-	thisEntity:AddAbility("petri_invulnerable_creep")
-	InitAbilities(thisEntity)
-	thisEntity:SetAttackCapability(0)
+    print("asdsa")
+    if thisEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS then -- Guys in cells
+        thisEntity:AddAbility("petri_invulnerable_creep")
+        InitAbilities(thisEntity)
+        thisEntity:SetAttackCapability(0)
+    else 
+        FindClearSpaceForUnit(thisEntity, thisEntity:GetAbsOrigin(),true)
+        print("asdsa")
+        Timers:CreateTimer(0.03, function (  )
+            thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
+        end)
+    end
 end
 
 function ApplyDamageReduction( keys )

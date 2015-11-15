@@ -6,6 +6,8 @@
   "Level"           "5"
   "HealthBarOffset"     "140"
 
+  "vscripts"     "units/creep.lua"
+
   "Ability1"  "petri_creep_swipes"
 
   "ArmorPhysical"       "3"

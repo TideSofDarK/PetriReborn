@@ -6,6 +6,8 @@
   "Level"           "2"
   "HealthBarOffset"     "140"
 
+  "vscripts"     "units/creep.lua"
+
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 

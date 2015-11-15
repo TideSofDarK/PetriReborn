@@ -144,6 +144,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf", context)
 
+  PrecacheResource("particle", "particles/items2_fx/shadow_amulet_activate_runes.vpcf", context)
+  
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
 end

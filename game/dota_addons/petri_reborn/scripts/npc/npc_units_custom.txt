@@ -353,6 +353,8 @@
 	  "HealthBarOffset"     "140"
 	  "GameSoundsFile"      "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	
+	  "vscripts"     "units/creep.lua"
+	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
@@ -397,6 +399,8 @@
 	  "SoundSet"          "Creep_Good_Melee"  
 	  "Level"           "3"
 	  "HealthBarOffset"     "140"
+	
+	  "vscripts"     "units/creep.lua"
 	
 	  "Ability1"  "petri_creep_swipes"
 	
@@ -445,6 +449,8 @@
 	  "Level"           "6"
 	  "HealthBarOffset"     "160"
 	
+	  "vscripts"     "units/creep.lua"
+	
 	  "Ability1"  "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "15"
@@ -491,6 +497,8 @@
 	  "Level"           "2"
 	  "HealthBarOffset"     "140"
 	
+	  "vscripts"     "units/creep.lua"
+	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
@@ -534,6 +542,8 @@
 	  "ModelScale"        "1.1"
 	  "Level"           "5"
 	  "HealthBarOffset"     "140"
+	
+	  "vscripts"     "units/creep.lua"
 	
 	  "Ability1"  "petri_creep_swipes"
 	
@@ -631,6 +641,8 @@
 	  "ModelScale"        "1.0"
 	  "Level"           "4"
 	  "HealthBarOffset"     "140"
+	
+	  "vscripts"     "units/creep.lua"
 	
 	  "Ability1"  "petri_creep_swipes"
 	

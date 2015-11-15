@@ -474,9 +474,17 @@ function GameMode:OnEntityKilled( keys )
       end)
       
     end
+    
+    Timers:CreateTimer(0.4,
+    function()
+      local particleName = "particles/items2_fx/shadow_amulet_activate_runes.vpcf"
+      local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, killedUnit )
+      ParticleManager:SetParticleControl( particle, 0, killedUnit.spawnPosition )
+    end)
+
     Timers:CreateTimer(0.5,
     function()
-      CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
+      local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit.spawnPosition,true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
   end
 end
