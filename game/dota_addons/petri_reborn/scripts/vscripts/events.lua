@@ -367,7 +367,7 @@ function GameMode:OnEntityKilled( keys )
     GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].eyeWasBuilt = false
   end
 
-  if GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] == 1 then
+  if GameMode.UnitKVs[killedUnit:GetUnitName()] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] == 1 then
     hero.uniqueUnitList[killedUnit:GetUnitName()] = false
   end
 
@@ -479,12 +479,12 @@ function GameMode:OnEntityKilled( keys )
     function()
       local particleName = "particles/items2_fx/shadow_amulet_activate_runes.vpcf"
       local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, killedUnit )
-      ParticleManager:SetParticleControl( particle, 0, killedUnit.spawnPosition )
+      ParticleManager:SetParticleControl( particle, 0, killedUnit:GetAbsOrigin() )
     end)
 
     Timers:CreateTimer(0.5,
     function()
-      local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit.spawnPosition,true, nil,nil,DOTA_TEAM_NEUTRALS)
+      local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
   end
 end
