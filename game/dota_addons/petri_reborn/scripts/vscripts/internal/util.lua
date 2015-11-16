@@ -1,5 +1,5 @@
 function GetGoldTickModifier()
-  local time = GameMode.PETRI_TRUE_TIME
+  local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
 
   if time >= 40 then
     return 0.0
@@ -32,7 +32,7 @@ function GetGoldTickModifier()
 end
 
 function GetGoldModifier()
-  local time = GameMode.PETRI_TRUE_TIME
+  local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
 
   if time > 40 then
     return 10.0
