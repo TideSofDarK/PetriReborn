@@ -27,8 +27,6 @@ function EnqueueUnit( event, food )
 
 	-- Queue up to 6 units max
 	if #ability.queue < 6 then
-		caster.queueFood = caster.queueFood or 0
-		caster.queueFood = caster.queueFood + tonumber(event.food)
 
 		if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
 			return 
@@ -85,12 +83,8 @@ function DequeueUnit( event )
 	local train_ability_name = string.gsub(item_ability_name, "item_", "")
 	local train_ability = caster:FindAbilityByName(train_ability_name)
 	local gold_cost = train_ability:GetGoldCost( train_ability:GetLevel() - 1 )
-
-	local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
-
-	caster.queueFood = caster.queueFood - foodToReturn
 
 	if Debug_Queue then
 		print("Start dequeue")
@@ -119,6 +113,7 @@ function DequeueUnit( event )
 
 	            hero.numberOfUnits = hero.numberOfUnits - 1
 
+	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
 	            hero.food = hero.food - foodToReturn
 
@@ -172,6 +167,7 @@ function NextQueue( event )
 	local ability = event.ability
 	ability:SetChanneling(false)
 	--print("Move next!")
+
 	-- Dequeue
 	--DeepPrintTable(event)
 	local hAbility = EntIndexToHScript(ability:GetEntityIndex())
@@ -187,10 +183,6 @@ function NextQueue( event )
         	if train_ability_name == hAbility:GetAbilityName() then
 
         		local train_ability = caster:FindAbilityByName(train_ability_name)
-
-        		local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
-
-				caster.queueFood = caster.queueFood - foodToReturn
 
         		if Debug_Queue then
 	        		print("Q")
@@ -234,7 +226,6 @@ function AdvanceQueue( event )
 					--	ability = human_train_footman
 					-- 	item = item_human_train_footman
 					local train_ability_name = string.gsub(item_name, "item_", "")
-					local train_ability = caster:FindAbilityByName(train_ability_name)
 
 					local ability_to_channel = caster:FindAbilityByName(train_ability_name)
 
@@ -252,9 +243,6 @@ function AdvanceQueue( event )
 						end
 						if IsValidEntity(item) then
 							ability_to_channel:EndChannel(false)
-
-
-
 							ReorderItems(caster, ability_to_channel.queue)
 							if Debug_Queue then
 								print("Unit finished building")
