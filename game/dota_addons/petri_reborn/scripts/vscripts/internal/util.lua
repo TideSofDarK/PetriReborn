@@ -401,10 +401,6 @@ function StartUpgrading (event)
     hero.lumber = hero.lumber - lumber_cost
     hero.food = hero.food + food_cost
 
-    caster.lastSpentLumber = lumber_cost
-    caster.lastSpentGold = gold_cost
-    caster.lastSpentFood = food_cost
-
     caster.foodSpent = caster.foodSpent + food_cost
 
     PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
@@ -431,17 +427,17 @@ function StopUpgrading(event)
 
   local hero = caster:GetPlayerOwner():GetAssignedHero() 
 
-  caster.lastSpentLumber = caster.lastSpentLumber or 0
-  caster.lastSpentGold = caster.lastSpentGold or 0
-  caster.lastSpentFood = caster.lastSpentFood or 0
+  local level = ability:GetLevel() - 1
 
-  hero.lumber = hero.lumber + caster.lastSpentLumber
-  hero.food = hero.food - caster.lastSpentFood
-  PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+  local gold_cost = ability:GetGoldCost(level) or 0
+  local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
+  local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
-  caster.lastSpentLumber = 0
-  caster.lastSpentGold = 0
-  caster.lastSpentFood = 0
+  hero.lumber = hero.lumber + lumber_cost
+  hero.food = hero.food - food_cost
+  PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+
+  caster.foodSpent = caster.foodSpent - food_cost
 
   if not event["Permanent"] then
     ability:SetActivated(true)
@@ -468,10 +464,6 @@ function OnUpgradeSucceeded(event)
   local level = ability:GetLevel()
 
   ability:SetLevel(level+1)
-
-  caster.lastSpentLumber = 0
-  caster.lastSpentGold = 0
-  caster.lastSpentFood = 0
 
   if caster:HasAbility("petri_upgrade") == false then
     caster:AddAbility("petri_upgrade")
