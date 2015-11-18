@@ -433,7 +433,11 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     if callbacks.onConstructionFailed ~= nil then
       callbacks.onConstructionFailed(work)
     end
-    ParticleManager:DestroyParticle(work.particleIndex, true)
+    if work.particleIndex then
+      ParticleManager:DestroyParticle(work.particleIndex, true)
+    else
+      callbacks.onConstructionFailed(work)
+    end
     return
   end
 
