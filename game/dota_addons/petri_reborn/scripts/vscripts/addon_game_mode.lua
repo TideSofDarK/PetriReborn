@@ -4,6 +4,7 @@ require('gamemode')
 
 function Precache( context )
   SendToServerConsole( "dota_combine_models 0" )
+  SendToConsole( "dota_combine_models 0" )
   
   -- ITEMS
   PrecacheItemByNameSync("item_petri_pile_of_wood", context)

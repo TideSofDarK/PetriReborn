@@ -332,6 +332,7 @@ function GameMode:InitGameMode()
   GameMode = self
 
   SendToServerConsole( "dota_combine_models 0" )
+  SendToConsole( "dota_combine_models 0" )
 
   GameMode:_InitGameMode()
 
