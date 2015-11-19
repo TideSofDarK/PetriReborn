@@ -362,9 +362,8 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
-  -- Eye is killed
-  if killedUnit:GetUnitName() == "npc_petri_exploration_tree" then
-    GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].eyeWasBuilt = false
+  if killedUnit:GetUnitName() == "npc_petri_sawmill" and killedUnit.queueFood then
+    hero.food = hero.food - killedUnit.queueFood
   end
 
   if GameMode.UnitKVs[killedUnit:GetUnitName()] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] == 1 then
