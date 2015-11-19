@@ -435,9 +435,11 @@ function StopUpgrading(event)
   caster.lastSpentGold = caster.lastSpentGold or 0
   caster.lastSpentFood = caster.lastSpentFood or 0
 
-  hero.lumber = hero.lumber + caster.lastSpentLumber
-  hero.food = hero.food - caster.lastSpentFood
-  PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+  if caster:IsAlive() then
+    hero.lumber = hero.lumber + caster.lastSpentLumber
+    hero.food = hero.food - caster.lastSpentFood
+    PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+  end
 
   caster.lastSpentLumber = 0
   caster.lastSpentGold = 0

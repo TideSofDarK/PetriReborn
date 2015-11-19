@@ -36,6 +36,9 @@ function EnqueueUnit( event, food )
 			hero.numberOfUnits = hero.numberOfUnits + 1
 		end
 
+		caster.queueFood = caster.queueFood or 0
+		caster.queueFood = caster.queueFood + tonumber(event.food)
+
 		local ability_name = ability:GetAbilityName()
 		local item_name = "item_"..ability_name
 		local item = CreateItem(item_name, caster, caster)
@@ -116,6 +119,8 @@ function DequeueUnit( event )
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
 	            hero.food = hero.food - foodToReturn
+
+	            caster.queueFood = caster.queueFood - foodToReturn
 
 	            if Debug_Queue then
 					print("Refund ",gold_cost)
@@ -241,9 +246,12 @@ function AdvanceQueue( event )
 							print("===Queue Table====")
 							DeepPrintTable(ability_to_channel.queue)
 						end
-						if IsValidEntity(item) then
+						if IsValidEntity(item) and IsValidEntity(caster) then
 							ability_to_channel:EndChannel(false)
 							ReorderItems(caster, ability_to_channel.queue)
+
+							caster.queueFood = caster.queueFood - ability_to_channel:GetLevelSpecialValueFor("food_cost", 1)
+
 							if Debug_Queue then
 								print("Unit finished building")
 							end

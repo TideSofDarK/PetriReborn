@@ -332,12 +332,15 @@ function GameMode:InitGameMode()
   GameMode = self
 
   SendToServerConsole( "dota_combine_models 0" )
+  SendToConsole( "dota_combine_models 0" )
 
   GameMode:_InitGameMode()
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
 
   GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
+
+  GameMode.WallsKVs = LoadKeyValues("scripts/kv/walls.kv")
 
   GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
   GameMode.CustomBuildingsKVs = LoadKeyValues("scripts/kv/custom_buildings.kv")
