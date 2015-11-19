@@ -4459,6 +4459,143 @@
 	    "01"            "item_petri_supermegavest"
 	  }
 	}
+	"item_petri_vip_frostbite"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1970"
+	  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_vip_frostbite"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_body_ambient_base_smoke.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_bark_steam.vpcf"
+	    "particle"  "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "200"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "hero_Crystal.frostbite"
+	      "Target"        "TARGET"
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "ModifierName"      "modifier_vip_frostbite_active"
+	      "Target"            "TARGET"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	
+	      "EffectName"        "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
+	          "EffectAttachType"  "attach_origin"
+	          "Target" "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_body_ambient_base_smoke.vpcf"
+	          "EffectAttachType"  "attach_hitloc"
+	          "Target" "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_bark_steam.vpcf"
+	          "EffectAttachType"  "attach_mouth"
+	          "Target" "CASTER"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
 	"item_petri_vip_laguna"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -4487,6 +4624,7 @@
 	  "precache"
 	  {
 	    "particle"  "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+	    "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
 	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 	  }
 	
@@ -4540,6 +4678,28 @@
 	      "Passive"      "1"
 	      "IsHidden"      "1"
 	      "IsBuff"      "1"
+	
+	      "OnCreated"
+	      {
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "attach_attack1"
+	          }
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "attach_attack2"
+	          }
+	        }
+	      }
 	    
 	      "Properties"
 	      {

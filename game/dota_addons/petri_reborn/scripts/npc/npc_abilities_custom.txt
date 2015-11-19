@@ -1278,6 +1278,11 @@
 	      "ModifierName"  "modifier_earth_regen"
 	      "Target"     "CASTER"
 	    }
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_earth_stun"
+	      "Target"     "CASTER"
+	    }
 	  }
 	  
 	  "Modifiers"
@@ -1336,7 +1341,6 @@
 	
 	    "modifier_earth_stun"
 	    {
-	      "Passive" "1"
 	      "IsHidden"                  "1"
 	      "IsBuff"                     "1"
 	
