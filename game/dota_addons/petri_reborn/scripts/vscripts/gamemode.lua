@@ -339,6 +339,8 @@ function GameMode:InitGameMode()
 
   GameMode.BuildingMenusKVs = LoadKeyValues("scripts/kv/building_menus.kv")
 
+  GameMode.WallsKVs = LoadKeyValues("scripts/kv/walls.kv")
+
   GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
   GameMode.CustomBuildingsKVs = LoadKeyValues("scripts/kv/custom_buildings.kv")
   GameMode.VIPItemsKVs = LoadKeyValues("scripts/kv/vip_items.kv")

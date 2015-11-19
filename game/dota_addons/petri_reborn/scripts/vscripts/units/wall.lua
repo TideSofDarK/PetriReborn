@@ -12,104 +12,20 @@ function Upgrade (event)
 
 	caster:RemoveModifierByName("modifier_building")
 
-	if wall_level == 1 then
-		caster:SetOriginalModel(GetModelNameForLevel(1))
-		caster:SetModel(GetModelNameForLevel(1))
-		caster:SetModelScale(3.35)
+	SetWallModel(caster, wall_level)
 
+	if caster:FindAbilityByName("petri_wall_glyph") then 
+		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false) 
+	end
+
+	if wall_level == 1 then
 		caster:AddAbility("petri_wall_glyph")
 		InitAbilities(caster)
-	elseif wall_level == 2 then 
-		caster:SetOriginalModel(GetModelNameForLevel(2))
-		caster:SetModel(GetModelNameForLevel(2))
-		caster:SetModelScale(0.8)
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 3 then
-		caster:SetOriginalModel(GetModelNameForLevel(3))
-		caster:SetModel(GetModelNameForLevel(3))
-		caster:SetModelScale(2.4)
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 4 then
-		caster:SetOriginalModel(GetModelNameForLevel(4))
-		caster:SetModel(GetModelNameForLevel(4))
-		caster:SetModelScale(2.4)
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 5 then
-		caster:SetOriginalModel(GetModelNameForLevel(5))
-		caster:SetModel(GetModelNameForLevel(5))
-		caster:SetModelScale(4.3)
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 6 then
-		caster:SetOriginalModel(GetModelNameForLevel(6))
-		caster:SetModel(GetModelNameForLevel(6))
-		caster:SetModelScale(3.0)
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 7 then
-		caster:SetOriginalModel(GetModelNameForLevel(7))
-		caster:SetModel(GetModelNameForLevel(7))
-		caster:SetModelScale(1.2)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 8 then
-		caster:SetOriginalModel(GetModelNameForLevel(8))
-		caster:SetModel(GetModelNameForLevel(8))
-		caster:SetModelScale(1.2)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 9 then
-		caster:SetOriginalModel(GetModelNameForLevel(9))
-		caster:SetModel(GetModelNameForLevel(9))
-		caster:SetModelScale(1.3)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 10 then
-		caster:SetOriginalModel(GetModelNameForLevel(10))
-		caster:SetModel(GetModelNameForLevel(10))
-		caster:SetModelScale(1.3)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
-	elseif wall_level == 11 then
-		caster:SetOriginalModel(GetModelNameForLevel(11))
-		caster:SetModel(GetModelNameForLevel(11))
-		caster:SetModelScale(2.05)
-
-		caster:SetAngles(-19, -45, -28)
-
-		local oldPos = caster:GetAbsOrigin()
-		oldPos.z = oldPos.z + 96
-		caster:SetAbsOrigin(oldPos)
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
 	elseif wall_level == 12 then
-		caster:SetOriginalModel(GetModelNameForLevel(12))
-		caster:SetModel(GetModelNameForLevel(12))
-		caster:SetModelScale(0.81)
-
-		local oldPos = caster:GetAbsOrigin()
-		oldPos.z = oldPos.z - 96
-		caster:SetAbsOrigin(oldPos)
-
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_roshan_gold", {})
-
-		StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
-
-		caster:FindAbilityByName("petri_wall_glyph"):UpgradeAbility(false)
 	end
+	
+	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
 
 function UpdateAttributes(wall, level, ability)
@@ -129,31 +45,29 @@ function UpdateAttributes(wall, level, ability)
 	wall:SetModifierStackCount("modifier_armor", wall, newArmor)
 end
 
-function GetModelNameForLevel(level)
-	if level == 1 then
-		return "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl"
-	elseif level == 2 then 
-		return "models/props_rock/riveredge_rock008a.vmdl"
-	elseif level == 3 then
-		return "models/props_magic/bad_crystals002.vmdl"
-	elseif level == 4 then
-		return "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl"
-	elseif level == 5 then
-		return "models/heroes/oracle/crystal_ball.vmdl"
-	elseif level == 6 then
-		return "models/props_items/bloodstone.vmdl"
-	elseif level == 7 then
-		return "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"
-	elseif level == 8 then
-		return "models/heroes/undying/undying_flesh_golem.vmdl"
-	elseif level == 9 then
-		return "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl"
-	elseif level == 10 then
-		return "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
-	elseif level == 11 then
-		return "models/creeps/roshan/aegis.vmdl"
-	elseif level == 12 then
-		return "models/creeps/roshan/roshan.vmdl"
+function SetWallModel(wall, level)
+	local wallTable = GameMode.WallsKVs[wall:GetUnitName()][tostring(level+1)]
+	for k,v in pairs(wallTable["model"]) do
+		if v == "model" then 
+			wall:SetOriginalModel(k)
+			wall:SetModel(k)
+			break
+		end
+	end
+	wall:SetModelScale(tonumber(wallTable["scale"]))
+
+	if wallTable["zOffset"] then
+		local zOffset = tonumber(wallTable["zOffset"])
+
+		local oldPos = wall:GetAbsOrigin()
+		oldPos.z = oldPos.z + zOffset
+		wall:SetAbsOrigin(oldPos)
+	else 
+	end
+
+	if wallTable["angles"] then
+		wall:SetAngles(tonumber(wallTable["angles"]["x"]), tonumber(wallTable["angles"]["y"]), tonumber(wallTable["angles"]["z"]))
+	else 
 	end
 end
 
