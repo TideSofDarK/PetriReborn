@@ -26,6 +26,7 @@
   "precache"
   {
     "particle"  "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+    "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
   }
 
@@ -79,6 +80,28 @@
       "Passive"      "1"
       "IsHidden"      "1"
       "IsBuff"      "1"
+
+      "OnCreated"
+      {
+        "FireEffect"
+        {
+          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "attach_attack1"
+          }
+        }
+        "FireEffect"
+        {
+          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "attach_attack2"
+          }
+        }
+      }
     
       "Properties"
       {

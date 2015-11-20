@@ -1,0 +1,141 @@
+"petri_earth_wall_passive"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"            "rubick_empty1"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "regen_cooldown"      "20"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
+    }
+    "03"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "stun_cooldown"      "20"
+    }
+  }
+
+  "OnUpgrade"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_earth_regen"
+      "Target"     "CASTER"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_earth_stun"
+      "Target"     "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_earth_passive"
+    {
+      "Passive" "1"
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "OnAttacked"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_earth_attacked"
+          "Target"     "CASTER"
+        }
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_earth_regen"
+          "Target"     "CASTER"
+        }
+
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_attacked"
+          "Target"     "CASTER"
+        }
+      }
+    }
+    "modifier_earth_attacked"
+    {
+      "Duration"  "%regen_cooldown"
+      "IsHidden"                  "0"
+      "IsDebuff"                     "1"
+
+      "OnDestroy"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_regen"
+          "Target"     "CASTER"
+        }
+      }
+    }
+    "modifier_earth_regen"
+    {
+      "IsHidden"                  "0"
+      "IsBuff"                     "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "5.0"
+      }
+    }
+
+    "modifier_earth_stun"
+    {
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "OnAttackLanded"
+      {
+        "Random"
+        {
+          "Chance"      "%stun_chance"
+          "OnSuccess"
+          {
+            "RemoveModifier"
+            {
+              "ModifierName"  "modifier_earth_stun"
+              "Target"     "CASTER"
+            }
+            "ApplyModifier"
+            {
+              "ModifierName"  "modifier_earth_stun_cooldown"
+              "Target"     "CASTER"
+            }
+          }
+          "OnFailure"
+          {
+
+          }
+        }
+      }
+    }
+
+    "modifier_earth_stun_cooldown"
+    {
+      "Duration"  "%stun_cooldown"
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "OnDestroy"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_stun"
+          "Target"     "CASTER"
+        }
+      }
+    }
+  }  
+}
