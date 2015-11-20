@@ -1,0 +1,20 @@
+"petri_upgrade_to_earth_wall"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "earth_spirit_petrify"
+  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
+
+  "AbilityGoldCost"       "1"
+
+  "MaxLevel"            "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/earth_wall.lua"
+      "Function"        "UpgradeToEarthWall"
+    }
+  }
+}

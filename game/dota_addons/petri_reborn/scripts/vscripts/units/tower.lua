@@ -15,6 +15,7 @@ function UpgradeDeath (event)
 
 	caster:RemoveAbility("petri_upgrade_ice_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
+	caster:RemoveAbility("petri_upgrade_to_earth_wall")
 
 	UpdateAttributes(TOWER_DEATH, ability)
 end
@@ -30,6 +31,7 @@ function UpgradeIce (event)
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
+	caster:RemoveAbility("petri_upgrade_to_earth_wall")
 
 	caster:AddAbility("petri_animated_tower")
 	caster:FindAbilityByName("petri_animated_tower"):UpgradeAbility(false)
@@ -50,6 +52,7 @@ function UpgradeFire (event)
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_ice_tower")
+	caster:RemoveAbility("petri_upgrade_to_earth_wall")
 
 	caster:AddAbility("petri_animated_tower")
 	caster:FindAbilityByName("petri_animated_tower"):UpgradeAbility(false)
@@ -72,6 +75,7 @@ function UpgradeElements (event)
 	caster:AddAbility("petri_upgrade_fire_tower")
 	caster:AddAbility("petri_upgrade_death_tower")
 	caster:AddAbility("petri_upgrade_ice_tower")
+	caster:AddAbility("petri_upgrade_to_earth_wall")
 
 	caster:SwapAbilities("petri_upgrade_fire_tower", "petri_empty1", true, false)
 	caster:SwapAbilities("petri_upgrade_death_tower", "petri_empty2", true, false)

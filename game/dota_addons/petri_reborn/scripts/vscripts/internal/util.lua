@@ -405,6 +405,7 @@ function StartUpgrading (event)
     caster.lastSpentGold = gold_cost
     caster.lastSpentFood = food_cost
 
+    caster.foodSpent = caster.foodSpent or 0
     caster.foodSpent = caster.foodSpent + food_cost
 
     PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)

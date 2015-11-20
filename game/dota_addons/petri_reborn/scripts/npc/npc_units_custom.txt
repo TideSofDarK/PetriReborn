@@ -465,7 +465,7 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "70.0"
+	  "BountyGoldMin"       "69.0"
 	  "BountyGoldMax"       "70.0"
 	  "BountyXP"          "275"  
 	
@@ -559,8 +559,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "39.0"
-	  "BountyGoldMax"       "40.0"
+	  "BountyGoldMin"       "38.0"
+	  "BountyGoldMax"       "39.0"
 	  "BountyXP"          "150"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -682,11 +682,11 @@
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRONG"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	}
-	"npc_petri_wall"
+	"npc_petri_earth_wall"
 	{
 	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/heroes/omniknight/omniknight.vmdl"  
-	  "ModelScale"                "0.6"
+	  "ModelScale"                "0.8"
 	  "SoundSet"          "Creep_Good_Range"  
 	  "Level"           "1"
 	  "HealthBarOffset"    "301"
@@ -700,14 +700,17 @@
 	  "ArmorPhysical"       "30"     
 	  "MagicalResistance"       "0"     
 	
-	  "AttackCapabilities"  "DOTA_UNIT_CAP_RANGED_ATTACK"
-	  "AttackDamageMin"    "30.0"
-	  "AttackDamageMax"    "30.0"
-	  "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackRate"    "1"
-	  "AttackAnimationPoint"  "0.433"
-	  "AttackAcquisitionRange" "500"
-	  "AttackRange"     "90"  
+	  "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"
+	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+	  "AttackDamageMin"     "30.0"
+	  "AttackDamageMax"     "30.0"
+	  "AttackRate"        "0.3"
+	  "AttackAnimationPoint"    "0.39"
+	  "AttackAcquisitionRange"  "500"
+	  "AttackRange"       "90"
+	
+	  "ProjectileModel"            "particles/neutral_fx/mud_golem_hurl_boulder.vpcf"
+	  "ProjectileSpeed"            "900"
 	
 	  "BountyXP"          "0"     
 	  "BountyGoldMin"       "5"     
@@ -1586,16 +1589,10 @@
 	  "UnitLabel"         "npc_petri_tower_basic"
 	  "HealthBarOffset"    "195"
 	
-	  "AbilityLayout"     "4"
+	  "AbilityLayout"     "5"
 	  "Ability1"        "petri_upgrade_basic_tower"
 	  "Ability2"        "petri_upgrade_elements_tower"
-	  "Ability3"        "petri_empty1"
-	  "Ability4"        "petri_empty2"
-	  "Ability5"        "petri_empty3"
-	  "Ability6"        "petri_empty4"
-	  "Ability7"        "petri_empty5"
-	  "Ability8"        "petri_empty6"
-	  "Ability9"        "petri_building"
+	  "Ability3"        "petri_building"
 	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     

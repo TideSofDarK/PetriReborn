@@ -2,24 +2,41 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"            "rubick_empty1"
+  "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
+
+  "MaxLevel"            "10"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "regen_cooldown"      "20"
+      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
     }
     "02"
     {
       "var_type"      "FIELD_INTEGER"
-      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
+      "regen_cooldown"      "20"
     }
     "03"
     {
+      "var_type"          "FIELD_FLOAT"
+      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0"
+    }
+    "04"
+    {
       "var_type"      "FIELD_INTEGER"
       "stun_cooldown"      "20"
+    }
+    "05"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "damage"        "50 100 200 400 750 1000 2000 4000 5000"
+    }
+    "06"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
     }
   }
 
@@ -64,11 +81,18 @@
           "Target"     "CASTER"
         }
       }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%regeneration"
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%damage"
+        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"  "%attack_range_bonus"
+      }
     }
     "modifier_earth_attacked"
     {
       "Duration"  "%regen_cooldown"
-      "IsHidden"                  "0"
+      "IsHidden"                  "1"
       "IsDebuff"                     "1"
 
       "OnDestroy"
@@ -82,7 +106,7 @@
     }
     "modifier_earth_regen"
     {
-      "IsHidden"                  "0"
+      "IsHidden"                  "1"
       "IsBuff"                     "1"
 
       "Properties"
@@ -103,6 +127,12 @@
           "Chance"      "%stun_chance"
           "OnSuccess"
           {
+            "ApplyModifier"
+            {
+              "ModifierName"  "modifier_stunned"
+              "Target"     "TARGET"
+              "Duration"    "1.6"
+            }
             "RemoveModifier"
             {
               "ModifierName"  "modifier_earth_stun"

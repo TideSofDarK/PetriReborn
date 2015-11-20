@@ -8,16 +8,10 @@
   "UnitLabel"         "npc_petri_tower_basic"
   "HealthBarOffset"    "195"
 
-  "AbilityLayout"     "4"
+  "AbilityLayout"     "5"
   "Ability1"        "petri_upgrade_basic_tower"
   "Ability2"        "petri_upgrade_elements_tower"
-  "Ability3"        "petri_empty1"
-  "Ability4"        "petri_empty2"
-  "Ability5"        "petri_empty3"
-  "Ability6"        "petri_empty4"
-  "Ability7"        "petri_empty5"
-  "Ability8"        "petri_empty6"
-  "Ability9"        "petri_building"
+  "Ability3"        "petri_building"
 
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     

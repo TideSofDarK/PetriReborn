@@ -28,6 +28,26 @@ function Upgrade (event)
 	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
 
+function UpgradeEarth (event)
+	local caster = event.caster
+	local ability = event.ability
+
+	ability:SetHidden(false)
+
+	local wall_level = ability:GetLevel()
+
+	UpdateAttributes(caster, wall_level, ability)
+
+	local passive = caster:FindAbilityByName("petri_earth_wall_passive")
+	passive:UpgradeAbility(false)
+
+	caster:RemoveModifierByName("modifier_building")
+
+	SetWallModel(caster, wall_level)
+	
+	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
+end
+
 function UpdateAttributes(wall, level, ability)
 	local newHealth = ability:GetLevelSpecialValueFor("health_points", level - 1)
 	local newArmor = ability:GetLevelSpecialValueFor("armor", level - 1)
@@ -51,8 +71,11 @@ function SetWallModel(wall, level)
 		if v == "model" then 
 			wall:SetOriginalModel(k)
 			wall:SetModel(k)
-			break
 		end
+
+        if v ~= "model" then
+          Attachments:AttachProp(wall, v, k, nil)
+        end
 	end
 	wall:SetModelScale(tonumber(wallTable["scale"]))
 

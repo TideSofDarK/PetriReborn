@@ -49,10 +49,24 @@ function CheckDependencies()
 	for(var name in dependencies)
 	{
 		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
-		if (table[name] == undefined)
-			return false;
+		if (table[name] == undefined) flag = false;
 
 		flag = flag && (table[name] >= dependencies[name]);
+	}
+
+	if (flag == false) {
+		flag = true;
+
+		dependencies = GameUI.CustomUIConfig().dependencies[abilityName + "_alt"];
+
+		for(var name in dependencies)
+		{
+			var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
+			if (table[name] == undefined)
+				return false;
+
+			flag = flag && (table[name] >= dependencies[name]);
+		}
 	}
 
 	return flag;

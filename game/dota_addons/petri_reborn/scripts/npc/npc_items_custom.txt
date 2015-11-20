@@ -4490,6 +4490,7 @@
 	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
 	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_body_ambient_base_smoke.vpcf"
 	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_bark_steam.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
 	    "particle"  "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
 	  }
@@ -4514,7 +4515,7 @@
 	    "04"
 	    {
 	      "var_type"                  "FIELD_INTEGER"
-	      "bonus_hp"    "200"
+	      "bonus_hp"    "500"
 	    }
 	  }
 	
@@ -4587,6 +4588,13 @@
 	          "EffectAttachType"  "attach_mouth"
 	          "Target" "CASTER"
 	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
+	          "EffectAttachType"  "attach_hitloc"
+	          "Target" "CASTER"
+	        } 
 	      }
 	
 	      "Properties"

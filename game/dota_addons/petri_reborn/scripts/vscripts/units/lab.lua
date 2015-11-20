@@ -52,7 +52,7 @@ function ApplyDamageAura(event)
 	
 	for k,v in pairs(units) do
 		if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and
-			v:HasAbility("petri_building") then
+			v:HasAbility("petri_building") and v:GetAttackCapability() == 2 then
 
 			ability:ApplyDataDrivenModifier(caster, v, "modifier_damage", {})
 

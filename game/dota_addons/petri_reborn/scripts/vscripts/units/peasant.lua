@@ -307,7 +307,7 @@ function StartRepairing(event)
 	local target = event.target
 	local ability = event.ability
 
-	if target:GetUnitName() == "npc_petri_exit" then return end
+	if target:GetUnitName() == "npc_petri_exit" or target:GetUnitName() == "npc_petri_earth_wall" then return end
 
 	-- if target:GetHealthPercent() == 100 then
 	-- 	Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
