@@ -275,6 +275,22 @@
 			}
 		}
 	}
+	"models/heroes/pedestal/effigy_pedestal_ti5.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/props_structures/gryphon_statue001.vmdl"
+			{
+				"scale"		"0.25"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"9"
+			}
+		}
+	}
 	"models/heroes/drow/drow.vmdl"
 	{
 		"attach_eye_l"
@@ -366,7 +382,23 @@
 	   		}
 	  	}
 	}
-	"models/heroes/life_stealer/life_stealer.vmdl"
+	"models/heroes/earthshaker/earthshaker.vmdl"
+	{
+	  	"attach_totem"
+	  	{
+	   		"models/heroes/earthshaker/totem.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "102"
+			    "ZPos"  "-149"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "16"
+	   		}
+	  	}
+	}
+	"models/items/earth_spirit/demon_stone_summon/demon_stone_summon.vmdl"
 	{
 	  	"attach_head"
 	  	{
