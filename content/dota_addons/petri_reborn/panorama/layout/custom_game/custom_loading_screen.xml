@@ -4,11 +4,11 @@
   </styles>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
-      <Image class="Background" src="file://{images}/custom_game/loading_screen/petri_background.png" />
-      <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" />
+      <Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+      <!-- <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" /> -->
       <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
-      <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
+      <!-- <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" /> -->
     </Panel>
 
     <Panel id="PlaceholdersRoot" >
@@ -24,8 +24,8 @@
       <Image src="file://{images}/custom_game/sn/sn.png" />
     </Panel>
 
-    <Panel id="TitlePanel">
+<!--     <Panel id="TitlePanel">
       <Label id="AddonTitle" text="#addon_game_name" style="" />
-    </Panel>
+    </Panel> -->
   </Panel>
 </root>

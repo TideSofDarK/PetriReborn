@@ -263,7 +263,7 @@ function SetupUI(newHero)
         maxFood = newHero.maxFood
     }
     CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-    if PlayerResource:GetConnectionState(pID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.35 end
+    if PlayerResource:GetConnectionState(pID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.1 end
   end)
 end
 

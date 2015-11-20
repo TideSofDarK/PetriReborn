@@ -1,4 +1,4 @@
-@define TotalLength: 40s;
+@define TotalLength: 70s;
 @define TimingFunc: linear;
 @define IterationCount: infinite;
 @define AnimationDelay: 0s;
@@ -56,7 +56,7 @@
 {
   width: 750px;
   height: 300px;
-  margin-top: 490px;
+  margin-top: 690px;
   margin-left: 25px;
 }
 
