@@ -1556,6 +1556,11 @@
 	
 	  "MaxLevel"            "9"
 	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf"
+	  }
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -1581,6 +1586,12 @@
 	      "ScriptFile"      "units/gold_tower.lua"
 	      "Function"        "GetGold"
 	      "gold" "%gold"
+	    }
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf"
+	      "EffectAttachType"  "follow_overhead"
+	      "Target"            "CASTER"
 	    }
 	  }
 	
