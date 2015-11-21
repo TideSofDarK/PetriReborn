@@ -1,8 +1,8 @@
 "npc_petri_earth_wall"
 {
-  "BaseClass"         "npc_dota_base_additive"
-  "Model"           "models/heroes/omniknight/omniknight.vmdl"  
-  "ModelScale"                "0.8"
+  "BaseClass"         "npc_dota_brewmaster_earth"
+  "Model"           "models/heroes/brewmaster/brewmaster_earthspirit.vmdl"  
+  "ModelScale"                "0.95"
   "SoundSet"          "Creep_Good_Range"  
   "Level"           "1"
   "HealthBarOffset"    "301"
@@ -20,8 +20,8 @@
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
   "AttackDamageMin"     "30.0"
   "AttackDamageMax"     "30.0"
-  "AttackRate"        "0.3"
-  "AttackAnimationPoint"    "0.39"
+  "AttackRate"        "0.9"
+  "AttackAnimationPoint"    "0.2"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 

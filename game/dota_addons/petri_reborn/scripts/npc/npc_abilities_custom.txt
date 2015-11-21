@@ -1254,6 +1254,15 @@
 	
 	  "MaxLevel"            "10"
 	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetized_ring.vpcf"
+	    "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
+	    "particle"  "particles/econ/events/ti4/bottle_ti4.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+	  }
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -1310,6 +1319,16 @@
 	      "IsHidden"                  "1"
 	      "IsBuff"                     "1"
 	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_ambient.vpcf"
+	          "EffectAttachType"  "follow_origin"
+	          "Target"            "CASTER"
+	        }
+	      }
+	
 	      "OnAttacked"
 	      {
 	        "RemoveModifier"
@@ -1350,12 +1369,29 @@
 	          "ModifierName"  "modifier_earth_regen"
 	          "Target"     "CASTER"
 	        }
+	        "FireSound"
+	        {
+	          "EffectName"  "Hero_EarthSpirit.Magnetize.Cast"
+	          "Target"     "CASTER"
+	        }
 	      }
 	    }
 	    "modifier_earth_regen"
 	    {
 	      "IsHidden"                  "1"
 	      "IsBuff"                     "1"
+	
+	      "EffectName"     "particles/econ/events/ti4/bottle_ti4.vpcf"      
+	      "EffectAttachType"  "10"
+	
+	      "OnDestroy"
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"  "Hero_EarthSpirit.Magnetize.End"
+	          "Target"     "CASTER"
+	        }
+	      }
 	
 	      "Properties"
 	      {
@@ -1375,6 +1411,17 @@
 	          "Chance"      "%stun_chance"
 	          "OnSuccess"
 	          {
+	            "FireSound"
+	            {
+	              "EffectName"  "Hero_EarthShaker.Totem"
+	              "Target"    "CASTER"
+	            }
+	            "FireEffect"
+	            {
+	              "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
+	              "EffectAttachType"  "follow_origin"
+	              "Target"            "TARGET"
+	            }
 	            "ApplyModifier"
 	            {
 	              "ModifierName"  "modifier_stunned"
@@ -4710,7 +4757,6 @@
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      "earth_spirit_petrify"
 	
-	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
 	
 	  "AbilityChannelTime"      "4.0"
