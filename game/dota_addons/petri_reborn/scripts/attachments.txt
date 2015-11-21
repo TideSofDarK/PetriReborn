@@ -446,6 +446,22 @@
 	   		}
 	  	}
 	}
+	"models/props_structures/bad_ancient_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
 	"models/props_structures/coffin002.vmdl"
 	{
 	  	"attach_head"
