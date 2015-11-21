@@ -47,7 +47,7 @@ function CandyRepair(keys)
 	local healAmount = 3 + (target:GetMaxHealth() * 0.02015)
 
 	target:Heal(healAmount, caster)
-	PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, target)
+	PopupParticle(math.floor(healAmount), Vector(50,221,60), 0.7, target)
 end
 
 function CandyBonusKVNDamage( keys )

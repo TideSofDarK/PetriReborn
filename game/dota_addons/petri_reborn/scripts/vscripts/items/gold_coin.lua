@@ -8,7 +8,7 @@ function Use( event )
 	
 	local amount = math.floor(GameRules:GetDOTATime(false,false) * goldModifier  / 60)
 
-	PlusParticle(amount, Vector(244,201,23), 1.0, caster)
+	PopupParticle(amount, Vector(244,201,23), 1.0, caster)
 
 	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), amount, true, 0)
 end

@@ -20,7 +20,7 @@ POPUP_SYMBOL_POST_POINTFIVE = 8
 
 function GetGoldTickModifier()
   local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
-
+  
   if time >= 40 then
     return 0.0
   elseif time >= 33 and time < 40 then
@@ -89,7 +89,7 @@ function GiveSharedGoldToTeam(gold, team)
       if IsValidEntity(hero) == true and hero.GetPlayerOwnerID then
         PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
 
-        PlusParticle(gold, Vector(244,201,23), 3.0, hero)
+        PopupParticle(gold, Vector(244,201,23), 3.0, hero)
       end
     end
   end
@@ -219,13 +219,20 @@ function AddStackableModifierWithDuration(caster, target, ability, modifierName,
 end
 -- MODIFIERS
 
-function PlusParticle(number, color, duration, caster, preSymbol, postSymbol)
+function PopupParticle(number, color, duration, caster, preSymbol, postSymbol)
   if number < 1 then
     return false
   end
-  symbolType = symbolType or POPUP_SYMBOL_PRE_PLUS
   local pfxPath = string.format("particles/msg_fx/msg_gold.vpcf", pfx)
-  local pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster, caster:GetPlayerOwner())
+
+  local pidx
+
+  if caster:GetPlayerOwner() == nil then
+    pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+  else
+    pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster, caster:GetPlayerOwner())
+  end
+
   local color = color
   local lifetime = duration
   local digits = #tostring(number) + 1

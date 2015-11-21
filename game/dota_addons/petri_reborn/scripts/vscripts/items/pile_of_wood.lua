@@ -10,7 +10,7 @@ function Use( event )
 
 	local amount = math.floor(GameMode.PETRI_TRUE_TIME * woodModifier / 60)
 
-	PlusParticle(amount, Vector(10, 200, 90), 1.0, caster)
+	PopupParticle(amount, Vector(10, 200, 90), 1.0, caster)
 
 	AddLumber( hero:GetPlayerOwner(), amount )
 end

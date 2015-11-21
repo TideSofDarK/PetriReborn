@@ -52,7 +52,7 @@ function Attack( keys )
         }
         ApplyDamage( damage_table )
         
-        PlusParticle(average_damage * current_stack, Vector(240,30,0), 0.315, target, nil, POPUP_SYMBOL_POST_SKULL)
+        PopupParticle(average_damage * current_stack, Vector(240,30,0), 0.47, caster, nil, POPUP_SYMBOL_POST_DROP)
         
         ability:ApplyDataDrivenModifier( target, target, modifierName, { Duration = duration } )
         target:SetModifierStackCount( modifierName, target, current_stack + 1 )
@@ -127,6 +127,6 @@ function KivinGoldTick(keys)
 
     if GameRules:IsDaytime() == false and target:IsRealHero() == true then
         PlayerResource:ModifyGold(target:GetPlayerOwnerID(), GetGoldTickModifier(), false, 0) 
-        PlusParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
+        PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
     end
 end
