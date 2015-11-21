@@ -44,8 +44,6 @@ function UpgradeEarth (event)
 	caster:RemoveModifierByName("modifier_building")
 
 	SetWallModel(caster, wall_level)
-	
-	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
 end
 
 function UpdateAttributes(wall, level, ability)
