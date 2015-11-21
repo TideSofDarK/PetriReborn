@@ -3,7 +3,7 @@
   "BaseClass"         "npc_dota_brewmaster_earth"
   "Model"           "models/heroes/brewmaster/brewmaster_earthspirit.vmdl"  
   "ModelScale"                "0.95"
-  "SoundSet"          "Creep_Good_Range"  
+  "SoundSet"          "Brewmaster_Earth"  
   "Level"           "1"
   "HealthBarOffset"    "301"
   

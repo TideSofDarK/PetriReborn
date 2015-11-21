@@ -74,8 +74,8 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_exit", context)
 
   -- towers
-  PrecacheResource("model", "models/props_structures/tower_good3_dest_lvl1.vmdl", context)
-  PrecacheResource("model", "models/items/invoker/forge_spirit/infernus/infernus.vmdl", context)
+  PrecacheResource("model", "models/props_structures/tower_good.vmdl", context)
+  PrecacheResource("model", "models/items/invoker/forge_spirit/arsenal_magus_forged_spirit/arsenal_magus_forged_spirit.vmdl", context)
   PrecacheResource("model", "models/heroes/ancient_apparition/ancient_apparition.vmdl", context)
   PrecacheResource("model", "models/heroes/undying/undying_tower.vmdl", context)
 
@@ -147,6 +147,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf", context)
 
   PrecacheResource("particle", "particles/items2_fx/shadow_amulet_activate_runes.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_base_attack.vpcf", context)
   
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)

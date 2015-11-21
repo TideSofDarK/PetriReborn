@@ -26,7 +26,7 @@ function UpgradeIce (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.58 + (tower_level/30))
+	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.70 + (tower_level/30))
 	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "cold")
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
@@ -47,7 +47,7 @@ function UpgradeFire (event)
 
 	local tower_level = ability:GetLevel()
 
-	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.58 + (tower_level/30))
+	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.78 + (tower_level/30))
 	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "fire")
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
@@ -84,6 +84,8 @@ function UpgradeElements (event)
 	InitAbilities(caster)
 
 	UpdateAttributes(TOWER_ELEMENTS, ability)
+
+	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.0})
 end
 
 function UpgradeBasic (event)
@@ -101,9 +103,9 @@ end
 
 function GetModelNameForTower(tower)
 	if tower == TOWER_ELEMENTS then 
-		return "models/props_structures/tower_good3_dest_lvl1.vmdl"
+		return "models/props_structures/tower_good.vmdl"
 	elseif tower == TOWER_FIRE then 
-		return "models/items/invoker/forge_spirit/infernus/infernus.vmdl"
+		return "models/items/invoker/forge_spirit/arsenal_magus_forged_spirit/arsenal_magus_forged_spirit.vmdl"
 	elseif tower == TOWER_ICE then 
 		return "models/heroes/ancient_apparition/ancient_apparition.vmdl"
 	elseif tower == TOWER_DEATH then 
@@ -118,6 +120,10 @@ function UpdateAttributes(tower, ability)
 	local attack_rate = ability:GetLevelSpecialValueFor("attack_rate", tower_level)
 
 	local caster = ability:GetCaster()
+
+	local oldAngles = caster:GetAngles()
+	oldAngles[2] = math.random(0, 360)
+	caster:SetAngles(oldAngles[1], oldAngles[2], oldAngles[3])
 
 	caster:SetBaseDamageMax(attack)
 	caster:SetBaseDamageMin(attack)
