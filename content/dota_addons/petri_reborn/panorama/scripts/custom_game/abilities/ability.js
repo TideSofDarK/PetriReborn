@@ -39,6 +39,7 @@ function CheckDependencyEntry(dependencies)
 
 		flag = flag && (table[name] >= dependencies[name]);
 	}
+	return flag;
 }
 
 function CheckDependencies()

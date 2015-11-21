@@ -1,16 +1,50 @@
 "petri_upgrade_to_earth_wall"
 {
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"      "earth_spirit_petrify"
-  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 
-  "AbilityGoldCost"       "1"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityChannelTime"      "4.0"
 
   "MaxLevel"            "1"
 
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "1000"
+    }
+  }
+
   "OnSpellStart"
   {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
     "RunScript"
     {
       "ScriptFile"      "units/earth_wall.lua"
