@@ -19,6 +19,23 @@
       </Panel>
     </Panel>
 
+    <Panel id="Developers">
+      <Label text="#creator"/>
+      <Panel id="Creator" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198001376044" />
+      </Panel>
+
+      <Label text="#panoramaui"/>
+      <Panel id="PanoramaCoder" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561197996730911" />
+      </Panel>
+
+      <Label text="#gamedesigner"/>
+      <Panel id="GameDesigner" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
+      </Panel>
+    </Panel>
+
     <Panel id="SocialNetworks" >
       <Image src="file://{images}/custom_game/sn/sn.png" />
     </Panel>
