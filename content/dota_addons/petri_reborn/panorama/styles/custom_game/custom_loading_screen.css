@@ -3,6 +3,36 @@
 @define IterationCount: infinite;
 @define AnimationDelay: 0s;
 
+#Developers
+{
+  margin-bottom: 300px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  flow-children: down;
+  background-color: #000000cc;
+  horizontal-align: left;
+  vertical-align: center;
+}
+#Developers Label
+{
+  color: white;
+  font-size: 20px;
+  horizontal-align: center;
+}
+.column
+{
+  width: 100%;
+  flow-children: down;
+}
+.avatar
+{
+  width: 48px;
+  height: 48px;
+  background-color: black;
+  vertical-align: middle;
+  horizontal-align: center;
+}
+
 .AddonLoadingRoot
 {
   width: 100%;

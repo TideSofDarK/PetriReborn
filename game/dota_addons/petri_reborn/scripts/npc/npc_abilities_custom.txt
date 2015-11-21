@@ -1279,7 +1279,7 @@
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "damage"        "50 100 200 400 750 1000 2000 4000 5000"
+	      "damage"        "45 80 170 345 650 1000 2000 4000 5000"
 	    }
 	    "06"
 	    {
@@ -1363,28 +1363,10 @@
 	      }
 	    }
 	
-	    "modifier_earth_stun_anim"
-	    {
-	      "Duration" "1.0"
-	      "IsHidden"      "1"
-	      "IsDebuff"      "0"
-	    
-	      "OverrideAnimation"   "ACT_DOTA_EARTHSHAKER_TOTEM_ATTACK"
-	    }
-	
 	    "modifier_earth_stun"
 	    {
 	      "IsHidden"                  "1"
 	      "IsBuff"                     "1"
-	
-	      "OnAttackStart"
-	      {
-	        "ApplyModifier"
-	        {
-	          "ModifierName"  "modifier_earth_stun_anim"
-	          "Target"     "CASTER"
-	        }
-	      }
 	
 	      "OnAttackLanded"
 	      {
@@ -3370,7 +3352,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1500"
+	      "lumber_cost"        "500"
 	    }
 	    "02"
 	    {
@@ -3463,7 +3445,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "2000 5000 10000 17000 20000 25000 34000"
+	      "lumber_cost"        "3000 5000 10000 17000 20000 25000 34000"
 	    }
 	    "02"
 	    {
@@ -3607,7 +3589,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 2500 7000 11000 15000 20000 25000"
+	      "lumber_cost"        "2000 2500 7000 11000 15000 20000 25000"
 	    }
 	    "02"
 	    {
@@ -3737,7 +3719,7 @@
 	    "01"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "lumber_cost"             "3000 8000 15000 20000 30000 40000 60000"
+	      "lumber_cost"             "4000 8000 15000 20000 30000 40000 60000"
 	    }
 	    "02"
 	    {
@@ -4044,7 +4026,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 3000 10000 30000 50000 100000 300000 500000 1000000"
+	      "lumber_cost"        "2000 3000 10000 30000 50000 100000 300000 500000 1000000"
 	    }
 	    "02"
 	    {
@@ -4724,17 +4706,51 @@
 	}
 	"petri_upgrade_to_earth_wall"
 	{
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityTextureName"      "earth_spirit_petrify"
-	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
-	  "AbilityGoldCost"       "1"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityChannelTime"      "4.0"
 	
 	  "MaxLevel"            "1"
 	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "lumber_cost"        "1000"
+	    }
+	  }
+	
 	  "OnSpellStart"
 	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	  
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
 	    "RunScript"
 	    {
 	      "ScriptFile"      "units/earth_wall.lua"

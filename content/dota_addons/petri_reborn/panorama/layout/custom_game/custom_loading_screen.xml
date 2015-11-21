@@ -14,9 +14,25 @@
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/hatler.png" />
-        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/nazar.png" />
         <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+      </Panel>
+    </Panel>
+
+    <Panel id="Developers">
+      <Label text="#creator"/>
+      <Panel id="Creator" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198001376044" />
+      </Panel>
+
+      <Label text="#panoramaui"/>
+      <Panel id="PanoramaCoder" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561197996730911" />
+      </Panel>
+
+      <Label text="#gamedesigner"/>
+      <Panel id="GameDesigner" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
       </Panel>
     </Panel>
 

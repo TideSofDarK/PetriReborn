@@ -204,8 +204,8 @@ function PlusParticle(number, color, duration, caster)
     return false
   end
   POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-  local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+  local pfxPath = string.format("particles/msg_fx/msg_gold.vpcf", pfx)
+  local pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster, caster:GetPlayerOwner())
   local color = color
   local lifetime = duration
   local digits = #tostring(number) + 1

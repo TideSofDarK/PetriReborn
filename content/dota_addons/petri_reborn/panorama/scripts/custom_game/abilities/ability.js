@@ -29,6 +29,19 @@ function AutoUpdateAbility()
 	$.Schedule( 0.1, AutoUpdateAbility );
 }
 
+function CheckDependencyEntry(dependencies)
+{
+	var flag = true;
+	for(var name in dependencies)
+	{
+		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
+		if (table[name] == undefined) flag = false;
+
+		flag = flag && (table[name] >= dependencies[name]);
+	}
+	return flag;
+}
+
 function CheckDependencies()
 {
 	var abilityName = Abilities.GetAbilityName( m_Ability );
@@ -45,28 +58,12 @@ function CheckDependencies()
 	if (dependencies == undefined)
 		return true;
 
-	var flag = true;
-	for(var name in dependencies)
-	{
-		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
-		if (table[name] == undefined) flag = false;
-
-		flag = flag && (table[name] >= dependencies[name]);
-	}
-
-	if (flag == false) {
-		flag = true;
-
+	var flag = CheckDependencyEntry(dependencies)
+	
+	if (flag == false && GameUI.CustomUIConfig().dependencies[abilityName + "_alt"]) {
 		dependencies = GameUI.CustomUIConfig().dependencies[abilityName + "_alt"];
 
-		for(var name in dependencies)
-		{
-			var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
-			if (table[name] == undefined)
-				return false;
-
-			flag = flag && (table[name] >= dependencies[name]);
-		}
+		flag = CheckDependencyEntry(dependencies)
 	}
 
 	return flag;

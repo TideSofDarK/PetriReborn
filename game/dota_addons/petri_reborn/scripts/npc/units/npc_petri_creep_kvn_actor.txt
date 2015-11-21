@@ -23,7 +23,7 @@
   "AttackRange"       "90"
 
   "BountyGoldMin"       "15.0"
-  "BountyGoldMax"       "18.0"
+  "BountyGoldMax"       "17.0"
   "BountyXP"          "65"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
