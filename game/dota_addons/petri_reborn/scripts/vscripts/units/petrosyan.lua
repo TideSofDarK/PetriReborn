@@ -5,7 +5,7 @@ function BonusGoldFromWall(keys)
 	if target:GetUnitName() == "npc_petri_wall" then
 		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, DOTA_ModifyGold_SharedGold)
 
-		PlusParticle(1, Vector(244,201,23), 3.0, caster)
+		PopupParticle(1, Vector(244,201,23), 3.0, caster)
 	end
 
 	if target:HasAbility("petri_creep_pendant") == true 
@@ -16,7 +16,7 @@ function BonusGoldFromWall(keys)
 
 		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(180, false, DOTA_ModifyGold_CreepKill )
 		caster.allEarnedGold = caster.allEarnedGold + 180
-		PlusParticle(180, Vector(244,201,23), 1.0, caster)
+		PopupParticle(180, Vector(244,201,23), 1.0, caster)
 	end
 end
 

@@ -228,7 +228,7 @@ function CheckBuildingPosition( event )
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
-		    PlusParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
+		    PopupParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
 		    
 		    EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "ui.inv_pickup_wood", caster) 
 		   
@@ -422,7 +422,7 @@ function RepairBy1Percent( event )
 				healAmount = 0
 			end
 
-			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
+			PopupParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
 
 			target:Heal(healAmount, caster)
 		else
