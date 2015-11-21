@@ -1,3 +1,23 @@
+POPUP_SYMBOL_PRE_PLUS = 0
+POPUP_SYMBOL_PRE_MINUS = 1
+POPUP_SYMBOL_PRE_SADFACE = 2
+POPUP_SYMBOL_PRE_BROKENARROW = 3
+POPUP_SYMBOL_PRE_SHADES = 4
+POPUP_SYMBOL_PRE_MISS = 5
+POPUP_SYMBOL_PRE_EVADE = 6
+POPUP_SYMBOL_PRE_DENY = 7
+POPUP_SYMBOL_PRE_ARROW = 8
+
+POPUP_SYMBOL_POST_EXCLAMATION = 0
+POPUP_SYMBOL_POST_POINTZERO = 1
+POPUP_SYMBOL_POST_MEDAL = 2
+POPUP_SYMBOL_POST_DROP = 3
+POPUP_SYMBOL_POST_LIGHTNING = 4
+POPUP_SYMBOL_POST_SKULL = 5
+POPUP_SYMBOL_POST_EYE = 6
+POPUP_SYMBOL_POST_SHIELD = 7
+POPUP_SYMBOL_POST_POINTFIVE = 8
+
 function GetGoldTickModifier()
   local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
 
@@ -199,18 +219,29 @@ function AddStackableModifierWithDuration(caster, target, ability, modifierName,
 end
 -- MODIFIERS
 
-function PlusParticle(number, color, duration, caster)
+function PlusParticle(number, color, duration, caster, preSymbol, postSymbol)
   if number < 1 then
     return false
   end
-  POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
+  symbolType = symbolType or POPUP_SYMBOL_PRE_PLUS
   local pfxPath = string.format("particles/msg_fx/msg_gold.vpcf", pfx)
   local pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster, caster:GetPlayerOwner())
   local color = color
   local lifetime = duration
   local digits = #tostring(number) + 1
 
-  ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, number, 0 ) )
+  local digits = 0
+  if number ~= nil then
+      digits = #tostring(number)
+  end
+  if preSymbol ~= nil then
+      digits = digits + 1
+  end
+  if postSymbol ~= nil then
+      digits = digits + 1
+  end
+
+  ParticleManager:SetParticleControl(pidx, 1, Vector( preSymbol, number, postSymbol ) )
   ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
   ParticleManager:SetParticleControl(pidx, 3, color)
 end

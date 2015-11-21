@@ -1,12 +1,10 @@
 function Spawn( keys )
-    print("asdsa")
     if thisEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS then -- Guys in cells
         thisEntity:AddAbility("petri_invulnerable_creep")
         InitAbilities(thisEntity)
         thisEntity:SetAttackCapability(0)
     else 
         FindClearSpaceForUnit(thisEntity, thisEntity:GetAbsOrigin(),true)
-        print("asdsa")
         Timers:CreateTimer(0.03, function (  )
             thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
         end)
@@ -54,7 +52,7 @@ function Attack( keys )
         }
         ApplyDamage( damage_table )
         
-        PlusParticle(average_damage * current_stack, Vector(255,255,0), 1.0, attacker)
+        PlusParticle(average_damage * current_stack, Vector(240,30,0), 0.315, target, nil, POPUP_SYMBOL_POST_SKULL)
         
         ability:ApplyDataDrivenModifier( target, target, modifierName, { Duration = duration } )
         target:SetModifierStackCount( modifierName, target, current_stack + 1 )
