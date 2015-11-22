@@ -429,6 +429,32 @@
 			    "XPos"  "3"
 	   		}
 	  	}
+	}	
+	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/items/wards/chinese_ward/chinese_ward.vmdl"
+	   		{
+			    "scale"  "2.7"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-43"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/props_debris/chinese_lantern001.vmdl"
+	   		{
+			    "scale"  "1.5"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "53"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	  	}
 	}
 	"models/props_structures/bad_tower_destruction.vmdl"
 	{
@@ -462,9 +488,135 @@
 	   		}
 	  	}
 	}
+	"models/heroes/witchdoctor/witchdoctor.vmdl"
+	{
+	  	"attach_staff"
+	  	{
+	   		"models/items/witchdoctor/baron_la_croix_staff/baron_la_croix_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-232"
+			    "YPos"  "68"
+			    "yaw"  "91"
+			    "XPos"  "-38"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/witchdoctor/purplenightmare_belt/purplenightmare_belt.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-63"
+			    "roll"  "0"
+			    "ZPos"  "-105"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "14"
+	   		}
+	   		"models/items/witchdoctor/pet_snake.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-91"
+			    "roll"  "0"
+			    "ZPos"  "-98"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+
+	  	}
+	}
 	"models/props_structures/coffin002.vmdl"
 	{
 	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/earthshaker/totem_dragon_wall/totem_dragon.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	  		"models/props_debris/chinese_lantern002.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/techies/bigshot/bigshot_remotebomb.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/phoenix/phoenix_bird.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/blotto_and_stick/blotto.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/dragon_statue001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/statue_dragon003.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/dc_demon/dc_demon.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/brewmaster/brewmaster_windspirit.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props/traps/hooded_fang/hooded_fang.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/dire_ward_eye/dire_ward_eye.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/vaal_the_animated_constructradiant/vaal_the_animated_constructradiant_flying.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_goldxp.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/shadow_demon/shadow_demon.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/warlock/golem/hellsworn_golem/hellsworn_golem.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	  	}
+	}
+	"models/props_structures/secretshop_asian001.vmdl"
+	{
+	  	"attach_origin"
 	  	{
 	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
 	   		{
