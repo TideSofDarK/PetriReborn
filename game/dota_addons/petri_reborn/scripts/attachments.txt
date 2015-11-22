@@ -612,6 +612,74 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/items/lone_druid/true_form/iron_claw_true_form/iron_claw_true_form.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/wizened_bear/wizened_bear.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/tuskarr/whiskey_the_stout/whiskey_the_stout_slider.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	  		"models/items/wards/esl_wardchest_ward_of_foresight/esl_wardchest_ward_of_foresight.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/coco_the_courageous/coco_the_courageous.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/juggernaut/ward/healing_gills_of_the_lost_isles/healing_gills_of_the_lost_isles.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/guardians_of_justice_enix/guardians_of_justice_enix.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/pedestal/effigy_pedestal_frosty_dire.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/baby_winter_wyvern/baby_winter_wyvern.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/tuskarr/sigil/barrierrogue_tusk_sigil/barrierrogue_tusk_sigil.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/kings_chair.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/particle/snowball.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/form_of_the_atniw/form_of_the_atniw.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
