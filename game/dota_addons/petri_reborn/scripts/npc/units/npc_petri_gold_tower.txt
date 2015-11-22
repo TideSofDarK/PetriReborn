@@ -2,7 +2,7 @@
 {
   "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_structures/radiant_tower001.vmdl"  
-  "ModelScale"                "0.3"
+  "ModelScale"                "0.35"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "1"
   "HealthBarOffset"    "301"
