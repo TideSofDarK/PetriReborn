@@ -41,6 +41,8 @@ function Precache( context )
 
   PrecacheUnitByNameSync("npc_petri_trap", context)
 
+  PrecacheUnitByNameSync("npc_petri_earth_wall", context)
+
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
   -- Custom skins
