@@ -17,6 +17,7 @@
     "model"         "models/heroes/techies/fx_techiesfx_stasis.vmdl"    
   }
 
+  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
   "ItemCost"            "450"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
@@ -26,9 +27,9 @@
   "ItemSellable"        "0"
   "ItemPermanent"       "0"
 
-  "ItemStockMax" "8" 
-  "ItemStockTime" "90"
-  "ItemStockInitial" "6"
+  "ItemStockMax" "6" 
+  "ItemStockTime" "120"
+  "ItemStockInitial" "2"
   
   "SideShop" "1"
 
