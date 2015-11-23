@@ -11,6 +11,7 @@
     "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetized_ring.vpcf"
     "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
     "particle"  "particles/econ/events/ti4/bottle_ti4.vpcf"
+    "particle"  "particles/items_fx/black_king_bar_avatar.vpcf"
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
   }
@@ -70,6 +71,9 @@
       "Passive" "1"
       "IsHidden"                  "1"
       "IsBuff"                     "1"
+
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
 
       "OnCreated"
       {
