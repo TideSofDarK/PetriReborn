@@ -64,6 +64,94 @@
 			}
 		}
 	}	
+	"models/heroes/antimage/antimage.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/items/antimage/skullbasher/skullbasher_gold.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"270"
+				"roll"		"90"
+				"ZPos"		"-92"
+				"YPos"		"77"
+				"yaw"		"90"
+				"XPos"		"-3"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/antimage/skullbasher/skullbasher_gold_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"270"
+				"roll"		"90"
+				"ZPos"		"-92"
+				"YPos"		"-76"
+				"yaw"		"90"
+				"XPos"		"6"
+			}
+		}
+	}
+	"models/heroes/obsidian_destroyer/obsidian_destroyer.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/items/obsidian_destroyer/immortal_weapon_1/immortal_weapon_1.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-104"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_rocks.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_wings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"-4"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_horns.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+		}
+	}
 	"models/heroes/lich/lich.vmdl"
 	{
 		"attach_portrait"
@@ -677,6 +765,46 @@
 			    "scale"  "0"
 	   		}
 	   		"models/items/lone_druid/true_form/form_of_the_atniw/form_of_the_atniw.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/shroomy/shroomy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/phantom_assassin/arcana_tombstone.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/bookwyrm/bookwyrm.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/itsy/itsy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/techies/techies_cart.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/bts_chirpy/bts_chirpy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/hex/sheep_hex/sheep_hex_gold.vmdl"
 	   		{
 			    "scale"  "0"
 	   		}
@@ -1401,9 +1529,18 @@
 				"yaw"		"-90"
 				"XPos"		"-124"
 			}
+			"models/items/crystal_maiden/northstar_staff/northstar_staff.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"80"
+				"ZPos"		"-98"
+				"YPos"		"-33"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
 		}
 	}
-	
 	"models/heroes/crystal_maiden/crystal_maiden.vmdl"
 	{
 		"attach_hitloc"
@@ -1443,6 +1580,68 @@
 				"YPos"		"0"
 				"yaw"		"-90"
 				"XPos"		"-43"
+			}
+		}
+	}
+	"models/heroes/shadow_demon/shadow_demon.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/shadow_demon/shadow_demon_cape.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-105"
+			    "roll"  "0"
+			    "ZPos"  "-140"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-11"
+			}
+			"models/heroes/shadow_demon/shadow_demon_chain.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-105"
+			    "roll"  "0"
+			    "ZPos"  "-131"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-15"
+			}
+		}
+	}
+	"models/heroes/puck/puck.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/puck/mischievousfruits_head/mischievousfruits_head.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-73"
+			    "roll"  "0"
+			    "ZPos"  "-135"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-4"
+			}
+			"models/items/puck/merry_wanderers_brush_tail/merry_wanderers_brush_tail.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-73"
+			    "roll"  "0"
+			    "ZPos"  "-136"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "6"
+			}
+			"models/items/puck/mysticcoils_wings/mysticcoils_wings.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-77"
+			    "roll"  "0"
+			    "ZPos"  "-137"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-1s"
 			}
 		}
 	}
