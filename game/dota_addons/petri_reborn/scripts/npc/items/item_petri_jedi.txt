@@ -18,6 +18,8 @@
   "ItemQuality"         "epic"
   "ItemAliases"         "jedi"
 
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "precache"
   {
     "particle"  "particles/status_fx/status_effect_stickynapalm.vpcf"

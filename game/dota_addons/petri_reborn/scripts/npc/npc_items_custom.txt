@@ -2405,6 +2405,8 @@
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "jedi"
 	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "precache"
 	  {
 	    "particle"  "particles/status_fx/status_effect_stickynapalm.vpcf"
@@ -4087,6 +4089,7 @@
 	    "model"         "models/heroes/techies/fx_techiesfx_stasis.vmdl"    
 	  }
 	
+	  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
 	  "ItemCost"            "450"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
@@ -4096,9 +4099,9 @@
 	  "ItemSellable"        "0"
 	  "ItemPermanent"       "0"
 	
-	  "ItemStockMax" "8" 
-	  "ItemStockTime" "90"
-	  "ItemStockInitial" "6"
+	  "ItemStockMax" "6" 
+	  "ItemStockTime" "120"
+	  "ItemStockInitial" "2"
 	  
 	  "SideShop" "1"
 	
@@ -4463,13 +4466,12 @@
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1970"
-	  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
-	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
 	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
 	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
-	  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -4527,10 +4529,10 @@
 	      "Target"        "TARGET"
 	    }
 	
-	    "ApplyModifier"
+	    "RunScript"
 	    {
-	      "ModifierName"      "modifier_vip_frostbite_active"
-	      "Target"            "TARGET"
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
 	    }
 	  }
 	
@@ -4540,7 +4542,7 @@
 	    {
 	      "Duration"  "7"
 	      "IsHidden"      "0"
-	      "IsDebuff"      "1"
+	      "IsBuff"      "1"
 	
 	      "EffectName"        "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
 	

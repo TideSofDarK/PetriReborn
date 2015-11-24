@@ -1,6 +1,6 @@
 "npc_petri_earth_wall"
 {
-  "BaseClass"         "npc_dota_brewmaster_earth"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/heroes/brewmaster/brewmaster_earthspirit.vmdl"  
   "ModelScale"                "0.95"
   "SoundSet"          "Brewmaster_Earth"  
