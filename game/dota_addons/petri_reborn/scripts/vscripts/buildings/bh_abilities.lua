@@ -102,7 +102,7 @@ function build( keys )
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
-			GamoMode.EXIT_COUNT = GamoMode.EXIT_COUNT + 1
+			GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
 
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 			Timers:CreateTimer(PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
