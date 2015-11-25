@@ -82,6 +82,16 @@ function GetGoldModifier()
   return 1.0
 end
 
+function GiveSharedGoldToHeroes(gold, hero)
+  for k,v in pairs(GameMode.assignedPlayerHeroes) do
+    if v:GetUnitName() == hero then
+      PlayerResource:ModifyGold(v:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+
+      PopupParticle(gold, Vector(244,201,23), 3.0, v)
+    end
+  end
+end
+
 function GiveSharedGoldToTeam(gold, team)
   for i=1,PlayerResource:GetPlayerCountForTeam(team) do
     if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)]  then

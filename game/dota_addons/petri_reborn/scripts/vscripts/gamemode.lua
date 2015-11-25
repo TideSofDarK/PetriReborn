@@ -7,6 +7,9 @@ DISABLED_HINTS_PLAYERS = {}
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
+PETRI_ADDITIONAL_EXIT_GOLD = 20000
+PETRI_ADDITIONAL_EXIT_GOLD_TIME = 5 * 60
+
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
@@ -39,6 +42,10 @@ GameMode.PETRI_NAME_LIST = {}
 GameMode.KVN_BONUS_ITEM = {}
 GameMode.KVN_BONUS_ITEM["item"] = ""
 GameMode.KVN_BONUS_ITEM["count"] = 0
+
+GamoMode.EXIT_COUNT = 0
+
+GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
 
 require('libraries/timers')
 require('libraries/physics')

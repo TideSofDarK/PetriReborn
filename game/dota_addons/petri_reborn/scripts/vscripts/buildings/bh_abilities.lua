@@ -102,8 +102,18 @@ function build( keys )
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
+			GamoMode.EXIT_COUNT = GamoMode.EXIT_COUNT + 1
+
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-			Timers:CreateTimer(600, function() unit.childEntity:RemoveSelf() end)
+			Timers:CreateTimer(PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
+				function() 
+					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == false then
+						GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
+						GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
+						GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
+						Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
+					end
+				end)
 		end
 
 		caster:EmitSound("ui.inv_pickup_wood")
