@@ -4,7 +4,6 @@ function Explore(keys)
 
 	local ability = keys.ability
 
-	local allHeroes = HeroList:GetAllHeroes()
 	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
 
 	-- Particle for team
