@@ -105,7 +105,7 @@ function build( keys )
 			GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
 
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-			Timers:CreateTimer(PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
+			Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
 				function() 
 					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == false then
 						GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true

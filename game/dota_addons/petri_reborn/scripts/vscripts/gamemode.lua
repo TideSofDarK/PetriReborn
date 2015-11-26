@@ -8,7 +8,6 @@ PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
 PETRI_ADDITIONAL_EXIT_GOLD = 20000
-PETRI_ADDITIONAL_EXIT_GOLD_TIME = 3000
 
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
@@ -46,6 +45,7 @@ GameMode.KVN_BONUS_ITEM["count"] = 0
 GameMode.EXIT_COUNT = 0
 
 GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
+GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME = 60 * 5
 
 require('libraries/timers')
 require('libraries/physics')
@@ -433,6 +433,7 @@ function GameMode:InitGameMode()
   -- Commands
   Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
   Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
+  Convars:RegisterCommand( "taeg", Dynamic_Wrap(GameMode, 'TestAdditionalExitGold'), "Test for additional exit gold", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 end
