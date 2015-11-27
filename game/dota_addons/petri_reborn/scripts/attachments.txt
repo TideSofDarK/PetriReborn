@@ -11,6 +11,13 @@
 				"0"		"attach_eye_r"
 			}
 		}
+		"models/items/warlock/ceaseless/ceaseless.vmdl"
+		{
+			"particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
+			{
+				"0"		"attach_core"
+			}
+		}
 		"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
 		{
 			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient.vpcf"
