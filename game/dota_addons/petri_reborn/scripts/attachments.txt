@@ -1506,6 +1506,16 @@
 				"yaw"		"0"
 				"XPos"		"0"
 			}
+			"models/items/crystal_maiden/frozen_feathers_head/frozen_feathers_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-151"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
 		}
 		"attach_attack1"
 		{
@@ -1538,6 +1548,16 @@
 				"YPos"		"-33"
 				"yaw"		"0"
 				"XPos"		"0"
+			}
+			"models/items/crystal_maiden/frozen_feathers_staff/frozen_feathers_staff.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"75"
+				"ZPos"		"-133"
+				"YPos"		"-63"
+				"yaw"		"90"
+				"XPos"		"13"
 			}
 		}
 	}
@@ -1938,6 +1958,16 @@
 				"YPos"		"27"
 				"yaw"		"0"
 				"XPos"		"22"
+			}
+			"models/items/queenofpain/daggerofagonizingpain/daggerofagonizingpain.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"314"
+				"roll"		"196"
+				"ZPos"		"-7"
+				"YPos"		"-57"
+				"yaw"		"55"
+				"XPos"		"116"
 			}
 		}
 		"mouth"
