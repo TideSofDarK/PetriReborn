@@ -815,6 +815,10 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/items/courier/faceless_rex/faceless_rex_flying.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
