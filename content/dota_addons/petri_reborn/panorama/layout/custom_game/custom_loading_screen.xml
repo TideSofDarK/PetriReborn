@@ -34,6 +34,11 @@
       <Panel id="GameDesigner" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
       </Panel>
+
+      <Label text="#media"/>
+      <Panel id="Media" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198050312182" />
+      </Panel>
     </Panel>
 
     <Panel id="SocialNetworks" >
