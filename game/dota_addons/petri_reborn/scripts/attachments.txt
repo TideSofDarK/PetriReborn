@@ -2,6 +2,13 @@
 {
 	"Particles"
 	{
+		"models/items/warlock/ceaseless/ceaseless.vmdl"
+		{
+		    "particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
+		    {
+		   		"0"  "attach_core"
+		    }
+		}
 		"models/items/axe/shout_mask/shout_mask.vmdl"
 		{
 			"particles/econ/items/axe/axe_helm_shoutmask/axe_shout_mask_ambient.vpcf"
@@ -9,13 +16,6 @@
 				"2"		"attach_mouth"
 				"1"		"attach_eye_l"
 				"0"		"attach_eye_r"
-			}
-		}
-		"models/items/warlock/ceaseless/ceaseless.vmdl"
-		{
-			"particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
-			{
-				"0"		"attach_core"
 			}
 		}
 		"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"

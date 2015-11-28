@@ -7,8 +7,6 @@ DISABLED_HINTS_PLAYERS = {}
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
-PETRI_ADDITIONAL_EXIT_GOLD = 20000
-
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
@@ -45,7 +43,8 @@ GameMode.KVN_BONUS_ITEM["count"] = 0
 GameMode.EXIT_COUNT = 0
 
 GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
-GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME = 60 * 5
+GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME = 300
+GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 
 require('libraries/timers')
 require('libraries/physics')
@@ -170,8 +169,10 @@ function GameMode:OnHeroInGame(hero)
           -- It's dangerous to go alone, take this
           newHero:SetAbilityPoints(4)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_dummy_sleep"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+
+          newHero:FindAbilityByName("petri_petrosyan_passive"):ApplyDataDrivenModifier(newHero, newHero, "dummy_sleep_modifier", {})
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
@@ -456,11 +457,12 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(5)
+      newHero:SetAbilityPoints(6)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
 
       SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
 

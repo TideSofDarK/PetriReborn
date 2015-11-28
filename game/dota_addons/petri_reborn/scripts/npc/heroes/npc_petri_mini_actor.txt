@@ -13,6 +13,7 @@
   "Ability5"        "petri_petrosyan_explore"
   "Ability6"        "petri_mini_actor_phase"
   "Ability7"        "attribute_bonus"
+  "Ability8"        "petri_petrosyan_passive"
 
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"

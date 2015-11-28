@@ -531,9 +531,11 @@ function Attachments:AttachProp(unit, attachPoint, model, scale, properties)
       end    
       -- Loop through the Control Point Entities
       local control_points = particle_data['ControlPointEntities']
-      for k,ent_point in pairs(control_points) do
-        --print("Making Particle",particleName,prop.fx,k,prop,ent_point)
-        ParticleManager:SetParticleControlEnt(prop.fx, tonumber(k), prop, PATTACH_POINT_FOLLOW, ent_point, prop:GetAbsOrigin(), true)
+      if control_points then
+        for k,ent_point in pairs(control_points) do
+          --print("Making Particle",particleName,prop.fx,k,prop,ent_point)
+          ParticleManager:SetParticleControlEnt(prop.fx, tonumber(k), prop, PATTACH_POINT_FOLLOW, ent_point, prop:GetAbsOrigin(), true)
+        end
       end
     end
 
