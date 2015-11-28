@@ -278,6 +278,12 @@ function OnAwake( keys )
 	end
 end
 
+function OnKill( keys )
+	local caster = keys.caster
+	local unit = keys.unit
+	caster:AddExperience(unit:GetDeathXP(), DOTA_ModifyXP_CreepKill, false, true)
+end
+
 function JediAura( keys )
 	local caster = keys.caster
 	local target = keys.target

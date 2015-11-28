@@ -2650,7 +2650,7 @@
 	  }   
 	}
 	
-	"petri_petrosyan_dummy_sleep"
+	"petri_petrosyan_passive"
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -2661,18 +2661,24 @@
 	  {
 	    "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
 	  }
-	
-	  "OnUpgrade"
-	  {
-	    "ApplyModifier"
-	    {
-	      "ModifierName"  "dummy_sleep_modifier"
-	      "Target"    "CASTER"
-	    }
-	  }
 	  
 	  "Modifiers"
 	  {
+	    "modifier_petri_exp"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "OnKill"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "OnKill"
+	        }
+	      }
+	    }
 	    "dummy_sleep_modifier"
 	    {
 	      "Duration"  "30"

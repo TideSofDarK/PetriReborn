@@ -14,7 +14,7 @@
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"
-	  "Ability7"        "petri_petrosyan_dummy_sleep"
+	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
 	
 	  "ArmorPhysical"       "1"                 
@@ -137,6 +137,7 @@
 	  "Ability5"        "petri_petrosyan_explore"
 	  "Ability6"        "petri_mini_actor_phase"
 	  "Ability7"        "attribute_bonus"
+	  "Ability8"        "petri_petrosyan_passive"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
@@ -192,7 +193,7 @@
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"
-	  "Ability7"        "petri_petrosyan_dummy_sleep"
+	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
 	
 	  "ArmorPhysical"       "1"                 

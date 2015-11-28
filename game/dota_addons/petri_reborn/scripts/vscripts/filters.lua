@@ -250,7 +250,9 @@ end
 
 function GameMode:ModifyExperienceFilter(filterTable)
   if not filterTable["player_id_const"] then return false end
-  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS then return false end 
+  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS 
+    or PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_BADGUYS 
+    then return false end 
   return true
 end
 
