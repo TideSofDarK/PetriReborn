@@ -362,6 +362,13 @@ function GameMode:OnEntityKilled( keys )
     end)
   end
 
+  if killedUnit:GetUnitName() == "npc_petri_exit" then
+    GameMode.EXIT_COUNT = GameMode.EXIT_COUNT - 1
+    if GameMode.EXIT_COUNT == 0 then
+      GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
+    end
+  end
+
   if killedUnit:GetUnitName() == "npc_petri_sawmill" and killedUnit.queueFood then
     hero.food = hero.food - killedUnit.queueFood
   end

@@ -107,11 +107,14 @@ function build( keys )
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 			Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
 				function() 
-					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == false and GameMode.EXIT_COUNT == 1 then
-						GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
-						GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
-						GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
-						Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
+					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.EXIT_COUNT > 1 then
+						if GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == true then
+							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
+							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
+							Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
+						else
+							GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
+						end
 					end
 				end)
 		end
