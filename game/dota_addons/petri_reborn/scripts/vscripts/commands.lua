@@ -27,8 +27,8 @@ function GameMode:TestAdditionalExitGold()
       Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
         function() 
           GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
-          GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
-          GiveSharedGoldToHeroes(PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
+          GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
+          GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
           Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
         end)
     end
