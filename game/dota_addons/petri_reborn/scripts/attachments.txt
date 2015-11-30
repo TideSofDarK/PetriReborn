@@ -493,6 +493,22 @@
 	   		}
 	  	}
 	}
+	"models/heroes/lanaya/lanaya.vmdl"
+	{
+	  	"attach_eyeL"
+	  	{
+	   		"models/items/crystal_maiden/esl_frozen_lotus_head/esl_frozen_lotus_head.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-161"
+			    "YPos"  "4"
+			    "yaw"  "0"
+			    "XPos"  "-4"
+	   		}
+	  	}
+	}
 	"models/items/earth_spirit/demon_stone_summon/demon_stone_summon.vmdl"
 	{
 	  	"attach_head"
