@@ -252,6 +252,106 @@
 	  }
 	}
 	
+	"item_petri_agility_book"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1968"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_comedy_book"
+	
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	
+	  "ItemCost"            "2300"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_bonus_agility"
+	      "Target"     "CASTER"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_agility"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	  
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "1"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_health_book"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1967"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_comedy_story"
+	
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	
+	  "ItemCost"            "2300"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_bonus_health"
+	      "Target"     "CASTER"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_health"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	  
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "500"
+	      }
+	    }
+	  }
+	}
+	
 	"item_petri_snares_1"
 	{
 	  "BaseClass"                 "item_datadriven"
