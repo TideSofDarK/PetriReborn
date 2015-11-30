@@ -819,6 +819,22 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/items/wards/knightstatue_ward/knightstatue_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_black_drake/n_creep_black_drake.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/shadowshaman/serpent_ward/tangki_serpent_ward/tangki_serpent_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/baekho/baekho.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
