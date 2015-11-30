@@ -131,7 +131,7 @@ function KivinGoldTick(keys)
     end
 end
 
-function Agression( keys )
+function Aggression( keys )
     local caster = keys.caster
     local target = keys.target
 

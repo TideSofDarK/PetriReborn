@@ -51,7 +51,7 @@
             "RunScript"
             {
               "ScriptFile"  "units/creep.lua"
-              "Function"    "Agression"
+              "Function"    "Aggression"
             }
           }
         }
