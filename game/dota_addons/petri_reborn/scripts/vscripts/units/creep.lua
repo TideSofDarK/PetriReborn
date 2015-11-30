@@ -130,3 +130,20 @@ function KivinGoldTick(keys)
         PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
     end
 end
+
+function Agression( keys )
+    local caster = keys.caster
+    local target = keys.target
+
+    if GridNav:FindPathLength(caster:GetAbsOrigin(), target:GetAbsOrigin()) ~= -1 and caster:IsAttacking() == false and UnitCanAttackTarget( caster, target ) == true and target:IsInvisible() == false then
+        local newOrder = {
+            UnitIndex       = caster:entindex(),
+            OrderType       = DOTA_UNIT_ORDER_ATTACK_MOVE,
+            Position        = target:GetAbsOrigin(), 
+            Queue           = 0
+        }
+        ExecuteOrderFromTable(newOrder)
+    else
+
+    end
+end

@@ -1188,6 +1188,37 @@
 	  
 	  "Modifiers"
 	  {
+	    "modifier_creep_agression"
+	    {
+	      "Passive"                       "1"
+	      "IsHidden"                      "1"
+	      "IsPurgable"                    "0"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"   "1200"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_HERO"
+	          }
+	        
+	          "Action"    
+	          {
+	            "RunScript"
+	            {
+	              "ScriptFile"  "units/creep.lua"
+	              "Function"    "Agression"
+	            }
+	          }
+	        }
+	      }
+	    }
+	
 	    "modifier_creep_swipes_caster"
 	    {
 	      "Passive"                       "1"
