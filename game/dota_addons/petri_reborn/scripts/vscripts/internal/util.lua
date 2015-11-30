@@ -84,10 +84,12 @@ end
 
 function GiveSharedGoldToHeroes(gold, hero)
   for k,v in pairs(GameMode.assignedPlayerHeroes) do
-    if v:GetUnitName() == hero then
-      PlayerResource:ModifyGold(v:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+    if IsValidEntity(v) == true then
+      if v:GetUnitName() == hero and v:GetPlayerOwnerID() then
+        PlayerResource:ModifyGold(v:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
 
-      PopupParticle(gold, Vector(244,201,23), 3.0, v)
+        PopupParticle(gold, Vector(244,201,23), 3.0, v)
+      end
     end
   end
 end
