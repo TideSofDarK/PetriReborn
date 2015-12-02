@@ -125,9 +125,9 @@ function KivinGoldTick(keys)
     local target = keys.target
     local ability = keys.ability
 
-    if GameRules:IsDaytime() == false and target:IsRealHero() == true then
+    if GameRules:IsDaytime() == false and target:IsRealHero() == true and target:GetTeamNumber() == DOTA_TEAM_BADGUYS then
         PlayerResource:ModifyGold(target:GetPlayerOwnerID(), GetGoldTickModifier(), false, 0) 
-        PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 3.0, target)
+        PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 2.0, target)
     end
 end
 

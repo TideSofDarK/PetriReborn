@@ -151,6 +151,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/items2_fx/shadow_amulet_activate_runes.vpcf", context)
 
   PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_base_attack.vpcf", context)
+
+  PrecacheResource("particle", "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf", context)
   
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
