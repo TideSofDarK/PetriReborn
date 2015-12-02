@@ -85,6 +85,16 @@
 				"yaw"		"90"
 				"XPos"		"-3"
 			}
+			"models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
+			{
+				"scale"		"0.5"
+				"pitch"		"114"
+				"roll"		"50"
+				"ZPos"		"-97"
+				"YPos"		"-51"
+				"yaw"		"31"
+				"XPos"		"-14"
+			}
 		}
 		"attach_attack2"
 		{
@@ -97,6 +107,16 @@
 				"YPos"		"-76"
 				"yaw"		"90"
 				"XPos"		"6"
+			}
+			"models/items/axe/weapon_heavy_cutter.vmdl"
+			{
+				"scale"		"0.5"
+				"pitch"		"0"
+				"roll"		"180"
+				"ZPos"		"-67"
+				"YPos"		"115"
+				"yaw"		"0"
+				"XPos"		"0"
 			}
 		}
 	}
@@ -413,9 +433,6 @@
 				"yaw"		"270"
 				"XPos"		"-128"
 			}
-		}
-		"attach_hitloc"
-		{
 			"models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
 			{
 				"scale"		"0.2"
@@ -1230,6 +1247,29 @@
 				"XPos"		"17"
 			}
 		}
+		"attach_arm_chain_lf"
+		{
+			"models/items/pudge/pudge_offhand_weapon_tender_lod01/pudge_offhand_weapon_tender_lod01.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"24"
+				"roll"		"-8"
+				"ZPos"		"-9"
+				"YPos"		"-138"
+				"yaw"		"69"
+				"XPos"		"89"
+			}
+			"models/items/pudge/plague_doctor_shoulder/plague_doctor_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"24"
+				"roll"		"-21"
+				"ZPos"		"18"
+				"YPos"		"-41"
+				"yaw"		"97"
+				"XPos"		"155"
+			}
+		}
 		"attach_hitloc"
 		{
 			"models/items/pudge/ftp_dendi_back/ftp_dendi_back.vmdl"
@@ -1272,6 +1312,26 @@
 				"yaw"		"111"
 				"XPos"		"-19"
 			}
+			"models/items/pudge/promo_trapper_shoulder/promo_trapper_shoulder.vmdl"
+			{
+				"scale"		"0.8"
+				"pitch"		"0"
+				"roll"		"91"
+				"ZPos"		"-116"
+				"YPos"		"-75"
+				"yaw"		"-90"
+				"XPos"		"3"
+			}
+			"models/items/pudge/skedaddlebritches4/skedaddlebritches4.vmdl"
+			{
+				"scale"		"1.1"
+				"pitch"		"0"
+				"roll"		"97"
+				"ZPos"		"-125"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"6.3"
+			}
 		}
 		"attach_attack1"
 		{
@@ -1284,6 +1344,16 @@
 				"YPos"		"3"
 				"yaw"		"270"
 				"XPos"		"-77"
+			}
+			"models/items/pudge/pudge_skeleton_hook_body.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"69"
+				"roll"		"14"
+				"ZPos"		"-4"
+				"YPos"		"13"
+				"yaw"		"-90"
+				"XPos"		"-56"
 			}
 		}
 	}
