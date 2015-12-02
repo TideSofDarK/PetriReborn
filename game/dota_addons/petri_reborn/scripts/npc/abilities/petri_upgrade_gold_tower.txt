@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "5 10 18 29 40 53 65 90"
+  "AbilityGoldCost"       "6 8 18 25 45 65 80 100"
 
   "AbilityManaCost"       "0"
   
@@ -28,7 +28,7 @@
     "02"
     { 
       "var_type"  "FIELD_INTEGER"
-      "lumber_cost" "1550 2750 4500 7000 10000 15000 20000 25000"
+      "lumber_cost" "1500 3500 5000 7500 10000 12500 15000 20000"
     }
   }
 
