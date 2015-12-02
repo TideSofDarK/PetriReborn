@@ -9,6 +9,11 @@ function CheckFarmPlaces(trigger, activator)
 					return true 
 				end
 			end
+			if string.match(triggerName, "portal_trigger_kivin_input") then
+				if GameMode.PETRI_TRUE_TIME < 1680 then
+					return true 
+				end
+			end
 		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_b") then

@@ -174,7 +174,7 @@
 	    "02"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "lumber_cost" "3250"
+	        "lumber_cost" "2550"
 	    }
 	  }
 	
@@ -1664,7 +1664,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityCooldown" "11 10 9 8 8 7 7 6 4"
+	  "AbilityCooldown" "11 10 9 8 8 7 7 6 5"
 	
 	  "MaxLevel"            "9"
 	
@@ -1678,7 +1678,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "1 2 4 5 6 7 10 12 14"
+	      "gold"      "1 2 4 5 8 10 12 15 18"
 	    }
 	  }
 	
@@ -1926,12 +1926,34 @@
 	    
 	    "AbilityCastRange"              "650"
 	
+	    "precache"
+	    {
+	        "particle"  "particles/kivin_gold_coin.vpcf"
+	    }
+	
 	    "AbilitySpecial"
 	    {
 	        "01"
 	        {
 	            "var_type"                      "FIELD_INTEGER"
 	            "gold_per_second"      "1"
+	        }
+	    }
+	
+	    "OnProjectileHitUnit"
+	    {
+	        "DeleteOnHit"   "1"
+	
+	        "RunScript"
+	        {
+	            "ScriptFile"        "units/creep.lua"
+	            "Function"          "KivinGoldTick"
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf"
+	          "EffectAttachType"  "follow_overhead"
+	          "Target"            "TARGET"
 	        }
 	    }
 	
@@ -1945,23 +1967,42 @@
 	            "ThinkInterval" "1.00" 
 	            "OnIntervalThink"
 	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"        "units/creep.lua"
+	                    "Function"          "CreateProjectiles"
+	                }
+	            }
+	        }
+	        "modifier_tick_projectile"
+	        {
+	            "Duration"              "0.03"
+	            "Passive"            "0"
+	            "IsHidden"            "1"
+	        
+	            "OnCreated"
+	            {
 	                "ActOnTargets"
 	                {
 	                    "Target"
 	                    {
 	                        "Center"      "TARGET"
 	                        "Radius"     "650"
-	                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
-	                        "Types"     "DOTA_UNIT_TARGET_ALL"
+	                        "Teams"     "DOTA_UNIT_TARGET_TEAM_BOTH"
+	                        "Types"     "DOTA_UNIT_TARGET_HERO"
 	                        "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	                    }
 	                
 	                    "Action"    
 	                    {
-	                        "RunScript"
+	                        "TrackingProjectile"
 	                        {
-	                            "ScriptFile"        "units/creep.lua"
-	                            "Function"          "KivinGoldTick"
+	                            "Target"            "TARGET"
+	                            "EffectName"        "particles/kivin_gold_coin.vpcf"
+	                            "Dodgeable"         "0"
+	                            "ProvidesVision"    "0"
+	                            "MoveSpeed"         "600"
+	                            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	                        }
 	                    }
 	                }
@@ -4338,7 +4379,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "5 10 18 29 40 53 65 80"
+	  "AbilityGoldCost"       "6 8 18 25 45 65 80 100"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -4359,7 +4400,7 @@
 	    "02"
 	    { 
 	      "var_type"  "FIELD_INTEGER"
-	      "lumber_cost" "1250 2250 4500 7000 10000 15000 20000 25000"
+	      "lumber_cost" "1500 3500 5000 7500 10000 12500 15000 20000"
 	    }
 	  }
 	
