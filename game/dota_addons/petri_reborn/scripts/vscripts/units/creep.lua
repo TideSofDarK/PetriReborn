@@ -127,7 +127,16 @@ function KivinGoldTick(keys)
 
     if GameRules:IsDaytime() == false and target:IsRealHero() == true and target:GetTeamNumber() == DOTA_TEAM_BADGUYS then
         PlayerResource:ModifyGold(target:GetPlayerOwnerID(), GetGoldTickModifier(), false, 0) 
-        PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 2.0, target)
+        --PopupParticle(GetGoldTickModifier(), Vector(244,201,23), 2.0, target)
+    end
+end
+
+function CreateProjectiles( keys )
+    local caster = keys.caster
+    local ability = keys.ability
+
+    if GameRules:IsDaytime() == false then
+        ability:ApplyDataDrivenModifier(caster, caster, "modifier_tick_projectile", {})
     end
 end
 

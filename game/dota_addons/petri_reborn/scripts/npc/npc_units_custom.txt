@@ -398,7 +398,7 @@
 	  "ModelScale"        "1.1"
 	  "SoundSet"          "Creep_Good_Range"
 	  "Level"           "7"
-	  "HealthBarOffset"     "295"
+	  "HealthBarOffset"     "320"
 	
 	  "Ability1"  "petri_gold_tick"
 	

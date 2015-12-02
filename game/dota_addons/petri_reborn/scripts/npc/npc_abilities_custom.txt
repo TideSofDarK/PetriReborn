@@ -1967,6 +1967,21 @@
 	            "ThinkInterval" "1.00" 
 	            "OnIntervalThink"
 	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"        "units/creep.lua"
+	                    "Function"          "CreateProjectiles"
+	                }
+	            }
+	        }
+	        "modifier_tick_projectile"
+	        {
+	            "Duration"              "0.03"
+	            "Passive"            "0"
+	            "IsHidden"            "1"
+	        
+	            "OnCreated"
+	            {
 	                "ActOnTargets"
 	                {
 	                    "Target"
@@ -1986,7 +2001,7 @@
 	                            "EffectName"        "particles/kivin_gold_coin.vpcf"
 	                            "Dodgeable"         "0"
 	                            "ProvidesVision"    "0"
-	                            "MoveSpeed"         "700"
+	                            "MoveSpeed"         "600"
 	                            "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 	                        }
 	                    }
