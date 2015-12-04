@@ -34,3 +34,13 @@ function GameMode:TestAdditionalExitGold()
     end
   end
 end
+
+function GameMode:TestStaticPopup()
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      PopupStaticParticle(6, Vector(255,255,255), GameMode.assignedPlayerHeroes[playerID])
+    end
+  end
+end
