@@ -75,4 +75,11 @@ end
 
 function Activate(keys)
 	print("Portal activated")
+
+	-- local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+
+	-- Timers:CreateTimer(10, function (  )
+	-- 	PopupStaticParticle(3, Vector(255,255,255), unit)
+	-- end)
+	
 end

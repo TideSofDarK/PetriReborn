@@ -265,6 +265,19 @@ function PopupParticle(number, color, duration, caster, preSymbol, postSymbol)
   ParticleManager:SetParticleControl(pidx, 3, color)
 end
 
+function PopupStaticParticle(number, color, caster)
+  if number < 1 then
+    return false
+  end
+  local pfxPath = string.format("particles/portal_level_msg.vpcf", pfx)
+
+  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_OVERHEAD_FOLLOW, caster)
+
+  ParticleManager:SetParticleControl(pidx, 2, Vector(1, 0, 0))
+  ParticleManager:SetParticleControl(pidx, 3, Vector(9, number, 2))
+  ParticleManager:SetParticleControl(pidx, 4, Vector(1, 2, 0))
+end
+
 -- NETTABLES
 function GetKeyInNetTable(pID, nettable, k)
   local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
