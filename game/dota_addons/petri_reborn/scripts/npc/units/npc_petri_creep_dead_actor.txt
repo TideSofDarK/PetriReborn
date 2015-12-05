@@ -25,7 +25,7 @@
 
   "BountyGoldMin"       "5.0"
   "BountyGoldMax"       "5.0"
-  "BountyXP"          "18"  
+  "BountyXP"          "15"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"

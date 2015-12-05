@@ -369,7 +369,7 @@
 	
 	  "BountyGoldMin"       "1.0"
 	  "BountyGoldMax"       "1.0"
-	  "BountyXP"          "3"  
+	  "BountyXP"          "1"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -468,7 +468,7 @@
 	
 	  "BountyGoldMin"       "5.0"
 	  "BountyGoldMax"       "5.0"
-	  "BountyXP"          "18"  
+	  "BountyXP"          "15"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -517,7 +517,7 @@
 	
 	  "BountyGoldMin"       "68.0"
 	  "BountyGoldMax"       "69.0"
-	  "BountyXP"          "275"  
+	  "BountyXP"          "200"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -563,7 +563,7 @@
 	
 	  "BountyGoldMin"       "2.0"
 	  "BountyGoldMax"       "3.0"
-	  "BountyXP"          "10"  
+	  "BountyXP"          "8"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -611,7 +611,7 @@
 	
 	  "BountyGoldMin"       "37.0"
 	  "BountyGoldMax"       "38.0"
-	  "BountyXP"          "150"  
+	  "BountyXP"          "70"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -710,7 +710,7 @@
 	
 	  "BountyGoldMin"       "15.0"
 	  "BountyGoldMax"       "17.0"
-	  "BountyXP"          "65"  
+	  "BountyXP"          "22"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
