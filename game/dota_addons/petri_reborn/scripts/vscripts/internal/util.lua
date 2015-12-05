@@ -271,11 +271,17 @@ function PopupStaticParticle(number, color, caster)
   end
   local pfxPath = string.format("particles/portal_level_msg.vpcf", pfx)
 
-  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_OVERHEAD_FOLLOW, caster)
+  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN, caster)
+
+  local digits = 0
+  if number ~= nil then
+      digits = #tostring(number)
+  end
+  digits = digits + 1
 
   ParticleManager:SetParticleControl(pidx, 2, Vector(1, 0, 0))
   ParticleManager:SetParticleControl(pidx, 3, Vector(9, number, 2))
-  ParticleManager:SetParticleControl(pidx, 4, Vector(1, 2, 0))
+  ParticleManager:SetParticleControl(pidx, 4, Vector(1, digits, 0))
 end
 
 -- NETTABLES

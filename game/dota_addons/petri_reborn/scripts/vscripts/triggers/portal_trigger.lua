@@ -1,3 +1,12 @@
+PORTAL_LEVELS = {}
+PORTAL_LEVELS[1] = 1
+PORTAL_LEVELS[2] = 5
+PORTAL_LEVELS[3] = 20
+PORTAL_LEVELS[4] = 25
+PORTAL_LEVELS[5] = 40
+PORTAL_LEVELS[6] = 60
+PORTAL_LEVELS[76] = 80
+
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
 	if string.match(triggerName, "portal_trigger_creep") then
@@ -76,10 +85,24 @@ end
 function Activate(keys)
 	print("Portal activated")
 
-	-- local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+	local name = thisEntity:GetName()
 
-	-- Timers:CreateTimer(10, function (  )
-	-- 	PopupStaticParticle(3, Vector(255,255,255), unit)
-	-- end)
-	
+	if string.match(name, "portal_trigger_creep") and string.match(name, "input") then
+		
+		local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
+		local number = tonumber(numberString)
+
+		local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+
+		local oldPos = unit:GetAbsOrigin()
+		oldPos.z = oldPos.z + 250
+		unit:SetAbsOrigin(oldPos)
+
+		unit:AddAbility("petri_dummy_invisibility")
+		InitAbilities(unit)
+
+		Timers:CreateTimer(20, function (  )
+			PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+		end)
+	end
 end
