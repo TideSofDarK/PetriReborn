@@ -2074,7 +2074,7 @@
 	    "modifier_truesight_reveal"
 	    {
 	      "IsHidden"      "1"
-	      "Duration"      "0.5"
+	      "Duration"      "0.03"
 	      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
 	
 	      "States"
