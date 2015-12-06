@@ -26,6 +26,7 @@ function GameSetup:ShuffleSchedule( args )
       local petr = { };
       local kvn = { };
 
+      GameSetup.votes['prefer_team'] = GameSetup.votes['prefer_team'] or {}
       for k,v in pairs(GameSetup.votes['prefer_team']) do
         if v == 'kvn' then
           table.insert(kvn, k)
@@ -67,9 +68,39 @@ function GameSetup:ShuffleSchedule( args )
     end);
 end
 
-function GameSetup:ShuffleSetHostList( args )
+function GetTeamsFromEmptySelection( args )
   local petr = args["petr"];
   local kvn = args["kvn"];
+
+  -- Get min petr in game
+  local minPetrCount = GetArraySize( GameSetup.votes['prefer_team'] ) - 12
+
+  if minPetrCount > 0 then
+    -- If empty petr team
+    if GetArraySize( petr ) < minPetrCount then
+      kvn = {}
+      -- Try to get first two players who prefer petr team
+      for k,v in pairs(GameSetup.votes['prefer_team']) do
+        if v == 'petr' and GetArraySize( petr ) < minPetrCount then
+          table.insert(petr, k)
+        else
+          table.insert(kvn, k)
+        end
+      end
+
+      -- Set random kvn to petr team if only host prefer this team
+      if GetArraySize( petr ) < minPetrCount then
+        local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
+        table.insert(petr, table.remove(kvn, kvn[num]))        
+      end
+    end
+  end
+
+  return petr, kvn  
+end
+
+function GameSetup:ShuffleSetHostList( args )
+  local petr, kvn = GetTeamsFromEmptySelection( args )
 
   CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn,  ["petr"] = petr })
   

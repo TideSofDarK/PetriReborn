@@ -242,6 +242,12 @@ function HostShuffle()
 
 	for (var i = 0; i < childCount; i++) {
 		var playerPanel = playersPanel.GetChild(i);
+
+		var isPreferPetri = playerPanel.FindChild("Indicators").FindChild("PetroPrefer").BHasClass( "visible" );
+
+		if (!isPreferPetri)
+			continue;
+		
 		playerPanel.SetHasClass("hover", true);
 
 		var click = (function(panel) { 
