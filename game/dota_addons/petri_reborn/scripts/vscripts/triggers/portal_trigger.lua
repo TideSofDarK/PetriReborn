@@ -5,7 +5,7 @@ PORTAL_LEVELS[3] = 20
 PORTAL_LEVELS[4] = 25
 PORTAL_LEVELS[5] = 40
 PORTAL_LEVELS[6] = 60
-PORTAL_LEVELS[76] = 80
+PORTAL_LEVELS[7] = 80
 
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
@@ -13,11 +13,15 @@ function CheckFarmPlaces(trigger, activator)
 		if GameRules:IsDaytime() ~= true then 
 			return true 
 		else
-			if string.match(triggerName, "portal_trigger_creep3") then
-				if GameMode.PETRI_TRUE_TIME < 384 then
-					return true 
-				end
+			local heroLevel = activator:GetLevel()
+			if heroLevel < PORTAL_LEVELS[GetPortalNumber( triggerName )] then
+				return true
 			end
+			-- if string.match(triggerName, "portal_trigger_creep3") then
+			-- 	if GameMode.PETRI_TRUE_TIME < 384 then
+			-- 		return true 
+			-- 	end
+			-- end
 		end
 	end
 	if string.match(triggerName, "portal_trigger_kivin_input") then
@@ -87,10 +91,9 @@ function Activate(keys)
 
 	local name = thisEntity:GetName()
 
-	if string.match(name, "portal_trigger_creep") and string.match(name, "input") then
+	if IsCreepPortal( name ) == true then
 		Timers:CreateTimer(20, function (  )
-			local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
-			local number = tonumber(numberString)
+			local number = GetPortalNumber( name )
 
 			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 
@@ -98,10 +101,27 @@ function Activate(keys)
 			oldPos.z = oldPos.z + 250
 			unit:SetAbsOrigin(oldPos)
 
-			unit:AddAbility("petri_dummy_icon_passive")
+			unit:AddAbility("petri_dummy_static_popup")
 			InitAbilities(unit)
 
-			PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+			Timers:CreateTimer(10, function (  )
+					PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+				end)
 		end)
 	end
+end
+
+function IsCreepPortal( name )
+	if string.match(name, "portal_trigger_creep") and string.match(name, "input") then return true end
+	if string.match(name, "portal_trigger_kivin_input") then return true end
+	return false
+end
+
+function GetPortalNumber( name )
+	if string.match(name, "portal_trigger_kivin_input") then return 7 end
+
+	local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
+	local number = tonumber(numberString) or 1
+
+	return number
 end

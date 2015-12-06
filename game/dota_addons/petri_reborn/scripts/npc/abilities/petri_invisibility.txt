@@ -156,3 +156,28 @@
     }
   }  
 }
+
+"petri_dummy_static_popup"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "riki_permanent_invisibility"
+  
+  "Modifiers"
+  {
+    "modifier_dummy_static_popup"
+    {
+      "IsHidden"      "1"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "States"
+      {
+        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }  
+}

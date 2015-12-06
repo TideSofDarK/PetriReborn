@@ -41,9 +41,8 @@
 		{
 			_class = "C_OP_InterpolateRadius"
 			m_flEndTime = 0.100000
-			m_flEndScale = 3.750000
+			m_flEndScale = 2.000000
 			m_flBias = 0.450000
-			m_flStartScale = 2.000000
 		},
 		{
 			_class = "C_OP_InterpolateRadius"
