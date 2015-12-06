@@ -82,6 +82,20 @@ function GetGoldModifier()
   return 1.0
 end
 
+function GetMoveToTreePosition( unit, target )
+  local origin = unit:GetAbsOrigin()
+  local building_pos = target:GetAbsOrigin()
+  local distance = 120
+  return building_pos + (origin - building_pos):Normalized() * distance
+end
+
+function GetMoveToBuildingPosition( unit, target )
+  local origin = unit:GetAbsOrigin()
+  local building_pos = target:GetAbsOrigin()
+  local distance = target:GetHullRadius()
+  return building_pos + (origin - building_pos):Normalized() * distance
+end
+
 function GiveSharedGoldToHeroes(gold, hero)
   for k,v in pairs(GameMode.assignedPlayerHeroes) do
     if IsValidEntity(v) == true then

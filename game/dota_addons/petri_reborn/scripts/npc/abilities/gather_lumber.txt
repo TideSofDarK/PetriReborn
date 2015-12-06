@@ -28,25 +28,12 @@
 
   "Modifiers"
   {
-    "modifier_gather_lumber_rooted"
-    {
-      "Passive"     "0"
-      "IsHidden"      "1"
-      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"  
-      "States"
-      {
-        "MODIFIER_STATE_ROOTED"   "MODIFIER_STATE_VALUE_ENABLED"
-        //"MODIFIER_STATE_DISARMED"   "MODIFIER_STATE_VALUE_ENABLED"
-      }
-    }
-
     "modifier_ability_gather_lumber_no_col"
     {
       "Passive"         "1"
       "IsHidden"          "1"
       "IsBuff"          "1"
       "IsDebuff"          "0"
-      "EffectAttachType"      "follow_origin"
       
       "States"
       {
@@ -83,8 +70,6 @@
     "modifier_chopping_wood"
     {
       "IsHidden"        "1"
-    
-      "OverrideAnimation"   "ACT_DOTA_ATTACK"
 
       "OnOrder"
       { 
@@ -96,37 +81,38 @@
         }
       }
 
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "PlayAttackAnimation"
+        }
+      }
+
+      "OnDestroy"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "StopAnimation"
+        }
+      }
+
       "ThinkInterval"  "1.0"
       "OnIntervalThink"
       {
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
-          "Function"    "Gather100Lumber"
+          "Function"    "PlayAttackAnimation"
         }
-
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_chopping_wood_animation"
-          "Target"    "CASTER"
-          "Duration"    "0.87"
-        }
-      }   
-    }
-
-    "modifier_chopping_wood_animation"
-    {
-      "OverrideAnimation"     "ACT_DOTA_ATTACK"
-      "IsHidden"        "1"
-      "OnOrder"
-      {
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
-          "Function"    "ToggleOffGather"
-          "arg" "modifier_chopping_wood_animation"
+          "Function"    "GatherLumber"
         }
-      }
+      }   
     }
   }
 }
