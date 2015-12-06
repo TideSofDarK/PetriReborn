@@ -1,0 +1,31 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/material_design.css" />	
+		<include src="file://{resources}/styles/custom_game/game_setup.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
+	</scripts>
+	<Panel hittest="false" class="VoteContainer rounded z-index1">
+		<Panel class="VoteContainer" desc="#game_setup_bonus_item_vote" id="BonusItem">
+			<Panel class="DarkTheme Primary500" id="VoteHeader" >
+				<Label class="VoteQuestionLabel" text="#vote_bonus_item_q" />
+			</Panel>
+			<Panel class="DarkTheme Cards" id="VoteVariants" param="bonus_item">
+				<Button class="DarkTheme FlatButton" value="trap" default="true">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_trap" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="2_attack">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_2_attack" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="2_evasion">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_2_evasion" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="3_alcohol">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_3_alcohol" />
+				</Button>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
+

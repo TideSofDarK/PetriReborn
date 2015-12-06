@@ -107,6 +107,20 @@
     }
 }
 
+.TeamSelectPlayer.hover
+{
+}
+
+.TeamSelectPlayer.hover:hover
+{
+    background-color: #616161;
+}
+
+.TeamSelectPlayer.hover:active
+{
+    sound: "ui_rollover_micro";
+}
+
 DOTAAvatarImage
 {
     width: 32px;
@@ -114,6 +128,12 @@ DOTAAvatarImage
 
     background-color: black;
     vertical-align: middle;
+}
+
+#Indicators
+{
+    width: 32px;
+    height: 32px;
 }
 
 #Petro {
@@ -124,6 +144,18 @@ DOTAAvatarImage
 }
 
 #Petro.visible {
+    visibility: visible;
+}
+
+#PetroPrefer {
+    width: 32px;
+    height: 32px;
+
+    opacity: 0.2;
+    visibility: collapse;
+}
+
+#PetroPrefer.visible {
     visibility: visible;
 }
 
@@ -247,6 +279,8 @@ DOTAAvatarImage
 
 .show_vote
 {
+    sound: "ui_topmenu_activate";
+
     animation-duration: 0.75s;
     animation-timing-function: ease-out;
     animation-name: ShowVote;
@@ -291,6 +325,7 @@ DOTAAvatarImage
 }
 
 .FlatButton.selected {
+    sound: "ui_rollover_micro";
     background-color: #607D8B;
 }
 

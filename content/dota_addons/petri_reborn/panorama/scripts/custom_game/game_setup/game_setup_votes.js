@@ -2,7 +2,7 @@
 
 var isDebug = true;
 
-var AFTER_VOTE_TIME = 10;
+var AFTER_VOTE_TIME = 5;
 
 var hostVoteNum = 0;
 var currentVotePanel = null;
@@ -13,10 +13,10 @@ var timer = 0;
 
 // Layout file, time for vote, state description
 var votePanels = [
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10, "#game_setup_host_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 10, "#game_setup_build_delay_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_game_length.xml", 10, "#game_setup_game_length_vote" ],
-	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 10, "#game_setup_use_miniactors_vote" ]
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10 ],
+	/*[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 5 ],*/
+	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_bonus_item.xml", 10 ],
+	/*[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 5 ]*/
 ]; 
 
 //--------------------------------------------------------------------------------------------------
@@ -49,6 +49,7 @@ function Msg()
 
 function ShowVote( args )
 {
+	Msg("Show vote ", args["vote_number"])
 	var currentVoteNum = args["vote_number"];
 	if (currentVoteNum > votePanels.length)
 		return;
@@ -76,9 +77,18 @@ function ShowVote( args )
 		{
 			var votePanel = $.CreatePanel( "Panel", $.GetContextPanel(), "" );
 			votePanel.BLoadLayout( vote[0], false, false );
+
+			// Update state description
+			$.Schedule( 0.2, function(){
+				var desc = votePanel.GetChild(0).GetAttributeString("desc", "");
+				if ($.GetContextPanel().data().SetStateDescription && desc != "")
+					$.GetContextPanel().data().SetStateDescription( desc );	
+
+			});
+
 			votePanel.AddClass("show_vote");
 			votePanel.data().SetVoteTime(vote[1]);
-			currentVotePanel = votePanel;
+			currentVotePanel = votePanel;			
 		}
 }
 
@@ -154,7 +164,7 @@ function SyncTimer( args )
 	timer = clientTime + args["length"] - (clientTime - args["host_time"]);
 
 	// Update state description
-	if ($.GetContextPanel().data().SetStateDescription)
+	if ($.GetContextPanel().data().SetStateDescription && args["desc"] != "")
 		$.GetContextPanel().data().SetStateDescription( args["desc"] );	
 }
 
@@ -167,7 +177,7 @@ function ShowNextVote()
 		return;
 
 	if (votePanels[hostVoteNum])
-		SetTimer( votePanels[hostVoteNum][1], votePanels[hostVoteNum][2] )
+		SetTimer( votePanels[hostVoteNum][1] + 1, "" )
 
 	if (hostVoteNum < votePanels.length + 1)
 		SendEventHostToClients( "petri_vote_current_vote", { "vote_number" : hostVoteNum++ } );
@@ -175,6 +185,7 @@ function ShowNextVote()
 
 (function ()
 {
+	Msg("Vote loaded!")
 	var playerInfo = Game.GetLocalPlayerInfo();
 	isHost = playerInfo.player_has_host_privileges;
 	if (isHost)

@@ -5,7 +5,6 @@ GameSetup.votes = {}
 -- Shuffles
 ------------------------------------------------------------------------
 local shuffleTimes = 0;
-local hostPlayerID = -1;
 local petrCount = 2;
 
 function GetArraySize( array )
@@ -16,64 +15,65 @@ function GetArraySize( array )
   return count
 end
 
-function ShuffleList( count )
-  local a = {}
-  for i = 0, count - 1 do
-    a[i] = i
-  end
-
-  for i = 0, count - 1 do
-      local num = math.floor(math.random() * (i + 1));
-      local d = a[num];
-      a[num] = a[i];
-      a[i] = d;
-  end
-
-  local petr = { };
-  local kvn = { };
-  for i = 0, count - 1 do
-    if math.fmod(i, 2) == 0 then
-      if GetArraySize( petr ) < petrCount then
-        table.insert(petr, a[i])
-      else
-        table.insert(kvn, a[i])
+function GameSetup:ShuffleSchedule( args )
+  Timers:CreateTimer(args["timer"], 
+    function()
+      local mode = nil;
+      for k,v in pairs(GameSetup.votes['shuffle_mode']) do
+        mode = v;
       end
-    else
-      table.insert(kvn, a[i])
-    end
-  end
-  
-  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn, ["petr"] = petr } );
-  shuffleTimes = shuffleTimes + 1;
 
-  if shuffleTimes == 3 then
-    Timers:CreateTimer(2.0, 
-      function() 
-        CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
-      end);
-  end
-end
+      local petr = { };
+      local kvn = { };
 
-function GameSetup:ShuffleRandom( args )
-  shuffleTimes = 0;
-  hostPlayerID = args['PlayerID'];
+      for k,v in pairs(GameSetup.votes['prefer_team']) do
+        if v == 'kvn' then
+          table.insert(kvn, k)
+        else
+          table.insert(petr, k)
+        end
+      end
 
-  for i = 0, 2 do
-    Timers:CreateTimer(i * 2.0, 
-      function() 
-        ShuffleList( args['CurrentPlayers'] ) 
-      end);
-  end
-end
+      -- Host shuffle list
+      if mode == 'host' then
+        CustomGameEventManager:Send_ServerToAllClients( "petri_set_prefer_team_list", { ["kvn"] = kvn, ["petr"] = petr } )
+        CustomGameEventManager:Send_ServerToAllClients("petri_host_shuffle", { } )
+      -- Random shuffle list
+      else
+        local petrCount = GetArraySize( petr )
+        local kvnCount = GetArraySize( kvn )
 
-function GameSetup:ShuffleHost()
-  CustomGameEventManager:Send_ServerToAllClients("petri_host_shuffle", { } )
+        if petrCount < 2 and kvnCount > 0 then
+          local num = math.floor(math.random() * (kvnCount + 1))
+          -- Move one kvn in petro team
+          table.insert(petr, table.remove(kvn, kvn[num]))
+        else
+          -- Move random petro to kvn team
+          while petrCount > 2 do
+            local num = math.floor(math.random() * (petrCount + 1))
+            table.insert(kvn, table.remove(petr, petr[num]))
+
+            petrCount = GetArraySize( petr )
+          end
+        end
+
+        CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn, ["petr"] = petr } )
+        Timers:CreateTimer(1.0, 
+          function() 
+            CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
+          end);        
+      end
+
+    end);
 end
 
 function GameSetup:ShuffleSetHostList( args )
-  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = args["kvn"],  ["petr"] = args["petr"] });
+  local petr = args["petr"];
+  local kvn = args["kvn"];
+
+  CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn,  ["petr"] = petr })
   
-  Timers:CreateTimer(2.0, 
+  Timers:CreateTimer(1.0, 
     function() 
       CustomGameEventManager:Send_ServerToAllClients("petri_end_shuffle", { } )
     end);
@@ -98,8 +98,14 @@ function GameSetup:Vote( args )
   end
 
   GameSetup.votes[voteName] = GameSetup.votes[voteName] or {}
+  -- Unique value for each player
+  GameSetup.votes[voteName][pID] = value
+
+  --[[
+  GameSetup.votes[voteName] = GameSetup.votes[voteName] or {}
   GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] or 0
   GameSetup.votes[voteName][value] = GameSetup.votes[voteName][value] + 1
+  ]]
 end
 
 -- End vote handler
@@ -114,6 +120,27 @@ function GameSetup:VoteEnd( args )
       if votes > maxVotes then 
         maxVotes = votes
         results[k] = option
+      end
+    end
+  end
+
+  for k,v in pairs(results) do
+    if k == "bonus_item" then
+      if v == "trap" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_trap"
+        GameMode.KVN_BONUS_ITEM["count"] = 1
+      end
+      if v == "2_attack" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_attack_scroll"
+        GameMode.KVN_BONUS_ITEM["count"] = 2
+      end
+      if v == "2_evasion" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_evasion_scroll"
+        GameMode.KVN_BONUS_ITEM["count"] = 2
+      end
+      if v == "3_alcohol" then
+        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_alcohol"
+        GameMode.KVN_BONUS_ITEM["count"] = 3
       end
     end
   end

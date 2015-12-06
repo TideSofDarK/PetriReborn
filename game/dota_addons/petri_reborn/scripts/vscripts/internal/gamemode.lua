@@ -21,6 +21,10 @@ function GameMode:_InitGameMode()
   GameRules:SetFirstBloodActive( ENABLE_FIRST_BLOOD )
   GameRules:SetHideKillMessageHeaders( HIDE_KILL_BANNERS )
 
+  -- State jumping fix
+  SendToServerConsole("dota_surrender_on_disconnect 0")
+  SendToServerConsole( 'customgamesetup_set_auto_launch_delay 300' )
+  Convars:SetInt( 'dota_auto_surrender_all_disconnected_timeout', 7200 )
 
   -- This is multiteam configuration stuff
   if USE_AUTOMATIC_PLAYERS_PER_TEAM then
@@ -105,10 +109,9 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
 
   -- Game Setup
-  CustomGameEventManager:RegisterListener( "petri_game_setup_random_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleRandom'))
-  CustomGameEventManager:RegisterListener( "petri_game_setup_host_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleHost'))
-  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
+  CustomGameEventManager:RegisterListener( "petri_shuffle_timer", Dynamic_Wrap(GameSetup, 'ShuffleSchedule'))
 
+  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
 
   -- Votes
   CustomGameEventManager:RegisterListener( "petri_client_to_all_clients", Dynamic_Wrap(GameSetup, 'ToAllClients'))
@@ -142,7 +145,7 @@ function GameMode:_InitGameMode()
   if BAREBONES_DEBUG_SPEW then
     spew = 1
   end
-  Convars:RegisterConvar('barebones_spew', tostring(spew), 'Set to 1 to start spewing barebones debug info.  Set to 0 to disable.', 0)
+  --Convars:RegisterConvar('barebones_spew', tostring(spew), 'Set to 1 to start spewing barebones debug info.  Set to 0 to disable.', 0)
 
   -- Change random seed
   local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
