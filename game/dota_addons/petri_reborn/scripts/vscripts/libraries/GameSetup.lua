@@ -19,6 +19,7 @@ function GameSetup:ShuffleSchedule( args )
   Timers:CreateTimer(args["timer"], 
     function()
       local mode = nil;
+      GameSetup.votes['shuffle_mode'] = GameSetup.votes['shuffle_mode'] or { ['0'] = 'host' }
       for k,v in pairs(GameSetup.votes['shuffle_mode']) do
         mode = v;
       end
