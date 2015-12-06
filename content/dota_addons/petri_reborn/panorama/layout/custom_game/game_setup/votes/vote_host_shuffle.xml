@@ -19,6 +19,8 @@
 				GameEvents.SendCustomGameEventToServer( "petri_vote", { "prefer_team" : "petri" } );
 				GameEvents.SendCustomGameEventToServer( "petri_shuffle_timer", { "timer" : 11 } );
 			}
+			else
+				$( "#HostVote" ).DeleteAsync( 0 );
 		})();		
 	</script>
 	<Panel hittest="false" class="VoteContainer rounded z-index1">
