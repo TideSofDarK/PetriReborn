@@ -111,18 +111,30 @@ end
 -- End vote handler
 function GameSetup:VoteEnd( args )
   local results = {}
+  
   for k,v in pairs(GameSetup.votes) do
-    results[k] = 0
+    local votes = {}
+    local lastVote = 0
+    local current
 
-    local maxVotes = 0
+    --local unique = k == "prefer_team"
 
-    for option,votes in pairs(v) do
-      if votes > maxVotes then 
-        maxVotes = votes
-        results[k] = option
+    for pID,vote in pairs(v) do
+      
+      votes[vote] = votes[vote] or 0
+      votes[vote] = votes[vote] + 1
+
+      if votes[vote] > lastVote then
+        current = vote
       end
+
+      lastVote = votes[vote]
     end
+
+    results[k] = current
   end
+
+  PrintTable(results)
 
   for k,v in pairs(results) do
     if k == "bonus_item" then
