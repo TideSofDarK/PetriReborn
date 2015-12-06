@@ -57,13 +57,9 @@ function FarSight( event )
 	local target = event.target_points[1]
 
 	-- Particle for team
-	for _, v in pairs( allHeroes ) do
-		if v:GetPlayerID() then
-			local fxIndex = ParticleManager:CreateParticleForPlayer( particleName, PATTACH_WORLDORIGIN, v, PlayerResource:GetPlayer( v:GetPlayerID() ) )
-			ParticleManager:SetParticleControl( fxIndex, 0, target )
-			ParticleManager:SetParticleControl( fxIndex, 1, Vector(reveal_radius,0,reveal_radius) )
-		end
-	end
+	local fxIndex = ParticleManager:CreateParticle( particleName, PATTACH_WORLDORIGIN, v )
+	ParticleManager:SetParticleControl( fxIndex, 0, target )
+	ParticleManager:SetParticleControl( fxIndex, 1, Vector(reveal_radius,0,reveal_radius) )
 
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
 
@@ -113,11 +109,11 @@ function FarSight( event )
 
     	-- Destroy after the duration
     	Timers:CreateTimer(duration, function() 
-    		if not dummy:IsNull() then dummy:RemoveSelf() end
-    		if not dummy_front:IsNull() then dummy_front:RemoveSelf() end
-    		if not dummy_back:IsNull() then dummy_back:RemoveSelf() end
-    		if not dummy_left:IsNull() then dummy_left:RemoveSelf() end
-    		if not dummy_right:IsNull() then dummy_right:RemoveSelf() end
+    		if dummy then dummy:RemoveSelf() end
+    		if dummy_front then dummy_front:RemoveSelf() end
+    		if dummy_back then dummy_back:RemoveSelf() end
+    		if dummy_left then dummy_left:RemoveSelf() end
+    		if dummy_right then dummy_right:RemoveSelf() end
     	end)
     end
 
