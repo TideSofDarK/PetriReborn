@@ -42,12 +42,15 @@
 
   "support"
   {
+    "item"    "item_petri_magic_shield"
     "item"    "item_petri_grease"
   }
 
   "magics"
   {
-    "item"    "item_petri_magic_shield"
+    "item"    "item_petri_chicken"
+    "item"    "item_petri_cow"
+    "item"    "item_petri_dragon"
   }
 
   "defense"
