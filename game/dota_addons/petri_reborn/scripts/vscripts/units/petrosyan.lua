@@ -52,71 +52,18 @@ function FarSight( event )
 	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
 	local duration = ability:GetLevelSpecialValueFor( "duration", level - 1 )
 
-	local allHeroes = HeroList:GetAllHeroes()
 	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
 	local target = event.target_points[1]
 
-	-- Particle for team
-	local fxIndex = ParticleManager:CreateParticle( particleName, PATTACH_WORLDORIGIN, v )
-	ParticleManager:SetParticleControl( fxIndex, 0, target )
-	ParticleManager:SetParticleControl( fxIndex, 1, Vector(reveal_radius,0,reveal_radius) )
+	EmitSoundOnLocationForAllies(target, "DOTA_Item.DustOfAppearance.Activate", caster)
 
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
-
-	for i,v in ipairs(units) do
-		if v:HasAbility("petri_building") == true then
-			if not v.minimapIcon then
-				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, v, v, DOTA_TEAM_GOODGUYS)
-			end
-		end
-	end
-
-	-- Vision
-	if level == 1 then
-		local dummy = CreateUnitByName("petri_dummy_600vision", target, false, caster, caster, caster:GetTeamNumber())
-		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
-
-	elseif level == 2 then
-		local dummy = CreateUnitByName("petri_dummy_1000vision", target, false, caster, caster, caster:GetTeamNumber())
-		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
-	elseif level == 3 then
-		local dummy = CreateUnitByName("petri_dummy_1400vision", target, false, caster, caster, caster:GetTeamNumber())
-		Timers:CreateTimer(duration, function() dummy:RemoveSelf() end)
-    elseif level == 4 then
-		-- Central dummy
-		local dummy = CreateUnitByName("petri_dummy_1800vision", target, false, caster, caster, caster:GetTeamNumber())
-
-		-- We need to create many 1800vision dummies to make a bigger circle
-		local fv = caster:GetForwardVector()
-    	local distance = 1800
-
-    	-- Front and Back
-    	local front_position = target + fv * distance
-    	local back_position = target - fv * distance
-
-		-- Left and Right
-    	ang_left = QAngle(0, 90, 0)
-    	ang_right = QAngle(1, -90, 0)
-		
-		local left_position = RotatePosition(target, ang_left, front_position)
-    	local right_position = RotatePosition(target, ang_right, front_position)
-
-    	-- Create the 4 auxiliar units
-    	local dummy_front = CreateUnitByName("dummy_1800vision", front_position, false, caster, caster, caster:GetTeamNumber())
-    	local dummy_back = CreateUnitByName("dummy_1800vision", back_position, false, caster, caster, caster:GetTeamNumber())
-    	local dummy_left = CreateUnitByName("dummy_1800vision", left_position, false, caster, caster, caster:GetTeamNumber())
-    	local dummy_right = CreateUnitByName("dummy_1800vision", right_position, false, caster, caster, caster:GetTeamNumber())
-
-    	-- Destroy after the duration
-    	Timers:CreateTimer(duration, function() 
-    		if dummy then dummy:RemoveSelf() end
-    		if dummy_front then dummy_front:RemoveSelf() end
-    		if dummy_back then dummy_back:RemoveSelf() end
-    		if dummy_left then dummy_left:RemoveSelf() end
-    		if dummy_right then dummy_right:RemoveSelf() end
-    	end)
-    end
-
+    -- Particle for team
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
+    ParticleManager:SetParticleControl( particle, 0, target )
+    ParticleManager:SetParticleControl( particle, 1, Vector(reveal_radius,1,reveal_radius) )
+    
+    -- Vision
+    AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
 end
 
 function Sleep(keys)

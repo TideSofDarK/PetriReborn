@@ -14,13 +14,56 @@
     "particle"    "particles/items_fx/dust_of_appearance.vpcf"
   }
 
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "reveal_radius"          "1400"
+    }
+    "02"
+    {
+      "var_type"    "FIELD_INTEGER"
+      "duration"    "6"
+    }
+  }
+
   "OnSpellStart"
   {
     "RunScript"
     {
-      "ScriptFile"      "units/exploration_tree.lua"
-      "Function"        "Explore"
-      "Target"    "POINT"
+      "ScriptFile"    "units/petrosyan.lua"
+      "Function"      "FarSight"
+      "Target"        "POINT"
+    }
+
+    "CreateThinker"
+    {
+      "ModifierName"  "modifier_far_sight"
+      "Target"        "POINT"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_far_sight"
+    {   
+      "IsHidden"          "1"
+      "Duration"          "%duration"
+      "Aura"              "modifier_far_sight_vision"
+      "Aura_Radius"       "%reveal_radius"
+      "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+      "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
+    }
+
+    "modifier_far_sight_vision"
+    {
+      "IsHidden"          "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+      "States"
+      {
+          "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
+      }
     }
   }
 }
