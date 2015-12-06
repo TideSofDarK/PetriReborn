@@ -26,6 +26,7 @@ function GameSetup:ShuffleSchedule( args )
       local petr = { };
       local kvn = { };
 
+      GameSetup.votes['prefer_team'] = GameSetup.votes['prefer_team'] or {}
       for k,v in pairs(GameSetup.votes['prefer_team']) do
         if v == 'kvn' then
           table.insert(kvn, k)
@@ -67,9 +68,39 @@ function GameSetup:ShuffleSchedule( args )
     end);
 end
 
-function GameSetup:ShuffleSetHostList( args )
+function GetTeamsFromEmptySelection( args )
   local petr = args["petr"];
   local kvn = args["kvn"];
+
+  -- Get min petr in game
+  local minPetrCount = GetArraySize( GameSetup.votes['prefer_team'] ) - 12
+
+  if minPetrCount > 0 then
+    -- If empty petr team
+    if GetArraySize( petr ) < minPetrCount then
+      kvn = {}
+      -- Try to get first two players who prefer petr team
+      for k,v in pairs(GameSetup.votes['prefer_team']) do
+        if v == 'petr' and GetArraySize( petr ) < minPetrCount then
+          table.insert(petr, k)
+        else
+          table.insert(kvn, k)
+        end
+      end
+
+      -- Set random kvn to petr team if only host prefer this team
+      if GetArraySize( petr ) < minPetrCount then
+        local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
+        table.insert(petr, table.remove(kvn, kvn[num]))        
+      end
+    end
+  end
+
+  return petr, kvn  
+end
+
+function GameSetup:ShuffleSetHostList( args )
+  local petr, kvn = GetTeamsFromEmptySelection( args )
 
   CustomGameEventManager:Send_ServerToAllClients( "petri_set_shuffled_list", { ["kvn"] = kvn,  ["petr"] = petr })
   
@@ -111,17 +142,27 @@ end
 -- End vote handler
 function GameSetup:VoteEnd( args )
   local results = {}
+  
   for k,v in pairs(GameSetup.votes) do
-    results[k] = 0
+    local votes = {}
+    local lastVote = 0
+    local current
 
-    local maxVotes = 0
+    --local unique = k == "prefer_team"
 
-    for option,votes in pairs(v) do
-      if votes > maxVotes then 
-        maxVotes = votes
-        results[k] = option
+    for pID,vote in pairs(v) do
+      
+      votes[vote] = votes[vote] or 0
+      votes[vote] = votes[vote] + 1
+
+      if votes[vote] > lastVote then
+        current = vote
       end
+
+      lastVote = votes[vote]
     end
+
+    results[k] = current
   end
 
   for k,v in pairs(results) do
