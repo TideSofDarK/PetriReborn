@@ -2615,7 +2615,7 @@
 	
 	  "AbilityManaCost"       "1 2 3 4 5 6 10 15 18 25 35 50 70 85 100 125 250 400"
 	
-	  "MaxLevel"            "15"
+	  "MaxLevel"            "25"
 	
 	  "AbilitySpecial"
 	  {
@@ -2687,7 +2687,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
 	  "AbilityTextureName" "petri_sleep"
 	
-	  "MaxLevel" "15"
+	  "MaxLevel" "25"
 	
 	  "AbilityCastRange"        "650"
 	
@@ -2997,7 +2997,7 @@
 	
 	  "AbilityManaCost"       "1 2 3 4 5 6 7 8 10 12 14 16 20 25 30 35 40"
 	
-	  "MaxLevel"            "15"
+	  "MaxLevel"            "25"
 	  
 	
 	  "AbilitySpecial"
