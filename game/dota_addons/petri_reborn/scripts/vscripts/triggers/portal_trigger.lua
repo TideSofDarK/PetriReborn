@@ -88,20 +88,19 @@ function Activate(keys)
 	local name = thisEntity:GetName()
 
 	if string.match(name, "portal_trigger_creep") and string.match(name, "input") then
-		
-		local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
-		local number = tonumber(numberString)
-
-		local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-
-		local oldPos = unit:GetAbsOrigin()
-		oldPos.z = oldPos.z + 250
-		unit:SetAbsOrigin(oldPos)
-
-		unit:AddAbility("petri_dummy_invisibility")
-		InitAbilities(unit)
-
 		Timers:CreateTimer(20, function (  )
+			local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
+			local number = tonumber(numberString)
+
+			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+
+			local oldPos = unit:GetAbsOrigin()
+			oldPos.z = oldPos.z + 250
+			unit:SetAbsOrigin(oldPos)
+
+			unit:AddAbility("petri_dummy_icon_passive")
+			InitAbilities(unit)
+
 			PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
 		end)
 	end
