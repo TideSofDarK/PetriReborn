@@ -4,19 +4,50 @@
 		<include src="file://{resources}/styles/custom_game/game_setup.css" />
 	</styles>
 	<scripts>
-		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_host.js" />
+		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
 	</scripts>
+	<script>
+		(function() {
+			var playerInfo = Game.GetLocalPlayerInfo();
+			var isHost = playerInfo.player_has_host_privileges;
+
+			if (isHost)
+			{
+				$( "#PlayersVote" ).DeleteAsync( 0 );
+				$.GetContextPanel().GetParent().data().FreezeVote();
+				// Set default prefer team for host
+				GameEvents.SendCustomGameEventToServer( "petri_vote", { "prefer_team" : "petri" } );
+				GameEvents.SendCustomGameEventToServer( "petri_shuffle_timer", { "timer" : 11 } );
+			}
+		})();		
+	</script>
 	<Panel hittest="false" class="VoteContainer rounded z-index1">
-		<Panel class="DarkTheme Primary500" id="VoteHeader" >
-			<Label class="VoteQuestionLabel" text="#vote_host_shuffle_q" />			
+		<Panel class="VoteContainer" desc="#game_setup_prefer_team_vote" id="PlayersVote">
+			<Panel class="DarkTheme Primary500" id="VoteHeader">
+				<Label class="VoteQuestionLabel" text="#vote_prefer_team_q" />
+			</Panel>
+			<Panel class="DarkTheme Cards" id="VoteVariants" param="prefer_team">
+				<Button class="DarkTheme FlatButton" value="kvn" default="true">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_prefer_team_kvn" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="petri">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_prefer_team_petri" />
+				</Button>
+			</Panel>
 		</Panel>
-		<Panel class="DarkTheme Cards" id="VoteVariants">
-			<Button class="DarkTheme FlatButton" value="host" default="true">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_host" />
-			</Button>
-			<Button class="DarkTheme FlatButton" value="random">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_random" />
-			</Button>				
+
+		<Panel class="VoteContainer" desc="#game_setup_host_vote" id="HostVote">
+			<Panel class="DarkTheme Primary500" id="VoteHeader">
+				<Label class="VoteQuestionLabel" text="#vote_host_shuffle_q" />
+			</Panel>
+			<Panel class="DarkTheme Cards" id="VoteVariants" param="shuffle_mode">
+				<Button class="DarkTheme FlatButton" value="host" default="true">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_host" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="random">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_random" />
+				</Button>
+			</Panel>
 		</Panel>
 	</Panel>
 </root>

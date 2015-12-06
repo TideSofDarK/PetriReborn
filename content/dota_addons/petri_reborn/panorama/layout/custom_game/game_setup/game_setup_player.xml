@@ -10,6 +10,9 @@
 		<DOTAAvatarImage hittest="false" class="circle" id="PlayerAvatar" />
 		<Label hittest="false" id="PlayerIsHostPanel" />
 		<Label hittest="false" class="DarkTheme PrimaryText" id="PlayerName" text="PLAYER_NAME" />
-		<Image hittest="false" id="Petro" src="file://{images}/custom_game/timeofday/petrotime.png" />
+		<Panel hittest="false" id="Indicators">
+			<Image hittest="false" id="Petro" src="file://{images}/custom_game/timeofday/petrotime.png" />
+			<Image hittest="false" id="PetroPrefer" src="file://{images}/custom_game/timeofday/petrotime.png" />
+		</Panel>
 	</Panel>
 </root>

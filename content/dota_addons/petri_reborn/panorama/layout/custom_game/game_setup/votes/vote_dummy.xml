@@ -7,23 +7,24 @@
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup_vote_utils.js" />
 	</scripts>
 	<Panel hittest="false" class="VoteContainer rounded z-index1">
-		<Panel class="DarkTheme Primary500" id="VoteHeader" >
-			<Label class="VoteQuestionLabel" text="#vote_build_delay_q" />			
-		</Panel>
-		<Panel class="DarkTheme Cards" id="VoteVariants" param="build_exit_delay">
-			<Button class="DarkTheme FlatButton" value="24" default="true">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_24" />
-			</Button>
-			<Button class="DarkTheme FlatButton" value="26">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_26" />
-			</Button>
-			<Button class="DarkTheme FlatButton" value="28">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_28" />
-			</Button>
-			<Button class="DarkTheme FlatButton" value="30">
-				<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_30" />
-			</Button>						
-
+		<Panel class="VoteContainer" desc="#desc" id="DummyVote">
+			<Panel class="DarkTheme Primary500" id="VoteHeader" >
+				<Label class="VoteQuestionLabel" text="#vote_build_delay_q" />
+			</Panel>
+			<Panel class="DarkTheme Cards" id="VoteVariants" param="build_exit_delay">
+				<Button class="DarkTheme FlatButton" value="24" default="true">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_24" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="26">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_26" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="28">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_28" />
+				</Button>
+				<Button class="DarkTheme FlatButton" value="30">
+					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_build_delay_30" />
+				</Button>
+			</Panel>
 		</Panel>
 	</Panel>
 </root>

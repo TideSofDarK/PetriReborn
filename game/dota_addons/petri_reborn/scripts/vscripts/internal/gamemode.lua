@@ -109,10 +109,9 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_make_bet", Dynamic_Wrap(GameMode, 'OnPlayerMakeBet'))
 
   -- Game Setup
-  CustomGameEventManager:RegisterListener( "petri_game_setup_random_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleRandom'))
-  CustomGameEventManager:RegisterListener( "petri_game_setup_host_shuffle", Dynamic_Wrap(GameSetup, 'ShuffleHost'))
-  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
+  CustomGameEventManager:RegisterListener( "petri_shuffle_timer", Dynamic_Wrap(GameSetup, 'ShuffleSchedule'))
 
+  CustomGameEventManager:RegisterListener( "petri_game_setup_set_host_list", Dynamic_Wrap(GameSetup, 'ShuffleSetHostList'))
 
   -- Votes
   CustomGameEventManager:RegisterListener( "petri_client_to_all_clients", Dynamic_Wrap(GameSetup, 'ToAllClients'))
