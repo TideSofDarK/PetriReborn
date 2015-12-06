@@ -66,8 +66,6 @@ function UpdateTimer()
 		if (isHostShuffle)
 		{
 			SendHostShuffleList();
-			$( "#VotePanel" ).data().SetTimer( 10, "#game_setup_shuffling" );
-			$( "#VotePanel" ).data().UnfreezeVote();
 			isHostShuffle = false;
 		}
 
@@ -116,7 +114,8 @@ function AssignTeams()
 			players[i].SetParent(team.FindChild("PlayerList"));
 		}
 
- 		players[i].FindChild("Petro").visible = false;
+ 		players[i].FindChild("Indicators").FindChild("Petro").visible = false;
+ 		players[i].FindChild("Indicators").FindChild("PetroPrefer").visible = false;
  	}
 
  	var playerID = Game.GetLocalPlayerID();
@@ -130,6 +129,9 @@ function AssignTeams()
 		if (playerPanel)
 			Game.PlayerJoinTeam( curTeam.GetAttributeInt( "team_id", -1 ) );
  	}
+
+	$( "#VotePanel" ).data().SetTimer( 3, "#game_setup_shuffling" );
+	$( "#VotePanel" ).data().UnfreezeVote();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -143,7 +145,23 @@ function ClearStyle()
 	var count = playersPanel.GetChildCount();
 	
 	for (var i = 0; i < count; i++)
-		playersPanel.GetChild(i).SetHasClass( "upPaper", false )
+	{
+		var playerPanel = playersPanel.GetChild(i);
+
+		playerPanel.SetHasClass( "upPaper", false )
+		playerPanel.SetHasClass("hover", false);
+	}
+}
+
+function SetPreferTeam( args )
+{
+	var playersPanel = $( "#PlayersListContainer");
+	
+	for(var playerID in args["petr"])
+	{
+		var playerPanel = playersPanel.FindChild( "Player_" + args["petr"][playerID] );
+		playerPanel.FindChild("Indicators").FindChild("PetroPrefer").SetHasClass("visible", true);
+	}
 }
 
 function ShuffleList( args )
@@ -208,7 +226,7 @@ function SendHostShuffleList()
 	for (var i = 0; i < childCount; i++) {
 		var playerPanel = playersPanel.GetChild(i);
 		var isPetr = playerPanel.GetAttributeString("IsPetr", "false");
-		if (playerPanel.FindChild("Petro").visible)
+		if (playerPanel.FindChild("Indicators").FindChild("Petro").visible)
 			petrList.push(i);
 		else
 			kvnList.push(i);		
@@ -224,6 +242,7 @@ function HostShuffle()
 
 	for (var i = 0; i < childCount; i++) {
 		var playerPanel = playersPanel.GetChild(i);
+		playerPanel.SetHasClass("hover", true);
 
 		var click = (function(panel) { 
 			return function() {
@@ -233,7 +252,7 @@ function HostShuffle()
 				else
 					panel.SetAttributeString("IsPetr", "false");
 
-				panel.FindChild("Petro").SetHasClass("visible", isPetr == "true");
+				panel.FindChild("Indicators").FindChild("Petro").SetHasClass("visible", isPetr == "true");
 			}
 		} (playerPanel));
 
@@ -354,6 +373,7 @@ function LoadUI()
 	// Start updating the timer, this function will schedule itself to be called periodically	
 	UpdateTimer();
 
+	GameEvents.Subscribe( "petri_set_prefer_team_list", SetPreferTeam );
 	GameEvents.Subscribe( "petri_set_shuffled_list", ShuffleList );
 	GameEvents.Subscribe( "petri_end_shuffle", AssignTeams );
 

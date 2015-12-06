@@ -1,6 +1,6 @@
 "use strict";
 
-var syncDelay = 1;
+var syncDelay = 0.5;
 
 function Vote( value )
 {
@@ -19,28 +19,34 @@ function Vote( value )
 //--------------------------------------------------------------------------------------------------
 function SetClickHandler()
 {
-	var variants = $("#VoteVariants");
-	var childCount = variants.GetChildCount();
+	var childCount = $.GetContextPanel().GetChildCount();
+	for (var i = 0; i < childCount; i++) 
+	{
+		var curVotePanel = $.GetContextPanel().GetChild(i);
 
-	for (var i = 0; i < childCount; i++) {
-		var child = variants.GetChild(i);
-		var isDefault = child.GetAttributeString("default", "false");
+		var variants = curVotePanel.FindChild( "VoteVariants" );
+		var variantsCount = variants.GetChildCount();
 
-		// Click event
-		var click = (function( panel ) { 
-			return function() {
-				$.GetContextPanel().IsVoted = true;
-				panel.SetHasClass("selected", true);
-				$("#VoteVariants").enabled = false;
+		for (var j = 0; j < variantsCount; j++) {
+			var child = variants.GetChild(j);
+			var isDefault = child.GetAttributeString("default", "false");
 
-				Vote( panel.GetAttributeString("value", "") );
-			}
-		} (child));
+			// Click event
+			var click = (function( panel ) { 
+				return function() {
+					$.GetContextPanel().IsVoted = true;
+					panel.SetHasClass("selected", true);
+					$("#VoteVariants").enabled = false;
 
-		if (isDefault == "true")
-			$.GetContextPanel().VoteDefault = click;
+					Vote( panel.GetAttributeString("value", "") );
+				}
+			} (child));
 
-		child.SetPanelEvent("onmouseactivate", click);
+			if (isDefault == "true")
+				curVotePanel.data().VoteDefault = click;
+
+			child.SetPanelEvent("onmouseactivate", click);
+		};
 	};	
 }
 
@@ -48,7 +54,7 @@ function SetVoteTime( time )
 {
 	$.Schedule( time - syncDelay, function(){
 		if (!$.GetContextPanel().IsVoted)
-			$.GetContextPanel().VoteDefault();
+			$.GetContextPanel().GetChild(0).data().VoteDefault();
 	});
 }
 
