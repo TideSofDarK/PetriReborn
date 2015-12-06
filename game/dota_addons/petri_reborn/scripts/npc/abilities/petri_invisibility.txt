@@ -21,53 +21,6 @@
         "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
       }
-    } 
-    "modifier_truesight_datadriven"
-    {
-      "Passive"     "1"
-      "IsHidden"      "1"
-  
-      "ThinkInterval"  "0.03"
-      "OnIntervalThink"
-      {
-        "ActOnTargets"
-        {
-          "Target"
-          {
-            "Center"    "TARGET"
-            "Radius"  "1800"
-            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Types"   "DOTA_UNIT_TARGET_ALL"
-          }
-        
-          "Action"    
-          {
-            "RemoveModifier"
-            {
-              "ModifierName"  "modifier_truesight_reveal"
-              "Target"    "TARGET"
-            }
-
-            "ApplyModifier"
-            {
-              "ModifierName"  "modifier_truesight_reveal"
-              "Target"    "TARGET"
-            }
-          }
-        }     
-      }   
-    }
-
-    "modifier_truesight_reveal"
-    {
-      "IsHidden"      "1"
-      "Duration"      "0.03"
-      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
-
-      "States"
-      {
-        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
-      }
     }
   }   
 }
