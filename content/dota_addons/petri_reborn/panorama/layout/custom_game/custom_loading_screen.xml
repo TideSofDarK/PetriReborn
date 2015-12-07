@@ -15,7 +15,7 @@
       <Panel id="Placeholders" >
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/hatler.png" />
         <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
-        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/tournament.png" />
       </Panel>
     </Panel>
 
