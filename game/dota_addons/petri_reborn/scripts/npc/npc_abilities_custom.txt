@@ -3581,7 +3581,7 @@
 	  "MaxLevel"            "8"
 	
 	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
-	  "AbilityGoldCost"       "0 0 2 10 20 30 40"
+	  "AbilityGoldCost"       "0 200 500 1000 1500 2000 2500"
 	
 	  "precache"
 	  {
@@ -3593,12 +3593,12 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "3000 5000 10000 17000 20000 25000 34000"
+	      "lumber_cost"        "3000 10000 20000 40000 60000 80000 120000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "55 91 180 210 240 260 350"
+	      "attack"        "55 150 450 1250 80000 200000 400000"
 	    }
 	    "03"
 	    {
@@ -4767,12 +4767,12 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "35000 70000 140000 285000"
+	      "lumber_cost"        "35000 50000 75000 150000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "1350 2425 4250 5900"
+	      "attack"        "1500 50000 125000 500000"
 	    }
 	    "03"
 	    {
