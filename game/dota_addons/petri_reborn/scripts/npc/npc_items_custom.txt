@@ -2232,12 +2232,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "7000"
+	      "bonus_health"      "5000"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "100"
+	      "bonus_regen"      "50"
 	    }
 	  }
 	  
@@ -2276,12 +2276,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "30000"
+	      "bonus_health"      "15000"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "300"
+	      "bonus_regen"      "80"
 	    }
 	  }
 	  
@@ -2338,12 +2338,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "70000"
+	      "bonus_health"      "40000"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "700"
+	      "bonus_regen"      "100"
 	    }
 	  }
 	  
