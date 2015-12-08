@@ -25,13 +25,6 @@
 				"0"		"attach_origin"
 			}
 		}
-		"models/items/lina/origins_flamehair/origins_flamehair.vmdl"
-		{
-			"particles/econ/items/lina/lina_head_headflame/lina_headflame.vpcf"
-			{
-				"0"		"attach_origin"
-			}
-		}
 		"models/props_structures/statue_dragon001.vmdl"
 		{
 			"models/effects/radiant_lightrays_rainstorm.vmdl"
@@ -541,10 +534,10 @@
 	   		{
 			    "scale"  "1"
 			    "pitch"  "0"
-			    "roll"  "35"
-			    "ZPos"  "-154"
+			    "roll"  "48"
+			    "ZPos"  "-184"
 			    "YPos"  "0"
-			    "yaw"  "-80"
+			    "yaw"  "-90"
 			    "XPos"  "3"
 	   		}
 			"models/items/lina/x_hair_xxx/x_hair_xxx.vmdl"
@@ -1005,6 +998,10 @@
 			    "scale"  "0"
 	   		}
 	   		"models/heroes/visage/visage.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/coral_furryfish/coral_furryfish.vmdl"
 	   		{
 			    "scale"  "0"
 	   		}
