@@ -397,6 +397,35 @@
 			}
 		}
 	}
+	"models/heroes/tidehunter/tidehunter.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/items/tidehunter/diving_helmet/tidehunter_diving_helmet.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"1"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"4"
+				"XPos"		"-50"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/axe_executioner.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"28"
+				"roll"		"41"
+				"ZPos"		"-50"
+				"YPos"		"139"
+				"yaw"		"-112"
+				"XPos"		"-7"
+			}
+		}
+	}
 	"models/heroes/pedestal/effigy_pedestal_ti5.vmdl"
 	{
 		"attach_origin"
@@ -410,6 +439,16 @@
 				"YPos"		"0"
 				"yaw"		"0"
 				"XPos"		"9"
+			}
+			"models/heroes/tidehunter/tidehuntertentacle.vmdl"
+			{
+				"scale"		"2.4"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
 			}
 		}
 	}
@@ -954,10 +993,6 @@
 			    "scale"  "0"
 	   		}
 	   		"models/heroes/venomancer/venomancer.vmdl"
-	   		{
-			    "scale"  "0"
-	   		}
-	   		"models/heroes/tidehunter/tidehunter.vmdl"
 	   		{
 			    "scale"  "0"
 	   		}
@@ -1880,6 +1915,35 @@
 			    "YPos"  "0"
 			    "yaw"  "0"
 			    "XPos"  "-15"
+			}
+		}
+	}
+	"models/heroes/slardar/slardar.vmdl"
+	{
+		"attach_light"
+		{
+			"models/heroes/slardar/slardar_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"56"
+				"roll"		"0"
+				"ZPos"		"-161"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-54"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/warlock/tevent_2_gatekeeper_scythe/tevent_2_gatekeeper_scythe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"8"
+				"roll"		"-5"
+				"ZPos"		"-178"
+				"YPos"		"-57"
+				"yaw"		"180"
+				"XPos"		"-36"
 			}
 		}
 	}
