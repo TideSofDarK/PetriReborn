@@ -194,6 +194,14 @@ function GameMode:FilterExecuteOrder( filterTable )
         end
       end
       return false
+    elseif order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET then 
+      local target = EntIndexToHScript(targetIndex)
+      
+      if target:HasAbility("petri_building") == true then
+        issuerUnit:MoveToPosition(GetMoveToBuildingPosition(issuerUnit,target))
+
+        return false
+      end
     end
 
     return true
