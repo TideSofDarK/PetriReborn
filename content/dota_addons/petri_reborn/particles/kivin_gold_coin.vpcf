@@ -155,6 +155,7 @@
 		},
 		{
 			m_ChildRef = resource:"particles/units/heroes/hero_chaos_knight/chaos_knight_chaos_bolt_launch.vpcf"
+			m_bDisableChild = true
 		},
 		{
 			m_ChildRef = resource:"particles/kivin_gold_coin_model.vpcf"
@@ -162,6 +163,7 @@
 		{
 			m_bEndCap = true
 			m_ChildRef = resource:"particles/kivin_gold_explosion_a.vpcf"
+			m_bDisableChild = true
 		},
 	]
 }
