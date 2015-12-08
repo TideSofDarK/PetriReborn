@@ -133,20 +133,12 @@ function UpdateAttributes(tower, ability)
 	elseif tower == TOWER_FIRE then
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_crits", {})
-		--StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_ICE then
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_skadi", {})
-		--StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.4})
 	elseif tower == TOWER_DEATH then 
 		caster:RemoveModifierByName("modifier_attack_speed")
 		ability:ApplyDataDrivenModifier(ability:GetCaster(), caster, "modifier_death_tower", {})
-
-		UnfreezeAnimation(caster)
-		StartAnimation(caster, {duration = -1, activity=ACT_DOTA_SPAWN , rate=1.4})
-		Timers:CreateTimer(1.0, function (  )
-			FreezeAnimation(caster, -1)
-		end)
 	end
 
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_attack_speed", {})
