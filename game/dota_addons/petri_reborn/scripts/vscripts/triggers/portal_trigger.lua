@@ -9,12 +9,15 @@ PORTAL_LEVELS[7] = 80
 
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
-	if string.match(triggerName, "portal_trigger_creep") then
-		if GameRules:IsDaytime() ~= true then 
+	if string.match(triggerName, "portal_trigger_creep") or string.match(triggerName, "portal_trigger_kivin_input") then
+		
+		local heroLevel = activator:GetLevel()
+		local portalLevel = PORTAL_LEVELS[GetPortalNumber( triggerName )]
+
+		if GameRules:IsDaytime() ~= true and portalLevel < 7 then 
 			return true 
 		else
-			local heroLevel = activator:GetLevel()
-			if heroLevel < PORTAL_LEVELS[GetPortalNumber( triggerName )] then
+			if heroLevel < portalLevel then
 				return true
 			end
 			-- if string.match(triggerName, "portal_trigger_creep3") then
@@ -22,11 +25,6 @@ function CheckFarmPlaces(trigger, activator)
 			-- 		return true 
 			-- 	end
 			-- end
-		end
-	end
-	if string.match(triggerName, "portal_trigger_kivin_input") then
-		if GameMode.PETRI_TRUE_TIME < 1680 then
-			return true 
 		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_b") then
