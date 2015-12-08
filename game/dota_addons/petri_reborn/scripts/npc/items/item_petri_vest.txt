@@ -85,7 +85,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supermegavest"
 
-  "ItemCost"            "900"
+  "ItemCost"            "450"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supermegavest"
@@ -124,7 +124,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_superthing"
 
-  "ItemCost"            "1900"
+  "ItemCost"            "900"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "superthing"
@@ -161,7 +161,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "450"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

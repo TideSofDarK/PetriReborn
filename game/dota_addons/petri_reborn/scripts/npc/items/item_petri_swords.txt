@@ -161,7 +161,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_perfect_sword"
 
-  "ItemCost"            "953"
+  "ItemCost"            "781"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "perfect sword"

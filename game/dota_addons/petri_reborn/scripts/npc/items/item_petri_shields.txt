@@ -114,7 +114,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_nature"
 
-  "ItemCost"            "3400"
+  "ItemCost"            "2400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of nature"
@@ -171,7 +171,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_hell"
 
-  "ItemCost"            "5400"
+  "ItemCost"            "4400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of hell"
@@ -228,7 +228,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_heaven"
 
-  "ItemCost"            "6400"
+  "ItemCost"            "5400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of heaven"
@@ -285,7 +285,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_best_shield"
 
-  "ItemCost"            "29021"
+  "ItemCost"            "31121"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "best shield"
@@ -328,7 +328,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "8500"
+  "ItemCost"            "11600"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

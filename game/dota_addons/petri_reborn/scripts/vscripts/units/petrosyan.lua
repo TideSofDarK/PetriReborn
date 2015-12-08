@@ -69,6 +69,7 @@ end
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
+	local abiltiy = keys.ability
 
 	RemoveGatheringAndRepairingModifiers(target)
 
@@ -77,6 +78,8 @@ function Sleep(keys)
 			target:GetAbilityByIndex(i):ToggleAbility()
 		end
 	end
+
+	ability:ApplyDataDrivenModifier(caster, target, "sleep_modifier", {duration=ability:GetLevel()})
 
 	-- for i=0,target:GetModifierCount() do
 	-- 	local modifierName = target:GetModifierNameByIndex(i)
