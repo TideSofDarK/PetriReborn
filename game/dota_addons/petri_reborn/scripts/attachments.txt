@@ -25,6 +25,13 @@
 				"0"		"attach_origin"
 			}
 		}
+		"models/items/lina/origins_flamehair/origins_flamehair.vmdl"
+		{
+			"particles/econ/items/lina/lina_head_headflame/lina_headflame.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+		}
 		"models/props_structures/statue_dragon001.vmdl"
 		{
 			"models/effects/radiant_lightrays_rainstorm.vmdl"
@@ -406,6 +413,38 @@
 			}
 		}
 	}
+	"models/heroes/crystal_maiden/pedestal_cm_arcana.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/props_structures/crystal002.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"1"
+				"yaw"		"0"
+				"XPos"		"-36"
+			}
+		}
+	}
+	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/items/ogre_magi/goldenwalruswhacker/goldenwalruswhacker.vmdl"
+			{
+				"scale"		"1.6"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"-125"
+				"yaw"		"90"
+				"XPos"		"-21"
+			}
+		}
+	}
 	"models/heroes/drow/drow.vmdl"
 	{
 		"attach_eye_l"
@@ -450,6 +489,16 @@
 	  	"attach_head"
 	  	{
 	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	   		"models/items/lina/origins_flamehair/origins_flamehair.vmdl"
 	   		{
 			    "scale"  "1"
 			    "pitch"  "0"
@@ -868,6 +917,62 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/props_structures/crystal002.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/radiant_statue001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/flopjaw/flopjaw.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/g1_courier/g1_courier.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/itsy/itsy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/esl_wardchest_toadstool/esl_wardchest_toadstool.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/tidehunter/tidehuntertentacle.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/morphling/morphling.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/venoling/venoling.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/venomancer/venomancer.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/tidehunter/tidehunter.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/smeevil_crab/smeevil_crab.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/kunkka/ghostship_sim.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/visage/visage.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
@@ -1011,6 +1116,22 @@
 			    "YPos"  "0"
 			    "yaw"  "-80"
 			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/furion/furion.vmdl"
+	{
+	  	"attach_attack1"
+	  	{
+	   		"models/items/furion/sovereign_staff/sovereign_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "-90"
+			    "ZPos"  "-252"
+			    "YPos"  "-100"
+			    "yaw"  "0"
+			    "XPos"  "-24"
 	   		}
 	  	}
 	}
@@ -1609,6 +1730,16 @@
 				"yaw"		"0"
 				"XPos"		"7"
 			}
+			"models/items/crystal_maiden/frostbringer_hair/frostbringer_hair.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"1"
+				"roll"		"0"
+				"ZPos"		"-156"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"6"
+			}
 			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
 			{
 				"scale"		"1"
@@ -1641,6 +1772,16 @@
 				"YPos"		"-2"
 				"yaw"		"-90"
 				"XPos"		"-71"
+			}
+			"models/items/crystal_maiden/euls_scepterdivinity.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"-64"
+				"yaw"		"90"
+				"XPos"		"-1"
 			}
 			"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
 			{

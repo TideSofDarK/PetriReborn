@@ -508,8 +508,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "35000.0"
-	  "AttackDamageMax"     "37500.0"
+	  "AttackDamageMin"     "980000.0"
+	  "AttackDamageMax"     "980000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -602,8 +602,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "10875.0"
-	  "AttackDamageMax"     "13125.0"
+	  "AttackDamageMin"     "145000.0"
+	  "AttackDamageMax"     "145000.0"
 	  "AttackRate"        "0.5"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -701,8 +701,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "1700.0"
-	  "AttackDamageMax"     "1700.0"
+	  "AttackDamageMin"     "4750.0"
+	  "AttackDamageMax"     "4750.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"

@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_chicken"
 
-  "ItemCost"            "30000"
+  "ItemCost"            "1000"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -16,12 +16,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "7000"
+      "bonus_health"      "5000"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "100"
+      "bonus_regen"      "50"
     }
   }
   
@@ -51,7 +51,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_cow"
 
-  "ItemCost"            "71000"
+  "ItemCost"            "3000"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -60,12 +60,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "30000"
+      "bonus_health"      "15000"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "300"
+      "bonus_regen"      "80"
     }
   }
   
@@ -93,7 +93,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "2000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -113,7 +113,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_dragon"
 
-  "ItemCost"            "123000"
+  "ItemCost"            "8000"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -122,12 +122,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "70000"
+      "bonus_health"      "40000"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "700"
+      "bonus_regen"      "100"
     }
   }
   
@@ -155,7 +155,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "2000"
+  "ItemCost"            "5000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
