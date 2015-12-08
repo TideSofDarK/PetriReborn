@@ -61,6 +61,16 @@ function FarSight( event )
     local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
     ParticleManager:SetParticleControl( particle, 0, target )
     ParticleManager:SetParticleControl( particle, 1, Vector(reveal_radius,1,reveal_radius) )
+
+    local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
+
+	for i,v in ipairs(units) do
+		if v:HasAbility("petri_building") == true then
+			if not v.minimapIcon then
+				v.minimapIcon = CreateUnitByName("npc_dummy_enemy_building_icon", v:GetAbsOrigin(), false, v, v, DOTA_TEAM_GOODGUYS)
+			end
+		end
+	end
     
     -- Vision
     AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
