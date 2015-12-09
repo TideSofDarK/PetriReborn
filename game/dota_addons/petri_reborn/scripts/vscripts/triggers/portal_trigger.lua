@@ -13,8 +13,9 @@ function CheckFarmPlaces(trigger, activator)
 		
 		local heroLevel = activator:GetLevel()
 		local portalLevel = PORTAL_LEVELS[GetPortalNumber( triggerName )]
+		local portalNumber = GetPortalNumber( triggerName )
 
-		if GameRules:IsDaytime() ~= true and portalLevel < 7 then 
+		if GameRules:IsDaytime() == false and portalNumber ~= 7 then 
 			return true 
 		else
 			if heroLevel < portalLevel then
