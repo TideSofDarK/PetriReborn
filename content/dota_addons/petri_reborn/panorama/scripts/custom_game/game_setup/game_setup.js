@@ -62,16 +62,8 @@ function UpdateTimer()
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
 
 	if (timer == 0)
-	{
-		if (isHostShuffle)
-		{
-			SendHostShuffleList();
-			isHostShuffle = false;
-		}
-
 		if ($( "#VotePanel" ).data().ShowNextVote != null)
 			$( "#VotePanel" ).data().ShowNextVote();
-	}
 
 	$.Schedule( 0.1, UpdateTimer );
 }
@@ -266,8 +258,9 @@ function HostShuffle()
 	}
 
 	$( "#VotePanel" ).data().SetTimer( SELECT_PETR_TIME, "#game_setup_host_select_petrosyan" );
-	isHostShuffle = true;
 	$( "#VotePanel" ).data().FreezeVote();
+
+	$.Schedule(SELECT_PETR_TIME, SendHostShuffleList)
 }
 
 //--------------------------------------------------------------------------------------------------
