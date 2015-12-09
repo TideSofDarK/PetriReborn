@@ -79,7 +79,7 @@ end
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target
-	local abiltiy = keys.ability
+	local ability = keys.ability
 
 	RemoveGatheringAndRepairingModifiers(target)
 
