@@ -122,19 +122,6 @@ function GameMode:OnPlayerReconnect(keys)
           player:SetTeam(DOTA_TEAM_BADGUYS)
         end
       end)
-
-      Timers:CreateTimer(0.03,
-      function()
-        local event_data =
-        {
-            gold = GameMode.assignedPlayerHeroes[keys.PlayerID]:GetGold(),
-            lumber = hero.lumber,
-            food = hero.food,
-            maxFood = hero.maxFood
-        }
-        CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-        if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.03 end
-      end)
     else
       return 0.03
     end

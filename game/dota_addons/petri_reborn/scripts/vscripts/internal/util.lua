@@ -306,7 +306,7 @@ function GetKeyInNetTable(pID, nettable, k)
 end
 
 function AddKeyToNetTable(pID, nettable, k, v)
-  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID)) or {}
 
   tempTable[k] = v
 

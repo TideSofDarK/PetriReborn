@@ -93,6 +93,8 @@ function GameMode:OnHeroInGame(hero)
  
   if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
 
+    hero:SetGold(0, false)
+
     GameMode.assignedPlayerHeroes[pID] = "temp"
 
     local newHero
@@ -259,27 +261,8 @@ function SetupUI(newHero)
 
   --Send special values
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
-
-  --Update player's UI
-  Timers:CreateTimer(0.03,
-  function()
-    local event_data =
-    {
-        gold = GameMode.assignedPlayerHeroes[pID]:GetGold(),
-        lumber = newHero.lumber,
-        food = newHero.food,
-        maxFood = newHero.maxFood
-    }
-    CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-    if PlayerResource:GetConnectionState(pID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.1 end
-  end)
 end
 
---[[
-  This function is called once and only once when the game completely begins (about 0:00 on the clock).  At this point,
-  gold will begin to go up in ticks if configured, creeps will spawn, towers will become damageable etc.  This function
-  is useful for starting any game logic timers/thinkers, beginning the first round, etc.
-]]
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
@@ -438,6 +421,24 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "tspu", Dynamic_Wrap(GameMode, 'TestStaticPopup'), "Test static popup", FCVAR_CHEAT )
 
   BuildingHelper:Init()
+
+  --Update player's UI
+  Timers:CreateTimer(0.03,
+  function()
+    
+    if GameMode.assignedPlayerHeroes then
+      for k,v in pairs(GameMode.assignedPlayerHeroes) do
+        if GameMode.assignedPlayerHeroes[k] then
+          AddKeyToNetTable(k, "players_resources", "lumber", v.lumber)
+          AddKeyToNetTable(k, "players_resources", "food", v.food)
+          AddKeyToNetTable(k, "players_resources", "maxFood", v.maxFood)
+          AddKeyToNetTable(k, "players_resources", "gold", PlayerResource:GetGold(k))
+        end
+      end
+    end
+
+    return 0.03
+  end)
 end
 
 function GameMode:ReplaceWithMiniActor(player, gold)
