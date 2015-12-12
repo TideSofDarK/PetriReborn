@@ -550,6 +550,16 @@
 			    "yaw"  "-90"
 			    "XPos"  "185"
 	   		}
+	   		"models/items/lanaya/exotic_assassin_curls/exotic_assassin_curls.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "125"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "270"
+			    "XPos"  "168"
+	   		}
 	  	}
 		"attach_hitloc"
 	  	{
@@ -1005,6 +1015,54 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/props_gameplay/rune_haste01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_illusion01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_doubledamage01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/baby_rosh/babyroshan.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/esl_wardchest_rockshell_terrapin/esl_wardchest_rockshell_terrapin.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant/primeval_treant/primeval_treant.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant_stump.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant/fungal_lord_shroomthing/fungal_lord_shroomthing.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/seekling/seekling.vmdl"
+	   		{	
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/ship_broken001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/dark_staff/bulb.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant_flower_1.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
@@ -1164,6 +1222,59 @@
 			    "YPos"  "-100"
 			    "yaw"  "0"
 			    "XPos"  "-24"
+	   		}
+	   		"models/items/furion/dark_staff/dark_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "-90"
+			    "ZPos"  "-252"
+			    "YPos"  "-120"
+			    "yaw"  "70"
+			    "XPos"  "-11"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/furion/sovereign_cape/sovereign_cape.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-94"
+			    "roll"  "0"
+			    "ZPos"  "-145"
+			    "YPos"  "0"
+			    "yaw"  "3"
+			    "XPos"  "11"
+	   		}
+	   		"models/items/furion/sovereign_shoulders/sovereign_shoulders.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-96"
+			    "roll"  "0"
+			    "ZPos"  "-133"
+			    "YPos"  "0"
+			    "yaw"  "3"
+			    "XPos"  "7"
+	   		}
+	   		"models/items/furion/sovereign_beard/sovereign_beard.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-141"
+			    "YPos"  "0"
+			    "yaw"  "21"
+			    "XPos"  "12"
+	   		}
+	   		"models/items/furion/sovereign_horns/sovereign_horns.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-138"
+			    "YPos"  "0"
+			    "yaw"  "21"
+			    "XPos"  "11"
 	   		}
 	  	}
 	}
@@ -1590,6 +1701,71 @@
 				"XPos"		"9"
 			}
 		}
+	}
+	"models/heroes/alchemist/alchemist.vmdl"
+	{
+	  	"attach_attack1"
+	  	{
+	   		"models/items/omniknight/weapon_rune_hammer.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "14"
+			    "roll"  "28"
+			    "ZPos"  "-64"
+			    "YPos"  "124"
+			    "yaw"  "-55"
+			    "XPos"  "-17"
+	   		}
+	  	}
+	  	"attach_attack2"
+	  	{
+	   		"models/items/rattletrap/ironclock_weapon/ironclock_weapon.vmdl"
+	   		{
+			    "scale"  "1.4"
+			    "pitch"  "100"
+			    "roll"  "0"
+			    "ZPos"  "-12"
+			    "YPos"  "-3"
+			    "yaw"  "180"
+			    "XPos"  "5"
+	   		}
+	  	}
+	   	"attach_ogerhead"
+	  	{
+	   		"models/heroes/alchemist/alchemist_ogre_head.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-133"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-82"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/heroes/alchemist/alchemist_saddlehat.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-32"
+			    "roll"  "0"
+			    "ZPos"  "-127"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "7"
+	   		}
+	   		"models/items/sniper/machine_gun_charlie/machine_gun_charlie.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "357"
+			    "roll"  "-100"
+			    "ZPos"  "-28"
+			    "YPos"  "121"
+			    "yaw"  "33"
+			    "XPos"  "-7"
+	   		}
+	  	}
 	}
 	"models/heroes/wraith_king/wraith_king.vmdl"
 	{
@@ -2182,6 +2358,16 @@
 				"yaw"		"-136"
 				"XPos"		"72"
 			}
+			"models/items/keeper_of_the_light/strikeofthelight_weapon/strikeofthelight_weapon.vmdl"
+			{
+				"scale"		"1.1"
+				"pitch"		"-40"
+				"roll"		"28"
+				"ZPos"		"-111"
+				"YPos"		"53"
+				"yaw"		"-26"
+				"XPos"		"-5"
+			}
 		}
 		"attach_mouth"
 		{
@@ -2194,6 +2380,16 @@
 				"YPos"		"0"
 				"yaw"		"0"
 				"XPos"		"-28"
+			}
+			"models/items/sniper/gunslinger_head/gunslinger_headitem.vmdl"
+			{
+				"scale"		"1.3"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-104"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-23"
 			}
 		}
 	}
