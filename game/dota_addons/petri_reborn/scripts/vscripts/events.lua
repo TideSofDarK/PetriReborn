@@ -334,7 +334,7 @@ function GameMode:OnEntityKilled( keys )
 
     Timers:CreateTimer(1.0,
     function()
-      if CheckKVN() then
+      if CheckKVN() and GameMode.PETRI_NO_END == false then
         Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
 
         for i=1,10 do

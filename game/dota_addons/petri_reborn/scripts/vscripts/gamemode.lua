@@ -7,8 +7,6 @@ DISABLED_HINTS_PLAYERS = {}
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
-PETRI_NO_END = false
-
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
@@ -33,6 +31,8 @@ if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
 end
+
+GameMode.PETRI_NO_END = false
 
 GameMode.PETRI_TRUE_TIME = 0
 
@@ -538,13 +538,13 @@ function SetupVIPItems(hero, steamID)
 end
 
 function GameMode:DontEndGame(  )
-  PETRI_NO_END = true
+  GameMode.PETRI_NO_END = true
 end
 
 function KVNWin(keys)
   local caster = keys.caster
 
-  if PETRI_NO_END == false then
+  if GameMode.PETRI_NO_END == false then
     if PETRI_GAME_HAS_ENDED == false then
       PETRI_GAME_HAS_ENDED = true
 
@@ -563,7 +563,7 @@ function KVNWin(keys)
 end
 
 function PetrosyanWin()
-  if PETRI_NO_END == false then
+  if GameMode.PETRI_NO_END == false then
     Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
     Timers:CreateTimer(5.0,
       function()
