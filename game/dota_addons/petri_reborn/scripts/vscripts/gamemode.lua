@@ -537,7 +537,7 @@ function SetupVIPItems(hero, steamID)
   end
 end
 
-function DontEndGame(  )
+function GameMode:DontEndGame(  )
   PETRI_NO_END = true
 end
 
