@@ -5,7 +5,7 @@
   "ModelScale"                "2.4"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "0"
-  "HealthBarOffset"    "320"
+  "HealthBarOffset"    "360"
 
   "Unique"  "1"
   

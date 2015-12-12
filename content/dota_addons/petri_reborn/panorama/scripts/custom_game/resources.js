@@ -30,24 +30,24 @@ function UpdateResources( )
 	else
 	{
 	 	resourceTable = CustomNetTables.GetTableValue("players_resources", String(localPlayer));
-	 	gold = Players.GetGold(Players.GetLocalPlayer());
+	 	gold = Players.GetGold(localPlayer);
 	}
 
 	GameUI.CustomUIConfig().unitResources = resourceTable;
 
 	if (resourceTable)
 	{
-		if (resourceTable["gold"]) {
-	 		$( "#TotalGoldText" ).text = resourceTable["gold"];
-	 	}
+		//if (gold) {
+	 		$( "#TotalGoldText" ).text = String(gold);
+	 	//}
 
 		if (resourceTable["lumber"]) {
 		 	$( "#TotalLumberText" ).text = resourceTable["lumber"];
 		}
 		 
-		if (resourceTable["food"] && resourceTable["maxFood"]) {
+		//if (resourceTable["food"] && resourceTable["maxFood"]) {
 		 	$( "#TotalFoodText" ).text = resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
-		}
+		//}
 	}
 
 	$.Schedule( 0.03, UpdateResources );

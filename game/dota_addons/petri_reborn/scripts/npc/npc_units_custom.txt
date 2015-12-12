@@ -240,6 +240,52 @@
 	  "VisionDaytimeRange" "0" 
 	  "VisionNighttimeRange" "0" 
 	}
+	
+	"npc_dummy_upgraded_eye_vision"
+	{
+	  "BaseClass" "npc_dota_creature" 
+	  "Model" "models/development/invisiblebox.vmdl" 
+	  "Level" "1"
+	
+	  "Ability1"          "petri_upgraded_exploration_tree"    
+	
+	  "MinimapIcon"         "minimap_sword"
+	  "MinimapIconSize"       "420"
+	  
+	  "ArmorPhysical" "0" 
+	  "MagicalResistance" "0" 
+	  
+	  "AttackCapabilities" "DOTA_UNIT_CAP_NO_ATTACK"
+	  
+	  "AttributePrimary" "DOTA_ATTRIBUTE_STRENGTH"
+	  "AttributeBaseStrength" "0"
+	  "AttributeStrengthGain" "0"
+	  "AttributeBaseIntelligence" "0"
+	  "AttributeIntelligenceGain" "0"
+	  "AttributeBaseAgility" "0"
+	  "AttributeAgilityGain" "0"
+	  
+	  "BountyXP" "0" 
+	  "BountyGoldMin" "0" 
+	  "BountyGoldMax" "0" 
+	  
+	  "BoundsHullName" "DOTA_HULL_SIZE_SMALL" 
+	  
+	  "MovementCapabilities" "DOTA_UNIT_CAP_MOVE_FLY" 
+	  "MovementSpeed" "450" 
+	  "MovementTurnRate" "10" 
+	  "FollowRange" "250" 
+	
+	  "StatusHealth" "1" 
+	  "StatusHealthRegen" "0" 
+	  "StatusMana" "0" 
+	  "StatusManaRegen" "0" 
+	  
+	  "TeamName" "DOTA_TEAM_GOODGUYS" 
+	  
+	  "VisionDaytimeRange" "1800" 
+	  "VisionNighttimeRange" "1800" 
+	}
 	"npc_petri_cop"
 	{
 	  "BaseClass"     "npc_dota_creature"
@@ -868,7 +914,7 @@
 	  "ModelScale"                "2.4"
 	  "SoundSet"          "Creep_Good_Range"          
 	  "Level"           "0"
-	  "HealthBarOffset"    "320"
+	  "HealthBarOffset"    "360"
 	
 	  "Unique"  "1"
 	  

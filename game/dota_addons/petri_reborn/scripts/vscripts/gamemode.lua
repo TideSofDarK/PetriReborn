@@ -7,6 +7,8 @@ DISABLED_HINTS_PLAYERS = {}
 PETRI_GAME_HAS_STARTED = false
 PETRI_GAME_HAS_ENDED = false
 
+PETRI_NO_END = false
+
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
@@ -419,6 +421,7 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
   Convars:RegisterCommand( "taeg", Dynamic_Wrap(GameMode, 'TestAdditionalExitGold'), "Test for additional exit gold", FCVAR_CHEAT )
   Convars:RegisterCommand( "tspu", Dynamic_Wrap(GameMode, 'TestStaticPopup'), "Test static popup", FCVAR_CHEAT )
+  Convars:RegisterCommand( "deg", Dynamic_Wrap(GameMode, 'DontEndGame'), "Dont end game", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 
@@ -534,30 +537,37 @@ function SetupVIPItems(hero, steamID)
   end
 end
 
+function DontEndGame(  )
+  PETRI_NO_END = true
+end
+
 function KVNWin(keys)
   local caster = keys.caster
 
-  if PETRI_GAME_HAS_ENDED == false then
-    PETRI_GAME_HAS_ENDED = true
+  if PETRI_NO_END == false then
+    if PETRI_GAME_HAS_ENDED == false then
+      PETRI_GAME_HAS_ENDED = true
 
-    Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
+      Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
-    for i=1,14 do
-      PlayerResource:SetCameraTarget(i-1, caster)
+      for i=1,14 do
+        PlayerResource:SetCameraTarget(i-1, caster)
+      end
+
+      Timers:CreateTimer(5.0,
+        function()
+          GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
+        end)
     end
-
-    Timers:CreateTimer(5.0,
-      function()
-        GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
-      end)
   end
 end
 
 function PetrosyanWin()
-  Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
-
-  Timers:CreateTimer(5.0,
-    function()
-      GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
-    end)
+  if PETRI_NO_END == false then
+    Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
+    Timers:CreateTimer(5.0,
+      function()
+        GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+      end)
+  end
 end
