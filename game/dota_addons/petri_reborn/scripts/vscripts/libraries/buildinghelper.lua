@@ -18,6 +18,7 @@ end
 
 MODEL_ALPHA = 100 -- Defines the transparency of the ghost model.
 
+require("libraries/GridNav")
 
 --[[
       Check grid quad

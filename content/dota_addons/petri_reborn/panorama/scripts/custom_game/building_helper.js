@@ -4,14 +4,53 @@ var state = 'disabled';
 var size = 0;
 var particle;
 var gridParticles;
+var visibleGrid;
 
 // Ghost Building Preferences
 var GRID_ALPHA = 30 // Defines the transparency of the ghost squares
 
-var gridColor = {};
+// Store received data into panel data
+var BHPanel = $.GetContextPanel();
+if (!BHPanel.loaded)
+{
+    BHPanel.Grid = [];
+    BHPanel.XMin = 0;
+    BHPanel.XMax = 0;
+    BHPanel.YMin = 0;
+    BHPanel.YMax = 0;
+
+    BHPanel.loaded = true;
+}
+
+function GetGridColor( value )
+{
+    return value == 0
+        ? [0, 255, 0]
+        : [255, 0, 0];    
+}
+
+function CreateVisibleGridParticle()
+{
+    var posLT = GameUI.GetScreenWorldPosition( 960, 490 );
+    var posRB = GameUI.GetScreenWorldPosition( 1920, 1080 );
+
+    $.Msg("LT: ", posLT)
+    $.Msg(posRB);
+
+/*
+    visibleGrid = [];
+    for (var x = 0; x < size * size; x++)
+    {
+        var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
+        Particles.SetParticleControl(gridParticle, 1, [32,0,0])
+        Particles.SetParticleControl(gridParticle, 3, [GRID_ALPHA,0,0])
+        gridParticles.push(gridParticle)
+    }*/
+}
 
 function StartBuildingHelper( params )
 {
+    CreateVisibleGridParticle();
     if (params !== undefined)
     {
         state = params["state"];
@@ -42,7 +81,7 @@ function StartBuildingHelper( params )
 
         // Grid squares
         gridParticles = [];
-        for (var x=0; x < size*size; x++)
+        for (var x = 0; x < size * size; x++)
         {
             var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
             Particles.SetParticleControl(gridParticle, 1, [32,0,0])
@@ -55,8 +94,6 @@ function StartBuildingHelper( params )
         CheckMousePos();
 }
 
-var oldPos = null;
-var positionChecked = false;
 function CheckMousePos()
 {
     if (state == 'active')
@@ -65,31 +102,15 @@ function CheckMousePos()
         var GamePos = Game.ScreenXYToWorld(mousePos[0], mousePos[1]);
 
         if (GamePos[0] > 10000000) // fix for borderless windowed players
-        {
           GamePos = [0,0,0];
-        }
 
         if ( GamePos !== null ) 
         {
             SnapToGrid(GamePos, size)
 
-            // Check GridNav once if mouse stopped
-            if (oldPos != null && oldPos[0] == GamePos[0] && oldPos[1] == GamePos[1])
-            {
-                if (!positionChecked)
-                {
-                    GameEvents.SendCustomGameEventToServer( "building_helper_check_grid", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
-                    positionChecked = true;
-                }
-            }
-            else
-                positionChecked = false;
-
-            oldPos = GamePos;
-
             var color = [0,255,0]
-            var part = 0
             var halfSide = (size/2)*64
+            var part = 0;
             var boundingRect = {}
             boundingRect["leftBorderX"] = GamePos[0]-halfSide
             boundingRect["rightBorderX"] = GamePos[0]+halfSide
@@ -102,22 +123,23 @@ function CheckMousePos()
                 {
                     var pos = [x,y,GamePos[2]]
                     var gridParticle = gridParticles[part]
-                    Particles.SetParticleControl(gridParticle, 0, pos) ;
-                    Particles.SetParticleControl(gridParticle, 2, gridColor[part])      
-                    part++; 
 
-                    if (part>size*size)
-                    {
-                        return
-                    }    
+                    var isBlocked = IsBlocked(pos);
+                    Particles.SetParticleControl(gridParticle, 0, pos);
+                    Particles.SetParticleControl(gridParticle, 2, GetGridColor(isBlocked));
+
+                    part++;
+
+                    if (part > size*size)
+                        return;
                 }
-            }      
+            }
 
             // Update the model particle
             Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1])
         }
 
-        $.Schedule(1/30, CheckMousePos);    
+        $.Schedule(1/60, CheckMousePos);    
     }
 }
 
@@ -146,27 +168,80 @@ function Cancel() {
   $("#BuildingHelperBase").hittest = false;
 }
 
-function GetGridColor( value )
+// Receive and decoding GNV
+function GNV( args )
 {
-    return value == 0
-        ? [0, 255, 0]
-        : [255, 0, 0];    
-}
+    $.Msg("GNV received")
 
-function GridValidation( args )
-{
-    gridColor[0] = GetGridColor( args["0"] );
-    gridColor[1] = GetGridColor( args["1"] );
-    gridColor[2] = GetGridColor( args["2"] );
-    gridColor[3] = GetGridColor( args["3"] );
+    BHPanel.XMin = args["XMin"];
+    BHPanel.XMax = args["XMax"];
+    BHPanel.YMin = args["YMin"];
+    BHPanel.YMax = args["YMax"];
+
+    $.Msg("XMin: ", BHPanel.XMin, " XMax: ", BHPanel.XMax, " YMin: ", BHPanel.YMin, " YMax: ", BHPanel.YMax)
+
+    var decoded = ""
+    var pad = "00000000"
+
+    var i = 0;
+    var phrase = "";
+    var code = "";
+    while (i < args["gnv"].length)
+    {
+        phrase = args["gnv"].substring(i, i + 2);
+
+        // Length
+        if (phrase[0] == '(')
+        {
+            phrase = phrase.substring(1, 2)
+            
+            i += 2;
+
+            while(args["gnv"][i] != ')')
+            {
+                phrase += args["gnv"][i];
+                i++;
+            }
+
+            i++;
+
+            var length = parseInt(phrase, 10);
+            // Add last code n times
+            for (var j = 1; j < length; j++)
+                decoded += code;
+        }
+        else
+        {
+            code = parseInt(phrase, 16).toString(2);
+            code = (pad.substring(0, pad.length - code.length) + code).substring(0, 8);
+            decoded += code;
+            i += 2;
+        }
+    }
+
+
+    var curQuad = 0;
+    for (var i = 0; i < -BHPanel.XMin + BHPanel.XMax + 1; i++)
+    {
+        BHPanel.Grid[i] = []
+        for (var j = 0; j < -BHPanel.YMin + BHPanel.YMax + 1; j++)
+            BHPanel.Grid[i][j] = decoded[curQuad++];
+    }
 }
 
 (function () {
   GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
   GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
 
-  GameEvents.Subscribe( "building_helper_grid_validation", GridValidation);
+  GameEvents.Subscribe( "gnv", GNV);
 })();
+
+function IsBlocked(position) {
+    var x = WorldToGridPosX(position[0]) - BHPanel.XMin;
+    var y = WorldToGridPosY(position[1]) - BHPanel.YMin;
+    
+    return BHPanel.Grid[x][y];
+}
 
 function SnapToGrid(vec, size) {
     // Buildings are centered differently when the size is odd.
@@ -188,4 +263,12 @@ function SnapToGrid64(coord){
 
 function SnapToGrid32(coord){
   return 32+64*Math.floor(coord/64);
+}
+
+function WorldToGridPosX(x){
+    return Math.floor(x/64)
+}
+
+function WorldToGridPosY(y){
+    return Math.floor(y/64)
 }
