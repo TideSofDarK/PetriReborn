@@ -95,6 +95,12 @@ function build( keys )
 	keys:OnConstructionStarted(function(unit)
 		hero.buildingCount = hero.buildingCount + 1
 
+		local gnvTable = {}
+		gnvTable["size"] = returnTable:GetVal("BuildingSize", "number")
+		gnvTable["pos"] = unit:GetAbsOrigin() + Vector(gnvTable["size"] / -2, gnvTable["size"] / -2, 0)
+		AddKeyToNetTable(unit:entindex(), "gridnav", "building", gnvTable)
+		--PrintTable(GetKeyInNetTable(unit:entindex(), "gridnav", "building"))
+
 		if GameMode.UnitKVs[unit_name]["Unique"] == 1 then
 			hero.uniqueUnitList[unit_name] = true
 		end

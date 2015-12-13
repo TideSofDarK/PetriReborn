@@ -374,6 +374,8 @@ function BuildingHelper:AddBuilding(keys)
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 2, Vector(0,255,0))
 
   CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = fMaxScale} )
+
+  return buildingTable
 end
 
 --[[
