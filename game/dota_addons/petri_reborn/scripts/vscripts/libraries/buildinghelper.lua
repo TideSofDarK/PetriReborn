@@ -18,6 +18,7 @@ end
 
 MODEL_ALPHA = 100 -- Defines the transparency of the ghost model.
 
+require("libraries/GridNav")
 
 --[[
       Check grid quad
@@ -100,7 +101,26 @@ function BuildingHelper:RegisterLeftClick( args )
 
   --get the player that sent the comman
   local cmdPlayer = PlayerResource:GetPlayer(args['PlayerID'])
+
+  local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, location, nil, 130, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER, false)
   
+  if #units > 0 then
+    if cmdPlayer then
+      cmdPlayer.activeBuilder:ClearQueue()
+      cmdPlayer.activeBuilding = nil
+      cmdPlayer.activeBuilder:Stop()
+      cmdPlayer.activeBuilder.ProcessingBuilding = false
+
+      cmdPlayer.waitingForBuildHelper = false
+
+      if cmdPlayer.activeCallbacks.onConstructionCancelled ~= nil then
+        cmdPlayer.activeCallbacks.onConstructionCancelled()
+      end
+
+      return false
+    end
+  end
+
   if cmdPlayer.activeBuilder:HasAbility("has_build_queue") == false then
     cmdPlayer.activeBuilder:AddAbility("has_build_queue")
     local abil = cmdPlayer.activeBuilder:FindAbilityByName("has_build_queue")
@@ -249,7 +269,7 @@ end
 function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockGridNav, size)
   
   local pID = player:GetPlayerID()
-  local playersHero = player:GetAssignedHero()
+  local playersHero = GameMode.assignedPlayerHeroes[player:GetPlayerID()]
   
   local gridNavBlockers = nil
   if blockGridNav then
@@ -338,6 +358,12 @@ function BuildingHelper:AddBuilding(keys)
 
   -- Create model ghost dummy out of the map, then make pretty particles
   player.activeBuildingTable.mgd = CreateUnitByName(unitName, OutOfWorldVector, false, nil, nil, builder:GetTeam())
+
+  local customScale
+
+  customScale = SetCustomBuildingModel(player.activeBuildingTable.mgd, PlayerResource:GetSteamAccountID(player:GetPlayerID()))
+
+  if customScale then fMaxScale = customScale end
 
   --<BMD> position is 0, model attach is 1, color is CP2, alpha is CP3.x, scale is CP4.x
   player.activeBuildingTable.modelParticle = ParticleManager:CreateParticleForPlayer("particles/buildinghelper/ghost_model.vpcf", PATTACH_ABSORIGIN, player.activeBuildingTable.mgd, player)
@@ -438,6 +464,10 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building:SetOwner(PlayerResource:GetPlayer(pID))
   building:SetHullRadius(building:GetHullRadius()+5)
 
+  local customScale
+
+  customScale = SetCustomBuildingModel(building, PlayerResource:GetSteamAccountID(pID))
+
   Timers:CreateTimer(function() building:SetAbsOrigin(location) end)
 
   building.blockers = gridNavBlockers
@@ -497,12 +527,13 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     local bScale = buildingTable:GetVal("Scale", "bool")
     -- the amount to scale to.
     local fMaxScale = buildingTable:GetVal("MaxScale", "float")
+    if customScale then fMaxScale = customScale end
     if fMaxScale == nil then
       fMaxScale = 1
     end
 
     -- Update model size, starting with an initial size
-    local fInitialModelScale = 0.2
+    local fInitialModelScale = 0.03
 
     -- scale to add every frame, distributed by build time
     local fScaleInterval = (fMaxScale-fInitialModelScale) / (buildTime / fserverFrameRate)
