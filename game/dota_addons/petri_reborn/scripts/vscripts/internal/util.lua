@@ -460,7 +460,7 @@ function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero()
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
   local pID = hero:GetPlayerOwnerID()
 
   local level = ability:GetLevel() - 1
@@ -513,7 +513,7 @@ function StopUpgrading(event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
   caster.lastSpentLumber = caster.lastSpentLumber or 0
   caster.lastSpentGold = caster.lastSpentGold or 0
@@ -548,7 +548,7 @@ function OnUpgradeSucceeded(event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
   local pID = caster:GetPlayerOwnerID()
 
   local level = ability:GetLevel()
