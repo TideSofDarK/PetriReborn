@@ -128,6 +128,36 @@ function CheckDependence( name, level )
   return table[name] >= level;
 }
 
+function CreateDependencyPanel( abilityName )
+{
+  var mainPanel = $.CreatePanel( "Panel", $.GetContextPanel(), "Dependence_" + abilityName );
+
+  var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+  mainPanel.SetHasClass( "all_enought", dependencies == undefined);
+  if (dependencies == undefined)
+    return null;
+
+  var isAllDependencies = true;
+  for(var name in dependencies)
+  {
+    var cur_panel = $.CreatePanel( "Label", mainPanel, "_dependence_" + name );
+    var upgradeLevel = dependencies[name];
+    cur_panel.text = $.Localize( "#DOTA_Tooltip_ability_" + name ) + 
+      (upgradeLevel > 1 ? " (" + dependencies[name] + ")" : "");
+
+    cur_panel.AddClass( "DependenceLabel" );
+
+    var curDepend = CheckDependence( name, upgradeLevel );
+    cur_panel.SetHasClass( "isBuild",  curDepend );
+    isAllDependencies = isAllDependencies && curDepend;
+  }
+
+  mainPanel.SetHasClass( "flowDowm", true);
+  mainPanel.SetHasClass( "all_enought", isAllDependencies );
+
+  return mainPanel;
+}
+
 function FillDependencies( abilityID )
 {
   var dependPanel = $( "#Dependencies" );  
@@ -140,27 +170,30 @@ function FillDependencies( abilityID )
   if (!expr.test(abilityName))
     abilityName += "_" + abilityLevel;
 
-  var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
-  dependPanel.SetHasClass( "all_enought", dependencies == undefined);
-  if (dependencies == undefined)
+  var panels = [];
+
+  var mainDependecies = CreateDependencyPanel( abilityName );
+  panels.push(CreateDependencyPanel( abilityName + "_alt" ));
+
+  if (!mainDependecies)
     return;
 
-  var isAllDependencies = true;
-  for(var name in dependencies)
-  {
-    var cur_panel = $.CreatePanel( "Label", dependPanel, "_dependence_" + name );
-    var upgradeLevel = dependencies[name];
-    cur_panel.text = $.Localize( "#DOTA_Tooltip_ability_" + name ) + 
-      (upgradeLevel > 1 ? " (" + dependencies[name] + ")" : "");
+  var all_enought = mainDependecies.BHasClass("all_enought");
+  mainDependecies.SetParent(dependPanel);
 
-    cur_panel.AddClass( "DependenceLabel" );
+  for(var panel of panels)
+    if (panel)
+    {
+      all_enought = all_enought || panel.BHasClass("all_enought");
 
-    var curDepend = CheckDependence( name, upgradeLevel );
-    cur_panel.SetHasClass( "isBuild",  curDepend );
-    isAllDependencies = isAllDependencies && curDepend;
-  }
-  
-  dependPanel.SetHasClass( "all_enought", isAllDependencies );
+      var cur_panel = $.CreatePanel( "Label", dependPanel, "separator" );
+      cur_panel.text = $.Localize( "#OR" );
+      cur_panel.AddClass( "SeparateLabel" );
+
+      panel.SetParent(dependPanel);
+    }
+
+  dependPanel.SetHasClass( "all_enought", all_enought );
 }
 
 /*
