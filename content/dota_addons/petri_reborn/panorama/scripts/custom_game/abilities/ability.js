@@ -29,16 +29,26 @@ function AutoUpdateAbility()
 	$.Schedule( 0.1, AutoUpdateAbility );
 }
 
-function CheckDependencyEntry(dependencies)
+function CheckDependenciesList( abilityName, isAlt )
 {
+	// Priority of main dependence
+	if (!GameUI.CustomUIConfig().dependencies)
+		return true && !isAlt;
+	
+	var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+	if (dependencies == undefined)
+		return true && !isAlt;
+
 	var flag = true;
 	for(var name in dependencies)
 	{
 		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
-		if (table[name] == undefined) flag = false;
+		if (table[name] == undefined)
+			return false;
 
 		flag = flag && (table[name] >= dependencies[name]);
 	}
+
 	return flag;
 }
 
@@ -51,22 +61,8 @@ function CheckDependencies()
 	if (!expr.test(abilityName))
 		abilityName += "_" + abilityLevel;
 
-	if (!GameUI.CustomUIConfig().dependencies)
-		return true;
-	
-	var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
-	if (dependencies == undefined)
-		return true;
-
-	var flag = CheckDependencyEntry(dependencies)
-	
-	if (flag == false && GameUI.CustomUIConfig().dependencies[abilityName + "_alt"]) {
-		dependencies = GameUI.CustomUIConfig().dependencies[abilityName + "_alt"];
-
-		flag = CheckDependencyEntry(dependencies)
-	}
-
-	return flag;
+	// Main or alt dependencies list
+	return CheckDependenciesList( abilityName, false ) || CheckDependenciesList( abilityName + "_alt", true )
 }
 
 function CheckSpellCost()
