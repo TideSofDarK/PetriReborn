@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "tent"
-				m_meshFile = "models/tent/tent.fbx"
+				m_meshName = "hat_alt"
+				m_meshFile = "models/hats/hat_alt.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -55,51 +55,6 @@
 	}
 	m_pHitBoxSetLists =
 	[
-		{
-			_class = "CVhitBoxSetListReference"
-			m_pObject =
-			{
-				_class = "CVhitBoxSetList"
-				m_HitBoxSets =
-				[
-					{
-						_class = "CVhitBoxSet"
-						m_name = "default"
-						m_HitBoxes =
-						[
-							{
-								_class = "CVhitBox"
-								m_name = "Skeleton_neck"
-								m_sSurfaceProperty = ""
-								m_nGroupId = 0
-								m_sBoneName = "Skeleton_neck"
-								m_vMinBounds =
-								[
-									-993.341736,
-									-896.056763,
-									-159.446320,
-								]
-								m_vMaxBounds =
-								[
-									1022.742981,
-									913.281982,
-									871.170166,
-								]
-								m_bTranslationOnly = false
-								m_cRenderColor =
-								[
-									0,
-									0,
-									0,
-									0,
-								]
-							},
-						]
-					},
-				]
-				m_AutoCreateSetName = ""
-			}
-		},
 	]
 	m_pAttachmentLists =
 	[
@@ -159,8 +114,8 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "tent_exterior.vmat"
-				m_sReplaceMaterial = "materials/models/tent/tent.vmat"
+				m_sSearchMaterial = "tusk_hat.vmat"
+				m_sReplaceMaterial = "materials/models/hats/hat/hat_alt.vmat"
 			},
 		]
 	}
@@ -180,7 +135,7 @@
 	m_nMaxClothVertsPerMesh = 2048
 	m_bBuildClothBoneHierarchy = false
 	m_nNavType = "AUTH_NAV_MESH"
-	m_bMakeUniqueVMeshes = true
+	m_bMakeUniqueVMeshes = false
 	m_bMakeImplicitBindPoseSequence = false
 	m_bAdjustSkeletonFromBoneFlags = false
 	m_pAnimGroups =
