@@ -114,7 +114,7 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "mesh_(2).vmat"
+				m_sSearchMaterial = "tusk_hat.vmat"
 				m_sReplaceMaterial = "materials/models/hats/hat/hat.vmat"
 			},
 		]

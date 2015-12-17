@@ -4,14 +4,28 @@ Layer0
 {
 	shader "global_lit_simple.vfx"
 
-	//---- Tint Mask ----
-	F_TINT_MASK 1
+	//---- Normal Maps ----
+	F_NORMAL_MAP 1
+
+	//---- Specular ----
+	F_SPECULAR 1
 
 	//---- Color ----
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	g_vColorTint2 "[1.000000 1.000000 1.000000 0.000000]"
 	g_vTexCoordOffset "[0.000 0.000]"
 	g_vTexCoordScale "[1.000 1.000]"
 	TextureColor "materials/models/hats/hat/hat_color.tga"
-	TextureTintMask "materials/models/hats/hat/hat_mask1.tga"
+
+	//---- Normal Map ----
+	g_flBumpStrength "2.626"
+	TextureNormal "materials/models/hats/hat/hat_normal.tga"
+
+	//---- Self Illum ----
+	TextureSelfIllumMask "materials/default/default_selfillum.tga"
+
+	//---- Specular ----
+	g_flSpecularBloom "2.121"
+	g_flSpecularIntensity "1.768"
+	TextureBloom "materials/models/hats/hat/hat_specular.tga"
+	TextureReflectance "materials/models/hats/hat/hat_specular.tga"
 }
