@@ -1704,6 +1704,26 @@
 				"yaw"		"28"
 				"XPos"		"9"
 			}
+			"models/hats/hat.vmdl"
+			{
+				"scale"		"0.95"
+				"pitch"		"21"
+				"roll"		"91"
+				"ZPos"		"19"
+				"YPos"		"-2"
+				"yaw"		"0"
+				"XPos"		"14"
+			}
+			"models/hats/hat.vmdl"
+			{
+				"scale"		"0.13"
+				"pitch"		"49"
+				"roll"		"49"
+				"ZPos"		"-152"
+				"YPos"		"-22"
+				"yaw"		"-1"
+				"XPos"		"-200"
+			}
 		}
 	}
 	"models/heroes/alchemist/alchemist.vmdl"
@@ -2630,6 +2650,91 @@
 			    "YPos"  "-1"
 			    "yaw"  "0"
 			    "XPos"  "7"
+		   	}
+	  	}
+	}
+	"models/heroes/tuskarr/tuskarr.vmdl"
+	{
+	 	"attach_hitloc"
+		{
+	   		"models/heroes/tuskarr/tusk_cowl.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-100"
+			    "roll"  "0"
+			    "ZPos"  "-98"
+			    "YPos"  "0"
+			    "yaw"  "-4"
+			    "XPos"  "7"
+		   	}
+		   	"models/items/invoker/exort_cape.vmdl"
+		   	{
+			    "scale"  "0.5"
+			    "pitch"  "-112"
+			    "roll"  "0"
+			    "ZPos"  "-135"
+			    "YPos"  "0"
+			    "yaw"  "-5"
+			    "XPos"  "-56"
+		   	}
+		   	"models/items/invoker/arsenal_magus_exort_cape/arsenal_magus_exort_cape.vmdl"
+		   	{
+			    "scale"  "0.35"
+			    "pitch"  "-147"
+			    "roll"  "-90"
+			    "ZPos"  "-179"
+			    "YPos"  "28"
+			    "yaw"  "-30"
+			    "XPos"  "-115"
+		   	}
+	  	}
+	  	"attach_head"
+		{
+	   		"models/hats/hat.vmdl"
+		   	{
+			    "scale"  "1.14"
+			    "pitch"  "-21"
+			    "roll"  "91"
+			    "ZPos"  "-17"
+			    "YPos"  "-2"
+			    "yaw"  "-13"
+			    "XPos"  "4"
+		   	}
+		   	"models/hats/hat_alt.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-175"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+		   	}
+	  	}
+	  	"attach_attack1"
+		{
+	   		"models/items/phantom_lancer/infinite_waves_serpent_weapon/infinite_waves_serpent_weapon.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "21"
+			    "ZPos"  "-70"
+			    "YPos"  "55"
+			    "yaw"  "0"
+			    "XPos"  "-17"
+		   	}
+	  	}
+	  	"attach_attack2"
+		{
+	   		"models/items/tuskarr/snowball_stinger/snowball_stinger.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "40"
+			    "roll"  "-90"
+			    "ZPos"  "-78"
+			    "YPos"  "-59"
+			    "yaw"  "30"
+			    "XPos"  "-2"
 		   	}
 	  	}
 	}
