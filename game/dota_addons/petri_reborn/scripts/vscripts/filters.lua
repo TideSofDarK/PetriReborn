@@ -92,8 +92,6 @@ function GameMode:FilterExecuteOrder( filterTable )
         local hero = EntIndexToHScript(filterTable["units"]["0"])
         local ent = hero
 
-        PrintTable(filterTable)
-
         if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
           return false
         end
@@ -124,11 +122,24 @@ function GameMode:FilterExecuteOrder( filterTable )
           ent:AddItem(newItem)
         end
       end
+    elseif order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
+      local item = EntIndexToHScript(filterTable["entindex_ability"])
+
+      local purchaser = EntIndexToHScript(filterTable["entindex_target"])
+
+      if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
+        return false
+      end
     elseif order_type == DOTA_UNIT_ORDER_PICKUP_ITEM then
       if not EntIndexToHScript(filterTable["entindex_target"]) then return false end
+
       local item = EntIndexToHScript(filterTable["entindex_target"]):GetContainedItem()
 
       local purchaser = EntIndexToHScript(units["0"])
+
+      if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
+        return false
+      end
 
       if item:IsCastOnPickup() == true then
         if EntIndexToHScript(units["0"]):GetUnitName() == "npc_petri_cop" then
