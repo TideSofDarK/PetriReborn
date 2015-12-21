@@ -51,6 +51,7 @@
     "item"    "item_petri_chicken"
     "item"    "item_petri_cow"
     "item"    "item_petri_dragon"
+    "item"    "item_petri_kvn_heart"
   }
 
   "defense"
