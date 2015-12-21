@@ -46,9 +46,9 @@
 				<Button class="DarkTheme FlatButton" value="host" default="true">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_host" />
 				</Button>
-				<Button class="DarkTheme FlatButton" value="random">
+<!-- 				<Button class="DarkTheme FlatButton" value="random">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_host_shuffle_random" />
-				</Button>
+				</Button> -->
 			</Panel>
 		</Panel>
 	</Panel>
