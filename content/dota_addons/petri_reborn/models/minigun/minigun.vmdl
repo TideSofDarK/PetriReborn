@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "yurta"
-				m_meshFile = "models/yurta/yurta.fbx"
+				m_meshName = "minigun"
+				m_meshFile = "models/minigun/minigun.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-64.058502,
-									-70.737228,
-									-0.251213,
+									-1043.784424,
+									-1381.518311,
+									-155.401001,
 								]
 								m_vMaxBounds =
 								[
-									64.151245,
-									70.849106,
-									55.083797,
+									954.696777,
+									1399.180664,
+									946.567871,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -160,7 +160,7 @@
 			{
 				_class = "CVMaterialRemap"
 				m_sSearchMaterial = "mesh.vmat"
-				m_sReplaceMaterial = "materials/models/yurta/yurta.vmat"
+				m_sReplaceMaterial = "materials/models/minigun/minigun.vmat"
 			},
 		]
 	}

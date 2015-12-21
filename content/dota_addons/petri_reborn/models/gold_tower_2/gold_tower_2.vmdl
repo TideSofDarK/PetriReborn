@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "yurta"
-				m_meshFile = "models/yurta/yurta.fbx"
+				m_meshName = "gold_tower_2"
+				m_meshFile = "models/gold_tower_2/gold_tower_2.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-64.058502,
-									-70.737228,
-									-0.251213,
+									-265.241974,
+									-328.033569,
+									-8.224731,
 								]
 								m_vMaxBounds =
 								[
-									64.151245,
-									70.849106,
-									55.083797,
+									259.999969,
+									338.943237,
+									524.968384,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -159,8 +159,8 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "mesh.vmat"
-				m_sReplaceMaterial = "materials/models/yurta/yurta.vmat"
+				m_sSearchMaterial = "gold.vmat"
+				m_sReplaceMaterial = "materials/models/gold_tower_2/gold_tower_2.vmat"
 			},
 		]
 	}

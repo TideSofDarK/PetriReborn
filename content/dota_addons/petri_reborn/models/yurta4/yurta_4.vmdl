@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "yurta"
-				m_meshFile = "models/yurta/yurta.fbx"
+				m_meshName = "yurta_4"
+				m_meshFile = "models/yurta4/yurta_4.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-64.058502,
-									-70.737228,
-									-0.251213,
+									-64.558502,
+									-69.741180,
+									-1.408562,
 								]
 								m_vMaxBounds =
 								[
-									64.151245,
-									70.849106,
-									55.083797,
+									78.427490,
+									71.839294,
+									71.915207,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -159,8 +159,8 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "mesh.vmat"
-				m_sReplaceMaterial = "materials/models/yurta/yurta.vmat"
+				m_sSearchMaterial = "yurta.vmat"
+				m_sReplaceMaterial = "materials/models/yurta4/yurta_4.vmat"
 			},
 		]
 	}

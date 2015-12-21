@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "yurta"
-				m_meshFile = "models/yurta/yurta.fbx"
+				m_meshName = "death_tower"
+				m_meshFile = "models/death_tower/death_tower.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-64.058502,
-									-70.737228,
-									-0.251213,
+									-0.786302,
+									-1.400562,
+									-1.410336,
 								]
 								m_vMaxBounds =
 								[
-									64.151245,
-									70.849106,
-									55.083797,
+									0.955640,
+									0.630900,
+									7.547893,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -160,7 +160,7 @@
 			{
 				_class = "CVMaterialRemap"
 				m_sSearchMaterial = "mesh.vmat"
-				m_sReplaceMaterial = "materials/models/yurta/yurta.vmat"
+				m_sReplaceMaterial = "materials/models/death_tower/death_tower.vmat"
 			},
 		]
 	}
