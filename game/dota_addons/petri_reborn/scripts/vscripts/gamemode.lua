@@ -525,6 +525,12 @@ function SetupCustomSkin(hero, steamID, key)
       end
     end
 
+    for k2,v2 in pairs(hero:GetChildren()) do
+      if v2:GetClassname() == "dota_item_wearable" then
+        v2:AddEffects(EF_NODRAW) 
+      end
+    end
+
     SendToServerConsole( "dota_combine_models 0" )
     SendToConsole( "dota_combine_models 0" )
   end
