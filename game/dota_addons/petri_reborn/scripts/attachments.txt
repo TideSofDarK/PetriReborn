@@ -2120,6 +2120,16 @@
 				"yaw"		"-90"
 				"XPos"		"-43"
 			}
+			"models/items/crystal_maiden/euls_scepterdivinity.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"-64"
+				"yaw"		"90"
+				"XPos"		"-1"
+			}
 		}
 	}
 	"models/heroes/shadow_demon/shadow_demon.vmdl"
