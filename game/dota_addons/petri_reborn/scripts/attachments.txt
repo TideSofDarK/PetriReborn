@@ -1714,15 +1714,15 @@
 				"yaw"		"0"
 				"XPos"		"14"
 			}
-			"models/hats/hat.vmdl"
+			"models/props_winter/present.vmdl"
 			{
-				"scale"		"0.13"
-				"pitch"		"49"
-				"roll"		"49"
-				"ZPos"		"-152"
-				"YPos"		"-22"
-				"yaw"		"-1"
-				"XPos"		"-200"
+				"scale"		"0.95"
+				"pitch"		"21"
+				"roll"		"91"
+				"ZPos"		"19"
+				"YPos"		"-2"
+				"yaw"		"0"
+				"XPos"		"14"
 			}
 		}
 	}
@@ -2061,6 +2061,29 @@
 			    "yaw"  "0"
 			    "XPos"  "-15"
 			}
+			"models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
+			{
+			    "scale"  "0.97"
+			    "pitch"  "-97"
+			    "roll"  "0"
+			    "ZPos"  "-116"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "4"
+			}
+		}
+		"attach_mouth"
+		{
+			"models/hats/hat_female.vmdl"
+			{
+			    "scale"  "0.97"
+			    "pitch"  "14"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "-5"
+			    "yaw"  "105"
+			    "XPos"  "-1"
+			}
 		}
 		"attach_head"
 		{
@@ -2073,6 +2096,16 @@
 				"YPos"		"0"
 				"yaw"		"7"
 				"XPos"		"4"
+			}
+			"models/items/lina/migrant_blaze_head/migrant_blaze_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-183"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
 			}
 		}
 		"attach_attack1"
