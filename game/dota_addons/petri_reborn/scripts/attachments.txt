@@ -1716,13 +1716,13 @@
 			}
 			"models/props_winter/present.vmdl"
 			{
-				"scale"		"0.95"
-				"pitch"		"21"
-				"roll"		"91"
-				"ZPos"		"19"
-				"YPos"		"-2"
-				"yaw"		"0"
-				"XPos"		"14"
+				"scale"		"0.13"
+				"pitch"		"49"
+				"roll"		"49"
+				"ZPos"		"-152"
+				"YPos"		"-22"
+				"yaw"		"-1"
+				"XPos"		"-200"
 			}
 		}
 	}
