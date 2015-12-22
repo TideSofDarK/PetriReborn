@@ -524,6 +524,9 @@ function SetupCustomSkin(hero, steamID, key)
         Attachments:AttachProp(hero, v2, k2, nil)
       end
     end
+
+    SendToServerConsole( "dota_combine_models 0" )
+    SendToConsole( "dota_combine_models 0" )
   end
 end
 
