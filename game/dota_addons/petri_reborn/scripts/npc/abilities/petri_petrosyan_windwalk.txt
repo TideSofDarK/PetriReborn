@@ -2,7 +2,7 @@
 {
   "BaseClass"       "ability_datadriven"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-  "AbilityTextureName"      "clinkz_wind_walk"
+  "AbilityTextureName"      "petri_petrosyan_wind_walk"
 
   "AbilityCooldown"       "15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 14 13 12 11 10"
 

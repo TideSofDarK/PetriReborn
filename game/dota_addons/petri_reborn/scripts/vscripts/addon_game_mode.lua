@@ -40,6 +40,7 @@ function Precache( context )
 
   PrecacheUnitByNameSync("npc_petri_peasant", context)
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
 
   PrecacheUnitByNameSync("npc_petri_trap", context)
 

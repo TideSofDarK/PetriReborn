@@ -686,7 +686,7 @@ function InitAbilities( hero )
     if abil ~= nil then
       if hero:IsHero() and hero:GetAbilityPoints() > 0 then
         hero:UpgradeAbility(abil)
-      else
+      elseif abil:GetLevel() < 1 then
         abil:SetLevel(1)
       end
     end

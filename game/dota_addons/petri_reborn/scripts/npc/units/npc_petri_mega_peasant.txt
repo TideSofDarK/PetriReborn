@@ -1,7 +1,7 @@
-"npc_petri_super_peasant"
+"npc_petri_mega_peasant"
 {
   "BaseClass"     "npc_dota_creature"
-  "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
+  "Model"      "models/heroes/shredder/shredder.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
   "HealthBarOffset"    "140"
@@ -14,9 +14,8 @@
   "Ability3"     "petri_gold_bag_blink"
   "Ability4"     "petri_suicide"
   "Ability5"     "build_petri_tower_of_evil"
-  "Ability6"     "petri_upgrade_to_cop"
-  "Ability7"     "return_resources"
-  "Ability8"     "petri_magic_immunity"
+  "Ability6"     "return_resources"
+  "Ability7"     "petri_magic_immunity"
 
   "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
@@ -49,5 +48,15 @@
   "Creature"
   {
     "DisableClumpingBehavior"  "1"
+
+    "AttachWearables"
+    {
+      "Wearable1" { "ItemDef" "6519" }
+      "Wearable1" { "ItemDef" "6520" }
+      "Wearable1" { "ItemDef" "6521" }
+      "Wearable1" { "ItemDef" "6522" }
+      "Wearable1" { "ItemDef" "6523" }
+      "Wearable1" { "ItemDef" "6524" }
+    }
   }
 }

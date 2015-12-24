@@ -5,7 +5,7 @@
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
   //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-  "AbilityTextureName"      "omniknight_purification"
+  "AbilityTextureName"      "petri_petrosyan_laugh_burst"
 
   "AbilityCastRange"        "700"
   "AbilityCastPoint"        "0.5"
