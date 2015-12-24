@@ -1,0 +1,88 @@
+"train_petri_mega_peasant"
+{
+  "BaseClass"                 "ability_datadriven"
+  "AbilityTextureName"      "train_petri_mega_peasant"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+
+  "AbilityGoldCost"       "100"
+  "AbilityChannelTime"      "7"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    { 
+        "var_type"  "FIELD_INTEGER"
+        "food_cost" "6"
+    }
+  }
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "buildings/queue.lua"
+      "Function"    "EnqueueUnit"
+      "food" "%food_cost"
+    }
+  }
+
+  "OnChannelSucceeded"
+  {
+    // Consume the first item in the queue
+    "RunScript"
+    {
+      "ScriptFile"    "buildings/queue.lua"
+      "Function"      "NextQueue"
+    }
+
+    "SpawnUnit"
+    {
+      "UnitName"    "npc_petri_mega_peasant"
+
+      "UnitCount"   "1"
+      "UnitLimit"   "0"
+      "GrantsGold"  "1"
+      "GrantsXP"    "1"
+      "SpawnRadius" "10"
+      "OnSpawn"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_phased"
+          "Target"    "TARGET"
+          "Duration"    "0.03"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"    "buildings/queue.lua"
+          "Function"      "SetOwner"
+          "food" "%food_cost"
+        }
+      }
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_building_autocast"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+    
+      "ThinkInterval"   "0.03"
+      "OnIntervalThink"
+      {
+        "RunScript"
+        {
+          "ScriptFile"    "buildings/autocast.lua"
+          "Function"      "BuildingAutocast"
+        }
+      }
+    }
+  }
+}

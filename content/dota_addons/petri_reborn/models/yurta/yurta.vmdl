@@ -75,13 +75,13 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-64.058502,
+									-60.058506,
 									-70.737228,
 									-0.251213,
 								]
 								m_vMaxBounds =
 								[
-									64.151245,
+									68.151245,
 									70.849106,
 									55.083797,
 								]
@@ -159,7 +159,7 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "mesh.vmat"
+				m_sSearchMaterial = "default.vmat"
 				m_sReplaceMaterial = "materials/models/yurta/yurta.vmat"
 			},
 		]

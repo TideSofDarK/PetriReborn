@@ -2583,7 +2583,7 @@
 	{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"death_prophet_carrion_swarm"
+		"AbilityTextureName"			"petri_petrosyan_flat_joke"
 	
 		"MaxLevel" "1"
 	
@@ -2664,7 +2664,7 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 	  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	  "AbilityTextureName"      "omniknight_purification"
+	  "AbilityTextureName"      "petri_petrosyan_laugh_burst"
 	
 	  "AbilityCastRange"        "700"
 	  "AbilityCastPoint"        "0.5"
@@ -2778,7 +2778,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "keeper_of_the_light_illuminate_end"
+	  "AbilityTextureName"      "petri_petrosyan_return"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -3033,7 +3033,7 @@
 	{
 	  "BaseClass"       "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-	  "AbilityTextureName"      "clinkz_wind_walk"
+	  "AbilityTextureName"      "petri_petrosyan_wind_walk"
 	
 	  "AbilityCooldown"       "15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 14 13 12 11 10"
 	
@@ -4554,17 +4554,17 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "3"
+	  "MaxLevel"            "4"
 	
-	  "AbilityChannelTime"      "4.0 5.0"
-	  "AbilityGoldCost"       "0 10"
+	  "AbilityChannelTime"      "4.0 5.0 6.0"
+	  "AbilityGoldCost"       "0 10 100"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 10000"
+	      "lumber_cost"        "1000 10000 20000"
 	    }
 	  }
 	
@@ -5198,6 +5198,94 @@
 	    }
 	  }
 	} 
+	"train_petri_mega_peasant"
+	{
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "train_petri_mega_peasant"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	
+	  "AbilityGoldCost"       "100"
+	  "AbilityChannelTime"      "7"
+	  "AbilityUpgradeGoldCost"    "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "food_cost" "6"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "buildings/queue.lua"
+	      "Function"    "EnqueueUnit"
+	      "food" "%food_cost"
+	    }
+	  }
+	
+	  "OnChannelSucceeded"
+	  {
+	    // Consume the first item in the queue
+	    "RunScript"
+	    {
+	      "ScriptFile"    "buildings/queue.lua"
+	      "Function"      "NextQueue"
+	    }
+	
+	    "SpawnUnit"
+	    {
+	      "UnitName"    "npc_petri_mega_peasant"
+	
+	      "UnitCount"   "1"
+	      "UnitLimit"   "0"
+	      "GrantsGold"  "1"
+	      "GrantsXP"    "1"
+	      "SpawnRadius" "10"
+	      "OnSpawn"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_phased"
+	          "Target"    "TARGET"
+	          "Duration"    "0.03"
+	        }
+	
+	        "RunScript"
+	        {
+	          "ScriptFile"    "buildings/queue.lua"
+	          "Function"      "SetOwner"
+	          "food" "%food_cost"
+	        }
+	      }
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_building_autocast"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	    
+	      "ThinkInterval"   "0.03"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "buildings/autocast.lua"
+	          "Function"      "BuildingAutocast"
+	        }
+	      }
+	    }
+	  }
+	}
 	"train_petri_peasant"
 	{
 	  "BaseClass"                 "ability_datadriven"

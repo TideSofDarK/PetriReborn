@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-1141.165283,
-									-898.959412,
-									-29.320557,
+									-131.072235,
+									-118.075478,
+									-2.261444,
 								]
 								m_vMaxBounds =
 								[
-									1503.486084,
-									1667.449219,
-									3275.255371,
+									133.392914,
+									138.565399,
+									328.196259,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -112,7 +112,21 @@
 	m_pMaterialGroupList =
 	{
 		_class = "CVNodeMaterialGroupListReference"
-		m_pObject = null
+		m_pObject =
+		{
+			_class = "NodeMaterialGroupList_t"
+			m_materialGroups =
+			[
+				{
+					_class = "NodeMaterialGroup_t"
+					m_name = "default"
+					m_materialList =
+					[
+						"default.vmat",
+					]
+				},
+			]
+		}
 	}
 	m_pMeshGroupList =
 	{
@@ -159,7 +173,7 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "factory.vmat"
+				m_sSearchMaterial = "default.vmat"
 				m_sReplaceMaterial = "materials/models/factory/factory.vmat"
 			},
 		]

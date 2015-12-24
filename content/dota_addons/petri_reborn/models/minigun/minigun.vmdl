@@ -76,14 +76,14 @@
 								m_vMinBounds =
 								[
 									-1043.784424,
-									-1381.518311,
-									-155.401001,
+									-1381.517822,
+									-155.400970,
 								]
 								m_vMaxBounds =
 								[
-									954.696777,
-									1399.180664,
-									946.567871,
+									954.696899,
+									1399.180908,
+									946.567749,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -112,7 +112,21 @@
 	m_pMaterialGroupList =
 	{
 		_class = "CVNodeMaterialGroupListReference"
-		m_pObject = null
+		m_pObject =
+		{
+			_class = "NodeMaterialGroupList_t"
+			m_materialGroups =
+			[
+				{
+					_class = "NodeMaterialGroup_t"
+					m_name = "default"
+					m_materialList =
+					[
+						"default.vmat",
+					]
+				},
+			]
+		}
 	}
 	m_pMeshGroupList =
 	{
@@ -159,7 +173,7 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "mesh.vmat"
+				m_sSearchMaterial = "default.vmat"
 				m_sReplaceMaterial = "materials/models/minigun/minigun.vmat"
 			},
 		]

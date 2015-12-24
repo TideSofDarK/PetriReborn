@@ -1,3 +1,7 @@
+LUMBER_STACK_T1 = 100
+LUMBER_STACK_T2 = 200
+LUMBER_STACK_T3 = 1000
+
 Debug_Peasant = false
 
 function PlayAttackAnimation( event )
@@ -96,7 +100,7 @@ function CheckTreePosition( event )
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance <= 160
+	local collision = distance <= 170
 	if not collision then
 	elseif not caster:HasModifier("modifier_chopping_wood") then
 
@@ -118,12 +122,17 @@ function GatherLumber( event )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	local max_lumber_carried = 200
-	local single_chop = 100
+	local max_lumber_carried = LUMBER_STACK_T1 * 2
+	local single_chop = LUMBER_STACK_T1
 
 	if caster:GetUnitName() == "npc_petri_super_peasant" then 
-		max_lumber_carried = 400
-		single_chop = 200
+		max_lumber_carried = LUMBER_STACK_T2 * 2
+		single_chop = LUMBER_STACK_T2
+	end
+
+	if caster:GetUnitName() == "npc_petri_mega_peasant" then 
+		max_lumber_carried = LUMBER_STACK_T3 * 2
+		single_chop = LUMBER_STACK_T3
 	end
 
 	max_lumber_carried = max_lumber_carried + (hero.bonusLumber * 2)
