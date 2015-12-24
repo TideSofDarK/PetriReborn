@@ -13,7 +13,7 @@ function Upgrade (event)
 
 	elseif sawmill_level == 3 then 
 		caster:AddAbility("train_petri_mega_peasant")
-
+		caster:SwapAbilities("petri_upgrade_sawmill", "train_petri_mega_peasant", false, true)
 		caster:RemoveAbility(ability:GetName())
 	end
 
