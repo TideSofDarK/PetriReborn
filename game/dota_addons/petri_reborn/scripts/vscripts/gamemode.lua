@@ -39,8 +39,8 @@ GameMode.PETRI_TRUE_TIME = 0
 GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
-GameMode.KVN_BONUS_ITEM["item"] = ""
-GameMode.KVN_BONUS_ITEM["count"] = 0
+GameMode.KVN_BONUS_ITEM["item"] = "item_petri_trap"
+GameMode.KVN_BONUS_ITEM["count"] = 1
 
 GameMode.EXIT_COUNT = 0
 
