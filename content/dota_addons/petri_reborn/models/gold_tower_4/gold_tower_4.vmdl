@@ -8,8 +8,8 @@
 		[
 			{
 				_class = "CVmesh"
-				m_meshName = "minigun"
-				m_meshFile = "models/minigun/minigun.fbx"
+				m_meshName = "gold_tower_4"
+				m_meshFile = "models/gold_tower_4/gold_tower_4.fbx"
 				m_materialSearchPath = ""
 				m_bSkinParentedObjects = true
 				m_bLegacySkinParentedTransforms = false
@@ -75,15 +75,15 @@
 								m_sBoneName = "Skeleton_neck"
 								m_vMinBounds =
 								[
-									-1043.784424,
-									-1381.517822,
-									-155.400970,
+									-265.241974,
+									-314.555908,
+									-15.190491,
 								]
 								m_vMaxBounds =
 								[
-									954.696899,
-									1399.180908,
-									946.567749,
+									245.830170,
+									362.929260,
+									753.103027,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
@@ -112,21 +112,7 @@
 	m_pMaterialGroupList =
 	{
 		_class = "CVNodeMaterialGroupListReference"
-		m_pObject =
-		{
-			_class = "NodeMaterialGroupList_t"
-			m_materialGroups =
-			[
-				{
-					_class = "NodeMaterialGroup_t"
-					m_name = "default"
-					m_materialList =
-					[
-						"default.vmat",
-					]
-				},
-			]
-		}
+		m_pObject = null
 	}
 	m_pMeshGroupList =
 	{
@@ -173,8 +159,8 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "default.vmat"
-				m_sReplaceMaterial = "materials/models/minigun/minigun.vmat"
+				m_sSearchMaterial = "uv.vmat"
+				m_sReplaceMaterial = "materials/models/gold_tower_4/gold_tower_4.vmat"
 			},
 		]
 	}

@@ -159,7 +159,7 @@
 		[
 			{
 				_class = "CVMaterialRemap"
-				m_sSearchMaterial = "yurta.vmat"
+				m_sSearchMaterial = "default.vmat"
 				m_sReplaceMaterial = "materials/models/yurta4/yurta_4.vmat"
 			},
 		]
