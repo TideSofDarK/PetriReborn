@@ -4,7 +4,7 @@
   </styles>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
-      <Image class="Background" src="file://{images}/custom_game/loading_screen/new_after_tournament.jpg" />
+      <Image class="Background" src="file://{images}/custom_game/loading_screen/ny.jpg" />
       <!-- <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" /> -->
       <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
