@@ -1067,6 +1067,10 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/items/courier/dc_angel/dc_angel.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
@@ -1723,7 +1727,7 @@
 				"YPos"		"-22"
 				"yaw"		"-1"
 				"XPos"		"-200"
-			}
+			}models/items/courier/dc_angel/dc_angel.vmdl
 		}
 	}
 	"models/heroes/alchemist/alchemist.vmdl"
