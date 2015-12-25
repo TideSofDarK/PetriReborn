@@ -1071,6 +1071,10 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/props_structures/bad_barracks001_ranged.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
