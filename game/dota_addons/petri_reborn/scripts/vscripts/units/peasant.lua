@@ -400,6 +400,11 @@ function RepairBy1Percent( event )
 			ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
 
 			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
+			
+			if caster:GetUnitName() == "npc_petri_mega_peasant" then
+				ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
+				healAmount = healAmount + healAmount
+			end
 
 			if caster:IsHero() == true and GetModifierCountByName(target,target,"modifier_being_repaired") <= 1 then
 				ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})

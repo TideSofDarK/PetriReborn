@@ -305,6 +305,10 @@ function GameMode:OnEntityKilled( keys )
     hero.numberOfUnits = hero.numberOfUnits - 1
   end
 
+  if killedUnit:GetUnitName() == "npc_petri_mega_peasant" then
+    hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1
+  end
+
   UnfreezeAnimation(killedUnit)
 
   -- KVN fan is killed

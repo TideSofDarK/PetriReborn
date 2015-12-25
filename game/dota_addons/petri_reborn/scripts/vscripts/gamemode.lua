@@ -21,6 +21,7 @@ START_MINI_ACTORS_GOLD = 15
 PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
 
 PETRI_MAX_WORKERS = 13
+PETRI_MAX_MEGA_WORKERS = 5
 
 EVASION_SCROLL_CHANCE = 98
 ATTACK_SCROLL_CHANCE = 94
@@ -136,6 +137,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.allEarnedGold = 0
           newHero.allGatheredLumber = 0
           newHero.numberOfUnits = 0
+          newHero.numberOfMegaWorkers = 0
 
           newHero.buildingCount = 0
 

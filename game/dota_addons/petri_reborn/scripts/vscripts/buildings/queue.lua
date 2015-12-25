@@ -14,7 +14,7 @@ function EnqueueUnit( event, food )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	if hero.numberOfUnits >= PETRI_MAX_WORKERS then
+	if hero.numberOfUnits >= PETRI_MAX_WORKERS or hero.numberOfMegaWorkers >= PETRI_MAX_MEGA_WORKERS then
 		Notifications:Top(caster:GetPlayerOwnerID(),{text="#max_number_of_workers", duration=3, style={color="red"}, continue=false})
 		if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end
 		return false
@@ -34,6 +34,7 @@ function EnqueueUnit( event, food )
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 0)
 			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 			hero.numberOfUnits = hero.numberOfUnits + 1
+			if tonumber(event.food) == 6 then hero.numberOfMegaWorkers + 1 end
 		end
 
 		caster.queueFood = caster.queueFood or 0
@@ -115,6 +116,7 @@ function DequeueUnit( event )
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
 
 	            hero.numberOfUnits = hero.numberOfUnits - 1
+	            if foodToReturn == 6 then hero.numberOfMegaWorkers - 1 end
 
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
