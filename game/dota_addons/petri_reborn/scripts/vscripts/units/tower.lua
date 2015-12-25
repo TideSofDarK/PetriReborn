@@ -17,6 +17,11 @@ function UpgradeDeath (event)
 	caster:RemoveAbility("petri_upgrade_fire_tower")
 	caster:RemoveAbility("petri_upgrade_to_earth_wall")
 
+	caster:AddAbility("petri_animated_tower")
+	caster:FindAbilityByName("petri_animated_tower"):UpgradeAbility(false)
+
+	caster:RemoveModifierByName("modifier_building")
+
 	UpdateAttributes(TOWER_DEATH, ability)
 end
 
