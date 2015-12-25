@@ -34,7 +34,7 @@ function EnqueueUnit( event, food )
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 0)
 			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 			hero.numberOfUnits = hero.numberOfUnits + 1
-			if tonumber(event.food) == 6 then hero.numberOfMegaWorkers + 1 end
+			if tonumber(event.food) == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers + 1 end
 		end
 
 		caster.queueFood = caster.queueFood or 0
@@ -116,7 +116,7 @@ function DequeueUnit( event )
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
 
 	            hero.numberOfUnits = hero.numberOfUnits - 1
-	            if foodToReturn == 6 then hero.numberOfMegaWorkers - 1 end
+	            if foodToReturn == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1 end
 
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
