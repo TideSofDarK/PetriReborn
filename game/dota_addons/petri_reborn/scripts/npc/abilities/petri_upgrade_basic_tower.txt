@@ -11,19 +11,19 @@
   "MaxLevel"            "8"
 
   "AbilityChannelTime"      "1.0 2.0 3.0 4.0 5.0 6.0 8.0"
-  "AbilityGoldCost"       "0 0 1 5 10 20 40"
+  "AbilityGoldCost"       "0 0 0 0 0 0 0"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "500 1500 4500 10000 17000 21000 28000"
+      "lumber_cost"        "500 10000 15000 25000 37500 50000 120000"
     }
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "14 25 67 99 140 200 400"
+      "attack"        "20 50 100 200 350 550 1000"
     }
     "03"
     {

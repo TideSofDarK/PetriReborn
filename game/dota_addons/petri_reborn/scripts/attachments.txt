@@ -1731,7 +1731,7 @@
 				"YPos"		"-22"
 				"yaw"		"-1"
 				"XPos"		"-200"
-			}models/items/courier/dc_angel/dc_angel.vmdl
+			}
 		}
 	}
 	"models/heroes/alchemist/alchemist.vmdl"
