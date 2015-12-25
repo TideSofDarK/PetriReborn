@@ -7,7 +7,7 @@
 *.vsnd_c
 *.vsndevts_c
 *.vmat_c
-*.vtex_c
+# *.vtex_c
 *.bin
 *.vxml_c
 *.vcss_c
