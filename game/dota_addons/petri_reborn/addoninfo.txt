@@ -1,9 +1,11 @@
 "AddonInfo"
 {
-	"maps"			"petri_1_winter"
-	"IsPlayable"	"1"
 	"TeamCount"		"2"
 	"petri_1_winter"
+	{
+		"MaxPlayers"		"14"
+	}
+	"petri_2_snowfall"
 	{
 		"MaxPlayers"		"14"
 	}
