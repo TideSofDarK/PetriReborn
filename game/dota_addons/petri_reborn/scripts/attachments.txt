@@ -459,6 +459,36 @@
 				"yaw"		"0"
 				"XPos"		"-36"
 			}
+			"models/snowman/snowman.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
 		}
 	}
 	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
@@ -1075,6 +1105,10 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
@@ -1217,6 +1251,163 @@
 			    "ZPos"  "-154"
 			    "YPos"  "0"
 			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/undying/undying_tower.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.06"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "200"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "500"
+	   		}
+	  	}
+	}
+	"models/particle/snowball.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/death_tower/death_tower.vmdl"
+	   		{
+			    "scale"  "70"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-0.4"
+	   		}
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-1000"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "400"
+	   		}
+	   		"models/snowman/snowman.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
+	  	}
+	}
+	"models/heroes/zeus/zeus_arcana.vmdl"
+	{
+	  	"attach_eye_l"
+	  	{
+	   		"models/hats/hat_alt.vmdl"
+	   		{
+			    "scale"  "0.67"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-157"
+			    "YPos"  "-4"
+			    "yaw"  "-90"
+			    "XPos"  "-12.6"
+	   		}
+	  	}
+	}
+	"models/items/tuskarr/sigil/boreal_sigil/boreal_sigil.vmdl"
+	{
+	  	"attach_hitloc"
+	  	{
+	   		"models/props_gameplay/gold_bag.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	  	}
+	  	"flame_attachment"
+	  	{
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_emerald.vmdl"
+	   		{
+			    "scale"  "0.4"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "141"
+			    "YPos"  "19"
+			    "yaw"  "0"
+			    "XPos"  "-6"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_ruby.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "37"
+			    "YPos"  "-2"
+			    "yaw"  "0"
+			    "XPos"  "18"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_saphire.vmdl"
+	   		{
+			    "scale"  "0.6"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "80"
+			    "YPos"  "-13"
+			    "yaw"  "0"
+			    "XPos"  "3"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_topaz.vmdl"
+	   		{
+			    "scale"  "0.7"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "65"
+			    "YPos"  "-5"
+			    "yaw"  "0"
+			    "XPos"  "-11"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_pink.vmdl"
+	   		{
+			    "scale"  "0.9"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "50"
+			    "YPos"  "14"
+			    "yaw"  "0"
 			    "XPos"  "3"
 	   		}
 	  	}
@@ -1433,6 +1624,161 @@
 			    "XPos"  "3"
 	   		}
 	  	}
+	}
+	"models/snowman/snowman.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
+	  	}
+	}
+	"models/heroes/shadow_fiend/pedestal_sf.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "300"
+	   		}
+	  	}
+	}
+	"models/heroes/tiny_01/tiny_01.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "300"
+	   		}
+	  	}
+	}
+	"models/factory/factory.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/props_structures/bad_barracks001_ranged.vmdl"
+	   		{
+			    "scale"  "0.23"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "283"
+			    "YPos"  "392"
+			    "yaw"  "90"
+			    "XPos"  "126"
+	   		}
+	   		"models/props_structures/good_barracks_ranged002_lvl2.vmdl"
+	   		{
+			    "scale"  "0.23"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "271"
+			    "YPos"  "-362"
+			    "yaw"  "-90"
+			    "XPos"  "-126"
+	   		}
+	   		"models/props_structures/good_ancient001.vmdl"
+	   		{
+			    "scale"  "0.16"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "442"
+			    "YPos"  "546"
+			    "yaw"  "90"
+			    "XPos"  "125"
+	   		}
+	   		"models/props_structures/radiant_ancient001.vmdl"
+	   		{
+			    "scale"  "0.16"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "442"
+			    "YPos"  "546"
+			    "yaw"  "90"
+			    "XPos"  "125"
+	   		}
+	   		"models/items/bounty_hunter/bounty_hunter_blade.vmdl"
+	   		{
+			    "scale"  "1.4"
+			    "pitch"  "24"
+			    "roll"  "90"
+			    "ZPos"  "4"
+			    "YPos"  "-116"
+			    "yaw"  "0"
+			    "XPos"  "-95"
+	   		}
+	   		"models/items/shredder/timberthaw_offhand/timberthaw_offhand.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "131"
+			    "YPos"  "-94"
+			    "yaw"  "0"
+			    "XPos"  "22"
+	   		}
+	   		"models/items/shredder/sctimberoffhand/sctimberoffhand.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "28"
+			    "roll"  "0"
+			    "ZPos"  "131"
+			    "YPos"  "-24"
+			    "yaw"  "0"
+			    "XPos"  "106"
+	   		}
+	   		"models/items/bounty_hunter/immortal_warrior_shuriken/immortal_warrior_shuriken.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "45"
+			    "roll"  "90"
+			    "ZPos"  "11"
+			    "YPos"  "-34"
+			    "yaw"  "-21"
+			    "XPos"  "-191"
+	   		}
+	   		"models/items/bounty_hunter/hunternoname_shoulder/hunternoname_shoulder.vmdl"
+	   		{
+			    "scale"  "1.3"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-32"
+			    "YPos"  "-135"
+			    "yaw"  "-21"
+			    "XPos"  "-80"
+	   		}
+	  	}
+
 	}
 	"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
 	{
@@ -1659,6 +2005,62 @@
 				"YPos"		"89"
 				"yaw"		"72"
 				"XPos"		"6"
+			}
+		}
+	}
+	"models/props_structures/radiant_ancient001.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/items/bounty_hunter/bounty_hunter_blade.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-90"
+				"ZPos"		"2"
+				"YPos"		"192"
+				"yaw"		"0"
+				"XPos"		"-105"
+			}
+			"models/items/shredder/timberthaw_offhand/timberthaw_offhand.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-180"
+				"ZPos"		"138"
+				"YPos"		"-69"
+				"yaw"		"-26"
+				"XPos"		"-19"
+			}
+			"models/items/shredder/sctimberoffhand/sctimberoffhand.vmdl"
+			{
+				"scale"		"1.7"
+				"pitch"		"237"
+				"roll"		"-180"
+				"ZPos"		"159"
+				"YPos"		"-112"
+				"yaw"		"0"
+				"XPos"		"121"
+			}
+			"models/items/bounty_hunter/immortal_warrior_shuriken/immortal_warrior_shuriken.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-90"
+				"ZPos"		"-2"
+				"YPos"		"164"
+				"yaw"		"0"
+				"XPos"		"66"
+			}
+			"models/items/bounty_hunter/hunternoname_shoulder/hunternoname_shoulder.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-53"
+				"YPos"		"-101"
+				"yaw"		"36"
+				"XPos"		"151"
 			}
 		}
 	}
