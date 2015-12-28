@@ -104,7 +104,7 @@ function CheckTreePosition( event )
 	if not collision then
 	elseif not caster:HasModifier("modifier_chopping_wood") then
 
-		caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
 
 		caster:RemoveModifierByName("modifier_gathering_lumber")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_wood", {})
