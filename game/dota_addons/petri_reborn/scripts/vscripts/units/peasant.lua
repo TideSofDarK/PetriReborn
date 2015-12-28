@@ -332,11 +332,11 @@ function CheckRepairingTargetPosition( event )
 	caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 200
+	local collision = distance < 280
 	if not collision then
 
 	elseif not caster:HasModifier("modifier_chopping_building") then
-		caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
 
 		caster:RemoveModifierByName("modifier_repairing")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_building", {})
