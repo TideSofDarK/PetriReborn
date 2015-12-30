@@ -1585,7 +1585,7 @@
 	  "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
 	  "ModelScale"    "0.8"
 	  "Level"      "1"
-	  "HealthBarOffset"    "140"
+	  "HealthBarOffset"    "210"
 	
 	  "vscripts"     "units/peasant.lua"
 	
