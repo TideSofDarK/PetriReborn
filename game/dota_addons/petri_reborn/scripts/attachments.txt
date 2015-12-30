@@ -489,6 +489,16 @@
 			    "yaw"  "90"
 			    "XPos"  "66"
 	   		}
+	   		"models/christmas_tree/christmas_tree.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
 		}
 	}
 	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
@@ -1102,6 +1112,10 @@
 			    "scale"  "0"
 	   		}
 	   		"models/props_structures/bad_barracks001_ranged.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/windmill/windmill.vmdl"
 	   		{
 			    "scale"  "0"
 	   		}
