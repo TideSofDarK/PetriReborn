@@ -2429,6 +2429,16 @@
 				"yaw"		"-90"
 				"XPos"		"-71"
 			}
+			"models/items/crystal_maiden/pw_cm_staff/crystal_maiden_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"135"
+				"roll"		"-6"
+				"ZPos"		"-76"
+				"YPos"		"-71"
+				"yaw"		"270"
+				"XPos"		"-105"
+			}
 			"models/items/crystal_maiden/euls_scepterdivinity.vmdl"
 			{
 				"scale"		"1"
