@@ -17,6 +17,7 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_vip_frostbite", context)
   PrecacheItemByNameSync("item_petri_vip_furion", context)
   PrecacheItemByNameSync("item_petri_vip_greenkzn", context)
+  PrecacheItemByNameSync("item_petri_vip_zeus", context)
   
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
 
