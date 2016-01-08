@@ -1855,6 +1855,35 @@
 			}
 		}
 	}
+	"models/heroes/faceless_void/faceless_void.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/faceless_void/ancientcultist_head/ancientcultist_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-9"
+				"roll"		"0"
+				"ZPos"		"-168"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-13"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/faceless_void/voidhammer/voidhammer.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"7"
+				"roll"		"-14"
+				"ZPos"		"-67"
+				"YPos"		"103"
+				"yaw"		"0"
+				"XPos"		"-9"
+			}
+		}
+	}
 	"models/heroes/pudge/pudge.vmdl"
 	{
 		"attach_eye_l"
