@@ -116,11 +116,12 @@ function DequeueUnit( event )
 	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
 
 	            hero.numberOfUnits = hero.numberOfUnits - 1
-	            if foodToReturn == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1 end
 
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
 	            hero.food = hero.food - foodToReturn
+
+	            if foodToReturn == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1 end
 
 	            caster.queueFood = caster.queueFood - foodToReturn
 
