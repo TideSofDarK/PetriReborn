@@ -589,6 +589,18 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
           building.state = "complete"
           building.bUpdatingHealth = false
+          
+          -- Write buildings layes
+          local mapping = {}
+          for y = 1, size do
+            mapping[y] = {}
+            for x = 1, size do
+              mapping[y][x] = 1
+            end
+          end
+          
+          GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
+    
           -- clean up the timer if we don't need it.
           return nil
         end

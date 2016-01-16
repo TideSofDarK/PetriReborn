@@ -4,6 +4,7 @@
   [
     "players_resources",
     "players_upgrades",
-    "players_dependencies"
+    "players_dependencies",
+	"LayersQueue"
   ]
 }
