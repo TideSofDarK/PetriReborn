@@ -14,7 +14,7 @@ var BHPanel = $.GetContextPanel();
 if (!BHPanel.loaded)
 {
     BHPanel.Grid = [];
-    BHPanel.LastQueueNum = 0;
+    BHPanel.LastQueueNum = -1;
     BHPanel.XMin = 0;
     BHPanel.XMax = 0;
     BHPanel.YMin = 0;
@@ -250,7 +250,6 @@ function LayerChanged( table_name, key, data )
     if (BHPanel.LastQueueNum >= parseInt(key, 10))
         return
 
-    $.Msg(data)
     var layerName = data["LayerName"];
     if (BHPanel.Grid[layerName] == null)
         CreateLayer( layerName );
@@ -277,7 +276,11 @@ function IsBlocked(position) {
     var x = WorldToGridPosX(position[0]) - BHPanel.XMin;
     var y = WorldToGridPosY(position[1]) - BHPanel.YMin;
     
-    return BHPanel.Grid["Terrain"][y][x] == 1 || BHPanel.Grid["Buildings"][y][x] == 1;
+    var building = false;
+    if (BHPanel.Grid["Buildings"])
+        building = BHPanel.Grid["Buildings"][y][x] == 1;
+
+    return BHPanel.Grid["Terrain"][y][x] == 1 || building;
 }
 
 function SnapToGrid(vec, size) {
