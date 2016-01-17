@@ -14,6 +14,7 @@ var BHPanel = $.GetContextPanel();
 if (!BHPanel.loaded)
 {
     BHPanel.Grid = [];
+    BHPanel.LastQueueNum = -1;
     BHPanel.XMin = 0;
     BHPanel.XMax = 0;
     BHPanel.YMin = 0;
@@ -149,7 +150,7 @@ function SendBuildCommand( params )
   var GamePos = Game.ScreenXYToWorld(mPos[0], mPos[1]);
   GameEvents.SendCustomGameEventToServer( "building_helper_build_command", { "X" : GamePos[0], "Y" : GamePos[1], "Z" : GamePos[2] } );
 
-  Cancel(params)
+  Cancel(params);
 }
 
 function SendCancelCommand( params )
@@ -219,20 +220,55 @@ function GNV( args )
         }
     }
 
-
+    var layerName = args["LayerName"]
+    BHPanel.Grid[layerName] = []
     var curQuad = 0;
-    for (var i = 0; i < -BHPanel.XMin + BHPanel.XMax + 1; i++)
+    for (var j = 0; j < -BHPanel.YMin + BHPanel.YMax + 1; j++)
     {
-        BHPanel.Grid[i] = []
-        for (var j = 0; j < -BHPanel.YMin + BHPanel.YMax + 1; j++)
-            BHPanel.Grid[i][j] = decoded[curQuad++];
+        BHPanel.Grid[layerName][j] = []
+        for (var i = 0; i < -BHPanel.XMin + BHPanel.XMax + 1; i++)
+            BHPanel.Grid[layerName][j][i] = decoded[curQuad++];
     }
 }
 
+//-----------------------------------------------------------------------------
+//                         Layers
+//-----------------------------------------------------------------------------
+function CreateLayer( layerName )
+{
+    BHPanel.Grid[layerName] = [];
+    for (var j = 0; j < -BHPanel.YMin + BHPanel.YMax + 1; j++)
+    {
+        BHPanel.Grid[layerName][j] = []
+        for (var i = 0; i < -BHPanel.XMin + BHPanel.XMax + 1; i++)
+            BHPanel.Grid[layerName][j][i] = 0;
+    }    
+}
+
+function LayerChanged( table_name, key, data )
+{
+    if (BHPanel.LastQueueNum >= parseInt(key, 10))
+        return
+
+    var layerName = data["LayerName"];
+    if (BHPanel.Grid[layerName] == null)
+        CreateLayer( layerName );
+
+    var ltX = -BHPanel.XMin + data["X"] - 1;
+    var ltY = -BHPanel.YMin + data["Y"] - 1;
+
+    for (var y = 1; y <= data["Height"]; y++)
+        for (var x = 1; x <= data["Width"]; x++)
+            BHPanel.Grid[layerName][ltY + y - 1][ltX + x - 1] = data['Mapping'][y][x];
+}
+
 (function () {
+  GameEvents.SendCustomGameEventToServer( "gnv_request", { "Layers" : { } } );
+
   GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
   GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
 
+  CustomNetTables.SubscribeNetTableListener( "LayersQueue", LayerChanged );
   GameEvents.Subscribe( "gnv", GNV);
 })();
 
@@ -240,7 +276,11 @@ function IsBlocked(position) {
     var x = WorldToGridPosX(position[0]) - BHPanel.XMin;
     var y = WorldToGridPosY(position[1]) - BHPanel.YMin;
     
-    return BHPanel.Grid[x][y];
+    var building = false;
+    if (BHPanel.Grid["Buildings"])
+        building = BHPanel.Grid["Buildings"][y][x] == 1;
+
+    return BHPanel.Grid["Terrain"][y][x] == 1 || building;
 }
 
 function SnapToGrid(vec, size) {
