@@ -14,8 +14,8 @@ function BonusGoldFromWall(keys)
 			caster:RemoveModifierByName("modifier_bonus_damage")
 		end
 
-		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(180, false, DOTA_ModifyGold_CreepKill )
-		caster.allEarnedGold = caster.allEarnedGold + 180
+		GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]:ModifyGold(210, false, DOTA_ModifyGold_CreepKill )
+		caster.allEarnedGold = caster.allEarnedGold + 210
 		PopupParticle(180, Vector(244,201,23), 1.0, caster)
 	end
 end
