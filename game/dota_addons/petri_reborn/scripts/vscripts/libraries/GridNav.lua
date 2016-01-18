@@ -1,10 +1,170 @@
-local GNV_PRINT = false
+local GNV_PRINT = true
+-- Time to clear nettable value
+local netTableClearTimer = 15.0
 
 GNV = {}
+GNV.XMin = 0
+GNV.XMax = 0
+GNV.YMin = 0
+GNV.YMax = 0
 
-GNV.Encoded = "" -- String containing the base terrain, networked to clients
-GNV.XSize = 0  -- Number of X grid points
-GNV.YSize = 0  -- Number of Y grid points
+-- LayerManager namespace
+GNV.LayerManager = {}
+GNV.LayerManager.QueueNumber = 0
+-- Layers container
+GNV.Layers = {}
+
+-------------------------------------------------------------------------------
+--                          Layer manager
+-------------------------------------------------------------------------------
+function GNV.LayerManager:Create( layerName )
+  if GNV.Layers[layerName] == nil then
+    GNV.Layers[layerName] = {}
+    
+    -- Init fullsize grid with default values
+    for y = GNV.YMin, GNV.YMax do
+      GNV.Layers[layerName][y] = {}
+      for x = GNV.XMin, GNV.XMax do
+        GNV.Layers[layerName][y][x] = 0
+      end
+    end
+    
+  end
+end
+
+function GNV.LayerManager:Delete( layerName )
+  if GNV.Layers[layerName] ~= nil then
+    GNV.Layers[layerName] = {}
+  end
+end
+
+-- Write to layer
+-- Args:
+--  - LayerName
+--  - X, Y - top left corner
+--  - Width
+--  - Height
+--  - Mapping - mapping with size X * Y
+function GNV.LayerManager:Write( args )
+  local layerName = args['LayerName']
+  local location = GetGridPosition( { x = args["X"], y = args["Y"] })
+  -- Write in nettable grid coords
+  args["X"] = location.x
+  args["Y"] = location.y
+  local width = args["Width"]
+  local height = args["Height"]
+  
+  GNV:print("Writing to layer '" .. layerName .. "'")
+
+  -- Skip bad location
+  if location.x < GNV.XMin or location.y < GNV.YMin or 
+     location.x + width > GNV.XMax or location.y + height > GNV.YMax then
+    return
+  end
+  
+  -- Write to new layer
+  GNV.LayerManager:Create( layerName )
+  
+  -- Update layer
+  for y = 1, height do
+    for x = 1, width do
+      GNV.Layers[layerName][location.y + y - 1][location.x + x - 1] = args['Mapping'][y][x]
+    end
+  end
+  
+  local curQueueNumber = GNV.LayerManager.QueueNumber
+  -- Update queue for clients  
+  CustomNetTables:SetTableValue("LayersQueue", tostring( curQueueNumber ), args)
+  Timers:CreateTimer(netTableClearTimer, 
+		function() 
+		  CustomNetTables:SetTableValue("LayersQueue", tostring( curQueueNumber ), {})
+		end)
+  
+  GNV.LayerManager.QueueNumber = GNV.LayerManager.QueueNumber + 1
+end
+
+-- Generate terrain grid and get map sizes
+function GNV.LayerManager:Generate()
+  GNV.LayerManager:Create( 'Terrain' )
+  
+  local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
+  local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
+
+  GNV.XMin = GridNav:WorldToGridPosX(worldMin.x)
+  GNV.XMax = GridNav:WorldToGridPosX(worldMax.x)
+  GNV.YMin = GridNav:WorldToGridPosY(worldMin.y)
+  GNV.YMax = GridNav:WorldToGridPosY(worldMax.y)
+ 
+  GNV:print("Max World Bounds: ")
+  GNV:print(GetWorldMinX()..' '..GetWorldMinY()..' '..GetWorldMaxX()..' '..GetWorldMaxY())
+  GNV:print(GNV.XMin..' '..GNV.YMin..' '..GNV.XMax..' '..GNV.YMax)
+
+  local blockedCount = 0
+  local unblockedCount = 0
+
+  for y = GNV.YMin, GNV.YMax do
+    GNV.Layers['Terrain'][y] = {}
+    for x = GNV.XMin, GNV.XMax do
+      local gridX = GridNav:GridPosToWorldCenterX(x)
+      local gridY = GridNav:GridPosToWorldCenterY(y)
+      local position = Vector(gridX, gridY, 0)  
+      local blocked = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position)
+      
+      GNV.Layers['Terrain'][y][x] = tostring(blocked and 1 or 0)
+
+      if blocked then
+          blockedCount = blockedCount + 1
+      else
+          unblockedCount = unblockedCount + 1
+      end
+    end
+  end
+end
+
+-------------------------------------------------------------------------------
+--                          GNV commons
+-------------------------------------------------------------------------------
+ListenToGameEvent('game_rules_state_change', function()
+    local newState = GameRules:State_Get()
+    if newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+        -- The base terrain GridNav is obtained directly from the vmap
+        GNV:Init()
+    end
+end, nil)
+
+function GNV:print( ... )
+    if GNV_PRINT then
+        print('[GNV] '.. ...)
+    end
+end
+
+-- Main function
+function GNV:Init()
+  GNV.LayerManager:Generate()
+end
+
+-- Send layers
+function GNV:Send( args )
+  local playerID = args.PlayerID
+  local player = PlayerResource:GetPlayer(playerID)
+  
+  local layers = { 'Terrain' }
+  for k, v in pairs(args['Layers']) do
+    table.insert(layers, v)   
+  end
+  
+  for k, v in pairs(layers) do
+    GNV:print("Sending layer '" .. v .. "' to player "..playerID)
+    CustomGameEventManager:Send_ServerToPlayer(player, "gnv", { gnv = Pack( v ), LayerName = v, XMin = GNV.XMin, XMax = GNV.XMax, YMin = GNV.YMin, YMax = GNV.YMax })
+  end    
+end
+
+-------------------------------------------------------------------------------
+--                          Utility functions
+-------------------------------------------------------------------------------
+function GetGridPosition( location )
+  return { x = GridNav:WorldToGridPosX(location.x), y = GridNav:WorldToGridPosX(location.y) }
+end
 
 function BinToInt( str )
   local value = 0
@@ -26,23 +186,38 @@ function IntToHex( num )
     return s
 end
 
-ListenToGameEvent('game_rules_state_change', function()
-    local newState = GameRules:State_Get()
-    if newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-        -- The base terrain GridNav is obtained directly from the vmap
-        GNV:Init()
-    elseif newState == DOTA_GAMERULES_STATE_PRE_GAME then
-        Timers:CreateTimer(1, function()
-            GNV:Send()
-        end)
-    end
-end, nil)
+-------------------------------------------------------------------------------
+--                          Packing
+-------------------------------------------------------------------------------
+-- Pack layer
+function Pack( layerName )
+  GNV:print("Packing layer '" .. layerName .."'")
+  
+  local binaryStr = ""
+  local totalCount = 1;
+  
+  local gnv = {}
 
-function GNV:print( ... )
-    if GNV_PRINT then
-        print('[GNV] '.. ...)
+  if GNV.Layers[layerName] == nil then
+    GNV:print("Unknown layer. Unable to pack.")
+    return ''
+  end
+
+  for y = GNV.YMin, GNV.YMax do
+    local curRow = ""    
+    for x = GNV.XMin, GNV.XMax do
+      curRow = curRow .. GNV.Layers[layerName][y][x]
+      binaryStr = binaryStr .. GNV.Layers[layerName][y][x]
+      if binaryStr:len() == 8 then
+        gnv[totalCount] = string.format("%02s", IntToHex(BinToInt(binaryStr)) )
+        totalCount = totalCount + 1
+        binaryStr = ""
+      end
     end
-end  
+  end
+
+  return table.concat( PackGNVTable(gnv, totalCount), '')
+end
 
 function PackGNVTable( gnvTable, length )
   local packedTable = {}
@@ -73,69 +248,3 @@ function PackGNVTable( gnvTable, length )
 
   return packedTable
 end
-
-function GNV:Init()
-  local worldMin = Vector(GetWorldMinX(), GetWorldMinY(), 0)
-  local worldMax = Vector(GetWorldMaxX(), GetWorldMaxY(), 0)
-
-  local boundX1 = GridNav:WorldToGridPosX(worldMin.x)
-  local boundX2 = GridNav:WorldToGridPosX(worldMax.x)
-  local boundY1 = GridNav:WorldToGridPosY(worldMin.y)
-  local boundY2 = GridNav:WorldToGridPosY(worldMax.y)
- 
-  GNV:print("Max World Bounds: ")
-  GNV:print(GetWorldMaxX()..' '..GetWorldMaxY()..' '..GetWorldMaxX()..' '..GetWorldMaxY())
-
-  local blockedCount = 0
-  local unblockedCount = 0
-
-  local binaryStr = ""
-  local totalCount = 1;
-  
-  local gnv = {}
-
-  for x=boundX1,boundX2 do
-    local curRow = ""
-    for y=boundY1,boundY2 do
-      local gridX = GridNav:GridPosToWorldCenterX(x)
-      local gridY = GridNav:GridPosToWorldCenterY(y)
-      local position = Vector(gridX, gridY, 0)
-      local blocked = not GridNav:IsTraversable(position) or GridNav:IsBlocked(position)
-
-      curRow = curRow .. tostring(blocked and 1 or 0)
-
-      binaryStr = binaryStr .. tostring(blocked and 1 or 0)
-      if binaryStr:len() == 8 then
-        gnv[totalCount] = string.format("%02s", IntToHex(BinToInt(binaryStr)) )
-        totalCount = totalCount + 1
-        binaryStr = ""
-      end
-      
-      if blocked then
-          blockedCount = blockedCount+1
-      else
-          unblockedCount = unblockedCount+1
-      end
-    end
-    
-    --print(curRow)
-  end
- 
-  local gnv_string = table.concat( PackGNVTable(gnv, totalCount), '')
-
-  GNV:print(boundX1..' '..boundX2..' '..boundY1..' '..boundY2)
-  local squareX = math.abs(boundX1) + math.abs(boundX2)+1
-  local squareY = math.abs(boundY1) + math.abs(boundY2)+1
-  print("Free: "..unblockedCount.." Blocked: "..blockedCount)
-
-  GNV.Encoded = gnv_string
-  GNV.XMin = boundX1
-  GNV.XMax = boundX2
-  GNV.YMin = boundY1
-  GNV.YMax = boundY2
-end
-    
-function GNV:Send()
-    CustomGameEventManager:Send_ServerToAllClients("gnv", { gnv = GNV.Encoded, XMin = GNV.XMin, XMax = GNV.XMax, YMin = GNV.YMin, YMax = GNV.YMax })
-end    
-    
