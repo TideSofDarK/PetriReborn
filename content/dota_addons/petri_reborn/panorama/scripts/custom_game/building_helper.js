@@ -6,6 +6,22 @@ var particle;
 var gridParticles;
 
 var visibleGrid;
+
+var QuadStatus = {
+    Free: 0,
+    Blocked: 1,
+    Unit : 2
+}
+
+var GridMode = {
+    None: 0,
+    Full: 1,
+    OnlyBlocked: 2,
+    OnlyFree: 3
+}
+
+var gridMode = GridMode.None;
+
 var screenCenterPos = [];
 var screenStepSize = 16;
 
@@ -32,17 +48,41 @@ if (!BHPanel.loaded)
     BHPanel.loaded = true;
 }
 
-function GetGridColor( value )
+function GetQuadColor( quadStatus )
 {
-    switch(value)
+    switch(quadStatus)
     {
-        case false:
-            return [0, 255, 0];
-        case true:
+        case QuadStatus.Unit:
+            return [255, 240, 0];
+        case QuadStatus.Blocked:
             return [255, 0, 0];
-        default:
+        case QuadStatus.Free:
             return [255, 255, 255];
     }
+}
+
+function GetBuildingQuadColor( quadStatus )
+{
+    switch(quadStatus)
+    {
+        case QuadStatus.Unit:
+            return [255, 240, 0];
+        case QuadStatus.Blocked:
+            return [255, 0, 0];
+        case QuadStatus.Free:
+            return [0, 255, 0];
+    }
+}
+
+function GetQuadStatus( pos )
+{
+    if (IsBlocked(pos))
+        return QuadStatus.Blocked;
+
+    if (IsEntityNearPoint( pos ))
+        return QuadStatus.Unit;
+
+    return QuadStatus.Free;
 }
 
 //-----------------------------------------------------------------------------
@@ -119,19 +159,20 @@ function CreateVisibleGridParticle()
                 visibleGrid[gridX] = [];
 
             if (visibleGrid[gridX][gridY])
-            {
                 continue;
-            }
+
+            var status = GetQuadStatus(pos)
 
             var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0);
             Particles.SetParticleControl(gridParticle, 0, pos);
             Particles.SetParticleControl(gridParticle, 1, [32,0,0]);
-            Particles.SetParticleControl(gridParticle, 2, GetGridColor(IsBlocked(pos)));
+            Particles.SetParticleControl(gridParticle, 2, GetQuadColor(status));
             Particles.SetParticleControl(gridParticle, 3, [VISIBLE_GRID_ALPHA,0,0]);
 
             visibleGrid[gridX][gridY] = [];
             visibleGrid[gridX][gridY]["Particle"] = gridParticle;
             visibleGrid[gridX][gridY]["Position"] = pos;
+            visibleGrid[gridX][gridY]["Status"] = status;
         }  
 }
 
@@ -179,34 +220,34 @@ function GetScreenCenterPos()
 
 function UpdateVisibleGrid()
 {
-    if (state == 'active')
-    {
-        for (var row of visibleGrid)
+    if (state != 'active')
+        return;
+
+    for (var x in visibleGrid)
+        for (var y in visibleGrid[x])
         {
-            if (!row)
+            var status = GetQuadStatus(visibleGrid[x][y]["Position"]);
+
+            // Status doesn't changed
+            if (status == visibleGrid[x][y]["Status"])
                 continue;
 
-            for (var quad of row)
-            {
-                if (!quad)
-                    continue;
-
-                var pos = quad["Position"];
-
-                // Quad already colored
-                if (IsBlocked(pos))
-                    continue;
-
-                var gridParticle = quad["Particle"]
-                var isEntityNear = IsEntityNearPoint( pos );
-
-                Particles.SetParticleControl(gridParticle, 2, GetGridColor(isEntityNear ? true : -1));            
-            }
+            Particles.SetParticleControl(visibleGrid[x][y]["Particle"], 2, GetQuadColor(status));
+            visibleGrid[x][y]["Status"] = status;
         }
 
-        GetScreenCenterPos();
-        $.Schedule(1/10, UpdateVisibleGrid);
+    GetScreenCenterPos();
+
+    // Change grid mode
+    if (GameUI.IsAltDown())
+    {
+        gridMode++;
+
+        if (gridMode > 3)
+            gridMode = GridMode.None;
     }
+
+    $.Schedule(1/5, UpdateVisibleGrid);
 }
 
 function StartBuildingHelper( params )
@@ -245,6 +286,7 @@ function StartBuildingHelper( params )
         {
             var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite_building.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
             Particles.SetParticleControl(gridParticle, 1, [32,0,0])
+            Particles.SetParticleControl(gridParticle, 2, [255,255,255]) //Keep the original color
             Particles.SetParticleControl(gridParticle, 3, [GRID_ALPHA,0,0])
             gridParticles.push(gridParticle)
         }
@@ -291,13 +333,13 @@ function CheckMousePos()
                     var pos = [x,y,GamePos[2]]
                     var gridParticle = gridParticles[part]
 
-                    var isBlocked = IsBlocked(pos) || IsEntityNearPoint( pos );
-                    isAnyQuadBlocked = isAnyQuadBlocked || isBlocked;
+                    var status = GetQuadStatus(pos);                    
+                    isAnyQuadBlocked = isAnyQuadBlocked || status == QuadStatus.Blocked;
 
                     Particles.SetParticleControl(gridParticle, 0, pos);
-                    Particles.SetParticleControl(gridParticle, 2, GetGridColor(isBlocked));
+                    Particles.SetParticleControl(gridParticle, 2,  GetBuildingQuadColor(status));
 
-                    part++;
+                    part ++;
 
                     if (part > size*size)
                         return;
@@ -306,7 +348,7 @@ function CheckMousePos()
 
             // Update the model particle
             Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1])
-            Particles.SetParticleControl(particle, 2, GetGridColor(isAnyQuadBlocked))
+            Particles.SetParticleControl(particle, 2, GetBuildingQuadColor( isAnyQuadBlocked ? QuadStatus.Blocked : QuadStatus.Free ))
         }
 
         $.Schedule(1/60, CheckMousePos);    
