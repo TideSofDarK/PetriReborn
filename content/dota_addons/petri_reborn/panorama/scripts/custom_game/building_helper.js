@@ -4,10 +4,34 @@ var state = 'disabled';
 var size = 0;
 var particle;
 var gridParticles;
+
 var visibleGrid;
+
+var QuadStatus = {
+    Free: 0,
+    Blocked: 1,
+    Unit : 2
+}
+
+var GridMode = {
+    None: 0,
+    Full: 1,
+    OnlyBlocked: 2,
+    OnlyFree: 3
+}
+
+var gridMode = GridMode.None;
+
+var screenCenterPos = [];
+var screenStepSize = 16;
+
+var topInsetOverride = 30;
+var bottomInsetOverride = 100;
+
 
 // Ghost Building Preferences
 var GRID_ALPHA = 30 // Defines the transparency of the ghost squares
+var VISIBLE_GRID_ALPHA = 255 // Defines the transparency of the ghost squares
 
 // Store received data into panel data
 var BHPanel = $.GetContextPanel();
@@ -19,39 +43,215 @@ if (!BHPanel.loaded)
     BHPanel.XMax = 0;
     BHPanel.YMin = 0;
     BHPanel.YMax = 0;
+    BHPanel.Resolution = [];
 
     BHPanel.loaded = true;
 }
 
-function GetGridColor( value )
+function GetQuadColor( quadStatus )
 {
-    return value == 0
-        ? [0, 255, 0]
-        : [255, 0, 0];    
+    switch(quadStatus)
+    {
+        case QuadStatus.Unit:
+            return [255, 240, 0];
+        case QuadStatus.Blocked:
+            return [255, 0, 0];
+        case QuadStatus.Free:
+            return [255, 255, 255];
+    }
+}
+
+function GetBuildingQuadColor( quadStatus )
+{
+    switch(quadStatus)
+    {
+        case QuadStatus.Unit:
+            return [255, 240, 0];
+        case QuadStatus.Blocked:
+            return [255, 0, 0];
+        case QuadStatus.Free:
+            return [0, 255, 0];
+    }
+}
+
+function GetQuadStatus( pos )
+{
+    if (IsBlocked(pos))
+        return QuadStatus.Blocked;
+
+    if (IsEntityNearPoint( pos ))
+        return QuadStatus.Unit;
+
+    return QuadStatus.Free;
+}
+
+//-----------------------------------------------------------------------------
+//                    Visible grid
+//-----------------------------------------------------------------------------
+function GetScreenResolution()
+{
+    // Full screen viewport
+    GameUI.SetRenderTopInsetOverride(0);
+    GameUI.SetRenderBottomInsetOverride(0);
+
+    var x = 0;
+    var y = 0;
+
+    var pos = null;
+    
+    do 
+    {
+        pos = GameUI.GetScreenWorldPosition( ++x, 0 );
+    } while(pos != null);
+
+    do 
+    {
+        pos = GameUI.GetScreenWorldPosition( 0, ++y );
+    } while(pos != null);    
+
+    // Full screen viewport
+    GameUI.SetRenderTopInsetOverride(topInsetOverride);
+    GameUI.SetRenderBottomInsetOverride(bottomInsetOverride);
+
+    return [x - 1, y - 1];
+}
+
+function ScreenToSnapWorldPos( x, y )
+{
+    var worldPos = GameUI.GetScreenWorldPosition( x, y );
+    if (worldPos) 
+        SnapToGrid(worldPos, 1);
+
+    return worldPos;
+}
+
+function ScreenToGridPos( x, y )
+{
+    var worldPos = ScreenToSnapWorldPos( x, y )
+    return [WorldToGridPosX(worldPos[0]) - BHPanel.XMin, WorldToGridPosY(worldPos[1]) - BHPanel.YMin];
+}
+
+function DestroyVisibleGridParticles()
+{
+    for (var x in visibleGrid)
+        for (var y in visibleGrid[x])
+            Particles.DestroyParticleEffect(visibleGrid[x][y]["Particle"], true);
 }
 
 function CreateVisibleGridParticle()
 {
-    var posLT = GameUI.GetScreenWorldPosition( 960, 490 );
-    var posRB = GameUI.GetScreenWorldPosition( 1920, 1080 );
+    // Destroy old particles
+    DestroyVisibleGridParticles();
 
-    $.Msg("LT: ", posLT)
-    $.Msg(posRB);
-
-/*
     visibleGrid = [];
-    for (var x = 0; x < size * size; x++)
+    for (var x = 0; x < BHPanel.Resolution[0]; x += screenStepSize)
+        for (var y = topInsetOverride; y < BHPanel.Resolution[1] - bottomInsetOverride; y += screenStepSize)
+        {
+            var pos = ScreenToSnapWorldPos( x, y );
+
+            if (!pos)
+                continue;
+
+            var gridX = WorldToGridPosX(pos[0]) - BHPanel.XMin;
+            var gridY = WorldToGridPosY(pos[1]) - BHPanel.YMin;
+
+            if (!visibleGrid[gridX])
+                visibleGrid[gridX] = [];
+
+            if (visibleGrid[gridX][gridY])
+                continue;
+
+            var status = GetQuadStatus(pos)
+
+            var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0);
+            Particles.SetParticleControl(gridParticle, 0, pos);
+            Particles.SetParticleControl(gridParticle, 1, [32,0,0]);
+            Particles.SetParticleControl(gridParticle, 2, GetQuadColor(status));
+            Particles.SetParticleControl(gridParticle, 3, [VISIBLE_GRID_ALPHA,0,0]);
+
+            visibleGrid[gridX][gridY] = [];
+            visibleGrid[gridX][gridY]["Particle"] = gridParticle;
+            visibleGrid[gridX][gridY]["Position"] = pos;
+            visibleGrid[gridX][gridY]["Status"] = status;
+        }  
+}
+
+function IsPointInRange( position, point, range )
+{
+    var length = Math.sqrt(
+            Math.pow(point[0] - position[0], 2) +  
+            Math.pow(point[1] - position[1], 2) +
+            Math.pow(point[2] - position[2], 2)
+        );
+
+    return length <= range;
+}
+
+function IsEntityNearPoint( pos )
+{
+    var scrX = Game.WorldToScreenX( pos[0], pos[1], pos[2] )
+    var scrY = Game.WorldToScreenY( pos[0], pos[1], pos[2] )
+    var entities = GameUI.FindScreenEntities( scrX, scrY );
+
+    var isInRange = false;
+    for (var entity of entities) {
+        var entOrigin = Entities.GetAbsOrigin( entity.entityIndex );
+        var ringRadius = Entities.GetRingRadius( entity.entityIndex );
+
+        isInRange = isInRange || IsPointInRange( pos, entOrigin, ringRadius );
+    };
+    
+    return isInRange;   
+}
+
+function GetScreenCenterPos()
+{
+    if (state != 'active')
+        return;
+
+    var curPos = ScreenToSnapWorldPos( BHPanel.Resolution[0] / 2, BHPanel.Resolution[1] / 2 );
+
+    if (!IsPointInRange(curPos, screenCenterPos, 64))
     {
-        var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
-        Particles.SetParticleControl(gridParticle, 1, [32,0,0])
-        Particles.SetParticleControl(gridParticle, 3, [GRID_ALPHA,0,0])
-        gridParticles.push(gridParticle)
-    }*/
+        CreateVisibleGridParticle();
+        screenCenterPos = curPos;
+    }
+}
+
+function UpdateVisibleGrid()
+{
+    if (state != 'active')
+        return;
+
+    for (var x in visibleGrid)
+        for (var y in visibleGrid[x])
+        {
+            var status = GetQuadStatus(visibleGrid[x][y]["Position"]);
+
+            // Status doesn't changed
+            if (status == visibleGrid[x][y]["Status"])
+                continue;
+
+            Particles.SetParticleControl(visibleGrid[x][y]["Particle"], 2, GetQuadColor(status));
+            visibleGrid[x][y]["Status"] = status;
+        }
+
+    GetScreenCenterPos();
+
+    // Change grid mode
+    if (GameUI.IsAltDown())
+    {
+        gridMode++;
+
+        if (gridMode > 3)
+            gridMode = GridMode.None;
+    }
+
+    $.Schedule(1/5, UpdateVisibleGrid);
 }
 
 function StartBuildingHelper( params )
 {
-    CreateVisibleGridParticle();
     if (params !== undefined)
     {
         state = params["state"];
@@ -84,15 +284,22 @@ function StartBuildingHelper( params )
         gridParticles = [];
         for (var x = 0; x < size * size; x++)
         {
-            var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
+            var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite_building.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0)
             Particles.SetParticleControl(gridParticle, 1, [32,0,0])
+            Particles.SetParticleControl(gridParticle, 2, [255,255,255]) //Keep the original color
             Particles.SetParticleControl(gridParticle, 3, [GRID_ALPHA,0,0])
             gridParticles.push(gridParticle)
         }
     } 
     
     if (state == 'active')
+    {
         CheckMousePos();
+
+        BHPanel.Resolution = GetScreenResolution();
+        CreateVisibleGridParticle();
+        UpdateVisibleGrid();
+    }
 }
 
 function CheckMousePos()
@@ -118,6 +325,7 @@ function CheckMousePos()
             boundingRect["topBorderY"] = GamePos[1]+halfSide
             boundingRect["bottomBorderY"] = GamePos[1]-halfSide
 
+            var isAnyQuadBlocked = false;
             for (var x=boundingRect["leftBorderX"]+32; x <= boundingRect["rightBorderX"]-32; x+=64)
             {
                 for (var y=boundingRect["topBorderY"]-32; y >= boundingRect["bottomBorderY"]+32; y-=64)
@@ -125,11 +333,13 @@ function CheckMousePos()
                     var pos = [x,y,GamePos[2]]
                     var gridParticle = gridParticles[part]
 
-                    var isBlocked = IsBlocked(pos);
-                    Particles.SetParticleControl(gridParticle, 0, pos);
-                    Particles.SetParticleControl(gridParticle, 2, GetGridColor(isBlocked));
+                    var status = GetQuadStatus(pos);                    
+                    isAnyQuadBlocked = isAnyQuadBlocked || status == QuadStatus.Blocked;
 
-                    part++;
+                    Particles.SetParticleControl(gridParticle, 0, pos);
+                    Particles.SetParticleControl(gridParticle, 2,  GetBuildingQuadColor(status));
+
+                    part ++;
 
                     if (part > size*size)
                         return;
@@ -138,6 +348,7 @@ function CheckMousePos()
 
             // Update the model particle
             Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1])
+            Particles.SetParticleControl(particle, 2, GetBuildingQuadColor( isAnyQuadBlocked ? QuadStatus.Blocked : QuadStatus.Free ))
         }
 
         $.Schedule(1/60, CheckMousePos);    
@@ -160,13 +371,15 @@ function SendCancelCommand( params )
 }
 
 function Cancel() {
-  state = 'disabled'
-  Particles.DestroyParticleEffect(particle, true)
-  for (var i in gridParticles) {
-    Particles.DestroyParticleEffect(gridParticles[i], true)
-  }
+    state = 'disabled'
+    Particles.DestroyParticleEffect(particle, true)
+    for (var i in gridParticles) {
+        Particles.DestroyParticleEffect(gridParticles[i], true)
+    }
 
-  $("#BuildingHelperBase").hittest = false;
+    DestroyVisibleGridParticles();
+
+    $("#BuildingHelperBase").hittest = false;
 }
 
 // Receive and decoding GNV
@@ -263,24 +476,37 @@ function LayerChanged( table_name, key, data )
 }
 
 (function () {
-  GameEvents.SendCustomGameEventToServer( "gnv_request", { "Layers" : { } } );
+    GameEvents.SendCustomGameEventToServer( "gnv_request", { "Layers" : { } } );
 
-  GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
-  GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
+    GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
+    GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
 
-  CustomNetTables.SubscribeNetTableListener( "LayersQueue", LayerChanged );
-  GameEvents.Subscribe( "gnv", GNV);
+    CustomNetTables.SubscribeNetTableListener( "LayersQueue", LayerChanged );
+    GameEvents.Subscribe( "gnv", GNV);
 })();
 
+
+function CheckGridSquare( layerName, x, y)
+{
+    if (BHPanel.Grid[layerName])
+        if (BHPanel.Grid[layerName][y])
+            if (BHPanel.Grid[layerName][y][x])
+                return BHPanel.Grid[layerName][y][x] == 1;
+
+    return false;
+}
+
 function IsBlocked(position) {
+    if (!position)
+        return false;
+
     var x = WorldToGridPosX(position[0]) - BHPanel.XMin;
     var y = WorldToGridPosY(position[1]) - BHPanel.YMin;
     
-    var building = false;
-    if (BHPanel.Grid["Buildings"])
-        building = BHPanel.Grid["Buildings"][y][x] == 1;
+    var isBuilding = CheckGridSquare("Buildings", x, y);
+    var isBlocked = CheckGridSquare("Terrain", x, y);
 
-    return BHPanel.Grid["Terrain"][y][x] == 1 || building;
+    return isBlocked || isBuilding;
 }
 
 function SnapToGrid(vec, size) {
