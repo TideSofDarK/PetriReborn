@@ -11,8 +11,13 @@ GNV.YMax = 0
 -- LayerManager namespace
 GNV.LayerManager = {}
 GNV.LayerManager.QueueNumber = 0
+
 -- Layers container
 GNV.Layers = {}
+
+-- Callbacks table
+-- Uses default table "Init" in init function, possible other uses
+GNV.Callbacks = {}
 
 -------------------------------------------------------------------------------
 --                          Layer manager
@@ -134,13 +139,15 @@ end, nil)
 
 function GNV:print( ... )
     if GNV_PRINT then
-        print('[GNV] '.. ...)
+        print("[GNV] ".. ...)
     end
 end
 
 -- Main function
 function GNV:Init()
   GNV.LayerManager:Generate()
+  -- Exec default callbacks for init function
+  GNV:ExecCallbacks( 'Init' )
 end
 
 -- Send layers
@@ -149,14 +156,48 @@ function GNV:Send( args )
   local player = PlayerResource:GetPlayer(playerID)
   
   local layers = { 'Terrain' }
-  for k, v in pairs(args['Layers']) do
+  for _, v in pairs(args['Layers']) do
     table.insert(layers, v)   
   end
   
-  for k, v in pairs(layers) do
+  for _, v in pairs(layers) do
     GNV:print("Sending layer '" .. v .. "' to player "..playerID)
     CustomGameEventManager:Send_ServerToPlayer(player, "gnv", { gnv = Pack( v ), LayerName = v, XMin = GNV.XMin, XMax = GNV.XMax, YMin = GNV.YMin, YMax = GNV.YMax })
   end    
+end
+
+-- Add callbacks
+function GNV:AddCallbacks( tableName, callback)
+  if GNV.Callbacks[tableName] == nil then
+    GNV.Callbacks[tableName] = {}
+  end
+  
+  table.insert(GNV.Callbacks[tableName], callback)
+end
+
+-- Exec callbacks
+function GNV:ExecCallbacks( tableName )
+  if GNV.Callbacks[tableName] ~= nil then
+    for _, func in pairs(GNV.Callbacks[tableName]) do
+      func()
+    end
+  end
+end
+
+-- Clear callbacks
+function GNV.ClearCallbacks( tableName )
+  -- Clear full table
+  if tableName == '' then
+    for k, _ in pairs(GNV.Callbacks) do
+      GNV.Callbacks[k] = {}
+    end
+  
+    return
+  end
+
+  if GNV.Callbacks[tableName] ~= nil then
+    GNV.Callbacks[tableName] = {}
+  end
 end
 
 -------------------------------------------------------------------------------
