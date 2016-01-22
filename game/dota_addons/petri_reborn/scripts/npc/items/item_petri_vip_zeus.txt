@@ -26,6 +26,8 @@
   {
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
     "particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+    "particle"  "particles/econ/items/zeus/arcana_chariot/zeus_arcana_chariot.vpcf"
+    "particle"  "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
   }
 
   "AbilitySpecial"
@@ -103,6 +105,28 @@
     {
       "Passive"      "1"
       "IsHidden"  "1"
+
+      "OnCreated"
+      {
+        "AttachEffect"
+        {
+          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_arcana_chariot.vpcf"
+          "EffectAttachType"  "attach_origin"
+          "Target" "CASTER"
+        }
+        "AttachEffect"
+        {
+          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
+          "EffectAttachType"  "attach_eye_l"
+          "Target" "CASTER"
+        }
+        "AttachEffect"
+        {
+          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
+          "EffectAttachType"  "attach_eye_r"
+          "Target" "CASTER"
+        }
+      }
 
       "Properties"
       {
