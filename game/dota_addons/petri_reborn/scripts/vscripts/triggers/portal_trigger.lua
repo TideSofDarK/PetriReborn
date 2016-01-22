@@ -39,7 +39,7 @@ function CheckFarmPlaces(trigger, activator)
 	end
 	if string.match(triggerName, "portal_trigger_boss_c") then
 		if GameMode.PETRI_TRUE_TIME > 1680 
-			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 60000 then 
+			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 80000 then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_3_notification", duration=4, style={color="white", ["font-size"]="45px"}})
