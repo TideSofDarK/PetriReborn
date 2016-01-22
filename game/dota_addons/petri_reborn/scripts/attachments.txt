@@ -1123,6 +1123,18 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/heroes/ancient_apparition/ancient_apparition.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/tory_the_sky_guardian/tory_the_sky_guardian.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/scuttling_scotty_penguin/scuttling_scotty_penguin.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
