@@ -5,6 +5,9 @@ var size = 0;
 var particle;
 var gridParticles;
 
+//-----------------------------------------------------------------------------
+//                          Visible grid vars
+//-----------------------------------------------------------------------------
 var visibleGrid;
 
 var QuadStatus = {
@@ -15,23 +18,32 @@ var QuadStatus = {
 
 var GridMode = {
     None: 0,
-    Full: 1,
-    OnlyBlocked: 2,
-    OnlyFree: 3
+    AroundBuilding: 1,
+    Full: 2,
+    OnlyBlocked: 3,
+    OnlyFree: 4
 }
 
 var gridMode = GridMode.None;
 
+// Position for hided particles
+var outPos = [-1000, -1000, -1000];
+
+var mouseQuadSize = 500;
+
+// Position to detect if need remap grid
 var screenCenterPos = [];
+
+// Step size for grid generation
 var screenStepSize = 16;
 
 var topInsetOverride = 30;
 var bottomInsetOverride = 100;
 
-
 // Ghost Building Preferences
 var GRID_ALPHA = 30 // Defines the transparency of the ghost squares
 var VISIBLE_GRID_ALPHA = 255 // Defines the transparency of the ghost squares
+
 
 // Store received data into panel data
 var BHPanel = $.GetContextPanel();
@@ -79,8 +91,11 @@ function GetQuadStatus( pos )
     if (IsBlocked(pos))
         return QuadStatus.Blocked;
 
-    if (IsEntityNearPoint( pos ))
-        return QuadStatus.Unit;
+    var entities = GetEntitiesNearPoint( pos );
+    if (entities.length > 0)
+        return Entities.IsEnemy(entities[0]) 
+            ? QuadStatus.Blocked 
+            : QuadStatus.Unit;
 
     return QuadStatus.Free;
 }
@@ -127,8 +142,7 @@ function ScreenToSnapWorldPos( x, y )
 
 function ScreenToGridPos( x, y )
 {
-    var worldPos = ScreenToSnapWorldPos( x, y )
-    return [WorldToGridPosX(worldPos[0]) - BHPanel.XMin, WorldToGridPosY(worldPos[1]) - BHPanel.YMin];
+    return GetGridPosition( ScreenToSnapWorldPos( x, y ) );
 }
 
 function DestroyVisibleGridParticles()
@@ -164,7 +178,7 @@ function CreateVisibleGridParticle()
             var status = GetQuadStatus(pos)
 
             var gridParticle = Particles.CreateParticle("particles/buildinghelper/square_sprite.vpcf", ParticleAttachment_t.PATTACH_CUSTOMORIGIN, 0);
-            Particles.SetParticleControl(gridParticle, 0, pos);
+            Particles.SetParticleControl(gridParticle, 0, outPos);
             Particles.SetParticleControl(gridParticle, 1, [32,0,0]);
             Particles.SetParticleControl(gridParticle, 2, GetQuadColor(status));
             Particles.SetParticleControl(gridParticle, 3, [VISIBLE_GRID_ALPHA,0,0]);
@@ -178,6 +192,9 @@ function CreateVisibleGridParticle()
 
 function IsPointInRange( position, point, range )
 {
+    if (!position || !point)
+        return false;
+    
     var length = Math.sqrt(
             Math.pow(point[0] - position[0], 2) +  
             Math.pow(point[1] - position[1], 2) +
@@ -187,21 +204,32 @@ function IsPointInRange( position, point, range )
     return length <= range;
 }
 
-function IsEntityNearPoint( pos )
+function IsPointInQuad( position, point, size )
+{
+    if (!position || !point)
+        return false;
+    
+    return position[0] > (point[0] - size / 2) && position[0] < (point[0] + size / 2) &&
+           position[1] > (point[1] - size / 2) && position[1] < (point[1] + size / 2);;
+}
+
+function GetEntitiesNearPoint( pos )
 {
     var scrX = Game.WorldToScreenX( pos[0], pos[1], pos[2] )
     var scrY = Game.WorldToScreenY( pos[0], pos[1], pos[2] )
     var entities = GameUI.FindScreenEntities( scrX, scrY );
 
     var isInRange = false;
+    var entitiesList = [];
     for (var entity of entities) {
         var entOrigin = Entities.GetAbsOrigin( entity.entityIndex );
         var ringRadius = Entities.GetRingRadius( entity.entityIndex );
 
-        isInRange = isInRange || IsPointInRange( pos, entOrigin, ringRadius );
+        if (IsPointInRange( pos, entOrigin, ringRadius ))
+            entitiesList.push(entity.entityIndex)
     };
     
-    return isInRange;   
+    return entitiesList;
 }
 
 function GetScreenCenterPos()
@@ -223,10 +251,38 @@ function UpdateVisibleGrid()
     if (state != 'active')
         return;
 
+    var mousePos = GameUI.GetCursorPosition();
+    var gamePos = Game.ScreenXYToWorld(mousePos[0], mousePos[1]);
+
     for (var x in visibleGrid)
         for (var y in visibleGrid[x])
         {
             var status = GetQuadStatus(visibleGrid[x][y]["Position"]);
+            var pos = visibleGrid[x][y]["Position"];
+
+            switch(gridMode)
+            {
+                case GridMode.None:
+                    pos = outPos;
+                    break;
+
+                case GridMode.AroundBuilding:
+                    if (!IsPointInQuad( gamePos, pos, mouseQuadSize ))
+                        pos = outPos;
+                    break;
+
+                case GridMode.OnlyBlocked:
+                    if (status == QuadStatus.Free)
+                        pos = outPos;
+                    break;
+
+                case GridMode.OnlyFree:
+                    if (status == QuadStatus.Blocked) 
+                        pos = outPos;
+                    break;
+            }
+
+            Particles.SetParticleControl(visibleGrid[x][y]["Particle"], 0, pos);
 
             // Status doesn't changed
             if (status == visibleGrid[x][y]["Status"])
@@ -243,11 +299,11 @@ function UpdateVisibleGrid()
     {
         gridMode++;
 
-        if (gridMode > 3)
+        if (gridMode > GridMode.OnlyFree)
             gridMode = GridMode.None;
     }
 
-    $.Schedule(1/5, UpdateVisibleGrid);
+    $.Schedule(1/10, UpdateVisibleGrid);
 }
 
 function StartBuildingHelper( params )
@@ -500,13 +556,17 @@ function IsBlocked(position) {
     if (!position)
         return false;
 
-    var x = WorldToGridPosX(position[0]) - BHPanel.XMin;
-    var y = WorldToGridPosY(position[1]) - BHPanel.YMin;
-    
-    var isBuilding = CheckGridSquare("Buildings", x, y);
-    var isBlocked = CheckGridSquare("Terrain", x, y);
+    var gridPos = GetGridPosition(position);
+
+    var isBuilding = CheckGridSquare("Buildings", gridPos[0], gridPos[1]);
+    var isBlocked = CheckGridSquare("Terrain", gridPos[0], gridPos[1]);
 
     return isBlocked || isBuilding;
+}
+
+function GetGridPosition( position )
+{
+    return [WorldToGridPosX(position[0]) - BHPanel.XMin, WorldToGridPosY(position[1]) - BHPanel.YMin];
 }
 
 function SnapToGrid(vec, size) {

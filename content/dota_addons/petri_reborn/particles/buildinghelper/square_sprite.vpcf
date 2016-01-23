@@ -97,4 +97,5 @@
 			m_nParticlesToEmit = 1
 		},
 	]
+	m_flNoDrawTimeToGoToSleep = 100.000000
 }
