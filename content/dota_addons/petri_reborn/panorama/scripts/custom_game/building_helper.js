@@ -18,10 +18,11 @@ var QuadStatus = {
 
 var GridMode = {
     None: 0,
-    AroundBuilding: 1,
-    Full: 2,
-    OnlyBlocked: 3,
-    OnlyFree: 4
+    AroundBuildingQuad: 1,
+    AroundBuildingCircle: 2,
+    Full: 3,
+    OnlyBlocked: 4,
+    OnlyFree: 5
 }
 
 var gridMode = GridMode.None;
@@ -29,7 +30,8 @@ var gridMode = GridMode.None;
 // Position for hided particles
 var outPos = [-1000, -1000, -1000];
 
-var mouseQuadSize = 500;
+var mouseRadius = 250;
+var altPressed = false;
 
 // Position to detect if need remap grid
 var screenCenterPos = [];
@@ -201,7 +203,7 @@ function IsPointInRange( position, point, range )
             Math.pow(point[2] - position[2], 2)
         );
 
-    return length <= range;
+    return length < range;
 }
 
 function IsPointInQuad( position, point, size )
@@ -246,13 +248,39 @@ function GetScreenCenterPos()
     }
 }
 
+function SnapMousePosToWorld()
+{
+    var mousePos = GameUI.GetCursorPosition();
+
+    var gamePos = GameUI.GetScreenWorldPosition( mousePos[0], mousePos[1] );
+
+    if (!gamePos)
+        return [0, 0, 0]
+    
+    var snapGamePos = ScreenToSnapWorldPos(mousePos[0], mousePos[1]);
+
+    var offset = 0;
+
+    if (gridMode == GridMode.AroundBuildingQuad)
+        offset = 16;
+    if (gridMode == GridMode.AroundBuildingCircle)
+        offset = 32;
+
+    var xSign = gamePos[0] < snapGamePos[0] ? -1 : 1;
+    var ySign = gamePos[1] < snapGamePos[1] ? -1 : 1;
+
+    snapGamePos[0] = snapGamePos[0] + offset * xSign;
+    snapGamePos[1] = snapGamePos[1] + offset * ySign;  
+
+    return snapGamePos;
+}
+
 function UpdateVisibleGrid()
 {
     if (state != 'active')
         return;
 
-    var mousePos = GameUI.GetCursorPosition();
-    var gamePos = Game.ScreenXYToWorld(mousePos[0], mousePos[1]);
+    var gamePos = SnapMousePosToWorld() 
 
     for (var x in visibleGrid)
         for (var y in visibleGrid[x])
@@ -266,8 +294,13 @@ function UpdateVisibleGrid()
                     pos = outPos;
                     break;
 
-                case GridMode.AroundBuilding:
-                    if (!IsPointInQuad( gamePos, pos, mouseQuadSize ))
+                case GridMode.AroundBuildingQuad:
+                    if (!IsPointInQuad( gamePos, pos, mouseRadius * 2 ))
+                        pos = outPos;
+                    break;
+
+                case GridMode.AroundBuildingCircle:
+                    if (!IsPointInRange( gamePos, pos, mouseRadius ))
                         pos = outPos;
                     break;
 
@@ -297,13 +330,19 @@ function UpdateVisibleGrid()
     // Change grid mode
     if (GameUI.IsAltDown())
     {
-        gridMode++;
+        if (!altPressed)
+        {
+            altPressed = true;
+            gridMode++;
 
-        if (gridMode > GridMode.OnlyFree)
-            gridMode = GridMode.None;
+            if (gridMode > GridMode.OnlyFree)
+                gridMode = GridMode.None;
+        }
     }
+    else
+        altPressed = false;
 
-    $.Schedule(1/10, UpdateVisibleGrid);
+    $.Schedule(1/20, UpdateVisibleGrid);
 }
 
 function StartBuildingHelper( params )
