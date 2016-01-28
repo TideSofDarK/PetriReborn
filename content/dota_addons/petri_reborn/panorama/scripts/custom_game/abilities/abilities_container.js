@@ -53,7 +53,7 @@ function UpdateAbilitiesContainer()
 
 		// update the panel for the current unit / ability
 		var abilityPanel = m_AbilityPanels[ nUsedPanels ];
-		abilityPanel.data().SetAbility( ability, m_QueryUnit, Game.IsInAbilityLearnMode() );
+		abilityPanel.SetAbility( ability, m_QueryUnit, Game.IsInAbilityLearnMode() );
 		
 		nUsedPanels++;
 	}
@@ -62,7 +62,7 @@ function UpdateAbilitiesContainer()
 	for ( var i = nUsedPanels; i < m_AbilityPanels.length; ++i )
 	{
 		var abilityPanel = m_AbilityPanels[ i ];
-		abilityPanel.data().SetAbility( -1, -1, false );
+		abilityPanel.SetAbility( -1, -1, false );
 	}
 
 	// Если есть дочерние панели, то показываем основную
@@ -100,7 +100,7 @@ function SetSelectedUnit()
     GameEvents.Subscribe( "dota_player_update_query_unit", SetQueryUnit );
 
 	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
-    $.RegisterForUnhandledEvent( "DOTAAbility_LearnModeToggled", UpdateAbilitiesContainer);	
+    GameEvents.Subscribe( "dota_learn_mode_toggled", UpdateAbilitiesContainer);
 
 	GameEvents.Subscribe( "dota_player_gained_level", UpdateAbilitiesContainer );
 

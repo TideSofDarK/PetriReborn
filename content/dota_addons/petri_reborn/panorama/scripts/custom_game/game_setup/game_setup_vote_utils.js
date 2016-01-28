@@ -43,7 +43,7 @@ function SetClickHandler()
 			} (child));
 
 			if (isDefault == "true")
-				curVotePanel.data().VoteDefault = click;
+				curVotePanel.VoteDefault = click;
 
 			child.SetPanelEvent("onmouseactivate", click);
 		};
@@ -54,14 +54,14 @@ function SetVoteTime( time )
 {
 	$.Schedule( time - syncDelay, function(){
 		if (!$.GetContextPanel().IsVoted)
-			$.GetContextPanel().GetChild(0).data().VoteDefault();
+			$.GetContextPanel().GetChild(0).VoteDefault();
 	});
 }
 
 (function ()
 {
 	$.GetContextPanel().IsVoted = false;
-	$.GetContextPanel().data().SetVoteTime = SetVoteTime;
+	$.GetContextPanel().SetVoteTime = SetVoteTime;
 
 	SetClickHandler();
 })();

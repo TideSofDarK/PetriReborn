@@ -42,8 +42,8 @@ function UpdateTimer()
 
 	var timer = 0;
 
-	if ($( "#VotePanel" ).data().GetTimer)
-		timer = $( "#VotePanel" ).data().GetTimer();
+	if ($( "#VotePanel" ).GetTimer)
+		timer = $( "#VotePanel" ).GetTimer();
 
 	if ( timer >= 0 ) 
 	{
@@ -62,8 +62,8 @@ function UpdateTimer()
 	$( "#StartGameCountdownTimer" ).SetHasClass( "forced_start", ( autoLaunch == false ) );
 
 	if (timer == 0)
-		if ($( "#VotePanel" ).data().ShowNextVote != null)
-			$( "#VotePanel" ).data().ShowNextVote();
+		if ($( "#VotePanel" ).ShowNextVote != null)
+			$( "#VotePanel" ).ShowNextVote();
 
 	$.Schedule( 0.1, UpdateTimer );
 }
@@ -90,13 +90,13 @@ function AssignTeams()
 		if(players[i].GetAttributeString("IsPetr", "false") == "true")
 		{
 			team = teamsPanel.GetChild(1);
-			if (!team.data().CanAddPlayers())
+			if (!team.CanAddPlayers())
 				team = teamsPanel.GetChild(0)
 		}
 		else
 		{
 			team = teamsPanel.GetChild(0);
-			if (!team.data().CanAddPlayers())
+			if (!team.CanAddPlayers())
 				team = teamsPanel.GetChild(1)
 		}
 
@@ -122,8 +122,8 @@ function AssignTeams()
 			Game.PlayerJoinTeam( curTeam.GetAttributeInt( "team_id", -1 ) );
  	}
 
-	$( "#VotePanel" ).data().SetTimer( 3, "#game_setup_shuffling" );
-	$( "#VotePanel" ).data().UnfreezeVote();
+	$( "#VotePanel" ).SetTimer( 3, "#game_setup_shuffling" );
+	$( "#VotePanel" ).UnfreezeVote();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -257,8 +257,8 @@ function HostShuffle()
 		playerPanel.SetPanelEvent("onmouseactivate", click);
 	}
 
-	$( "#VotePanel" ).data().SetTimer( SELECT_PETR_TIME, "#game_setup_host_select_petrosyan" );
-	$( "#VotePanel" ).data().FreezeVote();
+	$( "#VotePanel" ).SetTimer( SELECT_PETR_TIME, "#game_setup_host_select_petrosyan" );
+	$( "#VotePanel" ).FreezeVote();
 
 	$.Schedule(SELECT_PETR_TIME, SendHostShuffleList)
 }
@@ -273,7 +273,7 @@ function CreateVote()
 {
 	var votePanel = $( "#VotePanel");
 	votePanel.BLoadLayout( "file://{resources}/layout/custom_game/game_setup/game_setup_votes.xml", false, false );
-	votePanel.data().SetStateDescription = SetStateDescription;
+	votePanel.SetStateDescription = SetStateDescription;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -360,8 +360,8 @@ function LoadUI()
 		Game.SetAutoLaunchEnabled( false );
 	}
 
-	$( "#VotePanel" ).data().UnfreezeVote();
-	$( "#VotePanel" ).data().SetTimer( PREPARE_TIME, "#game_setup_state_prevote" );	
+	$( "#VotePanel" ).UnfreezeVote();
+	$( "#VotePanel" ).SetTimer( PREPARE_TIME, "#game_setup_state_prevote" );	
 }
 
 //--------------------------------------------------------------------------------------------------

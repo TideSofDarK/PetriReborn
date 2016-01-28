@@ -14,9 +14,9 @@ var timer = 0;
 // Layout file, time for vote, state description
 var votePanels = [
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_host_shuffle.xml", 10 ],
-	/*[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 5 ],*/
+	//[ "file://{resources}/layout/custom_game/game_setup/votes/vote_build_exit_delay.xml", 5 ],
 	[ "file://{resources}/layout/custom_game/game_setup/votes/vote_bonus_item.xml", 10 ],
-	/*[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 5 ]*/
+	//[ "file://{resources}/layout/custom_game/game_setup/votes/vote_use_miniactors.xml", 5 ]
 ]; 
 
 //--------------------------------------------------------------------------------------------------
@@ -81,13 +81,13 @@ function ShowVote( args )
 			// Update state description
 			$.Schedule( 0.2, function(){
 				var desc = votePanel.GetChild(0).GetAttributeString("desc", "");
-				if ($.GetContextPanel().data().SetStateDescription && desc != "")
-					$.GetContextPanel().data().SetStateDescription( desc );	
+				if ($.GetContextPanel().SetStateDescription && desc != "")
+					$.GetContextPanel().SetStateDescription( desc );	
 
 			});
 
 			votePanel.AddClass("show_vote");
-			votePanel.data().SetVoteTime(vote[1]);
+			votePanel.SetVoteTime(vote[1]);
 			currentVotePanel = votePanel;			
 		}
 }
@@ -164,8 +164,8 @@ function SyncTimer( args )
 	timer = clientTime + args["length"] - (clientTime - args["host_time"]);
 
 	// Update state description
-	if ($.GetContextPanel().data().SetStateDescription && args["desc"] != "")
-		$.GetContextPanel().data().SetStateDescription( args["desc"] );	
+	if ($.GetContextPanel().SetStateDescription && args["desc"] != "")
+		$.GetContextPanel().SetStateDescription( args["desc"] );	
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -191,12 +191,12 @@ function ShowNextVote()
 	if (isHost)
 		Game.SetAutoLaunchEnabled( false );
 
-	$.GetContextPanel().data().ShowNextVote = ShowNextVote;
-	$.GetContextPanel().data().FreezeVote = FreezeVote;
-	$.GetContextPanel().data().UnfreezeVote = UnfreezeVote;
+	$.GetContextPanel().ShowNextVote = ShowNextVote;
+	$.GetContextPanel().FreezeVote = FreezeVote;
+	$.GetContextPanel().UnfreezeVote = UnfreezeVote;
 
-	$.GetContextPanel().data().SetTimer = SetTimer;
-	$.GetContextPanel().data().GetTimer = GetTimer;
+	$.GetContextPanel().SetTimer = SetTimer;
+	$.GetContextPanel().GetTimer = GetTimer;
 
 	GameEvents.Subscribe( "petri_vote_sync_timer", SyncTimer );
 	GameEvents.Subscribe( "petri_vote_current_vote", ShowVote );
