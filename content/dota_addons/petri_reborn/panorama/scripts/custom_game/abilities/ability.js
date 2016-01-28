@@ -169,7 +169,7 @@ function AbilityShowTooltip()
 	//$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, m_QueryUnit );
 
 	var tooltip = GameUI.CustomUIConfig().tooltip;
-	tooltip.data().ShowTooltip(abilityButton, m_Ability);
+	tooltip.ShowTooltip(abilityButton, m_Ability);
 }
 
 function AbilityHideTooltip()
@@ -178,7 +178,7 @@ function AbilityHideTooltip()
 	//$.DispatchEvent( "DOTAHideAbilityTooltip", abilityButton );
 
 	var tooltip = GameUI.CustomUIConfig().tooltip;
-	tooltip.data().HideTooltip();
+	tooltip.HideTooltip();
 }
 
 function GetAbilityOrder( abilityID )
@@ -262,7 +262,7 @@ function RebuildAbilityUI()
 
 (function()
 {
-	$.GetContextPanel().data().SetAbility = SetAbility;
+	$.GetContextPanel().SetAbility = SetAbility;
 
 	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild
 	AutoUpdateAbility(); // initial update of dynamic state

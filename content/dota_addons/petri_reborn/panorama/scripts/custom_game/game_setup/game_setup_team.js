@@ -40,5 +40,5 @@ function CanAddPlayers()
 		$( "#TeamPanelHeader" ).style.backgroundColor = teamColor;
 	}
 	
-	$.GetContextPanel().data().CanAddPlayers = CanAddPlayers;
+	$.GetContextPanel().CanAddPlayers = CanAddPlayers;
 })();

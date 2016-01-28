@@ -251,8 +251,8 @@ function FillSpecials( abilityID )
 
 
 function SetPositionRotation( element, position, rotation ) {
-  var oldPosition = element.data().oldPosition || [0, 0];
-  var oldRotation = element.data().oldRotation || 0;
+  var oldPosition = element.oldPosition || [0, 0];
+  var oldRotation = element.oldRotation || 0;
 
   //Revert previous transformation
   element.style.transform = "translate3d(" +
@@ -262,8 +262,8 @@ function SetPositionRotation( element, position, rotation ) {
   element.style.transform = "rotateZ("+rotation+"deg) translate3d(" +
           position[0] + "px, " + position[1] + "px, 0px)";
 
-  element.data().oldPosition = position;
-  element.data().oldRotation = rotation;
+  element.oldPosition = position;
+  element.oldRotation = rotation;
 }
 
 function ShowTooltip( panel, abilityID )
@@ -297,8 +297,8 @@ function HideTooltip()
   GameEvents.Subscribe( "dota_player_update_selected_unit", HideTooltip );
   GameEvents.Subscribe( "dota_player_update_query_unit", HideTooltip );
 
-  $.GetContextPanel().data().ShowTooltip = ShowTooltip;
-  $.GetContextPanel().data().HideTooltip = HideTooltip;
+  $.GetContextPanel().ShowTooltip = ShowTooltip;
+  $.GetContextPanel().HideTooltip = HideTooltip;
 
   GameUI.CustomUIConfig().tooltip = $.GetContextPanel();
 })();

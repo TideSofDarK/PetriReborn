@@ -14,7 +14,7 @@
 			if (isHost)
 			{
 				$( "#PlayersVote" ).DeleteAsync( 0 );
-				$.GetContextPanel().GetParent().data().FreezeVote();
+				$.GetContextPanel().GetParent().FreezeVote();
 				// Set default prefer team for host
 				GameEvents.SendCustomGameEventToServer( "petri_vote", { "prefer_team" : "petri" } );
 				GameEvents.SendCustomGameEventToServer( "petri_shuffle_timer", { "timer" : 11 } );
