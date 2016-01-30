@@ -1,0 +1,8 @@
+<root>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/building_helper/gnv.js" />
+  </scripts>
+  <Panel hittest="false">
+    <Panel hittest="false" id="GNVMenu" />
+  </Panel>
+</root>
