@@ -476,9 +476,10 @@ function CreateParticles( params )
 	CreateEntityParticle( params )
 	UpdateEntityParticle();
 
+/*
     GNVPanel.Resolution = GetScreenResolution();
     CreateVisibleGridParticle();
-    UpdateVisibleGrid();	
+    UpdateVisibleGrid();	*/
 }
 
 function DestroyParticles()
@@ -486,7 +487,7 @@ function DestroyParticles()
     state = 'disabled';
 
 	DestroyEntityParticle();
-	DestroyVisibleGridParticles();
+	//DestroyVisibleGridParticles();
 }
 
 //-----------------------------------------------------------------------------
