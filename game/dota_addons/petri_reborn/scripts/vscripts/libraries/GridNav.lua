@@ -8,6 +8,9 @@ GNV.XMax = 0
 GNV.YMin = 0
 GNV.YMax = 0
 
+-- User config for GridNav
+GNV.Config = {}
+
 -- LayerManager namespace
 GNV.LayerManager = {}
 GNV.LayerManager.QueueNumber = 0
@@ -18,6 +21,41 @@ GNV.Layers = {}
 -- Callbacks table
 -- Uses default table "Init" in init function, possible other uses
 GNV.Callbacks = {}
+
+-------------------------------------------------------------------------------
+--                          GNV options
+-------------------------------------------------------------------------------
+function GNV:LoadConfig()
+  local config = LoadKeyValues("scripts/kv/GridNavConfig.kv")
+  
+  -- Parse colors
+  if config['Colors'] ~= nil then
+    for k, v in pairs(config['Colors']) do
+      config['Colors'][k] = GetMatches(v, "[0-9]+")
+    end
+  end
+  
+  -- Make config for every player
+  for i = 0, PlayerResource:GetPlayerCount() - 1 do
+    GNV.Config[i] = config
+  end
+end
+
+function GNV:SendConfig( args )
+  local playerID = args.PlayerID
+  local player = PlayerResource:GetPlayer(playerID)
+  
+  GNV:print("Sending GNV config to player "..playerID)
+  CustomGameEventManager:Send_ServerToPlayer(player, "gnv_config", { config = GNV.Config[playerID] })  
+end
+
+function GNV:UpdateConfig( args )
+  local playerID = args.PlayerID
+  
+  if args["config"] ~= nil then
+    GNV.Config[playerID] = args["config"]
+  end
+end
 
 -------------------------------------------------------------------------------
 --                          Layer manager
@@ -143,8 +181,23 @@ function GNV:print( ... )
     end
 end
 
+function GNV:RegisterListeners()
+  -- Config
+  CustomGameEventManager:RegisterListener( "gnv_config_request", Dynamic_Wrap(GNV, 'SendConfig'))
+  CustomGameEventManager:RegisterListener( "gnv_config_update", Dynamic_Wrap(GNV, 'UpdateConfig'))
+  
+  -- Grid
+  CustomGameEventManager:RegisterListener( "gnv_request", Dynamic_Wrap(GNV, 'Send'))
+end
+
 -- Main function
 function GNV:Init()
+  -- Register listeners for GNV events
+  GNV:RegisterListeners()
+  
+  -- Load server config
+  GNV:LoadConfig();
+  
   GNV.LayerManager:Generate()
   -- Exec default callbacks for init function
   GNV:ExecCallbacks( 'Init' )
@@ -227,6 +280,13 @@ function IntToHex( num )
     return s
 end
 
+function GetMatches( str, pattern )
+  local m = {}
+  for i in string.gmatch(str, pattern) do 
+    table.insert(m, i)
+  end
+  return m
+end
 -------------------------------------------------------------------------------
 --                          Packing
 -------------------------------------------------------------------------------

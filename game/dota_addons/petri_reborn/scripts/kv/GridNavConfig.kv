@@ -1,0 +1,48 @@
+"GNVConfig"
+{
+    // Particle settings
+    "EntityGridAlpha"           "30"  // Transparency of the entity grid squares in Panorama
+    "VisibleGridAlpha"          "255" // Transparency of the visible grid squares in Panorama
+    "FieldRadius"               "250" // Circle and square mode field radius
+    "VisibleGridFPS"            "20"  // Visible grid updates count per second
+    "EntityGridFPS"             "60"  // Entity grid updates count per second
+    "GridMode"                  "0"   // Initial grid mode
+    "RecolorValidGhost"         "false"
+    "RecolorInvalidGhost"       "true"
+
+    "Colors"
+    {
+        // Predefined colors. Don't delete this!
+        "ValidGhost"            "[  0, 255,   0]"
+        "InvalidGhost"          "[255,   0,   0]"
+        "Unit"                  "[255, 240,   0]"
+        "EnemyUnit"             "[255,   0,   0]"
+        "Blocked"               "[255,   0,   0]"
+        "Free"                  "[255, 255, 255]"
+
+        // Add other colors here
+    }
+
+    "GhostAlpha"                "100"
+
+    "RANGE_OVERLAY_ALPHA"       "30"  //Defines the transparency of the range overlay showed when placing a building with attack capabilities
+    "RECOLOR_BUILDING_PLACED"   "true"  //Recolor green the queue of buildings placed in Lua
+
+    // Does this game have tree cutting methods and allows for building on them?
+    "UPDATE_TREES"              "true"
+
+    // Percentage health that buildings should start at
+    "INITIAL_HEALTH_FACTOR"     "0.1"
+
+    // Percentage health at which buildings should play their FireEffect
+    "FIRE_EFFECT_FACTOR"        "0.5"
+
+    // Min Height buildings are able to be placed, leave it empty for none
+    "HEIGHT_RESTRICTION"        ""
+
+    // Should we disable building turnrate by default? Defining a "DisableTurning" kv on the unit will still override the global setting
+    "DISABLE_BUILDING_TURNING" "true"
+
+    // Turn this off to hide the console print messages
+    "TESTING"                   "true"
+}

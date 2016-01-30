@@ -15,30 +15,33 @@ if (!GNVPanel.loaded)
 }
 
 var state = 'disabled';
+var WHITE_COLOR = [255,255,255];
 
 //-----------------------------------------------------------------------------
 //                         Main function
 //-----------------------------------------------------------------------------
 (function () {
     GameEvents.SendCustomGameEventToServer( "gnv_request", { "Layers" : { } } );
+    GameEvents.SendCustomGameEventToServer( "gnv_config_request", { } );   
 
     CustomNetTables.SubscribeNetTableListener( "LayersQueue", LayerChanged );
     GameEvents.Subscribe( "gnv", GNV);
+    GameEvents.Subscribe( "gnv_config", GNVConfig);
 
+    // Visible module functions
 	GNVPanel.CreateParticles = CreateParticles;
     GNVPanel.DestroyParticles = DestroyParticles;
+
+    GNVPanel.IsBlocked = IsBlocked;
+    GNVPanel.GetEntitiesNearPoint = GetEntitiesNearPoint;
+    // User quad statuses
+    GNVPanel.GetQuadStatusEx = null;
 })();
 
 //-----------------------------------------------------------------------------
 //                          Visible grid vars
 //-----------------------------------------------------------------------------
 var visibleGrid;
-
-var QuadStatus = {
-    Free: 0,
-    Blocked: 1,
-    Unit : 2
-}
 
 var GridMode = {
     None: 0,
@@ -47,7 +50,7 @@ var GridMode = {
     Full: 3,
     OnlyBlocked: 4,
     OnlyFree: 5
-}
+};
 
 // Position for hided particles
 var outPos = [-1000, -1000, -1000];
@@ -67,53 +70,51 @@ var bottomInsetOverride = 100;
 //                         Grid config
 //-----------------------------------------------------------------------------
 var GridConfig = {};
-GridConfig.EntityGridAlpha = 30;
-GridConfig.VisibleGridAlpha = 255;
-GridConfig.FieldRadius = 250;
-GridConfig.GridMode = GridMode.None;
+
+function GNVConfig( args )
+{
+	GridConfig = args.config;
+}
+
+function GNVConfigUpdate()
+{
+	GameEvents.SendCustomGameEventToServer( "gnv_config_update", { "config" : GridConfig } );
+}
 
 //-----------------------------------------------------------------------------
 //                         Visible grid
 //-----------------------------------------------------------------------------
-
-function GetQuadColor( quadStatus )
+function GetQuadColor( name )
 {
-    switch(quadStatus)
-    {
-        case QuadStatus.Unit:
-            return [255, 240, 0];
-        case QuadStatus.Blocked:
-            return [255, 0, 0];
-        case QuadStatus.Free:
-            return [255, 255, 255];
-    }
+	if (GridConfig.Colors)
+		if (GridConfig.Colors[name])
+			return [ GridConfig.Colors[name][1], GridConfig.Colors[name][2], GridConfig.Colors[name][3] ];
+
+	return WHITE_COLOR;
 }
 
-function GetBuildingQuadColor( quadStatus )
-{
-    switch(quadStatus)
-    {
-        case QuadStatus.Unit:
-            return [255, 240, 0];
-        case QuadStatus.Blocked:
-            return [255, 0, 0];
-        case QuadStatus.Free:
-            return [0, 255, 0];
-    }
-}
-
+//-----------------------------------------------------------------------------
+//                         Quad status override
+//-----------------------------------------------------------------------------
 function GetQuadStatus( pos )
 {
-    if (IsBlocked(pos))
-        return QuadStatus.Blocked;
+	// Callback
+	var status = null;
+	if (GNVPanel.GetQuadStatusEx)
+		status = GNVPanel.GetQuadStatusEx(pos);
+	if (status)
+		return status;
 
-    var entities = GetEntitiesNearPoint( pos );
+    if (GNVPanel.IsBlocked(pos))
+        return "Blocked";
+
+    var entities = GNVPanel.GetEntitiesNearPoint( pos );
     if (entities.length > 0)
         return Entities.IsEnemy(entities[0]) 
-            ? QuadStatus.Blocked 
-            : QuadStatus.Unit;
+            ? "EnemyUnit"
+            : "Unit";
 
-    return QuadStatus.Free;
+    return "Free";
 }
 
 function GetScreenResolution()
@@ -315,12 +316,12 @@ function UpdateVisibleGrid()
                     break;
 
                 case GridMode.OnlyBlocked:
-                    if (status == QuadStatus.Free)
+                    if (status == "Free")
                         pos = outPos;
                     break;
 
                 case GridMode.OnlyFree:
-                    if (status == QuadStatus.Blocked) 
+                    if (status == "Blocked") 
                         pos = outPos;
                     break;
             }
@@ -352,7 +353,7 @@ function UpdateVisibleGrid()
     else
         altPressed = false;
 
-    $.Schedule(1/20, UpdateVisibleGrid);
+    $.Schedule(1/GridConfig.VisibleGridFPS, UpdateVisibleGrid);
 }
 
 //-----------------------------------------------------------------------------
@@ -389,7 +390,7 @@ function CreateEntityParticle( params )
         particle = Particles.CreateParticle("particles/buildinghelper/ghost_model.vpcf", ParticleAttachment_t.PATTACH_ABSORIGIN, localHeroIndex);
         Particles.SetParticleControlEnt(particle, 1, entindex, ParticleAttachment_t.PATTACH_ABSORIGIN_FOLLOW, "follow_origin", Entities.GetAbsOrigin(entindex), true)
         Particles.SetParticleControl(particle, 2, [255,255,255]) //Keep the original color
-        Particles.SetParticleControl(particle, 3, [100,0,0]) //Grid Alpha
+        Particles.SetParticleControl(particle, 3, [GridConfig.GhostAlpha,0,0]) //Grid Alpha
         Particles.SetParticleControl(particle, 4, [scale,0,0]) //Model Scale
 
         // Grid squares
@@ -437,11 +438,11 @@ function UpdateEntityParticle()
                 var pos = [x,y,GamePos[2]]
                 var gridParticle = gridParticles[part]
 
-                var status = GetQuadStatus(pos);                    
-                isAnyQuadBlocked = isAnyQuadBlocked || status == QuadStatus.Blocked;
+                var status = GetQuadStatus(pos);
+                isAnyQuadBlocked = isAnyQuadBlocked || status == "Blocked" || status == "EnemyUnit";
 
                 Particles.SetParticleControl(gridParticle, 0, pos);
-                Particles.SetParticleControl(gridParticle, 2,  GetBuildingQuadColor(status));
+                Particles.SetParticleControl(gridParticle, 2, GetQuadColor(status == "Free" ? "ValidGhost" : status ));
 
                 part ++;
 
@@ -452,10 +453,14 @@ function UpdateEntityParticle()
 
         // Update the model particle
         Particles.SetParticleControl(particle, 0, [GamePos[0], GamePos[1], GamePos[2] + 1])
-        Particles.SetParticleControl(particle, 2, GetBuildingQuadColor( isAnyQuadBlocked ? QuadStatus.Blocked : QuadStatus.Free ))
+
+        var ghostColor = isAnyQuadBlocked 
+        	? tobool(GridConfig.RecolorInvalidGhost) ? GetQuadColor( "InvalidGhost" ) : WHITE_COLOR
+        	: tobool(GridConfig.RecolorValidGhost) ? GetQuadColor( "ValidGhost" ) : WHITE_COLOR;
+        Particles.SetParticleControl(particle, 2, ghostColor);
     }
 
-    $.Schedule(1/60, UpdateEntityParticle);
+    $.Schedule(1/GridConfig.EntityGridFPS, UpdateEntityParticle);
 }
 
 function DestroyEntityParticle()
@@ -476,10 +481,9 @@ function CreateParticles( params )
 	CreateEntityParticle( params )
 	UpdateEntityParticle();
 
-/*
     GNVPanel.Resolution = GetScreenResolution();
     CreateVisibleGridParticle();
-    UpdateVisibleGrid();	*/
+    UpdateVisibleGrid();	
 }
 
 function DestroyParticles()
@@ -487,7 +491,9 @@ function DestroyParticles()
     state = 'disabled';
 
 	DestroyEntityParticle();
-	//DestroyVisibleGridParticles();
+	DestroyVisibleGridParticles();
+
+	GNVConfigUpdate();
 }
 
 //-----------------------------------------------------------------------------
@@ -644,4 +650,9 @@ function WorldToGridPosX(x){
 
 function WorldToGridPosY(y){
     return Math.floor(y/64)
+}
+
+function tobool( value )
+{
+	return value == "true";
 }
