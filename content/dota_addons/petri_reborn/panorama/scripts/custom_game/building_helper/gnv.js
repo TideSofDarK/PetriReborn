@@ -64,7 +64,7 @@ var screenCenterPos = [];
 var screenStepSize = 16;
 
 var topInsetOverride = 30;
-var bottomInsetOverride = 100;
+var bottomInsetOverride = 120;
 
 //-----------------------------------------------------------------------------
 //                         Grid config
@@ -81,6 +81,57 @@ function GNVConfigUpdate()
 	GameEvents.SendCustomGameEventToServer( "gnv_config_update", { "config" : GridConfig } );
 }
 
+function SetSliderPosition( sliderName, value)
+{
+	var slider = $( "#" + sliderName );
+	slider.GetChild(1).value = 0;
+	var sliderMinValue = parseInt(slider.GetChild(0).FindChild("Value").text);
+
+	slider.GetChild(1).value = 1;
+	var sliderMaxValue = parseInt(slider.GetChild(0).FindChild("Value").text);
+
+	slider.GetChild(1).value = (value - sliderMinValue) / (sliderMaxValue - sliderMinValue);
+}
+
+function GetSliderPosition( sliderName )
+{
+	var slider = $( "#" + sliderName );
+	return parseInt(slider.GetChild(0).FindChild("Value").text);
+}
+
+function UpdateConfigPanel()
+{
+	$( "#RecolorValidGhost" ).checked = tobool(GridConfig.RecolorValidGhost);
+	$( "#RecolorInvalidGhost" ).checked = tobool(GridConfig.RecolorInvalidGhost);
+	$( "#DrawVisibleGrid" ).checked = tobool(GridConfig.DrawVisibleGrid);
+
+	SetSliderPosition("GhostAlpha", GridConfig.GhostAlpha);
+	SetSliderPosition("EntityGridAlpha", GridConfig.EntityGridAlpha);
+	SetSliderPosition("EntityGridFPS", GridConfig.EntityGridFPS);
+
+	SetSliderPosition("VisibleGridAlpha", GridConfig.VisibleGridAlpha);
+	SetSliderPosition("FieldRadius", GridConfig.FieldRadius);
+	SetSliderPosition("VisibleGridFPS", GridConfig.VisibleGridFPS);
+	SetSliderPosition("GridMode", GridConfig.GridMode);
+}
+
+function SaveConfigFromPanel()
+{
+	GridConfig.RecolorValidGhost = $( "#RecolorValidGhost" ).checked.toString();
+	GridConfig.RecolorInvalidGhost = $( "#RecolorInvalidGhost" ).checked.toString();
+	GridConfig.DrawVisibleGrid = $( "#DrawVisibleGrid" ).checked.toString();
+
+	GridConfig.GhostAlpha = GetSliderPosition("GhostAlpha");
+	GridConfig.EntityGridAlpha = GetSliderPosition("EntityGridAlpha");
+	GridConfig.EntityGridFPS = GetSliderPosition("EntityGridFPS");
+
+	GridConfig.VisibleGridAlpha = GetSliderPosition("VisibleGridAlpha");
+	GridConfig.FieldRadius = GetSliderPosition("FieldRadius");
+	GridConfig.VisibleGridFPS = GetSliderPosition("VisibleGridFPS");
+	GridConfig.GridMode = GetSliderPosition("GridMode");
+
+	GNVConfigUpdate();
+}
 //-----------------------------------------------------------------------------
 //                         Visible grid
 //-----------------------------------------------------------------------------
@@ -166,12 +217,38 @@ function DestroyVisibleGridParticles()
             Particles.DestroyParticleEffect(visibleGrid[x][y]["Particle"], true);
 }
 
+function DestroyUnusedVisibleGridParticles()
+{
+	var list = [];
+    for (var x in visibleGrid)
+        for (var y in visibleGrid[x])
+        {
+        	var pos = visibleGrid[x][y]["Position"]
+        	var scrX = Game.WorldToScreenX( pos[0], pos[1], pos[2] );
+        	var scrY = Game.WorldToScreenY( pos[0], pos[1], pos[2] );
+
+        	// Remove quads outside screen
+        	if (scrX < 0 || scrX > GNVPanel.Resolution[0] ||
+        		scrY < 0 || scrY > GNVPanel.Resolution[1] )
+        	{
+            	Particles.DestroyParticleEffect(visibleGrid[x][y]["Particle"], true);
+        	}
+            else
+            {
+            	if (!list[x])
+            		list[x] = [];
+            	list[x][y] = visibleGrid[x][y];
+            }
+        }
+
+    visibleGrid = list;
+}
+
 function CreateVisibleGridParticle()
 {
     // Destroy old particles
-    DestroyVisibleGridParticles();
+    DestroyUnusedVisibleGridParticles();
 
-    visibleGrid = [];
     for (var x = 0; x < GNVPanel.Resolution[0]; x += screenStepSize)
         for (var y = topInsetOverride; y < GNVPanel.Resolution[1] - bottomInsetOverride; y += screenStepSize)
         {
@@ -201,7 +278,7 @@ function CreateVisibleGridParticle()
             visibleGrid[gridX][gridY]["Particle"] = gridParticle;
             visibleGrid[gridX][gridY]["Position"] = pos;
             visibleGrid[gridX][gridY]["Status"] = status;
-        }  
+        }
 }
 
 function IsPointInRange( position, point, range )
@@ -253,11 +330,13 @@ function GetScreenCenterPos()
 
     var curPos = ScreenToSnapWorldPos( GNVPanel.Resolution[0] / 2, GNVPanel.Resolution[1] / 2 );
 
-    if (!IsPointInRange(curPos, screenCenterPos, 64))
+    if (!IsPointInRange(curPos, screenCenterPos, 128))
     {
         CreateVisibleGridParticle();
         screenCenterPos = curPos;
     }
+
+    $.Schedule(1/10, GetScreenCenterPos);
 }
 
 function SnapMousePosToWorld()
@@ -335,8 +414,6 @@ function UpdateVisibleGrid()
             Particles.SetParticleControl(visibleGrid[x][y]["Particle"], 2, GetQuadColor(status));
             visibleGrid[x][y]["Status"] = status;
         }
-
-    GetScreenCenterPos();
 
     // Change grid mode
     if (GameUI.IsAltDown())
@@ -476,13 +553,18 @@ function DestroyEntityParticle()
 //-----------------------------------------------------------------------------
 function CreateParticles( params )
 {
-	state = params["state"];
+	state = params["state"];	
+    GNVPanel.Resolution = GetScreenResolution();
 
 	CreateEntityParticle( params )
 	UpdateEntityParticle();
 
-    GNVPanel.Resolution = GetScreenResolution();
+	if (!tobool(GridConfig.DrawVisibleGrid))
+		return;
+
+	visibleGrid = [];
     CreateVisibleGridParticle();
+	GetScreenCenterPos();
     UpdateVisibleGrid();	
 }
 
@@ -492,8 +574,6 @@ function DestroyParticles()
 
 	DestroyEntityParticle();
 	DestroyVisibleGridParticles();
-
-	GNVConfigUpdate();
 }
 
 //-----------------------------------------------------------------------------
