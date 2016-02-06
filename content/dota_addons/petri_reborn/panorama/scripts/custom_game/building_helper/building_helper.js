@@ -1,7 +1,6 @@
 'use strict';
 
 var state = 'disabled';
-
 var GNVPanel = null;
 
 function StartBuildingHelper( params )
@@ -37,6 +36,11 @@ function Cancel() {
     $("#BuildingHelperBase").hittest = false;
 }
 
+function GetQuadStatusEx( pos )
+{
+    return null;
+}
+
 (function () {
     // Load GridNav module
     GNVPanel = $( "#GNV");
@@ -44,4 +48,6 @@ function Cancel() {
 
     GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
     GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
+
+    GNVPanel.GetQuadStatusEx = GetQuadStatusEx;
 })();

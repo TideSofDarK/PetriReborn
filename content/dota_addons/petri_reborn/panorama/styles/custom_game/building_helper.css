@@ -3,3 +3,85 @@
   width: 100%;
   height: 100%;
 }
+
+#GNV
+{
+  margin-left: 200px;
+  margin-top: 10px;
+
+  flow-children: down;
+}
+
+#GNVButton
+{
+  width: 20px;
+  height: 20px;
+
+  background-color: #151515;
+}
+
+#GNVButton:hover
+{
+	brightness: 1.5;
+}
+
+#GNVButton:active
+{
+	brightness: 0.3;
+}
+
+#GNVMenu
+{
+  background-color: gradient( linear, 0% 0%, 0% 25%, from( #232326 ), to( #1c1d20 ) );
+  border: 2px solid #32383677;
+
+  margin-top: 10px;
+  visibility: collapse;
+}
+
+.SectionHeaderLine
+{
+	height: 2px;
+	width: 100%;
+	background-color: #3b3f40;
+	margin: 2px 0px 12px 0px;
+}
+
+#GNVMenu,
+#GNVCheckboxes,
+#GNVValues
+{
+  flow-children: down;
+}
+
+// Sliders
+#GNVValues
+{
+	width: 100%;
+}
+
+.Slider
+{
+	width: 100%;
+	height: 80px;
+	margin: 00px 10px 0px 10px;
+}
+
+// Buttons
+#GNVMainButtons
+{
+	vertical-align: bottom;
+	flow-children: right;	
+}
+
+#SaveGNVConfig,
+#CancelGNVConfig
+{
+	margin: 5px;
+}
+
+.GNVConfigLabel
+{
+	font-size: 15px;
+	vertical-align: center;
+}
