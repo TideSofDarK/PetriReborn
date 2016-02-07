@@ -1,6 +1,6 @@
 <root>
   <styles>
-    <include src="file://{resources}/styles/custom_game/building_helper.css" />
+    <include src="file://{resources}/styles/custom_game/building_helper/building_helper.css" />
   </styles>
   <scripts>
     <include src="file://{resources}/scripts/custom_game/building_helper/building_helper.js" />
