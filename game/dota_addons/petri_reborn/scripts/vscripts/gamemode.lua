@@ -177,6 +177,7 @@ function GameMode:OnHeroInGame(hero)
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
           newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
 
           newHero:FindAbilityByName("petri_petrosyan_passive"):ApplyDataDrivenModifier(newHero, newHero, "dummy_sleep_modifier", {})
 
