@@ -501,7 +501,7 @@ function SetupCustomSkin(hero, steamID, key)
 
       for k2,v2 in pairs(v) do
         if v2 == "scale" then
-          hero:SetModelScale(k2)
+          hero:SetModelScale(tonumber(k2))
         end
       end
 
