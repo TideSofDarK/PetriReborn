@@ -1,0 +1,100 @@
+.ColorPicker
+{
+	padding: 5px;
+	width: 100%;
+
+	flow-children: down;
+}
+
+// Gradient
+.GradientPanel
+{
+	width: 200px;
+
+	flow-children: down;
+	overflow: clip;
+}
+
+.GradientMarker
+{
+ 	background-color: gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #91a5b9 ), to( #444f52 ) );
+
+	opacity-mask: url( "file://{images}/custom_game/building_helper/gradient_marker_mask.png" );
+
+	width: 10px;
+	height: 18px;
+
+	margin-bottom: -10px;
+	z-index: 3;
+}
+
+.GradientMarker:hover
+{
+	brightness: 1.5;
+}
+
+.Gradient
+{
+	width: 100%;
+	height: 15px;
+	background-color: gradient( linear, 0% 0%, 100% 0%, 
+	  	from( red ), 
+	  	color-stop(0.16, yellow ), color-stop(0.33, green ), color-stop(0.50, cyan), color-stop(0.66, blue), color-stop(0.83,  magenta),
+	  	to( red ));	
+}
+
+// Main color
+.ColorField
+{
+	width: 200px;
+	height: 200px;
+
+	overflow: clip;
+}
+
+.BlackGradient
+{
+	width: 100%;
+	height: 100%;
+
+	// fuck volvo gradients
+	background-color: gradient( linear, 0% 100%, 0% 0%, 
+		from( rgba(0, 0, 0, 255) ), 
+		color-stop(0.2, rgba(0, 0, 0, 220) ), color-stop(0.5, rgba(0, 0, 0, 145) ), color-stop(0.8, rgba(0, 0, 0, 45) ),
+		to( rgba(0, 0, 0, 0) ) );
+}
+
+.WhiteGradient
+{
+	width: 100%;
+	height: 100%;
+
+	background-color: gradient( linear, 0% 0%, 100% 0%, 
+		from( rgba(255, 255, 255, 255) ), 
+		color-stop(0.15, rgba(255, 255, 255, 128) ), 
+		to( rgba(255, 255, 255, 0) ) );
+}
+
+.Marker
+{
+ 	border-radius: 50%;
+ 	border: 2px solid #000000FF;
+	box-shadow: #ffffffff 0px 0px 2px 0px;
+
+	width: 20px;
+	height: 20px;
+
+	z-index: 3;
+}
+
+.Marker.active
+{
+	border: 2px solid #FFFFFFFF;
+	box-shadow: #000000ff 0px 0px 2px 0px;
+}
+
+.ColorField,
+.Gradient
+{
+	border: 1px solid #000000FF;
+}
