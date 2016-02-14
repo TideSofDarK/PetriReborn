@@ -1,7 +1,7 @@
 <root>
   <styles>
     <include src="file://{resources}/styles/dotastyles.css" />
-    <include src="file://{resources}/styles/custom_game/building_helper.css" />
+    <include src="file://{resources}/styles/custom_game/building_helper/building_helper.css" />
   </styles>
   <scripts>
     <include src="file://{resources}/scripts/custom_game/building_helper/gnv.js" />
@@ -12,7 +12,17 @@
     	$( "#GNVMenu" ).visible = !$( "#GNVMenu" ).visible;
 
     	if ($( "#GNVMenu" ).visible)
+      {
+        if (GridConfig.Colors)
+          for(var key in GridConfig.Colors)
+          {
+            $( "#ColorsList" ).SetSelected(key);
+            break;
+          
+          }
+
     		UpdateConfigPanel();
+      }
     }
 
     function OnCancel()
@@ -24,40 +34,59 @@
   	<Panel id="GNVButton" onactivate="OnShowMenu()">
 		<Image class="Icon" id="ImageGNVButton" src="file://{images}/custom_game/building_helper/IconGNV.png" />
   	</Panel> 
-    <Panel id="GNVMenu" oncancel="OnCancel()"> 
-    	<!-- Checkboxes -->
-    	<Panel class="SectionHeaderLine" />
-		<Panel id="GNVCheckboxes">
-			<DOTASettingsCheckbox id="RecolorValidGhost" text="#RecolorValidGhost"/>
-			<DOTASettingsCheckbox id="RecolorInvalidGhost" text="#RecolorInvalidGhost" />
-			<DOTASettingsCheckbox id="DrawVisibleGrid" text="#DrawVisibleGrid" />
-		</Panel>
+    <Panel id="GNVMenu" oncancel="OnCancel()">
+      <Panel id="columns" >
+        <Panel id="leftCol" >
 
-		<!-- Value entry -->
-		<Panel class="SectionHeaderLine" />
-		<Panel id="GNVValues">
-			<DOTASettingsSlider class="Slider" id="GhostAlpha" min="0" max="255" text="#GhostAlpha"/>
-			<DOTASettingsSlider class="Slider" id="EntityGridAlpha" min="0" max="255" text="#EntityGridAlpha"/>
-			<DOTASettingsSlider class="Slider" id="EntityGridFPS" min="1" max="120" text="#EntityGridFPS"/>
+          	<!-- Checkboxes -->
+        	<Panel class="SectionHeaderLine" />
+      		<Panel id="GNVCheckboxes">
+      			<DOTASettingsCheckbox id="RecolorValidGhost" text="#RecolorValidGhost"/>
+      			<DOTASettingsCheckbox id="RecolorInvalidGhost" text="#RecolorInvalidGhost" />
+      			<DOTASettingsCheckbox id="DrawVisibleGrid" text="#DrawVisibleGrid" />
+      		</Panel>
 
-			<DOTASettingsSlider class="Slider" id="VisibleGridAlpha" min="0" max="255" text="#VisibleGridAlpha"/>
-			<DOTASettingsSlider class="Slider" id="FieldRadius" min="0" max="1000" text="#FieldRadius"/>
-			<DOTASettingsSlider class="Slider" id="VisibleGridFPS" min="1" max="120" text="#VisibleGridFPS"/>
-			<DOTASettingsSlider class="Slider" id="GridMode" min="0" max="5" text="#GridMode"/>
-		</Panel>
+          <!-- Colors -->
+          <Panel class="SectionHeaderLine" /> 
+          <Panel id="ColorPickerPanel">
 
+            <Panel class="CurcolorPanel" >
+              <DropDown id="ColorsList" />
+              <Panel id="CurColor"/>
+            </Panel>
 
-		<!-- Main buttons -->
-		<Panel class="SectionHeaderLine" />
+            <Panel id="ColorPicker" />
+          </Panel>
+
+        </Panel>
+
+        <Panel id="rightCol" >
+    		  <!-- Value entry -->
+    		  <Panel class="SectionHeaderLine" />
+      		<Panel id="GNVValues"> 
+      			<DOTASettingsSlider class="Slider" id="GhostAlpha" min="0" max="255" text="#GhostAlpha"/>
+      			<DOTASettingsSlider class="Slider" id="EntityGridAlpha" min="0" max="255" text="#EntityGridAlpha"/>
+      			<DOTASettingsSlider class="Slider" id="EntityGridFPS" min="1" max="120" text="#EntityGridFPS"/>
+
+      			<DOTASettingsSlider class="Slider" id="VisibleGridAlpha" min="0" max="255" text="#VisibleGridAlpha"/>
+      			<DOTASettingsSlider class="Slider" id="FieldRadius" min="0" max="1000" text="#FieldRadius"/>
+      			<DOTASettingsSlider class="Slider" id="VisibleGridFPS" min="1" max="120" text="#VisibleGridFPS"/>
+      			<DOTASettingsSlider class="Slider" id="GridMode" min="0" max="5" text="#GridMode"/>
+      		</Panel>
+
+        </Panel>
+      </Panel>
+
+  		<!-- Main buttons -->
     	<Panel id="GNVMainButtons">
-	    	<Button class="ButtonBevel" id="SaveGNVConfig" onactivate="SaveConfigFromPanel()">
-	    		<Label text="#SaveGNVConfig" />
-	    	</Button>
+      	<Button class="ButtonBevel" id="SaveGNVConfig" onactivate="SaveConfigFromPanel()">
+      		<Label text="#SaveGNVConfig" />
+      	</Button>
 
-	    	<Button class="ButtonBevel" id="CancelGNVConfig" onactivate="OnCancel()">
-	    		<Label text="#CancelGNVConfig" />
-	    	</Button>
-    	</Panel>    	
-    </Panel>    
+      	<Button class="ButtonBevel" id="CancelGNVConfig" onactivate="OnCancel()">
+      		<Label text="#CancelGNVConfig" />
+      	</Button>
+    	</Panel>
+    </Panel>
   </Panel>
 </root>

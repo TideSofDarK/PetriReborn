@@ -36,6 +36,8 @@ var WHITE_COLOR = [255,255,255];
     GNVPanel.GetEntitiesNearPoint = GetEntitiesNearPoint;
     // User quad statuses
     GNVPanel.GetQuadStatusEx = null;
+
+    GNVPanel.FindChildTraverse("ColorPicker").BLoadLayout( "file://{resources}/layout/custom_game/building_helper/ColorPicker.xml", false, false ); 
 })();
 
 //-----------------------------------------------------------------------------
@@ -74,11 +76,38 @@ var GridConfig = {};
 function GNVConfig( args )
 {
 	GridConfig = args.config;
+
+    InitGNVConfigPanel();
 }
 
 function GNVConfigUpdate()
 {
 	GameEvents.SendCustomGameEventToServer( "gnv_config_update", { "config" : GridConfig } );
+}
+
+function InitGNVConfigPanel()
+{
+    GNVPanel.FindChildTraverse("ColorPicker").RegisterEventHandler("OnColorChanged", OnColorChanged);
+
+    var list = $( "#ColorsList" );
+
+    for (var c in GridConfig.Colors)
+    {
+        var panel = $.CreatePanel("Label", list, c);
+        panel.text = c;
+        panel.AddClass("DropDownChild");
+        list.AddOption(panel);
+    }
+
+    list.SetPanelEvent("oninputsubmit", OnDropDownValueChanged);
+}
+
+function OnDropDownValueChanged()
+{
+    var list = $( "#ColorsList" );
+
+    var color = GridConfig.Colors[ list.GetSelected().id ];
+    GNVPanel.FindChildTraverse("ColorPicker").SetColor([color[1], color[2], color[3]]);
 }
 
 function SetSliderPosition( sliderName, value)
@@ -131,6 +160,14 @@ function SaveConfigFromPanel()
 	GridConfig.GridMode = GetSliderPosition("GridMode");
 
 	GNVConfigUpdate();
+}
+
+function OnColorChanged( color )
+{
+    var list = $( "#ColorsList" );
+
+    GridConfig.Colors[ list.GetSelected().id ] = { "1": color[0], "2": color[1], "3": color[2] };
+    $("#CurColor").style.backgroundColor = "rgb(" + color[0] + "," + color[1] + "," + color[2] + ");";
 }
 //-----------------------------------------------------------------------------
 //                         Visible grid
@@ -351,9 +388,8 @@ function SnapMousePosToWorld()
 
     var offset = 0;
 
-    if (GridConfig.GridMode == GridMode.AroundBuildingQuad)
-        offset = 16;
-    if (GridConfig.GridMode == GridMode.AroundBuildingCircle)
+    if (GridConfig.GridMode == GridMode.AroundBuildingQuad || 
+    	GridConfig.GridMode == GridMode.AroundBuildingCircle)
         offset = 32;
 
     var xSign = gamePos[0] < snapGamePos[0] ? -1 : 1;

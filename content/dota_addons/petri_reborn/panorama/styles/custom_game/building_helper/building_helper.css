@@ -32,11 +32,12 @@
 
 #GNVMenu
 {
-  background-color: gradient( linear, 0% 0%, 0% 25%, from( #232326 ), to( #1c1d20 ) );
-  border: 2px solid #32383677;
+	width: 600px;
+  	background-color: gradient( linear, 0% 0%, 0% 25%, from( #232326 ), to( #1c1d20 ) );
+  	border: 2px solid #32383677;
 
-  margin-top: 10px;
-  visibility: collapse;
+  	margin-top: 10px;
+  	visibility: collapse;
 }
 
 .SectionHeaderLine
@@ -47,9 +48,32 @@
 	margin: 2px 0px 12px 0px;
 }
 
+#columns
+{
+	width: 100%;
+	flow-children: right;	
+}
+
+#leftCol
+{
+	width: 300px;
+
+	padding: 5px;
+	flow-children: down;
+}
+
+#rightCol
+{
+	width: 300px;
+
+	padding: 5px;	
+	flow-children: down;
+}
+
 #GNVMenu,
 #GNVCheckboxes,
-#GNVValues
+#GNVValues,
+#ColorPickerPanel
 {
   flow-children: down;
 }
@@ -70,8 +94,39 @@
 // Buttons
 #GNVMainButtons
 {
+	width: 100%;
 	vertical-align: bottom;
 	flow-children: right;	
+}
+
+// Picker
+#ColorPickerPanel
+{
+	width: 100%;
+	flow-children: down;
+}
+
+.CurcolorPanel
+{
+	width: 100%;
+	padding: 5px;
+
+	flow-children: right;
+}
+
+#ColorsList
+{
+	width: 215px;
+}
+
+#CurColor
+{
+	width: 50px;
+	height: 30px;
+
+	margin: 5px;
+
+	vertical-align: center;
 }
 
 #SaveGNVConfig,

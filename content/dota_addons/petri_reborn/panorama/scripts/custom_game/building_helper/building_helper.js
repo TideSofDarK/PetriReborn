@@ -45,7 +45,7 @@ function GetQuadStatusEx( pos )
     // Load GridNav module
     GNVPanel = $( "#GNV");
     GNVPanel.BLoadLayout( "file://{resources}/layout/custom_game/building_helper/gnv.xml", false, false );
-
+ 
     GameEvents.Subscribe( "building_helper_enable", StartBuildingHelper);
     GameEvents.Subscribe( "building_helper_force_cancel", Cancel);
 
