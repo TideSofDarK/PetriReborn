@@ -500,6 +500,12 @@ function SetupCustomSkin(hero, steamID, key)
       end
 
       for k2,v2 in pairs(v) do
+        if v2 == "scale" then
+          hero:SetModelScale(k2)
+        end
+      end
+
+      for k2,v2 in pairs(v) do
         if v2 ~= "model" then
           Attachments:AttachProp(hero, v2, k2, nil)
         end
