@@ -1139,6 +1139,10 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/units/ironman/ironman.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
