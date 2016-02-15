@@ -77,7 +77,7 @@ function GetTeamsFromEmptySelection( args )
 
   -- Get min petr in game
   local minPetrCount = 0
-  if GetArraySize( GameSetup.votes['prefer_team'] ) > 6
+  if GetArraySize( GameSetup.votes['prefer_team'] ) > 6 then
     minPetrCount = 2
   end
 

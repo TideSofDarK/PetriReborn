@@ -18,7 +18,6 @@
           {
             $( "#ColorsList" ).SetSelected(key);
             break;
-          
           }
 
     		UpdateConfigPanel();
@@ -82,7 +81,9 @@
       	<Button class="ButtonBevel" id="SaveGNVConfig" onactivate="SaveConfigFromPanel()">
       		<Label text="#SaveGNVConfig" />
       	</Button>
-
+        <Button class="ButtonBevel" id="DefaultGNVConfig" onactivate="OnGetDefault()">
+          <Label text="#DefaultGNVConfig" />
+        </Button>
       	<Button class="ButtonBevel" id="CancelGNVConfig" onactivate="OnCancel()">
       		<Label text="#CancelGNVConfig" />
       	</Button>

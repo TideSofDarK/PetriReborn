@@ -130,6 +130,7 @@
 }
 
 #SaveGNVConfig,
+#DefaultGNVConfig,
 #CancelGNVConfig
 {
 	margin: 5px;
