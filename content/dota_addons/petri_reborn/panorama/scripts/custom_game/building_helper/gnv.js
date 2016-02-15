@@ -22,7 +22,7 @@ var WHITE_COLOR = [255,255,255];
 //-----------------------------------------------------------------------------
 (function () {
     GameEvents.SendCustomGameEventToServer( "gnv_request", { "Layers" : { } } );
-    GameEvents.SendCustomGameEventToServer( "gnv_config_request", { } );   
+    GameEvents.SendCustomGameEventToServer( "gnv_config_request", { } );
 
     CustomNetTables.SubscribeNetTableListener( "LayersQueue", LayerChanged );
     GameEvents.Subscribe( "gnv", GNV);
@@ -78,6 +78,7 @@ function GNVConfig( args )
 	GridConfig = args.config;
 
     InitGNVConfigPanel();
+    UpdateConfigPanel();
 }
 
 function GNVConfigUpdate()
@@ -85,11 +86,17 @@ function GNVConfigUpdate()
 	GameEvents.SendCustomGameEventToServer( "gnv_config_update", { "config" : GridConfig } );
 }
 
+function OnGetDefault()
+{
+    GameEvents.SendCustomGameEventToServer( "gnv_default_config_request", { } );
+}
+
 function InitGNVConfigPanel()
 {
     GNVPanel.FindChildTraverse("ColorPicker").RegisterEventHandler("OnColorChanged", OnColorChanged);
 
     var list = $( "#ColorsList" );
+    list.RemoveAllOptions();
 
     for (var c in GridConfig.Colors)
     {
@@ -100,13 +107,23 @@ function InitGNVConfigPanel()
     }
 
     list.SetPanelEvent("oninputsubmit", OnDropDownValueChanged);
+
+    for(var key in GridConfig.Colors)
+    {
+        $( "#ColorsList" ).SetSelected(key);
+        break;
+    }
 }
 
 function OnDropDownValueChanged()
 {
     var list = $( "#ColorsList" );
+    var selected = list.GetSelected()
 
-    var color = GridConfig.Colors[ list.GetSelected().id ];
+    if (selected == null)
+        return;
+
+    var color = GridConfig.Colors[ selected.id ];
     GNVPanel.FindChildTraverse("ColorPicker").SetColor([color[1], color[2], color[3]]);
 }
 
