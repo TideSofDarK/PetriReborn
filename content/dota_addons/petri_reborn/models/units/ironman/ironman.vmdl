@@ -75,15 +75,15 @@
 								m_sBoneName = "Hips"
 								m_vMinBounds =
 								[
-									-2.535975,
-									-0.954330,
-									-0.355114,
+									-0.005038,
+									-0.009543,
+									-0.003551,
 								]
 								m_vMaxBounds =
 								[
-									2.535975,
-									0.505942,
-									0.387502,
+									0.005038,
+									0.005059,
+									0.003875,
 								]
 								m_bTranslationOnly = false
 								m_cRenderColor =
