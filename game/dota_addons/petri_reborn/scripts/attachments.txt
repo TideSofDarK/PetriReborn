@@ -1143,10 +1143,6 @@
 	   		{
 			    "scale"  "0"
 	   		}
-	   		"models/units/telka/hot_chick.vmdl"
-	   		{
-			    "scale"  "0"
-	   		}
 	   		"models/props_gameplay/rune_arcane.vmdl"
 	   		{
 			    "scale"  "0"
@@ -3248,6 +3244,45 @@
 			    "YPos"  "-1"
 			    "yaw"  "0"
 			    "XPos"  "7"
+		   	}
+	  	}
+	}
+	"models/units/telka/hot_chick.vmdl"
+	{
+	 	"spine1"
+		{
+	   		"models/items/death_prophet/mourning_armor/mourning_armor.vmdl"
+		   	{
+			    "scale"  "1.3"
+			    "pitch"  "1"
+			    "roll"  "81"
+			    "ZPos"  "-141"
+			    "YPos"  "0"
+			    "yaw"  "85"
+			    "XPos"  "6"
+		   	}
+	  	}
+	  	"hips"
+		{
+	   		"models/props_gameplay/tango.vmdl"
+		   	{
+			    "scale"  "0.22"
+			    "pitch"  "0"
+			    "roll"  "174"
+			    "ZPos"  "-92"
+			    "YPos"  "-47"
+			    "yaw"  "212"
+			    "XPos"  "35"
+		   	}
+		   	"models/heroes/dragon_knight/shield.vmdl"
+		   	{
+			    "scale"  "0.27"
+			    "pitch"  "0"
+			    "roll"  "110"
+			    "ZPos"  "-38"
+			    "YPos"  "-5"
+			    "yaw"  "263"
+			    "XPos"  "54"
 		   	}
 	  	}
 	}

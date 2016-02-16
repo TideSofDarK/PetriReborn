@@ -664,7 +664,7 @@
 					m_Filepath = "models/units/Telka/Standing_1H_Magic_Attack_02.fbx"
 					m_nStartframe = 0
 					m_nEndframe = 66
-					m_flFps = 30.000000
+					m_flFps = 88.000000
 					m_Loop =
 					{
 						_class = "CAnimationLoop"
@@ -1046,7 +1046,7 @@
 					m_Filepath = "models/units/Telka/uppercut.fbx"
 					m_nStartframe = 0
 					m_nEndframe = 40
-					m_flFps = 30.000000
+					m_flFps = 65.000000
 					m_Loop =
 					{
 						_class = "CAnimationLoop"
