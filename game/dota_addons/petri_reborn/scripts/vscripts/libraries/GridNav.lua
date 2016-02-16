@@ -35,6 +35,8 @@ function GNV:LoadConfig()
     end
   end
   
+  GNV.Config["Default"] = config
+  
   -- Make config for every player
   for i = 0, PlayerResource:GetPlayerCount() - 1 do
     GNV.Config[i] = config
@@ -47,6 +49,13 @@ function GNV:SendConfig( args )
   
   GNV:print("Sending GNV config to player "..playerID)
   CustomGameEventManager:Send_ServerToPlayer(player, "gnv_config", { config = GNV.Config[playerID] })  
+end
+
+function GNV:SendDefaultConfig( args )
+  local playerID = args.PlayerID
+  local player = PlayerResource:GetPlayer(playerID)
+  
+  CustomGameEventManager:Send_ServerToPlayer(player, "gnv_config", { config = GNV.Config["Default"] })  
 end
 
 function GNV:UpdateConfig( args )
@@ -184,6 +193,7 @@ end
 function GNV:RegisterListeners()
   -- Config
   CustomGameEventManager:RegisterListener( "gnv_config_request", Dynamic_Wrap(GNV, 'SendConfig'))
+  CustomGameEventManager:RegisterListener( "gnv_default_config_request", Dynamic_Wrap(GNV, 'SendDefaultConfig'))
   CustomGameEventManager:RegisterListener( "gnv_config_update", Dynamic_Wrap(GNV, 'UpdateConfig'))
   
   -- Grid
