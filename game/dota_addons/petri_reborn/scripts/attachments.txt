@@ -1143,6 +1143,26 @@
 	   		{
 			    "scale"  "0"
 	   		}
+	   		"models/units/telka/hot_chick.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_arcane.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/pumpkin_rune.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_invisibility01"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_regeneration01"
+	   		{
+			    "scale"  "0"
+	   		}
 	  	}
 	}
 	"models/props_structures/secretshop_asian001.vmdl"
