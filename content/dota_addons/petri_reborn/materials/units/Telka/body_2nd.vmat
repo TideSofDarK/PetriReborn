@@ -7,10 +7,6 @@ Layer0
 	//---- Normal Maps ----
 	F_NORMAL_MAP 1
 
-	//---- Translucent ----
-	F_ADDITIVE_BLEND 1
-	F_TRANSLUCENT 1
-
 	//---- Color ----
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
 	g_vTexCoordOffset "[0.000 0.000]"
@@ -20,8 +16,4 @@ Layer0
 	//---- Normal Map ----
 	g_flBumpStrength "1.000"
 	TextureNormal "materials/units/telka/body_n.png"
-
-	//---- Translucent ----
-	g_flOpacityScale "1.000"
-	TextureTranslucency "materials/default/default_trans.tga"
 }
