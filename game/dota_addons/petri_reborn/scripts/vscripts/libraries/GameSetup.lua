@@ -75,6 +75,7 @@ function GetTeamsFromEmptySelection( args )
   print("Initial tables")
   DeepPrintTable(petr)
   DeepPrintTable(kvn)
+  DeepPrintTable(GameSetup.votes['prefer_team'])
 
   -- Get min petr in game
   local minPetrCount = 0
