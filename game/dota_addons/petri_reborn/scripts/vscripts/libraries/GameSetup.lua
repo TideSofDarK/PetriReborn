@@ -96,6 +96,10 @@ function GetTeamsFromEmptySelection( args )
         end
       end
 
+  print("Prefers team")
+  DeepPrintTable(petr)
+  DeepPrintTable(kvn)
+  
       -- Set random kvn to petr team if only host prefer this team
       if GetArraySize( petr ) < minPetrCount then
         local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
