@@ -75,6 +75,10 @@ function GetTeamsFromEmptySelection( args )
   local petr = args["petr"];
   local kvn = args["kvn"];
 
+  print("Initial tables")
+  DeepPrintTable(petr)
+  DeepPrintTable(kvn)
+
   -- Get min petr in game
   local minPetrCount = 0
   if GetArraySize( GameSetup.votes['prefer_team'] ) > 6 then
@@ -102,6 +106,10 @@ function GetTeamsFromEmptySelection( args )
     end
   end
 
+  print("Final tables")
+  DeepPrintTable(petr)
+  DeepPrintTable(kvn)
+  
   return petr, kvn  
 end
 
