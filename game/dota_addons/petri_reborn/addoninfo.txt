@@ -1,11 +1,7 @@
 "AddonInfo"
 {
 	"TeamCount"		"2"
-	"petri_1_winter"
-	{
-		"MaxPlayers"		"12"
-	}
-	"petri_2_snowfall"
+	"petri_1_radiant"
 	{
 		"MaxPlayers"		"12"
 	}
