@@ -121,6 +121,9 @@ function GameMode:OnPlayerReconnect(keys)
         if hero:GetTeam() == DOTA_TEAM_BADGUYS then
           player:SetTeam(DOTA_TEAM_BADGUYS)
         end
+       
+        SendToServerConsole( "dota_combine_models 0" )
+        SendToConsole( "dota_combine_models 0" )
       end)
     else
       return 0.03

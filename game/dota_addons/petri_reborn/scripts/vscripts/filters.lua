@@ -97,9 +97,9 @@ function GameMode:FilterExecuteOrder( filterTable )
         local hero = EntIndexToHScript(filterTable["units"]["0"])
         local ent = hero
 
-        if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
-          return false
-        end
+        -- if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
+        --   return false
+        -- end
 
         if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
 
@@ -135,6 +135,33 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
         return false
+      end
+
+      if issuerUnit:GetUnitName() == "npc_dota_courier" and purchaser:IsHero() == true 
+        and (issuerUnit:GetAbsOrigin() - purchaser:GetAbsOrigin()):Length() < 400 then
+
+        local hasSpace = false
+        for i=0,5 do
+          if purchaser:GetItemInSlot(i) == nil then 
+            hasSpace = true
+            break
+          end
+        end
+
+        if hasSpace == false then
+          local oldItem = purchaser:GetItemInSlot(0)
+
+          purchaser:DropItemAtPositionImmediate(oldItem, purchaser:GetAbsOrigin())
+
+          issuerUnit:DropItemAtPositionImmediate(item, issuerUnit:GetAbsOrigin())
+
+          purchaser:AddItem(item)
+
+          issuerUnit:AddItem(oldItem)
+
+          UTIL_Remove(item:GetContainer())
+          UTIL_Remove(oldItem:GetContainer())
+        end
       end
     elseif order_type == DOTA_UNIT_ORDER_PICKUP_ITEM then
       if not EntIndexToHScript(filterTable["entindex_target"]) then return false end

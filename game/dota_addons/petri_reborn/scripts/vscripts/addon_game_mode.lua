@@ -50,27 +50,27 @@ function Precache( context )
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
   -- Custom skins
-  local AttachmentDatabase = LoadKeyValues("scripts/attachments.txt")
-  for k,model in pairs(AttachmentDatabase) do
-    PrecacheResource("model", k, context)
-    for pointName,pointTable in pairs(model) do
-      for modelName,modelTable in pairs(pointTable) do
-        if string.match(modelName, "vmdl") then
-          PrecacheResource("model", modelName, context)
-        end
-      end
-    end
-  end
+  -- local AttachmentDatabase = LoadKeyValues("scripts/attachments.txt")
+  -- for k,model in pairs(AttachmentDatabase) do
+  --   PrecacheResource("model", k, context)
+  --   for pointName,pointTable in pairs(model) do
+  --     for modelName,modelTable in pairs(pointTable) do
+  --       if string.match(modelName, "vmdl") then
+  --         PrecacheResource("model", modelName, context)
+  --       end
+  --     end
+  --   end
+  -- end
 
-  local Particles = AttachmentDatabase['Particles']
-  for k,model in pairs(Particles) do
-    for effectName,values in pairs(model) do
-      if string.match(effectName, "vpcf") then
-        PrecacheResource("particle", effectName, context)
-        print(effectName)
-      end
-    end
-  end
+  -- local Particles = AttachmentDatabase['Particles']
+  -- for k,model in pairs(Particles) do
+  --   for effectName,values in pairs(model) do
+  --     if string.match(effectName, "vpcf") then
+  --       PrecacheResource("particle", effectName, context)
+  --       print(effectName)
+  --     end
+  --   end
+  -- end
 
   -- BUILDINGS
   -- idol
