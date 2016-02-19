@@ -130,7 +130,7 @@
 
     "modifier_being_repaired"
     {
-      "IsHidden"  "1"
+      "IsHidden"  "0"
 
       "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 

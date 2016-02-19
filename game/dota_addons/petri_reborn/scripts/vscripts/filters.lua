@@ -71,6 +71,7 @@ function GameMode:FilterExecuteOrder( filterTable )
     end
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
+
       if filterTable["entindex_target"] >= 6 and PlayerResource:GetTeam(issuer) ~= DOTA_TEAM_BADGUYS then
         return false
       elseif filterTable["entindex_target"] >= 6 and PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
@@ -78,6 +79,10 @@ function GameMode:FilterExecuteOrder( filterTable )
 
         local targetSlot = filterTable["entindex_target"]
         local heroSlot = 0
+
+        if not Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
+          return false
+        end
 
         for i=0,11 do
           if hero:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
@@ -96,7 +101,8 @@ function GameMode:FilterExecuteOrder( filterTable )
           return false
         end
 
-        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
+        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
+
           local stashSlot = 6
 
           for i=0,11 do

@@ -87,13 +87,13 @@ function GetTeamsFromEmptySelection( args )
       kvn = {}
       -- Try to get first two players who prefer petr team
       for k,v in pairs(GameSetup.votes['prefer_team']) do
-        if v == 'petr' and GetArraySize( petr ) < minPetrCount then
+        if v == 'petri' and GetArraySize( petr ) < minPetrCount then
           table.insert(petr, k)
         else
           table.insert(kvn, k)
         end
       end
-
+  
       -- Set random kvn to petr team if only host prefer this team
       if GetArraySize( petr ) < minPetrCount then
         local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
