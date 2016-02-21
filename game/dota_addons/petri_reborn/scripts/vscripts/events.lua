@@ -419,8 +419,8 @@ function GameMode:OnEntityKilled( keys )
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
     killedUnit.teleportationState = 0
-    killedUnit:SetTimeUntilRespawn(30.0)
-    Timers:CreateTimer(30.0,
+    killedUnit:SetTimeUntilRespawn(10.0)
+    Timers:CreateTimer(10.0,
     function()
       killedUnit:RespawnHero(false, false, false)
     end)

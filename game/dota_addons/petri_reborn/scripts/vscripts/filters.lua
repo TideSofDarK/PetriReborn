@@ -118,14 +118,14 @@ function GameMode:FilterExecuteOrder( filterTable )
             return false
           end
 
-          local itemName = hero:GetItemInSlot(stashSlot):GetName()
-          local charges = hero:GetItemInSlot(stashSlot):GetCurrentCharges()
+          local oldItem = hero:GetItemInSlot(stashSlot)
 
-          local newItem = CreateItem(itemName, ent, hero)
-          newItem:SetCurrentCharges(charges)
+          
+          ent:DropItemAtPositionImmediate(oldItem, Vector(10000,10000,10000))
 
-          hero:RemoveItem(hero:GetItemInSlot(stashSlot))
-          ent:AddItem(newItem)
+          ent:AddItem(oldItem)
+
+          UTIL_Remove(oldItem:GetContainer())
         end
       end
     elseif order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
