@@ -90,11 +90,11 @@ function GetTeamsFromEmptySelection( args )
           table.insert(kvn, k)
         end
       end
-  
+
       -- Set random kvn to petr team if only host prefer this team
       if GetArraySize( petr ) < minPetrCount then
         local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
-        table.insert(petr, table.remove(kvn, kvn[num]))        
+        table.insert(petr, table.remove(kvn, num))
       end
     end
   end
