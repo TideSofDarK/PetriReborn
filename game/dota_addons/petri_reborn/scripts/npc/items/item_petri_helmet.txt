@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_helmet"
 
-  "ItemCost"            "3"
+  "ItemCost"            "5"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "helmet"
@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "1"
+      "bonus_armor"      "2"
     }
   }
   
@@ -27,7 +27,6 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {

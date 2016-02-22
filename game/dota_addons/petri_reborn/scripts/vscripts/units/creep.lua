@@ -62,6 +62,80 @@ function Attack( keys )
     end
 end
 
+function CreepSplashDamage( keys )
+    local caster = keys.caster
+    local target = keys.target
+    local ability = keys.ability
+
+    keys.number = keys.number or 0
+
+    local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 700, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+    if #units > 1 and keys.number < 2 then
+        local tracking_projectile = 
+        {
+            EffectName = "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf",
+            Ability = ability,
+            vSpawnOrigin = caster:GetAbsOrigin(),
+            Target = units[2],
+            Source = keys.source or caster,
+            bHasFrontalCone = false,
+            iMoveSpeed = 2000,
+            bReplaceExisting = false,
+            bProvidesVision = false,
+            iSourceAttachment = DOTA_PROJECTILE_ATTACHMENT_HITLOCATION
+        }
+        ProjectileManager:CreateTrackingProjectile(tracking_projectile)
+
+        local projectile = {
+            vSpawnOrigin = target:GetAbsOrigin() + Vector(0,0,80),
+            fDistance = 600,
+            fStartRadius = 100,
+            fEndRadius = 100,
+            Source = target,
+            fExpireTime = 8.0,
+            vVelocity = (units[2]:GetAbsOrigin() - target:GetAbsOrigin()):Normalized() * 2000,
+            UnitBehavior = PROJECTILES_DESTROY,
+            bMultipleHits = false,
+            bIgnoreSource = true,
+            TreeBehavior = PROJECTILES_NOTHING,
+            bCutTrees = false,
+            bTreeFullCollision = false,
+            WallBehavior = PROJECTILES_NOTHING,
+            GroundBehavior = PROJECTILES_NOTHING,
+            fGroundOffset = 80,
+            nChangeMax = 1,
+            bRecreateOnChange = true,
+            bZCheck = false,
+            bGroundLock = true,
+            bProvidesVision = true,
+            iVisionRadius = 350,
+            iVisionTeamNumber = caster:GetTeam(),
+            bFlyingVision = false,
+            fVisionTickTime = .1,
+            fVisionLingerDuration = 1,
+            draw = false,
+            UnitTest = function(self, unit) return unit ~= target and unit:GetUnitName() ~= "npc_dummy_unit" and unit:GetTeamNumber() ~= caster:GetTeamNumber() end,
+            OnUnitHit = function(self, unit) 
+                local damageTable = {
+                    victim = unit,
+                    attacker = caster,
+                    damage = caster:GetAverageTrueAttackDamage() * ability:GetSpecialValueFor("max_stacks"),
+                    damage_type = DAMAGE_TYPE_PHYSICAL,
+                }
+
+                ApplyDamage(damageTable)
+
+                keys.number = keys.number + 1
+                keys.target = units[2]
+                keys.source = units[2]
+                CreepSplashDamage( keys )
+            end,
+        }
+
+        Projectiles:CreateProjectile(projectile)
+    end
+end
+
 function SplitShot( keys )
     local caster = keys.caster
     local caster_location = caster:GetAbsOrigin()

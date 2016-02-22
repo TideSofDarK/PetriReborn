@@ -4,6 +4,11 @@
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+
+  "precache"
+  {
+    "particle"          "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf"
+  }
           
   "AbilitySpecial"
   {
@@ -16,6 +21,16 @@
     {
       "var_type"                      "FIELD_INTEGER"
       "max_stacks"                    "45"
+    }
+    "03"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "max_bounce_targets"                    "2"
+    }
+    "04"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "bounce_range"                    "500"
     }
   }
 
@@ -70,6 +85,11 @@
         {
           "ScriptFile"            "units/creep.lua"
           "Function"              "Attack"
+        }
+        "RunScript"
+        {
+          "ScriptFile"            "units/creep.lua"
+          "Function"              "CreepSplashDamage"
         }
       }
 

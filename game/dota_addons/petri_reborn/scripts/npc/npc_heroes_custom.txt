@@ -131,7 +131,7 @@
 	  "AbilityLayout" "4"
 	
 	  "Ability1"        "petri_petrosyan_flat_joke" 
-	  "Ability2"        "petri_petrosyan_laugh_burst" 
+	  "Ability2"        "petri_mini_actor_pull_eyes" 
 	  "Ability3"        "petri_petrosyan_wind_walk"
 	  "Ability4"        "petri_petrosyan_return"
 	  "Ability5"        "petri_petrosyan_explore"
@@ -212,7 +212,7 @@
 	  "AttributeBaseIntelligence" "1"
 	  "AttributeIntelligenceGain" "0.25"
 	  "AttributeBaseAgility"    "1"
-	  "AttributeAgilityGain"    "0.3"
+	  "AttributeAgilityGain"    "0.0"
 	
 	  "BountyXP"          "0"                 
 	  "BountyGoldMin"       "10"                   

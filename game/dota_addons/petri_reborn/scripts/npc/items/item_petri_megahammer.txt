@@ -23,6 +23,16 @@
   
   "Modifiers"
   {
+    "modifier_petri_sword_bonus"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "2"
+      }
+    }
     "modifier_item_petri_megahammer_datadriven"
     {
       "Passive"     "1"

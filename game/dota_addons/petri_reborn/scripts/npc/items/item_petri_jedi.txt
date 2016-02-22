@@ -275,6 +275,6 @@
   "ItemResult"          "item_petri_jedi"
   "ItemRequirements"
   {
-    "01"            "item_petri_uber_mask_of_laugh;item_petri_kvn_medal"
+    "01"            "item_petri_uber_mask_of_laugh_level4;item_petri_kvn_medal"
   }
 }

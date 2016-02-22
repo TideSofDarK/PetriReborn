@@ -76,6 +76,57 @@ function FarSight( event )
     AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
 end
 
+function PullEyes( event )
+	local caster = event.caster
+	local ability = event.ability
+	local level = ability:GetLevel()
+	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
+	local duration = ability:GetChannelTime()
+
+	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
+	local target = event.target_points[1]
+
+	ability.target = target
+
+	EmitSoundOnLocationForAllies(target, "DOTA_Item.DustOfAppearance.Activate", caster)
+
+    -- Particle for team
+    local particle = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
+    ParticleManager:SetParticleControl( particle, 0, target )
+    ParticleManager:SetParticleControl( particle, 1, Vector(reveal_radius,1,reveal_radius) )
+
+   	caster:SetDayTimeVisionRange(0)
+	caster:SetNightTimeVisionRange(0)
+end
+
+function PullEyesChanneling( keys )
+	local caster = event.caster
+	local ability = event.ability
+	local level = ability:GetLevel()
+	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
+	local duration = ability:GetChannelTime()
+
+	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
+	local target = ability.target
+
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
+
+	if #units > 5 then
+		caster:AddExperience(25, 0, false, true)
+	end
+
+	-- Vision
+    AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, 0.3, false)
+end
+
+function StopPullingEyes( keys )
+	local caster = event.caster
+	local ability = event.ability
+
+	caster:SetDayTimeVisionRange(1000)
+	caster:SetNightTimeVisionRange(1000)
+end
+
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target

@@ -445,6 +445,18 @@ function GameMode:InitGameMode()
 
     return 0.03
   end)
+
+  local petrosyan_area = Entities:FindByName(nil,"PetrosyanShopTrigger")
+
+  GNV:AddCallbacks( "Init", function (  )
+    for y = GNV.YMin, GNV.YMax do
+      for x = GNV.XMin, GNV.XMax do
+        local gridX = GridNav:GridPosToWorldCenterX(x)
+        local gridY = GridNav:GridPosToWorldCenterY(y)
+        local position = Vector(gridX, gridY, 0)  
+      end
+    end
+  end)
 end
 
 function GameMode:ReplaceWithMiniActor(player, gold)

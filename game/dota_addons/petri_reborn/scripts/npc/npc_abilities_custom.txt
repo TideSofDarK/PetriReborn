@@ -1151,6 +1151,11 @@
 	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
 	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	
+	  "precache"
+	  {
+	    "particle"          "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf"
+	  }
 	          
 	  "AbilitySpecial"
 	  {
@@ -1163,6 +1168,16 @@
 	    {
 	      "var_type"                      "FIELD_INTEGER"
 	      "max_stacks"                    "45"
+	    }
+	    "03"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "max_bounce_targets"                    "2"
+	    }
+	    "04"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "bounce_range"                    "500"
 	    }
 	  }
 	
@@ -1217,6 +1232,11 @@
 	        {
 	          "ScriptFile"            "units/creep.lua"
 	          "Function"              "Attack"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"            "units/creep.lua"
+	          "Function"              "CreepSplashDamage"
 	        }
 	      }
 	
@@ -2502,6 +2522,104 @@
 	      }
 	    }
 	  }  
+	}
+	"petri_mini_actor_pull_eyes"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	
+	  "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
+	  "AbilityCooldown"       "28 27 26 25 24 23 22 21 20 19 18 17 16 15 14"
+	  "AbilityCastPoint"      "0.2"
+	  "AbilityChannelTime"    "15"
+	
+	  "MaxLevel"            "15"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/dust_of_appearance.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "reveal_radius"          "1600"
+	    }
+	  }
+	
+	  "precache"
+	  {
+	    "particle"    "particles/units/heroes/hero_rattletrap/clock_loadout_sparks.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"    "units/petrosyan.lua"
+	      "Function"      "PullEyes"
+	      "Target"        "POINT"
+	    }
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_pulling_eyes"
+	      "Target"     "CASTER"
+	      "Duration"    "15"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RemoveModifier"
+	    {
+	      "ModifierName"  "modifier_pulling_eyes"
+	      "Target"     "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"    "units/petrosyan.lua"
+	      "Function"      "StopPullingEyes"
+	    }
+	  }
+	
+	  "OnChannelSucceeded"
+	  {
+	    "RemoveModifier"
+	    {
+	      "ModifierName"  "modifier_pulling_eyes"
+	      "Target"     "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"    "units/petrosyan.lua"
+	      "Function"      "StopPullingEyes"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_pulling_eyes"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "ThinkInterval"  "0.3"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/petrosyan.lua"
+	          "Function"      "PullEyesChanneling"
+	        }
+	      }
+	    }
+	  }
 	}
 	"petri_petrosyan_explore"
 	{

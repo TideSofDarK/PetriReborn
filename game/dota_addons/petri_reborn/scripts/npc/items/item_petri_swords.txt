@@ -257,14 +257,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "350"
+  "ItemCost"            "540"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_titan_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_magic_shield;item_petri_perfect_sword"
+    "01"            "item_petri_perfect_sword:"
   }
 }
 

@@ -115,6 +115,23 @@ function GetGoldModifier()
   return 1.0
 end
 
+function IsInsideEntityBounds(ent, position)
+  local origin = entity:GetAbsOrigin()
+  local bounds = entity:GetBounds()
+  local min = bounds.Mins
+  local max = bounds.Maxs
+  local X = location.x
+  local Y = location.y
+  local minX = min.x + origin.x
+  local minY = min.y + origin.y
+  local maxX = max.x + origin.x
+  local maxY = max.y + origin.y
+  local betweenX = X >= minX and X <= maxX
+  local betweenY = Y >= minY and Y <= maxY
+
+  return betweenX and betweenY
+end
+
 function GetMoveToTreePosition( unit, target )
   local origin = unit:GetAbsOrigin()
   local building_pos = target:GetAbsOrigin()
@@ -555,6 +572,7 @@ function StopUpgrading(event)
   if caster:IsAlive() then
     hero.lumber = hero.lumber + caster.lastSpentLumber
     hero.food = hero.food - caster.lastSpentFood
+    caster.foodSpent = caster.foodSpent - caster.lastSpentFood
     PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
   end
 
