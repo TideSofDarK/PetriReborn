@@ -264,7 +264,7 @@
   "ItemResult"          "item_petri_titan_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_perfect_sword:"
+    "01"            "item_petri_perfect_sword;"
   }
 }
 
