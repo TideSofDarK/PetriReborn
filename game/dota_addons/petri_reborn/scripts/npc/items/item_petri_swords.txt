@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "5"
+      "bonus_damage"      "10"
     }
   }
   
@@ -103,7 +103,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kladenets_sword"
 
-  "ItemCost"            "402"
+  "ItemCost"            "381"
   "ItemShopTags"          "damage"
   "ItemQuality"         "component"
   "ItemAliases"         "kladenets sword"
@@ -161,7 +161,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_perfect_sword"
 
-  "ItemCost"            "953"
+  "ItemCost"            "781"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "perfect sword"
@@ -219,7 +219,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_titan_sword"
 
-  "ItemCost"            "1272"
+  "ItemCost"            "1321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "titan sword"
@@ -257,14 +257,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "350"
+  "ItemCost"            "540"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_titan_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_magic_shield;item_petri_perfect_sword"
+    "01"            "item_petri_perfect_sword;"
   }
 }
 
@@ -277,7 +277,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_magic_axe"
 
-  "ItemCost"            "3044"
+  "ItemCost"            "2321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "magic axe"
@@ -335,7 +335,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_grond"
 
-  "ItemCost"            "7088"
+  "ItemCost"            "5321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "grond"
@@ -393,7 +393,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_thunder"
 
-  "ItemCost"            "14176"
+  "ItemCost"            "9121"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "thunder"
@@ -451,7 +451,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_trident"
 
-  "ItemCost"            "19176"
+  "ItemCost"            "14121"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "trident"

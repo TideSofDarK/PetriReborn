@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_bracer"
 
-  "ItemCost"            "25"
+  "ItemCost"            "50"
   "ItemShopTags"          "agi;int;str"
   "ItemQuality"         "component"
   "ItemAliases"         "bracer"
@@ -17,17 +17,16 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"    "2"
+      "bonus_all_stats"    "5"
     }
   }
   
   "Modifiers"
   {
-    "modifier_item_petri_bracer_datadriven"
+    "modifier_passive"
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {

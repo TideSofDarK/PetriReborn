@@ -1,0 +1,99 @@
+"petri_upgrade_earth_wall"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "earth_spirit_boulder_smash"
+
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "MaxLevel"            "10"
+
+  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0"
+  "AbilityGoldCost"       "2 16 40 100 400 600 1200 1800 3000"
+
+  "precache"
+  {
+    "particle"  "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "lumber_cost"        "1500 2500 5000 20000 50000 100000 300000 500000 1000000"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "health_points"        "500 1000 2000 3000 4000 5000 6000 7000 8000"
+    }
+    "03"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "armor"        "63 143 180 270 1000 2000 3600 7000 10000"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/wall.lua"
+      "Function"        "UpgradeEarth"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_wall_notification"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/wall.lua"
+          "Function"    "Notification"
+        }
+      }
+    }
+    "modifier_armor"
+    {
+      "IsPassive"  "1"
+      "IsHidden" "1"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
+      }
+    }
+  }
+}

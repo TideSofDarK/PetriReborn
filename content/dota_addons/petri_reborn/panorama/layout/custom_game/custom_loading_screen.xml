@@ -4,24 +4,53 @@
   </styles>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
-      <Image class="Background" src="file://{images}/custom_game/loading_screen/petri_background.png" />
-      <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" />
+      <Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+      <!-- <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" /> -->
       <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
       <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
-      <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" />
+      <!-- <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" /> -->
     </Panel>
 
-    <Panel id="Placeholders" >
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/vova.jpg" />
-      <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/placeholder.png" />
+    <Panel id="PlaceholdersRoot" >
+      <Panel id="Placeholders" >
+        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
+        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
+      </Panel>
+    </Panel>
+
+    <Panel id="Developers">
+      <Label text="#creator"/>
+      <Panel id="Creator" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198001376044" />
+      </Panel>
+
+      <Label text="#panoramaui"/>
+      <Panel id="PanoramaCoder" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561197996730911" />
+      </Panel>
+
+      <Label text="#gamedesigner"/>
+      <Panel id="GameDesigner" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
+      </Panel>
+
+      <Label text="#media"/>
+      <Panel id="Media" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198050312182" />
+      </Panel>
+
+      <Label text="#models"/>
+      <Panel id="Models" class="column">
+        <DOTAAvatarImage class="avatar" steamid="76561198069840828" />
+      </Panel>
     </Panel>
 
     <Panel id="SocialNetworks" >
       <Image src="file://{images}/custom_game/sn/sn.png" />
     </Panel>
 
-    <Panel id="TitlePanel">
+<!--     <Panel id="TitlePanel">
       <Label id="AddonTitle" text="#addon_game_name" style="" />
-    </Panel>
+    </Panel> -->
   </Panel>
 </root>

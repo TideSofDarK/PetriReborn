@@ -4,6 +4,11 @@
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "AbilityUnitDamageType"         "DAMAGE_TYPE_PHYSICAL"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+
+  "precache"
+  {
+    "particle"          "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf"
+  }
           
   "AbilitySpecial"
   {
@@ -15,7 +20,22 @@
     "02"
     {
       "var_type"                      "FIELD_INTEGER"
-      "max_stacks"                    "25"
+      "max_stacks"                    "45"
+    }
+    "03"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "max_bounce_targets"                    "2"
+    }
+    "04"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "bounce_range"                    "500"
+    }
+    "05"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "bonus_damage_percent"                    "140"
     }
   }
 
@@ -27,6 +47,37 @@
   
   "Modifiers"
   {
+    "modifier_creep_agression"
+    {
+      "Passive"                       "1"
+      "IsHidden"                      "1"
+      "IsPurgable"                    "0"
+    
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "ActOnTargets"
+        {
+          "Target"
+          {
+            "Center"    "TARGET"
+            "Radius"   "1200"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_HERO"
+          }
+        
+          "Action"    
+          {
+            "RunScript"
+            {
+              "ScriptFile"  "units/creep.lua"
+              "Function"    "Aggression"
+            }
+          }
+        }
+      }
+    }
+
     "modifier_creep_swipes_caster"
     {
       "Passive"                       "1"
@@ -35,20 +86,25 @@
     
       "OnAttackLanded"
       {
+        //"RunScript"
+        //{
+        //  "ScriptFile"            "units/creep.lua"
+        //  "Function"              "Attack"
+        //}
         "RunScript"
         {
           "ScriptFile"            "units/creep.lua"
-          "Function"              "Attack"
+          "Function"              "CreepSplashDamage"
         }
       }
 
       "OnCreated"
       {
-        "RunScript"
-        {
-          "ScriptFile"            "units/creep.lua"
-          "Function"              "ApplyDamageReduction"
-        }
+        //"RunScript"
+        //{
+        //  "ScriptFile"            "units/creep.lua"
+        //  "Function"              "ApplyDamageReduction"
+        //}
       }
     }
 

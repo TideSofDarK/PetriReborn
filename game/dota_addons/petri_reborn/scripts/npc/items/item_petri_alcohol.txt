@@ -17,10 +17,7 @@
   "ItemInitialCharges" "1"
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
-
-  "ItemStockMax" "2" 
-  "ItemStockTime" "125"
-  "ItemStockInitial" "1"
+  "ItemSellable"          "0"
 
   "SideShop" "1"
 
@@ -45,6 +42,13 @@
       "Target"      "CASTER"
       "ModifierName"    "modifier_item_petri_alcohol_active"
     }
+
+    "RunScript"
+    {
+      "ScriptFile"  "items/alcohol.lua"
+      "Function"    "RemoveSnare"
+    }
+    
     "SpendCharge"
     {}
   }
@@ -65,6 +69,7 @@
       "States"
       {
         "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }

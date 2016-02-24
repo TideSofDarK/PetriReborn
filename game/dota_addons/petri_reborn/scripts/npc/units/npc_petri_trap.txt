@@ -3,7 +3,7 @@
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/heroes/techies/fx_techiesfx_stasis.vmdl"
   "ModelScale"        "1.0"
-  "Level"           "0"
+  "Level"           "4"
   "HealthBarOffset"       "140"
   "HasInventory"        "0"
 
@@ -31,13 +31,13 @@
   "MovementTurnRate"    "0.0"  
   "HasAggressiveStance"     "0"
   
-  "StatusHealth"        "1"
+  "StatusHealth"        "4"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"       "0"
 
-  "VisionDaytimeRange"    "1700"
-  "VisionNighttimeRange"    "1700"
+  "VisionDaytimeRange"    "170"
+  "VisionNighttimeRange"    "170"
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

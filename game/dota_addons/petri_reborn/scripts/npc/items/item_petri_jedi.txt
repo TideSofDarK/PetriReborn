@@ -1,0 +1,281 @@
+"item_petri_jedi"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1958"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_jedi"
+
+  "AbilityCooldown"       "180"
+  "AbilitySharedCooldown"         "laugh"
+  
+  "ItemQuality"           "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "0"
+
+  "ItemShopTags"          "unique"
+  "ItemQuality"         "epic"
+  "ItemAliases"         "jedi"
+
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "precache"
+  {
+    "particle"  "particles/status_fx/status_effect_stickynapalm.vpcf"
+    "particle"  "particles/items3_fx/lotus_orb_shield.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "lifesteal_percent"   "70"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "lifesteal_percent_building"   "13"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"   "55"
+    }
+    "04"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "armor"   "20"
+    }
+    "05"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"   "16"
+    }
+    "06"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "grease_duration"    "120"
+    }
+    "07"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "armor_reducing"    "-900"
+    }
+    "08"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "corruption_duration"    "1"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_jedi_invu"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_grease"
+      "Target"     "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_grease"
+    {
+      "Duration"                "%grease_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_stickynapalm.vpcf"
+      "StatusEffectPriority" "9"
+
+      "ThinkInterval"  "0.1"
+      "OnIntervalThink"
+      {
+        "ActOnTargets"
+        {
+          "Target"
+          {
+            "Center"    "TARGET"
+            "Radius"   "400"
+            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Types"   "DOTA_UNIT_TARGET_ALL"
+          }
+        
+          "Action"    
+          {
+            "RunScript"
+            {
+              "ScriptFile"  "units/petrosyan.lua"
+              "Function"    "JediAura"
+            }
+          }
+        }
+      }
+      
+      "OnAttackLanded"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "items/grease.lua"
+          "Function"    "OnGreaseHit"
+        }
+      }
+
+      "States"
+      {
+        "MODIFIER_STATE_CANNOT_MISS"    "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
+    "modifier_grease_corruption"
+    {
+      "Duration"              "%corruption_duration"
+      "Passive"               "0"
+      "IsHidden"              "0"
+
+      "IsDebuff"          "1"
+      "IsPurgable"        "0"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reducing"
+      }
+    }
+
+    "modifier_passive"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+      }
+
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
+    "modifier_item_petri_uber_mask_of_laugh"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      
+      "Orb"
+      {
+        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+      }
+
+      "OnOrbImpact"
+      {
+        "RunScript"
+        {
+          "ScriptFile"      "units/petrosyan.lua"
+          "Function"        "ModifierSuperLifesteal"
+        }
+        "RunScript"
+        {
+          "ScriptFile"      "units/petrosyan.lua"
+          "Function"        "BonusGoldFromWall"
+        }
+      }
+    }
+
+    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      
+      "OnDealDamage"
+      {
+        "Lifesteal"
+        {
+          "Target"      "ATTACKER"
+          "LifestealPercent"  "%lifesteal_percent"
+        }
+      }
+    }
+
+    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building"
+    {
+      "Passive"     "0"
+      "IsHidden"      "1"
+      
+      "OnDealDamage"
+      {
+        "Lifesteal"
+        {
+          "Target"      "ATTACKER"
+          "LifestealPercent"  "%lifesteal_percent_building"
+        }
+      }
+    }
+
+    "modifier_jedi_invu"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "CASTER"
+        }
+      }
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_jedi"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1957"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "35000"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_jedi"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_uber_mask_of_laugh_level4;item_petri_kvn_medal"
+  }
+}

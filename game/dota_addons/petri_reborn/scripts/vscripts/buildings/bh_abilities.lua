@@ -1,5 +1,5 @@
 function CancelBuilding(caster, ability, pID, reason)
-	Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false})
+	if reason ~= "" then Notifications:Top(caster:GetPlayerOwnerID(),{text=reason, duration=4, style={color="red"}, continue=false}) end
 	return false
 end
 
@@ -18,6 +18,7 @@ function build( keys )
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
 	local ability_name = ability:GetName()
+	local unit_name = GameMode.AbilityKVs[ability_name]["UnitName"]
 
 	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
@@ -36,6 +37,13 @@ function build( keys )
 	-- Cancel building if limit is reached
 	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
 		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
+	end
+
+	-- Cancel building if eye was already built
+	for k,v in pairs(hero.uniqueUnitList) do
+		if k == unit_name and v == true then
+			return CancelBuilding(caster, ability, pID, "")
+		end
 	end
 
 	player.waitingForBuildHelper = true
@@ -87,23 +95,40 @@ function build( keys )
 	keys:OnConstructionStarted(function(unit)
 		hero.buildingCount = hero.buildingCount + 1
 
+		local gnvTable = {}
+		gnvTable["size"] = returnTable:GetVal("BuildingSize", "number")
+		gnvTable["pos"] = unit:GetAbsOrigin() + Vector(gnvTable["size"] / -2, gnvTable["size"] / -2, 0)
+		AddKeyToNetTable(unit:entindex(), "gridnav", "building", gnvTable)
+		--PrintTable(GetKeyInNetTable(unit:entindex(), "gridnav", "building"))
+
+		if GameMode.UnitKVs[unit_name]["Unique"] == 1 then
+			hero.uniqueUnitList[unit_name] = true
+		end
+
 		if unit:GetUnitName() == "npc_petri_exit" then
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
+			GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
+
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-			Timers:CreateTimer(600, function() unit.childEntity:RemoveSelf() end)
+			Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
+				function() 
+					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.EXIT_COUNT > 1 then
+						if GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == true then
+							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
+							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
+							Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
+						else
+							GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
+						end
+					end
+				end)
 		end
 
 		caster:EmitSound("ui.inv_pickup_wood")
 
-		-- Unit is the building be built.
-		-- Play construction sound
-		-- FindClearSpace for the builder
 		FindClearSpaceForUnit(keys.caster, keys.caster:GetAbsOrigin(), true)
 		unit.foodSpent = food_cost
-		-- Very bad solution
-		-- But when construction is started there is no way of cancelling it so...
-		--player.activeBuilder.work.callbacks.onConstructionCancelled = nil
 
 		local building_ability = unit:FindAbilityByName("petri_building")
 		if building_ability then building_ability:SetLevel(1) end
@@ -125,10 +150,8 @@ function build( keys )
 
 		AddEntryToDependenciesTable(pID, ability_name, 1)
 
-		if unit:GetUnitName() == "npc_petri_idol" then
-			local shopEnt = Entities:FindByName(nil, "petri_idol") -- entity name in hammer
-			unit.newShopTarget = SpawnEntityFromTableSynchronous('info_target', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol", origin = unit:GetAbsOrigin()})
-			unit.newShop = SpawnEntityFromTableSynchronous('trigger_shop', {targetname = "team_"..tostring(DOTA_TEAM_GOODGUYS).."_idol",origin = unit:GetAbsOrigin(), shoptype = 1, model=shopEnt:GetModelName()})
+		if unit.onBuildingCompleted then
+			unit.onBuildingCompleted(unit)
 		end
 
 		unit:SetMana(unit:GetMaxMana())
@@ -186,6 +209,7 @@ function builder_queue( keys )
     if caster.ProcessingBuilding ~= nil
     and caster.lastOrder ~= DOTA_UNIT_ORDER_STOP
     and caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
+    and caster.lastOrder ~= DOTA_UNIT_ORDER_PICKUP_ITEM
     and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM
      then
         -- caster is probably a builder, stop them

@@ -1,4 +1,5 @@
 GameSetup = {}
+GameSetup.precache_started = false
 GameSetup.votes = {}
 
 ------------------------------------------------------------------------
@@ -19,6 +20,9 @@ function GameSetup:ShuffleSchedule( args )
   Timers:CreateTimer(args["timer"], 
     function()
       local mode = nil;
+      if not GameSetup.votes['shuffle_mode'] then
+        return 1.0
+      end
       for k,v in pairs(GameSetup.votes['shuffle_mode']) do
         mode = v;
       end
@@ -90,15 +94,15 @@ function GetTeamsFromEmptySelection( args )
           table.insert(kvn, k)
         end
       end
-
+  
       -- Set random kvn to petr team if only host prefer this team
       if GetArraySize( petr ) < minPetrCount then
         local num = math.floor(math.random() * (GetArraySize( kvn ) + 1))
-        table.insert(petr, table.remove(kvn, num))
+        table.insert(petr, table.remove(kvn, num))     
       end
     end
   end
-  
+
   return petr, kvn  
 end
 
@@ -207,4 +211,28 @@ function GameSetup:ToAllClients( args )
   end
 
   CustomGameEventManager:Send_ServerToAllClients(eventName, eventArgs)
+end
+
+function GameSetup:StartPrecache()
+  if GameSetup.precache_started == false then
+    GameSetup.precache_started = true
+    PrecacheItemByNameAsync("item_precache_item", function()
+      
+    end)
+    for i=0,12 do
+      local player = PlayerResource:GetPlayer(i)
+
+      if player ~= nil then
+        PrecacheUnitByNameAsync("npc_dota_hero_brewmaster", function ()
+
+        end, i)
+        PrecacheUnitByNameAsync("npc_dota_hero_death_prophet", function ()
+
+        end, i)
+        PrecacheUnitByNameAsync("npc_dota_hero_rattletrap", function ()
+
+        end, i)
+      end
+    end
+  end
 end

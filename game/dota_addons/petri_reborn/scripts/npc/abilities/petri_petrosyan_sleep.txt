@@ -6,26 +6,17 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
   "AbilityTextureName" "petri_sleep"
 
-  "MaxLevel" "15"
+  "MaxLevel" "20"
 
   "AbilityCastRange"        "650"
 
-  "AbilityCooldown"       "11 13 15 17 19 21 23 25 27 29 31 32 33 34 35"
+  "AbilityCooldown" "11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30"
 
-  "AbilityManaCost" "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15" 
+  "AbilityManaCost" "20" 
 
   "precache"
   {
     "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
-  }
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"          "FIELD_INTEGER"
-      "duration"      "5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
-    }
   }
 
   "OnSpellStart"
@@ -35,18 +26,12 @@
       "ScriptFile"  "units/petrosyan.lua"
       "Function"    "Sleep"
     }
-    "ApplyModifier"
-    {
-      "ModifierName"  "sleep_modifier"
-      "Target"    "TARGET"
-    }
   }
   
   "Modifiers"
   {
     "sleep_modifier"
     {
-      "Duration"  "%duration"
       "IsDebuff"  "1"
 
       "EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
@@ -61,60 +46,6 @@
         "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED" 
         "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
-      }
-    } 
-  }   
-}
-
-"petri_petrosyan_dummy_sleep"
-{
-  "BaseClass" "ability_datadriven"
-  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-
-  "MaxLevel" "1"
-
-  "precache"
-  {
-    "particle"    "particles/generic_gameplay/generic_sleep.vpcf"
-  }
-
-  "OnUpgrade"
-  {
-    "ApplyModifier"
-    {
-      "ModifierName"  "dummy_sleep_modifier"
-      "Target"    "CASTER"
-    }
-  }
-  
-  "Modifiers"
-  {
-    "dummy_sleep_modifier"
-    {
-      "Duration"  "30"
-      "IsDebuff"  "1"
-
-      "EffectName"        "particles/generic_gameplay/generic_sleep.vpcf"
-      "EffectAttachType"      "follow_overhead"
-
-      "States"
-      {
-        "MODIFIER_STATE_NIGHTMARED"         "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_STUNNED"            "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_SPECIALLY_DENIABLE"   "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED" 
-
-        "MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"   
-      }
-
-      "OnDestroy"
-      {
-        "RunScript"
-        {
-          "ScriptFile"  "units/petrosyan.lua"
-          "Function"    "OnAwake"
-        }
       }
     } 
   }   

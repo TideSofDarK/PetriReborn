@@ -1,0 +1,3430 @@
+"Attachments"
+{
+	"Particles"
+	{
+		"models/items/warlock/ceaseless/ceaseless.vmdl"
+		{
+		    "particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
+		    {
+		   		"0"  "attach_core"
+		    }
+		}
+		"models/units/dartmolsabre/lightsaber.vmdl"
+		{
+		    "particles/units/heroes/hero_juggernaut/jugg_weapon_glow_variation_red.vpcf"
+		    {
+		   		"0"  "LightPoint1"
+		    }
+		    "particles/units/heroes/hero_juggernaut/jugg_weapon_glow_variation_red_glow.vpcf"
+		    {
+		   		"0"  "LightPoint2"
+		    }
+		}
+		"models/items/axe/shout_mask/shout_mask.vmdl"
+		{
+			"particles/econ/items/axe/axe_helm_shoutmask/axe_shout_mask_ambient.vpcf"
+			{
+				"2"		"attach_mouth"
+				"1"		"attach_eye_l"
+				"0"		"attach_eye_r"
+			}
+		}
+		"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+		{
+			"particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient.vpcf"
+			{
+				"0"		"attach_origin"
+			}
+		}
+		"models/props_structures/statue_dragon001.vmdl"
+		{
+			"models/effects/radiant_lightrays_rainstorm.vmdl"
+			{
+				"0"		"attach_origin"
+			}
+		}
+		"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
+	  	{
+	   		"particles/econ/items/wraith_king/wraith_king_winterblight_weapon/wraith_king_winterblight_ambient.vpcf"
+		   	{
+			    "2"  "attach_mouth"
+			    "1"  "attach_eye_l"
+			    "0"  "attach_eye_r"
+		   	}
+	  	}
+	}
+	"models/creeps/roshan/roshan.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/props_gameplay/halloween_candy.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"23"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"35"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/props_structures/pumpkin003.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"180"
+				"roll"		"90"
+				"ZPos"		"9"
+				"YPos"		"4"
+				"yaw"		"0"
+				"XPos"		"39"
+			}
+		}
+	}	
+	"models/heroes/antimage/antimage.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/items/antimage/skullbasher/skullbasher_gold.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"270"
+				"roll"		"90"
+				"ZPos"		"-92"
+				"YPos"		"77"
+				"yaw"		"90"
+				"XPos"		"-3"
+			}
+			"models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
+			{
+				"scale"		"0.5"
+				"pitch"		"114"
+				"roll"		"50"
+				"ZPos"		"-97"
+				"YPos"		"-51"
+				"yaw"		"31"
+				"XPos"		"-14"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/antimage/skullbasher/skullbasher_gold_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"270"
+				"roll"		"90"
+				"ZPos"		"-92"
+				"YPos"		"-76"
+				"yaw"		"90"
+				"XPos"		"6"
+			}
+			"models/items/axe/weapon_heavy_cutter.vmdl"
+			{
+				"scale"		"0.5"
+				"pitch"		"0"
+				"roll"		"180"
+				"ZPos"		"-67"
+				"YPos"		"115"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+	}
+	"models/heroes/obsidian_destroyer/obsidian_destroyer.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/items/obsidian_destroyer/immortal_weapon_1/immortal_weapon_1.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-104"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_rocks.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_wings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"-4"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+			"models/heroes/obsidian_destroyer/obsidian_destroyer_horns.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-56"
+			}
+		}
+	}
+	"models/heroes/lich/lich.vmdl"
+	{
+		"attach_portrait"
+		{
+			"models/items/lich/imperialists_frost_biter/imperialists_frost_biter.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-238"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"12"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/lich/the_deadwinter_head/the_deadwinter_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-10"
+				"roll"		"0"
+				"ZPos"		"-211"
+				"YPos"		"4"
+				"yaw"		"-16"
+				"XPos"		"7"
+			}
+		}
+		"attach_legfrost"
+		{
+			"models/items/lich/imperialists_mana_chamber/imperialists_mana_chamber.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-1"
+				"YPos"		"-3"
+				"yaw"		"0"
+				"XPos"		"2"
+			}
+		}
+	}
+	"models/heroes/warlock/warlock.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivist_shoulders/archivist_shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-90"
+				"roll"		"0"
+				"ZPos"		"-122"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"7"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/warlock/archivist_head/archivist_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-82"
+				"roll"		"0"
+				"ZPos"		"-124"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"4"
+			}
+			"models/items/warlock/archivists_robe/archivists_robe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-77"
+				"roll"		"0"
+				"ZPos"		"-104"
+				"YPos"		"-2"
+				"yaw"		"-5"
+				"XPos"		"-2"
+			}
+			"models/items/warlock/archivist_facebag/archivist_facebag.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-98"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"-9"
+				"yaw"		"-11"
+				"XPos"		"3"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/warlock/archivist_lantern/archivist_lantern.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-5"
+				"YPos"		"3"
+				"yaw"		"0"
+				"XPos"		"-4"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/warlock/ceaseless/ceaseless.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"135"
+				"roll"		"45"
+				"ZPos"		"-189"
+				"YPos"		"-72"
+				"yaw"		"180"
+				"XPos"		"-35"
+			}
+		}
+	}
+	"models/heroes/necrolyte/necrolyte.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/necrolyte/heretic_head/heretic_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-69"
+				"roll"		"0"
+				"ZPos"		"-146"
+				"YPos"		"1.91"
+				"yaw"		"36"
+				"XPos"		"-6"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/necrolyte/heretic_hood/heretic_hood.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-69"
+				"roll"		"0"
+				"ZPos"		"-146"
+				"YPos"		"1.91"
+				"yaw"		"36"
+				"XPos"		"-6"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/necrolyte/heretic_shoulder/heretic_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-62"
+				"roll"		"0"
+				"ZPos"		"-123"
+				"YPos"		"0"
+				"yaw"		"5"
+				"XPos"		"19"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/necrolyte/heretic_weapon/heretic_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-102"
+				"YPos"		"32"
+				"yaw"		"180"
+				"XPos"		"-20"
+			}
+		}
+	}
+	"models/heroes/shadow_fiend/shadow_fiend.vmdl"
+	{
+		"attach_eyeL"
+		{
+			"models/heroes/shadow_fiend/shadow_fiend_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-62"
+				"roll"		"-90"
+				"ZPos"		"-174"
+				"YPos"		"-6"
+				"yaw"		"0"
+				"XPos"		"1"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/shadow_fiend/arms_deso/arms_deso.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"256"
+				"roll"		"90"
+				"ZPos"		"-103"
+				"YPos"		"-2"
+				"yaw"		"176"
+				"XPos"		"-1"
+			}
+			"models/heroes/shadow_fiend/shadow_fiend_shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-77"
+				"roll"		"90"
+				"ZPos"		"-116"
+				"YPos"		"0"
+				"yaw"		"180"
+				"XPos"		"3"
+			}
+		}
+	}
+	"models/heroes/tidehunter/tidehunter.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/items/tidehunter/diving_helmet/tidehunter_diving_helmet.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"1"
+				"roll"		"0"
+				"ZPos"		"-173"
+				"YPos"		"0"
+				"yaw"		"4"
+				"XPos"		"-50"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/axe_executioner.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"28"
+				"roll"		"41"
+				"ZPos"		"-50"
+				"YPos"		"139"
+				"yaw"		"-112"
+				"XPos"		"-7"
+			}
+		}
+	}
+	"models/heroes/pedestal/effigy_pedestal_ti5.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/props_structures/gryphon_statue001.vmdl"
+			{
+				"scale"		"0.25"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"9"
+			}
+			"models/heroes/tidehunter/tidehuntertentacle.vmdl"
+			{
+				"scale"		"2.4"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+	}
+	"models/heroes/crystal_maiden/pedestal_cm_arcana.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/props_structures/crystal002.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"1"
+				"yaw"		"0"
+				"XPos"		"-36"
+			}
+			"models/snowman/snowman.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
+	   		"models/christmas_tree/christmas_tree.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+		}
+	}
+	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/items/ogre_magi/goldenwalruswhacker/goldenwalruswhacker.vmdl"
+			{
+				"scale"		"1.6"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"-125"
+				"yaw"		"90"
+				"XPos"		"-21"
+			}
+		}
+	}
+	"models/heroes/drow/drow.vmdl"
+	{
+		"attach_eye_l"
+		{
+			"models/items/pudge/the_ol_choppers_shoulder/the_ol_choppers_shoulder.vmdl"
+			{
+				"scale"		"0.50"
+				"pitch"		"49"
+				"roll"		"180"
+				"ZPos"		"-147"
+				"YPos"		"-14"
+				"yaw"		"-84"
+				"XPos"		"7"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/sniper/wildwest_weapon/wildwest_weapon.vmdl"
+			{
+				"scale"		"0.70"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"-29"
+				"YPos"		"21"
+				"yaw"		"270"
+				"XPos"		"-128"
+			}
+			"models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
+			{
+				"scale"		"0.2"
+				"pitch"		"180"
+				"roll"		"55"
+				"ZPos"		"21"
+				"YPos"		"0"
+				"yaw"		"271"
+				"XPos"		"0"
+			}
+		}
+	}
+	"models/heroes/lina/lina.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	   		"models/items/lina/origins_flamehair/origins_flamehair.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "48"
+			    "ZPos"  "-184"
+			    "YPos"  "0"
+			    "yaw"  "-90"
+			    "XPos"  "3"
+	   		}
+			"models/items/lina/x_hair_xxx/x_hair_xxx.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "126"
+			    "ZPos"  "4"
+			    "YPos"  "0"
+			    "yaw"  "-90"
+			    "XPos"  "185"
+	   		}
+	   		"models/items/lanaya/exotic_assassin_curls/exotic_assassin_curls.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "125"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "270"
+			    "XPos"  "168"
+	   		}
+	  	}
+		"attach_hitloc"
+	  	{
+	   		"models/heroes/lina/lina_belt.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-123"
+			    "roll"  "0"
+			    "ZPos"  "-149"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+			"models/items/lina/x_necklace_xxx/x_necklace_xxx.vmdl"
+	   		{
+			    "scale"  "-1.2"
+			    "pitch"  "-35"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "158"
+	   		}
+	  	}
+	}
+	"models/heroes/earthshaker/earthshaker.vmdl"
+	{
+	  	"attach_totem"
+	  	{
+	   		"models/heroes/earthshaker/totem.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "102"
+			    "ZPos"  "-149"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "16"
+	   		}
+	  	}
+	}
+	"models/heroes/lanaya/lanaya.vmdl"
+	{
+	  	"attach_eyeL"
+	  	{
+	   		"models/items/crystal_maiden/esl_frozen_lotus_head/esl_frozen_lotus_head.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-161"
+			    "YPos"  "4"
+			    "yaw"  "0"
+			    "XPos"  "-4"
+	   		}
+	  	}
+	}
+	"models/items/earth_spirit/demon_stone_summon/demon_stone_summon.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_barracks001_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}	
+	"models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/items/wards/chinese_ward/chinese_ward.vmdl"
+	   		{
+			    "scale"  "2.7"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-43"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/props_debris/chinese_lantern001.vmdl"
+	   		{
+			    "scale"  "1.5"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "53"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_tower_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_ancient_destruction.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/witchdoctor/witchdoctor.vmdl"
+	{
+	  	"attach_staff"
+	  	{
+	   		"models/items/witchdoctor/baron_la_croix_staff/baron_la_croix_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-232"
+			    "YPos"  "68"
+			    "yaw"  "91"
+			    "XPos"  "-38"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/witchdoctor/purplenightmare_belt/purplenightmare_belt.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-63"
+			    "roll"  "0"
+			    "ZPos"  "-105"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "14"
+	   		}
+	   		"models/items/witchdoctor/pet_snake.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-91"
+			    "roll"  "0"
+			    "ZPos"  "-98"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+
+	  	}
+	}
+	"models/props_structures/coffin002.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/earthshaker/totem_dragon_wall/totem_dragon.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	  		"models/props_debris/chinese_lantern002.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/techies/bigshot/bigshot_remotebomb.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/phoenix/phoenix_bird.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/blotto_and_stick/blotto.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/dragon_statue001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/statue_dragon003.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/dc_demon/dc_demon.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/brewmaster/brewmaster_windspirit.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props/traps/hooded_fang/hooded_fang.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/dire_ward_eye/dire_ward_eye.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/vaal_the_animated_constructradiant/vaal_the_animated_constructradiant_flying.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_goldxp.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/shadow_demon/shadow_demon.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/warlock/golem/hellsworn_golem/hellsworn_golem.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/iron_claw_true_form/iron_claw_true_form.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/wizened_bear/wizened_bear.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/tuskarr/whiskey_the_stout/whiskey_the_stout_slider.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	  		"models/items/wards/esl_wardchest_ward_of_foresight/esl_wardchest_ward_of_foresight.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/coco_the_courageous/coco_the_courageous.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/juggernaut/ward/healing_gills_of_the_lost_isles/healing_gills_of_the_lost_isles.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/guardians_of_justice_enix/guardians_of_justice_enix.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/pedestal/effigy_pedestal_frosty_dire.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/baby_winter_wyvern/baby_winter_wyvern.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/tuskarr/sigil/barrierrogue_tusk_sigil/barrierrogue_tusk_sigil.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/kings_chair.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/particle/snowball.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/lone_druid/true_form/form_of_the_atniw/form_of_the_atniw.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/shroomy/shroomy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/phantom_assassin/arcana_tombstone.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/bookwyrm/bookwyrm.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/itsy/itsy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/techies/techies_cart.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/bts_chirpy/bts_chirpy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/hex/sheep_hex/sheep_hex_gold.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/faceless_rex/faceless_rex_flying.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/knightstatue_ward/knightstatue_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/creeps/neutral_creeps/n_creep_black_drake/n_creep_black_drake.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/shadowshaman/serpent_ward/tangki_serpent_ward/tangki_serpent_ward.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/baekho/baekho.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/crystal002.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/radiant_statue001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/flopjaw/flopjaw.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/g1_courier/g1_courier.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/itsy/itsy.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/esl_wardchest_toadstool/esl_wardchest_toadstool.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/tidehunter/tidehuntertentacle.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/morphling/morphling.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/venoling/venoling.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/venomancer/venomancer.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/smeevil_crab/smeevil_crab.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/kunkka/ghostship_sim.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/visage/visage.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/coral_furryfish/coral_furryfish.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_haste01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_illusion01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_doubledamage01.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/baby_rosh/babyroshan.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/esl_wardchest_rockshell_terrapin/esl_wardchest_rockshell_terrapin.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant/primeval_treant/primeval_treant.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant_stump.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant/fungal_lord_shroomthing/fungal_lord_shroomthing.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/seekling/seekling.vmdl"
+	   		{	
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/ship_broken001.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/dark_staff/bulb.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/furion/treant_flower_1.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/courier/huntling/huntling.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/dc_angel/dc_angel.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_structures/bad_barracks001_ranged.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/windmill/windmill.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/heroes/ancient_apparition/ancient_apparition.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/tory_the_sky_guardian/tory_the_sky_guardian.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/courier/scuttling_scotty_penguin/scuttling_scotty_penguin.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/items/wards/skywrath_sentinel/skywrath_sentinel.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/units/ironman/ironman.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_arcane.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/pumpkin_rune.vmdl"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_invisibility01"
+	   		{
+			    "scale"  "0"
+	   		}
+	   		"models/props_gameplay/rune_regeneration01"
+	   		{
+			    "scale"  "0"
+	   		}
+	  	}
+	}
+	"models/props_structures/secretshop_asian001.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/faceless_rex/faceless_rex.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/g1_courier/g1_courier_flying.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/nexon_turtle_17_gold/nexon_turtle_17_gold.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/courier/greevil/gold_greevil.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/wards/ocula/ocula.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/techies/techies_bomb_projectile.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/courier/arneyb_rabbit/arneyb_rabbit.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/rubick/force_staff/fs_puzzle.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/undying/undying_tower.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.06"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "200"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "500"
+	   		}
+	  	}
+	}
+	"models/particle/snowball.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/death_tower/death_tower.vmdl"
+	   		{
+			    "scale"  "70"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-0.4"
+	   		}
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-1000"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "400"
+	   		}
+	   		"models/snowman/snowman.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
+	  	}
+	}
+	"models/heroes/zeus/zeus_arcana.vmdl"
+	{
+	  	"attach_eye_l"
+	  	{
+	   		"models/hats/hat_alt.vmdl"
+	   		{
+			    "scale"  "0.67"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-157"
+			    "YPos"  "-4"
+			    "yaw"  "-90"
+			    "XPos"  "-12.6"
+	   		}
+	  	}
+	}
+	"models/items/tuskarr/sigil/boreal_sigil/boreal_sigil.vmdl"
+	{
+	  	"attach_hitloc"
+	  	{
+	   		"models/props_gameplay/gold_bag.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	  	}
+	  	"flame_attachment"
+	  	{
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_emerald.vmdl"
+	   		{
+			    "scale"  "0.4"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "141"
+			    "YPos"  "19"
+			    "yaw"  "0"
+			    "XPos"  "-6"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_ruby.vmdl"
+	   		{
+			    "scale"  "1.0"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "37"
+			    "YPos"  "-2"
+			    "yaw"  "0"
+			    "XPos"  "18"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_saphire.vmdl"
+	   		{
+			    "scale"  "0.6"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "80"
+			    "YPos"  "-13"
+			    "yaw"  "0"
+			    "XPos"  "3"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_topaz.vmdl"
+	   		{
+			    "scale"  "0.7"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "65"
+			    "YPos"  "-5"
+			    "yaw"  "0"
+			    "XPos"  "-11"
+	   		}
+	   		"models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_pink.vmdl"
+	   		{
+			    "scale"  "0.9"
+			    "pitch"  "90"
+			    "roll"  "90"
+			    "ZPos"  "50"
+			    "YPos"  "14"
+			    "yaw"  "0"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/furion/furion.vmdl"
+	{
+	  	"attach_attack1"
+	  	{
+	   		"models/items/furion/sovereign_staff/sovereign_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "-90"
+			    "ZPos"  "-252"
+			    "YPos"  "-100"
+			    "yaw"  "0"
+			    "XPos"  "-24"
+	   		}
+	   		"models/items/furion/dark_staff/dark_staff.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "-90"
+			    "ZPos"  "-252"
+			    "YPos"  "-120"
+			    "yaw"  "70"
+			    "XPos"  "-11"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/furion/sovereign_cape/sovereign_cape.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-94"
+			    "roll"  "0"
+			    "ZPos"  "-145"
+			    "YPos"  "0"
+			    "yaw"  "3"
+			    "XPos"  "11"
+	   		}
+	   		"models/items/furion/sovereign_shoulders/sovereign_shoulders.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-96"
+			    "roll"  "0"
+			    "ZPos"  "-133"
+			    "YPos"  "0"
+			    "yaw"  "3"
+			    "XPos"  "7"
+	   		}
+	   		"models/items/furion/sovereign_beard/sovereign_beard.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-141"
+			    "YPos"  "0"
+			    "yaw"  "21"
+			    "XPos"  "12"
+	   		}
+	   		"models/items/furion/sovereign_horns/sovereign_horns.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "-138"
+			    "YPos"  "0"
+			    "yaw"  "21"
+			    "XPos"  "11"
+	   		}
+	  	}
+	}
+	"models/props_cave/wooden_ladder_256.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/statue_dragon001.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/lone_druid/true_form/wolf_hunter_true_form/wolf_hunter_true_form.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/cathedral001.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/techies/bigshot/fx_bigshot_stasis.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/props_structures/bad_ancient002.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/wards/stonebound_ward/stonebound_ward.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/items/invoker/forge_spirit/dark_sorcerer_forge_spirit/dark_sorcerer_forge_spirit.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/snowman/snowman.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/lolipop/lollipop.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "58"
+			    "yaw"  "29"
+			    "XPos"  "-28"
+	   		}
+	   		"models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-48"
+			    "YPos"  "111"
+			    "yaw"  "90"
+			    "XPos"  "66"
+	   		}
+	  	}
+	}
+	"models/heroes/shadow_fiend/pedestal_sf.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "300"
+	   		}
+	  	}
+	}
+	"models/heroes/tiny_01/tiny_01.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/minigun/minigun.vmdl"
+	   		{
+			    "scale"  "0.03"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "90"
+			    "XPos"  "300"
+	   		}
+	  	}
+	}
+	"models/factory/factory.vmdl"
+	{
+	  	"attach_origin"
+	  	{
+	   		"models/props_structures/bad_barracks001_ranged.vmdl"
+	   		{
+			    "scale"  "0.23"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "283"
+			    "YPos"  "392"
+			    "yaw"  "90"
+			    "XPos"  "126"
+	   		}
+	   		"models/props_structures/good_barracks_ranged002_lvl2.vmdl"
+	   		{
+			    "scale"  "0.23"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "271"
+			    "YPos"  "-362"
+			    "yaw"  "-90"
+			    "XPos"  "-126"
+	   		}
+	   		"models/props_structures/good_ancient001.vmdl"
+	   		{
+			    "scale"  "0.16"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "442"
+			    "YPos"  "546"
+			    "yaw"  "90"
+			    "XPos"  "125"
+	   		}
+	   		"models/props_structures/radiant_ancient001.vmdl"
+	   		{
+			    "scale"  "0.16"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "442"
+			    "YPos"  "546"
+			    "yaw"  "90"
+			    "XPos"  "125"
+	   		}
+	   		"models/items/bounty_hunter/bounty_hunter_blade.vmdl"
+	   		{
+			    "scale"  "1.4"
+			    "pitch"  "24"
+			    "roll"  "90"
+			    "ZPos"  "4"
+			    "YPos"  "-116"
+			    "yaw"  "0"
+			    "XPos"  "-95"
+	   		}
+	   		"models/items/shredder/timberthaw_offhand/timberthaw_offhand.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "131"
+			    "YPos"  "-94"
+			    "yaw"  "0"
+			    "XPos"  "22"
+	   		}
+	   		"models/items/shredder/sctimberoffhand/sctimberoffhand.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "28"
+			    "roll"  "0"
+			    "ZPos"  "131"
+			    "YPos"  "-24"
+			    "yaw"  "0"
+			    "XPos"  "106"
+	   		}
+	   		"models/items/bounty_hunter/immortal_warrior_shuriken/immortal_warrior_shuriken.vmdl"
+	   		{
+			    "scale"  "1.1"
+			    "pitch"  "45"
+			    "roll"  "90"
+			    "ZPos"  "11"
+			    "YPos"  "-34"
+			    "yaw"  "-21"
+			    "XPos"  "-191"
+	   		}
+	   		"models/items/bounty_hunter/hunternoname_shoulder/hunternoname_shoulder.vmdl"
+	   		{
+			    "scale"  "1.3"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-32"
+			    "YPos"  "-135"
+			    "yaw"  "-21"
+			    "XPos"  "-80"
+	   		}
+	  	}
+
+	}
+	"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
+	{
+	  	"attach_head"
+	  	{
+	   		"models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	   		{
+			    "scale"  "0"
+			    "pitch"  "0"
+			    "roll"  "35"
+			    "ZPos"  "-154"
+			    "YPos"  "0"
+			    "yaw"  "-80"
+			    "XPos"  "3"
+	   		}
+	  	}
+	}
+	"models/heroes/terrorblade/demon.vmdl"
+	{
+	  	"attach_hitloc"
+	  	{
+	   		"models/items/terrorblade/endless_purgatory_weapon/endless_purgatory_weapon.vmdl"
+	   		{
+			    "scale"  "0.1"
+			    "pitch"  "180"
+			    "roll"  "90"
+			    "ZPos"  "-169"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-14"
+	   		}
+	  	}
+	}
+	"models/heroes/ursa/ursa.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/ursa/scarf_alpine.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-51"
+				"roll"		"0"
+				"ZPos"		"-114"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/ursa/hat_alpine.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-9"
+				"roll"		"0"
+				"ZPos"		"-141"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-69"
+			}
+		}
+	}
+	"models/heroes/faceless_void/faceless_void.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/faceless_void/ancientcultist_head/ancientcultist_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-9"
+				"roll"		"0"
+				"ZPos"		"-168"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-13"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/faceless_void/voidhammer/voidhammer.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"7"
+				"roll"		"-14"
+				"ZPos"		"-67"
+				"YPos"		"103"
+				"yaw"		"0"
+				"XPos"		"-9"
+			}
+		}
+	}
+	"models/heroes/pudge/pudge.vmdl"
+	{
+		"attach_eye_l"
+		{
+			"models/items/pudge/ftp_dendi_head/ftp_dendi_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-147"
+				"YPos"		"8.4"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+		}
+		"attach_arm_chain_rt"
+		{
+			"models/items/pudge/ftp_dendi_arm/ftp_dendi_arm.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"202"
+				"roll"		"-77"
+				"ZPos"		"-147"
+				"YPos"		"42"
+				"yaw"		"69"
+				"XPos"		"17"
+			}
+		}
+		"attach_arm_chain_lf"
+		{
+			"models/items/pudge/pudge_offhand_weapon_tender_lod01/pudge_offhand_weapon_tender_lod01.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"24"
+				"roll"		"-8"
+				"ZPos"		"-9"
+				"YPos"		"-138"
+				"yaw"		"69"
+				"XPos"		"89"
+			}
+			"models/items/pudge/plague_doctor_shoulder/plague_doctor_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"24"
+				"roll"		"-21"
+				"ZPos"		"18"
+				"YPos"		"-41"
+				"yaw"		"97"
+				"XPos"		"155"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/pudge/ftp_dendi_back/ftp_dendi_back.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-116"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"12"
+			}
+			"models/items/pudge/ftp_dendi_belt/ftp_dendi_belt.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"76"
+				"ZPos"		"-99"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"6"
+			}
+			"models/items/pudge/ftp_dendi_shoulder/ftp_dendi_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"14"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"4"
+				"yaw"		"104"
+				"XPos"		"6"
+			}
+			"models/items/pudge/ftp_dendi_offhand/ftp_dendi_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"-11"
+				"ZPos"		"-8"
+				"YPos"		"-52"
+				"yaw"		"111"
+				"XPos"		"-19"
+			}
+			"models/items/pudge/promo_trapper_shoulder/promo_trapper_shoulder.vmdl"
+			{
+				"scale"		"0.8"
+				"pitch"		"0"
+				"roll"		"91"
+				"ZPos"		"-116"
+				"YPos"		"-75"
+				"yaw"		"-90"
+				"XPos"		"3"
+			}
+			"models/items/pudge/skedaddlebritches4/skedaddlebritches4.vmdl"
+			{
+				"scale"		"1.1"
+				"pitch"		"0"
+				"roll"		"97"
+				"ZPos"		"-125"
+				"YPos"		"0"
+				"yaw"		"90"
+				"XPos"		"6.3"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/pudge/ftp_dendi_weapon/ftp_dendi_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"3"
+				"yaw"		"270"
+				"XPos"		"-77"
+			}
+			"models/items/pudge/pudge_skeleton_hook_body.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"69"
+				"roll"		"14"
+				"ZPos"		"-4"
+				"YPos"		"13"
+				"yaw"		"-90"
+				"XPos"		"-56"
+			}
+		}
+	}
+	"models/heroes/vengeful/vengeful.vmdl"
+	{
+		"attach_head"
+		{
+			"models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-141"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-77"
+				"YPos"		"89"
+				"yaw"		"72"
+				"XPos"		"6"
+			}
+		}
+	}
+	"models/props_structures/radiant_ancient001.vmdl"
+	{
+		"attach_origin"
+		{
+			"models/items/bounty_hunter/bounty_hunter_blade.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-90"
+				"ZPos"		"2"
+				"YPos"		"192"
+				"yaw"		"0"
+				"XPos"		"-105"
+			}
+			"models/items/shredder/timberthaw_offhand/timberthaw_offhand.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-180"
+				"ZPos"		"138"
+				"YPos"		"-69"
+				"yaw"		"-26"
+				"XPos"		"-19"
+			}
+			"models/items/shredder/sctimberoffhand/sctimberoffhand.vmdl"
+			{
+				"scale"		"1.7"
+				"pitch"		"237"
+				"roll"		"-180"
+				"ZPos"		"159"
+				"YPos"		"-112"
+				"yaw"		"0"
+				"XPos"		"121"
+			}
+			"models/items/bounty_hunter/immortal_warrior_shuriken/immortal_warrior_shuriken.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"180"
+				"roll"		"-90"
+				"ZPos"		"-2"
+				"YPos"		"164"
+				"yaw"		"0"
+				"XPos"		"66"
+			}
+			"models/items/bounty_hunter/hunternoname_shoulder/hunternoname_shoulder.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-53"
+				"YPos"		"-101"
+				"yaw"		"36"
+				"XPos"		"151"
+			}
+		}
+	}
+	"models/heroes/rikimaru/rikimaru.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/heroes/troll_warlord/troll_warlord_axe_melee_r.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-10"
+				"YPos"		"3"
+				"yaw"		"180"
+				"XPos"		"6"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/axe/skullsplitter/skullsplitter.vmdl"
+			{
+				"scale"		"0.38"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-128"
+				"YPos"		"124"
+				"yaw"		"90"
+				"XPos"		"4"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/shredder/top_hat_of_the_steam_chopper/top_hat_of_the_steam_chopper.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"35"
+				"roll"		"113"
+				"ZPos"		"-133"
+				"YPos"		"21"
+				"yaw"		"96"
+				"XPos"		"7"
+			}
+			"models/props_gameplay/halloween_candy.vmdl"
+			{
+				"scale"		"0.3"
+				"pitch"		"132"
+				"roll"		"0"
+				"ZPos"		"44"
+				"YPos"		"-81"
+				"yaw"		"28"
+				"XPos"		"9"
+			}
+			"models/hats/hat.vmdl"
+			{
+				"scale"		"0.95"
+				"pitch"		"21"
+				"roll"		"91"
+				"ZPos"		"19"
+				"YPos"		"-2"
+				"yaw"		"0"
+				"XPos"		"14"
+			}
+			"models/props_winter/present.vmdl"
+			{
+				"scale"		"0.13"
+				"pitch"		"49"
+				"roll"		"49"
+				"ZPos"		"-152"
+				"YPos"		"-22"
+				"yaw"		"-1"
+				"XPos"		"-200"
+			}
+		}
+	}
+	"models/heroes/alchemist/alchemist.vmdl"
+	{
+	  	"attach_attack1"
+	  	{
+	   		"models/items/omniknight/weapon_rune_hammer.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "14"
+			    "roll"  "28"
+			    "ZPos"  "-64"
+			    "YPos"  "124"
+			    "yaw"  "-55"
+			    "XPos"  "-17"
+	   		}
+	  	}
+	  	"attach_attack2"
+	  	{
+	   		"models/items/rattletrap/ironclock_weapon/ironclock_weapon.vmdl"
+	   		{
+			    "scale"  "1.4"
+			    "pitch"  "100"
+			    "roll"  "0"
+			    "ZPos"  "-12"
+			    "YPos"  "-3"
+			    "yaw"  "180"
+			    "XPos"  "5"
+	   		}
+	  	}
+	   	"attach_ogerhead"
+	  	{
+	   		"models/heroes/alchemist/alchemist_ogre_head.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-133"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-82"
+	   		}
+	  	}
+	  	"attach_hitloc"
+	  	{
+	   		"models/heroes/alchemist/alchemist_saddlehat.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "-32"
+			    "roll"  "0"
+			    "ZPos"  "-127"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "7"
+	   		}
+	   		"models/items/sniper/machine_gun_charlie/machine_gun_charlie.vmdl"
+	   		{
+			    "scale"  "1"
+			    "pitch"  "357"
+			    "roll"  "-100"
+			    "ZPos"  "-28"
+			    "YPos"  "121"
+			    "yaw"  "33"
+			    "XPos"  "-7"
+	   		}
+	  	}
+	}
+	"models/heroes/wraith_king/wraith_king.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/wraith_king/sundered_back/sundered_back.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-104"
+			    "roll"  "0"
+			    "yaw"  "-1"
+			    "YPos"  "0"
+			    "ZPos"  "-121"
+			    "XPos"  "8"
+		   	}
+			"models/items/wraith_king/sundered_armor/sundered_armor.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-104"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"0"
+				"yaw"		"-1"
+				"XPos"		"8"
+			}
+			"models/items/wraith_king/deadreborn_head/deadreborn_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-90"
+				"roll"		"0"
+				"ZPos"		"-119"
+				"YPos"		"-4"
+				"yaw"		"-27"
+				"XPos"		"18"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/items/dragon_knight/oblivion_blazer_offhand/oblivion_blazer_offhand.vmdl"
+			{
+				"scale"		"0.80000001192093"
+				"pitch"		"-249"
+				"roll"		"79"
+				"ZPos"		"-67"
+				"YPos"		"-91"
+				"yaw"		"-180"
+				"XPos"		"3"
+			}
+			"models/heroes/visage/visage_skullfx.vmdl"
+			{
+				"scale"		"2"
+				"pitch"		"7"
+				"roll"		"-102"
+				"ZPos"		"13"
+				"YPos"		"0"
+				"yaw"		"-7"
+				"XPos"		"-1"
+			}
+		}
+		"attach_right_eye"
+		{
+			"models/items/wraith_king/sk_dreadknight_shoulder.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"361"
+				"roll"		"-272"
+				"ZPos"		"-149"
+				"YPos"		"48"
+				"yaw"		"-268"
+				"XPos"		"27"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/nerubian_assassin/artificial_metamorphosis_misc/artificial_metamorphosis_misc.vmdl"
+			{
+				"scale"		"0.89999997615814"
+				"pitch"		"-14"
+				"roll"		"-89"
+				"ZPos"		"-64"
+				"YPos"		"135"
+				"yaw"		"-187"
+				"XPos"		"122"
+			}
+			"models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
+			{
+				"scale"		"0.89999997615814"
+				"pitch"		"188"
+				"roll"		"-91"
+				"ZPos"		"0"
+				"YPos"		"5"
+				"yaw"		"-92"
+				"XPos"		"-51"
+			}
+		}
+	}
+	"models/heroes/beastmaster/beastmaster.vmdl"
+	{
+		"attach_attack2"
+		{
+			"models/items/centaur/graspofgluttony_weapon/graspofgluttony_weapon.vmdl"
+			{
+				"scale"		"0.8"
+				"pitch"		"180"
+				"roll"		"0"
+				"ZPos"		"-63"
+				"YPos"		"-142"
+				"yaw"		"214"
+				"XPos"		"-9"
+			}
+			"models/items/tuskarr/barrierrogue_tusk_weapon/barrierrogue_tusk_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-14"
+				"roll"		"173"
+				"ZPos"		"19"
+				"YPos"		"5"
+				"yaw"		"28"
+				"XPos"		"6"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/harbingerwar_weapon/harbingerwar_weapon.vmdl"
+			{
+				"scale"		"0.90"
+				"pitch"		"21"
+				"roll"		"0"
+				"ZPos"		"-58"
+				"YPos"		"123"
+				"yaw"		"253"
+				"XPos"		"2"
+			}
+			"models/items/sven/revenge_weapon/revenge_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-48"
+				"roll"		"280"
+				"ZPos"		"-103"
+				"YPos"		"-29"
+				"yaw"		"-147"
+				"XPos"		"-21"
+			}
+		}
+	}
+	"models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
+			{
+			    "scale"  "0"
+			    "pitch"  "-104"
+			    "roll"  "0"
+			    "ZPos"  "-116"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-1"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/crystal_maiden/lusciouslocks_head/lusciouslocks_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"0"
+				"ZPos"		"-157"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+			"models/items/crystal_maiden/frostbringer_hair/frostbringer_hair.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"1"
+				"roll"		"0"
+				"ZPos"		"-156"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"6"
+			}
+			"models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-144"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+			"models/items/crystal_maiden/frozen_feathers_head/frozen_feathers_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-151"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"105"
+				"roll"		"-2"
+				"ZPos"		"0"
+				"YPos"		"-2"
+				"yaw"		"-90"
+				"XPos"		"-71"
+			}
+			"models/items/crystal_maiden/pw_cm_staff/crystal_maiden_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"135"
+				"roll"		"-6"
+				"ZPos"		"-76"
+				"YPos"		"-71"
+				"yaw"		"270"
+				"XPos"		"-105"
+			}
+			"models/items/crystal_maiden/euls_scepterdivinity.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"-64"
+				"yaw"		"90"
+				"XPos"		"-1"
+			}
+			"models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
+			{
+				"scale"		"0.45"
+				"pitch"		"0"
+				"roll"		"-14"
+				"ZPos"		"-76"
+				"YPos"		"56"
+				"yaw"		"-90"
+				"XPos"		"-124"
+			}
+			"models/items/crystal_maiden/northstar_staff/northstar_staff.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"80"
+				"ZPos"		"-98"
+				"YPos"		"-33"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+			"models/items/crystal_maiden/frozen_feathers_staff/frozen_feathers_staff.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"75"
+				"ZPos"		"-133"
+				"YPos"		"-63"
+				"yaw"		"90"
+				"XPos"		"13"
+			}
+		}
+	}
+	"models/heroes/legion_commander/legion_commander.vmdl"
+	{
+		"attach_eyeL"
+		{
+			"models/items/legion_commander/errant_cowl/errant_cowl.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"290"
+				"roll"		"90"
+				"ZPos"		"-137"
+				"YPos"		"-9"
+				"yaw"		"180"
+				"XPos"		"-5"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/legion_commander/errant_standards/errant_standards.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"270"
+				"roll"		"90"
+				"ZPos"		"-97"
+				"YPos"		"-8"
+				"yaw"		"214"
+				"XPos"		"3"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/antimage/nomadic_protector_weapon/nomadic_protector_weapon.vmdl"
+			{
+				"scale"		"0.75"
+				"pitch"		"7"
+				"roll"		"76"
+				"ZPos"		"-80"
+				"YPos"		"48"
+				"yaw"		"0"
+				"XPos"		"-63"
+			}
+			"models/items/spectre/spectre_diffusal.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"7"
+				"roll"		"273"
+				"ZPos"		"-96"
+				"YPos"		"58"
+				"yaw"		"0"
+				"XPos"		"18"
+			}
+		}
+	}
+	"models/heroes/crystal_maiden/crystal_maiden.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/omniknight/omniknightwings.vmdl"
+			{
+			    "scale"  "0.48"
+			    "pitch"  "-90"
+			    "roll"  "0"
+			    "ZPos"  "28"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-15"
+			}
+			"models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
+			{
+			    "scale"  "0.97"
+			    "pitch"  "-97"
+			    "roll"  "0"
+			    "ZPos"  "-116"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "4"
+			}
+		}
+		"attach_mouth"
+		{
+			"models/hats/hat_female.vmdl"
+			{
+			    "scale"  "0.97"
+			    "pitch"  "14"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "-5"
+			    "yaw"  "105"
+			    "XPos"  "-1"
+			}
+		}
+		"attach_head"
+		{
+			"models/items/lina/hairoftheslayerr/hairoftheslayerr.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-14"
+				"roll"		"0"
+				"ZPos"		"-181"
+				"YPos"		"0"
+				"yaw"		"7"
+				"XPos"		"4"
+			}
+			"models/items/lina/migrant_blaze_head/migrant_blaze_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-183"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"133"
+				"roll"		"0"
+				"ZPos"		"0"
+				"YPos"		"0"
+				"yaw"		"-90"
+				"XPos"		"-43"
+			}
+			"models/items/crystal_maiden/euls_scepterdivinity.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-134"
+				"YPos"		"-64"
+				"yaw"		"90"
+				"XPos"		"-1"
+			}
+		}
+	}
+	"models/heroes/shadow_demon/shadow_demon.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/heroes/shadow_demon/shadow_demon_cape.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-105"
+			    "roll"  "0"
+			    "ZPos"  "-140"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-11"
+			}
+			"models/heroes/shadow_demon/shadow_demon_chain.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-105"
+			    "roll"  "0"
+			    "ZPos"  "-131"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-15"
+			}
+		}
+	}
+	"models/heroes/slardar/slardar.vmdl"
+	{
+		"attach_light"
+		{
+			"models/heroes/slardar/slardar_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"56"
+				"roll"		"0"
+				"ZPos"		"-161"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-54"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/warlock/tevent_2_gatekeeper_scythe/tevent_2_gatekeeper_scythe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"8"
+				"roll"		"-5"
+				"ZPos"		"-178"
+				"YPos"		"-57"
+				"yaw"		"180"
+				"XPos"		"-36"
+			}
+		}
+	}
+	"models/heroes/puck/puck.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/puck/mischievousfruits_head/mischievousfruits_head.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-73"
+			    "roll"  "0"
+			    "ZPos"  "-135"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-4"
+			}
+			"models/items/puck/merry_wanderers_brush_tail/merry_wanderers_brush_tail.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-73"
+			    "roll"  "0"
+			    "ZPos"  "-136"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "6"
+			}
+			"models/items/puck/mysticcoils_wings/mysticcoils_wings.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "-77"
+			    "roll"  "0"
+			    "ZPos"  "-137"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "-1s"
+			}
+		}
+	}
+	"models/heroes/meepo/meepo.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/queenofpain/pw_lava_wings/queenofpain_back.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"14"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-8"
+				"XPos"		"-121"
+			}
+			"models/heroes/meepo/shoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-63"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-80"
+				"XPos"		"12"
+			}
+			"models/heroes/items/hat_test/hat_test.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-92"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"5"
+				"ZPos"		"-110"
+				"XPos"		"9"
+			}
+			"models/items/meepo/colossal_crystal_chorus/colossal_crystal_chorus.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-63"
+				"roll"		"0"
+				"yaw"		"0"
+				"YPos"		"0"
+				"ZPos"		"-80"
+				"XPos"		"12"
+			}		
+		}
+		"attach_attack2"
+		{
+			"models/heroes/techies/fx_techies_remotebomb.vmdl"
+			{
+				"scale"		"0.3"
+				"pitch"		"184"
+				"roll"		"0"
+				"yaw"		"-196"
+				"YPos"		"-35"
+				"ZPos"		"-31"
+				"XPos"		"2"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/axe/axe_practos_weapon/axe_practos_weapon.vmdl"
+			{
+				"scale"		"0.35"
+				"pitch"		"0"
+				"roll"		"89"
+				"yaw"		"-84"
+				"YPos"		"113"
+				"ZPos"		"-49"
+				"XPos"		"-3"
+			}
+		}
+	}
+	"models/heroes/doom/doom.vmdl"
+	{
+		"attach_mouth"
+		{
+			"models/items/doom/free2play_head_closed_hyhy/free2play_head_closed_hyhy.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-99"
+				"roll"		"0"
+				"ZPos"		"-25"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"213"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/doom/fallen_sword/fallen_sword.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"90"
+				"ZPos"		"-102"
+				"YPos"		"56"
+				"yaw"		"90"
+				"XPos"		"-22"
+			}
+			"models/items/dragon_knight/fireborn_shield/fireborn_shield.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"78"
+				"roll"		"63"
+				"ZPos"		"-2"
+				"YPos"		"-81"
+				"yaw"		"-47"
+				"XPos"		"153"
+			}
+		}
+		"attach_hitloc"
+		{
+			"models/items/doom/abysswings/abysswings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-175"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-25"
+			}
+			"models/items/doom/abysstail/abysstail.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"4"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+			"models/items/chaos_knight/rising_chaos_shield/rising_chaos_shield.vmdl"
+			{
+				"scale"		"0.9"
+				"pitch"		"14"
+				"roll"		"215"
+				"ZPos"		"-50"
+				"YPos"		"-34"
+				"yaw"		"90"
+				"XPos"		"58"
+			}
+			"models/items/doom/abyssshoulders/abyssshoulders.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-22"
+			}
+			"models/items/doom/abyssbelt/abyssbelt.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-75"
+				"roll"		"0"
+				"ZPos"		"-182"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-43"
+			}
+		}
+	}
+	"models/heroes/axe/axe.vmdl"
+	{
+		"attach_hitloc"
+		{
+			
+			"models/items/axe/molten_claw/molten_claw.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-84"
+				"roll"		"0"
+				"ZPos"		"-134"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"7"
+			}
+			"models/items/sniper/wildwest_weapon/wildwest_weapon.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-14"
+			    "YPos"  "62"
+			    "yaw"  "-208"
+			    "XPos"  "-18"
+			}
+		}
+		"attach_weapon"
+		{
+			"models/items/axe/redstone_axe/redstone_axe.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-26"
+				"roll"		"63"
+				"ZPos"		"-30"
+				"YPos"		"66"
+				"yaw"		"-136"
+				"XPos"		"72"
+			}
+			"models/items/keeper_of_the_light/strikeofthelight_weapon/strikeofthelight_weapon.vmdl"
+			{
+				"scale"		"1.1"
+				"pitch"		"-40"
+				"roll"		"28"
+				"ZPos"		"-111"
+				"YPos"		"53"
+				"yaw"		"-26"
+				"XPos"		"-5"
+			}
+		}
+		"attach_mouth"
+		{
+			"models/items/axe/shout_mask/shout_mask.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-143"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-28"
+			}
+			"models/items/sniper/gunslinger_head/gunslinger_headitem.vmdl"
+			{
+				"scale"		"1.3"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-104"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-23"
+			}
+		}
+	}
+	"models/heroes/queenofpain/queenofpain.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/queenofpain/wings_of_vincere/wings_of_vincere.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-131"
+				"roll"		"0"
+				"ZPos"		"-128"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+			"models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-123"
+				"roll"		"0"
+				"ZPos"		"-134"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"0"
+			}
+			"models/items/queenofpain/sinners_embrace_back/sinners_embrace_back.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-124"
+				"roll"		"0"
+				"ZPos"		"-121"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"2"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"5"
+				"roll"		"-25"
+				"ZPos"		"-79"
+				"YPos"		"56"
+				"yaw"		"160"
+				"XPos"		"-37.5"
+			}
+			"models/items/abaddon/mistblade/mistblade.vmdl"
+			{
+			    "scale"  "1"
+			    "pitch"  "270"
+			    "roll"  "0"
+			    "ZPos"  "27"
+			    "YPos"  "-20"
+			    "yaw"  "180"
+			    "XPos"  "28"
+			}
+			"models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"256"
+				"roll"		"180"
+				"ZPos"		"-38"
+				"YPos"		"26"
+				"yaw"		"4"
+				"XPos"		"19"
+			}
+			"models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon.vmdl"
+			{
+				"scale"		"0.7"
+				"pitch"		"90"
+				"roll"		"0"
+				"ZPos"		"-39"
+				"YPos"		"27"
+				"yaw"		"0"
+				"XPos"		"22"
+			}
+			"models/items/queenofpain/daggerofagonizingpain/daggerofagonizingpain.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"314"
+				"roll"		"196"
+				"ZPos"		"-7"
+				"YPos"		"-57"
+				"yaw"		"55"
+				"XPos"		"116"
+			}
+		}
+		"mouth"
+		{
+			"models/items/queenofpain/shadeofagony/shadeofagony.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-151"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-5"
+			}
+			"models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-32"
+				"roll"		"0"
+				"ZPos"		"-158"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-11"
+			}
+			"models/items/queenofpain/dotapit_s3_abyssal_temptress_head/dotapit_s3_abyssal_temptress_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-31"
+				"roll"		"0"
+				"ZPos"		"-152"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-11"
+			}
+		}
+	}
+	"models/heroes/life_stealer/life_stealer.vmdl"
+	{
+		"attach_hitloc"
+		{
+			
+			"models/items/lifestealer/redrage_battlewings/redrage_battlewings.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-82"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-54"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/blood_seeker/blood_seeker_executioner_weapon/blood_seeker_executioner_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"37"
+				"roll"		"-142"
+				"ZPos"		"-58"
+				"YPos"		"41"
+				"yaw"		"-34"
+				"XPos"		"-10"
+			}
+		}
+		"attach_attack2"
+		{
+			"models/heroes/blood_seeker/weapon_offhand.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-230"
+				"roll"		"19"
+				"ZPos"		"-70"
+				"YPos"		"-39"
+				"yaw"		"266"
+				"XPos"		"-19"
+			}
+		}
+		"attach_jaw"
+		{
+			"models/items/lifestealer/transmuted_armaments_head/transmuted_armaments_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"0"
+				"ZPos"		"-95"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-82"
+			}
+		}
+	}
+	"models/heroes/slark/slark.vmdl"
+	{
+		"attach_hitloc"
+		{
+			"models/items/slark/dark_reef_back/dark_reef_back.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-40"
+				"roll"		"8"
+				"ZPos"		"-83"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"12"
+			}
+		}
+		"attach_jaw"
+		{
+			"models/items/slark/dark_reef_head/dark_reef_head.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"180"
+				"roll"		"0"
+				"ZPos"		"-87"
+				"YPos"		"0"
+				"yaw"		"0"
+				"XPos"		"-30"
+			}
+		}
+		"attach_attack1"
+		{
+			"models/items/slark/golden_barb_of_skadi/golden_barb_of_skadi.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"132"
+				"roll"		"0"
+				"ZPos"		"9"
+				"YPos"		"-13"
+				"yaw"		"14"
+				"XPos"		"-9"
+			}
+		}
+	}
+	"models/heroes/nightstalker/nightstalker.vmdl"
+	{
+	 	"attach_hitloc"
+		{
+	   		"models/items/nightstalker/black_nihility/black_nihility_back.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-78"
+			    "roll"  "0"
+			    "ZPos"  "-132"
+			    "YPos"  "-1"
+			    "yaw"  "0"
+			    "XPos"  "7"
+		   	}
+	  	}
+	}
+	"models/units/telka/hot_chick.vmdl"
+	{
+	 	"spine1"
+		{
+	   		"models/items/death_prophet/mourning_armor/mourning_armor.vmdl"
+		   	{
+			    "scale"  "1.3"
+			    "pitch"  "1"
+			    "roll"  "81"
+			    "ZPos"  "-141"
+			    "YPos"  "0"
+			    "yaw"  "85"
+			    "XPos"  "6"
+		   	}
+	  	}
+	  	"hips"
+		{
+	   		"models/props_gameplay/tango.vmdl"
+		   	{
+			    "scale"  "0.22"
+			    "pitch"  "0"
+			    "roll"  "174"
+			    "ZPos"  "-92"
+			    "YPos"  "-47"
+			    "yaw"  "212"
+			    "XPos"  "35"
+		   	}
+		   	"models/heroes/dragon_knight/shield.vmdl"
+		   	{
+			    "scale"  "0.27"
+			    "pitch"  "0"
+			    "roll"  "110"
+			    "ZPos"  "-38"
+			    "YPos"  "-5"
+			    "yaw"  "263"
+			    "XPos"  "54"
+		   	}
+	  	}
+	}
+	"models/units/assasinedward/edward_kenway.vmdl"
+	{
+	 	"attach_attack1"
+		{
+	   		"models/items/kunkka/cyclone_wave_smasher_of_the_divine_anchor/cyclone_wave_smasher_of_the_divine_anchor.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-14"
+			    "roll"  "-140"
+			    "ZPos"  "-88"
+			    "YPos"  "64"
+			    "yaw"  "64"
+			    "XPos"  "-5"
+		   	}
+	   		"models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
+		   	{
+			    "scale"  "0.6"
+			    "pitch"  "7"
+			    "roll"  "-49"
+			    "ZPos"  "-103"
+			    "YPos"  "-36"
+			    "yaw"  "-21"
+			    "XPos"  "-10"
+		   	}
+	  	}
+	}
+	"models/units/dartmol/mual.vmdl"
+	{
+	 	"attach_attack1"
+		{
+	   		"models/units/dartmolsabre/lightsaber.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "-91"
+			    "YPos"  "56"
+			    "yaw"  "0"
+			    "XPos"  "-10"
+		   	}
+	  	}
+	}
+	"models/heroes/tuskarr/tuskarr.vmdl"
+	{
+	 	"attach_hitloc"
+		{
+	   		"models/heroes/tuskarr/tusk_cowl.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "-100"
+			    "roll"  "0"
+			    "ZPos"  "-98"
+			    "YPos"  "0"
+			    "yaw"  "-4"
+			    "XPos"  "7"
+		   	}
+		   	"models/items/invoker/exort_cape.vmdl"
+		   	{
+			    "scale"  "0.5"
+			    "pitch"  "-112"
+			    "roll"  "0"
+			    "ZPos"  "-135"
+			    "YPos"  "0"
+			    "yaw"  "-5"
+			    "XPos"  "-56"
+		   	}
+		   	"models/items/invoker/arsenal_magus_exort_cape/arsenal_magus_exort_cape.vmdl"
+		   	{
+			    "scale"  "0.35"
+			    "pitch"  "-147"
+			    "roll"  "-90"
+			    "ZPos"  "-179"
+			    "YPos"  "28"
+			    "yaw"  "-30"
+			    "XPos"  "-115"
+		   	}
+	  	}
+	  	"attach_head"
+		{
+	   		"models/hats/hat.vmdl"
+		   	{
+			    "scale"  "1.14"
+			    "pitch"  "-21"
+			    "roll"  "91"
+			    "ZPos"  "-17"
+			    "YPos"  "-2"
+			    "yaw"  "-13"
+			    "XPos"  "4"
+		   	}
+		   	"models/hats/hat_alt.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "90"
+			    "ZPos"  "-175"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+		   	}
+	  	}
+	  	"attach_attack1"
+		{
+	   		"models/items/phantom_lancer/infinite_waves_serpent_weapon/infinite_waves_serpent_weapon.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "21"
+			    "ZPos"  "-70"
+			    "YPos"  "55"
+			    "yaw"  "0"
+			    "XPos"  "-17"
+		   	}
+	  	}
+	  	"attach_attack2"
+		{
+	   		"models/items/tuskarr/snowball_stinger/snowball_stinger.vmdl"
+		   	{
+			    "scale"  "1"
+			    "pitch"  "40"
+			    "roll"  "-90"
+			    "ZPos"  "-78"
+			    "YPos"  "-59"
+			    "yaw"  "30"
+			    "XPos"  "-2"
+		   	}
+	  	}
+	}
+	"models/heroes/bane/bane.vmdl"
+	{
+	}
+}

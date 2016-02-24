@@ -4,10 +4,10 @@
   "Model"           "models/props_structures/bad_barracks001_ranged.vmdl"
   "ModelScale"        "0.5"
   "Level"           "0"
-  "HealthBarOffset"       "200"
+  "HealthBarOffset"       "230"
   "HasInventory"        "1"
 
-  "AbilityLayout"       "5"
+  "AbilityLayout"       "6"
   "Ability1"          "petri_building"
   "Ability2"          "petri_upgrade_sawmill"
   "Ability3"          "building_queue"

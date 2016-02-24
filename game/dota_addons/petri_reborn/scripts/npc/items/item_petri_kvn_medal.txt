@@ -11,6 +11,7 @@
   "ItemShopTags"          "hard_to_tag"
   "ItemQuality"         "component"
   "ItemAliases"         "kvn medal"
+  "ItemSellable"  "0"
 
   "precache"
   {
@@ -19,7 +20,7 @@
   
   "Modifiers"
   {
-    "modifier_item_petri_kvn_medal_datadriven"
+    "modifier_kvn_medal_active"
     {
       "Passive"     "1"
       "IsHidden"      "1"

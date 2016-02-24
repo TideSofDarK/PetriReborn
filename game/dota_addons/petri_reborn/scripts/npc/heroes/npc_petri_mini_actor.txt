@@ -3,17 +3,17 @@
   "override_hero"     "npc_dota_hero_storm_spirit"
 
   "HasInventory"          "1"
-  "ConsideredHero"        "1"
 
   "AbilityLayout" "4"
 
   "Ability1"        "petri_petrosyan_flat_joke" 
-  "Ability2"        "petri_petrosyan_laugh_burst" 
+  "Ability2"        "petri_mini_actor_pull_eyes" 
   "Ability3"        "petri_petrosyan_wind_walk"
   "Ability4"        "petri_petrosyan_return"
   "Ability5"        "petri_petrosyan_explore"
   "Ability6"        "petri_mini_actor_phase"
   "Ability7"        "attribute_bonus"
+  "Ability8"        "petri_petrosyan_passive"
 
   "ArmorPhysical"       "1"                 
   "MagicalResistance"       "0"

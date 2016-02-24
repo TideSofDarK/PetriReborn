@@ -2,7 +2,7 @@
 {
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"death_prophet_carrion_swarm"
+	"AbilityTextureName"			"petri_petrosyan_flat_joke"
 
 	"MaxLevel" "1"
 
@@ -31,6 +31,11 @@
 		{
 		    "Passive"   "1"
 		    "IsHidden"  "1"
+
+		    "States"
+		    {
+		    	"MODIFIER_STATE_LOW_ATTACK_PRIORITY"           "MODIFIER_STATE_VALUE_ENABLED"
+		    }
 
 		    "OnAttackLanded"
 		    {

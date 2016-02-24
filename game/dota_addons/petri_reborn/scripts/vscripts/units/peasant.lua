@@ -1,4 +1,18 @@
+LUMBER_STACK_T1 = 100
+LUMBER_STACK_T2 = 200
+LUMBER_STACK_T3 = 1000
+
 Debug_Peasant = false
+
+function PlayAttackAnimation( event )
+	local caster = event.caster
+	StartAnimation(caster, {duration=0.9, activity=ACT_DOTA_ATTACK , rate=1.0})
+end
+
+function StopAnimation( event )
+	local caster = event.caster
+	EndAnimation(caster)
+end
 
 -- Lumber gathering
 
@@ -17,10 +31,8 @@ function Gather( event )
 	caster.manual_order = false
 
 	if target_class == "ent_dota_tree" then
-		caster:MoveToNPC(target)
-		if Debug_Peasant then
-			print("Moving to ", target_class)
-		end
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+		caster:MoveToPosition(target:GetAbsOrigin())
 		caster.target_tree = target
 	end
 
@@ -30,10 +42,6 @@ function Gather( event )
 	-- Visual fake toggle
 	if ability:GetToggleState() == false then
 		ability:ToggleAbility()
-	end
-
-	if Debug_Peasant then
-		print("Gather ON, Return OFF")
 	end
 end
 
@@ -51,16 +59,12 @@ function ToggleOffGather( event )
 		end
 
 		caster:RemoveModifierByName("modifier_ability_gather_lumber_no_col")
-		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 		
 		caster.target_tree.worker = nil
 
 		if gather_ability:GetToggleState() == true then
 			gather_ability:ToggleAbility()
 
-			if Debug_Peasant then
-				print("Toggled Off Gather")
-			end
 		end
 	end
 end
@@ -73,7 +77,6 @@ function ToggleOffReturn( event )
 	if caster.lastOrder ~= DOTA_UNIT_ORDER_CAST_NO_TARGET
 	and caster.lastOrder ~= DOTA_UNIT_ORDER_MOVE_ITEM then
 		caster:RemoveModifierByName("modifier_returning_resources_on_order_cancel")
-		caster:RemoveModifierByName("modifier_gather_lumber_rooted")
 
 		if return_ability:GetToggleState() == true then 
 			return_ability:ToggleAbility()
@@ -92,26 +95,23 @@ function CheckTreePosition( event )
 	local target_class = target:GetClassname()
 
 	if target_class == "ent_dota_tree" then
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
 		caster:MoveToPosition(target:GetAbsOrigin())
 	end
 
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 160
+	local collision = distance <= 170
 	if not collision then
-	--print("Moving to tree, distance: ",distance)
 	elseif not caster:HasModifier("modifier_chopping_wood") then
+
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+
 		caster:RemoveModifierByName("modifier_gathering_lumber")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_wood", {})
-
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_gather_lumber_rooted", {})
-
-		-- Timers:CreateTimer(0.06, function ()
-		-- 	caster:RemoveModifierByName("modifier_gather_lumber_rooted")
-		-- end)	
 	end
 end
 
-function Gather100Lumber( event )
+function GatherLumber( event )
 	
 	local caster = event.caster
 	local ability = event.ability
@@ -122,12 +122,17 @@ function Gather100Lumber( event )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	local max_lumber_carried = 200
-	local single_chop = 100
+	local max_lumber_carried = LUMBER_STACK_T1 * 2
+	local single_chop = LUMBER_STACK_T1
 
 	if caster:GetUnitName() == "npc_petri_super_peasant" then 
-		max_lumber_carried = 400
-		single_chop = 200
+		max_lumber_carried = LUMBER_STACK_T2 * 2
+		single_chop = LUMBER_STACK_T2
+	end
+
+	if caster:GetUnitName() == "npc_petri_mega_peasant" then 
+		max_lumber_carried = LUMBER_STACK_T3 * 2
+		single_chop = LUMBER_STACK_T3
 	end
 
 	max_lumber_carried = max_lumber_carried + (hero.bonusLumber * 2)
@@ -136,9 +141,6 @@ function Gather100Lumber( event )
 	local return_ability = caster:FindAbilityByName("return_resources")
 
 	caster.lumber_gathered = caster.lumber_gathered + single_chop
-	if Debug_Peasant then
-		print("Gathered "..caster.lumber_gathered)
-	end
 
 	-- Show the stack of resources that the unit is carrying
 	if not caster:HasModifier("modifier_returning_resources") then
@@ -148,7 +150,6 @@ function Gather100Lumber( event )
  
 	-- Increase up to the max, or cancel
 	if caster.lumber_gathered < max_lumber_carried then
-
 	else
 		local player = caster:GetPlayerOwnerID()
 
@@ -185,10 +186,7 @@ function ReturnResources( event )
 			end
 		end)
 
-		local dist = (caster:GetAbsOrigin()-building:GetAbsOrigin()):Length() - 300
-		local fixed_position = (building:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized() * dist
-
-		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, TargetIndex = building:GetEntityIndex(), Position = building:GetAbsOrigin(), Queue = false}) 
+		ExecuteOrderFromTable({ UnitIndex = caster:GetEntityIndex(), OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION, TargetIndex = building:GetEntityIndex(), Position = GetMoveToTreePosition( caster, building ), Queue = false}) 
 
 		caster.target_building = building
 	end
@@ -228,11 +226,11 @@ function CheckBuildingPosition( event )
 			local lumber_gathered = caster.lumber_gathered
 			caster.lumber_gathered = 0
 
-		    PlusParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
+		    PopupParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
 		    
 		    EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "ui.inv_pickup_wood", caster) 
 		   
-			hero.lumber = hero.lumber + lumber_gathered 
+			AddLumber( hero:GetPlayerOwner(), lumber_gathered )
 		end
 
 		-- Return Ability Off
@@ -307,26 +305,19 @@ function StartRepairing(event)
 	local target = event.target
 	local ability = event.ability
 
-	if target:GetUnitName() == "npc_petri_exit" then return end
-
-	if target:GetHealthPercent() == 100 then
-		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_full", duration=1, style={color="red", ["font-size"]="45px"}})
-		return
-	end
+	if target:GetUnitName() == "npc_petri_exit" or target:GetUnitName() == "npc_petri_earth_wall" then return end
 
 	if target:HasAbility("petri_building") ~= true then
 		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
 		return
 	end
 	
-	if target:GetHealthPercent() < 100 and target:HasAbility("petri_building") then
-		caster:MoveToNPC(target)
+	if target:HasAbility("petri_building") then
 		caster.repairingTarget = target
 
 		caster:RemoveModifierByName("modifier_repairing")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_repairing", {})
 
-		-- Visual fake toggle
 		if ability:GetToggleState() == false then
 			ability:ToggleAbility()
 		end
@@ -338,11 +329,15 @@ function CheckRepairingTargetPosition( event )
 	local target = caster.repairingTarget
 	local ability = event.ability
 
+	caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+
 	local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
-	local collision = distance < 210
+	local collision = distance < 280
 	if not collision then
 
 	elseif not caster:HasModifier("modifier_chopping_building") then
+		--caster:MoveToPosition(GetMoveToTreePosition( caster, target ))
+
 		caster:RemoveModifierByName("modifier_repairing")
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_chopping_building", {})
 	end
@@ -384,7 +379,7 @@ function RepairBy1Percent( event )
 	local ability = event.ability
 	local target = caster.repairingTarget
 
-	if not target or not target:IsAlive() then 
+	if target:IsNull() == true or not target or not target:IsAlive() then 
 		ability:ToggleAbility()
 
 		caster:RemoveModifierByName("modifier_chopping_building")
@@ -399,28 +394,44 @@ function RepairBy1Percent( event )
 	local health = target:GetHealth()
 	local maxHealth = target:GetMaxHealth()
 
-	if health < maxHealth then
-		if target:GetModifierStackCount("modifier_being_repaired", target) < 4 or caster:IsHero() == true then
-			AddStackableModifierWithDuration(target, target, ability, "modifier_being_repaired", 0.9, 4)
+	-- if health < maxHealth then
+		if GetModifierCountByName(target,target,"modifier_being_repaired") < 4 then
+
+			ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
 
 			local healAmount = 3 + (target:GetMaxHealth() * 0.01295)
-			PlusParticle(math.floor(healAmount), Vector(50,221,60), 0.7, caster)
+			
+			if caster:GetUnitName() == "npc_petri_mega_peasant" then
+				ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
+				healAmount = healAmount + healAmount
+			end
+
+			if caster:IsHero() == true and GetModifierCountByName(target,target,"modifier_being_repaired") <= 1 then
+				ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
+				healAmount = healAmount + healAmount
+			end
+
+			if health == maxHealth then
+				healAmount = 0
+			end
+
+			PopupParticle(math.floor(healAmount), Vector(50,221,60), 1.5, caster, nil, POPUP_SYMBOL_POST_SHIELD)
 
 			target:Heal(healAmount, caster)
 		else
 			--caster:Stop()
 		end
-	else
-		local player = caster:GetPlayerOwner():GetPlayerID()
+	-- else
+	-- 	local player = caster:GetPlayerOwner():GetPlayerID()
 
-		ability:ToggleAbility()
+	-- 	ability:ToggleAbility()
 
-		caster:RemoveModifierByName("modifier_chopping_building")
-		caster:RemoveModifierByName("modifier_repairing")
-		caster:RemoveModifierByName("modifier_chopping_building_animation")
+	-- 	caster:RemoveModifierByName("modifier_chopping_building")
+	-- 	caster:RemoveModifierByName("modifier_repairing")
+	-- 	caster:RemoveModifierByName("modifier_chopping_building_animation")
 
-		RepairingAutocast( event )
-	end
+	-- 	RepairingAutocast( event )
+	-- end
 end
 
 -- Misc
@@ -432,6 +443,10 @@ function Spawn( t )
 	InitAbilities(thisEntity)
 
 	thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
+
+	Timers:CreateTimer(function ( )
+		SetCustomBuildingModel(thisEntity, PlayerResource:GetSteamAccountID(thisEntity:GetPlayerOwnerID()))
+	end)
 
 	Timers:CreateTimer(0.2, function()
 		local trees = GridNav:GetAllTreesAroundPoint(thisEntity:GetAbsOrigin(), 750, true)

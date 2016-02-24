@@ -37,6 +37,12 @@ function GameMode:OnNPCSpawned(keys)
   GameMode:_OnNPCSpawned(keys)
 
   local npc = EntIndexToHScript(keys.entindex)
+  if npc:GetUnitName() == "npc_dota_courier" then
+    npc:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+    UpdateModel(npc, "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", 0.8)
+    npc:AddAbility("petri_janitor_invisibility")
+    InitAbilities( npc )
+  end
 end
 
 -- An entity somewhere has been hurt.  This event fires very often with many units so don't do too many expensive
@@ -65,12 +71,12 @@ function GameMode:OnItemPickedUp(keys)
     local player = PlayerResource:GetPlayer(keys.PlayerID)
 
     if player:GetTeam() == DOTA_TEAM_GOODGUYS then 
-      if CheckShopType(itemname) ~= 1 then
+      if CheckShopType(itemname, "SideShop") == false then
         heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
       end
     end
     if player:GetTeam() == DOTA_TEAM_BADGUYS then 
-      if CheckShopType(itemname) == 1 then
+      if CheckShopType(itemname, "SecretShop") == false then
         heroEntity:DropItemAtPositionImmediate(itemEntity, heroEntity:GetAbsOrigin())
       end
     end
@@ -85,6 +91,12 @@ function GameMode:OnPlayerReconnect(keys)
 
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
+
+  for k,v in pairs(hero:GetChildren()) do
+    if v:GetClassname() == "dota_item_wearable" then
+      v:AddEffects(EF_NODRAW) 
+    end
+  end
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
@@ -109,19 +121,9 @@ function GameMode:OnPlayerReconnect(keys)
         if hero:GetTeam() == DOTA_TEAM_BADGUYS then
           player:SetTeam(DOTA_TEAM_BADGUYS)
         end
-      end)
-
-      Timers:CreateTimer(0.03,
-      function()
-        local event_data =
-        {
-            gold = GameMode.assignedPlayerHeroes[keys.PlayerID]:GetGold(),
-            lumber = hero.lumber,
-            food = hero.food,
-            maxFood = hero.maxFood
-        }
-        CustomGameEventManager:Send_ServerToPlayer( player, "receive_resources_info", event_data )
-        if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then return 0.03 end
+       
+        SendToServerConsole( "dota_combine_models 0" )
+        SendToConsole( "dota_combine_models 0" )
       end)
     else
       return 0.03
@@ -300,10 +302,17 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
+
   if killedUnit.hasNumber == true then
-    local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
     hero.numberOfUnits = hero.numberOfUnits - 1
   end
+
+  if killedUnit:GetUnitName() == "npc_petri_mega_peasant" then
+    hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1
+  end
+
+  UnfreezeAnimation(killedUnit)
 
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
@@ -332,7 +341,7 @@ function GameMode:OnEntityKilled( keys )
 
     Timers:CreateTimer(1.0,
     function()
-      if CheckKVN() then
+      if CheckKVN() and GameMode.PETRI_NO_END == false then
         Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
 
         for i=1,10 do
@@ -345,6 +354,21 @@ function GameMode:OnEntityKilled( keys )
           end)
       end
     end)
+  end
+
+  if killedUnit:GetUnitName() == "npc_petri_exit" then
+    GameMode.EXIT_COUNT = GameMode.EXIT_COUNT - 1
+    if GameMode.EXIT_COUNT == 0 then
+      GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
+    end
+  end
+
+  if killedUnit:GetUnitName() == "npc_petri_sawmill" and killedUnit.queueFood then
+    hero.food = hero.food - killedUnit.queueFood
+  end
+
+  if GameMode.UnitKVs[killedUnit:GetUnitName()] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] and GameMode.UnitKVs[killedUnit:GetUnitName()]["Unique"] == 1 then
+    hero.uniqueUnitList[killedUnit:GetUnitName()] = false
   end
 
   -- Idol is killed
@@ -365,10 +389,14 @@ function GameMode:OnEntityKilled( keys )
       UTIL_Remove(killedUnit.minimapIcon)
     end
 
+    AddKeyToNetTable(killedUnit:entindex(), "gridnav", "building", {})
+
+    killedUnit.RemoveFromGNV()
+
     local chance = math.random(1, 100)
     if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
-      if chance > DEFENCE_SCROLL_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_defence_scroll", nil, nil)) 
+      if chance > EVASION_SCROLL_CHANCE then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_evasion_scroll", nil, nil)) 
       elseif chance > ATTACK_SCROLL_CHANCE then
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
       elseif chance > GOLD_COIN_CHANCE then
@@ -391,8 +419,8 @@ function GameMode:OnEntityKilled( keys )
     --   Notifications:TopToAll({text="#petrosyan_is_killed" .. PlayerResource:GetPlayerName(killerEntity:GetPlayerOwnerID()), duration=4, style={color="yellow"}, continue=false})
     -- end
     killedUnit.teleportationState = 0
-    killedUnit:SetTimeUntilRespawn(30.0)
-    Timers:CreateTimer(30.0,
+    killedUnit:SetTimeUntilRespawn(10.0)
+    Timers:CreateTimer(10.0,
     function()
       killedUnit:RespawnHero(false, false, false)
     end)
@@ -410,7 +438,20 @@ function GameMode:OnEntityKilled( keys )
     hero.food = hero.food - killedUnit.foodSpent
   end
 
-  if string.match(killedUnit:GetUnitName (), "cop") then
+  if killedUnit:GetUnitName () == "npc_petri_cop_trap" then
+    local level = killedUnit:FindAbilityByName("petri_cop_trap"):GetLevel()
+    local dmg = 100
+    if level == 2 then dmg = 350 end
+    local damageTable = {
+        victim = killerEntity,
+        attacker = killedUnit,
+        damage = dmg,
+        damage_type = DAMAGE_TYPE_PURE,
+    }
+    ApplyDamage(damageTable)
+  end
+
+  if killedUnit:GetUnitName () == "npc_petri_cop" then
     GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()].copIsPresent = false
   end
 
@@ -437,9 +478,17 @@ function GameMode:OnEntityKilled( keys )
       end)
       
     end
+    
+    Timers:CreateTimer(0.4,
+    function()
+      local particleName = "particles/items2_fx/shadow_amulet_activate_runes.vpcf"
+      local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, killedUnit )
+      ParticleManager:SetParticleControl( particle, 0, killedUnit:GetAbsOrigin() )
+    end)
+
     Timers:CreateTimer(0.5,
     function()
-      CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
+      local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)
   end
 end
@@ -560,6 +609,7 @@ function GameMode:OnPlayerMakeBet( event )
   end
 
   GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
+  GameMode.assignedPlayerHeroes[pID]:EmitSound("DOTA_Item.Hand_Of_Midas")
 
   CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )
 end

@@ -3,7 +3,7 @@
   "BaseClass"           "item_datadriven"
   "ID"              "1980"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Model"             "models/props_gameplay/recipe.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_attack_scroll"
 
@@ -11,7 +11,7 @@
   "AbilityCooldown"       "75"
   "AbilityManaCost"       "0"
 
-  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
   "ItemCost"            "525"
   "ItemQuality"         "consumable"
   "ItemAliases"         "scroll"

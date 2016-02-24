@@ -1,101 +1,3 @@
-"item_petri_magic_shield"
-{
-  "BaseClass"           "item_datadriven"
-  "ID"              "1535"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-  "Model"             "models/props_gameplay/red_box.vmdl" 
-  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_magic_shield"
-  "AbilityCooldown"       "60"
-
-  "ItemCost"            "140"
-  "ItemShopTags"          "armor"
-  "ItemQuality"         "unique"
-  "ItemAliases"         "magic shield"
-
-  "AbilitySpecial"
-  {
-    "01"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "15"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "70"
-    }
-    "03"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "invu_duration"      "4"
-    }
-  }
-
-  "OnSpellStart"
-  {
-    "ApplyModifier"
-    {
-      "Target"      "CASTER"
-      "ModifierName"    "modifier_item_petri_magic_shield_active"
-    }
-  }
-  
-  "Modifiers"
-  {
-    "modifier_item_petri_magic_shield_datadriven"
-    {
-      "Passive"     "1"
-      "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-      
-      "Properties"
-      {
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
-        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
-      }
-    }
-
-    "modifier_item_petri_magic_shield_active"
-    {
-      "Duration"                "%invu_duration"
-      "Passive"         "0"
-      "IsHidden"          "0"
-      "IsBuff"          "1"
-      "IsDebuff"          "0"
-      "IsPurgable"        "0"
-      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
-      "EffectAttachType"        "PATTACH_ABSORIGIN"
-
-      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-          
-      "States"
-      {
-        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
-      }
-    }
-  }
-}
-
-"item_recipe_petri_magic_shield"
-{
-  "BaseClass"           "item_datadriven"
-  "ID"              "1536"
-  "Model" "models/props_gameplay/recipe.mdl"
-  "AbilityTextureName"      "item_recipe"
-
-  "ItemCost"            "180"
-  "ItemShopTags"          ""
-
-  "ItemRecipe"          "1"
-  "ItemResult"          "item_petri_magic_shield"
-  "ItemRequirements"
-  {
-    "01"            "item_petri_vest;"
-  }
-}
-
 "item_petri_shield_of_nature"
 {
   "BaseClass"           "item_datadriven"
@@ -105,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_nature"
 
-  "ItemCost"            "0"
+  "ItemCost"            "2400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of nature"
@@ -142,7 +44,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1750"
+  "ItemCost"            "1500"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -162,7 +64,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_hell"
 
-  "ItemCost"            "0"
+  "ItemCost"            "4400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of hell"
@@ -199,7 +101,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "2500"
+  "ItemCost"            "2000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -219,7 +121,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_heaven"
 
-  "ItemCost"            "0"
+  "ItemCost"            "8400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of heaven"
@@ -256,7 +158,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1500"
+  "ItemCost"            "4000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -276,7 +178,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_best_shield"
 
-  "ItemCost"            "0"
+  "ItemCost"            "31121"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "best shield"
@@ -297,11 +199,30 @@
 
   "Modifiers"
   {
+    "modifier_petri_sword_bonus"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "1"
+      }
+    }
     "modifier_item_petri_best_shield_datadriven"
     {
       "Passive"     "1"
       "IsHidden"      "1"
       "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_petri_sword_bonus"
+          "Target"     "CASTER"
+        }
+      }
       
       "Properties"
       {
@@ -319,7 +240,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "8500"
+  "ItemCost"            "8600"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

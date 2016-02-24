@@ -1,0 +1,55 @@
+"npc_petri_earth_wall"
+{
+  "BaseClass"         "npc_dota_base_additive"
+  "Model"           "models/heroes/brewmaster/brewmaster_earthspirit.vmdl"  
+  "ModelScale"                "0.95"
+  "SoundSet"          "Brewmaster_Earth"  
+  "Level"           "1"
+  "HealthBarOffset"    "301"
+  
+  "AbilityLayout"     "4"
+  "Ability1"        "petri_upgrade_earth_wall"
+  "Ability2"        "petri_earth_wall_passive"
+  "Ability3"        "petri_building"
+  "Ability4"        "petri_animated_tower"
+  
+  "ArmorPhysical"       "30"     
+  "MagicalResistance"       "0"     
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_RANGED_ATTACK"
+  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+  "AttackDamageMin"     "30.0"
+  "AttackDamageMax"     "30.0"
+  "AttackRate"        "0.9"
+  "AttackAnimationPoint"    "0.2"
+  "AttackAcquisitionRange"  "500"
+  "AttackRange"       "90"
+
+  "ProjectileModel"            "particles/neutral_fx/mud_golem_hurl_boulder.vpcf"
+  "ProjectileSpeed"            "900"
+
+  "BountyXP"          "0"     
+  "BountyGoldMin"       "5"     
+  "BountyGoldMax"       "5"     
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
+  "RingRadius"        "100"
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+  "MovementSpeed"       "250"   
+  "MovementTurnRate"      "0.8"   
+  "FollowRange"       "0"   
+
+  "StatusHealth"        "250"     
+  "StatusHealthRegen"     "2"     
+  "StatusMana"        "0"     
+  "StatusManaRegen"     "0"     
+
+  "TeamName"     "DOTA_TEAM_GOODGUYS"
+  "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"   "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+  "UnitRelationShipClass"  "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+  "VisionDaytimeRange"    "500"   
+  "VisionNighttimeRange"    "500"   
+}

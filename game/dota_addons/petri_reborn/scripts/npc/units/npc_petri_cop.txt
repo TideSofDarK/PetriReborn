@@ -3,14 +3,19 @@
   "BaseClass"     "npc_dota_creature"
   "Model"      "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl"
   "ModelScale"    "1.5"
-  "Level"      "1"
+  "Level"      "2"
   "HealthBarOffset"    "180"
 
   "vscripts"     "units/cop.lua"
 
-  "AbilityLayout"    "4"
+  "AbilityLayout"    "6"
   "Ability1"         "petri_gold_bag_blink"
-  "Ability2"         "petri_mini_actor_phase"
+  "Ability2"         "build_petri_cop_trap"
+  "Ability3"         "petri_empty1"
+  "Ability4"         "petri_empty2"
+  "Ability5"         "petri_empty3"
+  "Ability6"         "petri_empty4"
+  "Ability7"         "petri_cop"
 
   "HasInventory"     "1"
 
@@ -35,8 +40,8 @@
 
   "StatusHealth"    "2500"
   "StatusHealthRegen"   "10"
-  "StatusMana"    "25"
-  "StatusManaRegen"    "0"
+  "StatusMana"    "5"
+  "StatusManaRegen"    "5"
 
   "VisionDaytimeRange"  "850"
   "VisionNighttimeRange"  "850"

@@ -362,6 +362,8 @@ function LoadUI()
 
 	$( "#VotePanel" ).UnfreezeVote();
 	$( "#VotePanel" ).SetTimer( PREPARE_TIME, "#game_setup_state_prevote" );	
+
+	GameEvents.SendCustomGameEventToServer( "petri_game_setup_start_precache", {} );
 }
 
 //--------------------------------------------------------------------------------------------------

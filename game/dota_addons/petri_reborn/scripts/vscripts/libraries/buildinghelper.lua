@@ -374,6 +374,8 @@ function BuildingHelper:AddBuilding(keys)
   ParticleManager:SetParticleControl(player.activeBuildingTable.modelParticle, 2, Vector(0,255,0))
 
   CustomGameEventManager:Send_ServerToPlayer(player, "building_helper_enable", {["state"] = "active", ["size"] = size, ["entindex"] = player.activeBuildingTable.mgd:entindex(), ["fMaxScale"] = fMaxScale} )
+
+  return buildingTable
 end
 
 --[[
@@ -434,7 +436,11 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     if callbacks.onConstructionFailed ~= nil then
       callbacks.onConstructionFailed(work)
     end
-    ParticleManager:DestroyParticle(work.particleIndex, true)
+    if work.particleIndex then
+      ParticleManager:DestroyParticle(work.particleIndex, true)
+    else
+      callbacks.onConstructionFailed(work)
+    end
     return
   end
 
@@ -600,7 +606,18 @@ function BuildingHelper:InitializeBuildingEntity( keys )
           end
           
           GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
-    
+      
+          building.RemoveFromGNV = function ()
+            local mapping = {}
+            for y = 1, size do
+              mapping[y] = {}
+              for x = 1, size do
+                mapping[y][x] = 0
+              end
+            end
+            GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
+          end
+
           -- clean up the timer if we don't need it.
           return nil
         end

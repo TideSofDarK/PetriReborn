@@ -4,13 +4,53 @@ var currentResources = {};
 
 (function(){Math.clamp=function(a,b,c){return Math.max(b,Math.min(c,a));}})();
 
-function UpdateResources( args )
+function UpdateResources( )
 {
-	 GameUI.CustomUIConfig().unitResources = args;
+	var gold = 0;
 
-	 $( "#TotalGoldText" ).text = args["gold"];
-	 $( "#TotalLumberText" ).text = args["lumber"];
-	 $( "#TotalFoodText" ).text = args["food"] + "/" + String(Math.clamp(parseInt(args["maxFood"]),0,250));
+	var mainSelected = Players.GetLocalPlayerPortraitUnit();
+
+	var localPlayer = Players.GetLocalPlayer();
+
+	var resourceTable;
+
+	if (Players.IsSpectator(localPlayer) == true)
+	{
+	 	var player = 0;
+	 	for (var i = 0; i < 13; i++) {
+	 		 if (Entities.IsControllableByPlayer( mainSelected, i ) == true)
+	 		 {
+	 		 	player = i;
+	 		 	break;
+	 		 }
+	 	}
+	 	resourceTable = CustomNetTables.GetTableValue("players_resources", String(player));
+	 	gold = Players.GetGold(player);
+	}
+	else
+	{
+	 	resourceTable = CustomNetTables.GetTableValue("players_resources", String(localPlayer));
+	 	gold = Players.GetGold(localPlayer);
+	}
+
+	GameUI.CustomUIConfig().unitResources = resourceTable;
+
+	if (resourceTable)
+	{
+		//if (gold) {
+	 		$( "#TotalGoldText" ).text = String(gold);
+	 	//}
+
+		if (resourceTable["lumber"]) {
+		 	$( "#TotalLumberText" ).text = resourceTable["lumber"];
+		}
+		 
+		//if (resourceTable["food"] && resourceTable["maxFood"]) {
+		 	$( "#TotalFoodText" ).text = resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
+		//}
+	}
+
+	$.Schedule( 0.03, UpdateResources );
 }
 
 function HidePanels()
@@ -43,8 +83,9 @@ function GetSpecialValues( eventArgs )
 {
 	HidePanels();
 
+	UpdateResources();
+
     GameEvents.Subscribe("player_team", HidePanels);
-    GameEvents.Subscribe( "receive_resources_info", UpdateResources);
 
     GameEvents.Subscribe( "petri_set_gold_costs", GetGoldCosts );
     GameEvents.Subscribe( "petri_set_dependencies_table", GetDependencies );

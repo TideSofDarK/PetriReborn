@@ -79,8 +79,6 @@
     "modifier_chopping_building"
     {
       "IsHidden"        "1"
-    
-      "OverrideAnimation"   "ACT_DOTA_ATTACK"
 
       "OnOrder"
       {     
@@ -96,46 +94,47 @@
         }
       }
 
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "PlayAttackAnimation"
+        }
+      }
+
+      "OnDestroy"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/peasant.lua"
+          "Function"    "StopAnimation"
+        }
+      }
+
       "ThinkInterval"  "1.0"
       "OnIntervalThink"
       {
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
-          "Function"    "RepairBy1Percent"
-        }
-
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_chopping_building_animation"
-          "Target"    "CASTER"
-          "Duration"    "0.87"
-        }
-      }   
-    }
-
-    "modifier_chopping_building_animation"
-    {
-      "OverrideAnimation"     "ACT_DOTA_ATTACK"
-      "IsHidden"        "1"
-      "OnOrder"
-      {
-        "RemoveModifier"
-        {
-          "ModifierName"  "modifier_chopping_building_animation"
-          "Target"    "CASTER"
+          "Function"    "PlayAttackAnimation"
         }
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"
-          "Function"    "ToggleOffRepairing"
+          "Function"    "RepairBy1Percent"
         }
-      }
+      }   
     }
 
     "modifier_being_repaired"
     {
-      "IsHidden"  "1"
+      "IsHidden"  "0"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+
+      "Duration"  "1.0"
     }
   }
 }

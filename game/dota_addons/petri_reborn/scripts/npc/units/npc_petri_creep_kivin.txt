@@ -8,6 +8,7 @@
   "HealthBarOffset"     "290"
 
   "Ability1"  "petri_creep_pendant"
+  "Ability2"  "petri_gold_tick"
 
   "ArmorPhysical"       "1488"
   "MagicalResistance"     "0"

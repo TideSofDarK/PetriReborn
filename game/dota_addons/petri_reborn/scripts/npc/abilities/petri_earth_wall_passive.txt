@@ -1,0 +1,222 @@
+"petri_earth_wall_passive"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
+
+  "MaxLevel"            "10"
+
+  "precache"
+  {
+    "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetized_ring.vpcf"
+    "particle"  "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
+    "particle"  "particles/econ/events/ti4/bottle_ti4.vpcf"
+    "particle"  "particles/items_fx/black_king_bar_avatar.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
+    }
+    "02"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "regen_cooldown"      "20"
+    }
+    "03"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0"
+    }
+    "04"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "stun_cooldown"      "20"
+    }
+    "05"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "damage"        "45 80 150 300 600 1000 5000 25000 70000"
+    }
+    "06"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
+    }
+  }
+
+  "OnUpgrade"
+  {
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_earth_regen"
+      "Target"     "CASTER"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_earth_stun"
+      "Target"     "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_earth_passive"
+    {
+      "Passive" "1"
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "OnCreated"
+      {
+        "AttachEffect"
+        {
+          "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_ambient.vpcf"
+          "EffectAttachType"  "follow_origin"
+          "Target"            "CASTER"
+        }
+      }
+
+      "OnAttacked"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_earth_attacked"
+          "Target"     "CASTER"
+        }
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_earth_regen"
+          "Target"     "CASTER"
+        }
+
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_attacked"
+          "Target"     "CASTER"
+        }
+      }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%regeneration"
+        "MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%damage"
+        "MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"  "%attack_range_bonus"
+      }
+    }
+    "modifier_earth_attacked"
+    {
+      "Duration"  "%regen_cooldown"
+      "IsHidden"                  "1"
+      "IsDebuff"                     "1"
+
+      "OnDestroy"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_regen"
+          "Target"     "CASTER"
+        }
+        "FireSound"
+        {
+          "EffectName"  "Hero_EarthSpirit.Magnetize.Cast"
+          "Target"     "CASTER"
+        }
+      }
+    }
+    "modifier_earth_regen"
+    {
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "EffectName"     "particles/econ/events/ti4/bottle_ti4.vpcf"      
+      "EffectAttachType"  "10"
+
+      "OnDestroy"
+      {
+        "FireSound"
+        {
+          "EffectName"  "Hero_EarthSpirit.Magnetize.End"
+          "Target"     "CASTER"
+        }
+      }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE" "5.0"
+      }
+    }
+
+    "modifier_earth_stun"
+    {
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "OnAttackLanded"
+      {
+        "Random"
+        {
+          "Chance"      "%stun_chance"
+          "OnSuccess"
+          {
+            "FireSound"
+            {
+              "EffectName"  "Hero_EarthShaker.Totem"
+              "Target"    "CASTER"
+            }
+            "FireEffect"
+            {
+              "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
+              "EffectAttachType"  "follow_origin"
+              "Target"            "TARGET"
+            }
+            "ApplyModifier"
+            {
+              "ModifierName"  "modifier_stunned"
+              "Target"     "TARGET"
+              "Duration"    "1.6"
+            }
+            "RemoveModifier"
+            {
+              "ModifierName"  "modifier_earth_stun"
+              "Target"     "CASTER"
+            }
+            "ApplyModifier"
+            {
+              "ModifierName"  "modifier_earth_stun_cooldown"
+              "Target"     "CASTER"
+            }
+          }
+          "OnFailure"
+          {
+
+          }
+        }
+      }
+    }
+
+    "modifier_earth_stun_cooldown"
+    {
+      "Duration"  "%stun_cooldown"
+      "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "OnDestroy"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_earth_stun"
+          "Target"     "CASTER"
+        }
+      }
+    }
+  }  
+}

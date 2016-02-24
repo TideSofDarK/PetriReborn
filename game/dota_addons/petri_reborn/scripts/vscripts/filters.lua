@@ -71,45 +71,108 @@ function GameMode:FilterExecuteOrder( filterTable )
     end
 
     if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
-      if filterTable["entindex_target"] >= 6 then
+
+      if filterTable["entindex_target"] >= 6 and PlayerResource:GetTeam(issuer) ~= DOTA_TEAM_BADGUYS then
         return false
-      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+      elseif filterTable["entindex_target"] >= 6 and PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
         local hero = EntIndexToHScript(filterTable["units"]["0"])
-        local ent = EntIndexToHScript(filterTable["units"]["0"])
 
-        if ent:GetUnitName() == "npc_petri_janitor" then
-          filterTable["units"]["0"] = hero:GetOwnerEntity():entindex()
-          hero = ent:GetOwnerEntity()
-        end
+        local targetSlot = filterTable["entindex_target"]
+        local heroSlot = 0
 
-        if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
+        if not Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
           return false
         end
 
-        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(ent) then
+        for i=0,11 do
+          if hero:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
+            heroSlot = i
+            break
+          end
+        end
+
+        hero:SwapItems(heroSlot, targetSlot)
+        return false
+      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+        local hero = EntIndexToHScript(filterTable["units"]["0"])
+        local ent = hero
+
+        -- if EntIndexToHScript(filterTable["entindex_ability"]):GetPurchaser() ~= hero then
+        --   return false
+        -- end
+
+        if Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
+
           local stashSlot = 6
 
-          for i=6,11 do
+          for i=0,11 do
             if hero:GetItemInSlot(i) == EntIndexToHScript(filterTable["entindex_ability"]) then
               stashSlot = i
               break
             end
           end
 
-          local itemName = hero:GetItemInSlot(stashSlot):GetName()
-          local charges = hero:GetItemInSlot(stashSlot):GetCurrentCharges()
+          if hero:GetItemInSlot(stashSlot) and hero:GetItemInSlot(stashSlot):GetPurchaser() ~= hero then
+            return false
+          elseif not hero:GetItemInSlot(stashSlot) then
+            return false
+          end
 
-          local newItem = CreateItem(itemName, ent, hero)
-          newItem:SetCurrentCharges(charges)
+          local oldItem = hero:GetItemInSlot(stashSlot)
 
-          hero:RemoveItem(hero:GetItemInSlot(stashSlot))
-          ent:AddItem(newItem)
+          
+          ent:DropItemAtPositionImmediate(oldItem, Vector(10000,10000,10000))
+
+          ent:AddItem(oldItem)
+
+          UTIL_Remove(oldItem:GetContainer())
+        end
+      end
+    elseif order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
+      local item = EntIndexToHScript(filterTable["entindex_ability"])
+
+      local purchaser = EntIndexToHScript(filterTable["entindex_target"])
+
+      if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
+        return false
+      end
+
+      if issuerUnit:GetUnitName() == "npc_dota_courier" and purchaser:IsHero() == true 
+        and (issuerUnit:GetAbsOrigin() - purchaser:GetAbsOrigin()):Length() < 400 then
+
+        local hasSpace = false
+        for i=0,5 do
+          if purchaser:GetItemInSlot(i) == nil then 
+            hasSpace = true
+            break
+          end
+        end
+
+        if hasSpace == false then
+          local oldItem = purchaser:GetItemInSlot(0)
+
+          purchaser:DropItemAtPositionImmediate(oldItem, purchaser:GetAbsOrigin())
+
+          issuerUnit:DropItemAtPositionImmediate(item, issuerUnit:GetAbsOrigin())
+
+          purchaser:AddItem(item)
+
+          issuerUnit:AddItem(oldItem)
+
+          UTIL_Remove(item:GetContainer())
+          UTIL_Remove(oldItem:GetContainer())
         end
       end
     elseif order_type == DOTA_UNIT_ORDER_PICKUP_ITEM then
+      if not EntIndexToHScript(filterTable["entindex_target"]) then return false end
+
       local item = EntIndexToHScript(filterTable["entindex_target"]):GetContainedItem()
 
       local purchaser = EntIndexToHScript(units["0"])
+
+      if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
+        return false
+      end
 
       if item:IsCastOnPickup() == true then
         if EntIndexToHScript(units["0"]):GetUnitName() == "npc_petri_cop" then
@@ -120,12 +183,12 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
 
       if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then 
-        if CheckShopType(item:GetName()) ~= 1 then
+        if CheckShopType(item:GetName(), "SideShop") == false then
           return false
         end
       end
       if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then 
-        if CheckShopType(item:GetName()) == 1 then
+        if CheckShopType(item:GetName(), "SecretShop") == false then
           return false
         end
       end
@@ -138,13 +201,17 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       local item = GetItemByID(filterTable["entindex_ability"])
 
-      if OnEnemyShop(purchaser) then
-        Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
-        return false
-      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
-        if not item["SideShop"] or OnKVNSideShop( purchaser ) == false then return false end
-      elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
-        if item["SideShop"] then return false end
+      if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS and (filterTable["entindex_ability"] == 45 or filterTable["entindex_ability"] == 84) then return false end
+
+      if item then
+        if OnEnemyShop(purchaser) then
+          Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
+          return false
+        elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
+          if item["SideShop"] ~= 1 or OnKVNSideShop( purchaser ) == false then return false end
+        elseif PlayerResource:GetTeam(issuer) == DOTA_TEAM_BADGUYS then
+          if item["SideShop"] then return false end
+        end
       end
     elseif order_type == DOTA_UNIT_ORDER_SELL_ITEM then
       local purchaser = EntIndexToHScript(units["0"])
@@ -190,6 +257,14 @@ function GameMode:FilterExecuteOrder( filterTable )
         end
       end
       return false
+    elseif order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET then 
+      local target = EntIndexToHScript(targetIndex)
+      
+      if target:HasAbility("petri_building") == true then
+        issuerUnit:MoveToPosition(GetMoveToBuildingPosition(issuerUnit,target))
+
+        return false
+      end
     end
 
     return true
@@ -198,13 +273,27 @@ end
 function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
 
-  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
-  GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+  if GameMode.assignedPlayerHeroes[event.player_id_const] then
+    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
+    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+  end
 
   if event.reason_const == DOTA_ModifyGold_HeroKill then
     if GameRules:GetDOTATime(false, false) < 120 then return false end
 
-    event["gold"] = 17 * (PlayerResource:GetKills(event.player_id_const) + 1)
+    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
+      GiveSharedGoldToTeam(math.floor(90 * GetGoldModifier()), DOTA_TEAM_BADGUYS)
+    end
+
+    return false
+  elseif event.reason_const == DOTA_ModifyGold_Unspecified then
+    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
+      if GameRules:GetDOTATime(false, false) < 120 then return false end
+
+      GiveSharedGoldToTeam(math.floor(event["gold"] * GetGoldModifier()), DOTA_TEAM_BADGUYS)
+
+      return false
+    end
   elseif event.reason_const == DOTA_ModifyGold_CreepKill then
     if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
       event["gold"] >= 5000 then -- boss
@@ -217,15 +306,13 @@ function GameMode:ModifyGoldFilter(event)
        CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
        Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
       end
-
-      for i=1,PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS) do
-        local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, i)] 
-        if hero then
-          PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), event["gold"]/2, false, DOTA_ModifyGold_SharedGold)
-
-          PlusParticle(event["gold"]/2, Vector(244,201,23), 3.0, hero)
+      if event["gold"] >= 20000 then
+        for i=1,5 do
+          CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
         end
       end
+
+      GiveSharedGoldToTeam(math.floor(event["gold"]/2), DOTA_TEAM_BADGUYS)
       return false
     end
   end
@@ -234,7 +321,9 @@ end
 
 function GameMode:ModifyExperienceFilter(filterTable)
   if not filterTable["player_id_const"] then return false end
-  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS then return false end 
+  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS 
+    or PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_BADGUYS 
+    then return false end 
   return true
 end
 

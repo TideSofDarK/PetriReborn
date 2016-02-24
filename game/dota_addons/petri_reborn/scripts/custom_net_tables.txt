@@ -5,6 +5,7 @@
     "players_resources",
     "players_upgrades",
     "players_dependencies",
+    "gridnav",
 	"LayersQueue"
   ]
 }

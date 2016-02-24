@@ -21,7 +21,9 @@ function GetGold( event )
 
 	local gold = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	
-	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + gold, false)
+	if caster:IsSilenced() == false then
+		PlayerResource:ModifyGold(pID, gold, false, 0)
+	end
 end
 
 function ToggleUpgrading ( event   )
@@ -43,6 +45,10 @@ function Upgrade( event )
 	local ability = event.ability
 	local pID = caster:GetPlayerOwnerID()
 
+	if ability:GetAutoCastState() == false then
+		return false
+	end
+
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	local gold = PlayerResource:GetGold(pID)
 
@@ -60,13 +66,45 @@ function Upgrade( event )
 
 		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
 
-		if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
-			caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
+		CheckLimit( caster, ability, upgradeLimit, GameMode.assignedPlayerHeroes[pID] )
+	end
+end
 
-			caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
-			ability:ToggleAbility()
+function UpgradeOnce( event )
+	local caster = event.caster
+	local ability = event.ability
+	local pID = caster:GetPlayerOwnerID()
 
-			caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
+	local gold = PlayerResource:GetGold(pID)
+
+	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
+
+	if gold >= upgradeRate then
+		PlayerResource:SpendGold(pID, upgradeRate, 0)
+
+		GameMode.assignedPlayerHeroes[pID].goldBagStacks = goldModifier+1
+
+		caster:SetModifierStackCount("modifier_gold_bag", caster, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
+
+		CheckLimit( caster, ability, upgradeLimit, GameMode.assignedPlayerHeroes[pID] )
+	end
+end
+
+function CheckLimit( caster, ability, upgradeLimit, hero )
+	if caster:GetModifierStackCount("modifier_gold_bag", caster) >= upgradeLimit then
+		caster:SetModifierStackCount("modifier_gold_bag", caster,upgradeLimit)
+
+		caster:RemoveModifierByName("modifier_gold_bag_upgrading_autocast")
+		ability:ToggleAbility()
+
+		caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
+
+		if not hero.bagRecord then
+			local time = GameMode.PETRI_TRUE_TIME
+			hero.bagRecord = string.format("%.2d:%.2d", time/60%60, time%60)
+			print(hero.bagRecord)
 		end
 	end
 end

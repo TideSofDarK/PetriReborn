@@ -1,0 +1,36 @@
+"build_petri_cop_trap"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "build_petri_cop_trap"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  // BuildingHelper info
+  "Building"            "1" //bool
+  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+  "BuildTime"           "5.0"
+  "AbilityCastRange"        "100"
+  "UpdateHealth"          "1" //bool
+  "Scale"             "1" //bool
+  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+  //"CancelsBuildingGhost"      "0" //bool
+  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+  "UnitName"            "npc_petri_cop_trap"
+  "AbilityCooldown"       "0"
+  "AbilityGoldCost"       "100"
+  // End of BuildingHelper info
+
+  "AbilityCastPoint"        "0.0"
+  "MaxLevel"            "1"
+  
+  "AbilityManaCost"       "0"
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "buildings/bh_abilities.lua"
+      "Function"        "build"
+    }
+  }
+}

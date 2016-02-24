@@ -7,23 +7,25 @@
   "Level"           "3"
   "HealthBarOffset"     "140"
 
-  "Ability1"  "petri_creep_swipes"
+  "vscripts"     "units/creep.lua"
 
-  "ArmorPhysical"       "2"
+  
+
+  "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "98.0"
-  "AttackDamageMax"     "98.0"
+  "AttackDamageMin"     "27.0"
+  "AttackDamageMax"     "37.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "5.0"
-  "BountyGoldMax"       "5.0"
-  "BountyXP"          "18"  
+  "BountyGoldMin"       "6.0"
+  "BountyGoldMax"       "7.0"
+  "BountyXP"          "15"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -37,8 +39,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "400"
-  "VisionNighttimeRange"    "400"
+  "VisionDaytimeRange"    "800"
+  "VisionNighttimeRange"    "800"
 
   "TeamName"          "DOTA_TEAM_NEUTRALS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

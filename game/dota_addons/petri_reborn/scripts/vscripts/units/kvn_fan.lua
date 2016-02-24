@@ -21,6 +21,7 @@ function SpawnTrap(keys)
 	local caster = keys.caster
 
 	local trap = CreateUnitByName("npc_petri_trap", point,  true, nil, caster, caster:GetTeam())
+	SetCustomBuildingModel(trap, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
 
 	InitAbilities(trap)
 	trap:AddNewModifier(trap, nil, "modifier_kill", {duration = 240})
@@ -38,8 +39,9 @@ function GivePermissionToBuild( keys )
 
 	if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
 		if target.currentArea == caster.currentArea then
-			if caster.currentArea.claimers[0] == caster and #caster.currentArea.claimers < 3 then
-				caster.currentArea.claimers[#caster.currentArea.claimers + 1] = target
+			if caster.currentArea.claimers[0] == caster and GetTableLength( caster.currentArea.claimers ) < 3 then
+				print(GetTableLength( caster.currentArea.claimers ))
+				caster.currentArea.claimers[GetTableLength( caster.currentArea.claimers ) + 1] = target
 			end
 		end
 	end
@@ -122,6 +124,7 @@ function SpawnGoldBag( keys )
 	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
 	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
+	SetCustomBuildingModel(bag, PlayerResource:GetSteamAccountID(pID))
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()
 
@@ -153,7 +156,10 @@ function Deny(keys)
 		damage_type = DAMAGE_TYPE_PURE,
 	}
  
-	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and target:HasAbility("petri_exit") ~= true then
+	if target:HasAbility("petri_building") == true and target:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and target:HasAbility("petri_exit") ~= true and target:HasAbility("petri_cop_trap") ~= true then
+		if caster:HasModifier("modifier_hunger") == true then
+			caster:RemoveModifierByName("modifier_hunger")
+		end
 		ApplyDamage(damageTable)
 	end
 end

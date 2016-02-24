@@ -24,6 +24,8 @@ function Upgrade ( event   )
 		UpdateModel(caster, "models/props_structures/tent_dk_large.vmdl", 0.24)
 	end
 
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(player:GetPlayerID()), tent_level+1)
+
 	local hero = player:GetAssignedHero()
 
 	hero.maxFood = hero.maxFood + 30

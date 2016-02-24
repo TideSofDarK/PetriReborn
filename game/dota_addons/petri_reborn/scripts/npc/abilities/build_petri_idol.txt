@@ -10,7 +10,7 @@
     "01"
     { 
         "var_type"  "FIELD_INTEGER"
-        "lumber_cost" "5000"
+        "lumber_cost" "4000"
     }
   }
 

@@ -5,7 +5,9 @@
   "ModelScale"                "2.4"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "0"
-  "HealthBarOffset"    "280"
+  "HealthBarOffset"    "360"
+
+  "Unique"  "1"
   
   "AbilityLayout"       "4"
   "Ability1"          "petri_exploration_tree_explore"     

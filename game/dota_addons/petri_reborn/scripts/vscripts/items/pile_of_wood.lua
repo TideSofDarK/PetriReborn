@@ -8,9 +8,9 @@ function Use( event )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	local amount = math.floor(GameRules:GetDOTATime(false,false) * woodModifier / 60)
+	local amount = math.floor(GameMode.PETRI_TRUE_TIME * woodModifier / 60)
 
-	PlusParticle(amount, Vector(10, 200, 90), 1.0, caster)
+	PopupParticle(amount, Vector(10, 200, 90), 1.0, caster)
 
-	hero.lumber = hero.lumber + amount
+	AddLumber( hero:GetPlayerOwner(), amount )
 end

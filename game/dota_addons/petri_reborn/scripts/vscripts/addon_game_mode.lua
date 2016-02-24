@@ -1,8 +1,10 @@
 require('internal/util')
 require('gamemode')
+--require("statcollection/init")
 
 function Precache( context )
-  PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
+  SendToServerConsole( "dota_combine_models 0" )
+  SendToConsole( "dota_combine_models 0" )
   
   -- ITEMS
   PrecacheItemByNameSync("item_petri_pile_of_wood", context)
@@ -10,32 +12,28 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_boots", context)
   PrecacheItemByNameSync("item_petri_hook", context)
   PrecacheItemByNameSync("item_petri_alcohol", context)
+  PrecacheItemByNameSync("item_petri_vip_laguna", context)
+  PrecacheItemByNameSync("item_petri_evasion_scroll", context)
+  PrecacheItemByNameSync("item_petri_vip_frostbite", context)
+  PrecacheItemByNameSync("item_petri_vip_furion", context)
+  PrecacheItemByNameSync("item_petri_vip_greenkzn", context)
+  PrecacheItemByNameSync("item_petri_vip_zeus", context)
   
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
-  PrecacheResource("model", "models/heroes/techies/fx_techiesfx_stasis.vmdl", context)
-
-  -- HEROES
-  PrecacheResource("model_folder", "models/heroes/death_prophet", context)
-  PrecacheResource("model_folder", "models/heroes/rattletrap", context)
-  PrecacheResource("model_folder", "models/heroes/brewmaster", context)
-  PrecacheResource("model_folder", "models/heroes/storm_spirit", context)
 
   -- UNITS
-  PrecacheResource("model", "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl", context)
+  PrecacheUnitByNameSync("npc_petri_cop_trap", context)
 
-  PrecacheResource("model", "models/heroes/terrorblade/terrorblade_arcana.vmdl", context)
-  PrecacheResource("model", "models/heroes/doom/doom.vmdl", context)
+  PrecacheUnitByNameSync("npc_petri_cop", context)
+  PrecacheUnitByNameSync("npc_petri_janitor", context)
 
-  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
-
-  PrecacheResource("model", "models/props_structures/tower_dragon_white.vmdl", context)
-  PrecacheResource("model", "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl", context)
-  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl", context)
-  PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl", context)
-  PrecacheResource("model", "models/items/undying/idol_of_ruination/ruin_wight_minion_gold.vmdl", context)
-  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl", context)
-  PrecacheResource("model", "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl", context)
-  PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee.vmdl", context)
+  PrecacheUnitByNameSync("npc_petri_creep_bad_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_dead_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_draconoid", context)
+  PrecacheUnitByNameSync("npc_petri_creep_good_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_humorist", context)
+  PrecacheUnitByNameSync("npc_petri_creep_kvn_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_kivin", context)
 
   PrecacheUnitByNameSync("npc_petri_svetlakov", context)
   PrecacheUnitByNameSync("npc_petri_maslyakov", context)
@@ -43,6 +41,36 @@ function Precache( context )
 
   PrecacheUnitByNameSync("npc_petri_peasant", context)
   PrecacheUnitByNameSync("npc_petri_super_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
+
+  PrecacheUnitByNameSync("npc_petri_trap", context)
+
+  PrecacheUnitByNameSync("npc_petri_earth_wall", context)
+
+  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
+
+  -- Custom skins
+  -- local AttachmentDatabase = LoadKeyValues("scripts/attachments.txt")
+  -- for k,model in pairs(AttachmentDatabase) do
+  --   PrecacheResource("model", k, context)
+  --   for pointName,pointTable in pairs(model) do
+  --     for modelName,modelTable in pairs(pointTable) do
+  --       if string.match(modelName, "vmdl") then
+  --         PrecacheResource("model", modelName, context)
+  --       end
+  --     end
+  --   end
+  -- end
+
+  -- local Particles = AttachmentDatabase['Particles']
+  -- for k,model in pairs(Particles) do
+  --   for effectName,values in pairs(model) do
+  --     if string.match(effectName, "vpcf") then
+  --       PrecacheResource("particle", effectName, context)
+  --       print(effectName)
+  --     end
+  --   end
+  -- end
 
   -- BUILDINGS
   -- idol
@@ -52,8 +80,8 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_exit", context)
 
   -- towers
-  PrecacheResource("model", "models/props_structures/tower_good3_dest_lvl1.vmdl", context)
-  PrecacheResource("model", "models/items/invoker/forge_spirit/infernus/infernus.vmdl", context)
+  PrecacheResource("model", "models/props_structures/tower_good.vmdl", context)
+  PrecacheResource("model", "models/items/invoker/forge_spirit/arsenal_magus_forged_spirit/arsenal_magus_forged_spirit.vmdl", context)
   PrecacheResource("model", "models/heroes/ancient_apparition/ancient_apparition.vmdl", context)
   PrecacheResource("model", "models/heroes/undying/undying_tower.vmdl", context)
 
@@ -61,6 +89,7 @@ function Precache( context )
   PrecacheResource("model", "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl", context)
 
   PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
+  PrecacheUnitByNameSync("npc_petri_exploration_tree", context)
   
   -- wall
   PrecacheResource("model", "models/items/rattletrap/warmachine_cog_dc/warmachine_cog_dc.vmdl", context)
@@ -88,8 +117,6 @@ function Precache( context )
   PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
   PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)
 
-  PrecacheResource("model", "models/items/wards/eyeofforesight/eyeofforesight.vmdl", context)
-
   PrecacheUnitByNameSync("npc_petri_sawmill", context)
   PrecacheUnitByNameSync("npc_petri_tower_basic", context)
   PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
@@ -114,6 +141,29 @@ function Precache( context )
   PrecacheResource("particle", "particles/units/heroes/hero_rattletrap/rattletrap_rocket_flare_explosion_flash_c.vpcf", context)
 
   PrecacheResource("particle", "particles/generic_gameplay/dropped_item.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_tornado_child.vpcf", context)
+  PrecacheResource("particle", "particles/items_fx/cyclone.vpcf", context)
+
+  PrecacheResource("particle", "particles/items_fx/blademail.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind.vpcf", context)
+  PrecacheResource("particle", "particles/units/heroes/hero_meepo/meepo_earthbind_projectile_fx.vpcf", context)
+
+  PrecacheResource("particle", "particles/items2_fx/shadow_amulet_activate_runes.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_invoker/invoker_base_attack.vpcf", context)
+
+  PrecacheResource("particle", "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf", context)
+
+  PrecacheResource("particle", "particles/portal_level_msg.vpcf", context)
+  
+  -- SOUNDS
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts", context)
+  PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts", context)
 end
 
 function Activate()

@@ -1,0 +1,46 @@
+"npc_petri_cop_trap"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
+  "ModelScale"        "1.85"
+  "Level"           "1"
+  "HealthBarOffset"       "180"
+  "HasInventory"        "0"
+
+  "AbilityLayout"       "4"
+  "Ability1"  "petri_cop_trap"
+  "Ability2"  "petri_upgrade_cop_trap"
+  "Ability3"  "petri_suicide"
+  "Ability4"  "petri_building"
+  
+  "ArmorPhysical"       "0"
+  "MagicalResistance"     "0"
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+  "AttackDamageMin"       "0"
+  "AttackDamageMax"       "0"
+
+  "BountyGoldMin"       "20.0"
+  "BountyGoldMax"       "20.0"
+
+  "BoundsHullName"    "DOTA_HULL_SIZE_HERO"    
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+  "MovementSpeed"         "0"   
+  "MovementTurnRate"    "0.0"  
+  "HasAggressiveStance"     "0"
+  
+  "StatusHealth"        "100"
+  "StatusHealthRegen"     "0"
+  "StatusMana"        "10"
+  "StatusManaRegen"       "0"
+
+  "VisionDaytimeRange"    "170"
+  "VisionNighttimeRange"    "170"
+
+  "TeamName"          "DOTA_TEAM_GOODGUYS"
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+}

@@ -1,0 +1,165 @@
+"petri_cop_trap"
+{
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "BaseClass"           "ability_datadriven"
+  "MaxLevel" "2"
+  "AbilityTextureName"      ""
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"      "FIELD_INTEGER"
+      "duration"      "5 10"
+    }
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "attack_slow"       "-25 -50"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "move_slow"         "-60 -100"
+    }
+  }
+
+  "OnUpgrade"
+  {
+    "DelayedAction"
+    {
+      "Delay"     "0.2"
+      "Action"    
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_cop_trap"
+          "Target"     "CASTER"
+        }
+      }
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_poison"
+    {
+      "Duration"  "%duration"
+      "IsDebuff"  "1"
+      "IsHidden"  "1"
+
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "EffectName"    "particles/units/heroes/hero_viper/viper_viper_strike_debuff.vpcf"
+      "EffectAttachType"  "follow_origin"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_slow"
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%move_slow"
+      }
+    }
+    "modifier_cop_trap"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "EffectName"            "particles/items_fx/blademail.vpcf"
+      "EffectAttachType"      "follow_origin"
+
+      "OnAttacked"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "units/cop_trap.lua"
+          "Function"    "OnAttacked"
+        }
+      }
+    }
+  }
+}
+
+"petri_upgrade_cop_trap"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "MaxLevel" "1"
+  "AbilityTextureName"      "rattletrap_power_cogs"
+  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityManaCost"       "0"
+  "AbilityChannelTime"      "4.5"
+  "AbilityUpgradeGoldCost"    "0"
+
+  "AbilityGoldCost" "1500"
+
+  "precache"
+  {
+    "particle"  "particles/items_fx/immunity_sphere_buff.vpcf"
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+  
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/cop_trap.lua"
+      "Function"    "Upgrade"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_upgraded"
+      "Target"     "CASTER"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_upgraded"
+    {
+      "IsBuff"  "1"
+      "IsHidden"  "1"
+
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "EffectName"              "particles/items_fx/immunity_sphere_buff.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"    "MODIFIER_STATE_VALUE_DISABLED"
+      }
+    }
+  }
+}

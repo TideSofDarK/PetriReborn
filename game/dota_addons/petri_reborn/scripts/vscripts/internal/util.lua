@@ -1,3 +1,176 @@
+POPUP_SYMBOL_PRE_PLUS = 0
+POPUP_SYMBOL_PRE_MINUS = 1
+POPUP_SYMBOL_PRE_SADFACE = 2
+POPUP_SYMBOL_PRE_BROKENARROW = 3
+POPUP_SYMBOL_PRE_SHADES = 4
+POPUP_SYMBOL_PRE_MISS = 5
+POPUP_SYMBOL_PRE_EVADE = 6
+POPUP_SYMBOL_PRE_DENY = 7
+POPUP_SYMBOL_PRE_ARROW = 8
+
+POPUP_SYMBOL_POST_EXCLAMATION = 0
+POPUP_SYMBOL_POST_POINTZERO = 1
+POPUP_SYMBOL_POST_MEDAL = 2
+POPUP_SYMBOL_POST_DROP = 3
+POPUP_SYMBOL_POST_LIGHTNING = 4
+POPUP_SYMBOL_POST_SKULL = 5
+POPUP_SYMBOL_POST_EYE = 6
+POPUP_SYMBOL_POST_SHIELD = 7
+POPUP_SYMBOL_POST_POINTFIVE = 8
+
+function GetExpTickModifier()
+  local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
+  
+  if time >= 40 then
+    return 0.0
+  elseif time >= 33 and time < 40 then
+    return 10.0
+  elseif time >= 32 and time < 33 then
+    return 0.0
+  elseif time >= 28 and time < 32 then
+    return 8.0
+  elseif time >= 24 and time < 28 then
+    return 0.0
+  elseif time >= 20 and time < 24 then
+    return 6.0
+  elseif time >= 16 and time < 20 then
+    return 0.0
+  elseif time >= 12 and time < 16 then
+    return 4.0
+  elseif time >= 8 and time < 12 then
+    return 0.0
+  elseif time >= 6 and time < 8 then
+    return 2.0
+  elseif time >= 4 and time < 6 then
+    return 1.0
+  elseif time >= 2 and time < 4 then
+    return 0.0
+  elseif time < 2 then
+    return 0.0 
+  end
+  return 1.0
+end
+
+function GetGoldTickModifier()
+  local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
+  
+  if time >= 40 then
+    return 0.0
+  elseif time >= 33 and time < 40 then
+    return 50.0
+  elseif time >= 32 and time < 33 then
+    return 0.0
+  elseif time >= 28 and time < 32 then
+    return 25.0
+  elseif time >= 24 and time < 28 then
+    return 0.0
+  elseif time >= 20 and time < 24 then
+    return 10.0
+  elseif time >= 16 and time < 20 then
+    return 0.0
+  elseif time >= 12 and time < 16 then
+    return 4.0
+  elseif time >= 8 and time < 12 then
+    return 0.0
+  elseif time >= 6 and time < 8 then
+    return 2.0
+  elseif time >= 4 and time < 6 then
+    return 1.0
+  elseif time >= 2 and time < 4 then
+    return 0.0
+  elseif time < 2 then
+    return 0.0 
+  end
+  return 1.0
+end
+
+function GetGoldModifier()
+  local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
+
+  if time > 40 then
+    return 10.0
+  elseif time > 36 and time <= 40 then
+    return 8.0
+  elseif time > 32 and time <= 36 then
+    return 5.0
+  elseif time > 28 and time <= 32 then
+    return 4.0
+  elseif time > 24 and time <= 28 then
+    return 3.0
+  elseif time > 20 and time <= 24 then
+    return 2.0
+  elseif time > 16 and time <= 20 then
+    return 1.5
+  elseif time > 12 and time <= 16 then
+    return 0.7
+  elseif time > 8 and time <= 12 then
+    return 0.5
+  elseif time > 4 and time <= 8 then
+    return 0.3
+  elseif time >= 2 and time <= 4 then
+    return 0.28
+  elseif time < 2 then
+    return 0.0 
+  end
+  return 1.0
+end
+
+function IsInsideEntityBounds(ent, position)
+  local origin = entity:GetAbsOrigin()
+  local bounds = entity:GetBounds()
+  local min = bounds.Mins
+  local max = bounds.Maxs
+  local X = location.x
+  local Y = location.y
+  local minX = min.x + origin.x
+  local minY = min.y + origin.y
+  local maxX = max.x + origin.x
+  local maxY = max.y + origin.y
+  local betweenX = X >= minX and X <= maxX
+  local betweenY = Y >= minY and Y <= maxY
+
+  return betweenX and betweenY
+end
+
+function GetMoveToTreePosition( unit, target )
+  local origin = unit:GetAbsOrigin()
+  local building_pos = target:GetAbsOrigin()
+  local distance = 120
+  return building_pos + (origin - building_pos):Normalized() * distance
+end
+
+function GetMoveToBuildingPosition( unit, target )
+  local origin = unit:GetAbsOrigin()
+  local building_pos = target:GetAbsOrigin()
+  local distance = target:GetHullRadius()
+  return building_pos + (origin - building_pos):Normalized() * distance
+end
+
+function GiveSharedGoldToHeroes(gold, hero)
+  for k,v in pairs(GameMode.assignedPlayerHeroes) do
+    if IsValidEntity(v) == true then
+      if v.GetUnitName and v:GetUnitName() == hero and v:GetPlayerOwnerID() then
+        PlayerResource:ModifyGold(v:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+
+        PopupParticle(gold, Vector(244,201,23), 3.0, v)
+      end
+    end
+  end
+end
+
+function GiveSharedGoldToTeam(gold, team)
+  for i=1,PlayerResource:GetPlayerCountForTeam(team) do
+    if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)]  then
+      local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)] 
+      if IsValidEntity(hero) == true and hero.GetPlayerOwnerID then
+        PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+
+        PopupParticle(gold, Vector(244,201,23), 3.0, hero)
+      end
+    end
+  end
+end
+
 function PayGoldCost(ability)
   local cost = ability:GetGoldCost(ability:GetLevel())
   if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then
@@ -22,7 +195,8 @@ function UnitCanAttackTarget( unit, target )
   if not unit:HasAttackCapability() 
     or (target.IsInvulnerable and target:IsInvulnerable()) 
     or (target.IsAttackImmune and target:IsAttackImmune()) 
-    or not unit:CanEntityBeSeenByMyTeam(target) then
+    or not unit:CanEntityBeSeenByMyTeam(target) 
+    or unit:GetTeamNumber() == target:GetTeamNumber() then
     return false
   end
 
@@ -54,7 +228,7 @@ end
 -- MODIFIERS
 function RemoveInvuModifiers(target)
   target:RemoveModifierByName("modifier_item_petri_cola_active")
-  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_stats_datadriven")
+  target:RemoveModifierByName("modifier_item_petri_uber_mask_of_laugh_active")
   target:RemoveModifierByName("modifier_item_petri_magic_shield_active")
 end
 
@@ -85,6 +259,22 @@ function RemoveGatheringAndRepairingModifiers(target)
   end
 end
 
+function GetModifierCountByName(caster, target, modifierBuffName)
+  local modifierCount = target:GetModifierCount()
+  local modifierName
+  local currentStack = 0
+
+  for i = 0, modifierCount do
+    modifierName = target:GetModifierNameByIndex(i)
+
+    if modifierName == modifierBuffName then
+      currentStack = currentStack + 1
+    end
+  end
+
+  return currentStack
+end
+
 function AddStackableModifierWithDuration(caster, target, ability, modifierName, time, maxStacks)
   local modifier = target:FindModifierByName(modifierName)
   if modifier then
@@ -105,17 +295,57 @@ function AddStackableModifierWithDuration(caster, target, ability, modifierName,
 end
 -- MODIFIERS
 
-function PlusParticle(number, color, duration, caster)
-  POPUP_SYMBOL_PRE_PLUS = 0 -- This makes the + on the message particle
-  local pfxPath = string.format("particles/msg_fx/msg_damage.vpcf", pfx)
-  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+function PopupParticle(number, color, duration, caster, preSymbol, postSymbol)
+  if number < 1 then
+    return false
+  end
+  local pfxPath = string.format("particles/msg_fx/msg_gold.vpcf", pfx)
+
+  local pidx
+
+  if caster:GetPlayerOwner() == nil then
+    pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster)
+  else
+    pidx = ParticleManager:CreateParticleForPlayer(pfxPath, PATTACH_ABSORIGIN_FOLLOW, caster, caster:GetPlayerOwner())
+  end
+
   local color = color
   local lifetime = duration
   local digits = #tostring(number) + 1
 
-  ParticleManager:SetParticleControl(pidx, 1, Vector( POPUP_SYMBOL_PRE_PLUS, number, 0 ) )
+  local digits = 0
+  if number ~= nil then
+      digits = #tostring(number)
+  end
+  if preSymbol ~= nil then
+      digits = digits + 1
+  end
+  if postSymbol ~= nil then
+      digits = digits + 1
+  end
+
+  ParticleManager:SetParticleControl(pidx, 1, Vector( preSymbol, number, postSymbol ) )
   ParticleManager:SetParticleControl(pidx, 2, Vector(lifetime, digits, 0))
   ParticleManager:SetParticleControl(pidx, 3, color)
+end
+
+function PopupStaticParticle(number, color, caster)
+  if number < 1 then
+    return false
+  end
+  local pfxPath = string.format("particles/portal_level_msg.vpcf", pfx)
+
+  local pidx = ParticleManager:CreateParticle(pfxPath, PATTACH_ABSORIGIN, caster)
+
+  local digits = 0
+  if number ~= nil then
+      digits = #tostring(number)
+  end
+  digits = digits + 1
+
+  ParticleManager:SetParticleControl(pidx, 2, Vector(1, 0, 0))
+  ParticleManager:SetParticleControl(pidx, 3, Vector(9, number, 2))
+  ParticleManager:SetParticleControl(pidx, 4, Vector(1, digits, 0))
 end
 
 -- NETTABLES
@@ -126,7 +356,7 @@ function GetKeyInNetTable(pID, nettable, k)
 end
 
 function AddKeyToNetTable(pID, nettable, k, v)
-  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID))
+  local tempTable = CustomNetTables:GetTableValue(nettable, tostring(pID)) or {}
 
   tempTable[k] = v
 
@@ -141,16 +371,26 @@ function GetItemByID(id)
   end
 end
 
-function CheckShopType(item)
+function CheckShopType(item, itemType)
   for k,v in pairs(GameMode.ItemKVs) do
     if k == item then 
-      if v["SideShop"] then return 1
-      elseif v["SecretShop"] then return 2
-      else return 0 end
+      if itemType == "SecretShop" then 
+        if not v["SideShop"] then
+          return true
+        end
+      end
+      if v[itemType] or v["ItemShareability"] == "ITEM_FULLY_SHAREABLE" then return true end
     end
   end
+  return false
 end
 -- ITEMS
+
+function ToggleAbilityAutocastOff(ability)
+  if ability:GetAutoCastState() == true then 
+      ability:ToggleAutoCast()
+  end
+end
 
 function ToggleAbilityOff(ability)
   if ability:GetToggleState() == true then 
@@ -270,7 +510,7 @@ function StartUpgrading (event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero()
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
   local pID = hero:GetPlayerOwnerID()
 
   local level = ability:GetLevel() - 1
@@ -298,12 +538,13 @@ function StartUpgrading (event)
     caster.lastSpentGold = gold_cost
     caster.lastSpentFood = food_cost
 
+    caster.foodSpent = caster.foodSpent or 0
     caster.foodSpent = caster.foodSpent + food_cost
 
     PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
     
     if not event["Permanent"] then
-      ability:SetHidden(true)
+      ability:SetActivated(false)
     else 
       local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
       local abilityName = ability:GetName()
@@ -311,7 +552,7 @@ function StartUpgrading (event)
       for k,v in pairs(all) do
         if v:HasAbility(abilityName) then
           local a = v:FindAbilityByName(abilityName)
-          a:SetHidden(true)
+          a:SetActivated(false)
         end
       end
     end
@@ -322,22 +563,25 @@ function StopUpgrading(event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
   caster.lastSpentLumber = caster.lastSpentLumber or 0
   caster.lastSpentGold = caster.lastSpentGold or 0
   caster.lastSpentFood = caster.lastSpentFood or 0
 
-  hero.lumber = hero.lumber + caster.lastSpentLumber
-  hero.food = hero.food - caster.lastSpentFood
-  PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+  if caster:IsAlive() then
+    hero.lumber = hero.lumber + caster.lastSpentLumber
+    hero.food = hero.food - caster.lastSpentFood
+    caster.foodSpent = caster.foodSpent - caster.lastSpentFood
+    PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+  end
 
   caster.lastSpentLumber = 0
   caster.lastSpentGold = 0
   caster.lastSpentFood = 0
 
   if not event["Permanent"] then
-    ability:SetHidden(false)
+    ability:SetActivated(true)
   else 
     local all = FindAllByUnitName(caster:GetUnitName(), caster:GetPlayerOwnerID())
     local abilityName = ability:GetName()
@@ -345,7 +589,7 @@ function StopUpgrading(event)
     for k,v in pairs(all) do
       if v:HasAbility(abilityName) then
         local a = v:FindAbilityByName(abilityName)
-        a:SetHidden(false)
+        a:SetActivated(true)
       end
     end
   end
@@ -355,7 +599,7 @@ function OnUpgradeSucceeded(event)
   local caster = event.caster
   local ability = event.ability
 
-  local hero = caster:GetPlayerOwner():GetAssignedHero() 
+  local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
   local pID = caster:GetPlayerOwnerID()
 
   local level = ability:GetLevel()
@@ -392,7 +636,7 @@ function OnUpgradeSucceeded(event)
         if level+1 == a:GetMaxLevel() then
           a:SetHidden(true)
         else 
-          a:SetHidden(false)
+          a:SetActivated(true)
         end
       end
     end
@@ -400,7 +644,7 @@ function OnUpgradeSucceeded(event)
     if level+1 == ability:GetMaxLevel() then
       ability:SetHidden(true)
     else 
-      ability:SetHidden(false)
+      ability:SetActivated(true)
     end
   end
 end
@@ -412,6 +656,14 @@ function UpdateModel(target, model, scale)
 end
 
 -- End of upgrades
+
+function AddLumber( player, amount )
+  local playerID = player:GetPlayerID() 
+  local hero = player:GetAssignedHero() 
+
+  hero.lumber = hero.lumber + amount
+  hero.allGatheredLumber = hero.allGatheredLumber + amount
+end
 
 function ReturnGold(player)
   local playerID = player:GetPlayerID() 
@@ -485,7 +737,7 @@ function InitAbilities( hero )
     if abil ~= nil then
       if hero:IsHero() and hero:GetAbilityPoints() > 0 then
         hero:UpgradeAbility(abil)
-      else
+      elseif abil:GetLevel() < 1 then
         abil:SetLevel(1)
       end
     end
@@ -512,6 +764,21 @@ function DebugPrintTable(...)
   if spew == 1 then
     PrintTable(...)
   end
+end
+
+function RandomChange (percent)
+  assert(percent >= 0 and percent <= 100) 
+  return percent >= math.random(1, 100)
+end
+
+function GetTableLength( t )
+  local length = 0
+
+  for k,v in pairs(t) do
+    length = length + 1
+  end
+
+  return length
 end
 
 function PrintTable(t, indent, done)

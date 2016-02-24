@@ -4,7 +4,7 @@
   "Model"      "models/items/warlock/golem/the_torchbearer/the_torchbearer.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
-  "HealthBarOffset"    "140"
+  "HealthBarOffset"    "210"
 
   "vscripts"     "units/peasant.lua"
 
@@ -28,8 +28,6 @@
 
   "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
   "RingRadius"    "40"
-  "CollisionSize"    "16"
-  "FormationRank"    "4"
 
   "MovementCapabilities"  "DOTA_UNIT_CAP_MOVE_GROUND"
   "MovementSpeed"    "522"

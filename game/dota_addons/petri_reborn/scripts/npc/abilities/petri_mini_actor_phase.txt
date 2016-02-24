@@ -9,6 +9,9 @@
     {
       "Passive"                   "1"
       "IsHidden"                  "1"
+      "IsBuff"                     "1"
+
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 
       "States"
       {

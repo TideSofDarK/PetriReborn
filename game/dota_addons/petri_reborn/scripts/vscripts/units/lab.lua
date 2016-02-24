@@ -2,23 +2,25 @@ function Spawn( keys )
 	StartAnimation(thisEntity, {duration=-1, activity=ACT_DOTA_IDLE , rate=2.5})
 	thisEntity:SetAngles(0, -90, 0)
 
-	Timers:CreateTimer(tonumber(GameMode.AbilityKVs["build_petri_lab"]["BuildTime"]) + 0.1, function()
-		if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
-			local pID = thisEntity:GetPlayerOwnerID()
+	thisEntity.onBuildingCompleted = OnBuildingCompleted
+end
 
-			local level = GetUpgradeLevelForPlayer("petri_upgrade_concrete", pID)
-			thisEntity:FindAbilityByName("petri_upgrade_concrete"):SetLevel(level+1)
-			HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_concrete"))
+function OnBuildingCompleted( thisEntity )
+	if thisEntity:IsNull() == false and thisEntity:GetPlayerOwner() ~= nil then
+		local pID = thisEntity:GetPlayerOwnerID()
 
-			level = GetUpgradeLevelForPlayer("petri_upgrade_tower_damage", pID)
-			thisEntity:FindAbilityByName("petri_upgrade_tower_damage"):SetLevel(level+1)
-			HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_tower_damage"))
+		local level = GetUpgradeLevelForPlayer("petri_upgrade_concrete", pID)
+		thisEntity:FindAbilityByName("petri_upgrade_concrete"):SetLevel(level+1)
+		HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_concrete"))
 
-			level = GetUpgradeLevelForPlayer("petri_upgrade_lumber", pID)
-			thisEntity:FindAbilityByName("petri_upgrade_lumber"):SetLevel(level+1)
-			HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_lumber"))
-		end
-	end)
+		level = GetUpgradeLevelForPlayer("petri_upgrade_tower_damage", pID)
+		thisEntity:FindAbilityByName("petri_upgrade_tower_damage"):SetLevel(level+1)
+		HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_tower_damage"))
+
+		level = GetUpgradeLevelForPlayer("petri_upgrade_lumber", pID)
+		thisEntity:FindAbilityByName("petri_upgrade_lumber"):SetLevel(level+1)
+		HideIfMaxLevel(thisEntity:FindAbilityByName("petri_upgrade_lumber"))
+	end
 end
 
 function LumberUpgrade(event)
@@ -50,7 +52,7 @@ function ApplyDamageAura(event)
 	
 	for k,v in pairs(units) do
 		if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and
-			v:HasAbility("petri_building") then
+			v:HasAbility("petri_building") and v:GetAttackCapability() == 2 then
 
 			ability:ApplyDataDrivenModifier(caster, v, "modifier_damage", {})
 

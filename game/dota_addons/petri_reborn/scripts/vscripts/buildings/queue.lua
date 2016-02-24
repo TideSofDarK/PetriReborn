@@ -14,7 +14,7 @@ function EnqueueUnit( event, food )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	if hero.numberOfUnits >= PETRI_MAX_WORKERS then
+	if hero.numberOfUnits >= PETRI_MAX_WORKERS or hero.numberOfMegaWorkers >= PETRI_MAX_MEGA_WORKERS then
 		Notifications:Top(caster:GetPlayerOwnerID(),{text="#max_number_of_workers", duration=3, style={color="red"}, continue=false})
 		if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end
 		return false
@@ -34,7 +34,11 @@ function EnqueueUnit( event, food )
 			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 0)
 			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 			hero.numberOfUnits = hero.numberOfUnits + 1
+			if tonumber(event.food) == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers + 1 end
 		end
+
+		caster.queueFood = caster.queueFood or 0
+		caster.queueFood = caster.queueFood + tonumber(event.food)
 
 		local ability_name = ability:GetAbilityName()
 		local item_name = "item_"..ability_name
@@ -116,6 +120,10 @@ function DequeueUnit( event )
 	            local foodToReturn = train_ability:GetLevelSpecialValueFor("food_cost", 1)
 	            local hero = caster:GetPlayerOwner():GetAssignedHero()
 	            hero.food = hero.food - foodToReturn
+
+	            if foodToReturn == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1 end
+
+	            caster.queueFood = caster.queueFood - foodToReturn
 
 	            if Debug_Queue then
 					print("Refund ",gold_cost)
@@ -241,9 +249,12 @@ function AdvanceQueue( event )
 							print("===Queue Table====")
 							DeepPrintTable(ability_to_channel.queue)
 						end
-						if IsValidEntity(item) then
+						if IsValidEntity(item) and IsValidEntity(caster) then
 							ability_to_channel:EndChannel(false)
 							ReorderItems(caster, ability_to_channel.queue)
+
+							caster.queueFood = caster.queueFood - ability_to_channel:GetLevelSpecialValueFor("food_cost", 1)
+
 							if Debug_Queue then
 								print("Unit finished building")
 							end

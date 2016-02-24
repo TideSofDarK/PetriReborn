@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_vest"
 
-  "ItemCost"            "10"
+  "ItemCost"            "15"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "vest"
@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "2"
+      "bonus_armor"      "10"
     }
   }
   
@@ -27,13 +27,30 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {
         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
       }
     }
+  }
+}
+
+"item_recipe_petri_vest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1899"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "10"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_vest"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_helmet"
   }
 }
 
@@ -46,7 +63,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supervest"
 
-  "ItemCost"            "250"
+  "ItemCost"            "60"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supervest"
@@ -66,13 +83,30 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {
         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
       }
     }
+  }
+}
+
+"item_recipe_petri_supervest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1892"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "45"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_supervest"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_vest;"
   }
 }
 
@@ -85,7 +119,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supermegavest"
 
-  "ItemCost"            "950"
+  "ItemCost"            "250"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supermegavest"
@@ -105,13 +139,30 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {
         "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
       }
     }
+  }
+}
+
+"item_recipe_petri_supermegavest"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1891"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "650"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_supermegavest"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_supervest;"
   }
 }
 
@@ -124,7 +175,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_superthing"
 
-  "ItemCost"            "2400"
+  "ItemCost"            "900"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "superthing"
@@ -144,7 +195,6 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
       
       "Properties"
       {
@@ -161,7 +211,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1800"
+  "ItemCost"            "650"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

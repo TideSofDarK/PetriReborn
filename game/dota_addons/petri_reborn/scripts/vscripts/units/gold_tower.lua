@@ -20,7 +20,9 @@ function GetGold( event )
 	local ability = event.ability
 
 	local pID = caster:GetPlayerOwnerID()
-	PlayerResource:SetGold(pID, PlayerResource:GetUnreliableGold(pID) + tonumber(event["gold"]), false)
+	if caster:IsSilenced() == false then
+		PlayerResource:ModifyGold(pID, tonumber(event["gold"]), false, 0)
+	end
 end
 
 function Upgrade ( event   )
@@ -29,23 +31,7 @@ function Upgrade ( event   )
 
 	local tower_level = ability:GetLevel()
 
-	if tower_level == 1 then
-		caster:SetModelScale(0.45)
-	elseif tower_level == 2 then 
-		caster:SetModelScale(0.5)
-	elseif tower_level == 3 then
-		caster:SetModelScale(0.55)
-	elseif tower_level == 4 then
-		caster:SetModelScale(0.6)
-	elseif tower_level == 5 then
-		caster:SetModelScale(0.65)
-	elseif tower_level == 6 then
-		caster:SetModelScale(0.7)
-	elseif tower_level == 7 then
-		caster:SetModelScale(0.75)
-	elseif tower_level == 8 then
-		caster:SetModelScale(0.80)
-	end
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), tower_level+1)
 
 	caster:GetAbilityByIndex(0):SetLevel(tower_level+1)
 end

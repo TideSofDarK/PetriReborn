@@ -19,10 +19,7 @@
 	  "ItemInitialCharges" "1"
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
-	
-	  "ItemStockMax" "2" 
-	  "ItemStockTime" "125"
-	  "ItemStockInitial" "1"
+	  "ItemSellable"          "0"
 	
 	  "SideShop" "1"
 	
@@ -47,6 +44,13 @@
 	      "Target"      "CASTER"
 	      "ModifierName"    "modifier_item_petri_alcohol_active"
 	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/alcohol.lua"
+	      "Function"    "RemoveSnare"
+	    }
+	    
 	    "SpendCharge"
 	    {}
 	  }
@@ -67,6 +71,7 @@
 	      "States"
 	      {
 	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -76,7 +81,7 @@
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1980"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Model"             "models/props_gameplay/recipe.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_attack_scroll"
 	
@@ -84,7 +89,7 @@
 	  "AbilityCooldown"       "75"
 	  "AbilityManaCost"       "0"
 	
-	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
 	  "ItemCost"            "525"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "scroll"
@@ -247,6 +252,192 @@
 	  }
 	}
 	
+	"item_petri_agility_book"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1968"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_comedy_book"
+	
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	
+	  "ItemCost"            "2300"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_bonus_agility"
+	      "Target"     "CASTER"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_agility"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	  
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS" "1"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_health_book"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1967"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_comedy_story"
+	
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	
+	  "ItemCost"            "2300"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_bonus_health"
+	      "Target"     "CASTER"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_health"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	  
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "500"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_snares_1"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1976"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_snares"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "0"
+	
+	  "ItemCost"            "500"
+	
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"                "1"
+	
+	  "ItemStackable" "0"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	  "ItemCastOnPickup"    "1"
+	
+	  "OnSpellStart"
+	  {
+	    "SpendCharge"
+	    {}
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "BuySnares"
+	      "ItemCost"  "500"
+	    }
+	  }
+	}
+	
+	"item_petri_snares_2"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1975"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_snares_2"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "0"
+	
+	  "ItemCost"            "3100"
+	
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"                "1"
+	
+	  "ItemStackable" "0"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	  "ItemCastOnPickup"    "1"
+	
+	  "OnSpellStart"
+	  {
+	    "SpendCharge"
+	    {}
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "BuyUpgradedSnares"
+	      "ItemCost"  "3100"
+	    }
+	  }
+	}
+	
 	"item_petri_boots"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -282,6 +473,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "duration"      "2"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "magical_resist"      "65"
 	    }
 	  }
 	
@@ -359,7 +555,8 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "%bonus_movespeed"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"        "%bonus_movespeed"
+	        "MODIFIER_PROPERTY_MAGICAL_RESISTANCE_ITEM_UNIQUE"  "%magical_resist"
 	      }
 	    }
 	  }
@@ -373,7 +570,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_bracer"
 	
-	  "ItemCost"            "25"
+	  "ItemCost"            "50"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -383,17 +580,16 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "2"
+	      "bonus_all_stats"    "5"
 	    }
 	  }
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_bracer_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
@@ -438,6 +634,1120 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	      }
+	    }
+	  }
+	}
+	"item_petri_candy"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1970"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_halloween_candy_corn"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "0"
+	  "AbilityManaCost"       "10"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "0"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	  "ItemCastOnPickup"    "0"
+	
+	  "OnSpellStart"
+	  {    
+	    "SpendCharge" 
+	    {}
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "Use"
+	    }
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/hw_fx/hw_rosh_death_candy.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "CASTER"
+	    }
+	  }
+	}
+	
+	"item_petri_candy_1_kvn"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1969"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_1"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "240"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "625"
+	  "AbilityCastPoint"              "0.45"
+	  "AOERadius"                     "250"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "SideShop" "1"
+	  "ItemCost" "200"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	    "particle"  "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Pugna.NetherBlast"
+	      "Target"        "CASTER"
+	    }
+	
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_pugna/pugna_netherblast.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint"       "POINT"
+	      "ControlPoints"
+	      {
+	        "01"  "400 400 400"
+	      }
+	    }
+	
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"    "POINT"
+	        "Radius"   "250"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	        "Types"   "DOTA_UNIT_TARGET_ALL"
+	      }
+	    
+	      "Action"    
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/candy.lua"
+	          "Function"    "CandyHealing"
+	        }
+	      }
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_healing"
+	    {
+	      "Duration"    "30"
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "ThinkInterval"         "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/candy.lua"
+	          "Function"    "CandyRepair"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_2_kvn"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1968"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_2"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "180"
+	  "AbilityManaCost"       "10"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "SideShop" "1"
+	  "ItemCost" "500"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_invoker/invoker_alacrity_buff.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CandyBonusKVNDamage"
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_damage"
+	    {
+	      "Duration"  "10"
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_invoker/invoker_alacrity_buff.vpcf"
+	          "EffectAttachType"  "follow_overhead"
+	          "Target"            "CASTER"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_3_kvn"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1967"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_3"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "720"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "0"
+	  "AbilityCastPoint"              "0.0"
+	  "AOERadius"                     "500"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "SideShop" "1"
+	  "ItemCost" "270"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile"         "soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+	    "particle"          "particles/items2_fx/heavens_halberd.vpcf"
+	    "particle"          "particles/items2_fx/heavens_halberd_debuff.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {    
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreatePetriVisionNode"
+	    }
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.03"
+	      "Action"    
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"    "Hero_KeeperOfTheLight.BlindingLight"
+	          "Target"        "CASTER"
+	        }
+	      }
+	    }
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_aoe.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint"       "POINT"
+	
+	      "ControlPoints"
+	      {
+	        "01"    "POINT"
+	        "02"    "500 0 0"
+	      }
+	    }
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center"    "POINT"
+	        "Radius"   "500"
+	        "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types"   "DOTA_UNIT_TARGET_HERO"
+	      }
+	    
+	      "Action"    
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "TARGET"
+	          "Duration"    "3"
+	        }
+	      }
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_blinding_light"
+	    {
+	      "Passive"           "0"
+	      "IsHidden"          "1"
+	      "IsDebuff"          "1"
+	
+	      "EffectName"        "particles/items2_fx/heavens_halberd_debuff.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_DISARMED"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }         
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "Target"            "TARGET"
+	          "EffectName"        "particles/generic_gameplay/generic_disarm.vpcf"
+	          "EffectAttachType"  "follow_overhead"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_4_kvn"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1966"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	  "AbilityUnitTargetFlags"  "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_4"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "2.5"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "100"
+	  "AbilityCastPoint"              "0.0"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	  "ItemSellable"         "0"
+	
+	  "SideShop" "1"
+	  "ItemCost" "75"
+	
+	  "ItemStackable" "0"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	    "particle" "particles/hw_fx/hw_candy_projectile.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {    
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreatePetriVisionNode"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CandyForceStaff"
+	    }
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_stunned"
+	      "Target"     "TARGET"
+	      "Duration"    "0.5"
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.03"
+	      "Action"    
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"    "Hero_Lina.DragonSlave"
+	          "Target"        "TARGET"
+	        }
+	      }
+	    }
+	
+	    "TrackingProjectile"
+	    {
+	      "Target"            "TARGET"
+	      "EffectName"        "particles/hw_fx/hw_candy_projectile.vpcf"
+	      "Dodgeable"         "0"
+	      "ProvidesVision"    "0"
+	      "MoveSpeed"         "400"
+	      "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	}
+	
+	"item_petri_candy_5_kvn"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1965"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_5"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "120"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "690"
+	  "AbilityCastPoint"              "0.0"
+	  "AOERadius"                     "75"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "0"
+	
+	  "SideShop" "1"
+	  "ItemCost" "300"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+	    "particle"  "particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
+	    "particle"  "particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreatePetriVisionNode"
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"     "1.77"
+	      "Action"    
+	      { 
+	        "FireSound"
+	        {
+	          "EffectName"    "Ability.StarfallImpact"
+	          "Target"        "CASTER"
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/units/heroes/hero_mirana/mirana_starfall_attack.vpcf"
+	          "EffectAttachType"  "start_at_customorigin"
+	          "TargetPoint"       "POINT"
+	
+	          "ControlPoints"
+	          {
+	            "01"    "POINT"
+	          }
+	        }
+	
+	        "DelayedAction"
+	        {
+	          "Delay"     "0.3"
+	          "Action"    
+	          {
+	            "ActOnTargets"
+	            {
+	              "Target"
+	              {
+	                "Center"    "POINT"
+	                "Radius"   "75"
+	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"   "DOTA_UNIT_TARGET_HERO"
+	              }
+	            
+	              "Action"    
+	              {
+	                "RunScript"
+	                {
+	                  "ScriptFile"  "items/candy.lua"
+	                  "Function"    "CandyStar"
+	                }
+	              }
+	            }
+	            "SpendCharge" 
+	            {}
+	          }
+	        }
+	      }
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.03"
+	      "Action"    
+	      {
+	      "FireSound"
+	        {
+	          "EffectName"    "Ability.Starfall"
+	          "Target"        "CASTER"
+	        }
+	      }
+	    }
+	
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint"       "POINT"
+	
+	      "ControlPoints"
+	      {
+	        "01"    "POINT"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_1_petri"
+	{
+	  "BaseClass"       "item_datadriven"
+	  "ID"              "1964"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityTextureName"      "item_candy_1"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "ItemCost" "1200"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "ItemStockMax" "2" 
+	  "ItemStockTime" "180"
+	  "ItemStockInitial" "0"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown"       "480"
+	  "AbilitySharedCooldown"         "blink"
+	  
+	  "AbilityManaCost"       "10"
+	
+	  "precache"
+	  {
+	    "soundfile"  "soundevents/voscripts/game_sounds_vo_crystalmaiden.vsndevts"
+	  }
+	  
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "blink_range"     "500"
+	    }
+	    
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "min_blink_range"   "200"
+	    }
+	
+	    "03"
+	    {
+	      "var_type"                      "FIELD_INTEGER"
+	      "blink_damage_cooldown"         "5"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreateKVNVisionNode"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/dagger.lua"
+	      "Function"    "Blink"
+	      "Target"    "POINT"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CandyReleaseSleep"
+	      "Target"    "POINT"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_out"
+	      "Target"    "CASTER"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_Antimage.Blink_in"
+	      "Target"    "CASTER"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"  "crystalmaiden_cm_scream_01"
+	      "Target"    "CASTER"
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_stunned"
+	      "Target"     "CASTER"
+	      "Duration"    "9"
+	    }
+	
+	    "SpendCharge" 
+	    {}
+	  }
+	}
+	
+	"item_petri_candy_2_petri"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1963"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_2"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "240"
+	  "AbilityManaCost"       "10"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "ItemCost" "300"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_invoker/invoker_alacrity_buff.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {    
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CandyBonusPetriDamage"
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_bonus_damage"
+	    {
+	      "Duration"  "120"
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_invoker/invoker_alacrity_buff.vpcf"
+	          "EffectAttachType"  "follow_overhead"
+	          "Target"            "CASTER"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_3_petri"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1962"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_3"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "40"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "1000"
+	  "AbilityCastPoint"              "0.45"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "ItemCost" "170"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+	    "particle"      "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+	    "particle"      "particles/status_fx/status_effect_battle_hunger.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreateKVNVisionNode"
+	    }
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.03"
+	      "Action"    
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"  "Hero_Axe.Battle_Hunger"
+	          "Target"    "TARGET"
+	        }
+	      }
+	    }
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_hunger"
+	      "Target"     "TARGET"
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_hunger"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	
+	      "StatusEffectName"     "particles/status_fx/status_effect_battle_hunger.vpcf"      
+	      "StatusEffectPriority"  "10"
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+	          "EffectAttachType"  "follow_overhead"
+	          "Target"            "TARGET"
+	        }
+	      }
+	
+	      "ThinkInterval"         "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/candy.lua"
+	          "Function"    "CandyHungerDamage"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_candy_4_petri"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1961"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_4"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "240"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "0"
+	  "AbilityCastPoint"              "0.0"
+	  "AOERadius"                     "675"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "1"
+	
+	  "ItemCost" "250"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+	    "particle"  "particles/status_fx/status_effect_frost.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_freezing_field_snow_arcana1.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreateKVNVisionNode"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CandyMintStorm"
+	      "Target"    "POINT"
+	    }
+	
+	    "ActOnTargets"
+	    {
+	      "Target"
+	      {
+	        "Center" "POINT"
+	        "Radius" "675"
+	        "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	        "Types" "DOTA_UNIT_TARGET_ALL"
+	        "Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	      }
+	    
+	      "Action"    
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/candy.lua"
+	          "Function"    "CandySilence"
+	        }
+	      }
+	    }
+	    "SpendCharge" 
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_petrosyan_silence"
+	    {
+	      "Passive"           "0"
+	      "IsHidden"          "1"
+	      "IsDebuff"          "1"
+	
+	      "EffectName"        "particles/status_fx/status_effect_frost.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_SILENCED"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }         
+	    }
+	  }
+	}
+	
+	"item_petri_candy_5_petri"
+	{
+	  "BaseClass"               "item_datadriven"
+	  "ID"                      "1960"
+	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
+	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_candy_5"
+	
+	  "AbilityCastPoint"      "0"
+	  "AbilityCooldown"       "60"
+	  "AbilityManaCost"       "10"
+	
+	  "AbilityCastRange"              "800"
+	  "AbilityCastPoint"              "0.0"
+	  "AOERadius"                     "75"
+	  
+	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "1"
+	  "ItemPurchasable"       "1"
+	  "ItemDroppable"         "0"
+	
+	  "ItemCost" "200"
+	
+	  "ItemStackable" "1"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	    "particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+	    "particle"  "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_lightning_ti_5.vpcf"
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/candy.lua"
+	      "Function"    "CreateKVNVisionNode"
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"     "0.03"
+	      "Action"    
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"    "Hero_Zuus.GodsWrath.PreCast"
+	          "Target"        "CASTER"
+	        }
+	      }
+	    }
+	
+	    "DelayedAction"
+	    {
+	      "Delay"     "1.77"
+	      "Action"    
+	      {
+	        "FireSound"
+	        {
+	          "EffectName"    "Hero_Zuus.GodsWrath"
+	          "Target"        "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+	          "EffectAttachType"  "start_at_customorigin"
+	          "TargetPoint"       "POINT"
+	
+	          "ControlPoints"
+	          {
+	            "01"    "POINT"
+	          }
+	        }
+	
+	        "DelayedAction"
+	        {
+	          "Delay"     "0.3"
+	          "Action"    
+	          {
+	            "ActOnTargets"
+	            {
+	              "Target"
+	              {
+	                "Center"    "POINT"
+	                "Radius"   "75"
+	                "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                "Types"   "DOTA_UNIT_TARGET_HERO"
+	              }
+	            
+	              "Action"    
+	              {
+	                "RunScript"
+	                {
+	                  "ScriptFile"  "items/candy.lua"
+	                  "Function"    "CandyLightning"
+	                }
+	              }
+	            }
+	            "SpendCharge" 
+	            {}
+	          }
+	        }
+	      }
+	    }
+	
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_lightning_ti_5.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "TargetPoint"       "POINT"
+	
+	      "ControlPoints"
+	      {
+	        "01"    "POINT"
 	      }
 	    }
 	  }
@@ -498,6 +1808,15 @@
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
 	
 	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
 	          
 	      "States"
 	      {
@@ -507,20 +1826,24 @@
 	    }
 	  }
 	}
-	"item_petri_defence_scroll"
+	"item_petri_evasion_scroll"
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1995"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	  "Model"             "models/props_gameplay/recipe.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_defence_scroll"
+	  "AbilityTextureName"      "item_petri_evasion_scroll"
 	
+	  "AbilityCastRange"              "1600"
 	  "AbilityCastPoint"              "0"
-	  "AbilityCooldown"       "120"
+	  "AbilityManaCost"               "150"
+	  "AbilityCooldown"       "180"
 	  "AbilityManaCost"       "0"
 	
-	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+	  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
 	  "ItemCost"            "285"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "scroll"
@@ -536,35 +1859,107 @@
 	  {
 	    "01"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "armor_bonus"     "5000"
+	        "var_type"              "FIELD_INTEGER"
+	        "travel_distance"       "1600"
 	    }
 	    "02"
 	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "radius"     "1000"
+	        "var_type"              "FIELD_INTEGER"
+	        "travel_speed"          "1000"
 	    }
 	    "03"
 	    {
+	        "var_type"              "FIELD_INTEGER"
+	        "area_of_effect"        "200"
+	    }
+	    "04"
+	    {
+	        "var_type"              "FIELD_INTEGER"
+	        "vision_distance"       "600"
+	    }
+	    "05"
+	    {
+	        "var_type"              "FIELD_FLOAT"
+	        "end_vision_duration"   "1.75"
+	    }
+	    "06"
+	    {
+	        "var_type"              "FIELD_FLOAT"
+	        "lift_duration"         "2.5"
+	    }
+	    "07"
+	    {
+	        "var_type"              "FIELD_FLOAT"
+	        "base_damage"           "70"
+	    }
+	    "08"
+	    {
+	        "var_type"              "FIELD_FLOAT"
+	        "wex_damage"            "315"
+	    }
+	    "09"
+	    {
+	        "var_type"                  "FIELD_INTEGER"
+	        "cyclone_min_height"        "300"
+	    }
+	    "10"
+	    {
+	        "var_type"                  "FIELD_INTEGER"
+	        "cyclone_initial_height"    "350"
+	    }
+	    "11"
+	    {
+	        "var_type"                  "FIELD_INTEGER"
+	        "cyclone_max_height"        "400"
+	    }
+	    "12"
+	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "duration"     "5"
+	      "dodge_chance"     "20"
+	    }
+	    "13"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "duration"     "7"
 	    }
 	  }
 	
+	  "precache"
+	  {
+	    "particle"  "particles/items_fx/cyclone.vpcf"
+	    "particle"  "particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+	  }
+	
 	  "OnSpellStart"
-	  {     
+	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "items/defence_scroll.lua"
-	      "Function"    "ApplyBonusArmor"
+	      "ScriptFile"                                "items/evasion_scroll.lua"
+	      "Function"                                  "EvasionTornado"
+	      "Target"                                    "POINT"
+	      "TravelSpeed"                               "%travel_speed"
+	      "AreaOfEffect"                              "%area_of_effect"
+	      "VisionDistance"                            "%vision_distance"
+	      "EndVisionDuration"                         "%end_vision_duration"
 	    }
-	    "SpendCharge"
-	    {}
+	    "SpendCharge" {}
+	  }
+	
+	  "OnProjectileHitUnit"
+	  {
+	    "DeleteOnHit" "0"
+	    
+	    "RunScript"
+	    {
+	      "ScriptFile"        "items/evasion_scroll.lua"
+	      "Function"          "TornadoHit"
+	    }
 	  }
 	
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_defence_scroll_active"
+	    "modifier_evasion_scroll"
 	    {
 	      "Duration"                "%duration"
 	      "Passive"         "0"
@@ -572,12 +1967,36 @@
 	      "IsBuff"          "1"
 	      "IsDebuff"          "0"
 	      "IsPurgable"        "0"
-	      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
-	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	      "EffectName"            "particles/items_fx/cyclone.vpcf"
+	      "EffectAttachType"      "follow_origin"
 	          
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor_bonus"
+	        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%dodge_chance"
+	      }
+	    }
+	
+	    "modifier_tornado_unit_ability"
+	    {
+	      "Passive"           "0"
+	      "IsHidden"          "0"
+	      "IsBuff"            "0"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      
+	      "States"
+	      {
+	        "MODIFIER_STATE_NO_UNIT_COLLISION"      "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_MOVE_TO"        "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_TEAM_SELECT"         "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_COMMAND_RESTRICTED"     "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_ATTACK_IMMUNE"          "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NOT_ON_MINIMAP"         "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_OUT_OF_GAME"            "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_NO_HEALTH_BAR"          "MODIFIER_STATE_VALUE_ENABLED"
 	      }
 	    }
 	  }
@@ -663,13 +2082,16 @@
 	  "ItemQuality"         "consumable"
 	  "ItemPermanent"         "0"
 	  "ItemSellable"          "0"
-	  "ItemInitialCharges"  "1"
-	  "ItemStackable"       "1"
-	  "ItemPermanent"       "0"
 	  "ItemKillable"          "1"
 	  "ItemPurchasable"       "0"
 	
-	  "ItemCastOnPickup" "1"
+	  "ItemStackable" "0"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	  "ItemCastOnPickup"    "1"
 	
 	  "AbilitySpecial"
 	  {
@@ -681,14 +2103,15 @@
 	  }
 	
 	  "OnSpellStart"
-	  {     
+	  {    
+	    "SpendCharge" 
+	    {}
 	    "RunScript"
 	    {
 	      "ScriptFile"  "items/gold_coin.lua"
 	      "Function"    "Use"
 	    }
-	    "SpendCharge" 
-	    {}
+	
 	  }
 	}
 	"item_petri_grease"
@@ -709,7 +2132,16 @@
 	  "ItemSellable"          "0"
 	  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
 	  "ItemKillable"          "0"
-	  "ItemPurchasable"       "0"
+	  "ItemPurchasable"       "1"
+	
+	  "ItemCost"            "25"
+	  "ItemShopTags"          "hard_to_tag"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "grease"
+	
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "1680"
+	  "ItemStockInitial" "0"
 	
 	  "AbilitySpecial"
 	  {
@@ -770,12 +2202,245 @@
 	      "Duration"              "%corruption_duration"
 	      "Passive"               "0"
 	      "IsHidden"              "0"
+	
+	      "IsDebuff"          "1"
+	      "IsPurgable"        "0"
 	      
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reducing"
 	      }
 	    }
+	  }
+	}
+	"item_petri_chicken"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1966"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_chicken"
+	
+	  "ItemCost"            "1000"
+	  "ItemShopTags"          "health_pool"
+	  "ItemQuality"         "component"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "2500"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_regen"      "50"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_chicken"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%bonus_regen"
+	      }
+	    }
+	  }
+	}
+	
+	"item_petri_cow"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1965"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_cow"
+	
+	  "ItemCost"            "3000"
+	  "ItemShopTags"          "health_pool"
+	  "ItemQuality"         "component"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "10000"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_regen"      "80"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_chicken"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%bonus_regen"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_cow"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1963"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "2000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_cow"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_chicken;"
+	  }
+	}
+	
+	"item_petri_dragon"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1964"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_dragon"
+	
+	  "ItemCost"            "8000"
+	  "ItemShopTags"          "health_pool"
+	  "ItemQuality"         "component"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "40000"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_regen"      "100"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_chicken"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%bonus_regen"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_dragon"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1962"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "5000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_dragon"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_cow;"
+	  }
+	}
+	
+	
+	"item_petri_kvn_heart"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1959"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_kvn_heart"
+	
+	  "ItemCost"            "28000"
+	  "ItemShopTags"          "health_pool"
+	  "ItemQuality"         "component"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "90000"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_regen"      "200"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_chicken"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"    "%bonus_regen"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_kvn_heart"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1956"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "20000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_kvn_heart"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_dragon;"
 	  }
 	}
 	"item_petri_helmet"
@@ -787,7 +2452,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_helmet"
 	
-	  "ItemCost"            "3"
+	  "ItemCost"            "5"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "helmet"
@@ -797,7 +2462,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "1"
+	      "bonus_armor"      "3"
 	    }
 	  }
 	  
@@ -807,7 +2472,6 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
@@ -831,6 +2495,7 @@
 	  "ItemCost"            "16000"
 	  "ItemQuality"         "secret_shop"
 	  "ItemAliases"         "hook"
+	  "ItemSellable"  "0"
 	  "SecretShop" "1"
 	  
 	  "precache"
@@ -995,6 +2660,7 @@
 	
 	    "modifier_meat_hook_target_datadriven"
 	    {
+	      "IsHidden"  "1" 
 	      "IsDebuff"        "1"
 	      "OverrideAnimation"   "ACT_DOTA_FLAIL"
 	
@@ -1006,6 +2672,7 @@
 	
 	    "modifier_meat_hook_dummy_datadriven"
 	    {
+	      "IsHidden"  "1" 
 	      "States"
 	      {
 	        "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
@@ -1044,6 +2711,287 @@
 	    }
 	    "SpendCharge"
 	    {}
+	  }
+	}
+	"item_petri_jedi"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1958"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_jedi"
+	
+	  "AbilityCooldown"       "180"
+	  "AbilitySharedCooldown"         "laugh"
+	  
+	  "ItemQuality"           "consumable"
+	  "ItemPermanent"         "0"
+	  "ItemSellable"          "0"
+	  "ItemKillable"          "0"
+	
+	  "ItemShopTags"          "unique"
+	  "ItemQuality"         "epic"
+	  "ItemAliases"         "jedi"
+	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/status_fx/status_effect_stickynapalm.vpcf"
+	    "particle"  "particles/items3_fx/lotus_orb_shield.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent"   "70"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "13"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"   "55"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "armor"   "20"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "invu_duration"   "16"
+	    }
+	    "06"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "grease_duration"    "120"
+	    }
+	    "07"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "armor_reducing"    "-900"
+	    }
+	    "08"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "corruption_duration"    "1"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_jedi_invu"
+	    }
+	    "ApplyModifier"
+	    {
+	      "ModifierName"  "modifier_grease"
+	      "Target"     "CASTER"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_grease"
+	    {
+	      "Duration"                "%grease_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "StatusEffectName"     "particles/status_fx/status_effect_stickynapalm.vpcf"
+	      "StatusEffectPriority" "9"
+	
+	      "ThinkInterval"  "0.1"
+	      "OnIntervalThink"
+	      {
+	        "ActOnTargets"
+	        {
+	          "Target"
+	          {
+	            "Center"    "TARGET"
+	            "Radius"   "400"
+	            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	            "Types"   "DOTA_UNIT_TARGET_ALL"
+	          }
+	        
+	          "Action"    
+	          {
+	            "RunScript"
+	            {
+	              "ScriptFile"  "units/petrosyan.lua"
+	              "Function"    "JediAura"
+	            }
+	          }
+	        }
+	      }
+	      
+	      "OnAttackLanded"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/grease.lua"
+	          "Function"    "OnGreaseHit"
+	        }
+	      }
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_CANNOT_MISS"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
+	    "modifier_grease_corruption"
+	    {
+	      "Duration"              "%corruption_duration"
+	      "Passive"               "0"
+	      "IsHidden"              "0"
+	
+	      "IsDebuff"          "1"
+	      "IsPurgable"        "0"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"        "%armor_reducing"
+	      }
+	    }
+	
+	    "modifier_passive"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
+	      }
+	
+	      "States"
+	      {
+	        "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Orb"
+	      {
+	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+	      }
+	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
+	      }
+	    }
+	
+	    "modifier_jedi_invu"
+	    {
+	      "Duration"                "%invu_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_jedi"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1957"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "35000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_jedi"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_uber_mask_of_laugh_level4;item_petri_kvn_medal"
 	  }
 	}
 	"item_petri_kvn_fan_blink"
@@ -1228,6 +3176,7 @@
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"
+	  "ItemSellable"  "0"
 	
 	  "precache"
 	  {
@@ -1236,7 +3185,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_kvn_medal_datadriven"
+	    "modifier_kvn_medal_active"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -1271,7 +3220,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "50"
+	      "lifesteal_percent"   "5"
 	    }
 	
 	    "02"
@@ -1354,12 +3303,22 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "2"
+	      "bonus_damage"      "4"
 	    }
 	  }
 	  
 	  "Modifiers"
 	  {
+	    "modifier_petri_sword_bonus"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "2"
+	      }
+	    }
 	    "modifier_item_petri_megahammer_datadriven"
 	    {
 	      "Passive"     "1"
@@ -1380,7 +3339,7 @@
 	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
@@ -1395,7 +3354,8 @@
 	
 	  "AbilityManaCost"               "750"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "11750"
+	  "ItemSellable"      "0"
 	  "ItemShopTags"          "mana_pool;str"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "mega sith"
@@ -1539,14 +3499,17 @@
 	  "ItemQuality"         "consumable"
 	  "ItemPermanent"         "0"
 	  "ItemSellable"          "0"
-	  "ItemInitialCharges"  "1"
-	  "ItemStackable"       "1"
-	  "ItemPermanent"       "0"
 	  "ItemKillable"          "1"
 	  "ItemPurchasable"                "0"
 	
-	  "ItemCastOnPickup" "1"
-	
+	  "ItemStackable" "0"
+	  "ItemPermanent" "0"
+	  "ItemInitialCharges" "1"
+	  "ItemDisplayCharges" "1"
+	  "ItemRequiresCharges" "1"
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	  "ItemCastOnPickup"    "1"
+	  
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -1557,114 +3520,16 @@
 	  }
 	
 	  "OnSpellStart"
-	  {     
+	  {    
+	    "SpendCharge" 
+	    {} 
 	    "RunScript"
 	    {
 	      "ScriptFile"  "items/pile_of_wood.lua"
 	      "Function"    "Use"
 	    }
-	    "SpendCharge" 
-	    {}
 	  }
 	}
-	"item_petri_magic_shield"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1535"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	  "Model"             "models/props_gameplay/red_box.vmdl" 
-	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_magic_shield"
-	  "AbilityCooldown"       "60"
-	
-	  "ItemCost"            "140"
-	  "ItemShopTags"          "armor"
-	  "ItemQuality"         "unique"
-	  "ItemAliases"         "magic shield"
-	
-	  "AbilitySpecial"
-	  {
-	    "01"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "15"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "70"
-	    }
-	    "03"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "invu_duration"      "4"
-	    }
-	  }
-	
-	  "OnSpellStart"
-	  {
-	    "ApplyModifier"
-	    {
-	      "Target"      "CASTER"
-	      "ModifierName"    "modifier_item_petri_magic_shield_active"
-	    }
-	  }
-	  
-	  "Modifiers"
-	  {
-	    "modifier_item_petri_magic_shield_datadriven"
-	    {
-	      "Passive"     "1"
-	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
-	      
-	      "Properties"
-	      {
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
-	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
-	      }
-	    }
-	
-	    "modifier_item_petri_magic_shield_active"
-	    {
-	      "Duration"                "%invu_duration"
-	      "Passive"         "0"
-	      "IsHidden"          "0"
-	      "IsBuff"          "1"
-	      "IsDebuff"          "0"
-	      "IsPurgable"        "0"
-	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
-	      "EffectAttachType"        "PATTACH_ABSORIGIN"
-	
-	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
-	          
-	      "States"
-	      {
-	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
-	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
-	      }
-	    }
-	  }
-	}
-	
-	"item_recipe_petri_magic_shield"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1536"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_recipe"
-	
-	  "ItemCost"            "180"
-	  "ItemShopTags"          ""
-	
-	  "ItemRecipe"          "1"
-	  "ItemResult"          "item_petri_magic_shield"
-	  "ItemRequirements"
-	  {
-	    "01"            "item_petri_vest;"
-	  }
-	}
-	
 	"item_petri_shield_of_nature"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -1674,7 +3539,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_nature"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "2400"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of nature"
@@ -1711,7 +3576,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1750"
+	  "ItemCost"            "1500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1731,7 +3596,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_hell"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "4400"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of hell"
@@ -1768,7 +3633,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "2500"
+	  "ItemCost"            "2000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1788,7 +3653,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_heaven"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "8400"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of heaven"
@@ -1825,7 +3690,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1500"
+	  "ItemCost"            "4000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1845,7 +3710,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_best_shield"
 	
-	  "ItemCost"            "0"
+	  "ItemCost"            "31121"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "best shield"
@@ -1866,11 +3731,30 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_petri_sword_bonus"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "1"
+	      }
+	    }
 	    "modifier_item_petri_best_shield_datadriven"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
 	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_petri_sword_bonus"
+	          "Target"     "CASTER"
+	        }
+	      }
 	      
 	      "Properties"
 	      {
@@ -1888,7 +3772,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "8500"
+	  "ItemCost"            "8600"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -1955,7 +3839,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "5"
+	      "bonus_damage"      "10"
 	    }
 	  }
 	  
@@ -2041,7 +3925,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kladenets_sword"
 	
-	  "ItemCost"            "402"
+	  "ItemCost"            "381"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kladenets sword"
@@ -2099,7 +3983,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "953"
+	  "ItemCost"            "781"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -2157,7 +4041,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_titan_sword"
 	
-	  "ItemCost"            "1272"
+	  "ItemCost"            "1321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "titan sword"
@@ -2195,14 +4079,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "350"
+	  "ItemCost"            "540"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_titan_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_magic_shield;item_petri_perfect_sword"
+	    "01"            "item_petri_perfect_sword;"
 	  }
 	}
 	
@@ -2215,7 +4099,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_magic_axe"
 	
-	  "ItemCost"            "3044"
+	  "ItemCost"            "2321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "magic axe"
@@ -2273,7 +4157,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_grond"
 	
-	  "ItemCost"            "7088"
+	  "ItemCost"            "5321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "grond"
@@ -2331,7 +4215,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_thunder"
 	
-	  "ItemCost"            "14176"
+	  "ItemCost"            "9121"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "thunder"
@@ -2389,7 +4273,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trident"
 	
-	  "ItemCost"            "19176"
+	  "ItemCost"            "14121"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "trident"
@@ -2446,6 +4330,17 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_trap"
 	
+	  "precache"
+	  {
+	    "soundfile"     "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"       
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_plant.vpcf"
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_apear.vpcf"
+	    "particle"      "particles/units/heroes/hero_techies/techies_stasis_trap_explode.vpcf"
+	    "particle"      "particles/status_fx/status_effect_techies_stasis.vpcf"
+	    "model"         "models/heroes/techies/fx_techiesfx_stasis.vmdl"    
+	  }
+	
+	  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
 	  "ItemCost"            "450"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
@@ -2454,12 +4349,16 @@
 	  "ItemStackable"       "1"
 	  "ItemSellable"        "0"
 	  "ItemPermanent"       "0"
+	
+	  "ItemStockMax" "6" 
+	  "ItemStockTime" "120"
+	  "ItemStockInitial" "2"
 	  
 	  "SideShop" "1"
 	
 	  "AbilityCastRange" "450"
 	
-	  "AbilityCooldown"       "90.0"
+	  "AbilityCooldown"       "150.0"
 	
 	  "OnSpellStart"
 	  {
@@ -2483,8 +4382,9 @@
 	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh"
 	
 	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "487"
+	  "ItemCost"            "400"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -2494,7 +4394,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "7"
 	    }
 	    "02"
 	    {
@@ -2504,7 +4404,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "10"
+	      "bonus_all_stats"   "35"
 	    }
 	    "04"
 	    {
@@ -2524,7 +4424,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -2605,6 +4505,15 @@
 	      "EffectAttachType"        "PATTACH_ABSORIGIN"
 	
 	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
 	          
 	      "States"
 	      {
@@ -2622,7 +4531,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "200"
+	  "ItemCost"            "250"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -2630,6 +4539,516 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_mask_of_laugh;item_petri_butt;item_petri_zirconia_armor"
+	  }
+	}
+	
+	"item_petri_uber_mask_of_laugh_level2"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1898"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level2"
+	
+	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
+	  
+	  "ItemCost"            "1000"
+	  "ItemShopTags"          "unique"
+	  "ItemQuality"         "epic"
+	  "ItemAliases"         "uber mask of laugh"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent"   "20"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "invu_duration"   "12"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"   "40"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "13"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_passive"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Orb"
+	      {
+	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+	      }
+	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_active"
+	    {
+	      "Duration"                "%invu_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_uber_mask_of_laugh_level2"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1897"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "600"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_uber_mask_of_laugh_level2"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_uber_mask_of_laugh;"
+	  }
+	}
+	
+	"item_petri_uber_mask_of_laugh_level3"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1896"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level3"
+	
+	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
+	  
+	  "ItemCost"            "4000"
+	  "ItemShopTags"          "unique"
+	  "ItemQuality"         "epic"
+	  "ItemAliases"         "uber mask of laugh"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent"   "30"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "invu_duration"   "12"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"   "45"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "13"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_passive"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Orb"
+	      {
+	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+	      }
+	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_active"
+	    {
+	      "Duration"                "%invu_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_uber_mask_of_laugh_level3"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1895"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "3000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_uber_mask_of_laugh_level3"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_uber_mask_of_laugh_level2;"
+	  }
+	}
+	
+	"item_petri_uber_mask_of_laugh_level4"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1894"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level4"
+	
+	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
+	  
+	  "ItemCost"            "12000"
+	  "ItemShopTags"          "unique"
+	  "ItemQuality"         "epic"
+	  "ItemAliases"         "uber mask of laugh"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent"   "55"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "invu_duration"   "12"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"   "50"
+	    }
+	    "04"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "lifesteal_percent_building"   "13"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_passive"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Orb"
+	      {
+	        "Priority"    "DOTA_ORB_PRIORITY_ITEM"
+	      }
+	
+	      "OnOrbImpact"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "ModifierSuperLifesteal"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"      "units/petrosyan.lua"
+	          "Function"        "BonusGoldFromWall"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_datadriven_lifesteal_building"
+	    {
+	      "Passive"     "0"
+	      "IsHidden"      "1"
+	      
+	      "OnDealDamage"
+	      {
+	        "Lifesteal"
+	        {
+	          "Target"      "ATTACKER"
+	          "LifestealPercent"  "%lifesteal_percent_building"
+	        }
+	      }
+	    }
+	
+	    "modifier_item_petri_uber_mask_of_laugh_active"
+	    {
+	      "Duration"                "%invu_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_uber_mask_of_laugh_level4"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1893"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "9000"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_uber_mask_of_laugh_level4"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_uber_mask_of_laugh_level3;"
 	  }
 	}
 	"item_petri_vest"
@@ -2641,7 +5060,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_vest"
 	
-	  "ItemCost"            "10"
+	  "ItemCost"            "15"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "vest"
@@ -2651,7 +5070,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "2"
+	      "bonus_armor"      "10"
 	    }
 	  }
 	  
@@ -2661,13 +5080,30 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
 	      }
 	    }
+	  }
+	}
+	
+	"item_recipe_petri_vest"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1899"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "10"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_vest"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_helmet"
 	  }
 	}
 	
@@ -2680,7 +5116,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supervest"
 	
-	  "ItemCost"            "250"
+	  "ItemCost"            "60"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supervest"
@@ -2700,13 +5136,30 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
 	      }
 	    }
+	  }
+	}
+	
+	"item_recipe_petri_supervest"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1892"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "45"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_supervest"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_vest;"
 	  }
 	}
 	
@@ -2719,7 +5172,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supermegavest"
 	
-	  "ItemCost"            "950"
+	  "ItemCost"            "250"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supermegavest"
@@ -2739,13 +5192,30 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
 	      }
 	    }
+	  }
+	}
+	
+	"item_recipe_petri_supermegavest"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1891"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "650"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_supermegavest"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_supervest;"
 	  }
 	}
 	
@@ -2758,7 +5228,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_superthing"
 	
-	  "ItemCost"            "2400"
+	  "ItemCost"            "900"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "superthing"
@@ -2778,7 +5248,6 @@
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
@@ -2795,7 +5264,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1800"
+	  "ItemCost"            "650"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -2803,6 +5272,767 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_supermegavest"
+	  }
+	}
+	"item_petri_vip_frostbite"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1970"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_vip_frostbite"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_body_ambient_base_smoke.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_bark_steam.vpcf"
+	    "particle"  "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
+	    "particle"  "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "500"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "hero_Crystal.frostbite"
+	      "Target"        "TARGET"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "0"
+	      "IsBuff"      "1"
+	
+	      "EffectName"        "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_ground_ambient.vpcf"
+	          "EffectAttachType"  "attach_origin"
+	          "Target" "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_body_ambient_base_smoke.vpcf"
+	          "EffectAttachType"  "attach_hitloc"
+	          "Target" "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/cm_arcana_pup_bark_steam.vpcf"
+	          "EffectAttachType"  "attach_mouth"
+	          "Target" "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	          "EffectName"    "particles/econ/items/crystal_maiden/crystal_maiden_maiden_of_icewrack/maiden_arcana_base_ambient.vpcf"
+	          "EffectAttachType"  "attach_hitloc"
+	          "Target" "CASTER"
+	        } 
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
+	"item_petri_vip_furion"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1961"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_vip_furion"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_furion/furion_wrath_of_nature.vpcf"
+	    "particle"  "particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "500"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "TARGET"
+	      "ControlPointEntities"
+	      {
+	        "TARGET"    "attach_origin"
+	        "TARGET"    "attach_hitloc"
+	      }
+	    }
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Furion.WrathOfNature_Cast.Self"
+	      "Target"        "CASTER"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
+	"item_petri_vip_greenkzn"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1969"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_vip_greenkzn"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+	    "particle"  "particles/units/heroes/hero_beastmaster/beastmaster_primal_target.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
+	
+	    "particle"  "particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo_debuff.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "500"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"        "particles/units/heroes/hero_beastmaster/beastmaster_primal_roar.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "Target"            "TARGET"
+	      "ControlPointEntities"
+	      {
+	          "CASTER"    "attach_cast4_primal_roar"
+	        "TARGET"    "attach_hitloc"
+	      }
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "EffectName"        "particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo_debuff.vpcf"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
+	"item_petri_vip_laguna"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1971"
+	  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_sheepstick"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "1000"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "0.0"
+	
+	  "AbilityManaCost"               "0"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+	    "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "2000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "Ability.LagunaBladeImpact"
+	      "Target"        "TARGET"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"    "Ability.LagunaBlade"
+	      "Target"        "CASTER"
+	    }
+	
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      
+	
+	      "ControlPointEntities"
+	      {
+	        "CASTER"    "attach_attack1"
+	        "TARGET"    "attach_hitloc"
+	      }
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "ModifierName"      "modifier_laguna_blade_datadriven"
+	      "Target"            "TARGET"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_stats"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "OnCreated"
+	      {
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "attach_attack1"
+	          }
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "attach_attack2"
+	          }
+	        }
+	      }
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "75000"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "5000" 
+	      }
+	    }
+	    "modifier_laguna_blade_datadriven"
+	    {
+	      "IsHidden"  "1"
+	      "Duration"  "0.1"
+	
+	      "OnDestroy"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	    }
+	  }
+	}
+	"item_petri_vip_terror"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1960"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_vip_terror"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+	    "particle"  "particles/units/heroes/hero_terrorblade/terrorblade_sunder.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "500"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Terrorblade.Sunder.Cast"
+	      "Target"        "CASTER"
+	    }
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Terrorblade.Sunder.Target"
+	      "Target"        "TARGET"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Sunder"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
+	  }
+	}
+	"item_petri_vip_zeus"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1955"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_maelstrom"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "720.0"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	    "particle"  "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+	    "particle"  "particles/econ/items/zeus/arcana_chariot/zeus_arcana_chariot.vpcf"
+	    "particle"  "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "70"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "movement_speed_reduction"                    "-100"
+	    }
+	    "03"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "attack_speed_reduction"                    "-40"
+	    }
+	    "04"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "bonus_hp"    "500"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_zuus/zuus_thundergods_wrath_start_bolt_parent.vpcf"
+	      "EffectAttachType"  "follow_origin"
+	      "Target"            "TARGET"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Zuus.GodsWrath"
+	      "Target"        "CASTER"
+	    }
+	
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/vip.lua"
+	      "Function"    "Frostbite"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_frostbite_active"
+	    {
+	      "Duration"  "7"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"  "%attack_speed_reduction"
+	        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"    "%movement_speed_reduction"
+	      }
+	    }
+	    "modifier_vip_frostbite_passive"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "AttachEffect"
+	        {
+	          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_arcana_chariot.vpcf"
+	          "EffectAttachType"  "attach_origin"
+	          "Target" "CASTER"
+	        }
+	        "AttachEffect"
+	        {
+	          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
+	          "EffectAttachType"  "attach_eye_l"
+	          "Target" "CASTER"
+	        }
+	        "AttachEffect"
+	        {
+	          "EffectName"    "particles/econ/items/zeus/arcana_chariot/zeus_ambient_arcana_eyes.vpcf"
+	          "EffectAttachType"  "attach_eye_r"
+	          "Target" "CASTER"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	      }
+	    }
 	  }
 	}
 	"item_petri_ward"
@@ -2862,7 +6092,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_zirconia_armor"
 	
-	  "ItemCost"            "60"
+	  "ItemCost"            "150"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -2872,22 +6102,21 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "5"
+	      "bonus_all_stats"    "20"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "5"
+	      "bonus_armor"      "0"
 	    }
 	  }
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_bracer_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
-	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 	      
 	      "Properties"
 	      {
@@ -2908,14 +6137,400 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "25"
+	  "ItemCost"            "100"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_zirconia_armor"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_bracer;item_petri_vest"
+	    "01"            "item_petri_bracer;"
+	  }
+	}
+	"item_precache_item"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "AbilityCastPoint"        "0"
+	
+	  "ItemDroppable"         "0"
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	  
+	  "precache"
+	  {
+	    "particle" "particles/econ/items/wraith_king/wraith_king_winterblight_weapon/wraith_king_winterblight_ambient.vpcf"
+	    "particle" "particles/econ/items/queen_of_pain/qop_bloody_raven_wings/qop_bloody_raven_ambient.vpcf"
+	    "particle" "particles/econ/items/axe/axe_helm_shoutmask/axe_shout_mask_ambient.vpcf"
+	    "particle" "particles/units/heroes/hero_juggernaut/jugg_weapon_glow_variation_red.vpcf"
+	    "particle" "particles/units/heroes/hero_juggernaut/jugg_weapon_glow_variation_red_glow.vpcf"
+	    "particle" "particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
+	    "model" "models/items/warlock/ceaseless/ceaseless.vmdl"
+	    "model" "models/units/dartmolsabre/lightsaber.vmdl"
+	    "model" "models/items/axe/shout_mask/shout_mask.vmdl"
+	    "model" "models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+	    "model" "models/props_structures/statue_dragon001.vmdl"
+	    "model" "models/effects/radiant_lightrays_rainstorm.vmdl"
+	    "model" "models/items/wraith_king/winterblight_weapon/winterblight_weapon.vmdl"
+	    "model" "models/creeps/roshan/roshan.vmdl"
+	    "model" "models/props_gameplay/halloween_candy.vmdl"
+	    "model" "models/props_structures/pumpkin003.vmdl"
+	    "model" "models/heroes/antimage/antimage.vmdl"
+	    "model" "models/items/antimage/skullbasher/skullbasher_gold.vmdl"
+	    "model" "models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
+	    "model" "models/items/antimage/skullbasher/skullbasher_gold_offhand.vmdl"
+	    "model" "models/items/axe/weapon_heavy_cutter.vmdl"
+	    "model" "models/heroes/obsidian_destroyer/obsidian_destroyer.vmdl"
+	    "model" "models/items/obsidian_destroyer/immortal_weapon_1/immortal_weapon_1.vmdl"
+	    "model" "models/heroes/obsidian_destroyer/obsidian_destroyer_rocks.vmdl"
+	    "model" "models/heroes/obsidian_destroyer/obsidian_destroyer_wings.vmdl"
+	    "model" "models/heroes/obsidian_destroyer/obsidian_destroyer_head.vmdl"
+	    "model" "models/heroes/obsidian_destroyer/obsidian_destroyer_horns.vmdl"
+	    "model" "models/heroes/lich/lich.vmdl"
+	    "model" "models/items/lich/imperialists_frost_biter/imperialists_frost_biter.vmdl"
+	    "model" "models/items/lich/the_deadwinter_head/the_deadwinter_head.vmdl"
+	    "model" "models/items/lich/imperialists_mana_chamber/imperialists_mana_chamber.vmdl"
+	    "model" "models/heroes/warlock/warlock.vmdl"
+	    "model" "models/items/warlock/archivist_shoulders/archivist_shoulders.vmdl"
+	    "model" "models/items/warlock/archivist_head/archivist_head.vmdl"
+	    "model" "models/items/warlock/archivists_robe/archivists_robe.vmdl"
+	    "model" "models/items/warlock/archivist_facebag/archivist_facebag.vmdl"
+	    "model" "models/items/warlock/archivist_lantern/archivist_lantern.vmdl"
+	    "model" "models/heroes/necrolyte/necrolyte.vmdl"
+	    "model" "models/items/necrolyte/heretic_head/heretic_head.vmdl"
+	    "model" "models/items/necrolyte/heretic_hood/heretic_hood.vmdl"
+	    "model" "models/items/necrolyte/heretic_shoulder/heretic_shoulder.vmdl"
+	    "model" "models/items/necrolyte/heretic_weapon/heretic_weapon.vmdl"
+	    "model" "models/heroes/shadow_fiend/shadow_fiend.vmdl"
+	    "model" "models/heroes/shadow_fiend/shadow_fiend_head.vmdl"
+	    "model" "models/items/shadow_fiend/arms_deso/arms_deso.vmdl"
+	    "model" "models/heroes/shadow_fiend/shadow_fiend_shoulders.vmdl"
+	    "model" "models/heroes/tidehunter/tidehunter.vmdl"
+	    "model" "models/items/tidehunter/diving_helmet/tidehunter_diving_helmet.vmdl"
+	    "model" "models/items/axe/axe_executioner.vmdl"
+	    "model" "models/heroes/pedestal/effigy_pedestal_ti5.vmdl"
+	    "model" "models/props_structures/gryphon_statue001.vmdl"
+	    "model" "models/heroes/tidehunter/tidehuntertentacle.vmdl"
+	    "model" "models/heroes/crystal_maiden/pedestal_cm_arcana.vmdl"
+	    "model" "models/props_structures/crystal002.vmdl"
+	    "model" "models/snowman/snowman.vmdl"
+	    "model" "models/lolipop/lollipop.vmdl"
+	    "model" "models/items/omniknight/hammerofenlight/hammerofenlight.vmdl"
+	    "model" "models/christmas_tree/christmas_tree.vmdl"
+	    "model" "models/heroes/pedestal/effigy_pedestal_ti5_lv2.vmdl"
+	    "model" "models/items/ogre_magi/goldenwalruswhacker/goldenwalruswhacker.vmdl"
+	    "model" "models/heroes/drow/drow.vmdl"
+	    "model" "models/items/pudge/the_ol_choppers_shoulder/the_ol_choppers_shoulder.vmdl"
+	    "model" "models/items/sniper/wildwest_weapon/wildwest_weapon.vmdl"
+	    "model" "models/items/broodmother/spiderling/virulent_matriarchs_spiderling/virulent_matriarchs_spiderling.vmdl"
+	    "model" "models/heroes/lina/lina.vmdl"
+	    "model" "models/items/crystal_maiden/belle_head_hair/belle_head_hair.vmdl"
+	    "model" "models/items/lina/origins_flamehair/origins_flamehair.vmdl"
+	    "model" "models/items/lina/x_hair_xxx/x_hair_xxx.vmdl"
+	    "model" "models/items/lanaya/exotic_assassin_curls/exotic_assassin_curls.vmdl"
+	    "model" "models/heroes/lina/lina_belt.vmdl"
+	    "model" "models/items/lina/x_necklace_xxx/x_necklace_xxx.vmdl"
+	    "model" "models/heroes/earthshaker/earthshaker.vmdl"
+	    "model" "models/heroes/earthshaker/totem.vmdl"
+	    "model" "models/heroes/lanaya/lanaya.vmdl"
+	    "model" "models/items/crystal_maiden/esl_frozen_lotus_head/esl_frozen_lotus_head.vmdl"
+	    "model" "models/items/earth_spirit/demon_stone_summon/demon_stone_summon.vmdl"
+	    "model" "models/props_structures/bad_barracks001_destruction.vmdl"
+	    "model" "models/items/wards/chinese_ward/chinese_ward.vmdl"
+	    "model" "models/props_debris/chinese_lantern001.vmdl"
+	    "model" "models/props_structures/bad_tower_destruction.vmdl"
+	    "model" "models/props_structures/bad_ancient_destruction.vmdl"
+	    "model" "models/heroes/witchdoctor/witchdoctor.vmdl"
+	    "model" "models/items/witchdoctor/baron_la_croix_staff/baron_la_croix_staff.vmdl"
+	    "model" "models/items/witchdoctor/purplenightmare_belt/purplenightmare_belt.vmdl"
+	    "model" "models/items/witchdoctor/pet_snake.vmdl"
+	    "model" "models/props_structures/coffin002.vmdl"
+	    "model" "models/items/earthshaker/totem_dragon_wall/totem_dragon.vmdl"
+	    "model" "models/props_debris/chinese_lantern002.vmdl"
+	    "model" "models/items/techies/bigshot/bigshot_remotebomb.vmdl"
+	    "model" "models/heroes/phoenix/phoenix_bird.vmdl"
+	    "model" "models/items/courier/blotto_and_stick/blotto.vmdl"
+	    "model" "models/props_structures/dragon_statue001.vmdl"
+	    "model" "models/props_structures/statue_dragon003.vmdl"
+	    "model" "models/items/courier/dc_demon/dc_demon.vmdl"
+	    "model" "models/heroes/brewmaster/brewmaster_windspirit.vmdl"
+	    "model" "models/props/traps/hooded_fang/hooded_fang.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_furbolg/n_creep_furbolg_disrupter.vmdl"
+	    "model" "models/items/wards/dire_ward_eye/dire_ward_eye.vmdl"
+	    "model" "models/items/courier/vaal_the_animated_constructradiant/vaal_the_animated_constructradiant_flying.vmdl"
+	    "model" "models/props_gameplay/rune_goldxp.vmdl"
+	    "model" "models/heroes/shadow_demon/shadow_demon.vmdl"
+	    "model" "models/items/warlock/golem/hellsworn_golem/hellsworn_golem.vmdl"
+	    "model" "models/items/lone_druid/true_form/iron_claw_true_form/iron_claw_true_form.vmdl"
+	    "model" "models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"
+	    "model" "models/items/lone_druid/true_form/wizened_bear/wizened_bear.vmdl"
+	    "model" "models/items/tuskarr/whiskey_the_stout/whiskey_the_stout_slider.vmdl"
+	    "model" "models/items/wards/esl_wardchest_ward_of_foresight/esl_wardchest_ward_of_foresight.vmdl"
+	    "model" "models/items/courier/coco_the_courageous/coco_the_courageous.vmdl"
+	    "model" "models/items/juggernaut/ward/healing_gills_of_the_lost_isles/healing_gills_of_the_lost_isles.vmdl"
+	    "model" "models/items/courier/guardians_of_justice_enix/guardians_of_justice_enix.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_vulture_a/n_creep_vulture_a.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"
+	    "model" "models/heroes/pedestal/effigy_pedestal_frosty_dire.vmdl"
+	    "model" "models/courier/baby_winter_wyvern/baby_winter_wyvern.vmdl"
+	    "model" "models/items/tuskarr/sigil/barrierrogue_tusk_sigil/barrierrogue_tusk_sigil.vmdl"
+	    "model" "models/props_structures/kings_chair.vmdl"
+	    "model" "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
+	    "model" "models/particle/snowball.vmdl"
+	    "model" "models/items/lone_druid/true_form/form_of_the_atniw/form_of_the_atniw.vmdl"
+	    "model" "models/items/pugna/ward/draining_wight/draining_wight.vmdl"
+	    "model" "models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"
+	    "model" "models/items/courier/shroomy/shroomy.vmdl"
+	    "model" "models/heroes/phantom_assassin/arcana_tombstone.vmdl"
+	    "model" "models/items/courier/bookwyrm/bookwyrm.vmdl"
+	    "model" "models/items/courier/itsy/itsy.vmdl"
+	    "model" "models/heroes/techies/techies_cart.vmdl"
+	    "model" "models/items/courier/bts_chirpy/bts_chirpy.vmdl"
+	    "model" "models/items/hex/sheep_hex/sheep_hex_gold.vmdl"
+	    "model" "models/items/courier/faceless_rex/faceless_rex_flying.vmdl"
+	    "model" "models/items/wards/knightstatue_ward/knightstatue_ward.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_black_drake/n_creep_black_drake.vmdl"
+	    "model" "models/items/shadowshaman/serpent_ward/tangki_serpent_ward/tangki_serpent_ward.vmdl"
+	    "model" "models/items/courier/baekho/baekho.vmdl"
+	    "model" "models/props_structures/radiant_statue001.vmdl"
+	    "model" "models/courier/flopjaw/flopjaw.vmdl"
+	    "model" "models/items/courier/g1_courier/g1_courier.vmdl"
+	    "model" "models/items/wards/esl_wardchest_toadstool/esl_wardchest_toadstool.vmdl"
+	    "model" "models/heroes/morphling/morphling.vmdl"
+	    "model" "models/courier/venoling/venoling.vmdl"
+	    "model" "models/heroes/venomancer/venomancer.vmdl"
+	    "model" "models/courier/smeevil_crab/smeevil_crab.vmdl"
+	    "model" "models/heroes/kunkka/ghostship_sim.vmdl"
+	    "model" "models/heroes/visage/visage.vmdl"
+	    "model" "models/items/courier/coral_furryfish/coral_furryfish.vmdl"
+	    "model" "models/props_gameplay/rune_haste01.vmdl"
+	    "model" "models/props_gameplay/rune_illusion01.vmdl"
+	    "model" "models/props_gameplay/rune_doubledamage01.vmdl"
+	    "model" "models/courier/baby_rosh/babyroshan.vmdl"
+	    "model" "models/items/wards/esl_wardchest_rockshell_terrapin/esl_wardchest_rockshell_terrapin.vmdl"
+	    "model" "models/items/furion/treant/primeval_treant/primeval_treant.vmdl"
+	    "model" "models/items/furion/treant_stump.vmdl"
+	    "model" "models/items/furion/treant/fungal_lord_shroomthing/fungal_lord_shroomthing.vmdl"
+	    "model" "models/courier/seekling/seekling.vmdl"
+	    "model" "models/props_structures/ship_broken001.vmdl"
+	    "model" "models/items/furion/dark_staff/bulb.vmdl"
+	    "model" "models/items/furion/treant_flower_1.vmdl"
+	    "model" "models/courier/huntling/huntling.vmdl"
+	    "model" "models/items/courier/dc_angel/dc_angel.vmdl"
+	    "model" "models/props_structures/bad_barracks001_ranged.vmdl"
+	    "model" "models/windmill/windmill.vmdl"
+	    "model" "models/minigun/minigun.vmdl"
+	    "model" "models/heroes/ancient_apparition/ancient_apparition.vmdl"
+	    "model" "models/items/courier/tory_the_sky_guardian/tory_the_sky_guardian.vmdl"
+	    "model" "models/items/courier/scuttling_scotty_penguin/scuttling_scotty_penguin.vmdl"
+	    "model" "models/items/wards/skywrath_sentinel/skywrath_sentinel.vmdl"
+	    "model" "models/units/ironman/ironman.vmdl"
+	    "model" "models/props_gameplay/rune_arcane.vmdl"
+	    "model" "models/props_gameplay/pumpkin_rune.vmdl"
+	    "model" "models/props_gameplay/rune_invisibility01"
+	    "model" "models/props_gameplay/rune_regeneration01"
+	    "model" "models/props_structures/secretshop_asian001.vmdl"
+	    "model" "models/items/courier/faceless_rex/faceless_rex.vmdl"
+	    "model" "models/items/courier/g1_courier/g1_courier_flying.vmdl"
+	    "model" "models/items/courier/nexon_turtle_17_gold/nexon_turtle_17_gold.vmdl"
+	    "model" "models/courier/greevil/gold_greevil.vmdl"
+	    "model" "models/items/wards/ocula/ocula.vmdl"
+	    "model" "models/heroes/techies/techies_bomb_projectile.vmdl"
+	    "model" "models/items/courier/arneyb_rabbit/arneyb_rabbit.vmdl"
+	    "model" "models/items/rubick/force_staff/fs_puzzle.vmdl"
+	    "model" "models/heroes/undying/undying_tower.vmdl"
+	    "model" "models/death_tower/death_tower.vmdl"
+	    "model" "models/heroes/zeus/zeus_arcana.vmdl"
+	    "model" "models/hats/hat_alt.vmdl"
+	    "model" "models/items/tuskarr/sigil/boreal_sigil/boreal_sigil.vmdl"
+	    "model" "models/props_gameplay/gold_bag.vmdl"
+	    "model" "models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_emerald.vmdl"
+	    "model" "models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_ruby.vmdl"
+	    "model" "models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_saphire.vmdl"
+	    "model" "models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_topaz.vmdl"
+	    "model" "models/items/meepo/diggers_divining_rod/diggers_divining_rod_gem_pink.vmdl"
+	    "model" "models/heroes/furion/furion.vmdl"
+	    "model" "models/items/furion/sovereign_staff/sovereign_staff.vmdl"
+	    "model" "models/items/furion/dark_staff/dark_staff.vmdl"
+	    "model" "models/items/furion/sovereign_cape/sovereign_cape.vmdl"
+	    "model" "models/items/furion/sovereign_shoulders/sovereign_shoulders.vmdl"
+	    "model" "models/items/furion/sovereign_beard/sovereign_beard.vmdl"
+	    "model" "models/items/furion/sovereign_horns/sovereign_horns.vmdl"
+	    "model" "models/props_cave/wooden_ladder_256.vmdl"
+	    "model" "models/items/lone_druid/true_form/wolf_hunter_true_form/wolf_hunter_true_form.vmdl"
+	    "model" "models/props_structures/cathedral001.vmdl"
+	    "model" "models/items/techies/bigshot/fx_bigshot_stasis.vmdl"
+	    "model" "models/props_structures/bad_ancient002.vmdl"
+	    "model" "models/items/wards/stonebound_ward/stonebound_ward.vmdl"
+	    "model" "models/items/invoker/forge_spirit/dark_sorcerer_forge_spirit/dark_sorcerer_forge_spirit.vmdl"
+	    "model" "models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"
+	    "model" "models/heroes/shadow_fiend/pedestal_sf.vmdl"
+	    "model" "models/heroes/tiny_01/tiny_01.vmdl"
+	    "model" "models/factory/factory.vmdl"
+	    "model" "models/props_structures/good_barracks_ranged002_lvl2.vmdl"
+	    "model" "models/props_structures/good_ancient001.vmdl"
+	    "model" "models/props_structures/radiant_ancient001.vmdl"
+	    "model" "models/items/bounty_hunter/bounty_hunter_blade.vmdl"
+	    "model" "models/items/shredder/timberthaw_offhand/timberthaw_offhand.vmdl"
+	    "model" "models/items/shredder/sctimberoffhand/sctimberoffhand.vmdl"
+	    "model" "models/items/bounty_hunter/immortal_warrior_shuriken/immortal_warrior_shuriken.vmdl"
+	    "model" "models/items/bounty_hunter/hunternoname_shoulder/hunternoname_shoulder.vmdl"
+	    "model" "models/heroes/terrorblade/demon.vmdl"
+	    "model" "models/items/terrorblade/endless_purgatory_weapon/endless_purgatory_weapon.vmdl"
+	    "model" "models/heroes/ursa/ursa.vmdl"
+	    "model" "models/items/ursa/scarf_alpine.vmdl"
+	    "model" "models/items/ursa/hat_alpine.vmdl"
+	    "model" "models/heroes/faceless_void/faceless_void.vmdl"
+	    "model" "models/items/faceless_void/ancientcultist_head/ancientcultist_head.vmdl"
+	    "model" "models/items/faceless_void/voidhammer/voidhammer.vmdl"
+	    "model" "models/heroes/pudge/pudge.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_head/ftp_dendi_head.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_arm/ftp_dendi_arm.vmdl"
+	    "model" "models/items/pudge/pudge_offhand_weapon_tender_lod01/pudge_offhand_weapon_tender_lod01.vmdl"
+	    "model" "models/items/pudge/plague_doctor_shoulder/plague_doctor_shoulder.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_back/ftp_dendi_back.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_belt/ftp_dendi_belt.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_shoulder/ftp_dendi_shoulder.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_offhand/ftp_dendi_offhand.vmdl"
+	    "model" "models/items/pudge/promo_trapper_shoulder/promo_trapper_shoulder.vmdl"
+	    "model" "models/items/pudge/skedaddlebritches4/skedaddlebritches4.vmdl"
+	    "model" "models/items/pudge/ftp_dendi_weapon/ftp_dendi_weapon.vmdl"
+	    "model" "models/items/pudge/pudge_skeleton_hook_body.vmdl"
+	    "model" "models/heroes/vengeful/vengeful.vmdl"
+	    "model" "models/items/vengefulspirit/fallenprincess_head/fallenprincess_head.vmdl"
+	    "model" "models/items/vengeful/vengeful_immortal_weapon/vengeful_immortal_weapon.vmdl"
+	    "model" "models/heroes/rikimaru/rikimaru.vmdl"
+	    "model" "models/heroes/troll_warlord/troll_warlord_axe_melee_r.vmdl"
+	    "model" "models/items/axe/skullsplitter/skullsplitter.vmdl"
+	    "model" "models/items/shredder/top_hat_of_the_steam_chopper/top_hat_of_the_steam_chopper.vmdl"
+	    "model" "models/hats/hat.vmdl"
+	    "model" "models/props_winter/present.vmdl"
+	    "model" "models/heroes/alchemist/alchemist.vmdl"
+	    "model" "models/items/omniknight/weapon_rune_hammer.vmdl"
+	    "model" "models/items/rattletrap/ironclock_weapon/ironclock_weapon.vmdl"
+	    "model" "models/heroes/alchemist/alchemist_ogre_head.vmdl"
+	    "model" "models/heroes/alchemist/alchemist_saddlehat.vmdl"
+	    "model" "models/items/sniper/machine_gun_charlie/machine_gun_charlie.vmdl"
+	    "model" "models/heroes/wraith_king/wraith_king.vmdl"
+	    "model" "models/items/wraith_king/sundered_back/sundered_back.vmdl"
+	    "model" "models/items/wraith_king/sundered_armor/sundered_armor.vmdl"
+	    "model" "models/items/wraith_king/deadreborn_head/deadreborn_head.vmdl"
+	    "model" "models/items/dragon_knight/oblivion_blazer_offhand/oblivion_blazer_offhand.vmdl"
+	    "model" "models/heroes/visage/visage_skullfx.vmdl"
+	    "model" "models/items/wraith_king/sk_dreadknight_shoulder.vmdl"
+	    "model" "models/items/nerubian_assassin/artificial_metamorphosis_misc/artificial_metamorphosis_misc.vmdl"
+	    "model" "models/heroes/beastmaster/beastmaster.vmdl"
+	    "model" "models/items/centaur/graspofgluttony_weapon/graspofgluttony_weapon.vmdl"
+	    "model" "models/items/tuskarr/barrierrogue_tusk_weapon/barrierrogue_tusk_weapon.vmdl"
+	    "model" "models/items/axe/harbingerwar_weapon/harbingerwar_weapon.vmdl"
+	    "model" "models/items/sven/revenge_weapon/revenge_weapon.vmdl"
+	    "model" "models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+	    "model" "models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
+	    "model" "models/items/crystal_maiden/lusciouslocks_head/lusciouslocks_head.vmdl"
+	    "model" "models/items/crystal_maiden/frostbringer_hair/frostbringer_hair.vmdl"
+	    "model" "models/items/vengefulspirit/fallenprincess_head_s2/fallenprincess_head_s2.vmdl"
+	    "model" "models/items/crystal_maiden/frozen_feathers_head/frozen_feathers_head.vmdl"
+	    "model" "models/items/abaddon/mistblade/mistblade.vmdl"
+	    "model" "models/items/crystal_maiden/pw_cm_staff/crystal_maiden_weapon.vmdl"
+	    "model" "models/items/crystal_maiden/euls_scepterdivinity.vmdl"
+	    "model" "models/items/doom/weapon_eyeoffetitzu/weapon_eyeoffetitzu.vmdl"
+	    "model" "models/items/crystal_maiden/northstar_staff/northstar_staff.vmdl"
+	    "model" "models/items/crystal_maiden/frozen_feathers_staff/frozen_feathers_staff.vmdl"
+	    "model" "models/heroes/legion_commander/legion_commander.vmdl"
+	    "model" "models/items/legion_commander/errant_cowl/errant_cowl.vmdl"
+	    "model" "models/items/legion_commander/errant_standards/errant_standards.vmdl"
+	    "model" "models/items/antimage/nomadic_protector_weapon/nomadic_protector_weapon.vmdl"
+	    "model" "models/items/spectre/spectre_diffusal.vmdl"
+	    "model" "models/heroes/crystal_maiden/crystal_maiden.vmdl"
+	    "model" "models/heroes/omniknight/omniknightwings.vmdl"
+	    "model" "models/hats/hat_female.vmdl"
+	    "model" "models/items/lina/hairoftheslayerr/hairoftheslayerr.vmdl"
+	    "model" "models/items/lina/migrant_blaze_head/migrant_blaze_head.vmdl"
+	    "model" "models/heroes/shadow_demon/shadow_demon_cape.vmdl"
+	    "model" "models/heroes/shadow_demon/shadow_demon_chain.vmdl"
+	    "model" "models/heroes/slardar/slardar_head.vmdl"
+	    "model" "models/items/warlock/tevent_2_gatekeeper_scythe/tevent_2_gatekeeper_scythe.vmdl"
+	    "model" "models/heroes/puck/puck.vmdl"
+	    "model" "models/items/puck/mischievousfruits_head/mischievousfruits_head.vmdl"
+	    "model" "models/items/puck/merry_wanderers_brush_tail/merry_wanderers_brush_tail.vmdl"
+	    "model" "models/items/puck/mysticcoils_wings/mysticcoils_wings.vmdl"
+	    "model" "models/heroes/meepo/meepo.vmdl"
+	    "model" "models/items/queenofpain/pw_lava_wings/queenofpain_back.vmdl"
+	    "model" "models/heroes/meepo/shoulders.vmdl"
+	    "model" "models/heroes/items/hat_test/hat_test.vmdl"
+	    "model" "models/items/meepo/colossal_crystal_chorus/colossal_crystal_chorus.vmdl"
+	    "model" "models/heroes/techies/fx_techies_remotebomb.vmdl"
+	    "model" "models/items/axe/axe_practos_weapon/axe_practos_weapon.vmdl"
+	    "model" "models/heroes/doom/doom.vmdl"
+	    "model" "models/items/doom/free2play_head_closed_hyhy/free2play_head_closed_hyhy.vmdl"
+	    "model" "models/items/doom/fallen_sword/fallen_sword.vmdl"
+	    "model" "models/items/dragon_knight/fireborn_shield/fireborn_shield.vmdl"
+	    "model" "models/items/doom/abysswings/abysswings.vmdl"
+	    "model" "models/items/doom/abysstail/abysstail.vmdl"
+	    "model" "models/items/chaos_knight/rising_chaos_shield/rising_chaos_shield.vmdl"
+	    "model" "models/items/doom/abyssshoulders/abyssshoulders.vmdl"
+	    "model" "models/items/doom/abyssbelt/abyssbelt.vmdl"
+	    "model" "models/heroes/axe/axe.vmdl"
+	    "model" "models/items/axe/molten_claw/molten_claw.vmdl"
+	    "model" "models/items/axe/redstone_axe/redstone_axe.vmdl"
+	    "model" "models/items/keeper_of_the_light/strikeofthelight_weapon/strikeofthelight_weapon.vmdl"
+	    "model" "models/items/sniper/gunslinger_head/gunslinger_headitem.vmdl"
+	    "model" "models/heroes/queenofpain/queenofpain.vmdl"
+	    "model" "models/items/queenofpain/wings_of_vincere/wings_of_vincere.vmdl"
+	    "model" "models/items/queenofpain/sinners_embrace_back/sinners_embrace_back.vmdl"
+	    "model" "models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
+	    "model" "models/items/juggernaut/thousand_faces_katana/thousand_faces_katana.vmdl"
+	    "model" "models/items/abaddon/alliance_abba_weapon/alliance_abba_weapon.vmdl"
+	    "model" "models/items/queenofpain/daggerofagonizingpain/daggerofagonizingpain.vmdl"
+	    "model" "models/items/queenofpain/shadeofagony/shadeofagony.vmdl"
+	    "model" "models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl"
+	    "model" "models/items/queenofpain/dotapit_s3_abyssal_temptress_head/dotapit_s3_abyssal_temptress_head.vmdl"
+	    "model" "models/heroes/life_stealer/life_stealer.vmdl"
+	    "model" "models/items/lifestealer/redrage_battlewings/redrage_battlewings.vmdl"
+	    "model" "models/items/blood_seeker/blood_seeker_executioner_weapon/blood_seeker_executioner_weapon.vmdl"
+	    "model" "models/heroes/blood_seeker/weapon_offhand.vmdl"
+	    "model" "models/items/lifestealer/transmuted_armaments_head/transmuted_armaments_head.vmdl"
+	    "model" "models/heroes/slark/slark.vmdl"
+	    "model" "models/items/slark/dark_reef_back/dark_reef_back.vmdl"
+	    "model" "models/items/slark/dark_reef_head/dark_reef_head.vmdl"
+	    "model" "models/items/slark/golden_barb_of_skadi/golden_barb_of_skadi.vmdl"
+	    "model" "models/heroes/nightstalker/nightstalker.vmdl"
+	    "model" "models/items/nightstalker/black_nihility/black_nihility_back.vmdl"
+	    "model" "models/units/telka/hot_chick.vmdl"
+	    "model" "models/items/death_prophet/mourning_armor/mourning_armor.vmdl"
+	    "model" "models/props_gameplay/tango.vmdl"
+	    "model" "models/heroes/dragon_knight/shield.vmdl"
+	    "model" "models/units/assasinedward/edward_kenway.vmdl"
+	    "model" "models/items/kunkka/cyclone_wave_smasher_of_the_divine_anchor/cyclone_wave_smasher_of_the_divine_anchor.vmdl"
+	    "model" "models/units/dartmol/mual.vmdl"
+	    "model" "models/heroes/tuskarr/tuskarr.vmdl"
+	    "model" "models/heroes/tuskarr/tusk_cowl.vmdl"
+	    "model" "models/items/invoker/exort_cape.vmdl"
+	    "model" "models/items/invoker/arsenal_magus_exort_cape/arsenal_magus_exort_cape.vmdl"
+	    "model" "models/items/phantom_lancer/infinite_waves_serpent_weapon/infinite_waves_serpent_weapon.vmdl"
+	    "model" "models/items/tuskarr/snowball_stinger/snowball_stinger.vmdl"
+	    "model" "models/heroes/bane/bane.vmdl"
+	  }
+	}
+	"item_train_petri_mega_peasant"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityTextureName"      "item_train_petri_mega_peasant"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	  "AbilityCastPoint"        "0"
+	
+	  "ItemDroppable"         "0"
+	  "ItemPurchasable"         "0"
+	  "ItemSellable"          "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "buildings/queue.lua"
+	      "Function"    "DequeueUnit"
+	    }
 	  }
 	}
 	"item_train_petri_peasant"

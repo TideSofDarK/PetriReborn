@@ -1,11 +1,36 @@
+PORTAL_LEVELS = {}
+PORTAL_LEVELS[1] = 1
+PORTAL_LEVELS[2] = 5
+PORTAL_LEVELS[3] = 20
+PORTAL_LEVELS[4] = 25
+PORTAL_LEVELS[5] = 40
+PORTAL_LEVELS[6] = 60
+PORTAL_LEVELS[7] = 80
+
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
-	if string.match(triggerName, "portal_trigger_creep") then
-		if GameRules:IsDaytime() ~= true then return true end
+	if string.match(triggerName, "portal_trigger_creep") or string.match(triggerName, "portal_trigger_kivin_input") then
+		
+		local heroLevel = activator:GetLevel()
+		local portalLevel = PORTAL_LEVELS[GetPortalNumber( triggerName )]
+		local portalNumber = GetPortalNumber( triggerName )
+
+		if GameRules:IsDaytime() == false and portalNumber ~= 7 then 
+			return true 
+		else
+			if heroLevel < portalLevel then
+				return true
+			end
+			-- if string.match(triggerName, "portal_trigger_creep3") then
+			-- 	if GameMode.PETRI_TRUE_TIME < 384 then
+			-- 		return true 
+			-- 	end
+			-- end
+		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_b") then
-		if GameRules:GetDOTATime(false, false) > 1200 
-			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 25000 then 
+		if GameMode.PETRI_TRUE_TIME > 1200 
+			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 30000 then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
@@ -13,11 +38,11 @@ function CheckFarmPlaces(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "portal_trigger_boss_c") then
-		if GameRules:GetDOTATime(false, false) > 1680 
-			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 60000 then 
+		if GameMode.PETRI_TRUE_TIME > 1680 
+			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 90000 then 
 			return false 
 		else 
-			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_3_notification", duration=4, style={color="white", ["font-size"]="45px"}})
 			return true 
 		end
 	end
@@ -62,4 +87,40 @@ end
 
 function Activate(keys)
 	print("Portal activated")
+
+	local name = thisEntity:GetName()
+
+	if IsCreepPortal( name ) == true then
+		Timers:CreateTimer(20, function (  )
+			local number = GetPortalNumber( name )
+
+			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+
+			local oldPos = unit:GetAbsOrigin()
+			oldPos.z = oldPos.z + 250
+			unit:SetAbsOrigin(oldPos)
+
+			unit:AddAbility("petri_dummy_static_popup")
+			InitAbilities(unit)
+
+			Timers:CreateTimer(10, function (  )
+					PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+				end)
+		end)
+	end
+end
+
+function IsCreepPortal( name )
+	if string.match(name, "portal_trigger_creep") and string.match(name, "input") then return true end
+	if string.match(name, "portal_trigger_kivin_input") then return true end
+	return false
+end
+
+function GetPortalNumber( name )
+	if string.match(name, "portal_trigger_kivin_input") then return 7 end
+
+	local numberString = string.gsub(string.gsub(name, "portal_trigger_creep", ""), "_input", "")
+	local number = tonumber(numberString) or 1
+
+	return number
 end

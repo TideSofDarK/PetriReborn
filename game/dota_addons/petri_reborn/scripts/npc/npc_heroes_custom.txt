@@ -5,7 +5,6 @@
 	  "override_hero"     "npc_dota_hero_death_prophet"
 	
 	  "HasInventory"          "1"
-	  "ConsideredHero"        "1"
 	
 	  "AbilityLayout" "6"
 	
@@ -15,14 +14,14 @@
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"
-	  "Ability7"        "petri_petrosyan_dummy_sleep"
+	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	  "AttackRange"                "75"
+	  "AttackRange"                "80"
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.39"
@@ -46,7 +45,7 @@
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
 	  "MovementSpeed"       "600"
-	  "MovementTurnRate"      "1.0"                 
+	  "MovementTurnRate"      "5.0"                 
 	
 	  "StatusHealth"        "55"                 
 	  "StatusHealthRegen"     "0.0"                 
@@ -112,7 +111,8 @@
 	
 	  "StatusHealth"        "10"          
 	  "StatusHealthRegen"     "0.165"
-	  "StatusMana"        "1"              
+	  "StatusMana"        "20"     
+	  "StatusManaRegen"     "5.0"         
 	
 	  "VisionDaytimeRange"    "1800"                  
 	  "VisionNighttimeRange"    "1800"                  
@@ -127,17 +127,17 @@
 	  "override_hero"     "npc_dota_hero_storm_spirit"
 	
 	  "HasInventory"          "1"
-	  "ConsideredHero"        "1"
 	
 	  "AbilityLayout" "4"
 	
 	  "Ability1"        "petri_petrosyan_flat_joke" 
-	  "Ability2"        "petri_petrosyan_laugh_burst" 
+	  "Ability2"        "petri_mini_actor_pull_eyes" 
 	  "Ability3"        "petri_petrosyan_wind_walk"
 	  "Ability4"        "petri_petrosyan_return"
 	  "Ability5"        "petri_petrosyan_explore"
 	  "Ability6"        "petri_mini_actor_phase"
 	  "Ability7"        "attribute_bonus"
+	  "Ability8"        "petri_petrosyan_passive"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
@@ -180,6 +180,8 @@
 	{
 	  "override_hero"     "npc_dota_hero_brewmaster"
 	
+	  "HealthBarOffset"    "275"
+	
 	  "HasInventory"          "1"
 	  "ConsideredHero"        "1"
 	
@@ -191,14 +193,14 @@
 	  "Ability4"        "petri_petrosyan_explore"
 	  "Ability5"        "petri_petrosyan_wind_walk"
 	  "Ability6"        "petri_petrosyan_return"
-	  "Ability7"        "petri_petrosyan_dummy_sleep"
+	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	  "AttackRange"                "75"
+	  "AttackRange"                "80"
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
 	  "AttackRate" "0.39"
@@ -210,7 +212,7 @@
 	  "AttributeBaseIntelligence" "1"
 	  "AttributeIntelligenceGain" "0.25"
 	  "AttributeBaseAgility"    "1"
-	  "AttributeAgilityGain"    "0.3"
+	  "AttributeAgilityGain"    "0.0"
 	
 	  "BountyXP"          "0"                 
 	  "BountyGoldMin"       "10"                   
@@ -221,8 +223,8 @@
 	  "RingRadius"        "70"
 	
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-	  "MovementSpeed"       "600"
-	  "MovementTurnRate"      "1.0"                 
+	  "MovementSpeed"       "522"
+	  "MovementTurnRate"      "5.0"                 
 	
 	  "StatusHealth"        "55"                 
 	  "StatusHealthRegen"     "0.0"                 

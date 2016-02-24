@@ -1,0 +1,175 @@
+"item_petri_evasion_scroll"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1995"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+  "Model"             "models/props_gameplay/recipe.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_evasion_scroll"
+
+  "AbilityCastRange"              "1600"
+  "AbilityCastPoint"              "0"
+  "AbilityManaCost"               "150"
+  "AbilityCooldown"       "180"
+  "AbilityManaCost"       "0"
+
+  "ItemShareability"      "ITEM_PARTIALLY_SHAREABLE"
+  "ItemCost"            "285"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "scroll"
+  "ItemInitialCharges" "1"
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+  "ItemKillable"          "1"
+  "ItemSellable"          "0"
+
+  "SideShop" "1"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+        "var_type"              "FIELD_INTEGER"
+        "travel_distance"       "1600"
+    }
+    "02"
+    {
+        "var_type"              "FIELD_INTEGER"
+        "travel_speed"          "1000"
+    }
+    "03"
+    {
+        "var_type"              "FIELD_INTEGER"
+        "area_of_effect"        "200"
+    }
+    "04"
+    {
+        "var_type"              "FIELD_INTEGER"
+        "vision_distance"       "600"
+    }
+    "05"
+    {
+        "var_type"              "FIELD_FLOAT"
+        "end_vision_duration"   "1.75"
+    }
+    "06"
+    {
+        "var_type"              "FIELD_FLOAT"
+        "lift_duration"         "2.5"
+    }
+    "07"
+    {
+        "var_type"              "FIELD_FLOAT"
+        "base_damage"           "70"
+    }
+    "08"
+    {
+        "var_type"              "FIELD_FLOAT"
+        "wex_damage"            "315"
+    }
+    "09"
+    {
+        "var_type"                  "FIELD_INTEGER"
+        "cyclone_min_height"        "300"
+    }
+    "10"
+    {
+        "var_type"                  "FIELD_INTEGER"
+        "cyclone_initial_height"    "350"
+    }
+    "11"
+    {
+        "var_type"                  "FIELD_INTEGER"
+        "cyclone_max_height"        "400"
+    }
+    "12"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "dodge_chance"     "20"
+    }
+    "13"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "duration"     "7"
+    }
+  }
+
+  "precache"
+  {
+    "particle"  "particles/items_fx/cyclone.vpcf"
+    "particle"  "particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"                                "items/evasion_scroll.lua"
+      "Function"                                  "EvasionTornado"
+      "Target"                                    "POINT"
+      "TravelSpeed"                               "%travel_speed"
+      "AreaOfEffect"                              "%area_of_effect"
+      "VisionDistance"                            "%vision_distance"
+      "EndVisionDuration"                         "%end_vision_duration"
+    }
+    "SpendCharge" {}
+  }
+
+  "OnProjectileHitUnit"
+  {
+    "DeleteOnHit" "0"
+    
+    "RunScript"
+    {
+      "ScriptFile"        "items/evasion_scroll.lua"
+      "Function"          "TornadoHit"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_evasion_scroll"
+    {
+      "Duration"                "%duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"            "particles/items_fx/cyclone.vpcf"
+      "EffectAttachType"      "follow_origin"
+          
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%dodge_chance"
+      }
+    }
+
+    "modifier_tornado_unit_ability"
+    {
+      "Passive"           "0"
+      "IsHidden"          "0"
+      "IsBuff"            "0"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      
+      "States"
+      {
+        "MODIFIER_STATE_NO_UNIT_COLLISION"      "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_TEAM_MOVE_TO"        "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_TEAM_SELECT"         "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_COMMAND_RESTRICTED"     "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_ATTACK_IMMUNE"          "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NOT_ON_MINIMAP"         "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_OUT_OF_GAME"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"          "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}

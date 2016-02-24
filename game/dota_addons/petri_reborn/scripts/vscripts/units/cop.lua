@@ -10,8 +10,9 @@ function SpawnCop( keys )
 		return false
 	end
 
-	local cop = CreateUnitByName("npc_petri_cop", caster:GetAbsOrigin(), true, nil, GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], DOTA_TEAM_GOODGUYS)
+	local cop = CreateUnitByName("npc_petri_cop", caster:GetAbsOrigin(), true, GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()], DOTA_TEAM_GOODGUYS)
 	cop:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
+	SetCustomBuildingModel(cop, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
 
 	if caster:HasAbility("petri_suicide") == true then
 		caster:CastAbilityNoTarget(caster:FindAbilityByName("petri_suicide"), caster:GetPlayerOwnerID())

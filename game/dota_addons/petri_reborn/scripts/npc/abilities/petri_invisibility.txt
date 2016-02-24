@@ -21,52 +21,52 @@
         "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
       }
-    } 
-    "modifier_truesight_datadriven"
-    {
-      "Passive"     "1"
-      "IsHidden"      "1"
-  
-      "ThinkInterval"  "0.03"
-      "OnIntervalThink"
-      {
-        "ActOnTargets"
-        {
-          "Target"
-          {
-            "Center"    "TARGET"
-            "Radius"  "1800"
-            "Teams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
-            "Types"   "DOTA_UNIT_TARGET_ALL"
-          }
-        
-          "Action"    
-          {
-            "RemoveModifier"
-            {
-              "ModifierName"  "modifier_truesight_reveal"
-              "Target"    "TARGET"
-            }
-
-            "ApplyModifier"
-            {
-              "ModifierName"  "modifier_truesight_reveal"
-              "Target"    "TARGET"
-            }
-          }
-        }     
-      }   
     }
+  }   
+}
 
-    "modifier_truesight_reveal"
+"petri_upgraded_exploration_tree"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "undying_tombstone"
+  
+  "Modifiers"
+  {
+    "unit_properties"
     {
-      "IsHidden"      "1"
-      "Duration"      "0.5"
-      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
-
+      "Passive" "1"
+      
       "States"
       {
-        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_DISABLED"
+        "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"   "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
+    "modifier_truesight_aura"
+    {   
+      "Passive"   "1"
+      "IsHidden"          "1"
+      "Aura"              "modifier_truesight"
+      "Aura_Radius"       "1800"
+      "Aura_Teams"        "DOTA_UNIT_TARGET_TEAM_ENEMY"
+      "Aura_Types"        "DOTA_UNIT_TARGET_ALL"
+    }
+
+    "modifier_truesight"
+    {
+      "IsHidden"          "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+      "States"
+      {
+          "MODIFIER_STATE_INVISIBLE"      "MODIFIER_STATE_VALUE_DISABLED"
       }
     }
   }   
@@ -91,6 +91,11 @@
         "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
+      }
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT" "172"
       }
     }
   }  
@@ -125,26 +130,53 @@
 "petri_dummy_icon_passive"
 {
   "BaseClass" "ability_datadriven"
-  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
   "AbilityTextureName" "riki_permanent_invisibility"
   
   "Modifiers"
   {
-    "modifier_invisibility"
+    "modifier_dummy_icon_passive"
     {
-      "Passive" "1"
       "IsHidden"      "1"
-      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
 
       "States"
       {
         "MODIFIER_STATE_INVULNERABLE"           "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_NO_UNIT_COLLISION"          "MODIFIER_STATE_VALUE_ENABLED"
-        "MODIFIER_STATE_NO_TEAM_SELECT"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_TRUESIGHT_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_INVISIBLE"  "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_ATTACK_IMMUNE"            "MODIFIER_STATE_VALUE_ENABLED"
         "MODIFIER_STATE_LOW_ATTACK_PRIORITY"      "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }  
+}
+
+"petri_dummy_static_popup"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "riki_permanent_invisibility"
+  
+  "Modifiers"
+  {
+    "modifier_dummy_static_popup"
+    {
+      "IsHidden"      "1"
+      "Passive"      "1"
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "States"
+      {
+        "MODIFIER_STATE_UNSELECTABLE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_HEALTH_BAR"            "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_NO_UNIT_COLLISION" "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }  

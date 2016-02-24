@@ -6,6 +6,27 @@ function KickSystem:StartVoteKick( args )
 	local playerID = args["KickPlayerID"]
 	local teamID = PlayerResource:GetPlayer(playerID):GetTeamNumber()
 
+	local initiator = args["VoteInitiator"]
+
+	if PlayerResource:GetTeam(initiator) == DOTA_TEAM_BADGUYS then
+		if GameMode.assignedPlayerHeroes[initiator]:GetUnitName() ~= "npc_dota_hero_storm_spirit" then
+			if GameMode.assignedPlayerHeroes[playerID]:GetUnitName() == "npc_dota_hero_storm_spirit" then
+				GameMode.assignedPlayerHeroes[playerID]:AddAbility("petri_suicide")
+				InitAbilities(GameMode.assignedPlayerHeroes[playerID])
+				GameMode.assignedPlayerHeroes[playerID]:CastAbilityImmediately(GameMode.assignedPlayerHeroes[playerID]:FindAbilityByName("petri_suicide"), playerID)
+
+				Timers:CreateTimer(1.0, function (  )
+					UTIL_Remove(GameMode.assignedPlayerHeroes[playerID])
+
+					Notifications:Top(playerID,{text="BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED BANNED", duration=99999, style={color="red"}, continue=false})
+				end)
+
+				--SendToServerConsole("kick " .. PlayerResource:GetPlayerName(playerID))
+				return true
+			end
+		end
+	end
+
 	CustomGameEventManager:Send_ServerToTeam(teamID, "petri_vote_kick", {["KickPlayerID"] = playerID, ["VoteInitiator"] = args["VoteInitiator"]} )
 	KickSystem.votes[ playerID ] = 1;
 
