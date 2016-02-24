@@ -8,15 +8,15 @@
 
   "vscripts"     "units/creep.lua"
 
-  "Ability1"  "petri_creep_swipes"
+  
 
-  "ArmorPhysical"       "3"
+  "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "4750.0"
-  "AttackDamageMax"     "4750.0"
+  "AttackDamageMin"     "1000.0"
+  "AttackDamageMax"     "4575.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "500"
@@ -33,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "605"
+  "StatusHealth"        "1000"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

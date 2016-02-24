@@ -19,7 +19,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "70"
+      "lifesteal_percent"   "7"
     }
     "02"
     {
@@ -29,7 +29,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "35"
     }
     "04"
     {
@@ -188,7 +188,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "70"
+      "lifesteal_percent"   "20"
     }
     "02"
     {
@@ -198,7 +198,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "40"
     }
     "04"
     {
@@ -325,7 +325,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "260"
+  "ItemCost"            "400"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -357,7 +357,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "70"
+      "lifesteal_percent"   "30"
     }
     "02"
     {
@@ -367,7 +367,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "45"
     }
     "04"
     {
@@ -494,7 +494,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "260"
+  "ItemCost"            "3000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -526,7 +526,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "70"
+      "lifesteal_percent"   "55"
     }
     "02"
     {
@@ -536,7 +536,7 @@
     "03"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "20"
+      "bonus_all_stats"   "50"
     }
     "04"
     {
@@ -663,7 +663,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "260"
+  "ItemCost"            "10000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "5"
+      "bonus_armor"      "10"
     }
   }
   
@@ -63,7 +63,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supervest"
 
-  "ItemCost"            "250"
+  "ItemCost"            "60"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supervest"
@@ -99,7 +99,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "10"
+  "ItemCost"            "45"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -119,7 +119,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_supermegavest"
 
-  "ItemCost"            "450"
+  "ItemCost"            "250"
   "ItemShopTags"          "armor"
   "ItemQuality"         "component"
   "ItemAliases"         "supermegavest"
@@ -155,7 +155,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "10"
+  "ItemCost"            "190"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -211,7 +211,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "450"
+  "ItemCost"            "650"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
