@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_zirconia_armor"
 
-  "ItemCost"            "180"
+  "ItemCost"            "150"
   "ItemShopTags"          "agi;int;str"
   "ItemQuality"         "component"
   "ItemAliases"         "bracer"
@@ -52,7 +52,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "70"
+  "ItemCost"            "100"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

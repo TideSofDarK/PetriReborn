@@ -9,7 +9,7 @@
 
   "vscripts"     "units/creep.lua"
 
-  
+  "Ability1"     "petri_creep_swipes"
 
   "ArmorPhysical"       "80"
   "MagicalResistance"     "0"
@@ -24,7 +24,7 @@
   "AttackRange"       "90"
 
   "BountyGoldMin"       "61.0"
-  "BountyGoldMax"       "61.0"
+  "BountyGoldMax"       "63.0"
   "BountyXP"          "200"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"

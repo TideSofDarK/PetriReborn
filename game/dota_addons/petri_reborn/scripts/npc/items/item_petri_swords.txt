@@ -103,7 +103,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kladenets_sword"
 
-  "ItemCost"            "402"
+  "ItemCost"            "381"
   "ItemShopTags"          "damage"
   "ItemQuality"         "component"
   "ItemAliases"         "kladenets sword"
@@ -219,7 +219,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_titan_sword"
 
-  "ItemCost"            "1272"
+  "ItemCost"            "1321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "titan sword"
@@ -277,7 +277,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_magic_axe"
 
-  "ItemCost"            "3044"
+  "ItemCost"            "2321"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "magic axe"

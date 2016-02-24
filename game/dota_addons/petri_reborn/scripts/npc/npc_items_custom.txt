@@ -2720,7 +2720,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_glimmer_cape"
+	  "AbilityTextureName"      "item_petri_jedi"
 	
 	  "AbilityCooldown"       "180"
 	  "AbilitySharedCooldown"         "laugh"
@@ -3653,7 +3653,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_heaven"
 	
-	  "ItemCost"            "5400"
+	  "ItemCost"            "8400"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of heaven"
@@ -3690,7 +3690,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "4000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3772,7 +3772,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "11600"
+	  "ItemCost"            "8600"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3925,7 +3925,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kladenets_sword"
 	
-	  "ItemCost"            "402"
+	  "ItemCost"            "381"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kladenets sword"
@@ -4041,7 +4041,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_titan_sword"
 	
-	  "ItemCost"            "1272"
+	  "ItemCost"            "1321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "titan sword"
@@ -4099,7 +4099,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_magic_axe"
 	
-	  "ItemCost"            "3044"
+	  "ItemCost"            "2321"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "magic axe"
@@ -4384,7 +4384,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "391"
+	  "ItemCost"            "400"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4531,7 +4531,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "260"
+	  "ItemCost"            "250"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4554,7 +4554,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "391"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4724,7 +4724,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "391"
+	  "ItemCost"            "4000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4871,7 +4871,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "5000"
+	  "ItemCost"            "3000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4894,7 +4894,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "391"
+	  "ItemCost"            "12000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -5041,7 +5041,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10000"
+	  "ItemCost"            "9000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5208,7 +5208,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "190"
+	  "ItemCost"            "650"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6092,7 +6092,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_zirconia_armor"
 	
-	  "ItemCost"            "180"
+	  "ItemCost"            "150"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -6137,7 +6137,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "70"
+	  "ItemCost"            "100"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

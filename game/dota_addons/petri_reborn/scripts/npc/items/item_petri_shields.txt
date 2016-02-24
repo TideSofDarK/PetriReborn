@@ -121,7 +121,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_shield_of_heaven"
 
-  "ItemCost"            "5400"
+  "ItemCost"            "8400"
   "ItemShopTags"          "armor"
   "ItemQuality"         "unique"
   "ItemAliases"         "shield of heaven"
@@ -158,7 +158,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "4000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -240,7 +240,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "11600"
+  "ItemCost"            "8600"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
