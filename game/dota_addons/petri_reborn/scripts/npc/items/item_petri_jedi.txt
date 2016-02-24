@@ -8,6 +8,7 @@
   "AbilityTextureName"      "item_glimmer_cape"
 
   "AbilityCooldown"       "180"
+  "AbilitySharedCooldown"         "laugh"
   
   "ItemQuality"           "consumable"
   "ItemPermanent"         "0"

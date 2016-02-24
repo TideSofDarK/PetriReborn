@@ -32,6 +32,11 @@
       "var_type"                      "FIELD_INTEGER"
       "bounce_range"                    "500"
     }
+    "05"
+    {
+      "var_type"                      "FIELD_INTEGER"
+      "bonus_damage_percent"                    "140"
+    }
   }
 
   "precache"
@@ -81,11 +86,11 @@
     
       "OnAttackLanded"
       {
-        "RunScript"
-        {
-          "ScriptFile"            "units/creep.lua"
-          "Function"              "Attack"
-        }
+        //"RunScript"
+        //{
+        //  "ScriptFile"            "units/creep.lua"
+        //  "Function"              "Attack"
+        //}
         "RunScript"
         {
           "ScriptFile"            "units/creep.lua"
@@ -95,11 +100,11 @@
 
       "OnCreated"
       {
-        "RunScript"
-        {
-          "ScriptFile"            "units/creep.lua"
-          "Function"              "ApplyDamageReduction"
-        }
+        //"RunScript"
+        //{
+        //  "ScriptFile"            "units/creep.lua"
+        //  "Function"              "ApplyDamageReduction"
+        //}
       }
     }
 

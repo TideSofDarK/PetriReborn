@@ -586,7 +586,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_bracer_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -2723,6 +2723,7 @@
 	  "AbilityTextureName"      "item_glimmer_cape"
 	
 	  "AbilityCooldown"       "180"
+	  "AbilitySharedCooldown"         "laugh"
 	  
 	  "ItemQuality"           "consumable"
 	  "ItemPermanent"         "0"
@@ -4381,6 +4382,7 @@
 	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh"
 	
 	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
 	  
 	  "ItemCost"            "391"
 	  "ItemShopTags"          "unique"
@@ -4422,7 +4424,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -4550,6 +4552,7 @@
 	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level2"
 	
 	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
 	  
 	  "ItemCost"            "391"
 	  "ItemShopTags"          "unique"
@@ -4591,7 +4594,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -4719,6 +4722,7 @@
 	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level3"
 	
 	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
 	  
 	  "ItemCost"            "391"
 	  "ItemShopTags"          "unique"
@@ -4760,7 +4764,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -4888,6 +4892,7 @@
 	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level4"
 	
 	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "laugh"
 	  
 	  "ItemCost"            "391"
 	  "ItemShopTags"          "unique"
@@ -4929,7 +4934,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_uber_mask_of_laugh_stats_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"
@@ -6108,7 +6113,7 @@
 	  
 	  "Modifiers"
 	  {
-	    "modifier_item_petri_bracer_datadriven"
+	    "modifier_passive"
 	    {
 	      "Passive"     "1"
 	      "IsHidden"      "1"

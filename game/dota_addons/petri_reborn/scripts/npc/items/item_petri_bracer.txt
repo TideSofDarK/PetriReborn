@@ -23,7 +23,7 @@
   
   "Modifiers"
   {
-    "modifier_item_petri_bracer_datadriven"
+    "modifier_passive"
     {
       "Passive"     "1"
       "IsHidden"      "1"

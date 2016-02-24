@@ -114,12 +114,12 @@ function CreepSplashDamage( keys )
             fVisionTickTime = .1,
             fVisionLingerDuration = 1,
             draw = false,
-            UnitTest = function(self, unit) return unit ~= target and unit:GetUnitName() ~= "npc_dummy_unit" and unit:GetTeamNumber() ~= caster:GetTeamNumber() end,
+            UnitTest = function(self, unit) return unit ~= target and unit:IsInvisible() == false and unit:GetUnitName() ~= "npc_dummy_unit" and unit:GetTeamNumber() ~= caster:GetTeamNumber() end,
             OnUnitHit = function(self, unit) 
                 local damageTable = {
                     victim = unit,
                     attacker = caster,
-                    damage = caster:GetAverageTrueAttackDamage() * ability:GetSpecialValueFor("max_stacks"),
+                    damage = caster:GetAverageTrueAttackDamage() * ability:GetSpecialValueFor("max_stacks") * (ability:GetSpecialValueFor("bonus_damage_percent") / 100)
                     damage_type = DAMAGE_TYPE_PHYSICAL,
                 }
 
