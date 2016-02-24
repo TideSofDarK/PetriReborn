@@ -406,10 +406,10 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "2.0"
-	  "AttackDamageMax"     "2.0"
+	  "AttackDamageMin"     "0.6"
+	  "AttackDamageMax"     "1.9"
 	  "AttackRate"        "1.3"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackAnimationPoint"    "0.33"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
@@ -498,15 +498,15 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  "Ability1"  "petri_creep_swipes"
+	  
 	
-	  "ArmorPhysical"       "2"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "98.0"
-	  "AttackDamageMax"     "98.0"
+	  "AttackDamageMin"     "27.0"
+	  "AttackDamageMax"     "37.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -547,15 +547,15 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  "Ability1"  "petri_creep_swipes"
+	  
 	
-	  "ArmorPhysical"       "15"
+	  "ArmorPhysical"       "80"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "931000.0"
-	  "AttackDamageMax"     "931000.0"
+	  "AttackDamageMin"     "13750.0"
+	  "AttackDamageMax"     "800000.0"
 	  "AttackRate"        "0.3"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -572,7 +572,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "28750"
+	  "StatusHealth"        "10000"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -600,10 +600,10 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "11.0"
-	  "AttackDamageMax"     "15.0"
+	  "AttackDamageMin"     "0.5"
+	  "AttackDamageMax"     "4.5"
 	  "AttackRate"        "1.2"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackAnimationPoint"    "0.42"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
@@ -641,16 +641,16 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  "Ability1"  "petri_creep_swipes"
+	  
 	
-	  "ArmorPhysical"       "3"
+	  "ArmorPhysical"       "20"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "140650.0"
-	  "AttackDamageMax"     "140650.0"
-	  "AttackRate"        "0.5"
+	  "AttackDamageMin"     "7500.0"
+	  "AttackDamageMax"     "85000.0"
+	  "AttackRate"        "0.49"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
@@ -666,7 +666,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "13375"
+	  "StatusHealth"        "7700"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -740,15 +740,15 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  "Ability1"  "petri_creep_swipes"
+	  
 	
-	  "ArmorPhysical"       "3"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "4750.0"
-	  "AttackDamageMax"     "4750.0"
+	  "AttackDamageMin"     "1000.0"
+	  "AttackDamageMax"     "4575.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
@@ -765,7 +765,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "605"
+	  "StatusHealth"        "1000"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"

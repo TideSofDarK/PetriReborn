@@ -580,7 +580,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "4"
+	      "bonus_all_stats"    "5"
 	    }
 	  }
 	  
@@ -2231,7 +2231,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "5000"
+	      "bonus_health"      "2500"
 	    }
 	    "02"
 	    {
@@ -2275,7 +2275,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "15000"
+	      "bonus_health"      "10000"
 	    }
 	    "02"
 	    {
@@ -2462,7 +2462,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "2"
+	      "bonus_armor"      "3"
 	    }
 	  }
 	  
@@ -2757,7 +2757,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "20"
+	      "bonus_all_stats"   "55"
 	    }
 	    "04"
 	    {
@@ -3220,7 +3220,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "50"
+	      "lifesteal_percent"   "5"
 	    }
 	
 	    "02"
@@ -3303,7 +3303,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "2"
+	      "bonus_damage"      "4"
 	    }
 	  }
 	  
@@ -3839,7 +3839,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "5"
+	      "bonus_damage"      "10"
 	    }
 	  }
 	  
@@ -4394,7 +4394,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "7"
 	    }
 	    "02"
 	    {
@@ -4404,7 +4404,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "20"
+	      "bonus_all_stats"   "35"
 	    }
 	    "04"
 	    {
@@ -4564,7 +4564,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "20"
 	    }
 	    "02"
 	    {
@@ -4574,7 +4574,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "20"
+	      "bonus_all_stats"   "40"
 	    }
 	    "04"
 	    {
@@ -4701,7 +4701,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "260"
+	  "ItemCost"            "600"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4734,7 +4734,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "30"
 	    }
 	    "02"
 	    {
@@ -4744,7 +4744,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "20"
+	      "bonus_all_stats"   "45"
 	    }
 	    "04"
 	    {
@@ -4871,7 +4871,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "260"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4904,7 +4904,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "70"
+	      "lifesteal_percent"   "55"
 	    }
 	    "02"
 	    {
@@ -4914,7 +4914,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "20"
+	      "bonus_all_stats"   "50"
 	    }
 	    "04"
 	    {
@@ -5041,7 +5041,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "260"
+	  "ItemCost"            "10000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5070,7 +5070,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "5"
+	      "bonus_armor"      "10"
 	    }
 	  }
 	  
@@ -5116,7 +5116,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supervest"
 	
-	  "ItemCost"            "250"
+	  "ItemCost"            "60"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supervest"
@@ -5152,7 +5152,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10"
+	  "ItemCost"            "45"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5172,7 +5172,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supermegavest"
 	
-	  "ItemCost"            "450"
+	  "ItemCost"            "250"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supermegavest"
@@ -5208,7 +5208,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10"
+	  "ItemCost"            "190"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5264,7 +5264,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "450"
+	  "ItemCost"            "650"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6092,7 +6092,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_zirconia_armor"
 	
-	  "ItemCost"            "120"
+	  "ItemCost"            "180"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -6102,12 +6102,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "10"
+	      "bonus_all_stats"    "20"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "10"
+	      "bonus_armor"      "0"
 	    }
 	  }
 	  

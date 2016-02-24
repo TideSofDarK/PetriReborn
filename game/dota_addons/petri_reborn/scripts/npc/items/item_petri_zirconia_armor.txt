@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_zirconia_armor"
 
-  "ItemCost"            "120"
+  "ItemCost"            "180"
   "ItemShopTags"          "agi;int;str"
   "ItemQuality"         "component"
   "ItemAliases"         "bracer"
@@ -17,12 +17,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"    "10"
+      "bonus_all_stats"    "20"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "10"
+      "bonus_armor"      "0"
     }
   }
   
