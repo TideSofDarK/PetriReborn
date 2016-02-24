@@ -119,8 +119,8 @@ function CreepSplashDamage( keys )
                 local damageTable = {
                     victim = unit,
                     attacker = caster,
-                    damage = caster:GetAverageTrueAttackDamage() * ability:GetSpecialValueFor("max_stacks") * (ability:GetSpecialValueFor("bonus_damage_percent") / 100),
-                    damage_type = 1,
+                    damage = caster:GetAverageTrueAttackDamage() * (ability:GetSpecialValueFor("bonus_damage_percent") / 100),
+                    damage_type = 1
                 }
 
                 ApplyDamage(damageTable)
