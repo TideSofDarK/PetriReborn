@@ -69,7 +69,7 @@ function CreepSplashDamage( keys )
 
     keys.number = keys.number or 0
 
-    local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 700, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_NONE, FIND_CLOSEST, false)
+    local units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), nil, 700, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
     if #units > 1 and keys.number < 2 then
         local tracking_projectile = 
         {
@@ -120,7 +120,7 @@ function CreepSplashDamage( keys )
                     victim = unit,
                     attacker = caster,
                     damage = caster:GetAverageTrueAttackDamage() * (ability:GetSpecialValueFor("bonus_damage_percent") / 100),
-                    damage_type = 1
+                    damage_type = DAMAGE_TYPE_PHYSICAL
                 }
 
                 ApplyDamage(damageTable)
