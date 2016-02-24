@@ -547,7 +547,7 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  
+	  "Ability1"     "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "80"
 	  "MagicalResistance"     "0"
@@ -562,7 +562,7 @@
 	  "AttackRange"       "90"
 	
 	  "BountyGoldMin"       "61.0"
-	  "BountyGoldMax"       "61.0"
+	  "BountyGoldMax"       "63.0"
 	  "BountyXP"          "200"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -641,7 +641,7 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  
+	  "Ability1"     "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "20"
 	  "MagicalResistance"     "0"
@@ -655,8 +655,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "38.0"
-	  "BountyGoldMax"       "39.0"
+	  "BountyGoldMin"       "39.0"
+	  "BountyGoldMax"       "41.0"
 	  "BountyXP"          "70"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -740,7 +740,7 @@
 	
 	  "vscripts"     "units/creep.lua"
 	
-	  
+	  "Ability1"     "petri_creep_swipes"
 	
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
@@ -754,8 +754,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "17.0"
-	  "BountyGoldMax"       "19.0"
+	  "BountyGoldMin"       "18.0"
+	  "BountyGoldMax"       "20.0"
 	  "BountyXP"          "22"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -1384,8 +1384,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "13000.0"
-	  "BountyGoldMax"    "15000.0"
+	  "BountyGoldMin"    "15000.0"
+	  "BountyGoldMax"    "16000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
