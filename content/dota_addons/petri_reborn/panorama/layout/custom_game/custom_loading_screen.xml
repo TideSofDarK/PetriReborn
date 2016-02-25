@@ -13,8 +13,8 @@
 
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
-<!--         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
-        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" /> -->
+        <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
+        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
       </Panel>
     </Panel>
 
@@ -24,16 +24,16 @@
         <DOTAAvatarImage class="avatar" steamid="76561198001376044" />
       </Panel>
 
-<!--       <Label text="#panoramaui"/>
+      <Label text="#panoramaui"/>
       <Panel id="PanoramaCoder" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561197996730911" />
-      </Panel> -->
+      </Panel>
 
       <Label text="#gamedesigner"/>
       <Panel id="GameDesigner" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
       </Panel>
-<!-- 
+
       <Label text="#media"/>
       <Panel id="Media" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561198050312182" />
@@ -42,7 +42,7 @@
       <Label text="#models"/>
       <Panel id="Models" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561198069840828" />
-      </Panel> -->
+      </Panel>
     </Panel>
 
     <Panel id="SocialNetworks" >
