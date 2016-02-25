@@ -128,7 +128,7 @@ function CreepSplashDamage( keys )
                 keys.number = keys.number + 1
                 keys.target = units[2]
                 keys.source = units[2]
-                CreepSplashDamage( keys )
+                -- CreepSplashDamage( keys )
             end,
         }
 

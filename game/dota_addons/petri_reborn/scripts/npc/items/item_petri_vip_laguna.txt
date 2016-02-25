@@ -25,9 +25,9 @@
 
   "precache"
   {
-    "particle"  "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+    "particle"  "particles/units/heroes/hero_lion/lion_spell_finger_of_death_core.vpcf"
     "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
-    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+    "soundfile" "sounds/weapons/hero/lion/finger_of_death_impact.vsnd"
   }
 
   "AbilitySpecial"
@@ -43,25 +43,25 @@
   {
     "FireSound"
     {
-      "EffectName"    "Ability.LagunaBladeImpact"
+      "EffectName"    "Hero_Lion.Pick"
       "Target"        "TARGET"
     }
 
     "FireSound"
     {
-      "EffectName"    "Ability.LagunaBlade"
+      "EffectName"    "Hero_Lion.FingerOfDeathImpact"
       "Target"        "CASTER"
     }
 
     "FireEffect"
     {
-      "EffectName"    "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf"
+      "EffectName"    "particles/units/heroes/hero_lion/lion_spell_finger_of_death_core.vpcf"
       "EffectAttachType"  "start_at_customorigin"
       
 
       "ControlPointEntities"
       {
-        "CASTER"    "attach_attack1"
+        "CASTER"    "attach_attack2"
         "TARGET"    "attach_hitloc"
       }
     }
