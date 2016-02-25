@@ -25,7 +25,7 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"   "12"
+      "invu_duration"   "10"
     }
     "03"
     {
@@ -365,7 +365,7 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"   "12"
+      "invu_duration"   "14"
     }
     "03"
     {
@@ -535,7 +535,7 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"   "12"
+      "invu_duration"   "16"
     }
     "03"
     {

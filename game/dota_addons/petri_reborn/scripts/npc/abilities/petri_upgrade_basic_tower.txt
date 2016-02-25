@@ -185,7 +185,7 @@
   "MaxLevel"            "8"
 
   "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
-  "AbilityGoldCost"       "0 200 500 1000 1500 2000 2500"
+  "AbilityGoldCost"       "0 200 500 1000 1200 1500 2000"
 
   "precache"
   {
@@ -202,7 +202,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "55 150 450 4000 50000 80000 125000"
+      "attack"        "55 150 450 4000 32000 48000 88000"
     }
     "03"
     {

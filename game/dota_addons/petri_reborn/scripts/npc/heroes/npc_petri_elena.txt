@@ -31,7 +31,7 @@
   "AttributeBaseIntelligence" "1"
   "AttributeIntelligenceGain" "0.25"
   "AttributeBaseAgility"    "1"
-  "AttributeAgilityGain"    "0.3"
+  "AttributeAgilityGain"    "0.0"
 
   "BountyXP"          "0"                 
   "BountyGoldMin"       "10"                   

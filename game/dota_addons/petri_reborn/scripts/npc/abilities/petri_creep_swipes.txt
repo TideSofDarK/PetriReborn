@@ -25,7 +25,7 @@
     "03"
     {
       "var_type"                      "FIELD_INTEGER"
-      "max_bounce_targets"                    "2"
+      "max_bounce_targets"                    "1"
     }
     "04"
     {
@@ -35,7 +35,7 @@
     "05"
     {
       "var_type"                      "FIELD_INTEGER"
-      "bonus_damage_percent"                    "140"
+      "bonus_damage_percent"                    "110"
     }
   }
 

@@ -706,8 +706,8 @@
 	  "ProjectileModel"            "particles/units/heroes/hero_razor/razor_base_attack.vpcf"
 	  "ProjectileSpeed"            "1400"
 	
-	  "BountyGoldMin"       "70.0"
-	  "BountyGoldMax"       "100.0"
+	  "BountyGoldMin"       "99999.0"
+	  "BountyGoldMax"       "99999.0"
 	  "BountyXP"          "475"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -754,8 +754,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "18.0"
-	  "BountyGoldMax"       "20.0"
+	  "BountyGoldMin"       "19.0"
+	  "BountyGoldMax"       "21.0"
 	  "BountyXP"          "22"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"

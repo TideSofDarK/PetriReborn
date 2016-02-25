@@ -1172,7 +1172,7 @@
 	    "03"
 	    {
 	      "var_type"                      "FIELD_INTEGER"
-	      "max_bounce_targets"                    "2"
+	      "max_bounce_targets"                    "1"
 	    }
 	    "04"
 	    {
@@ -1182,7 +1182,7 @@
 	    "05"
 	    {
 	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_damage_percent"                    "140"
+	      "bonus_damage_percent"                    "110"
 	    }
 	  }
 	
@@ -3735,7 +3735,7 @@
 	  "MaxLevel"            "8"
 	
 	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
-	  "AbilityGoldCost"       "0 200 500 1000 1500 2000 2500"
+	  "AbilityGoldCost"       "0 200 500 1000 1200 1500 2000"
 	
 	  "precache"
 	  {
@@ -3752,7 +3752,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "55 150 450 4000 50000 80000 125000"
+	      "attack"        "55 150 450 4000 32000 48000 88000"
 	    }
 	    "03"
 	    {
@@ -4926,7 +4926,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "3000 20000 100000 220000"
+	      "attack"        "3000 15000 60000 125000"
 	    }
 	    "03"
 	    {

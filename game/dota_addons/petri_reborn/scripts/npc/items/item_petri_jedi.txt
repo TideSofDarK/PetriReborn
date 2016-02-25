@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_jedi"
 
-  "AbilityCooldown"       "180"
+  "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
   "ItemQuality"           "consumable"
@@ -52,12 +52,12 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "invu_duration"   "16"
+      "invu_duration"   "18"
     }
     "06"
     {
       "var_type"          "FIELD_INTEGER"
-      "grease_duration"    "120"
+      "grease_duration"    "40"
     }
     "07"
     {
