@@ -216,23 +216,23 @@ end
 function GameSetup:StartPrecache()
   if GameSetup.precache_started == false then
     GameSetup.precache_started = true
-    -- PrecacheItemByNameAsync("item_precache_item", function()
+    PrecacheItemByNameAsync("item_precache_item", function()
       
-    -- end)
-    -- for i=0,12 do
-    --   local player = PlayerResource:GetPlayer(i)
+    end)
+    for i=0,12 do
+      local player = PlayerResource:GetPlayer(i)
 
-    --   if player ~= nil then
-    --     PrecacheUnitByNameAsync("npc_dota_hero_brewmaster", function ()
+      if player ~= nil then
+        PrecacheUnitByNameAsync("npc_dota_hero_brewmaster", function ()
 
-    --     end, i)
-    --     PrecacheUnitByNameAsync("npc_dota_hero_death_prophet", function ()
+        end, i)
+        PrecacheUnitByNameAsync("npc_dota_hero_death_prophet", function ()
 
-    --     end, i)
-    --     PrecacheUnitByNameAsync("npc_dota_hero_rattletrap", function ()
+        end, i)
+        PrecacheUnitByNameAsync("npc_dota_hero_rattletrap", function ()
 
-    --     end, i)
-    --   end
-    -- end
+        end, i)
+      end
+    end
   end
 end
