@@ -1,25 +1,21 @@
-#############
-#  DOTA 2
-#############
-
-*.vpk
-*.vpcf_c
-*.vsnd_c
-*.vsndevts_c
-*.vmat_c
-# *.vtex_c
+# Cache crap that Valve autogenerates
 *.bin
+
+# Compiled formats
+*.vpcf_c
+*.vtex_c
+*.vsndevts_c
+*.vsnd_c
+*.vmat_c
+*.vjs_c
 *.vxml_c
 *.vcss_c
-*.vjs_c
-*.cfg
 
-*.sublime-workspace
+# Commit panorama compiled textures
+!game/dota_addons/petri_reborn/panorama/images/*.vtex_c
+!game/dota_addons/petri_reborn/panorama/images/custom_game/*.vtex_c
+!game/dota_addons/petri_reborn/panorama/images/items/*.vtex_c
+!game/dota_addons/petri_reborn/panorama/images/spellicons/*.vtex_c
 
-settings.kv
-
-# not sure...
-# game/dota_addons/petri_reborn/scripts/npc/abilities
-# game/dota_addons/petri_reborn/scripts/npc/heroes
-# game/dota_addons/petri_reborn/scripts/npc/items
-# game/dota_addons/petri_reborn/scripts/npc/units
+# Map files
+*.vpk
