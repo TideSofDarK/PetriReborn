@@ -122,8 +122,6 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_start_vote_kick", Dynamic_Wrap(KickSystem, 'StartVoteKick'))
   CustomGameEventManager:RegisterListener( "petri_vote_kick_agree", Dynamic_Wrap(KickSystem, 'VoteKickAgree'))
   CustomGameEventManager:RegisterListener( "petri_vote_kick_disagree", Dynamic_Wrap(KickSystem, 'VoteKickDisagree'))
-
-  CustomGameEventManager:RegisterListener( "petri_game_setup_start_precache", Dynamic_Wrap(GameSetup, 'StartPrecache'))
   
   -- Grid
   CustomGameEventManager:RegisterListener( "gnv_request", Dynamic_Wrap(GNV, 'Send'))

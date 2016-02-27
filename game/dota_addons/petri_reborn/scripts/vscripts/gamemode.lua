@@ -83,6 +83,32 @@ end
 
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
+  
+  PrecacheUnitByNameAsync("npc_precache_guy", function()
+    PrecacheUnitByNameAsync("npc_precache_guy_2", function()
+      PrecacheUnitByNameAsync("npc_precache_guy_3", function()
+        PrecacheUnitByNameAsync("npc_precache_guy_4", function()
+        
+        end)
+      end)
+    end)
+  end)
+  
+  -- for i=0,12 do
+  --   local player = PlayerResource:GetPlayer(i)
+
+  --   if player ~= nil then
+  --     PrecacheUnitByNameAsync("npc_dota_hero_brewmaster", function ()
+
+  --     end, i)
+  --     PrecacheUnitByNameAsync("npc_dota_hero_death_prophet", function ()
+
+  --     end, i)
+  --     PrecacheUnitByNameAsync("npc_dota_hero_rattletrap", function ()
+
+  --     end, i)
+  --   end
+  -- end
 end
 
 function GameMode:OnHeroInGame(hero)
@@ -327,9 +353,6 @@ end
 function GameMode:InitGameMode()
   GameMode = self
 
-  SendToServerConsole( "dota_combine_models 0" )
-  SendToConsole( "dota_combine_models 0" )
-
   GameMode:_InitGameMode()
 
   GameMode.DependenciesKVs = LoadKeyValues("scripts/kv/dependencies.kv")
@@ -342,7 +365,7 @@ function GameMode:InitGameMode()
   GameMode.CustomBuildingsKVs = LoadKeyValues("scripts/kv/custom_buildings.kv")
   GameMode.VIPItemsKVs = LoadKeyValues("scripts/kv/vip_items.kv")
 
-  GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_alpha_shops.txt")
+  GameMode.ShopKVs = LoadKeyValues("scripts/shops/petri_1_radiant_shops.txt")
 
   GameMode.UnitKVs = LoadKeyValues("scripts/npc/npc_units_custom.txt")
   GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
@@ -445,18 +468,6 @@ function GameMode:InitGameMode()
 
     return 0.03
   end)
-
-  local petrosyan_area = Entities:FindByName(nil,"PetrosyanShopTrigger")
-
-  GNV:AddCallbacks( "Init", function (  )
-    for y = GNV.YMin, GNV.YMax do
-      for x = GNV.XMin, GNV.XMax do
-        local gridX = GridNav:GridPosToWorldCenterX(x)
-        local gridY = GridNav:GridPosToWorldCenterY(y)
-        local position = Vector(gridX, gridY, 0)  
-      end
-    end
-  end)
 end
 
 function GameMode:ReplaceWithMiniActor(player, gold)
@@ -466,8 +477,6 @@ function GameMode:ReplaceWithMiniActor(player, gold)
   PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
     function() 
       player:SetTeam(DOTA_TEAM_BADGUYS)
-
-      SendToServerConsole( "dota_combine_models 0" )
 
       local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
 
@@ -551,9 +560,6 @@ function SetupCustomSkin(hero, steamID, key)
         v2:AddEffects(EF_NODRAW) 
       end
     end
-
-    SendToServerConsole( "dota_combine_models 0" )
-    SendToConsole( "dota_combine_models 0" )
   end
 end
 

@@ -3,11 +3,10 @@ function GameMode:_OnGameRulesStateChange(keys)
   local newState = GameRules:State_Get()
   if newState == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
     self.bSeenWaitForPlayers = true
-  elseif newState == DOTA_GAMERULES_STATE_INIT then
-    --Timers:RemoveTimer("alljointimer")
+  elseif newState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+    GameMode:OnAllPlayersLoaded()
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
     GameMode:PostLoadPrecache()
-    GameMode:OnAllPlayersLoaded()
 
     if USE_CUSTOM_COLORS_FOR_PLAYERS then
       for i=0,13 do
@@ -19,6 +18,9 @@ function GameMode:_OnGameRulesStateChange(keys)
     end
   elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     GameMode:OnGameInProgress()
+
+    SendToServerConsole( "dota_combine_models 0" )
+    SendToConsole( "dota_combine_models 0" )
   end
 end
 
