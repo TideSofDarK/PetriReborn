@@ -3,6 +3,25 @@
 var m_AbilityPanels = []; // created up to a high-water mark, but reused when selection changes
 var m_QueryUnit = -1;
 
+// Hide skills enemy skills information
+function IsEnemySelected()
+{
+	return Entities.IsEnemy(GameUI.CustomUIConfig().selected_unit);
+}
+
+//
+function GetSelectedUnitOwner()
+{
+	var teamNum = Entities.GetTeamNumber(GameUI.CustomUIConfig().selected_unit);
+	var playerIDs = Game.GetPlayerIDsOnTeam( teamNum );
+
+	for (var id of playerIDs)
+		if (Entities.IsControllableByPlayer( GameUI.CustomUIConfig().selected_unit, id))
+			return id;
+
+	return -1;
+}
+
 function UpdateAbilitiesContainer()
 {
 	var queryUnit = GameUI.CustomUIConfig().selected_unit;
@@ -94,6 +113,9 @@ function SetSelectedUnit()
 
 (function()
 {
+	GameUI.CustomUIConfig().IsEnemySelected = IsEnemySelected;
+	GameUI.CustomUIConfig().GetSelectedUnitOwner = GetSelectedUnitOwner;
+ 
 	//GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
     GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
