@@ -15,6 +15,9 @@ function GetSelectedUnitOwner()
 	var teamNum = Entities.GetTeamNumber(GameUI.CustomUIConfig().selected_unit);
 	var playerIDs = Game.GetPlayerIDsOnTeam( teamNum );
 
+	if (!playerIDs || playerIDs == undefined)
+		return - 1;
+	
 	for (var id of playerIDs)
 		if (Entities.IsControllableByPlayer( GameUI.CustomUIConfig().selected_unit, id))
 			return id;
