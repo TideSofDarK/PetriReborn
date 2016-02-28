@@ -18,7 +18,6 @@
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
-        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
       </Panel>
     </Panel>
 
