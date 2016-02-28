@@ -10,12 +10,12 @@
   "Ability1"  "petri_creep_pendant"
   "Ability2"  "petri_gold_tick"
 
-  "ArmorPhysical"       "1488"
+  "ArmorPhysical"       "150"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-  "AttackDamageMin"            "150000.0"
-  "AttackDamageMax"            "150000.0"
+  "AttackDamageMin"            "5000000.0"
+  "AttackDamageMax"            "5000000.0"
   "AttackRate"                 "0.3"
   "AttackAnimationPoint"       "0.39"
   "AttackAcquisitionRange"     "200"
@@ -36,8 +36,8 @@
   "MovementSpeed"       "310"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "188750"
-  "StatusHealthRegen"     "0"
+  "StatusHealth"        "314159"
+  "StatusHealthRegen"     "2718"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
