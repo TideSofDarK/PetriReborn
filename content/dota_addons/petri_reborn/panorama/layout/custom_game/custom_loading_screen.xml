@@ -1,7 +1,11 @@
 <root>
   <styles>
+    <include src="file://{resources}/styles/custom_game/material_design.css" />
     <include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
   </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/loading_screen/developers.js" /> 
+  </scripts>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
       <Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
@@ -14,45 +18,23 @@
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
+        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
       </Panel>
     </Panel>
 
-    <Panel id="Developers">
-      <Label text="#creator"/>
-      <Panel id="Creator" class="column">
-        <DOTAAvatarImage class="avatar" steamid="76561198001376044" />
-      </Panel>
-
-      <Label text="#panoramaui"/>
-      <Panel id="PanoramaCoder" class="column">
-        <DOTAAvatarImage class="avatar" steamid="76561197996730911" />
-      </Panel>
-
-      <Label text="#gamedesigner"/>
-      <Panel id="GameDesigner" class="column">
-        <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
-      </Panel>
-
-      <Label text="#models"/>
-      <Panel id="Models" class="column">
-        <DOTAAvatarImage class="avatar" steamid="76561198069840828" />
-      </Panel>
-    </Panel>
+    <Panel id="Developers" class="DarkTheme Background rounded z-index1" />
 
     <Panel id="SocialNetworks" >
-      <Label text="#get_models" class="Headline1" id="GetModels" >
-        
-      </Label>
-
+      <Label text="#get_models" class="Headline1" id="GetModels" />
       <Label text="AlikVirg" class="Headline1" id="AlikVirg">
           <Image class="SkypeLogo" src="file://{images}/custom_game/loading_screen/skype.png" />
       </Label>
 
-      <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" >
-      </Label>
-      <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" >
-      </Label>
-<!--       <Label text="vk.com/dota2petri" class="Headline1" id="VK" >
+      <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" />
+      <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" />
+<!--       <a href=\"vk.com/dota2petri\">vk.com/dota2petri</a>
+
+<Label text="vk.com/dota2petri" class="Headline1" id="VK" >
         <Image class="SN" src="file://{images}/custom_game/loading_screen/skype.png" />
       </Label> -->
 
