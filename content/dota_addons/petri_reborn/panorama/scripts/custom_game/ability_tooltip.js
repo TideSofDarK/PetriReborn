@@ -134,7 +134,7 @@ function CheckDependence( name, level )
 
 function CreateDependencyPanel( abilityName )
 {
-  var dependenciesTable = CustomNetTables.GetTableValue("players_dependencies", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+  var dependenciesTable = GameUI.CustomUIConfig().dependencies;
   if (!dependenciesTable)
     return;
 
@@ -145,6 +145,7 @@ function CreateDependencyPanel( abilityName )
   if (dependencies == undefined)
     return null;
 
+  var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
   var isAllDependencies = true;
   for(var name in dependencies)
   {
@@ -157,7 +158,8 @@ function CreateDependencyPanel( abilityName )
 
     var curDepend = CheckDependence( name, upgradeLevel );
     cur_panel.SetHasClass( "isBuild",  curDepend );
-    isAllDependencies = isAllDependencies && curDepend;
+    cur_panel.SetHasClass( "isEnemy",  isEnemy );
+    isAllDependencies = isAllDependencies && curDepend && !isEnemy;
   }
 
   mainPanel.SetHasClass( "flowDowm", true);

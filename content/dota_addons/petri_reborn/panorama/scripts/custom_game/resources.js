@@ -6,48 +6,17 @@ var currentResources = {};
 
 function UpdateResources( )
 {
-	var gold = 0;
+	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
+	var player = GameUI.CustomUIConfig().GetSelectedUnitOwner();
 
-	var mainSelected = Players.GetLocalPlayerPortraitUnit();
-
-	var localPlayer = Players.GetLocalPlayer();
-
-	var resourceTable;
-
-	if (Players.IsSpectator(localPlayer) == true)
-	{
-	 	var player = 0;
-	 	for (var i = 0; i < 13; i++) {
-	 		 if (Entities.IsControllableByPlayer( mainSelected, i ) == true)
-	 		 {
-	 		 	player = i;
-	 		 	break;
-	 		 }
-	 	}
-	 	resourceTable = CustomNetTables.GetTableValue("players_resources", String(player));
-	 	gold = Players.GetGold(player);
-	}
-	else
-	{
-	 	resourceTable = CustomNetTables.GetTableValue("players_resources", String(localPlayer));
-	 	gold = Players.GetGold(localPlayer);
-	}
-
-	GameUI.CustomUIConfig().unitResources = resourceTable;
+	var resourceTable = CustomNetTables.GetTableValue("players_resources", String(player));
+	var gold = Players.GetGold(player);
 
 	if (resourceTable)
 	{
-		//if (gold) {
-	 		$( "#TotalGoldText" ).text = String(gold);
-	 	//}
-
-		if (resourceTable["lumber"]) {
-		 	$( "#TotalLumberText" ).text = resourceTable["lumber"];
-		}
-		 
-		//if (resourceTable["food"] && resourceTable["maxFood"]) {
-		 	$( "#TotalFoodText" ).text = resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
-		//}
+ 		$( "#TotalGoldText" ).text = isEnemy ? "0" : String(gold);
+	 	$( "#TotalLumberText" ).text = isEnemy ? "0" : resourceTable["lumber"];
+	 	$( "#TotalFoodText" ).text = isEnemy ? "0/0" : resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
 	}
 
 	$.Schedule( 0.03, UpdateResources );
@@ -55,13 +24,13 @@ function UpdateResources( )
 
 function HidePanels()
 {
-	var localPlayer = Game.GetLocalPlayerInfo();
-	var localPlayerTeamId;
-	if ( localPlayer )
-		localPlayerTeamId = localPlayer.player_team_id;
+	var player = Game.GetPlayerInfo( GameUI.CustomUIConfig().GetSelectedUnitOwner() );
+	var playerTeamId;
+	if ( player )
+		playerTeamId = player.player_team_id;
 
-	$( "#TotalFoodText" ).SetHasClass( "hide", localPlayerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
-	$( "#TotalLumberText" ).SetHasClass( "hide", localPlayerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
+	$( "#TotalFoodText" ).SetHasClass( "hide", playerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
+	$( "#TotalLumberText" ).SetHasClass( "hide", playerTeamId == DOTATeam_t.DOTA_TEAM_BADGUYS);
 }
 
 function GetGoldCosts( eventArgs )
@@ -79,15 +48,15 @@ function GetSpecialValues( eventArgs )
     GameUI.CustomUIConfig().specialValues = eventArgs;
 }
 
-(function() 
+(function()
 {
-	HidePanels();
-
-	UpdateResources();
-
+    GameEvents.Subscribe( "dota_player_update_selected_unit", HidePanels );
+    GameEvents.Subscribe( "dota_player_update_query_unit", HidePanels );
     GameEvents.Subscribe("player_team", HidePanels);
 
     GameEvents.Subscribe( "petri_set_gold_costs", GetGoldCosts );
     GameEvents.Subscribe( "petri_set_dependencies_table", GetDependencies );
-    GameEvents.Subscribe( "petri_set_special_values_table", GetSpecialValues );    
+    GameEvents.Subscribe( "petri_set_special_values_table", GetSpecialValues );
+    $.Schedule(1, HidePanels);
+	$.Schedule(1, UpdateResources);
 })();

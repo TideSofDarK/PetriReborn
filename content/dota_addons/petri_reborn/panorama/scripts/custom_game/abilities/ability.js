@@ -31,7 +31,7 @@ function AutoUpdateAbility()
 
 function CheckDependenciesList( abilityName, isAlt )
 {
-	var dependenciesTable = CustomNetTables.GetTableValue("players_dependencies", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+	var dependenciesTable = GameUI.CustomUIConfig().dependencies;
 	// Priority of main dependence
   	if (!dependenciesTable)
 		return true && !isAlt;
@@ -44,6 +44,9 @@ function CheckDependenciesList( abilityName, isAlt )
 	for(var name in dependencies)
 	{
 		var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
+		if (table == undefined)
+			return false;
+
 		if (table[name] == undefined)
 			return false;
 
@@ -128,7 +131,7 @@ function UpdateAbility()
 	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy) );
 	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false || isEnemy) );
 
-	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() || isActivated == false);
+	$.GetContextPanel().SetHasClass( "insufficient_mana", (!CheckSpellCost() || !CheckDependencies() || isActivated == false) && !isEnemy );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility()  ) );
