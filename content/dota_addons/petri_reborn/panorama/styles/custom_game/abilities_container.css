@@ -86,7 +86,9 @@
 {
 	width: 72px;
 	height: 72px;
-	border: 2px solid transparent;
+
+	box-shadow: inset #cccccc40 -2px -2px 2px 0px;
+	border: 2px solid #000000;
 }
 
 .AspectRatio4x3 #AbilityButton,
@@ -106,6 +108,7 @@
 
 .is_passive #AbilityButton
 {
+	box-shadow: inset #00000040 2px 2px 2px 0px;
 	border: 2px solid #00000000;
 }
 
