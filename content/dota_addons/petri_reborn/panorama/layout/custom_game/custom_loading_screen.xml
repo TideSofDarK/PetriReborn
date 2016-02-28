@@ -1,19 +1,14 @@
 <root>
   <styles>
     <include src="file://{resources}/styles/custom_game/material_design.css" />
-    <include src="file://{resources}/styles/custom_game/custom_loading_screen.css" />
+    <include src="file://{resources}/styles/custom_game/loading_screen/custom_loading_screen.css" />
   </styles>
   <scripts>
-    <include src="file://{resources}/scripts/custom_game/loading_screen/developers.js" /> 
+    <include src="file://{resources}/scripts/custom_game/loading_screen/developers.js" />
+    <include src="file://{resources}/scripts/custom_game/loading_screen/Background.js" />
   </scripts>
   <Panel class="AddonLoadingRoot">
-    <Panel id="CustomBg" >
-      <Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
-      <!-- <Image class="Petrosyan" src="file://{images}/custom_game/loading_screen/petri_petr.png" /> -->
-      <Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
-      <Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
-      <!-- <Image class="TitleBackground" src="file://{images}/custom_game/loading_screen/petri_flare.png" /> -->
-    </Panel>
+    <Panel id="CustomBackground" />
 
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
@@ -31,14 +26,6 @@
 
       <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" />
       <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" />
-<!--       <a href=\"vk.com/dota2petri\">vk.com/dota2petri</a>
-
-<Label text="vk.com/dota2petri" class="Headline1" id="VK" >
-        <Image class="SN" src="file://{images}/custom_game/loading_screen/skype.png" />
-      </Label> -->
-
-      <!-- <Image src="file://{images}/custom_game/sn/sn.png" /> -->
-
     </Panel>
 
 <!--     <Panel id="TitlePanel">
