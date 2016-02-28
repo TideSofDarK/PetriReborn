@@ -2784,6 +2784,11 @@
 	      "var_type"          "FIELD_INTEGER"
 	      "corruption_duration"    "1"
 	    }
+	    "09"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_gold_from_wall"   "10"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -4411,6 +4416,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "lifesteal_percent_building"   "13"
 	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_gold_from_wall"   "1"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -4580,6 +4590,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "lifesteal_percent_building"   "13"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_gold_from_wall"   "2"
 	    }
 	  }
 	
@@ -4751,6 +4766,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "lifesteal_percent_building"   "13"
 	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_gold_from_wall"   "3"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -4920,6 +4940,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "lifesteal_percent_building"   "13"
+	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_gold_from_wall"   "5"
 	    }
 	  }
 	

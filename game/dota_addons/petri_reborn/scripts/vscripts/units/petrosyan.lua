@@ -1,11 +1,14 @@
 function BonusGoldFromWall(keys)
 	local caster = keys.caster
 	local target = keys.target
+	local ability = keys.ability
+
+	local bonusGold = ability:GetSpecialValueFor("bonus_gold_from_wall") or 1
 
 	if target:GetUnitName() == "npc_petri_wall" then
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), 1, false, DOTA_ModifyGold_SharedGold)
+		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), bonusGold, false, DOTA_ModifyGold_SharedGold)
 
-		PopupParticle(1, Vector(244,201,23), 3.0, caster)
+		PopupParticle(bonusGold, Vector(244,201,23), 3.0, caster)
 	end
 
 	if target:HasAbility("petri_creep_pendant") == true 
@@ -100,8 +103,8 @@ function PullEyes( event )
 end
 
 function PullEyesChanneling( keys )
-	local caster = event.caster
-	local ability = event.ability
+	local caster = keys.caster
+	local ability = keys.ability
 	local level = ability:GetLevel()
 	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
 	local duration = ability:GetChannelTime()
@@ -120,8 +123,8 @@ function PullEyesChanneling( keys )
 end
 
 function StopPullingEyes( keys )
-	local caster = event.caster
-	local ability = event.ability
+	local caster = keys.caster
+	local ability = keys.ability
 
 	caster:SetDayTimeVisionRange(1000)
 	caster:SetNightTimeVisionRange(1000)
