@@ -14,7 +14,6 @@
     <Panel id="PlaceholdersRoot" >
       <Panel id="Placeholders" >
         <Image class="Placeholder" src="file://{images}/custom_game/loading_screen/ads/cc.jpg" />
-        <Image class="PlaceholderSmall" src="file://{images}/custom_game/loading_screen/ads/dima.png" />
       </Panel>
     </Panel>
 
@@ -34,11 +33,6 @@
         <DOTAAvatarImage class="avatar" steamid="76561198060190530" />
       </Panel>
 
-      <Label text="#media"/>
-      <Panel id="Media" class="column">
-        <DOTAAvatarImage class="avatar" steamid="76561198050312182" />
-      </Panel>
-
       <Label text="#models"/>
       <Panel id="Models" class="column">
         <DOTAAvatarImage class="avatar" steamid="76561198069840828" />
@@ -46,7 +40,24 @@
     </Panel>
 
     <Panel id="SocialNetworks" >
-      <Image src="file://{images}/custom_game/sn/sn.png" />
+      <Label text="#get_models" class="Headline1" id="GetModels" >
+        
+      </Label>
+
+      <Label text="AlikVirg" class="Headline1" id="AlikVirg">
+          <Image class="SkypeLogo" src="file://{images}/custom_game/loading_screen/skype.png" />
+      </Label>
+
+      <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" >
+      </Label>
+      <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" >
+      </Label>
+<!--       <Label text="vk.com/dota2petri" class="Headline1" id="VK" >
+        <Image class="SN" src="file://{images}/custom_game/loading_screen/skype.png" />
+      </Label> -->
+
+      <!-- <Image src="file://{images}/custom_game/sn/sn.png" /> -->
+
     </Panel>
 
 <!--     <Panel id="TitlePanel">

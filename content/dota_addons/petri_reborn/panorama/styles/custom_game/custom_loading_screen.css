@@ -3,6 +3,73 @@
 @define IterationCount: infinite;
 @define AnimationDelay: 0s;
 
+.Headline1 {
+  text-shadow: 1px 1px 1px black;
+  text-align: center;
+  /*text-transform: uppercase;*/
+  text-overflow: clip;
+
+  box-shadow: #00000000 -1px -1px 8px 0.3;
+
+  font-weight: bold;
+  font-size: 33px;
+  font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU;
+  color: White;
+
+  text-shadow: 2px 2px 8px 3.0 #333333b0;
+
+  
+}
+
+.SN {
+  width: 510px;
+  height: 60px;
+  flow-children: down;
+  margin-left: 10px;
+  text-align: left;
+  padding-left: 70px;
+
+  background-repeat: no-repeat;
+  background-size: 50px 50px;
+  background-position: left 10px top -3px;
+}
+
+#VK {
+  background-image: url("file://{images}/custom_game/loading_screen/vk.png");
+}
+
+#TWITTER {
+  background-image: url("file://{images}/custom_game/loading_screen/twitter.png");
+}
+
+#SocialNetworks
+{
+  flow-children: down;
+  vertical-align: bottom;
+  width: 750px;
+  height: 300px;
+  margin-bottom: 20px;
+  margin-left: 35px;
+}
+
+#AlikVirg {
+   flow-children: right;
+   height: 60px;
+}
+
+#GetModels {
+  flow-children: down;
+}
+
+.SkypeLogo {
+  width: 40px;
+  height: 40px;
+
+  margin-left: 170px;
+
+  horizontal-align: center;
+}
+
 #Developers
 {
   margin-bottom: 240px;
@@ -80,14 +147,6 @@
   font-size: 80px;
   color: #cccccc;
   text-shadow: 2px 2px 2px #000000;
-}
-
-#SocialNetworks
-{
-  width: 750px;
-  height: 300px;
-  margin-top: 690px;
-  margin-left: 25px;
 }
 
 .TitleBackground

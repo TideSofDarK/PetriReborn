@@ -20,8 +20,9 @@
 						>
 						<DOTAAbilityImage id="AbilityImage" />
 						<Panel id="Cooldown">
-						<Panel id="CooldownOverlay" />
+						
 						<Label id="CooldownTimer" />
+						<Panel id="CooldownOverlay" />
 					</Panel>
 					<Panel id="ActiveAbility" />
 					<Label id="ManaCost" />
