@@ -109,17 +109,19 @@ function PullEyesChanneling( keys )
 	local reveal_radius = ability:GetLevelSpecialValueFor( "reveal_radius", level - 1 )
 	local duration = ability:GetChannelTime()
 
+	local exp = ability:GetLevelSpecialValueFor("exp_per_tick", level-1)
+
 	local particleName = "particles/items_fx/dust_of_appearance.vpcf"
 	local target = ability.target
 
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, nil, reveal_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_ANY_ORDER,false)
 
 	if #units > 5 then
-		caster:AddExperience(25, 0, false, true)
+		caster:AddExperience(exp, 0, false, true)
 	end
 
 	-- Vision
-    AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, 0.3, false)
+    AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, 0.75, false)
 end
 
 function StopPullingEyes( keys )

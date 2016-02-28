@@ -2429,6 +2429,8 @@
 	
 	    "precache"
 	    {
+	        "particle"  "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf"
+	
 	        "particle" "particles/buildinghelper/square_sprite_building.vpcf"
 	        "particle" "particles/buildinghelper/square_sprite.vpcf"
 	        "particle" "particles/buildinghelper/ghost_model.vpcf"

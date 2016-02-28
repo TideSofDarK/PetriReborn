@@ -444,10 +444,34 @@
 	"buffers":
 	[
 		{
+			"file": "game/dota_addons/petri_reborn/scripts/npc/abilities/petri_mini_actor_pull_eyes.txt",
+			"settings":
+			{
+				"buffer_size": 2060,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "game/dota_addons/petri_reborn/scripts/vscripts/events.lua",
+			"settings":
+			{
+				"buffer_size": 20505,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 447,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "game/dota_addons/petri_reborn/scripts/vscripts/units/petrosyan.lua",
 			"settings":
 			{
-				"buffer_size": 10134,
+				"buffer_size": 10252,
 				"line_ending": "Windows"
 			}
 		}
@@ -491,22 +515,13 @@
 		"/E/workspace/PetriReborn",
 		"/E/workspace/PetriReborn/content",
 		"/E/workspace/PetriReborn/content/dota_addons",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/layout",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/layout/custom_game",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/layout/custom_game/abilities",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/layout/custom_game/game_setup",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/scripts",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/scripts/custom_game",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/scripts/custom_game/abilities",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/scripts/custom_game/game_setup",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/styles",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/styles/custom_game",
 		"/E/workspace/PetriReborn/dummy_creator",
 		"/E/workspace/PetriReborn/game",
 		"/E/workspace/PetriReborn/game/dota_addons",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama",
+		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/images",
+		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/images/spellicons",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/layout",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/layout/custom_game",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/layout/custom_game/kick_system",
@@ -524,6 +539,9 @@
 	],
 	"file_history":
 	[
+		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/npc/items/item_petri_jedi.txt",
+		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/vscripts/units/petrosyan.lua",
+		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/npc/items/item_petri_uber_mask_of_laugh.txt",
 		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/layout/custom_game/custom_loading_screen.xml",
 		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/styles/custom_game/custom_loading_screen.css",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/panorama/localization/addon_russian.txt",
@@ -648,10 +666,7 @@
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/vscripts/units/peasant.lua",
 		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/vscripts/units/sawmill.lua",
 		"/E/Program Files (x86)/Steam/SteamApps/common/dota 2 beta/game/dota_addons/zombiesinvillage/scripts/vscripts/zombiesinvillage.lua",
-		"/E/Program Files (x86)/Steam/SteamApps/common/dota 2 beta/game/dota_addons/ziv/scripts/vscripts/ziv.lua",
-		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/attachments.txt",
-		"/E/workspace/PetriReborn/game/dota_addons/petri_reborn/scripts/vscripts/units/tower.lua",
-		"/E/workspace/PetriReborn/content/dota_addons/petri_reborn/panorama/styles/custom_game/game_info.css"
+		"/E/Program Files (x86)/Steam/SteamApps/common/dota 2 beta/game/dota_addons/ziv/scripts/vscripts/ziv.lua"
 	],
 	"find":
 	{
@@ -924,16 +939,76 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "game/dota_addons/petri_reborn/scripts/vscripts/units/petrosyan.lua",
+					"file": "game/dota_addons/petri_reborn/scripts/npc/abilities/petri_mini_actor_pull_eyes.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10134,
+						"buffer_size": 2060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								985,
+								986
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Dota KV/dotaKV.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "game/dota_addons/petri_reborn/scripts/vscripts/events.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 20505,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11208,
+								11208
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6540.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": ".gitignore",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 447,
 						"regions":
 						{
 						},
@@ -946,14 +1021,42 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "game/dota_addons/petri_reborn/scripts/vscripts/units/petrosyan.lua",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3666,
+								3666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1710.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -1036,7 +1139,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 395.0,
+	"side_bar_width": 394.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
