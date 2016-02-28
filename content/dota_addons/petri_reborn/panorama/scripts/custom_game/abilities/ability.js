@@ -31,11 +31,12 @@ function AutoUpdateAbility()
 
 function CheckDependenciesList( abilityName, isAlt )
 {
+	var dependenciesTable = CustomNetTables.GetTableValue("players_dependencies", GameUI.CustomUIConfig().GetSelectedUnitOwner());
 	// Priority of main dependence
-	if (!GameUI.CustomUIConfig().dependencies)
+  	if (!dependenciesTable)
 		return true && !isAlt;
 	
-	var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+	var dependencies = dependenciesTable[abilityName];
 	if (dependencies == undefined)
 		return true && !isAlt;
 
@@ -67,11 +68,14 @@ function CheckDependencies()
 
 function CheckSpellCost()
 {
-	var gold = Players.GetGold( Players.GetLocalPlayer() );
+	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
+ 
+	var curRes = CustomNetTables.GetTableValue("players_resources", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+	if (curRes == undefined || isEnemy)
+		curRes = { "lumber": 0, "food": 0, "gold": 0, "maxFood": 0 };
 
-	var currentResources = GameUI.CustomUIConfig().unitResources;
-	if (!currentResources)
-		currentResources = { "lumber" : 0, "maxFood" : 0, "food" : 0 };
+	if (!curRes)
+		curRes = { "lumber" : 0, "maxFood" : 0, "food" : 0 };
 
     var abilityLevel = Abilities.GetLevel( m_Ability );
 	var manaCost = Abilities.GetManaCost( m_Ability );
@@ -87,20 +91,20 @@ function CheckSpellCost()
     catch( error ) { }
 
     return !isActivated || !(manaCost > Entities.GetMana( m_QueryUnit ) ||
-    	lumberCost > currentResources["lumber"] ||
-    	(foodCost != 0 && currentResources["maxFood"] < currentResources["food"] + foodCost) ||
-    	goldCost > gold);
+    	lumberCost > curRes["lumber"] ||
+    	(foodCost != 0 && curRes["maxFood"] < curRes["food"] + foodCost) ||
+    	goldCost > curRes["gold"]);
 }
 
 function UpdateAbility()
 {
+	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
 	var abilityButton = $( "#AbilityButton" );
 	var abilityName = Abilities.GetAbilityName( m_Ability );
 
 	var noLevel =( 0 == Abilities.GetLevel( m_Ability ) );
 	var isCastable = !Abilities.IsPassive( m_Ability ) && !noLevel;
 	var manaCost = Abilities.GetManaCost( m_Ability );
-	var hotkey = Abilities.GetKeybind( m_Ability, m_QueryUnit );
 	var unitMana = Entities.GetMana( m_QueryUnit );
 
 	var abilityLevel = Abilities.GetLevel( m_Ability );
@@ -116,13 +120,13 @@ function UpdateAbility()
     }
     catch( error ) { }
 
-	$.GetContextPanel().SetHasClass( "no_level", noLevel );
+	$.GetContextPanel().SetHasClass( "no_level", noLevel || isEnemy );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) || isActivated == false);
 	
-	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined || isActivated == false) );
-	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined || isActivated == false) );
-	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false) );
-	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false) );
+	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined || isActivated == false || isEnemy) );
+	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined || isActivated == false || isEnemy) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy) );
+	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false || isEnemy) );
 
 	$.GetContextPanel().SetHasClass( "insufficient_mana", !CheckSpellCost() || !CheckDependencies() || isActivated == false);
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
@@ -130,17 +134,17 @@ function UpdateAbility()
 	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility()  ) );
 
 	abilityButton.enabled = ( isCastable || m_bInLevelUp );
-	
-	$( "#HotkeyText" ).text = hotkey;
+
+	$( "#HotkeyText" ).text = Abilities.GetKeybind( m_Ability, m_QueryUnit );
 	$( "#AbilityImage" ).abilityname = abilityName;
 	$( "#AbilityImage" ).contextEntityIndex = m_Ability;
-	$( "#ManaCost" ).text = manaCost;
 
+	$( "#ManaCost" ).text = manaCost;
 	$( "#FoodCost" ).text = foodCost;
 	$( "#GoldCost" ).text = goldCost;
 	$( "#LumberCost" ).text = lumberCost;
 
-	if ( Abilities.IsCooldownReady( m_Ability ))
+	if ( Abilities.IsCooldownReady( m_Ability ) || isEnemy)
 	{
 		$.GetContextPanel().SetHasClass( "cooldown_ready", true );
 		$.GetContextPanel().SetHasClass( "in_cooldown", false );
@@ -151,11 +155,10 @@ function UpdateAbility()
 		$.GetContextPanel().SetHasClass( "in_cooldown", true );
 		var cooldownLength = Abilities.GetCooldownLength( m_Ability );
 		var cooldownRemaining = Abilities.GetCooldownTimeRemaining( m_Ability );
-		var cooldownPercent = Math.ceil( 100 * cooldownRemaining / cooldownLength );
+		var cooldownPercent = cooldownRemaining / cooldownLength;
 		$( "#CooldownTimer" ).text = Math.ceil( cooldownRemaining );
-		$( "#CooldownOverlay" ).style.width = cooldownPercent+"%";
+		$( "#CooldownOverlay" ).style.clip = "radial(50% 50%, 0deg, " + cooldownPercent * -360 + "deg)";
 	}
-	
 }
 
 function AbilityShowTooltip()
@@ -243,6 +246,9 @@ function RebuildAbilityUI()
 
 	var currentLevel = Abilities.GetLevel( m_Ability );
 	var maxLevel = Abilities.GetMaxLevel( m_Ability );
+
+	if (GameUI.CustomUIConfig().IsEnemySelected())
+		return;
 
 	if (maxLevel > 1)
 	{

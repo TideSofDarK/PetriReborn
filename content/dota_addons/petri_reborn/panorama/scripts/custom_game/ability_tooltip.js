@@ -51,7 +51,7 @@ function SetPosition()
 function FillDescription( abilityID )
 {
   var abilityName = Abilities.GetAbilityName( abilityID );
-  var abilityLevel = Abilities.GetLevel( abilityID );
+  var abilityLevel = GameUI.CustomUIConfig().IsEnemySelected() ? 0 : Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
   $( "#Header" ).FindChild( "AbilityName" ).text = $.Localize( "#DOTA_Tooltip_ability_" + abilityName );
@@ -68,6 +68,8 @@ function FillDescription( abilityID )
 
 function FillCosts( abilityID )
 {
+  var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
+
   var abilityLevel = Abilities.GetLevel( abilityID );
   var manaCost = Abilities.GetManaCost( abilityID );
   var lumberCost = Abilities.GetLevelSpecialValueFor( abilityID, "lumber_cost", abilityLevel - 1 );
@@ -86,33 +88,35 @@ function FillCosts( abilityID )
   var foodText = costsPanel.FindChild( "FoodText" );
   var manaText = costsPanel.FindChild( "ManaText" );
 
-  var curRes = GameUI.CustomUIConfig().unitResources;
+  var curRes = CustomNetTables.GetTableValue("players_resources", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+  if (curRes == undefined || isEnemy)
+    curRes = { "lumber": 0, "food": 0, "gold": 0, "maxFood": 0 };
 
   goldText.text = goldCost;
-  goldText.SetHasClass("not_enought", goldCost > Players.GetGold(Players.GetLocalPlayer()) );
-  goldText.SetHasClass("null", goldCost == 0);
+  goldText.SetHasClass("not_enought", goldCost > curRes["gold"] );
+  goldText.SetHasClass("null", goldCost == 0 || isEnemy);
 
   lumberText.text = lumberCost;
   lumberText.SetHasClass("not_enought", lumberCost > curRes["lumber"] );  
-  lumberText.SetHasClass("null", lumberCost == 0);
+  lumberText.SetHasClass("null", lumberCost == 0 || isEnemy);
 
   foodText.text = foodCost;
   foodText.SetHasClass("not_enought", curRes["food"] + foodCost > curRes["maxFood"]);    
-  foodText.SetHasClass("null", foodCost == 0);
+  foodText.SetHasClass("null", foodCost == 0 || isEnemy);
 
   manaText.text = manaCost;
-  manaText.SetHasClass("null", manaCost == 0);
+  manaText.SetHasClass("null", manaCost == 0 || isEnemy);
 
   var timers = $( "#CooldownAndCosts" ).FindChild( "Timers" );
   var cd = Abilities.GetCooldown( abilityID );
   var cdPanel = timers.FindChild( "CooldownLabel");
   cdPanel.text = Math.floor(cd * 100) / 100;
-  cdPanel.SetHasClass( "no_cd", cd == 0);
+  cdPanel.SetHasClass( "no_cd", cd == 0 || isEnemy);
 
   var channel = Abilities.GetChannelTime( abilityID );
   var channelPanel = timers.FindChild( "ChannelLabel");
   channelPanel.text = Math.floor(channel * 100) / 100;
-  channelPanel.SetHasClass( "no_channel", channel == 0);  
+  channelPanel.SetHasClass( "no_channel", channel == 0 || isEnemy);  
 }
 
 /*
@@ -121,7 +125,7 @@ function FillCosts( abilityID )
 
 function CheckDependence( name, level )
 {
-  var table = CustomNetTables.GetTableValue("players_dependencies", Players.GetLocalPlayer());
+  var table = CustomNetTables.GetTableValue("players_dependencies", GameUI.CustomUIConfig().GetSelectedUnitOwner());
   if (table[name] == undefined)
     return false;
 
@@ -130,9 +134,13 @@ function CheckDependence( name, level )
 
 function CreateDependencyPanel( abilityName )
 {
+  var dependenciesTable = CustomNetTables.GetTableValue("players_dependencies", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+  if (!dependenciesTable)
+    return;
+
   var mainPanel = $.CreatePanel( "Panel", $.GetContextPanel(), "Dependence_" + abilityName );
 
-  var dependencies = GameUI.CustomUIConfig().dependencies[abilityName];
+  var dependencies = dependenciesTable[abilityName];
   mainPanel.SetHasClass( "all_enought", dependencies == undefined);
   if (dependencies == undefined)
     return null;
@@ -207,10 +215,10 @@ function SetHTMLStyle( text, style)
 
 function GetSpecialValuesList( abilityID, name )
 {
-  var abilityLevel = Abilities.GetLevel( abilityID );
+  var abilityLevel = GameUI.CustomUIConfig().IsEnemySelected() ? 0 : Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
-  var str = abilityLevel == 0 
+  var str = abilityLevel == 0
     ? Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ) 
     : SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
   var prevValue = str;
@@ -249,7 +257,6 @@ function FillSpecials( abilityID )
   }
 }
 
-
 function SetPositionRotation( element, position, rotation ) {
   var oldPosition = element.oldPosition || [0, 0];
   var oldRotation = element.oldRotation || 0;
@@ -275,6 +282,7 @@ function ShowTooltip( panel, abilityID )
 
   FillDescription( abilityID );
   FillCosts( abilityID );
+  
   FillDependencies( abilityID );
   FillSpecials( abilityID );
 
