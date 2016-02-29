@@ -84,13 +84,13 @@ function ButtDamage( keys )
 	local target = keys.target
 	local ability = keys.ability
 
-	local damage = (target:GetMaxHealth() * ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1)) + 1
+	local damage = ((target:GetMaxHealth() / 100) * ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1)) + 1
 
 	local damageTable = {
 	    victim = target,
 	    attacker = caster,
 	    damage = damage,
-	    damage_type = DAMAGE_TYPE_PHYSICAL,
+	    damage_type = DAMAGE_TYPE_PURE,
 	}
 
   	if target:HasAbility("petri_building") == true then 
