@@ -93,7 +93,7 @@ function ButtDamage( keys )
 	    damage_type = DAMAGE_TYPE_PURE,
 	}
 
-  	if target:HasAbility("petri_building") == true then 
+  	if target:HasAbility("petri_building") == true or target:GetUnitName() == "npc_petri_wall" then 
   		ApplyDamage(damageTable)
   	end
 end
