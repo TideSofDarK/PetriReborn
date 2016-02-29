@@ -2240,6 +2240,16 @@
 			    "yaw"  "-55"
 			    "XPos"  "-17"
 	   		}
+	   		"models/items/techies/bigshot/bigshot_barrel.vmdl"
+			{
+				"scale"		"0.6"
+				"pitch"		"78"
+				"roll"		"63"
+				"ZPos"		"-126"
+				"YPos"		"-21"
+				"yaw"		"1"
+				"XPos"		"33"
+			}
 	  	}
 	  	"attach_attack2"
 	  	{
@@ -2253,6 +2263,16 @@
 			    "yaw"  "180"
 			    "XPos"  "5"
 	   		}
+	   		"models/items/ogre_magi/goldenwalruswhacker/goldenwalruswhacker.vmdl"
+			{
+				"scale"		"0.8"
+				"pitch"		"168"
+				"roll"		"0"
+				"ZPos"		"-153"
+				"YPos"		"-103"
+				"yaw"		"-63"
+				"XPos"		"-27"
+			}
 	  	}
 	   	"attach_ogerhead"
 	  	{

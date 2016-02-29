@@ -30,7 +30,7 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "2"
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "0"
       }
     }
     "modifier_item_petri_megahammer_datadriven"
