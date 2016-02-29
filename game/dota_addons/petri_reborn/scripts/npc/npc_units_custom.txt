@@ -2298,6 +2298,8 @@
 	
 	    "precache"
 	    {
+	        "model" "models/items/ogre_magi/goldenwalruswhacker/goldenwalruswhacker.vmdl"
+	        "model" "models/items/techies/bigshot/bigshot_barrel.vmdl"
 	        "model" "models/heroes/crystal_maiden/crystal_maiden_arcana_back.vmdl"
 	        "model" "models/items/crystal_maiden/lusciouslocks_head/lusciouslocks_head.vmdl"
 	        "model" "models/items/crystal_maiden/frostbringer_hair/frostbringer_hair.vmdl"
