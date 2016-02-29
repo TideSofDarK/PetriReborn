@@ -21,6 +21,7 @@
     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
     "particle"  "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_debuff.vpcf"
     "particle"  "particles/econ/items/techies/techies_arcana/techies_taunt.vpcf"
+    "particle"  "particles/units/heroes/hero_techies/techies_suicide_base.vpcf"
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
     "soundfile" "soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
   }
@@ -45,10 +46,10 @@
     {
       "Target"         "POINT"
       "EffectName"   "particles/miniactor_butt.vpcf"
-      "MoveSpeed"     "600"
-      "StartRadius"   "10"
+      "MoveSpeed"     "700"
+      "StartRadius"   "100"
       "StartPosition"  "attach_attack1"
-      "EndRadius"      "100"
+      "EndRadius"      "200"
       "HasFrontalCone" "0"
       "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
       "TargetTypes"   "DOTA_UNIT_TARGET_ALL"
@@ -66,43 +67,10 @@
   "OnProjectileHitUnit"
   {
     "DeleteOnHit"  "1"
-    "FireEffect"
+    "RunScript"
     {
-      "EffectName"    "particles/econ/items/techies/techies_arcana/techies_taunt.vpcf"
-      "EffectAttachType"  "start_at_customorigin"
-      "Target"      "POINT"
-
-      "ControlPointEntities"
-      {
-        "TARGET"  "POINT" 
-        "TARGET"  "POINT"
-        "TARGET"  "POINT"
-        "TARGET"  "POINT"
-      }        
-    }
-    "FireEffect"
-    {
-      "EffectName"    "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
-      "EffectAttachType"  "start_at_customorigin"
-      "Target"      "POINT"
-
-      "ControlPointEntities"
-      {
-        "TARGET"  "POINT" 
-        "TARGET"  "POINT"
-        "TARGET"  "POINT"
-        "TARGET"  "POINT"
-      }     
-    }
-    "FireSound"
-    {
-      "EffectName"    "Hero_Techies.LandMine.Detonate"
-      "Target"      "CASTER"
-    }
-    "ApplyModifier"
-    {
-      "ModifierName"  "modifier_butt_burning"
-      "Target"     "TARGET"
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ButtExplode"
     }
   }
 

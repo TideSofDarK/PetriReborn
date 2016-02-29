@@ -391,8 +391,10 @@ function GameMode:OnEntityKilled( keys )
 
     AddKeyToNetTable(killedUnit:entindex(), "gridnav", "building", {})
 
-    killedUnit.RemoveFromGNV()
-
+    if killedUnit.RemoveFromGNV then
+      killedUnit.RemoveFromGNV()
+    end
+  
     local chance = math.random(1, 100)
     if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
       if chance > EVASION_SCROLL_CHANCE then

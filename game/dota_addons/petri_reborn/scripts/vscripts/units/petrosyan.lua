@@ -173,6 +173,21 @@ function StopPullingEyes( keys )
 	caster:SetNightTimeVisionRange(1000)
 end
 
+function ButtExplode( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	if target:HasAbility("petri_building") == true or target:HasAbility("petri_tower") == true then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_butt_burning", {})
+
+		local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", PATTACH_CUSTOMORIGIN, target)
+		ParticleManager:SetParticleControl(particle, 0, target:GetAbsOrigin() + Vector(0,0,30))
+	end
+	
+	caster:EmitSound("Hero_Techies.LandMine.Detonate")
+end
+
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target

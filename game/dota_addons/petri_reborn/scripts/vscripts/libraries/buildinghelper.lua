@@ -306,6 +306,27 @@ function BuildingHelper:PlaceBuilding(hero, name, location, snapToGrid, blockGri
     end
   end
 
+  local mapping = {}
+  for y = 1, size do
+    mapping[y] = {}
+    for x = 1, size do
+      mapping[y][x] = 1
+    end
+  end
+
+  GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
+
+  building.RemoveFromGNV = function ()
+    local mapping = {}
+    for y = 1, size do
+      mapping[y] = {}
+      for x = 1, size do
+        mapping[y][x] = 0
+      end
+    end
+    GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
+  end
+
   -- Return the created building
   return building
 
