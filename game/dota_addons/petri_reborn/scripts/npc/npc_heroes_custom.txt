@@ -130,14 +130,13 @@
 	
 	  "AbilityLayout" "4"
 	
-	  "Ability1"        "petri_petrosyan_flat_joke" 
-	  "Ability2"        "petri_mini_actor_pull_eyes" 
-	  "Ability3"        "petri_petrosyan_wind_walk"
+	  "Ability1"        "petri_mini_actor_drink" 
+	  "Ability2"        "petri_mini_actor_pull_eyes"
+	  "Ability3"        "petri_mini_actor_drop_butt"
 	  "Ability4"        "petri_petrosyan_return"
-	  "Ability5"        "petri_petrosyan_explore"
-	  "Ability6"        "petri_mini_actor_phase"
-	  "Ability7"        "attribute_bonus"
-	  "Ability8"        "petri_petrosyan_passive"
+	  "Ability5"        "petri_mini_actor_phase"
+	  "Ability6"        "attribute_bonus"
+	  "Ability7"        "petri_petrosyan_passive"
 	
 	  "ArmorPhysical"       "1"                 
 	  "MagicalResistance"       "0"
