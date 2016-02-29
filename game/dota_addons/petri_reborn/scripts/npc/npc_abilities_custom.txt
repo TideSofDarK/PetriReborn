@@ -2627,7 +2627,7 @@
 	"petri_mini_actor_drop_butt"
 	{
 	 "BaseClass"           "ability_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -2667,15 +2667,20 @@
 	
 	  "OnSpellStart"
 	  {
-	    "TrackingProjectile"
+	    "LinearProjectile"
 	    {
-	      "Target"      "TARGET"
-	      "EffectName"        "particles/miniactor_butt.vpcf"
-	      "Dodgeable"         "0"
-	      "ProvidesVision"    "1"
-	      "VisionRadius"      "400"
-	      "MoveSpeed"         "500"
-	      "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+	      "Target"         "POINT"
+	      "EffectName"   "particles/miniactor_butt.vpcf"
+	      "MoveSpeed"     "600"
+	      "StartRadius"   "10"
+	      "StartPosition"  "attach_attack1"
+	      "EndRadius"      "100"
+	      "HasFrontalCone" "0"
+	      "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	      "TargetTypes"   "DOTA_UNIT_TARGET_ALL"
+	      "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"            
+	      "ProvidesVision" "1"
+	      "VisionRadius"    "400"
 	    }
 	    "FireSound"
 	    {
@@ -2690,29 +2695,29 @@
 	    "FireEffect"
 	    {
 	      "EffectName"    "particles/econ/items/techies/techies_arcana/techies_taunt.vpcf"
-	      "EffectAttachType"  "attach_hitloc"
-	      "Target"      "TARGET"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "Target"      "POINT"
 	
 	      "ControlPointEntities"
 	      {
-	        "TARGET"  "attach_hitloc" 
-	        "TARGET"  "attach_hitloc"
-	        "TARGET"  "attach_hitloc"
-	        "TARGET"  "attach_hitloc"
-	      }     
+	        "TARGET"  "POINT" 
+	        "TARGET"  "POINT"
+	        "TARGET"  "POINT"
+	        "TARGET"  "POINT"
+	      }        
 	    }
 	    "FireEffect"
 	    {
 	      "EffectName"    "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
-	      "EffectAttachType"  "attach_hitloc"
-	      "Target"      "TARGET"
+	      "EffectAttachType"  "start_at_customorigin"
+	      "Target"      "POINT"
 	
 	      "ControlPointEntities"
 	      {
-	        "TARGET"  "attach_hitloc" 
-	        "TARGET"  "attach_hitloc"
-	        "TARGET"  "attach_hitloc"
-	        "TARGET"  "attach_hitloc"
+	        "TARGET"  "POINT" 
+	        "TARGET"  "POINT"
+	        "TARGET"  "POINT"
+	        "TARGET"  "POINT"
 	      }     
 	    }
 	    "FireSound"

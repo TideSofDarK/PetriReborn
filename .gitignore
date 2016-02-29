@@ -21,3 +21,5 @@
 *.vpk
 
 *.sublime-workspace
+
+settings.kv

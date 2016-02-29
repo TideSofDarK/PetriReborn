@@ -1,6 +1,6 @@
 require('internal/util')
 require('gamemode')
---require("statcollection/init")
+require("statcollection/init")
 
 function Precache( context )
   SendToServerConsole( "dota_combine_models 0" )
@@ -20,6 +20,9 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_vip_zeus", context)
   
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+
+  PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
+  PrecacheUnitByNameSync("npc_petri_mini_actor", context)
 
   -- UNITS
   PrecacheUnitByNameSync("npc_petri_cop_trap", context)

@@ -5,7 +5,7 @@ function customSchema:init()
     -- Check the schema_examples folder for different implementations
 
     -- Flag Example
-    statCollection:setFlags({ version = storage:GetVersion() })
+    -- statCollection:setFlags({version = GetVersion()})
 
     -- Listen for changes in the current state
     ListenToGameEvent('game_rules_state_change', function(keys)
@@ -43,9 +43,11 @@ function BuildGameArray()
     local game = {}
 
     -- Add game values here as game.someValue = GetSomeGameValue()
-    game.eh = storage:GetEmpGoldHist() -- Team advantage history
-    game.wn = storage:getWinner() -- Team winner
-    --game.th=storage:GetTideKillers()
+
+    -- team 1 score
+    game.s1 = GameRules.WAGameMode.vDeaths[DOTA_TEAM_BADGUYS] or 0
+    -- team 2 score
+    game.s2 = GameRules.WAGameMode.vDeaths[DOTA_TEAM_GOODGUYS] or 0
 
     return game
 end
@@ -59,32 +61,42 @@ function BuildPlayersArray()
 
                 local hero = PlayerResource:GetSelectedHeroEntity(playerID)
 
-                local teamname = "North"
-                if hero:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-                    teamname = "South"
-                end
-
-                local kickStatus = "Active"
-                if storage:GetDisconnectState(playerID) ~= 0 then
-                    kickStatus = "Kicked"
-                end
-
-                table.insert(players, {
+                local __stats__ = {
                     -- steamID32 required in here
                     steamID32 = PlayerResource:GetSteamAccountID(playerID),
 
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
-                    tm = teamname,
-                    shp = storage:GetHeroName(playerID), --Hero by its short name
-                    kls = hero:GetKills(), --Player Kills
-                    dth = hero:GetDeaths(), --Player Deaths
-                    lvl = hero:GetLevel(), --Player Levels
-                    afk = kickStatus, --Custom Player status
 
-                    -- Item List
-                    bo = storage:GetPlayerHist(playerID)
-                })
+                    -- player hero name
+                    hn = GetHeroName(playerID),
+                    -- kills
+                    hk = hero:GetKills(),
+                    -- deaths
+                    hd = hero:GetDeaths(),
+                    -- last hits/ creep kills
+                    lh = PlayerResource:GetLastHits(playerID),
+                    -- total gold earned
+                    xg = hero.xGoldEarned,
+                    -- abadon time
+                    at = GameRules.vDisconnectedHeroes[hero] or -1,
+                }
+
+
+                -- record abilities and ability level
+                local abilities = GetAbilityList(hero)
+                for i = 1, BOM_ABILITY_LIMIT do
+                    --[[
+                        = 
+                        a1 = "evasion,1"
+                        a2 = "life_steal,30"
+                        ...
+                        a7 = "xxx,15"
+                    ]]
+                    __stats__["a" .. i] = abilities[i] or "empty,-1"
+                end
+
+                table.insert(players, __stats__)
             end
         end
     end
@@ -137,4 +149,15 @@ function BuildRoundWinnerArray()
     return winners
 end
 
--------------------------------------
+---------------------------- Custom Stats------------------------
+function GetAbilityList(hero)
+    local abilities = {}
+    if hero.vAbilityLevel and type(hero.vAbilityLevel) == "table" then
+        for ability_name, ability_level in pairs(hero.vAbilityLevel) do
+            table.insert(abilities, ability_name .. "," .. ability_level)
+        end
+    end
+    return abilities
+end
+
+----------------------------End Custom Stats Functions----------
