@@ -1,0 +1,11 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/loading_screen/backgrounds/common_background.css" />
+    <include src="file://{resources}/styles/custom_game/loading_screen/backgrounds/default.css" />
+  </styles>
+  <Panel class="BackgroundRoot">
+	<Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+	<Image class="Smoke1" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
+	<Image class="Smoke2" src="file://{images}/custom_game/loading_screen/petri_smoke.png" />
+  </Panel>
+</root>

@@ -486,10 +486,8 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(6)
-      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+      newHero:SetAbilityPoints(3)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_explore"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
 

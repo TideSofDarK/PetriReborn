@@ -79,6 +79,47 @@ function FarSight( event )
     AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
 end
 
+function ButtDamage( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	local damage = (target:GetMaxHealth() * ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1)) + 1
+
+	local damageTable = {
+	    victim = target,
+	    attacker = caster,
+	    damage = damage,
+	    damage_type = DAMAGE_TYPE_PHYSICAL,
+	}
+
+  	if target:HasAbility("petri_building") == true then 
+  		ApplyDamage(damageTable)
+  	end
+end
+
+function Drink( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	caster:EmitSound("Hero_Alchemist.UnstableConcoction.Fuse")
+end
+
+function DrinkOnHit( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	if target:GetUnitName() == "npc_dota_hero_storm_spirit" then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_drink_stun", {duration=2})
+	else
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_drink", {})
+	end
+
+	caster:StopSound("Hero_Alchemist.UnstableConcoction.Fuse")
+end
+
 function PullEyes( event )
 	local caster = event.caster
 	local ability = event.ability

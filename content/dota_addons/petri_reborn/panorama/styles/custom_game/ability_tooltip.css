@@ -109,6 +109,11 @@
 	color: #00ff00;
 }
 
+.DependenceLabel.isEnemy
+{
+	color: #cccccc;
+}
+
 .SeparateLabel
 {
 	color: #e0e0e0;

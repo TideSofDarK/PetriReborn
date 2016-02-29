@@ -15,9 +15,7 @@
   font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,YDYGO 540,Gulim,MingLiU;
   color: White;
 
-  text-shadow: 2px 2px 8px 3.0 #333333b0;
-
-  
+  text-shadow: 2px 2px 8px 3.0 #333333b0; 
 }
 
 .SN {
@@ -154,33 +152,6 @@
   text-shadow: 2px 2px 2px #000000;
 }
 
-.TitleBackground
-{
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  background-size: 100% 100%;
-}
-
-.Background
-{
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  background-size: 100% 100%;
-}
-
-.Petrosyan
-{
-  background-repeat: no-repeat;
-  background-position: 0% 0%;
-  background-size: 100% 100%;
-
-  animation-name: gamemode_anim_petrosyan;
-  animation-delay: AnimationDelay;
-  animation-duration: 90s;
-  animation-timing-function: TimingFunc;
-  animation-iteration-count: 1;
-}
-
 .Smoke1
 {
   background-repeat: repeat-x;
@@ -204,11 +175,6 @@
   animation-duration: TotalLength;
   animation-timing-function: TimingFunc;
   animation-iteration-count: IterationCount;
-}
-
-#CustomBg
-{
-  margin: 0px 0px 0px 0px;
 }
 
 #gamemode

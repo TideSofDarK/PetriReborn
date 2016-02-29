@@ -1,0 +1,118 @@
+"petri_mini_actor_drink"
+{
+ "BaseClass"           "ability_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
+  "AbilityTextureName"      "petri_mini_actor_drink"
+
+  "AbilityCastRange"        "700"
+  "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
+  "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
+  "AbilityCooldown"       "250 260 270 280 290 300 310 320 330 340 350 360 370 380 390"
+  "AbilityCastPoint"      "0.575"
+
+  "MaxLevel"            "15"
+
+  "precache"
+  {
+    "particle"  "particles/miniactor_drink.vpcf"
+    "particle"  "particles/status_fx/status_effect_phantom_lancer_illusion.vpcf"
+    "particle"  "particles/status_fx/status_effect_rum.vpcf"
+    "particle"  "particles/units/heroes/hero_alchemist/alchemist_unstable_concoction_explosion.vpcf"
+    "soundfile" "soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "duration"          "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "TrackingProjectile"
+    {
+      "Target"      "TARGET"
+      "EffectName"        "particles/miniactor_drink.vpcf"
+      "Dodgeable"         "0"
+      "ProvidesVision"    "1"
+      "VisionRadius"      "400"
+      "MoveSpeed"         "700"
+      "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+    }
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "Drink"
+    }
+    "FireSound"
+    {
+      "EffectName"    "Hero_Alchemist.UnstableConcoction.Throw"
+      "Target"      "CASTER"
+    }
+  }
+
+  "OnProjectileHitUnit"
+  {
+    "DeleteOnHit"  "1"
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "DrinkOnHit"
+    }
+    "FireEffect"
+    {
+      "EffectName"    "particles/units/heroes/hero_alchemist/alchemist_unstable_concoction_explosion.vpcf"
+      "EffectAttachType"  "attach_hitloc"
+      "Target"      "TARGET"
+
+      "ControlPointEntities"
+      {
+        "TARGET"  "attach_hitloc" 
+        "TARGET"  "attach_hitloc"
+        "TARGET"  "attach_hitloc"
+        "TARGET"  "attach_hitloc"
+      }     
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_drink"
+    {
+      "Duration"  "%duration"
+
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_rum.vpcf"      
+      "StatusEffectPriority"  "10"
+
+      "States"
+      {
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+
+    "modifier_drink_stun"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+
+      "StatusEffectName"     "particles/status_fx/status_effect_phantom_lancer_illusion.vpcf"      
+      "StatusEffectPriority"  "10"
+
+      "States"
+      {
+        "MODIFIER_STATE_FROZEN"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_STUNNED"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }
+}
