@@ -266,10 +266,10 @@ end
 --Places a new building on full health and returns the handle. Places grid nav blockers
 --Skips the construction phase and doesn't require a builder, this is most important to place the "base" buildings for the players when the game starts.
 --Make sure the position is valid before calling this in code.
-function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockGridNav, size)
+function BuildingHelper:PlaceBuilding(hero, name, location, snapToGrid, blockGridNav, size)
   
-  local pID = player:GetPlayerID()
-  local playersHero = GameMode.assignedPlayerHeroes[player:GetPlayerID()]
+  local pID = hero:GetPlayerOwnerID()
+  local playersHero = hero
   
   local gridNavBlockers = nil
   if blockGridNav then
@@ -287,7 +287,7 @@ function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockG
   end
 
   -- Spawn the building
-  local building = CreateUnitByName(name, location, false, playersHero, player, playersHero:GetTeamNumber())
+  local building = CreateUnitByName(name, location, false, playersHero, playersHero, playersHero:GetTeamNumber())
   building:SetControllableByPlayer(pID, true)
   building:SetOwner(playersHero)
   building.blockers = gridNavBlockers
@@ -304,6 +304,27 @@ function BuildingHelper:PlaceBuilding(player, name, location, snapToGrid, blockG
         building:ForceKill(bForcedKill)
       end
     end
+  end
+
+  local mapping = {}
+  for y = 1, size do
+    mapping[y] = {}
+    for x = 1, size do
+      mapping[y][x] = 1
+    end
+  end
+
+  GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
+
+  building.RemoveFromGNV = function ()
+    local mapping = {}
+    for y = 1, size do
+      mapping[y] = {}
+      for x = 1, size do
+        mapping[y][x] = 0
+      end
+    end
+    GNV.LayerManager:Write( { ["LayerName"] = 'Buildings', ["X"] = location.x, ["Y"] = location.y, ["Width"] = size, ["Height"] = size, ['Mapping'] = mapping } )
   end
 
   -- Return the created building

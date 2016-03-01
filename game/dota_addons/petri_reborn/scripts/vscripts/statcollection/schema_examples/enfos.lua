@@ -4,8 +4,8 @@ function customSchema:init()
 
     -- Check the schema_examples folder for different implementations
 
-    -- Flag Example
-    -- statCollection:setFlags({version = GetVersion()})
+    -- Flags
+    statCollection:setFlags({ version = CEnfosGameMode:GetVersion() })
 
     -- Listen for changes in the current state
     ListenToGameEvent('game_rules_state_change', function(keys)
@@ -22,12 +22,12 @@ function customSchema:init()
 
             -- Print the schema data to the console
             if statCollection.TESTING then
-                PrintSchema(game,players)
+                PrintSchema(game, players)
             end
 
             -- Send custom stats
             if statCollection.HAS_SCHEMA then
-                statCollection:sendCustom({game=game, players=players})
+                statCollection:sendCustom({ game = game, players = players })
             end
         end
     end, nil)
@@ -63,18 +63,17 @@ function BuildPlayersArray()
 
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
-                    hn = GetHeroName(playerID),                                             -- name
-                    hl = hero:GetLevel(),                                                   -- level
-                    hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),      -- Networth
-                    pt = hero:GetTeam(),                                           -- Hero's team
-                    pcs = PlayerResource:GetConnectionState(playerID), -- Player connection state
-                    pk = hero:GetKills(),                                         -- Kills
-                    pa = hero:GetAssists(),                                     -- Assists
-                    pd = hero:GetDeaths(),                                       -- Deaths
-                    plh = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),    -- Last hits
-                    ph = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),       -- Healing
-                    pgpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),        -- GPM
-                    il = GetItemList(hero)                                           -- Item list
+                    hn = GetHeroName(playerID), -- name
+                    hl = hero:GetLevel(), -- level
+                    hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)), -- Networth
+                    pt = GetPlayerTeam(PlayerResource:GetSelectedHeroEntity(playerID)), -- Hero's team
+                    pk = hero:GetKills(), -- Kills
+                    pa = hero:GetAssists(), -- Assists
+                    pd = hero:GetDeaths(), -- Deaths
+                    plh = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()), -- Last hits
+                    ph = PlayerResource:GetHealing(hero:GetPlayerOwnerID()), -- Healing
+                    pgpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())), -- GPM
+                    il = GetItemList(hero) -- Item list
                 })
             end
         end
@@ -84,7 +83,7 @@ function BuildPlayersArray()
 end
 
 -- Prints the custom schema, required to get an schemaID
-function PrintSchema( gameArray, playerArray )
+function PrintSchema(gameArray, playerArray)
     print("-------- GAME DATA --------")
     DeepPrintTable(gameArray)
     print("\n-------- PLAYER DATA --------")
@@ -94,7 +93,7 @@ end
 
 -- Write 'test_schema' on the console to test your current functions instead of having to end the game
 if Convars:GetBool('developer') then
-    Convars:RegisterCommand("test_schema", function() PrintSchema(BuildGameArray(),BuildPlayersArray()) end, "Test the custom schema arrays", 0)
+    Convars:RegisterCommand("test_schema", function() PrintSchema(BuildGameArray(), BuildPlayersArray()) end, "Test the custom schema arrays", 0)
 end
 
 -------------------------------------
@@ -108,10 +107,10 @@ function customSchema:submitRound(isLastRound)
     local game = BuildGameArray()
     local players = BuildPlayersArray()
 
-    statCollection:sendCustom({game=game, players=players})
+    statCollection:sendCustom({ game = game, players = players })
 
     isLastRound = isLastRound or false --If the function is passed with no parameter, default to false.
-    return {winners = winners, lastRound = isLastRound}
+    return { winners = winners, lastRound = isLastRound }
 end
 
 -- A list of players marking who won this round

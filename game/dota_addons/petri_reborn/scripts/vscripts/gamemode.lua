@@ -486,10 +486,13 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 
       newHero:RespawnHero(false, false, false)
 
-      newHero:SetAbilityPoints(3)
+      newHero:AddAbility("petri_petrosyan_flat_joke")
+
+      newHero:SetAbilityPoints(4)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_mini_actor_phase"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
+      newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
 
       SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
 

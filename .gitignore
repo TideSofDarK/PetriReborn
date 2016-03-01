@@ -21,4 +21,9 @@
 *.vpk
 
 *.sublime-workspace
+<<<<<<< HEAD
 game/dota_addons/petri_reborn/scripts/vscripts/statcollection/settings.kv
+=======
+
+settings.kv
+>>>>>>> bad597c10c3c1385cb372a16a5fb5f31c88703fa

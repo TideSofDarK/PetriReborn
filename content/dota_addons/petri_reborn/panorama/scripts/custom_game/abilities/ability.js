@@ -123,20 +123,22 @@ function UpdateAbility()
     }
     catch( error ) { }
 
+    var shared = Abilities.GetAbilityName(m_Ability) == "petri_exploration_tower_explore_world";
+
 	$.GetContextPanel().SetHasClass( "no_level", noLevel || isEnemy );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(m_Ability) || isActivated == false);
 	
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined || isActivated == false || isEnemy) );
 	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined || isActivated == false || isEnemy) );
-	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy) );
+	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy));
 	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false || isEnemy) );
 
-	$.GetContextPanel().SetHasClass( "insufficient_mana", (!CheckSpellCost() || !CheckDependencies() || isActivated == false) && !isEnemy );
+	$.GetContextPanel().SetHasClass( "insufficient_mana", (!CheckSpellCost() || !CheckDependencies() || isActivated == false) && !isEnemy && !shared );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "is_active", ( m_Ability == Abilities.GetLocalPlayerActiveAbility()  ) );
 
-	abilityButton.enabled = ( isCastable || m_bInLevelUp );
+	abilityButton.enabled = ( isCastable || m_bInLevelUp || shared);
 
 	$( "#HotkeyText" ).text = Abilities.GetKeybind( m_Ability, m_QueryUnit );
 	$( "#AbilityImage" ).abilityname = abilityName;
@@ -205,17 +207,13 @@ function ActivateAbility()
 		Abilities.AttemptToUpgrade( m_Ability );
 		return;
 	}
-
-	if (CheckSpellCost() && CheckDependencies()) 
+	if (Abilities.GetAbilityName(m_Ability) == "petri_exploration_tower_explore_world") 
 	{
-		if (Abilities.GetAbilityName(m_Ability) == "petri_exploration_tower_explore_world") 
-		{		
-			Abilities.ExecuteAbility( Entities.GetAbilityByName( Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), Abilities.GetAbilityName(m_Ability) ), Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), false );
-		}
-		else 
-		{
-			Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
-		}
+		Game.PrepareUnitOrders( { OrderType: dotaunitorder_t.DOTA_UNIT_ORDER_CAST_NO_TARGET, AbilityIndex: Entities.GetAbilityByName( Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), Abilities.GetAbilityName(m_Ability) ), TargetIndex: Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ) } );
+	}
+	else if (CheckSpellCost() && CheckDependencies()) 
+	{
+		Abilities.ExecuteAbility( m_Ability, m_QueryUnit, false );
 	}
 }
 
