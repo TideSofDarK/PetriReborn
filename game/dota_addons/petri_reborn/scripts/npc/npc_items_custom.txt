@@ -5141,7 +5141,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_supervest"
 	
-	  "ItemCost"            "60"
+	  "ItemCost"            "150"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "supervest"
@@ -5177,7 +5177,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "45"
+	  "ItemCost"            "135"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5233,7 +5233,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "650"
+	  "ItemCost"            "100"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
