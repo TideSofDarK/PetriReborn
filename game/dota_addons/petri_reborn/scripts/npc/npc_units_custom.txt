@@ -861,7 +861,7 @@
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	  
-	  "StatusHealth"        "600"     
+	  "StatusHealth"        "6000"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
@@ -1097,7 +1097,7 @@
 	  "FollowRange"       "0"   
 	
 	  "StatusHealth"        "10"     
-	  "StatusHealthRegen"     "0"     
+	  "StatusHealthRegen"     "10"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
 	
@@ -1141,7 +1141,7 @@
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	
-	  "StatusHealth"        "20"     
+	  "StatusHealth"        "150"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     
@@ -1247,7 +1247,7 @@
 	  "MovementTurnRate"    "0.0"  
 	  "HasAggressiveStance"     "0"
 	  
-	  "StatusHealth"        "50"
+	  "StatusHealth"        "100"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"       "0"
@@ -1348,7 +1348,7 @@
 	  "MovementTurnRate"    "0.0"  
 	  "HasAggressiveStance"     "0"
 	  
-	  "StatusHealth"        "50"
+	  "StatusHealth"        "100"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"       "0"
@@ -1566,7 +1566,7 @@
 	  "MovementTurnRate"    "0.0"  
 	  "HasAggressiveStance"     "0"
 	
-	  "StatusHealth"        "10.0"
+	  "StatusHealth"        "50.0"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"       "0"
@@ -1722,7 +1722,7 @@
 	  "MovementTurnRate"      "0.0"   
 	  "FollowRange"       "0"   
 	  
-	  "StatusHealth"        "5"     
+	  "StatusHealth"        "20"     
 	  "StatusHealthRegen"     "0"     
 	  "StatusMana"        "0"     
 	  "StatusManaRegen"     "0"     

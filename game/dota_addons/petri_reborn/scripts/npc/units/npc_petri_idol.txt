@@ -33,7 +33,7 @@
   "MovementTurnRate"    "0.0"  
   "HasAggressiveStance"     "0"
   
-  "StatusHealth"        "50"
+  "StatusHealth"        "100"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"       "0"

@@ -34,7 +34,7 @@
   "FollowRange"       "0"   
 
   "StatusHealth"        "10"     
-  "StatusHealthRegen"     "0"     
+  "StatusHealthRegen"     "10"     
   "StatusMana"        "0"     
   "StatusManaRegen"     "0"     
 
