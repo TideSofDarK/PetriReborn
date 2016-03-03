@@ -44,3 +44,17 @@ function GameMode:TestStaticPopup()
     end
   end
 end
+
+function GameMode:GetGold()
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      print(GameMode.assignedPlayerHeroes[playerID].allEarnedGold)
+    end
+  end
+end
+
+function GameMode:DontEndGame(  )
+  GameMode.PETRI_NO_END = true
+end

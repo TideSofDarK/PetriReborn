@@ -21,6 +21,8 @@ function Upgrade (event)
 	if wall_level == 1 then
 		caster:AddAbility("petri_wall_glyph")
 		InitAbilities(caster)
+	elseif wall_level == 8 then
+		GameMode.FIRST_ZOMBIE = GameMode.FIRST_ZOMBIE or math.floor(GameMode.PETRI_TRUE_TIME)
 	elseif wall_level == 12 then
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_roshan_gold", {})
 	end

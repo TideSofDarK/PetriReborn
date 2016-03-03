@@ -49,6 +49,9 @@ GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
 GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME = 300
 GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 
+GameMode.villians = {}
+GameMode.kvns = {}
+
 require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
@@ -68,6 +71,7 @@ require('internal/events')
 require('events')
 
 require('lottery')
+require('scores')
 
 require('filters')
 require('commands')
@@ -175,6 +179,8 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
+          newHero.kvnScore = 0
+
           Timers:CreateTimer(function (  )
             SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
             SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
@@ -182,6 +188,8 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.SELECTED_UNITS[pID] = {}
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
+
+          table.insert(GameMode.kvns, newHero)
         end, 
       pID)
     end
@@ -219,8 +227,12 @@ function GameMode:OnHeroInGame(hero)
 
           GameMode.assignedPlayerHeroes[pID] = newHero
 
+          newHero.petrosyanScore = 0
+
           GameMode.SELECTED_UNITS[pID] = {} 
           GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
+
+          GameMode.villians[petrosyanHeroName] = newHero
 
           Timers:CreateTimer(function (  )
             if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
@@ -298,6 +310,8 @@ function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
   PETRI_GAME_HAS_STARTED = true
+
+  GameMode:TimingScores( )
 
   Timers:CreateTimer(1.0,
     function()
@@ -448,6 +462,7 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "taeg", Dynamic_Wrap(GameMode, 'TestAdditionalExitGold'), "Test for additional exit gold", FCVAR_CHEAT )
   Convars:RegisterCommand( "tspu", Dynamic_Wrap(GameMode, 'TestStaticPopup'), "Test static popup", FCVAR_CHEAT )
   Convars:RegisterCommand( "deg", Dynamic_Wrap(GameMode, 'DontEndGame'), "Dont end game", FCVAR_CHEAT )
+  Convars:RegisterCommand( "getgold", Dynamic_Wrap(GameMode, 'GetGold'), "Get all gold", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 
@@ -574,10 +589,6 @@ function SetupVIPItems(hero, steamID)
   end
 end
 
-function GameMode:DontEndGame(  )
-  GameMode.PETRI_NO_END = true
-end
-
 function KVNWin(keys)
   local caster = keys.caster
 
@@ -593,6 +604,7 @@ function KVNWin(keys)
 
       Timers:CreateTimer(5.0,
         function()
+          GameRules.Winner = DOTA_TEAM_GOODGUYS
           GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS) 
         end)
     end
@@ -604,6 +616,7 @@ function PetrosyanWin()
     Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
     Timers:CreateTimer(5.0,
       function()
+        GameRules.Winner = DOTA_TEAM_BADGUYS
         GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
       end)
   end

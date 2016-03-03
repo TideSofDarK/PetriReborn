@@ -80,3 +80,8 @@ function GetItemList(hero)
 
     return itemList
 end
+
+function ConvertTime(time)
+    if not time then return nil end
+    return string.format("%.2d:%.2d", time/60%60, time%60)
+end

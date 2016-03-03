@@ -8,6 +8,8 @@ function BonusGoldFromWall(keys)
 	if target:GetUnitName() == "npc_petri_wall" then
 		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), bonusGold, false, DOTA_ModifyGold_SharedGold)
 
+		caster.petrosyanScore = caster.petrosyanScore + 5
+
 		PopupParticle(bonusGold, Vector(244,201,23), 3.0, caster)
 	end
 

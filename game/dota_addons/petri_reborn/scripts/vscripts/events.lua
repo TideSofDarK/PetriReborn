@@ -350,6 +350,7 @@ function GameMode:OnEntityKilled( keys )
 
         Timers:CreateTimer(2.0,
           function()
+            GameRules.Winner = DOTA_TEAM_BADGUYS
             GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
           end)
       end

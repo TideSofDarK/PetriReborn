@@ -273,9 +273,15 @@ end
 function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
 
-  if GameMode.assignedPlayerHeroes[event.player_id_const] then
-    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold or 0
-    GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold = GameMode.assignedPlayerHeroes[event.player_id_const].allEarnedGold + event["gold"]
+  local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
+
+  if hero then
+    hero.allEarnedGold = hero.allEarnedGold or 0
+    hero.allEarnedGold = hero.allEarnedGold + event["gold"]
+
+    if hero.allEarnedGold >= 100000 and not GameMode.FIRST_MONEY then
+      GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
+    end
   end
 
   if event.reason_const == DOTA_ModifyGold_HeroKill then

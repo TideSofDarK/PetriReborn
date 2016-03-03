@@ -27,6 +27,7 @@ function customSchema:init()
 
             -- Send custom stats
             if statCollection.HAS_SCHEMA then
+                statCollection:sendStage3(GetPetriWinners(), true)
                 statCollection:sendCustom({ game = game, players = players })
             end
         end
@@ -43,6 +44,10 @@ function BuildGameArray()
     local game = {}
 
     -- Add game values here as game.someValue = GetSomeGameValue()
+    game.fb = GameMode.FIRST_BAG or ''
+    game.fz = GameMode.FIRST_ZOMBIE or ''
+    game.fm = GameMode.FIRST_MONEY or ''
+    game.wt = GameRules.Winner
 
     return game
 end
@@ -54,12 +59,23 @@ function BuildPlayersArray()
         if PlayerResource:IsValidPlayerID(playerID) then
             if not PlayerResource:IsBroadcaster(playerID) then
 
-                local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+                local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
+
+                local player_team = ""
+                if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
+                    player_team = "Petrosyans"
+                else
+                    player_team = "KVN"
+                end
 
                 table.insert(players, {
                     -- steamID32 required in here
                     steamID32 = PlayerResource:GetSteamAccountID(playerID),
-
+                    ks = hero.kvnScore or '',
+                    ps = hero.petrosyanScore or '',
+                    aeg = hero.allEarnedGold or 0,
+                    pt = player_team,
+                    bma = hero:GetUnitName() == "npc_dota_hero_storm_spirit"
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
                 })
@@ -115,4 +131,26 @@ function BuildRoundWinnerArray()
     return winners
 end
 
+
 -------------------------------------
+
+function GetPetriWinners()
+   local winners = {}
+   for playerID = 0, DOTA_MAX_PLAYERS do
+       if PlayerResource:IsValidPlayerID(playerID) then
+            if not PlayerResource:IsBroadcaster(playerID) then
+                winners[PlayerResource:GetSteamAccountID(playerID)] = (IsPlayerWinner(playerID) == true) and 1 or 0
+            end
+       end
+    end
+
+    return winners
+end
+
+function IsPlayerWinner(playerID)
+    if PlayerResource:IsValidPlayerID(playerID) then
+        GameRules.Winner = GameRules.Winner or 0
+        local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
+        return (PlayerResource:GetTeam(playerID) == GameRules.Winner) and (hero:GetUnitName() ~= "npc_dota_hero_storm_spirit")
+    end
+end

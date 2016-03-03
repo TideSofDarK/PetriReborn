@@ -101,6 +101,8 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 
 		caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
 
+		GameMode.FIRST_BAG = GameMode.FIRST_BAG or math.floor(GameMode.PETRI_TRUE_TIME)
+
 		if not hero.bagRecord then
 			local time = GameMode.PETRI_TRUE_TIME
 			hero.bagRecord = string.format("%.2d:%.2d", time/60%60, time%60)
