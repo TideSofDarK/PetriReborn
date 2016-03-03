@@ -31,5 +31,7 @@ function GetPetriBonusScore( gold, modifier )
 end
 
 function GetKVNBonusScore( gold, modifier )
-	return (gold-1) * modifier
+	local score = (gold-1) * modifier
+	if score < 0 then score = 0 end
+	return score
 end
