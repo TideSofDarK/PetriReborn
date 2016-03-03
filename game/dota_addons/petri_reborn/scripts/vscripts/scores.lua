@@ -23,7 +23,11 @@ function GameMode:TimingScores( )
 end
 
 function GetPetriBonusScore( gold, modifier )
-	return (gold - (1192 * (modifier-1))) * (#GameMode.SCORE_TIMINGS - (modifier-1))
+	local basic_gold = 0 
+	if modifier > 1 then
+		basic_gold = 1192
+	end
+	return (gold - basic_gold) * (#GameMode.SCORE_TIMINGS - (modifier-1))
 end
 
 function GetKVNBonusScore( gold, modifier )
