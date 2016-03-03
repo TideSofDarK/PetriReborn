@@ -2506,6 +2506,182 @@
 	    }
 	  }  
 	}
+	"petri_mini_actor_chains"
+	{
+	 "BaseClass"           "ability_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "AbilityTextureName"      "petri_mini_actor_chains"
+	
+	  "AbilityCastRange"        "800"
+	  "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
+	  "AbilityCooldown"       "190 185 180 175 170 165 160 155 150 145 140 135 130 125 120"
+	  "AbilityCastPoint"      "0.4"
+	
+	  "MaxLevel"            "15"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/status_fx/status_effect_shaman_shackle.vpcf"   
+	    "particle"  "particles/miniactor_chains.vpcf"
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "channel_time_hero"    "1.2 1.4 1.6 1.8 2 2.2 2.4 2.6 2.8 3 3.2 3.4 3.6 3.8 4"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "channel_time_building"    "4 4.5 5 5.5 6 7 8 9 10 11 12 13 14 15 16"
+	    }
+	    "03"
+	    {
+	      "var_type"      "FIELD_FLOAT"
+	      "minus_armor"    "-7 -9 -11 -13 -15 -17 -19 -21 -23 -25 -27 -29 -31 -33 -35"
+	    }
+	  }
+	
+	  "OnAbilityPhaseStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "ChainsAnimation"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_ShadowShaman.Shackles.Cast"
+	      "Target"    "CASTER"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "ChainsModifier"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RemoveModifier"
+	    {
+	      "ModifierName"  "modifier_chains"
+	      "Target"     "TARGET"
+	    }
+	    "RemoveModifier"
+	    {
+	      "ModifierName"  "modifier_chains_building"
+	      "Target"     "TARGET"
+	    }
+	    "RemoveModifier"
+	    {
+	      "ModifierName"  "modifier_chains_silence"
+	      "Target"     "TARGET"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_chains"
+	    {
+	      "IsDebuff"      "1"
+	      "IsHidden"      "1"
+	  
+	      "States"
+	      {
+	        "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	
+	      "StatusEffectName"    "particles/status_fx/status_effect_shaman_shackle.vpcf"      
+	      "StatusEffectPriority"  "10"
+	
+	      "OverrideAnimation"     "ACT_DOTA_DISABLED"
+	
+	      "OnCreated"
+	      { 
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "CreateChainsParticle"
+	        }
+	      }
+	      "OnDestroy"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "DestroyChainsParticle"
+	        }
+	      }
+	    }
+	
+	    "modifier_chains_silence"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "States"
+	      {
+	        "MODIFIER_STATE_SILENCED"    "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	
+	    "modifier_chains_building"
+	    {
+	      "IsDebuff"      "1"
+	      "IsHidden"      "1"
+	
+	      "StatusEffectName"    "particles/status_fx/status_effect_shaman_shackle.vpcf"      
+	      "StatusEffectPriority"  "10"
+	
+	      "OverrideAnimation"     "ACT_DOTA_DISABLED"
+	
+	      "OnCreated"
+	      { 
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "CreateChainsParticle"
+	        }
+	      }
+	      "OnDestroy"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "DestroyChainsParticle"
+	        }
+	      }
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "SetChainStacks"
+	        }
+	      }
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%minus_armor"
+	      }
+	    }
+	  }
+	}
 	"petri_mini_actor_drink"
 	{
 	 "BaseClass"           "ability_datadriven"

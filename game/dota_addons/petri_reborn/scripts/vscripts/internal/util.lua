@@ -115,6 +115,11 @@ function GetGoldModifier()
   return 1.0
 end
 
+function IsBuilding( target )
+
+  return IsValidEntity(target) and target:HasAbility("petri_building") == true or target:HasAbility("petri_tower") == true
+end
+
 function IsInsideEntityBounds(ent, position)
   local origin = entity:GetAbsOrigin()
   local bounds = entity:GetBounds()
