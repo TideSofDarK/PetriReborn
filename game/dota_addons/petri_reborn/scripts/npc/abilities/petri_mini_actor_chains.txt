@@ -45,7 +45,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "ChainsAnimation"
     }
   }
@@ -59,7 +59,7 @@
     }
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "ChainsModifier"
     }
   }
@@ -68,7 +68,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "ForceRemoveChains"
     }
   }
@@ -94,7 +94,7 @@
       { 
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "CreateChainsParticle"
         }
       }
@@ -102,7 +102,7 @@
       {
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "DestroyChainsParticle"
         }
       }
@@ -135,7 +135,7 @@
       { 
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "CreateChainsParticle"
         }
       }
@@ -143,12 +143,12 @@
       {
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "DestroyChainsParticle"
         }
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "ForceEndChainsChannel"
         }
       }
@@ -158,7 +158,7 @@
       {
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "SetChainStacks"
         }
       }

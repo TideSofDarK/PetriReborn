@@ -2553,7 +2553,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "ChainsAnimation"
 	    }
 	  }
@@ -2567,7 +2567,7 @@
 	    }
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "ChainsModifier"
 	    }
 	  }
@@ -2576,7 +2576,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "ForceRemoveChains"
 	    }
 	  }
@@ -2602,7 +2602,7 @@
 	      { 
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "CreateChainsParticle"
 	        }
 	      }
@@ -2610,7 +2610,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "DestroyChainsParticle"
 	        }
 	      }
@@ -2643,7 +2643,7 @@
 	      { 
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "CreateChainsParticle"
 	        }
 	      }
@@ -2651,12 +2651,12 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "DestroyChainsParticle"
 	        }
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "ForceEndChainsChannel"
 	        }
 	      }
@@ -2666,7 +2666,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "SetChainStacks"
 	        }
 	      }
@@ -2726,7 +2726,7 @@
 	    }
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "Drink"
 	    }
 	    "FireSound"
@@ -2741,7 +2741,7 @@
 	    "DeleteOnHit"  "1"
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "DrinkOnHit"
 	    }
 	    "FireEffect"
@@ -2867,7 +2867,7 @@
 	    "DeleteOnHit"  "1"
 	    "RunScript"
 	    {
-	      "ScriptFile"  "units/petrosyan.lua"
+	      "ScriptFile"  "units/miniactor.lua"
 	      "Function"    "ButtExplode"
 	    }
 	  }
@@ -2890,7 +2890,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"  "units/petrosyan.lua"
+	          "ScriptFile"  "units/miniactor.lua"
 	          "Function"    "ButtDamage"
 	        }
 	      }
@@ -2964,7 +2964,7 @@
 	  {
 	    "RunScript"
 	    {
-	      "ScriptFile"    "units/petrosyan.lua"
+	      "ScriptFile"    "units/miniactor.lua"
 	      "Function"      "PullEyes"
 	      "Target"        "POINT"
 	    }
@@ -2985,7 +2985,7 @@
 	    }
 	    "RunScript"
 	    {
-	      "ScriptFile"    "units/petrosyan.lua"
+	      "ScriptFile"    "units/miniactor.lua"
 	      "Function"      "StopPullingEyes"
 	    }
 	  }
@@ -2999,7 +2999,7 @@
 	    }
 	    "RunScript"
 	    {
-	      "ScriptFile"    "units/petrosyan.lua"
+	      "ScriptFile"    "units/miniactor.lua"
 	      "Function"      "StopPullingEyes"
 	    }
 	  }
@@ -3017,7 +3017,7 @@
 	      {
 	        "RunScript"
 	        {
-	          "ScriptFile"    "units/petrosyan.lua"
+	          "ScriptFile"    "units/miniactor.lua"
 	          "Function"      "PullEyesChanneling"
 	        }
 	      }

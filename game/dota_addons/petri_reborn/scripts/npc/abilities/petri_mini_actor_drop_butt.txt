@@ -69,7 +69,7 @@
     "DeleteOnHit"  "1"
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "ButtExplode"
     }
   }
@@ -92,7 +92,7 @@
       {
         "RunScript"
         {
-          "ScriptFile"  "units/petrosyan.lua"
+          "ScriptFile"  "units/miniactor.lua"
           "Function"    "ButtDamage"
         }
       }

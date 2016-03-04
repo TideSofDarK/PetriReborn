@@ -46,7 +46,7 @@
     }
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "Drink"
     }
     "FireSound"
@@ -61,7 +61,7 @@
     "DeleteOnHit"  "1"
     "RunScript"
     {
-      "ScriptFile"  "units/petrosyan.lua"
+      "ScriptFile"  "units/miniactor.lua"
       "Function"    "DrinkOnHit"
     }
     "FireEffect"

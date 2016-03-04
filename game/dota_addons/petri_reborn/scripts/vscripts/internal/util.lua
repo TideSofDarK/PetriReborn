@@ -445,10 +445,18 @@ function Split(s, delimiter)
 end
 
 function CheckKVN()
-  local kvns = Entities:FindAllByName("npc_dota_hero_rattletrap")
-  for k,v in pairs(kvns) do
-    if v:IsAlive() == true and PlayerResource:GetConnectionState(v:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then return false end
+  for playerID = 0, DOTA_MAX_PLAYERS do
+    if PlayerResource:IsValidPlayerID(playerID) then
+      if not PlayerResource:IsBroadcaster(playerID) then
+        if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS and 
+          PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED and
+          PlayerResource:GetPlayer(playerID):GetAssignedHero():IsAlive() then
+          return false
+        end
+      end
+    end
   end
+
   return true
 end
 

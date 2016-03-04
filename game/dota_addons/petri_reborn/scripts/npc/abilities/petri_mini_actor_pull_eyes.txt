@@ -43,7 +43,7 @@
   {
     "RunScript"
     {
-      "ScriptFile"    "units/petrosyan.lua"
+      "ScriptFile"    "units/miniactor.lua"
       "Function"      "PullEyes"
       "Target"        "POINT"
     }
@@ -64,7 +64,7 @@
     }
     "RunScript"
     {
-      "ScriptFile"    "units/petrosyan.lua"
+      "ScriptFile"    "units/miniactor.lua"
       "Function"      "StopPullingEyes"
     }
   }
@@ -78,7 +78,7 @@
     }
     "RunScript"
     {
-      "ScriptFile"    "units/petrosyan.lua"
+      "ScriptFile"    "units/miniactor.lua"
       "Function"      "StopPullingEyes"
     }
   }
@@ -96,7 +96,7 @@
       {
         "RunScript"
         {
-          "ScriptFile"    "units/petrosyan.lua"
+          "ScriptFile"    "units/miniactor.lua"
           "Function"      "PullEyesChanneling"
         }
       }

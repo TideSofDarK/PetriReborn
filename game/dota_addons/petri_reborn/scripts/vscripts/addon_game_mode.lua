@@ -4,10 +4,12 @@ require('gamemode')
 require("statcollection/init")
 
 function Precache( context )
-  SendToServerConsole( "dota_combine_models 0" )
-  SendToConsole( "dota_combine_models 0" )
+  -- SendToServerConsole( "dota_combine_models 0" )
+  -- SendToConsole( "dota_combine_models 0" )
   
   -- ITEMS
+  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
+
   PrecacheItemByNameSync("item_petri_pile_of_wood", context)
   PrecacheItemByNameSync("item_petri_gold_coin", context)
   PrecacheItemByNameSync("item_petri_boots", context)
@@ -20,8 +22,6 @@ function Precache( context )
   PrecacheItemByNameSync("item_petri_vip_greenkzn", context)
   PrecacheItemByNameSync("item_petri_vip_zeus", context)
   
-  PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
-
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
   PrecacheUnitByNameSync("npc_petri_mini_actor", context)
 
