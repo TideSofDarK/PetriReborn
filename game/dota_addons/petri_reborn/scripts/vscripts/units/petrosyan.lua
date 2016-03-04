@@ -108,6 +108,78 @@ function Drink( keys )
 	caster:EmitSound("Hero_Alchemist.UnstableConcoction.Fuse")
 end
 
+function SetChainStacks( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	local modifier_name = "modifier_chains_building"
+
+	local minus_armor = ability:GetLevelSpecialValueFor("minus_armor", ability:GetLevel() - 1)
+
+	target:SetModifierStackCount(modifier_name, caster, target:GetModifierStackCount(modifier_name, caster) + 1)
+end
+
+function ChainsModifier( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	local hero_time = ability:GetLevelSpecialValueFor("channel_time_hero", ability:GetLevel() - 1)
+	local building_time = ability:GetLevelSpecialValueFor("channel_time_building", ability:GetLevel() - 1)
+
+	if IsBuilding(target) == true then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_chains_building", {duration = building_time})
+		if target:GetUnitName() == "npc_petri_gold_tower" or
+			target:GetUnitName() == "npc_petri_tower_basic" or
+			target:GetUnitName() == "npc_petri_tower_of_evil" or
+			target:GetUnitName() == "npc_petri_sawmill" or
+			target:GetUnitName() == "npc_petri_exploration_tree" then
+			ability:ApplyDataDrivenModifier(caster, target, "modifier_chains_silence", {duration = building_time})
+		end
+		FreezeAnimation(caster, building_time)
+	elseif target:IsHero() == true then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_chains", {duration = hero_time})
+		FreezeAnimation(caster, hero_time)
+	end
+end
+
+function ChainsAnimation( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	StartAnimation(caster, {duration=0.4, activity=ACT_DOTA_CAST_ABILITY_1, rate=1.0})
+end
+
+function CreateChainsParticle( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	local particleName = "particles/miniactor_chains.vpcf"
+
+	ability.particle = ParticleManager:CreateParticle(particleName, PATTACH_CUSTOMORIGIN, caster)
+	ParticleManager:SetParticleControlEnt(ability.particle, 0, caster, PATTACH_POINT_FOLLOW, "attach_attack1", caster:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 2, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 3, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 4, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 5, caster, PATTACH_POINT_FOLLOW, "attach_attack1", caster:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 6, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+	ParticleManager:SetParticleControlEnt(ability.particle, 7, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
+end
+
+function DestroyChainsParticle( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	UnfreezeAnimation(caster)
+
+	ParticleManager:DestroyParticle(ability.particle, false)
+end
+
 function DrinkOnHit( keys )
 	local caster = keys.caster
 	local target = keys.target

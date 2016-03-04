@@ -63,9 +63,9 @@ function BuildPlayersArray()
 
                 local player_team = ""
                 if hero:GetTeam() == DOTA_TEAM_GOODGUYS then
-                    player_team = "Petrosyans"
-                else
                     player_team = "KVN"
+                else
+                    player_team = "Petrosyans"
                 end
 
                 table.insert(players, {
@@ -75,7 +75,7 @@ function BuildPlayersArray()
                     ps = hero.petrosyanScore or '',
                     aeg = hero.allEarnedGold or 0,
                     pt = player_team,
-                    bma = hero:GetUnitName() == "npc_dota_hero_storm_spirit"
+                    bma = hero:GetUnitName() == "npc_dota_hero_storm_spirit" or ''
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
                 })
