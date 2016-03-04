@@ -1182,7 +1182,7 @@
 	    "05"
 	    {
 	      "var_type"                      "FIELD_INTEGER"
-	      "bonus_damage_percent"                    "110"
+	      "bonus_damage_percent"                    "100"
 	    }
 	  }
 	

@@ -2222,7 +2222,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_chicken"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "1250"
 	  "ItemShopTags"          "health_pool"
 	  "ItemQuality"         "component"
 	
@@ -2231,12 +2231,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "2500"
+	      "bonus_health"      "4000"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "50"
+	      "bonus_regen"      "25"
 	    }
 	  }
 	  
@@ -2308,7 +2308,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "2000"
+	  "ItemCost"            "1750"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -2462,7 +2462,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "3"
+	      "bonus_armor"      "2"
 	    }
 	  }
 	  
@@ -3544,7 +3544,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_shield_of_nature"
 	
-	  "ItemCost"            "2400"
+	  "ItemCost"            "3400"
 	  "ItemShopTags"          "armor"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "shield of nature"
@@ -3581,7 +3581,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1500"
+	  "ItemCost"            "2500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3611,7 +3611,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "800"
+	      "bonus_armor"      "1150"
 	    }
 	  }
 	
@@ -3638,7 +3638,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "2000"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3743,7 +3743,7 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "1"
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    "0"
 	      }
 	    }
 	    "modifier_item_petri_best_shield_datadriven"
@@ -4389,7 +4389,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "400"
+	  "ItemCost"            "500"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4541,7 +4541,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "250"
+	  "ItemCost"            "339"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4564,7 +4564,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "1000"
+	  "ItemCost"            "1500"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4716,7 +4716,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "600"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4739,7 +4739,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "4000"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -4891,7 +4891,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "3000"
+	  "ItemCost"            "3500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4914,7 +4914,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "12000"
+	  "ItemCost"            "15000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -5066,7 +5066,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "9000"
+	  "ItemCost"            "10000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5095,7 +5095,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "10"
+	      "bonus_armor"      "5"
 	    }
 	  }
 	  
@@ -5151,7 +5151,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "20"
+	      "bonus_armor"      "8"
 	    }
 	  }
 	  
@@ -5207,7 +5207,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "50"
+	      "bonus_armor"      "25"
 	    }
 	  }
 	  
@@ -5263,7 +5263,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "150"
+	      "bonus_armor"      "250"
 	    }
 	  }
 	  

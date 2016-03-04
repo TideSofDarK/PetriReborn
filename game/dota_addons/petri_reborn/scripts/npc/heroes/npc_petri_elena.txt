@@ -15,7 +15,7 @@
   "Ability7"        "petri_petrosyan_passive"
   "Ability8"        "petri_exploration_tower_explore_world"
 
-  "ArmorPhysical"       "1"                 
+  "ArmorPhysical"       "0"                 
   "MagicalResistance"       "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
