@@ -78,6 +78,43 @@ require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")
+
+  PrecacheItemByNameAsync("item_petri_pile_of_wood", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_gold_coin", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_boots", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_hook", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_alcohol", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_vip_laguna", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_evasion_scroll", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_vip_frostbite", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_vip_furion", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_vip_greenkzn", function(  ) end)
+  PrecacheItemByNameAsync("item_petri_vip_zeus", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_cop_trap", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_cop", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_janitor", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_creep_bad_actor", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_dead_actor", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_draconoid", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_good_actor", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_humorist", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_kvn_actor", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_creep_kivin", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_svetlakov", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_maslyakov", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_gusman", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_peasant", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_super_peasant", function(  ) end)
+  PrecacheUnitByNameAsync("npc_petri_mega_peasant", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_trap", function(  ) end)
+
+  PrecacheUnitByNameAsync("npc_petri_earth_wall", function(  ) end)
 end
 
 function GameMode:OnFirstPlayerLoaded()
@@ -86,16 +123,30 @@ end
 
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
-  
-  PrecacheUnitByNameAsync("npc_precache_guy", function()
-    PrecacheUnitByNameAsync("npc_precache_guy_2", function()
-      PrecacheUnitByNameAsync("npc_precache_guy_3", function()
-        PrecacheUnitByNameAsync("npc_precache_guy_4", function()
+
+  local precacheUnitName = "npc_precache_guy"
+
+  PrecacheUnitByNameAsync(precacheUnitName, function()
+    for i=2,5 do
+      Timers:CreateTimer(2.0 * i, function (  )
+        PrecacheUnitByNameAsync(precacheUnitName.."_"..tostring(i), function()
         
         end)
       end)
-    end)
+    end
   end)
+  
+  -- PrecacheUnitByNameAsync("npc_precache_guy", function()
+  --   PrecacheUnitByNameAsync("npc_precache_guy_2", function()
+  --     PrecacheUnitByNameAsync("npc_precache_guy_3", function()
+  --       PrecacheUnitByNameAsync("npc_precache_guy_4", function()
+  --         PrecacheUnitByNameAsync("npc_precache_guy_5", function()
+          
+  --         end)
+  --       end)
+  --     end)
+  --   end)
+  -- end)
   
   -- for i=0,12 do
   --   local player = PlayerResource:GetPlayer(i)
@@ -307,6 +358,8 @@ end
 
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  statCollection:sendStage2()
 
   GameMode.PETRI_GAME_HAS_STARTED = true
 

@@ -9,48 +9,11 @@ function Precache( context )
   
   -- ITEMS
   PrecacheResource("model", "models/props_gameplay/red_box.vmdl", context)
-
-  PrecacheItemByNameSync("item_petri_pile_of_wood", context)
-  PrecacheItemByNameSync("item_petri_gold_coin", context)
-  PrecacheItemByNameSync("item_petri_boots", context)
-  PrecacheItemByNameSync("item_petri_hook", context)
-  PrecacheItemByNameSync("item_petri_alcohol", context)
-  PrecacheItemByNameSync("item_petri_vip_laguna", context)
-  PrecacheItemByNameSync("item_petri_evasion_scroll", context)
-  PrecacheItemByNameSync("item_petri_vip_frostbite", context)
-  PrecacheItemByNameSync("item_petri_vip_furion", context)
-  PrecacheItemByNameSync("item_petri_vip_greenkzn", context)
-  PrecacheItemByNameSync("item_petri_vip_zeus", context)
   
   PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
   PrecacheUnitByNameSync("npc_petri_mini_actor", context)
 
   -- UNITS
-  PrecacheUnitByNameSync("npc_petri_cop_trap", context)
-
-  PrecacheUnitByNameSync("npc_petri_cop", context)
-  PrecacheUnitByNameSync("npc_petri_janitor", context)
-
-  PrecacheUnitByNameSync("npc_petri_creep_bad_actor", context)
-  PrecacheUnitByNameSync("npc_petri_creep_dead_actor", context)
-  PrecacheUnitByNameSync("npc_petri_creep_draconoid", context)
-  PrecacheUnitByNameSync("npc_petri_creep_good_actor", context)
-  PrecacheUnitByNameSync("npc_petri_creep_humorist", context)
-  PrecacheUnitByNameSync("npc_petri_creep_kvn_actor", context)
-  PrecacheUnitByNameSync("npc_petri_creep_kivin", context)
-
-  PrecacheUnitByNameSync("npc_petri_svetlakov", context)
-  PrecacheUnitByNameSync("npc_petri_maslyakov", context)
-  PrecacheUnitByNameSync("npc_petri_gusman", context)
-
-  PrecacheUnitByNameSync("npc_petri_peasant", context)
-  PrecacheUnitByNameSync("npc_petri_super_peasant", context)
-  PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
-
-  PrecacheUnitByNameSync("npc_petri_trap", context)
-
-  PrecacheUnitByNameSync("npc_petri_earth_wall", context)
-
   PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_ghost_a/n_creep_ghost_a.vmdl", context)
 
   -- Custom skins

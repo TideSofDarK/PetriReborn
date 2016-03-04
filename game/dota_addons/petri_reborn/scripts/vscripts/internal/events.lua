@@ -9,7 +9,7 @@ function GameMode:_OnGameRulesStateChange(keys)
     GameMode:PostLoadPrecache()
 
     if USE_CUSTOM_COLORS_FOR_PLAYERS then
-      for i=0,13 do
+      for i=0,DOTA_MAX_PLAYERS do
         if PlayerResource:IsValidPlayer(i) then
           local color = PLAYER_COLORS[i]
           PlayerResource:SetCustomPlayerColor(i, color[1], color[2], color[3])
