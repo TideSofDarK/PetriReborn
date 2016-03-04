@@ -148,6 +148,24 @@ function ChainsModifier( keys )
 	end
 end
 
+function ForceRemoveChains( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	target:RemoveModifierByName("modifier_chains")
+	target:RemoveModifierByName("modifier_chains_silence")
+	target:RemoveModifierByName("modifier_chains_building")
+end
+
+function ForceEndChainsChannel( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	if target then ability:EndChannel(true) end
+end
+
 function ChainsAnimation( keys )
 	local caster = keys.caster
 	local target = keys.target
@@ -179,7 +197,9 @@ function DestroyChainsParticle( keys )
 	local target = keys.target
 	local ability = keys.ability
 
-	ability:EndChannel(true)
+	if ability:IsChanneling() == true then
+		ability:EndChannel(false)
+	end
 
 	UnfreezeAnimation(caster)
 

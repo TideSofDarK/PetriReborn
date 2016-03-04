@@ -4,9 +4,6 @@ BAREBONES_DEBUG_SPEW = false
 
 DISABLED_HINTS_PLAYERS = {}
 
-PETRI_GAME_HAS_STARTED = false
-PETRI_GAME_HAS_ENDED = false
-
 PETRI_TIME_LIMIT = 96
 PETRI_EXIT_MARK = 28
 PETRI_EXIT_ALLOWED = false
@@ -33,6 +30,9 @@ if GameMode == nil then
     _G.GameMode = class({})
 end
 
+GameMode.PETRI_GAME_HAS_STARTED = false
+GameMode.PETRI_GAME_HAS_ENDED = false
+
 GameMode.PETRI_NO_END = false
 
 GameMode.PETRI_TRUE_TIME = 0
@@ -52,7 +52,6 @@ GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 GameMode.villians = {}
 GameMode.kvns = {}
 
-require('libraries/timers')
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
@@ -309,7 +308,7 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  PETRI_GAME_HAS_STARTED = true
+  GameMode.PETRI_GAME_HAS_STARTED = true
 
   GameMode:TimingScores( )
 
@@ -593,8 +592,8 @@ function KVNWin(keys)
   local caster = keys.caster
 
   if GameMode.PETRI_NO_END == false then
-    if PETRI_GAME_HAS_ENDED == false then
-      PETRI_GAME_HAS_ENDED = true
+    if GameMode.PETRI_GAME_HAS_ENDED == false then
+      GameMode.PETRI_GAME_HAS_ENDED = true
 
       Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
 
@@ -613,11 +612,15 @@ end
 
 function PetrosyanWin()
   if GameMode.PETRI_NO_END == false then
-    Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
-    Timers:CreateTimer(5.0,
-      function()
-        GameRules.Winner = DOTA_TEAM_BADGUYS
-        GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
-      end)
+    if GameMode.PETRI_GAME_HAS_ENDED == false then
+      GameMode.PETRI_GAME_HAS_ENDED = true
+
+      Notifications:TopToAll({text="#petrosyan_limit", duration=100, style={color="red"}, continue=false})
+      Timers:CreateTimer(5.0,
+        function()
+          GameRules.Winner = DOTA_TEAM_BADGUYS
+          GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+        end)
+    end
   end
 end

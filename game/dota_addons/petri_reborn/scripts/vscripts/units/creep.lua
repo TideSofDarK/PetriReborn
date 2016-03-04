@@ -5,9 +5,13 @@ function Spawn( keys )
         thisEntity:SetAttackCapability(0)
     else 
         FindClearSpaceForUnit(thisEntity, thisEntity:GetAbsOrigin(),true)
-        Timers:CreateTimer(0.03, function (  )
+        if Timers then
+            Timers:CreateTimer(0.03, function (  )
+                thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
+            end)
+        else
             thisEntity.spawnPosition = thisEntity:GetAbsOrigin()
-        end)
+        end
     end
 end
 

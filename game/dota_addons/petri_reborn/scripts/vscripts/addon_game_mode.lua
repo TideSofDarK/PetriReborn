@@ -1,4 +1,5 @@
 require('internal/util')
+require('libraries/timers')
 require('gamemode')
 require("statcollection/init")
 
@@ -162,6 +163,8 @@ function Precache( context )
   PrecacheResource("particle", "particles/econ/courier/courier_flopjaw_gold/flopjaw_death_coins_gold.vpcf", context)
 
   PrecacheResource("particle", "particles/portal_level_msg.vpcf", context)
+
+  PrecacheResource("particle", "particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy.vpcf", context)
   
   -- SOUNDS
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts", context)

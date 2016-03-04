@@ -66,20 +66,10 @@
 
   "OnChannelInterrupted"
   {
-    "RemoveModifier"
+    "RunScript"
     {
-      "ModifierName"  "modifier_chains"
-      "Target"     "TARGET"
-    }
-    "RemoveModifier"
-    {
-      "ModifierName"  "modifier_chains_building"
-      "Target"     "TARGET"
-    }
-    "RemoveModifier"
-    {
-      "ModifierName"  "modifier_chains_silence"
-      "Target"     "TARGET"
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ForceRemoveChains"
     }
   }
 
@@ -155,6 +145,11 @@
         {
           "ScriptFile"  "units/petrosyan.lua"
           "Function"    "DestroyChainsParticle"
+        }
+        "RunScript"
+        {
+          "ScriptFile"  "units/petrosyan.lua"
+          "Function"    "ForceEndChainsChannel"
         }
       }
 

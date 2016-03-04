@@ -1,4 +1,7 @@
 function GameMode:FilterExecuteOrder( filterTable )
+
+    if GameMode.PETRI_GAME_HAS_ENDED == true then return false end
+
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
     local issuer = filterTable["issuer_player_id_const"]
