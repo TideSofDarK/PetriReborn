@@ -489,7 +489,7 @@ function GameMode:OnEntityKilled( keys )
       ParticleManager:SetParticleControl( particle, 0, killedUnit:GetAbsOrigin() )
     end)
 
-    Timers:CreateTimer(0.5,
+    Timers:CreateTimer(0.37,
     function()
       local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
     end)

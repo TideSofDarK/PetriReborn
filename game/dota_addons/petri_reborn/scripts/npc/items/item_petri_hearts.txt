@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_chicken"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "1250"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -16,12 +16,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "2500"
+      "bonus_health"      "4000"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "50"
+      "bonus_regen"      "25"
     }
   }
   
@@ -93,7 +93,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "2000"
+  "ItemCost"            "1750"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

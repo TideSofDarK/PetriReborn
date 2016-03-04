@@ -10,7 +10,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "400"
+  "ItemCost"            "500"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -162,7 +162,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "250"
+  "ItemCost"            "339"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -185,7 +185,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "1000"
+  "ItemCost"            "1500"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -337,7 +337,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "600"
+  "ItemCost"            "1000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -360,7 +360,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "4000"
+  "ItemCost"            "5000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -512,7 +512,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "3000"
+  "ItemCost"            "3500"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -535,7 +535,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "12000"
+  "ItemCost"            "15000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -687,7 +687,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "9000"
+  "ItemCost"            "10000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

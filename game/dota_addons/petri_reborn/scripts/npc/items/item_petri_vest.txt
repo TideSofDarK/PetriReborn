@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "10"
+      "bonus_armor"      "5"
     }
   }
   
@@ -73,7 +73,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "20"
+      "bonus_armor"      "8"
     }
   }
   
@@ -129,7 +129,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "50"
+      "bonus_armor"      "25"
     }
   }
   
@@ -185,7 +185,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "150"
+      "bonus_armor"      "250"
     }
   }
   
