@@ -139,6 +139,10 @@ function ChainsModifier( keys )
 		end
 		FreezeAnimation(caster, building_time)
 	elseif target:IsHero() == true then
+		local distance = (target:GetAbsOrigin() - caster:GetAbsOrigin()):Length()
+		if distance > 425 then
+			hero_time = 0.01
+		end
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_chains", {duration = hero_time})
 		FreezeAnimation(caster, hero_time)
 	end
@@ -174,6 +178,8 @@ function DestroyChainsParticle( keys )
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
+
+	ability:EndChannel(true)
 
 	UnfreezeAnimation(caster)
 
