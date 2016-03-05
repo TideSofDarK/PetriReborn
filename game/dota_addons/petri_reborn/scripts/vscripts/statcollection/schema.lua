@@ -149,8 +149,12 @@ end
 
 function IsPlayerWinner(playerID)
     if PlayerResource:IsValidPlayerID(playerID) then
-        GameRules.Winner = GameRules.Winner or 0
+        GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
         local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
-        return (PlayerResource:GetTeam(playerID) == GameRules.Winner) and (hero:GetUnitName() ~= "npc_dota_hero_storm_spirit")
+        if IsValidEntity(hero) then
+            return (PlayerResource:GetTeam(playerID) == GameRules.Winner) and (hero:GetUnitName() ~= "npc_dota_hero_storm_spirit")
+        else
+            return false
+        end
     end
 end

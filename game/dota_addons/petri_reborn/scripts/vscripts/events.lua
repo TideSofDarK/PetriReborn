@@ -4,13 +4,28 @@
 -- Cleanup a player when they leave
 function GameMode:OnDisconnect(keys)
   DebugPrint('[BAREBONES] Player Disconnected ' .. tostring(keys.userid))
-  PrintTable(keys)
 
   local name = keys.name
   local networkid = keys.networkid
   local reason = keys.reason
   local userid = keys.userid
-  
+
+  local everyoneLeft = true 
+
+  for playerID = 0, DOTA_MAX_PLAYERS do
+    if PlayerResource:IsValidPlayerID(playerID) then
+      if not PlayerResource:IsBroadcaster(playerID) then
+        if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
+          everyoneLeft = false
+        end
+      end
+    end
+  end
+
+  if everyoneLeft then
+    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+  end
+
   -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
   -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 end
@@ -341,7 +356,7 @@ function GameMode:OnEntityKilled( keys )
 
     Timers:CreateTimer(1.0,
     function()
-      if CheckKVN() and GameMode.PETRI_NO_END == false and GameMode.PETRI_GAME_HAS_ENDED == false then
+      if CheckKVN() and GameMode.PETRI_GAME_HAS_ENDED == false then
         GameMode.PETRI_GAME_HAS_ENDED = true
 
         Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})

@@ -445,13 +445,17 @@ function Split(s, delimiter)
 end
 
 function CheckKVN()
+  if GameMode.PETRI_NO_END == true then return false end
+
   for playerID = 0, DOTA_MAX_PLAYERS do
     if PlayerResource:IsValidPlayerID(playerID) then
       if not PlayerResource:IsBroadcaster(playerID) then
-        if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS and 
-          PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED and
-          PlayerResource:GetPlayer(playerID):GetAssignedHero():IsAlive() then
-          return false
+        if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS and PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
+          local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetPlayer(playerID):GetAssignedHero()
+
+          if hero:IsAlive() and hero:GetUnitName() ~= "npc_dota_hero_storm_spirit" then
+            return false
+          end
         end
       end
     end
