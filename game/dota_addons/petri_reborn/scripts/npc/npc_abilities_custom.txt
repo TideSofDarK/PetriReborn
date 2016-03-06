@@ -1353,6 +1353,15 @@
 	      "Target"     "CASTER"
 	    }
 	  }
+	
+	  "OnOwnerDied"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"  "Hero_EarthSpirit.StoneRemnant.Destroy"
+	      "Target"     "CASTER"
+	    }
+	  }
 	  
 	  "Modifiers"
 	  {
@@ -1415,11 +1424,6 @@
 	          "ModifierName"  "modifier_earth_regen"
 	          "Target"     "CASTER"
 	        }
-	        "FireSound"
-	        {
-	          "EffectName"  "Hero_EarthSpirit.Magnetize.Cast"
-	          "Target"     "CASTER"
-	        }
 	      }
 	    }
 	    "modifier_earth_regen"
@@ -1429,15 +1433,6 @@
 	
 	      "EffectName"     "particles/econ/events/ti4/bottle_ti4.vpcf"      
 	      "EffectAttachType"  "10"
-	
-	      "OnDestroy"
-	      {
-	        "FireSound"
-	        {
-	          "EffectName"  "Hero_EarthSpirit.Magnetize.End"
-	          "Target"     "CASTER"
-	        }
-	      }
 	
 	      "Properties"
 	      {
@@ -1457,11 +1452,6 @@
 	          "Chance"      "%stun_chance"
 	          "OnSuccess"
 	          {
-	            "FireSound"
-	            {
-	              "EffectName"  "Hero_EarthShaker.Totem"
-	              "Target"    "CASTER"
-	            }
 	            "FireEffect"
 	            {
 	              "EffectName"        "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target.vpcf"
