@@ -278,15 +278,6 @@ function GameMode:ModifyGoldFilter(event)
 
   local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
 
-  if hero then
-    hero.allEarnedGold = hero.allEarnedGold or 0
-    hero.allEarnedGold = hero.allEarnedGold + event["gold"]
-
-    if hero.allEarnedGold >= 100000 and not GameMode.FIRST_MONEY then
-      GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
-    end
-  end
-
   if event.reason_const == DOTA_ModifyGold_HeroKill then
     if GameRules:GetDOTATime(false, false) < 120 then return false end
 
@@ -320,11 +311,12 @@ function GameMode:ModifyGoldFilter(event)
           CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
         end
       end
-
-      GiveSharedGoldToTeam(math.floor(event["gold"]/2), DOTA_TEAM_BADGUYS)
+      event["gold"] = event["gold"]/2
+      GiveSharedGoldToTeam(math.floor(event["gold"]), DOTA_TEAM_BADGUYS)
       return false
     end
   end
+
   return true
 end
 

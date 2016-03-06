@@ -138,11 +138,11 @@ function SelectWinner()
 		local prize = v["prize"]
 		local bet = v["bet"]
 		if prize > bet then
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
+			AddCustomGold( pID, prize )
 			Notifications:Top(pID, {text="#win_lottery_1", duration=9, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		else
-			GameMode.assignedPlayerHeroes[pID]:ModifyGold(prize, false, 0)
+			AddCustomGold( pID, prize )
 			Notifications:Top(pID, {text="#lose_lottery_1", duration=4, continue=false, style={color="white", ["font-size"]="45px"}})
 			Notifications:Top(pID, {text=tostring(prize).."$", duration=9, continue=true, style={color="white", ["font-size"]="45px"}})
 		end

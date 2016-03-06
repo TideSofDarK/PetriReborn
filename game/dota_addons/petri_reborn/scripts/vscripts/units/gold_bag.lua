@@ -22,7 +22,7 @@ function GetGold( event )
 	local gold = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	
 	if caster:IsSilenced() == false then
-		PlayerResource:ModifyGold(pID, gold, false, 0)
+		AddCustomGold( pID, gold )
 	end
 end
 

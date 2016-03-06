@@ -10,5 +10,5 @@ function Use( event )
 
 	PopupParticle(amount, Vector(244,201,23), 1.0, caster)
 
-	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), amount, true, 0)
+	AddCustomGold( caster:GetPlayerOwnerID(), amount )
 end

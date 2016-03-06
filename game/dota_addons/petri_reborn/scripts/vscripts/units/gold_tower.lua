@@ -21,7 +21,7 @@ function GetGold( event )
 
 	local pID = caster:GetPlayerOwnerID()
 	if caster:IsSilenced() == false then
-		PlayerResource:ModifyGold(pID, tonumber(event["gold"]), false, 0)
+		AddCustomGold( pID, tonumber(event["gold"]) )
 	end
 end
 

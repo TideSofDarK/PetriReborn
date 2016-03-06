@@ -6,7 +6,7 @@ function BonusGoldFromWall(keys)
 	local bonusGold = ability:GetSpecialValueFor("bonus_gold_from_wall") or 1
 
 	if target:GetUnitName() == "npc_petri_wall" then
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), bonusGold, false, DOTA_ModifyGold_SharedGold)
+		AddCustomGold( caster:GetPlayerOwnerID(), bonusGold )
 
 		caster.petrosyanScore = caster.petrosyanScore + 5
 
