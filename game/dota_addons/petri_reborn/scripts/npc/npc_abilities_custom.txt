@@ -2943,6 +2943,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "exp_per_tick"          "1 2 3 4 5 15 20 25 30 35 40 45 50 70 300"
 	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "gold_per_tick"          "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+	    }
 	  }
 	
 	  "precache"

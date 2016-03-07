@@ -191,6 +191,7 @@ function PullEyesChanneling( keys )
 
 	if #units > 5 then
 		caster:AddExperience(exp, 0, false, true)
+		AddCustomGold(caster:GetPlayerOwnerID(), ability:GetLevelSpecialValueFor("gold_per_tick", level-1))
 	end
 
 	-- Vision
