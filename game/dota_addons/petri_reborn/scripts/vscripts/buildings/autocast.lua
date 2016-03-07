@@ -19,7 +19,7 @@ function BuildingAutocast( event )
 				if CheckFood(hero,ability:GetLevelSpecialValueFor("food_cost", 1), false) == true then
 					local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-					if hero.numberOfUnits < PETRI_MAX_WORKERS then
+					if hero.numberOfUnits < GameRules.PETRI_MAX_WORKERS then
 						caster:CastAbilityNoTarget(ability, caster:GetPlayerOwnerID())
 					else
 						if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end

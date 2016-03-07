@@ -39,13 +39,17 @@
   background-image: url("file://{images}/custom_game/loading_screen/twitter.png");
 }
 
+#TWITCH {
+  background-image: url("file://{images}/custom_game/loading_screen/twitch.png");
+}
+
 #SocialNetworks
 {
   flow-children: down;
   vertical-align: bottom;
   width: 750px;
   height: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   margin-left: 35px;
 }
 

@@ -29,13 +29,13 @@ function build( keys )
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" then
-		if PETRI_EXIT_ALLOWED == false then
+		if GameRules.PETRI_EXIT_ALLOWED == false then
 			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
 	end
 
 	-- Cancel building if limit is reached
-	if hero.buildingCount >= PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
+	if hero.buildingCount >= GameRules.PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
 		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
 	end
 

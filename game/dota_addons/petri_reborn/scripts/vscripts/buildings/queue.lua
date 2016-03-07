@@ -14,7 +14,7 @@ function EnqueueUnit( event, food )
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
-	if hero.numberOfUnits >= PETRI_MAX_WORKERS or hero.numberOfMegaWorkers >= PETRI_MAX_MEGA_WORKERS then
+	if hero.numberOfUnits >= GameRules.PETRI_MAX_WORKERS or hero.numberOfMegaWorkers >= GameRules.PETRI_MAX_MEGA_WORKERS then
 		Notifications:Top(caster:GetPlayerOwnerID(),{text="#max_number_of_workers", duration=3, style={color="red"}, continue=false})
 		if ability:GetAutoCastState() == true then ability:ToggleAutoCast() end
 		return false

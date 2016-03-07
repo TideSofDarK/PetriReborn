@@ -23,7 +23,8 @@
       <Label text="AlikVirg" class="Headline1" id="AlikVirg">
           <Image class="SkypeLogo" src="file://{images}/custom_game/loading_screen/skype.png" />
       </Label>
-
+  
+      <Label text="twitch.tv/dota2petri" class="SN Headline1" id="TWITCH" />
       <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" />
       <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" />
     </Panel>

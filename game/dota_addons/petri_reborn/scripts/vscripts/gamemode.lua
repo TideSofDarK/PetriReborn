@@ -192,9 +192,9 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(START_KVN_GOLD, false)
+          newHero:SetGold(GameRules.START_KVN_GOLD, false)
           InitHeroValues(newHero, pID)
-          newHero.lumber = START_KVN_LUMBER
+          newHero.lumber = GameRules.START_KVN_LUMBER
 
           newHero.uniqueUnitList = {}
 
@@ -239,7 +239,7 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(START_PETROSYANS_GOLD, false)
+          newHero:SetGold(GameRules.START_PETROSYANS_GOLD, false)
           InitHeroValues(newHero, pID)
 
           SetupUI(newHero)
@@ -334,8 +334,6 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
-  statCollection:sendStage2()
-
   GameMode.PETRI_GAME_HAS_STARTED = true
 
   GameMode:TimingScores( )
@@ -359,18 +357,18 @@ function GameMode:OnGameInProgress()
       end)
     end)
   
-  Timers:CreateTimer((PETRI_EXIT_MARK * 60),
+  Timers:CreateTimer((GameRules.PETRI_EXIT_MARK * 60),
     function()
-      PETRI_EXIT_ALLOWED = true
+      GameRules.PETRI_EXIT_ALLOWED = true
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_notification", duration=4, style={color="white", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer((PETRI_EXIT_WARNING * 60),
+  Timers:CreateTimer((GameRules.PETRI_EXIT_WARNING * 60),
     function()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
 
-  Timers:CreateTimer((PETRI_TIME_LIMIT * 60),
+  Timers:CreateTimer((GameRules.PETRI_TIME_LIMIT * 60),
     function()
       PetrosyanWin()
     end)
@@ -521,7 +519,7 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
-      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", START_MINI_ACTORS_GOLD + gold, 0)
+      local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", GameRules.START_MINI_ACTORS_GOLD + gold, 0)
 
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
       
