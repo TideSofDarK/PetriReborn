@@ -112,14 +112,11 @@
         }
       }
 
-      "ThinkInterval"  "1.0"
+ 
+
+      "ThinkInterval"  "0.03"
       "OnIntervalThink"
       {
-        "RunScript"
-        {
-          "ScriptFile"  "units/peasant.lua"
-          "Function"    "PlayAttackAnimation"
-        }
         "RunScript"
         {
           "ScriptFile"  "units/peasant.lua"

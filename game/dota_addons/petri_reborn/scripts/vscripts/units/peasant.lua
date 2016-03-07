@@ -379,6 +379,10 @@ function RepairBy1Percent( event )
 	local ability = event.ability
 	local target = caster.repairingTarget
 
+	if caster.repairing_cooldown == true then
+		return false 
+	end
+
 	if target:IsNull() == true or not target or not target:IsAlive() then 
 		ability:ToggleAbility()
 
@@ -396,6 +400,8 @@ function RepairBy1Percent( event )
 
 	-- if health < maxHealth then
 		if GetModifierCountByName(target,target,"modifier_being_repaired") < 4 then
+
+			PlayAttackAnimation( event )
 
 			ability:ApplyDataDrivenModifier(target, target, "modifier_being_repaired", {})
 
@@ -418,6 +424,12 @@ function RepairBy1Percent( event )
 			PopupParticle(math.floor(healAmount), Vector(50,221,60), 1.5, caster, nil, POPUP_SYMBOL_POST_SHIELD)
 
 			target:Heal(healAmount, caster)
+
+			caster.repairing_cooldown = true
+
+			Timers:CreateTimer(1.0, function ()
+				caster.repairing_cooldown = false
+			end)
 		else
 			--caster:Stop()
 		end

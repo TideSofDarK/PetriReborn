@@ -49,13 +49,6 @@
       "SpawnRadius" "10"
       "OnSpawn"
       {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_phased"
-          "Target"    "TARGET"
-          "Duration"    "0.03"
-        }
-
         "RunScript"
         {
           "ScriptFile"    "buildings/queue.lua"
