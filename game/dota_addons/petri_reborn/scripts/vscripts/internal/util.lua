@@ -151,46 +151,6 @@ function GetMoveToBuildingPosition( unit, target )
   return building_pos + (origin - building_pos):Normalized() * distance
 end
 
-function GiveSharedGoldToHeroes(gold, hero)
-  for k,v in pairs(GameMode.assignedPlayerHeroes) do
-    if IsValidEntity(v) == true then
-      if v.GetUnitName and v:GetUnitName() == hero and v:GetPlayerOwnerID() then
-        AddCustomGold( v:GetPlayerOwnerID(), gold )
-
-        PopupParticle(gold, Vector(244,201,23), 3.0, v)
-      end
-    end
-  end
-end
-
-function GiveSharedGoldToTeam(gold, team)
-  for i=1,PlayerResource:GetPlayerCountForTeam(team) do
-    if GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)]  then
-      local hero = GameMode.assignedPlayerHeroes[PlayerResource:GetNthPlayerIDOnTeam(team, i)] 
-      if IsValidEntity(hero) == true and hero.GetPlayerOwnerID then
-        AddCustomGold( hero:GetPlayerOwnerID(), gold )
-
-        PopupParticle(gold, Vector(244,201,23), 3.0, hero)
-      end
-    end
-  end
-end
-
-function AddCustomGold( pID, gold )
-  local hero = GameMode.assignedPlayerHeroes[pID]
-
-  if hero then
-    hero.allEarnedGold = hero.allEarnedGold or 0
-    hero.allEarnedGold = hero.allEarnedGold + gold
-
-    if hero.allEarnedGold >= 100000 and not GameMode.FIRST_MONEY then
-      GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
-    end
-
-    PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
-  end
-end
-
 function PayGoldCost(ability)
   local cost = ability:GetGoldCost(ability:GetLevel())
   if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then

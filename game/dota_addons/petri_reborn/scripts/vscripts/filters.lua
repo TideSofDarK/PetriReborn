@@ -317,7 +317,9 @@ function GameMode:ModifyGoldFilter(event)
     end
   end
 
-  return true
+  AddCustomGold( event.player_id_const, math.floor(event["gold"]) )
+
+  return false
 end
 
 function GameMode:ModifyExperienceFilter(filterTable)

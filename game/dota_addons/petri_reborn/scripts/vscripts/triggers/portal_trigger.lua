@@ -104,9 +104,9 @@ function Activate(keys)
 			unit:AddAbility("petri_dummy_static_popup")
 			InitAbilities(unit)
 
-			Timers:CreateTimer(10, function (  )
+			--Timers:CreateTimer(10, function (  )
 					PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
-				end)
+			--	end)
 		-- end)
 	end
 end

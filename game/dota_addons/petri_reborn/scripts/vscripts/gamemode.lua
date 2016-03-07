@@ -1,34 +1,11 @@
 BAREBONES_DEBUG_SPEW = false
 
--- Settings time
-
-DISABLED_HINTS_PLAYERS = {}
-
-PETRI_TIME_LIMIT = 96
-PETRI_EXIT_MARK = 28
-PETRI_EXIT_ALLOWED = false
-PETRI_EXIT_WARNING = PETRI_TIME_LIMIT - 12
-
-START_KVN_GOLD = 10
-START_KVN_LUMBER = 150
-
-START_PETROSYANS_GOLD = 33
-START_MINI_ACTORS_GOLD = 15
-
-PETRI_MAX_BUILDING_COUNT_PER_PLAYER = 27
-
-PETRI_MAX_WORKERS = 13
-PETRI_MAX_MEGA_WORKERS = 5
-
-EVASION_SCROLL_CHANCE = 98
-ATTACK_SCROLL_CHANCE = 94
-GOLD_COIN_CHANCE = 71
-WOOD_CHANCE = 53
-
 if GameMode == nil then
     DebugPrint( '[BAREBONES] creating barebones game mode' )
     _G.GameMode = class({})
 end
+
+GameMode.DISABLED_HINTS_PLAYERS = {}
 
 GameMode.PETRI_GAME_HAS_STARTED = false
 GameMode.PETRI_GAME_HAS_ENDED = false
@@ -52,6 +29,8 @@ GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 GameMode.villians = {}
 GameMode.kvns = {}
 
+GameRules.Winner = GameRules.Winner or DOTA_TEAM_GOODGUYS
+
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
@@ -63,7 +42,10 @@ require('libraries/CustomBuildings')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
+
 require('buildings/bh_abilities')
+
+require('balance')
 
 require('settings')
 require('internal/events')
@@ -71,6 +53,7 @@ require('events')
 
 require('lottery')
 require('scores')
+require('autogold')
 
 require('filters')
 require('commands')
@@ -210,16 +193,8 @@ function GameMode:OnHeroInGame(hero)
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_KVN_GOLD, false)
+          InitHeroValues(newHero, pID)
           newHero.lumber = START_KVN_LUMBER
-          newHero.bonusLumber = 0
-          newHero.food = 0
-          newHero.maxFood = 10
-          newHero.allEarnedGold = 0
-          newHero.allGatheredLumber = 0
-          newHero.numberOfUnits = 0
-          newHero.numberOfMegaWorkers = 0
-
-          newHero.buildingCount = 0
 
           newHero.uniqueUnitList = {}
 
@@ -235,9 +210,6 @@ function GameMode:OnHeroInGame(hero)
             SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
             SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
           end)
-
-          GameMode.SELECTED_UNITS[pID] = {}
-          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
 
           table.insert(GameMode.kvns, newHero)
         end, 
@@ -268,10 +240,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.spawnPosition = newHero:GetAbsOrigin()
 
           newHero:SetGold(START_PETROSYANS_GOLD, false)
-          newHero.lumber = 0
-          newHero.food = 0
-          newHero.maxFood = 0
-          newHero.allEarnedGold = 0
+          InitHeroValues(newHero, pID)
 
           SetupUI(newHero)
 
@@ -279,18 +248,11 @@ function GameMode:OnHeroInGame(hero)
 
           newHero.petrosyanScore = 0
 
-          GameMode.SELECTED_UNITS[pID] = {} 
-          GameMode.SELECTED_UNITS[pID]["0"] = newHero:entindex()
-
           GameMode.villians[petrosyanHeroName] = newHero
 
           Timers:CreateTimer(function (  )
             if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
               SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
-
-              -- newHero:AddAbility("petri_sword_attack_sound")
-              -- newHero:SetAbilityPoints(2)
-              -- newHero:UpgradeAbility(newHero:FindAbilityByName("petri_sword_attack_sound"))
             else
               SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
             end
@@ -305,9 +267,22 @@ function GameMode:OnHeroInGame(hero)
           end
        end, pID)
     end
-    --print("Player with ID: ")
-    --print(PlayerResource:GetSteamAccountID(pID))
   end
+end
+
+function InitHeroValues(hero, pID)
+  hero.lumber = 0
+  hero.bonusLumber = 0
+  hero.food = 0
+  hero.maxFood = 10
+  hero.allEarnedGold = 0
+  hero.allGatheredLumber = 0
+  hero.numberOfUnits = 0
+  hero.numberOfMegaWorkers = 0
+  hero.buildingCount = 0
+
+  GameMode.SELECTED_UNITS[pID] = {}
+  GameMode.SELECTED_UNITS[pID]["0"] = hero:entindex()
 end
 
 function SetupDependencies(newHero)
@@ -364,6 +339,7 @@ function GameMode:OnGameInProgress()
   GameMode.PETRI_GAME_HAS_STARTED = true
 
   GameMode:TimingScores( )
+  GameMode:RegisterAutoGold( )
 
   Timers:CreateTimer(1.0,
     function()
@@ -409,7 +385,7 @@ function GameMode:OnGameInProgress()
   tutorial_time = 0
   Timers:CreateTimer(
     function()
-      Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {disabled_players = DISABLED_HINTS_PLAYERS, loc_check = true, text="#petrosyans_tip_"..tostring(tutorial_time), duration=10, style={color="white", ["font-size"]="45px"}})
+      Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {disabled_players = GameMode.DISABLED_HINTS_PLAYERS, loc_check = true, text="#petrosyans_tip_"..tostring(tutorial_time), duration=10, style={color="white", ["font-size"]="45px"}})
 
       tutorial_time = tutorial_time + 5
       return 5

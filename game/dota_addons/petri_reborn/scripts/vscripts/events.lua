@@ -10,21 +10,24 @@ function GameMode:OnDisconnect(keys)
   local reason = keys.reason
   local userid = keys.userid
 
-  local everyoneLeft = true 
+  Timers:CreateTimer(2.0, function (  )
+    local everyoneLeft = true 
 
-  for playerID = 0, DOTA_MAX_PLAYERS do
-    if PlayerResource:IsValidPlayerID(playerID) then
-      if not PlayerResource:IsBroadcaster(playerID) then
-        if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
-          everyoneLeft = false
+    for playerID = 0, DOTA_MAX_PLAYERS do
+      if PlayerResource:IsValidPlayerID(playerID) then
+        if not PlayerResource:IsBroadcaster(playerID) then
+          if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
+            everyoneLeft = false
+          end
         end
       end
     end
-  end
 
-  if everyoneLeft then
-    GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
-  end
+    if everyoneLeft then
+      GameRules.Winner = DOTA_TEAM_GOODGUYS
+      GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
+    end
+  end)
 
   -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
   -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
