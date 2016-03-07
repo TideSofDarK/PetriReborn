@@ -139,10 +139,13 @@ function GetPetriWinners()
    for playerID = 0, DOTA_MAX_PLAYERS do
        if PlayerResource:IsValidPlayerID(playerID) then
             if not PlayerResource:IsBroadcaster(playerID) then
+                PrintDebugMessageToClientConsole( PlayerResource:GetSteamAccountID(playerID).." "..(IsPlayerWinner(playerID) == true) )
                 winners[PlayerResource:GetSteamAccountID(playerID)] = (IsPlayerWinner(playerID) == true) and 1 or 0
             end
        end
     end
+
+    PrintDebugMessageToClientConsole( winners )
 
     return winners
 end
@@ -152,8 +155,11 @@ function IsPlayerWinner(playerID)
         GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
         local hero = PlayerResource:GetPlayer(playerID):GetAssignedHero() or GameMode.assignedPlayerHeroes[playerID]
         if IsValidEntity(hero) then
-            return (PlayerResource:GetTeam(playerID) == GameRules.Winner) and (hero:GetUnitName() ~= "npc_dota_hero_storm_spirit")
+            local result = (PlayerResource:GetTeam(playerID) == GameRules.Winner) and (hero:GetUnitName() ~= "npc_dota_hero_storm_spirit")
+            PrintDebugMessageToClientConsole( "winner_"..result )
+            return result
         else
+            PrintDebugMessageToClientConsole( "winner_false" )
             return false
         end
     end

@@ -95,9 +95,14 @@ function AddNotification(msg, panel) {
   }
 }
 
+function DebugClientMessage(keys) {
+  $.Msg(keys);
+}
+
 (function () {
   GameEvents.Subscribe( "top_notification", TopNotification );
   GameEvents.Subscribe( "bottom_notification", BottomNotification );
+  GameEvents.Subscribe( "petri_debug_client_message", DebugClientMessage );
 })();
 
 

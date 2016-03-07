@@ -115,6 +115,10 @@ function GetGoldModifier()
   return 1.0
 end
 
+function PrintDebugMessageToClientConsole( message )
+  CustomGameEventManager:Send_ServerToAllClients( "petri_debug_client_message", message )
+end
+
 function IsBuilding( target )
 
   return IsValidEntity(target) and target:HasAbility("petri_building") == true or target:HasAbility("petri_tower") == true

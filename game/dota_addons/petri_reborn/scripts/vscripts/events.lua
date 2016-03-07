@@ -28,9 +28,6 @@ function GameMode:OnDisconnect(keys)
       GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
     end
   end)
-
-  -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
-  -- GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 end
 -- The overall game state has changed
 function GameMode:OnGameRulesStateChange(keys)
@@ -335,8 +332,6 @@ function GameMode:OnEntityKilled( keys )
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
     --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
-    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber or 0
-    GameRules.deadKvnFansNumber = GameRules.deadKvnFansNumber + 1
 
     local allBuildings = Entities:FindAllByClassname("npc_dota_base_additive")
     local allCreeps = Entities:FindAllByClassname("npc_dota_creature")
@@ -353,7 +348,7 @@ function GameMode:OnEntityKilled( keys )
       end
     end
 
-    if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) ~= DOTA_CONNECTION_STATE_ABANDONED then
+    if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then
       GameMode:ReplaceWithMiniActor(killedUnit:GetPlayerOwner(), killedUnit:GetGold())
     end
 
@@ -364,8 +359,10 @@ function GameMode:OnEntityKilled( keys )
 
         Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
 
-        for i=1,10 do
-          PlayerResource:SetCameraTarget(i-1, killerEntity)
+        for i=0,DOTA_MAX_PLAYERS do
+          if PlayerResource:IsValidPlayerID(i) then
+            PlayerResource:SetCameraTarget(i, killerEntity)
+          end
         end
 
         Timers:CreateTimer(2.0,
