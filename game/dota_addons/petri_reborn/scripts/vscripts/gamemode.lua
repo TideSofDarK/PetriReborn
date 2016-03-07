@@ -29,7 +29,7 @@ GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 GameMode.villians = {}
 GameMode.kvns = {}
 
-GameRules.Winner = GameRules.Winner or DOTA_TEAM_GOODGUYS
+GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
 
 require('libraries/physics')
 require('libraries/projectiles')
@@ -336,6 +336,8 @@ function GameMode:OnGameInProgress()
 
   GameMode.PETRI_GAME_HAS_STARTED = true
 
+  GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
+
   GameMode:TimingScores( )
   GameMode:RegisterAutoGold( )
 
@@ -514,8 +516,7 @@ end
 function GameMode:ReplaceWithMiniActor(player, gold)
   PrecacheUnitByNameAsync("npc_dota_hero_storm_spirit",
     function() 
-      GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
-      GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_BADGUYS)+1)
+      -- GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
 
       player:SetTeam(DOTA_TEAM_BADGUYS)
 
