@@ -215,18 +215,24 @@ function SetHTMLStyle( text, style)
   return "<span class=\"" + style + "\">" + text + "</span>";
 }
 
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
+
 function GetSpecialValuesList( abilityID, name )
 {
   var abilityLevel = GameUI.CustomUIConfig().IsEnemySelected() ? 0 : Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
   var str = abilityLevel == 0
-    ? Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ) 
+    ? roundToTwo(Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ))
     : SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
   var prevValue = str;
   for (var i = abilityLevel; i < maxAbilityLevel - 1; i++) 
   {
-    var curValue = Abilities.GetLevelSpecialValueFor( abilityID, name, i );
+    var curValue = Abilities.GetLevelSpecialValueFor( abilityID, name, i ).toFixed(2);
+    curValue = roundToTwo(curValue);
+    // if (typeof(curValue) == "float")
     if (curValue != prevValue)
     {
       str += " / " +  curValue;
