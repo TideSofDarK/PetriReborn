@@ -1,12 +1,11 @@
 function GameMode:RegisterAutoGold( )
 	for i=1,5 do
-		Timers:CreateTimer(GameRules.AUTO_GOLD_TIMINGS[i], function (  )
+		Timers:CreateTimer(GameRules.AUTO_GOLD_TIMINGS[i] * 60, function (  )
 		    for playerID = 0, DOTA_MAX_PLAYERS do
 		      	if PlayerResource:IsValidPlayerID(playerID) then
 		        	if not PlayerResource:IsBroadcaster(playerID) then
-	          			local hero = GameMode.assignedPlayerHeroes[playerID]
-
-	          			if hero then
+	          			if GameMode.assignedPlayerHeroes[playerID] then
+	          				local hero = GameMode.assignedPlayerHeroes[playerID]
 	          				local offset = GameRules.PETRI_AUTO_GOLD[i]
 
 			          		if PlayerResource:GetTeam(playerID) == DOTA_TEAM_BADGUYS then
