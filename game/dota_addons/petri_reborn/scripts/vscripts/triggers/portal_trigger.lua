@@ -92,7 +92,7 @@ function Activate(keys)
 	local name = thisEntity:GetName()
 
 	if IsCreepPortal( name ) == true then
-		-- Timers:CreateTimer(20, function (  )
+		Timers:CreateTimer(20, function (  )
 			local number = GetPortalNumber( name )
 
 			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
@@ -104,10 +104,10 @@ function Activate(keys)
 			unit:AddAbility("petri_dummy_static_popup")
 			InitAbilities(unit)
 
-			--Timers:CreateTimer(10, function (  )
-					PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
-			--	end)
-		-- end)
+			Timers:CreateTimer(10, function (  )
+				PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+			end)
+		end)
 	end
 end
 

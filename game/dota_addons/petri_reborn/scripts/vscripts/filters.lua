@@ -318,6 +318,7 @@ function GameMode:ModifyGoldFilter(event)
   end
 
   AddCustomGold( event.player_id_const, math.floor(event["gold"]) )
+  PopupParticle(math.floor(event["gold"]) , Vector(244,201,23), 3.0, hero)
 
   return false
 end
