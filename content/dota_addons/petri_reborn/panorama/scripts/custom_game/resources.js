@@ -7,7 +7,9 @@ var currentResources = {};
 function UpdateResources( )
 {
 	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
-	var player = GameUI.CustomUIConfig().GetSelectedUnitOwner();
+	var player = Entities.IsCourier(GameUI.CustomUIConfig().selected_unit)
+		? Players.GetLocalPlayer()
+		: GameUI.CustomUIConfig().GetSelectedUnitOwner();
 
 	var resourceTable = CustomNetTables.GetTableValue("players_resources", String(player));
 	var gold = Players.GetGold(player);
