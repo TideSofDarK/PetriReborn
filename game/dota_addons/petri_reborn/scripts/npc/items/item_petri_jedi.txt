@@ -62,7 +62,7 @@
     "07"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor_reducing"    "-900"
+      "armor_reducing"    "-6000"
     }
     "08"
     {
@@ -274,7 +274,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "35000"
+  "ItemCost"            "56000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

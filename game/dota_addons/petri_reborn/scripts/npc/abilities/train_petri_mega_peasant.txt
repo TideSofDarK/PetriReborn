@@ -6,7 +6,7 @@
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 
-  "AbilityGoldCost"       "100"
+  "AbilityGoldCost"       "50"
   "AbilityChannelTime"      "7"
   "AbilityUpgradeGoldCost"    "0"
 
@@ -15,7 +15,7 @@
     "01"
     { 
         "var_type"  "FIELD_INTEGER"
-        "food_cost" "6"
+        "food_cost" "4"
     }
   }
   

@@ -176,7 +176,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kvn_heart"
 
-  "ItemCost"            "28000"
+  "ItemCost"            "38000"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -218,7 +218,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "20000"
+  "ItemCost"            "30000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

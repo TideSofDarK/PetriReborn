@@ -9,7 +9,7 @@
   "AbilityCastRange"        "700"
   "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
   "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
-  "AbilityCooldown"       "250 260 270 280 290 300 310 320 330 340 350 360 370 380 390"
+  "AbilityCooldown"       "15 20 25 30 35 40 45 50 55 60 60 60 60 60 60"
   "AbilityCastPoint"      "0.575"
 
   "MaxLevel"            "15"
@@ -28,7 +28,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "duration"          "2 3 4 5 6 7 8 9 10 11 12 13 14 15 16"
+      "duration"          "0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5 6 6.5 7 8"
     }
   }
 

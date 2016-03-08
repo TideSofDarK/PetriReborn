@@ -41,7 +41,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_comedy_story"
 
-  "ItemCost"            "22000"
+  "ItemCost"            "33000"
   "ItemShopTags"          "consumable"
   "ItemQuality"           "consumable"
   "ItemAliases"         "book"

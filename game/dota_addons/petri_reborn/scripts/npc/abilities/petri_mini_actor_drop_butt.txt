@@ -10,7 +10,7 @@
   "AbilityCastRange"        "650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350"
   "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
   "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
-  "AbilityCooldown"       "120"
+  "AbilityCooldown"       "59 58 57 56 55 54 53 52 51 50 49 48 47 46 45"
   "AbilityCastPoint"      "0.575"
 
   "MaxLevel"            "15"

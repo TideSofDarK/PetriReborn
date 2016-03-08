@@ -20,7 +20,7 @@
 
   "AbilityManaCost"               "750"
 
-  "ItemCost"            "11750"
+  "ItemCost"            "21750"
   "ItemSellable"      "0"
   "ItemShopTags"          "mana_pool;str"
   "ItemQuality"         "unique"
@@ -137,7 +137,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "6500"
+  "ItemCost"            "16500"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

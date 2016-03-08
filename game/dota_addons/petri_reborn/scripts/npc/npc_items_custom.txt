@@ -201,7 +201,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_comedy_story"
 	
-	  "ItemCost"            "22000"
+	  "ItemCost"            "33000"
 	  "ItemShopTags"          "consumable"
 	  "ItemQuality"           "consumable"
 	  "ItemAliases"         "book"
@@ -2391,7 +2391,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kvn_heart"
 	
-	  "ItemCost"            "28000"
+	  "ItemCost"            "38000"
 	  "ItemShopTags"          "health_pool"
 	  "ItemQuality"         "component"
 	
@@ -2433,7 +2433,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "20000"
+	  "ItemCost"            "30000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -2492,7 +2492,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_hook"
 	
-	  "ItemCost"            "16000"
+	  "ItemCost"            "37000"
 	  "ItemQuality"         "secret_shop"
 	  "ItemAliases"         "hook"
 	  "ItemSellable"  "0"
@@ -2777,7 +2777,7 @@
 	    "07"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor_reducing"    "-900"
+	      "armor_reducing"    "-6000"
 	    }
 	    "08"
 	    {
@@ -2989,7 +2989,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "35000"
+	  "ItemCost"            "56000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3359,7 +3359,7 @@
 	
 	  "AbilityManaCost"               "750"
 	
-	  "ItemCost"            "11750"
+	  "ItemCost"            "21750"
 	  "ItemSellable"      "0"
 	  "ItemShopTags"          "mana_pool;str"
 	  "ItemQuality"         "unique"
@@ -3476,7 +3476,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "6500"
+	  "ItemCost"            "16500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
