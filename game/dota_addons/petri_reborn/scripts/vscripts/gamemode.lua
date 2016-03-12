@@ -39,6 +39,7 @@ require('libraries/animations')
 require('libraries/GameSetup')
 require('libraries/KickSystem')
 require('libraries/CustomBuildings')
+require('libraries/StatUploader')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
@@ -333,7 +334,7 @@ end
 
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
-
+  
   GameMode.PETRI_GAME_HAS_STARTED = true
 
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
