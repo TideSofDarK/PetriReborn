@@ -1,0 +1,63 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/material_design.css" />
+  </styles>
+  <script>
+	function GetSteamID32( fullSteamID ) {
+	    var steamIDPart = Number(fullSteamID.substring(3)),
+	        steamID32 = String(steamIDPart - 61197960265728);
+	 
+	    return steamID32;
+	}
+
+	function GetPLayerInfoBySteamID( steamID )
+	{
+		var ids = Game.GetAllPlayerIDs();
+		for(var id of ids)
+		{
+			var playerInfo = Game.GetPlayerInfo(id);
+			if ( steamID == GetSteamID32( playerInfo.player_steamid ))
+				return playerInfo;
+		}
+	}
+
+	function FillRowData( data )
+	{
+		$.Msg("Fill data")
+		var info = GetPLayerInfoBySteamID( data.SteamID )
+	
+		$( "#PlayerNameLabel" ).text = info.player_name;
+
+		var winrate = data.PetriGames == "0" ? 0 : parseInt(data.PetriWins) / parseInt(data.PetriGames);
+		$( "#PetriWinrateLabel" ).text =  winrate + "% (" + data.PetriWins + "/" + data.PetriGames + ")";
+		$( "#PetriRatingLabel" ).text =  data.PetriRating;
+		
+		winrate = data.KVNGames == "0" ? 0 : parseInt(data.KVNWins) / parseInt(data.KVNGames); 
+		$( "#KVNWinrateLabel" ).text =  winrate +  "% (" + data.KVNWins + "/" + data.KVNGames + ")";
+		$( "#KVNRatingLabel" ).text =  data.KVNRating;
+	}
+
+	$.GetContextPanel().FillRowData = FillRowData;
+  </script>  
+  <Panel hittest="false" class="DataTable RowContainer">
+  	<Panel class="DataTable Row">
+	    <Panel class="DataTable Col" id="PlayerName">
+	      <Label class="DataTable HeaderText" text="PlayerName" id="PlayerNameLabel" /> 
+	    </Panel>
+	    <Panel class="DataTable Col" id="PetriWinrate">
+	      <Label class="DataTable HeaderText" text="PetriWinrate" id="PetriWinrateLabel" /> 
+	    </Panel>
+	    <Panel class="DataTable Col" id="PetriRating"> 
+	      <Label class="DataTable HeaderText" text="PetriRating" id="PetriRatingLabel" /> 
+	    </Panel>
+	    <Panel class="DataTable Col" id="KVNWinrate"> 
+	      <Label class="DataTable HeaderText" text="KVNWinrate" id="KVNWinrateLabel" /> 
+	    </Panel>
+	    <Panel class="DataTable Col" id="KVNRating"> 
+	      <Label class="DataTable HeaderText" text="KVNRating" id="KVNRatingLabel" />  
+	    </Panel>
+	</Panel>
+
+	<Panel class="divider" />
+  </Panel>
+</root>

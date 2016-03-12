@@ -7,10 +7,8 @@ function SU:Init()
     function(keys)
       local state = GameRules:State_Get()
 
-      if state == DOTA_GAMERULES_STATE_WAIT_FOR_PLAYERS_TO_LOAD then
+      if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         SU:AddPlayers()
-      elseif state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-        SU:LoadPlayersStats()
       elseif state == DOTA_GAMERULES_STATE_POST_GAME then
         SU:SavePlayersStats()
       end
@@ -56,6 +54,7 @@ function SU:AddPlayers()
     
   SU:SendRequest( requestParams, function(obj)
       print("Adding players: ", obj)
+      SU:LoadPlayersStats()
   end)
 end
 
@@ -67,10 +66,10 @@ function SU:LoadPlayersStats()
     
   SU:SendRequest( requestParams, function(obj)
       SU.LoadedStats = obj
-      CustomGameEventManager:Send_ServerToPlayer( player, "su_send_mmr", SU.LoadedStats )
-
+      CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
+      
       print("Loaded players: ")
-      PrintTable(obj)
+      PrintTable(obj)      
   end)
 end
 

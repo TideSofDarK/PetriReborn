@@ -98,6 +98,16 @@
   flow-children: down;
 }
 
+#MMR
+{
+  visibility: collapse;
+  
+  margin-left: 300px;
+  margin-top: 200px;
+
+  horizontal-align: left;
+}
+
 .avatar
 {
   width: 48px;
