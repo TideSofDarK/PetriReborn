@@ -609,7 +609,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_butt"
 	
-	  "ItemCost"            "10"
+	  "ItemCost"            "149"
 	  "ItemShopTags"          "health_pool"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "butt"
@@ -4541,7 +4541,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "339"
+	  "ItemCost"            "200"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
