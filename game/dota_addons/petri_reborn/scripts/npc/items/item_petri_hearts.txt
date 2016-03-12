@@ -21,7 +21,7 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "25"
+      "bonus_regen"      "20"
     }
   }
   
@@ -60,12 +60,12 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_health"      "10000"
+      "bonus_health"      "12000"
     }
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_regen"      "80"
+      "bonus_regen"      "40"
     }
   }
   

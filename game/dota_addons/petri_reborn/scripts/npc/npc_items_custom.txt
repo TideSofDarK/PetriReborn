@@ -2236,7 +2236,7 @@
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "25"
+	      "bonus_regen"      "20"
 	    }
 	  }
 	  
@@ -2275,12 +2275,12 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "10000"
+	      "bonus_health"      "12000"
 	    }
 	    "02"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_regen"      "80"
+	      "bonus_regen"      "40"
 	    }
 	  }
 	  
@@ -4574,7 +4574,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "20"
+	      "lifesteal_percent"   "35"
 	    }
 	    "02"
 	    {
@@ -4749,7 +4749,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "30"
+	      "lifesteal_percent"   "75"
 	    }
 	    "02"
 	    {
@@ -4924,7 +4924,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "lifesteal_percent"   "55"
+	      "lifesteal_percent"   "150"
 	    }
 	    "02"
 	    {
