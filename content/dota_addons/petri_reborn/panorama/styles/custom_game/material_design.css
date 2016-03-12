@@ -35,40 +35,33 @@
 /* 					Light theme 						*/
 .LightTheme { }
 
-.LightTheme.Background
-{
+.LightTheme.Background {
 	background-color: Grey50;
 }
 
-.LightTheme.Cards
-{
+.LightTheme.Cards {
 	background-color: White;
 }
 
-.LightTheme.AppBar
-{
+.LightTheme.AppBar {
 	background-color: Grey100;
 }
 
-.LightTheme.StatusBar
-{
+.LightTheme.StatusBar {
 	background-color: Grey300;
 }
 
-.LightTheme.PrimaryText
-{
+.LightTheme.PrimaryText {
 	color: Black;
 	opacity: 0.87;
 }
 
-.LightTheme.SecondaryText
-{
+.LightTheme.SecondaryText {
 	color: Black;
 	opacity: 0.54;
 }
 
-.LightTheme.HintText
-{
+.LightTheme.HintText {
 	color: Black;
 	opacity: 0.38;
 }
@@ -77,111 +70,152 @@
 /* 					Dark theme 							*/
 .DarkTheme { }
 
-.DarkTheme.Background
-{
+.DarkTheme.Background {
 	background-color: #303030;
 }
 
-.DarkTheme.Cards
-{
+.DarkTheme.Cards {
 	background-color: Grey800;
 }
 
-.DarkTheme.AppBar
-{
+.DarkTheme.AppBar {
 	background-color: Grey900;
 }
 
-.DarkTheme.StatusBar
-{
+.DarkTheme.StatusBar {
 	background-color: Black;
 }
 
-.DarkTheme.Primary500
-{
+.DarkTheme.Primary500 {
 	background-color: Primary500;
 }
 
-.DarkTheme.PrimaryText
-{
+.DarkTheme.PrimaryText {
 	color: White;
 }
 
-.DarkTheme.SecondaryText
-{
+.DarkTheme.SecondaryText {
 	color: White;
 	opacity: 0.7;
 }
 
-.DarkTheme.HintText
-{
+.DarkTheme.HintText {
 	color: White;
 	opacity: 0.3;
 }
 
-.DarkTheme.FlatButton
-{
+.DarkTheme.FlatButton {
 	background-color: transparent;
 }
 
-.DarkTheme.FlatButton:hover
-{
+.DarkTheme.FlatButton:hover {
 	background-color: #CCCCCC25;
 }
 
-.DarkTheme.FlatButton:active
-{
+.DarkTheme.FlatButton:active {
 	background-color: #CCCCCC40;
 }
 
-.DarkTheme.Button
-{
+.DarkTheme.Button {
 	margin: 2px;
 	min-height: 36px;
 	background-color: Primary500;
 }
 
-.DarkTheme.Button:hover
-{
+.DarkTheme.Button:hover {
 	background-color: Primary600;
 }
 
-.DarkTheme.Button:active
-{
+.DarkTheme.Button:active {
 	background-color: Primary700;
 }
 
-.DarkTheme.Button:disabled
-{
+.DarkTheme.Button:disabled {
 	background-color: #FFFFFF1E;
 }
 
+.fill {
+	width: 100%;
+	height: 100%;
+}
+
 /* 						  Shapes 					  */
-.rounded
-{
+.rounded {
 	border-radius: 2px;	
 }
 
-.circle
-{
+.circle {
 	border-radius: 50%;
 }
 
+.divider {
+  height: 1px;
+  width: 100%;
+  
+  background-color: #9E9E9E20;
+
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 /*                       Shadows                       */
-.z-index1
-{
+.z-index1 {
 	box-shadow: fill #000000DD 0px 2px 6px 0px;
 	z-index: 1;
 }
 
-.z-index2
-{
+.z-index2 {
 	box-shadow: fill #000000DD 0px 8px 12px 0px;
 	z-index: 2;
 }
 
-.z-index3
-{
+.z-index3 {
 	box-shadow: fill #000000DD 0px 14px 18px 0px;
 	z-index: 3;
+}
+
+
+/* 						  DataTable 					  */
+.DataTable {
+	flow-children: down;
+}
+
+.DataTable.Header {
+	height: 56px;
+
+	flow-children: right;
+}
+
+.DataTable.Data {
+	width: 100%;
+
+	flow-children: down;
+}
+
+.DataTable.Row {
+	height: 48px;
+
+	flow-children: right;
+}
+
+.DataTable.RowContainer {
+	width: 100%;
+	flow-children: down;
+}
+
+.DataTable.Col {
+	width: 100px;
+	height: 100%;
+
+	margin-left: 32px;
+	margin-right: 24px;
+}
+
+.DataTable.HeaderText {
+	color: White;
+	font-size: 18px;
+
+	vertical-align: center;
+	horizontal-align: right;
+	text-align: right;
 }

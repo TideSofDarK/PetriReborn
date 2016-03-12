@@ -1,0 +1,22 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/material_design.css" />
+  </styles> 
+  <Panel hittest="false" class="DataTable Header"> 
+    <Panel class="DataTable Col" id="PlayerName">
+      <Label class="DataTable HeaderText" text="#PlayerName"/> 
+    </Panel>
+    <Panel class="DataTable Col" id="PetriWinrate">
+      <Label class="DataTable HeaderText" text="#PetriWinrate" /> 
+    </Panel>
+    <Panel class="DataTable Col" id="PetriRating"> 
+      <Label class="DataTable HeaderText" text="#PetriRating" /> 
+    </Panel>
+    <Panel class="DataTable Col" id="KVNWinrate"> 
+      <Label class="DataTable HeaderText" text="#KVNWinrate" /> 
+    </Panel>
+    <Panel class="DataTable Col" id="KVNRating"> 
+      <Label class="DataTable HeaderText" text="#KVNRating" /> 
+    </Panel>
+  </Panel>
+</root>

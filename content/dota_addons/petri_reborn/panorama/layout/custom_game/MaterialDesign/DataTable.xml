@@ -1,0 +1,13 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/material_design.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/MaterialDesign/DataTable.js" /> 
+  </scripts>
+  <Panel hittest="false" class="DataTable"> 
+    <Panel hittest="false" class="DataTable Header" id="Header" /> 
+    <Panel class="divider" />
+    <Panel hittest="false" class="DataTable Data" id="Data" /> 
+  </Panel>
+</root>

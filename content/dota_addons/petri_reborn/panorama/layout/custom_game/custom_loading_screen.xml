@@ -6,6 +6,7 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/loading_screen/developers.js" />
     <include src="file://{resources}/scripts/custom_game/loading_screen/Background.js" />
+    <include src="file://{resources}/scripts/custom_game/loading_screen/additional_info.js" />
   </scripts>
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBackground" />
@@ -18,12 +19,14 @@
 
     <Panel id="Developers" class="DarkTheme Background rounded z-index1" />
 
+    <Panel id="MMR" class="DarkTheme Cards rounded z-index1" />
+
     <Panel id="SocialNetworks" >
       <Label text="#get_models" class="Headline1" id="GetModels" />
       <Label text="AlikVirg" class="Headline1" id="AlikVirg">
           <Image class="SkypeLogo" src="file://{images}/custom_game/loading_screen/skype.png" />
       </Label>
-  
+
       <Label text="twitch.tv/dota2petri" class="SN Headline1" id="TWITCH" />
       <Label text="vk.com/dota2petri" class="SN Headline1" id="VK" />
       <Label text="twitter.com/petri_reborn" class="SN Headline1" id="TWITTER" />
