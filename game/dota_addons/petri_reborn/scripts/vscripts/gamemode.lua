@@ -495,6 +495,8 @@ function GameMode:InitGameMode()
 
   BuildingHelper:Init()
 
+  SU:Init() 
+
   --Update player's UI
   Timers:CreateTimer(0.03,
   function()

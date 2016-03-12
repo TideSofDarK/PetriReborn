@@ -39,6 +39,10 @@ function RetractMeatHook( keys )
 		ApplyDamage(damageTable)
 	end
 
+	if target:GetTeamNumber() ~= caster:GetTeamNumber() and caster:GetUnitName() == "npc_dota_hero_storm_spirit" then
+		caster.hooked = true
+	end
+
 	-- For retracting the hook
 	hookTable[caster].bHitUnit = true
 	
