@@ -19,7 +19,12 @@
 
     <Panel id="Developers" class="DarkTheme Background rounded z-index1" />
 
-    <Panel id="MMR" class="DarkTheme Cards rounded z-index1" />
+    <Panel id="Statistics">
+      <Panel id="StatButtons">
+        <Button class="statButton" id="HideStat" onactivate="OnHideStat()"/> 
+      </Panel>
+      <Panel id="MMR" class="DarkTheme Cards rounded z-index1" />
+    </Panel>
 
     <Panel id="SocialNetworks" >
       <Label text="#get_models" class="Headline1" id="GetModels" />

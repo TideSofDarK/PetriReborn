@@ -1,6 +1,7 @@
 <root>
   <styles>
     <include src="file://{resources}/styles/custom_game/material_design.css" />
+    <include src="file://{resources}/styles/custom_game/custom_data_table.css" />
   </styles>
   <script>
 	function GetSteamID32( fullSteamID ) {
@@ -26,13 +27,14 @@
 		$.Msg("Fill data")
 		var info = GetPLayerInfoBySteamID( data.SteamID )
 	
+		$( "#Avatar" ).steamid = info.player_steamid;
 		$( "#PlayerNameLabel" ).text = info.player_name;
 
-		var winrate = data.PetriGames == "0" ? 0 : parseInt(data.PetriWins) / parseInt(data.PetriGames);
+		var winrate = data.PetriGames == "0" ? 0 : parseInt(data.PetriWins) / parseInt(data.PetriGames) * 100;
 		$( "#PetriWinrateLabel" ).text =  winrate + "% (" + data.PetriWins + "/" + data.PetriGames + ")";
 		$( "#PetriRatingLabel" ).text =  data.PetriRating;
 		
-		winrate = data.KVNGames == "0" ? 0 : parseInt(data.KVNWins) / parseInt(data.KVNGames); 
+		winrate = data.KVNGames == "0" ? 0 : parseInt(data.KVNWins) / parseInt(data.KVNGames) * 100; 
 		$( "#KVNWinrateLabel" ).text =  winrate +  "% (" + data.KVNWins + "/" + data.KVNGames + ")";
 		$( "#KVNRatingLabel" ).text =  data.KVNRating;
 	}
@@ -41,7 +43,8 @@
   </script>  
   <Panel hittest="false" class="DataTable RowContainer">
   	<Panel class="DataTable Row">
-	    <Panel class="DataTable Col" id="PlayerName">
+	    <Panel class="flow-right DataTable Col" id="PlayerName">
+	      <DOTAAvatarImage class="avatar" id="Avatar" steamid="local" />
 	      <Label class="DataTable HeaderText" text="PlayerName" id="PlayerNameLabel" /> 
 	    </Panel>
 	    <Panel class="DataTable Col" id="PetriWinrate">

@@ -1,0 +1,9 @@
+.flow-right {
+    flow-children: right;
+}
+
+.avatar {
+    border-radius: 50%;
+
+    vertical-align: center;
+}

@@ -1,5 +1,4 @@
 'use strict';
-
 var tableLayoutPath = "file://{resources}/layout/custom_game/MaterialDesign/";
 
 function AddMMRTable()
@@ -18,7 +17,14 @@ function AddMMRTable()
 function UpdateMMRTable( data )
 {
 	$( "#MMR" ).UpdateData( data );
-	$( "#MMR" ).visible = true;
+	$( "#Statistics" ).visible = true;
+}
+
+function OnHideStat()
+{
+	var isHide = $( "#MMR" ).visible;
+	$( "#HideStat" ).SetHasClass("unhide", isHide);
+	$( "#MMR" ).visible = !isHide;
 }
 
 (function () {

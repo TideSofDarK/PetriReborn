@@ -98,14 +98,61 @@
   flow-children: down;
 }
 
-#MMR
+#Statistics
 {
   visibility: collapse;
-  
-  margin-left: 300px;
-  margin-top: 200px;
 
-  horizontal-align: left;
+  //overflow: scroll scroll;
+
+  horizontal-align: right;
+  margin-right: 600px;
+  flow-children: down;
+}
+
+#StatButtons
+{
+  horizontal-align: right;
+  flow-children: right;
+}
+
+.statButton
+{
+  width: 48px;
+  height: 48px;
+
+  margin: 2px;
+
+  background-color: black;
+  background-size: 27px;
+
+  border-radius: 50%;
+  horizontal-align: right;
+}
+
+.statButton:hover
+{
+  background-size: 32px;
+}
+
+#HideStat
+{
+  background-image: url("s2r://panorama/images/control_icons/return_to_game_png.vtex");
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+
+  transform: rotateZ( 180deg );
+}
+
+#HideStat.unhide
+{
+    transform: rotateZ( 0deg );
+}
+
+#MMR
+{
+  margin: 5px;
+  overflow: scroll squish;
+  opacity: .9;
 }
 
 .avatar

@@ -15,6 +15,10 @@ function FillDataTable( xmlLayoutList )
 
 	$( "#Header" ).RemoveAndDeleteChildren();
 	$( "#Header" ).BLoadLayout( layouts["Header"], false, false );
+
+	// Add blank row to fit width
+	$( "#Data" ).RemoveAndDeleteChildren();
+	$( "#Header" ).BLoadLayout( layouts["DataRow"], false, false );
 }
 
 function UpdateData( dataArray )
