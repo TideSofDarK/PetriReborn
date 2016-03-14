@@ -747,8 +747,8 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "250.0"
-	  "AttackDamageMax"     "12000.0"
+	  "AttackDamageMin"     "750.0"
+	  "AttackDamageMax"     "11500.0"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -2443,6 +2443,7 @@
 	        "model" "models/items/axe/harbingerwar_weapon/harbingerwar_weapon.vmdl"
 	        "model" "models/items/sven/revenge_weapon/revenge_weapon.vmdl"
 	        "model" "models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+	        "model" "models/buildings/houses/redhouse3.vmdl"
 	    }
 	}
 	"npc_precache_guy_2"
