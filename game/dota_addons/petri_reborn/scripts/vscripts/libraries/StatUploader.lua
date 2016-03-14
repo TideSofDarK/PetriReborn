@@ -149,7 +149,11 @@ function SU:GetTop3MMRKVN()
       end
     end
 
+    DeepPrintTable(mmr)
+
     table.sort(mmr)
+
+    DeepPrintTable(mmr)
 
     return ReverseTable(mmr)
 end
