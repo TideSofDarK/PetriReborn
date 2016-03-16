@@ -94,9 +94,6 @@ function SU:BuildSteamIDArray()
       end
     end
 
-    print("dick")
-    PrintTable(players)
-
     return players
 end
 
@@ -177,7 +174,7 @@ function SU:GetPetriMMR()
             local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
 
             if hero and hero:GetUnitName() ~= "npc_dota_hero_name" and hero:GetUnitName() ~= "npc_dota_hero_storm_spirit" then
-              mmr = mmr + SU:GetPlayerMMR(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_BADGUYS) or 3000
+              mmr = mmr + (SU:GetPlayerMMR(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_BADGUYS) or 3000)
             end
           end
         end
@@ -191,7 +188,7 @@ function SU:BuildMMRArray()
 
     local top_kvn_mmr = SU:GetTop3MMRKVN()
 
-    local kvn_mmr = top_kvn_mmr[1] + top_kvn_mmr[2] + top_kvn_mmr[3]
+    local kvn_mmr = (top_kvn_mmr[1] or 0) + (top_kvn_mmr[2] or 0) + (top_kvn_mmr[3] or 0)
     local petri_mmr = SU:GetPetriMMR()
 
     local players = {}
