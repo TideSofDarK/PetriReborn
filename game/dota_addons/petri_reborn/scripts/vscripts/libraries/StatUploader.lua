@@ -231,6 +231,9 @@ function SU:BuildMMRArray()
             end
           end
 
+          -- Date parsing
+          local month, day, year = string.match(GetSystemDate(), '(%d+)[/](%d+)[/](%d+)')
+        
           table.insert(players, {
             SteamID = steam_id, 
             KVNGames = kvn_games, 
@@ -239,7 +242,7 @@ function SU:BuildMMRArray()
             PetriWins = won_petri_games, 
             KVNRating = player_kvn_mmr, 
             PetriRating = player_petr_mmr, 
-            LastGameDate = os.date("%x", 906000490)
+            LastGameDate = string.format("20%s%s%s", year, month, day)
             })
         end
       end
