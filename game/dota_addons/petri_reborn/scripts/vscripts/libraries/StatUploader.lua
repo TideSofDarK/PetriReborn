@@ -155,6 +155,8 @@ function SU:GetTop3MMRKVN()
 
     DeepPrintTable(mmr)
 
+    DeepPrintTable(ReverseTable(mmr))
+
     return ReverseTable(mmr)
 end
 
