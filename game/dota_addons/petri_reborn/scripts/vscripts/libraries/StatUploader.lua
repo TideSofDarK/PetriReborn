@@ -69,7 +69,7 @@ function SU:LoadPlayersStats()
       CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
       
       print("Loaded players: ")
-      PrintTable(obj)      
+      PrintTable(SU.LoadedStats)      
   end)
 end
 
@@ -94,16 +94,24 @@ function SU:BuildSteamIDArray()
       end
     end
 
+    print("dick")
+    PrintTable(players)
+
     return players
 end
 
 function SU:GetPlayerMMR( steamID, team )
   for k,v in pairs(SU.LoadedStats) do
+    print("-----")
+    print(v.SteamID)
+    print("equals")
+    print(steamID)
+    print("-----")
     if v.SteamID == steamID then
       if team == DOTA_TEAM_BADGUYS then
-        return v.PetriRating or 0
+        return v.PetriRating or 3000
       else
-        return v.KVNRating or 0
+        return v.KVNRating or 3000
       end
     end
   end
