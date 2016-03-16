@@ -97,5 +97,6 @@
         "model" "models/items/axe/harbingerwar_weapon/harbingerwar_weapon.vmdl"
         "model" "models/items/sven/revenge_weapon/revenge_weapon.vmdl"
         "model" "models/heroes/crystal_maiden/crystal_maiden_arcana.vmdl"
+        "model" "models/buildings/houses/redhouse3.vmdl"
     }
 }

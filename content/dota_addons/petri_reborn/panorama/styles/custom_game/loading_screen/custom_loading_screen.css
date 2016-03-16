@@ -134,6 +134,11 @@
   background-size: 32px;
 }
 
+#HideStat.hide
+{
+  transform: rotateZ( 0deg );
+}
+
 #HideStat
 {
   background-image: url("s2r://panorama/images/control_icons/return_to_game_png.vtex");
@@ -143,13 +148,10 @@
   transform: rotateZ( 180deg );
 }
 
-#HideStat.unhide
-{
-    transform: rotateZ( 0deg );
-}
-
 #MMR
 {
+  visibility: collapse;
+
   margin: 5px;
   overflow: scroll squish;
   opacity: .9;

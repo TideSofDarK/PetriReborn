@@ -17,13 +17,14 @@ function AddMMRTable()
 function UpdateMMRTable( data )
 {
 	$( "#MMR" ).UpdateData( data );
+	$( "#HideStat" ).SetHasClass("hide", true);
 	$( "#Statistics" ).visible = true;
 }
 
 function OnHideStat()
 {
 	var isHide = $( "#MMR" ).visible;
-	$( "#HideStat" ).SetHasClass("unhide", isHide);
+	$( "#HideStat" ).SetHasClass("hide", isHide);
 	$( "#MMR" ).visible = !isHide;
 }
 
