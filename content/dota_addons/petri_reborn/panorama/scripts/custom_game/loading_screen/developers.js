@@ -17,14 +17,20 @@ function ShowProfile()
   		$.Schedule(0.01, ChangeDeveloperRole);
 }
 
-// Add developer panel
-function AddRole()
+function MoveBadge( isMove )
 {
 	var tooltip = tooltipManager.FindChildTraverse("DOTAProfileCardTooltip");
 	var profileBadge = tooltip.FindChildTraverse("ProfileBadge");
 	var profileBadgeBack = tooltip.FindChildTraverse("ProfileBadgeBackground");
-	profileBadge.style.marginTop = "50px;";
-	profileBadgeBack.style.marginTop = "50px;";
+
+	profileBadge.style.marginTop = (isMove ? 50 : 2) + "px;"
+	profileBadgeBack.style.marginTop = (isMove ? 54 : 6) + "px;"
+}
+
+// Add developer panel
+function AddRole()
+{
+	var tooltip = tooltipManager.FindChildTraverse("DOTAProfileCardTooltip");
 
 	var contents = tooltip.FindChildTraverse("ContentsMain")
 	rolePanel = contents.FindChild("RolePanel");
@@ -44,6 +50,9 @@ function ChangeDeveloperRole()
 {
 	var contents = rolePanel.GetParent();
 	var steamID = contents.FindChildTraverse("AvatarImage").steamid;
+
+	MoveBadge( roles[steamID] != undefined );
+	rolePanel.visible = roles[steamID] != undefined;
 	rolePanel.FindChild("RoleName").text = $.Localize(roles[steamID]);
 }
 
