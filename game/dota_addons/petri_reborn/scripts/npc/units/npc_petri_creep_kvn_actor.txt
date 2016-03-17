@@ -2,7 +2,7 @@
 {
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
-  "ModelScale"        "1.0"
+  "ModelScale"        "1.1"
   "Level"           "4"
   "HealthBarOffset"     "140"
 

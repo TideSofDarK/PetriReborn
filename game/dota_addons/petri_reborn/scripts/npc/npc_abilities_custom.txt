@@ -1177,7 +1177,7 @@
 	    "04"
 	    {
 	      "var_type"                      "FIELD_INTEGER"
-	      "bounce_range"                    "450"
+	      "bounce_range"                    "425"
 	    }
 	    "05"
 	    {
