@@ -39,7 +39,7 @@ require('libraries/animations')
 require('libraries/GameSetup')
 require('libraries/KickSystem')
 require('libraries/CustomBuildings')
-require('libraries/StatUploader')
+require('libraries/StatUploaderFunctions')
 
 require('libraries/buildinghelper')
 require('libraries/dependencies')
