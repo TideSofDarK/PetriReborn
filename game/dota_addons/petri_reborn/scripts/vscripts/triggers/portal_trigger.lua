@@ -9,7 +9,11 @@ PORTAL_LEVELS[7] = 80
 
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
-	if activator:GetUnitName() == "npc_dota_hero_storm_spirit" then return true end
+	if activator:GetUnitName() == "npc_dota_hero_storm_spirit" and string.match(triggerName, "portal_trigger_creep0") == false then 
+		return true 
+	elseif activator:GetUnitName() == "npc_dota_hero_storm_spirit" and string.match(triggerName, "portal_trigger_creep0") == true then
+		return false 
+	end
 	if string.match(triggerName, "portal_trigger_creep") or string.match(triggerName, "portal_trigger_kivin_input") then
 		
 		local heroLevel = activator:GetLevel()
