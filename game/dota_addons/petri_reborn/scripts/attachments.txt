@@ -3317,32 +3317,6 @@
 		   	}
 	  	}
 	}
-	"models/units/assasinedward/edward_kenway.vmdl"
-	{
-	 	"attach_attack1"
-		{
-	   		"models/items/kunkka/cyclone_wave_smasher_of_the_divine_anchor/cyclone_wave_smasher_of_the_divine_anchor.vmdl"
-		   	{
-			    "scale"  "1"
-			    "pitch"  "-14"
-			    "roll"  "-140"
-			    "ZPos"  "-88"
-			    "YPos"  "64"
-			    "yaw"  "64"
-			    "XPos"  "-5"
-		   	}
-	   		"models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
-		   	{
-			    "scale"  "0.6"
-			    "pitch"  "7"
-			    "roll"  "-49"
-			    "ZPos"  "-103"
-			    "YPos"  "-36"
-			    "yaw"  "-21"
-			    "XPos"  "-10"
-		   	}
-	  	}
-	}
 	"models/units/dartmol/mual.vmdl"
 	{
 	 	"attach_attack1"

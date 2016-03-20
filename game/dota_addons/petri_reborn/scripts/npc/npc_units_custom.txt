@@ -2332,7 +2332,6 @@
 	        "model" "models/items/death_prophet/mourning_armor/mourning_armor.vmdl"
 	        "model" "models/props_gameplay/tango.vmdl"
 	        "model" "models/heroes/dragon_knight/shield.vmdl"
-	        "model" "models/units/assasinedward/edward_kenway.vmdl"
 	        "model" "models/items/kunkka/cyclone_wave_smasher_of_the_divine_anchor/cyclone_wave_smasher_of_the_divine_anchor.vmdl"
 	        "model" "models/units/dartmol/mual.vmdl"
 	        "model" "models/heroes/tuskarr/tuskarr.vmdl"
