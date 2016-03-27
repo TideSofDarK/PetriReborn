@@ -40,7 +40,7 @@ end
 
 function GameMode:OnPause(data)
   PrintTable(data)
-  PauseGame(false) 
+  --PauseGame(false) 
 end
 
 -- An NPC has spawned somewhere in game.  This includes heroes
