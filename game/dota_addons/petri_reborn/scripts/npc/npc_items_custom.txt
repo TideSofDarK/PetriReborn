@@ -2890,7 +2890,13 @@
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%armor"
 	      }
+	    }
 	
+	    "modifier_jedi_bkb"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	    
 	      "States"
 	      {
 	        "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"

@@ -337,6 +337,8 @@ function GameMode:OnGameInProgress()
   
   GameMode.PETRI_GAME_HAS_STARTED = true
 
+  PauseGame(true)
+
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
 
   GameMode:TimingScores( )
@@ -494,8 +496,6 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "getgold", Dynamic_Wrap(GameMode, 'GetGold'), "Get all gold", FCVAR_CHEAT )
 
   BuildingHelper:Init()
-
-  SU:Init() 
 
   --Update player's UI
   Timers:CreateTimer(0.03,

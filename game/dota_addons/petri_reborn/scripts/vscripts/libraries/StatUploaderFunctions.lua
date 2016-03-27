@@ -1,51 +1,57 @@
 require('libraries/StatUploader')
+local isTest = false
+local steamIDs;
+
+ListenToGameEvent('game_rules_state_change', 
+  function(keys)
+    local state = GameRules:State_Get()
+
+    if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+      SU:Init()
+    end
+  end, nil)
 
 function SU:Init()
+  steamIDs = SU:BuildSteamIDArray()
   if SU.StatSettings ~= nil then
-    ListenToGameEvent('game_rules_state_change', 
-      function(keys)
-        local state = GameRules:State_Get()
+    if isTest or (not GameRules:IsCheatMode() and table.getn(steamIDs) > 7) then
+      ListenToGameEvent('game_rules_state_change', 
+        function(keys)
+          local state = GameRules:State_Get()
 
-        if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-          SU:AddPlayers()
-        elseif state == DOTA_GAMERULES_STATE_POST_GAME then
-          SU:SavePlayersStats()
-        end
-      end, nil)
+          if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+            SU:LoadPlayersStats()
+          elseif state == DOTA_GAMERULES_STATE_POST_GAME then
+            SU:SavePlayersStats()
+          end
+        end, nil)
+    else
+      print("Bad stat recording conditions.")
+    end    
   else
     print("StatUploader settings file not found.")
   end
 end
 
-function SU:AddPlayers()
-  local requestParams = {
-    Command = "AddPlayers",
-    SteamIDs = SU:BuildSteamIDArray()
-  }
-    
-  SU:SendRequest( requestParams, function(obj)
-      print("Adding players: ", obj)
-      SU:LoadPlayersStats()
-  end)
-end
-
 function SU:LoadPlayersStats()
   local requestParams = {
     Command = "LoadPlayersStats",
-    SteamIDs = SU:BuildSteamIDArray()
+    SteamIDs = steamIDs
   }
     
   SU:SendRequest( requestParams, function(obj)
+      print(obj)
       SU.LoadedStats = obj
       CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
       
       print("Loaded players: ")
-      PrintTable(SU.LoadedStats)      
+      PrintTable(SU.LoadedStats)   
   end)
 end
 
 function SU:SavePlayersStats()
-  if not isStatServerUp then
+  local time = GameMode.PETRI_TRUE_TIME * 60
+  if not isStatServerUp or time < 9 or time > 50 or not GameMode.villians["npc_dota_hero_death_prophet"] then
     return
   end
   
