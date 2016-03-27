@@ -15,8 +15,8 @@
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "14444.44"
-  "AttackDamageMax"     "160000.0"
+  "AttackDamageMin"     "14011.10"
+  "AttackDamageMax"     "155200.0"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
