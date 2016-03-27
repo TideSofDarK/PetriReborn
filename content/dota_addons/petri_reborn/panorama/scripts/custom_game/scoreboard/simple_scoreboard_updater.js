@@ -399,7 +399,7 @@ function stableCompareFunc( a, b )
 //=============================================================================
 function ShowContextMenu()
 {
-	var contextMenu = $.CreatePanel( "DOTAContextMenuScript", $.GetContextPanel(), "" );
+	var contextMenu = $.CreatePanel( "ContextMenuScript", $.GetContextPanel(), "" );
 	// Remove default context menu
 	var menu = contextMenu.GetContentsPanel().GetParent();
 	menu.RemoveAndDeleteChildren();
