@@ -161,7 +161,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_perfect_sword"
 
-  "ItemCost"            "781"
+  "ItemCost"            "931"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "perfect sword"
@@ -199,7 +199,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "400"
+  "ItemCost"            "550"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -219,7 +219,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_titan_sword"
 
-  "ItemCost"            "1321"
+  "ItemCost"            "1521"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "titan sword"
@@ -257,7 +257,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "540"
+  "ItemCost"            "590"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -315,7 +315,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "800"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

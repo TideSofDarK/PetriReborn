@@ -80,5 +80,6 @@
         "model" "models/items/ursa/hat_alpine.vmdl"
         "model" "models/heroes/faceless_void/faceless_void.vmdl"
         "model" "models/items/faceless_void/ancientcultist_head/ancientcultist_head.vmdl"
+        "model" "models/courier/baby_rosh/babyroshan.vmdl"
     }
 }

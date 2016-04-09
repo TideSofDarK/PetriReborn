@@ -540,7 +540,7 @@
 	{
 	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/items/dragon_knight/fireborn_dragon/fireborn_dragon.vmdl"
-	  "ModelScale"        "0.65"
+	  "ModelScale"        "0.60"
 	  "SoundSet"          "Creep_Good_Range"
 	  "Level"           "6"
 	  "HealthBarOffset"     "160"
@@ -555,14 +555,14 @@
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackDamageMin"     "512159.33"
-	  "AttackDamageMax"     "861357.88"
+	  "AttackDamageMax"     "792682.01"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "58.0"
-	  "BountyGoldMax"       "61.0"
+	  "BountyGoldMin"       "61.0"
+	  "BountyGoldMax"       "64.0"
 	  "BountyXP"          "200"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -754,8 +754,8 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "21.0"
-	  "BountyGoldMax"       "24.0"
+	  "BountyGoldMin"       "18.0"
+	  "BountyGoldMax"       "20.0"
 	  "BountyXP"          "22"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -2120,6 +2120,7 @@
 	        "model" "models/items/ursa/hat_alpine.vmdl"
 	        "model" "models/heroes/faceless_void/faceless_void.vmdl"
 	        "model" "models/items/faceless_void/ancientcultist_head/ancientcultist_head.vmdl"
+	        "model" "models/courier/baby_rosh/babyroshan.vmdl"
 	    }
 	}
 	"npc_precache_guy_2"

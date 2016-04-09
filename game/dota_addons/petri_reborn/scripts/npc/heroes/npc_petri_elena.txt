@@ -19,11 +19,11 @@
   "MagicalResistance"       "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackRange"                "80"
+  "AttackRange"                "81"
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
   "AttackRate" "0.39"
-  "AttackAnimationPoint"       "0.295"
+  "AttackAnimationPoint"       "0.269"
 
   "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
   "AttributeBaseStrength"   "1"

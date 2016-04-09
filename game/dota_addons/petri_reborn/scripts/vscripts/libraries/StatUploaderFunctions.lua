@@ -1,5 +1,5 @@
 require('libraries/StatUploader')
-local isTest = false
+local isTest = true
 local steamIDs;
 
 ListenToGameEvent('game_rules_state_change', 
