@@ -50,7 +50,8 @@ function SU:LoadPlayersStats()
 end
 
 function SU:SavePlayersStats()
-  local time = GameMode.PETRI_TRUE_TIME * 60
+  print("End game time: ", GameMode.PETRI_TRUE_TIME / 60)
+  local time = GameMode.PETRI_TRUE_TIME / 60
   if not isStatServerUp or time < 9 or time > 50 or not GameMode.villians["npc_dota_hero_death_prophet"] then
     return
   end
