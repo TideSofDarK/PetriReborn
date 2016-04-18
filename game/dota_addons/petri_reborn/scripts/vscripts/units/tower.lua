@@ -151,8 +151,15 @@ end
 
 -- Misc
 function IceTowerOnOrbImpact(keys)
-	if not keys.target:IsMagicImmune() then
-		keys.ability:ApplyDataDrivenModifier(keys.caster, keys.target, "modifier_skadi_cold_attack", {duration = keys.ColdDuration})
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	if not target:IsMagicImmune() then
+		local modifierName = "modifier_skadi_cold_attack"
+		local maxStacks = ability:GetLevelSpecialValueFor("slow_stacks", ability:GetLevel()-1)
+
+		AddStackableModifierWithDuration(target, target, ability, modifierName, keys.ColdDuration, maxStacks)
 	end
 end
 

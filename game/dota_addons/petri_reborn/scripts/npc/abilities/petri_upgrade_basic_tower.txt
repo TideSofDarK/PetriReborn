@@ -358,6 +358,11 @@
       "var_type"          "FIELD_INTEGER"
       "slow_rate"        "-15 -20 -25 -35 -40 -45 -50"
     }
+    "05"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "slow_stacks"        "3 9 18 27 42 54 66"
+    }
   }
 
   "OnSpellStart"
