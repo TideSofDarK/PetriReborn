@@ -377,7 +377,6 @@
       "Function"        "StopUpgrading"
     }
   }
-  .
   "OnChannelSucceeded"
   {
     "RunScript"
