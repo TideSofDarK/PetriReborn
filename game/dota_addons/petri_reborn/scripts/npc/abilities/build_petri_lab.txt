@@ -10,7 +10,7 @@
     "01"
     { 
         "var_type"  "FIELD_INTEGER"
-        "lumber_cost" "1500"
+        "lumber_cost" "1000"
     }
   }
 
@@ -26,7 +26,7 @@
   // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
   "UnitName"            "npc_petri_lab"
   "AbilityCooldown"       "0"
-  "AbilityGoldCost"       "50"
+  "AbilityGoldCost"       "10"
   // End of BuildingHelper info
 
   "AbilityCastPoint"        "0.0"

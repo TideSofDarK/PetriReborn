@@ -51,12 +51,12 @@
 
     "AttachWearables"
     {
-      "Wearable1" { "ItemDef" "6519" }
-      "Wearable1" { "ItemDef" "6520" }
-      "Wearable1" { "ItemDef" "6521" }
-      "Wearable1" { "ItemDef" "6522" }
-      "Wearable1" { "ItemDef" "6523" }
-      "Wearable1" { "ItemDef" "6524" }
+      "Wearable1" { "ItemDef" "8430" }
+      "Wearable1" { "ItemDef" "8431" }
+      "Wearable1" { "ItemDef" "8440" }
+      "Wearable1" { "ItemDef" "8438" }
+      "Wearable1" { "ItemDef" "8435" }
+      "Wearable1" { "ItemDef" "8436" }
     }
   }
 }

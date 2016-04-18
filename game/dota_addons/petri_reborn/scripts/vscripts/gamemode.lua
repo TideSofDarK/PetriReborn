@@ -182,7 +182,6 @@ function GameMode:OnHeroInGame(hero)
           newHero:SetAbilityPoints(0)
 
           newHero:AddItemByName("item_petri_kvn_fan_blink")
-          newHero:AddItemByName("item_petri_give_permission_to_build")
           newHero:AddItemByName("item_petri_gold_bag")
 
           if GameMode.KVN_BONUS_ITEM then

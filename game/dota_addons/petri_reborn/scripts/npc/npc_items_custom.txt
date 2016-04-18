@@ -2021,7 +2021,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "max"    "2"
+	      "max"    "1"
 	    }
 	  }
 	

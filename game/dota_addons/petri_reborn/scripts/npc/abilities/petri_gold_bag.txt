@@ -72,12 +72,12 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "90"
+      "upgrade_rate"      "83"
     }
     "02"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_limit"      "305"
+      "upgrade_limit"      "249"
     }
   }
 
