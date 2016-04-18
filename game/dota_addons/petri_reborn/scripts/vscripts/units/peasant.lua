@@ -398,8 +398,12 @@ function RepairBy1Percent( event )
 	local health = target:GetHealth()
 	local maxHealth = target:GetMaxHealth()
 
+	local modCount = GetModifierCountByName(target,target,"modifier_being_repaired")
+
 	-- if health < maxHealth then
-		if GetModifierCountByName(target,target,"modifier_being_repaired") < 4 then
+		if modCount < 4 then
+
+			if (caster:GetUnitName() == "npc_petri_mega_peasant" and modCount > 2) then return end
 
 			PlayAttackAnimation( event )
 
