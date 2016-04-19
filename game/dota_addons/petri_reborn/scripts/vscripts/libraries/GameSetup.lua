@@ -171,6 +171,9 @@ function GameSetup:VoteEnd( args )
     results[k] = current
   end
 
+  PrintTable(GameSetup.votes)
+  PrintTable(results)
+
   for k,v in pairs(results) do
     if k == "bonus_item" then
       if v == "trap" then
