@@ -52,9 +52,10 @@ end
 function SU:SavePlayersStats()
   local time = math.ceil(GameMode.PETRI_TRUE_TIME / 60)
   if time < 9 or time > 50  then --or not GameMode.villians["npc_dota_hero_death_prophet"]
+    print("sdasdasdsassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")
     return
   end
-
+  print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   local requestParams = {
     Command = "SavePlayersStats",
     PlayersStats = SU:BuildMMRArray()
