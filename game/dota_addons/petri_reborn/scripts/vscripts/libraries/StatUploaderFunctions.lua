@@ -40,12 +40,12 @@ function SU:LoadPlayersStats()
   }
     
   SU:SendRequest( requestParams, function(obj)
-      print(obj)
+      -- print(obj)
       SU.LoadedStats = obj
       CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
       
       print("Loaded players: ")
-      PrintTable(SU.LoadedStats)   
+      -- PrintTable(SU.LoadedStats)   
   end)
 end
 
@@ -62,7 +62,7 @@ function SU:SavePlayersStats()
   }
     
   SU:SendRequest( requestParams, function(obj)
-    PrintTable("Saved MMR: ", obj)
+    -- PrintTable("Saved MMR: ", obj)
   end)
 end
 
@@ -111,13 +111,13 @@ function SU:GetTop3MMRKVN()
       end
     end
 
-    DeepPrintTable(mmr)
+    -- DeepPrintTable(mmr)
 
     table.sort(mmr)
 
-    DeepPrintTable(mmr)
+    -- DeepPrintTable(mmr)
 
-    DeepPrintTable(ReverseTable(mmr))
+    -- DeepPrintTable(ReverseTable(mmr))
 
     return ReverseTable(mmr)
 end
@@ -214,7 +214,7 @@ function SU:BuildMMRArray()
       end
     end
 
-    DeepPrintTable(players)
+    -- DeepPrintTable(players)
 
     return players
 end
