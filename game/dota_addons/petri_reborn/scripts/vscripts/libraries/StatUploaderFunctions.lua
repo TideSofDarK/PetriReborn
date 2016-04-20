@@ -104,7 +104,7 @@ function SU:GetTop3MMRKVN()
             local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
 
             if hero and hero:GetUnitName() ~= "npc_dota_hero_name" then
-              table.insert(mmr, SU:StatValue(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_GOODGUYS, 'mmr') or 3000)
+              table.insert(mmr, SU:GetStatValue(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_GOODGUYS, 'mmr') or 3000)
             end
           end
         end
