@@ -11,6 +11,8 @@ ListenToGameEvent('game_rules_state_change',
     end
   end, nil)
 
+SU.LoadedKVNMMR = {}
+
 function SU:Init()
   steamIDs = SU:BuildSteamIDArray()
   if SU.StatSettings ~= nil then
@@ -45,6 +47,7 @@ function SU:LoadPlayersStats()
       CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
       
       print("Loaded players: ")
+      SU.LoadedKVNMMR = SU:GetTop3MMRKVN()
       -- PrintTable(SU.LoadedStats)   
   end)
 end
@@ -83,7 +86,7 @@ function SU:GetStatValue( steamID, team, statName )
   for k,v in pairs(SU.LoadedStats) do
     if v.SteamID == tostring(steamID) then
       
-      if statName == 'mmr' then
+      if statName == "mmr" then
         return ((team == DOTA_TEAM_BADGUYS and v.PetriRating) or v.KVNRating) or 3000
       elseif statName == 'games' then
         return ((team == DOTA_TEAM_BADGUYS and v.PetriGames) or v.KVNGames) or 0
@@ -104,7 +107,7 @@ function SU:GetTop3MMRKVN()
             local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetSelectedHeroEntity(playerID)
 
             if hero and hero:GetUnitName() ~= "npc_dota_hero_name" then
-              table.insert(mmr, SU:GetStatValue(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_GOODGUYS, 'mmr') or 3000)
+              table.insert(mmr, SU:GetStatValue(PlayerResource:GetSteamAccountID(playerID), DOTA_TEAM_GOODGUYS, "mmr") or 3000)
             end
           end
         end
@@ -143,9 +146,9 @@ end
 
 function SU:BuildMMRArray()
 
-    local top_kvn_mmr = SU:GetTop3MMRKVN()
+    local top_kvn_mmr = SU.LoadedKVNMMR or SU:GetTop3MMRKVN()
 
-    local kvn_mmr = (top_kvn_mmr[1] or 0) + (top_kvn_mmr[2] or 0) + (top_kvn_mmr[3] or 0)
+    local kvn_mmr = (top_kvn_mmr[1] or 3000) + (top_kvn_mmr[2] or 3000) + (top_kvn_mmr[3] or 3000)
     local petri_mmr = SU:GetPetriMMR()
 
     local players = {}
