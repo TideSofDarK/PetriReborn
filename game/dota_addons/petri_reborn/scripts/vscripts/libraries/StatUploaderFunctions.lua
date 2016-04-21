@@ -1,5 +1,5 @@
 require('libraries/StatUploader')
-local isTest = true
+local isTest = false
 local steamIDs;
 
 ListenToGameEvent('game_rules_state_change', 
@@ -16,7 +16,7 @@ SU.LoadedKVNMMR = {}
 function SU:Init()
   steamIDs = SU:BuildSteamIDArray()
   if SU.StatSettings ~= nil then
-    if isTest or (not GameRules:IsCheatMode() and table.getn(steamIDs) > 7) then
+    if isTest or (GameRules:IsCheatMode() == false and GetTableLength( steamIDs ) > 7) then
       ListenToGameEvent('game_rules_state_change', 
         function(keys)
           local state = GameRules:State_Get()
