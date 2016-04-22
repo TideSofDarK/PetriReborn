@@ -3245,6 +3245,35 @@
 	  
 	  "Modifiers"
 	  {
+	    "modifier_petri_solo_aura"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Attributes" "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE | MODIFIER_ATTRIBUTE_PERMANENT"  
+	
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/petrosyan.lua"
+	          "Function"    "CheckSolo"
+	        }
+	      }
+	    }
+	    "modifier_petri_solo"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "1"
+	      }
+	    }
 	    "modifier_petri_exp"
 	    {
 	      "Passive"      "1"
@@ -3287,7 +3316,7 @@
 	          "Function"    "OnAwake"
 	        }
 	      }
-	    } 
+	    }
 	  }   
 	}
 	"petri_petrosyan_return"

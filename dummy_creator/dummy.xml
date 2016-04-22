@@ -1,0 +1,7 @@
+<root> <Panel> <Image src="file://{images}/custom_game/ingame_ui/slots/boots.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/bow.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/gloves.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/pants.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/ring.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/sword.png" />
+<Image src="file://{images}/custom_game/ingame_ui/slots/torso.png" /> </Panel></root>
