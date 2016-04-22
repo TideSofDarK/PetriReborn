@@ -138,7 +138,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_exploration_tree"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "300"
+	  "AbilityGoldCost"       "250"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1852,12 +1852,12 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "83"
+	      "upgrade_rate"      "70"
 	    }
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_limit"      "249"
+	      "upgrade_limit"      "175"
 	    }
 	  }
 	
@@ -4268,7 +4268,7 @@
 	  "MaxLevel"            "8"
 	
 	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
-	  "AbilityGoldCost"       "0 1 5 10 15 20 25"
+	  "AbilityGoldCost"       "0 0 0 10 15 20 25"
 	
 	  "precache"
 	  {
@@ -4281,7 +4281,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "250 500 1000 11000 15000 20000 25000"
+	      "lumber_cost"        "250 500 1000 10000 25000 100000 250000"
 	    }
 	    "02"
 	    {
@@ -4291,17 +4291,17 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10 15 20 25 30 35 40"
+	      "attack_rate"        "50 75 100 125 150 175 200"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_rate"        "-15 -20 -25 -35 -40 -45 -50"
+	      "slow_rate"        "-5"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_stacks"        "3 9 18 27 42 54 66"
+	      "slow_stacks"        "3 4 5 7 8 9 10"
 	    }
 	  }
 	
@@ -4867,7 +4867,7 @@
 	  "AbilityCastPoint"        "0.0"
 	
 	  "AbilityManaCost"       "0"
-	  "AbilityGoldCost"       "1500"
+	  "AbilityGoldCost"       "750"
 	  "AbilityChannelTime"      "5.5"
 	
 	  "MaxLevel"  "0"
@@ -4882,7 +4882,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "50000"
+	      "lumber_cost"        "100000"
 	    }
 	  }
 	
@@ -4967,7 +4967,7 @@
 	    "02"
 	    { 
 	      "var_type"  "FIELD_INTEGER"
-	      "lumber_cost" "300 700 2000 7500 15000 30000 100000 150000"
+	      "lumber_cost" "300 700 2000 7500 15000 30000 125000 175000"
 	    }
 	  }
 	
@@ -5387,7 +5387,7 @@
 	  "AbilityTextureName"      "petri_upgrade_to_cop"
 	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
-	  "AbilityGoldCost"       "50"
+	  "AbilityGoldCost"       "25"
 	
 	  "MaxLevel"            "1"
 	
@@ -5483,7 +5483,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "250 2500 4000 7500 10000 20000 40000 75000 100000 200000 500000 1000000"
+	      "lumber_cost"        "250 2500 4000 7500 10000 15000 25000 40000 75000 150000 500000 1000000"
 	    }
 	    "02"
 	    {
@@ -5737,7 +5737,7 @@
 	    "01"
 	    { 
 	        "var_type"  "FIELD_INTEGER"
-	        "food_cost" "8"
+	        "food_cost" "6"
 	    }
 	  }
 	  

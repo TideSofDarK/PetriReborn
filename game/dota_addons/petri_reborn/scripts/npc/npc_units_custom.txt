@@ -1492,8 +1492,8 @@
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
 	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
+	  "BountyGoldMin"    "11.0"
+	  "BountyGoldMax"    "31.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
 	  "RingRadius"    "40"
@@ -1551,8 +1551,8 @@
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
 	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
+	  "BountyGoldMin"    "7.0"
+	  "BountyGoldMax"    "15.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"    "40"
@@ -1653,8 +1653,8 @@
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
 	
-	  "BountyGoldMin"    "20.0"
-	  "BountyGoldMax"    "30.0"
+	  "BountyGoldMin"    "13.0"
+	  "BountyGoldMax"    "25.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_REGULAR"
 	  "RingRadius"    "40"
