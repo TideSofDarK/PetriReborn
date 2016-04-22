@@ -253,3 +253,62 @@ function JediAura( keys )
 		DestroyEntityBasedOnHealth(caster, target)
 	end
 end
+
+function CheckSolo( keys )
+	local caster = keys.caster
+	local ability = keys.ability
+	local target
+
+	if caster:GetUnitName() == "npc_dota_hero_brewmaster" then
+		target = GameMode.villians["npc_dota_hero_death_prophet"]
+	end
+	if caster:GetUnitName() == "npc_dota_hero_death_prophet" then
+		target = GameMode.villians["npc_dota_hero_brewmaster"]
+	end
+
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length() >= 5000 then
+		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
+
+		local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
+
+		local limit
+		local multiplier
+
+		if time >= 36 and time < 60 then
+			limit = 5000
+			multiplier = 50
+		elseif time >= 32 and time < 36 then
+			limit = 4500
+			multiplier = 45
+		elseif time >= 28 and time < 32 then
+			limit = 4000
+			multiplier = 40
+		elseif time >= 24 and time < 28 then
+			limit = 3500
+			multiplier = 35
+		elseif time >= 20 and time < 24 then
+			limit = 3000
+			multiplier = 30
+		elseif time >= 16 and time < 20 then
+			limit = 2500
+			multiplier = 25
+		elseif time >= 12 and time < 16 then
+			limit = 2000
+			multiplier = 20
+		elseif time >= 8 and time < 12 then
+			limit = 1500
+			multiplier = 15
+		elseif time >= 4 and time < 8 then
+			limit = 1000
+			multiplier = 10
+		elseif time < 4 then
+			limit = 500
+			multiplier = 5
+		end
+
+		local damage = math.ceil((caster:GetAverageTrueAttackDamage() / 100) * multipler)
+		damage = math.min(math.max(damage, 1), limit)
+
+		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
+	end
+end
