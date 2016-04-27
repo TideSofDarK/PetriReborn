@@ -35,13 +35,15 @@ function GivePermissionToBuild( keys )
 	local player = caster:GetPlayerOwnerID()
 	local ability = keys.ability
 
-	if CheckAreaClaimers(target, caster.currentArea.claimers) == true then return false end
+	if target:HasItemInInventory(ability:GetName()) then
+		if CheckAreaClaimers(target, caster.currentArea.claimers) == true then return false end
 
-	if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
-		if target.currentArea == caster.currentArea then
-			if caster.currentArea.claimers[0] == caster and GetTableLength( caster.currentArea.claimers ) < 3 then
-				print(GetTableLength( caster.currentArea.claimers ))
-				caster.currentArea.claimers[GetTableLength( caster.currentArea.claimers ) + 1] = target
+		if caster.currentArea ~= nil and caster.currentArea.claimers ~= nil then
+			if target.currentArea == caster.currentArea then
+				if caster.currentArea.claimers[0] == caster and GetTableLength( caster.currentArea.claimers ) < ability:GetSpecialValueFor("max") then
+					print(GetTableLength( caster.currentArea.claimers ))
+					caster.currentArea.claimers[GetTableLength( caster.currentArea.claimers ) + 1] = target
+				end
 			end
 		end
 	end
@@ -119,11 +121,20 @@ end
 
 function SpawnGoldBag( keys )
 	local caster = keys.caster
+	local ability = keys.ability
 	local pID = caster:GetPlayerOwnerID()
 
 	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
-	local bag = CreateUnitByName("npc_petri_gold_bag", caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
+	local unit_name = "npc_petri_gold_bag"
+	if string.match(ability:GetName(), "2") then 
+		unit_name = "npc_petri_gold_bag2"
+	end
+	if string.match(ability:GetName(), "3") then 
+		unit_name = "npc_petri_gold_bag3"
+	end
+
+	local bag = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	SetCustomBuildingModel(bag, PlayerResource:GetSteamAccountID(pID))
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()

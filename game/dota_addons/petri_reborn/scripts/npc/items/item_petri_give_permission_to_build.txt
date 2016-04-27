@@ -18,7 +18,76 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "max"    "1"
+      "max"    "2"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/kvn_fan.lua"
+      "Function"    "GivePermissionToBuild"
+    }
+  }
+}
+
+"item_petri_give_permission_to_build2"
+{
+  "ID"              "1504"
+  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+
+  "BaseClass"           "item_datadriven"
+  "AbilityTextureName"            "item_rally"
+
+  "AbilityCastRange" "150"
+
+  "ItemPermanent"         "0"
+  "ItemSellable"                  "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "max"    "3"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/kvn_fan.lua"
+      "Function"    "GivePermissionToBuild"
+    }
+  }
+}
+
+
+"item_petri_give_permission_to_build3"
+{
+  "ID"              "1504"
+  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+
+  "BaseClass"           "item_datadriven"
+  "AbilityTextureName"            "item_rally"
+
+  "AbilityCastRange" "150"
+
+  "ItemPermanent"         "0"
+  "ItemSellable"                  "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "max"    "4"
     }
   }
 

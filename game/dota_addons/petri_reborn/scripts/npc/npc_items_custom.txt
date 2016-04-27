@@ -2021,7 +2021,76 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "max"    "1"
+	      "max"    "2"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	}
+	
+	"item_petri_give_permission_to_build2"
+	{
+	  "ID"              "1504"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_rally"
+	
+	  "AbilityCastRange" "150"
+	
+	  "ItemPermanent"         "0"
+	  "ItemSellable"                  "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max"    "3"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	}
+	
+	
+	"item_petri_give_permission_to_build3"
+	{
+	  "ID"              "1504"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_rally"
+	
+	  "AbilityCastRange" "150"
+	
+	  "ItemPermanent"         "0"
+	  "ItemSellable"                  "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "max"    "4"
 	    }
 	  }
 	
@@ -2035,6 +2104,68 @@
 	  }
 	}
 	"item_petri_gold_bag"
+	{
+	  "ID"              "1108"
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_gold_bag"
+	
+	  "ItemCost"            "675"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "bag"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemPermanent"       "0"
+	  "ItemSellable"        "0"
+	
+	  "SideShop" "1"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "SpawnGoldBag"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	
+	"item_petri_gold_bag2"
+	{
+	  "ID"              "1108"
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_gold_bag"
+	
+	  "ItemCost"            "675"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "bag"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemPermanent"       "0"
+	  "ItemSellable"        "0"
+	
+	  "SideShop" "1"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "SpawnGoldBag"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	
+	"item_petri_gold_bag3"
 	{
 	  "ID"              "1108"
 	  "BaseClass"                 "item_datadriven"
