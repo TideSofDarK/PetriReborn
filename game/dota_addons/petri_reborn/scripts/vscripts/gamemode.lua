@@ -184,9 +184,9 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_gold_bag")
 
-          if GameMode.KVN_BONUS_ITEM then
-            for i=1,GameMode.KVN_BONUS_ITEM["count"] do
-              newHero:AddItemByName(GameMode.KVN_BONUS_ITEM["item"])
+          if GameMode.KVN_BONUS_ITEM[pID] then
+            for i=1,GameMode.KVN_BONUS_ITEM[pID]["count"] do
+              newHero:AddItemByName(GameMode.KVN_BONUS_ITEM[pID]["item"])
             end
           end
 
