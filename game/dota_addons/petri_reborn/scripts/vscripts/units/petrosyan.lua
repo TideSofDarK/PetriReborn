@@ -323,7 +323,7 @@ function CheckSolo( keys )
 			multiplier = 5
 		end
 
-		local damage = math.ceil((caster:GetAverageTrueAttackDamage() / 100) * multipler)
+		local damage = math.ceil((caster:GetAverageTrueAttackDamage() / 100) * multiplier)
 		damage = math.min(math.max(damage, 1), limit)
 
 		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
