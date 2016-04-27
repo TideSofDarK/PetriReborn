@@ -1,0 +1,59 @@
+"npc_precache_guy_2"
+{
+    "BaseClass"         "npc_dota_creature"
+    "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"
+    "ModelScale"        "0.0"
+    "Level"           "0"
+    "HealthBarOffset"       "140"
+    "HasInventory"        "0"
+
+    "ArmorPhysical"       "0"
+    "MagicalResistance"     "0"
+
+    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+    "AttackDamageMin"       "0"
+    "AttackDamageMax"       "0"
+
+    "BountyGoldMin"       "10.0"
+    "BountyGoldMax"       "10.0"
+
+    "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
+    "RingRadius"        "10"
+    "CollisionSize"       "2"
+
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+    "MovementSpeed"         "0"   
+    "MovementTurnRate"    "0.0"  
+    "HasAggressiveStance"     "0"
+
+    "StatusHealth"        "1"
+    "StatusHealthRegen"     "0"
+    "StatusMana"        "0"
+    "StatusManaRegen"       "0"
+
+    "VisionDaytimeRange"    "1700"
+    "VisionNighttimeRange"    "1700"
+
+    "TeamName"          "DOTA_TEAM_BADGUYS"
+    "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+    "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+    "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+    "precache"
+    {
+        "model" "models/heroes/legion_commander/legion_commander.vmdl"
+        "model" "models/items/legion_commander/errant_cowl/errant_cowl.vmdl"
+        "model" "models/items/legion_commander/errant_standards/errant_standards.vmdl"
+        "model" "models/items/antimage/nomadic_protector_weapon/nomadic_protector_weapon.vmdl"
+        "model" "models/items/spectre/spectre_diffusal.vmdl"
+        "model" "models/heroes/lanaya/lanaya.vmdl"
+        "model" "models/items/crystal_maiden/esl_frozen_lotus_head/esl_frozen_lotus_head.vmdl"
+        "model" "models/heroes/queenofpain/queenofpain.vmdl"
+        "model" "models/items/queenofpain/wings_of_vincere/wings_of_vincere.vmdl"
+        "model" "models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl"
+        "model" "models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
+        "model" "models/items/queenofpain/shadeofagony/shadeofagony.vmdl"
+        "model" "models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+    }
+}

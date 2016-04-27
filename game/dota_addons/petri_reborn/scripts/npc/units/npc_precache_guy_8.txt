@@ -1,0 +1,67 @@
+"npc_precache_guy_2"
+{
+    "BaseClass"         "npc_dota_creature"
+    "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"
+    "ModelScale"        "0.0"
+    "Level"           "0"
+    "HealthBarOffset"       "140"
+    "HasInventory"        "0"
+
+    "ArmorPhysical"       "0"
+    "MagicalResistance"     "0"
+
+    "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+    "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+    "AttackDamageMin"       "0"
+    "AttackDamageMax"       "0"
+
+    "BountyGoldMin"       "10.0"
+    "BountyGoldMax"       "10.0"
+
+    "BoundsHullName"    "DOTA_HULL_SIZE_SMALL"    
+    "RingRadius"        "10"
+    "CollisionSize"       "2"
+
+    "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE" 
+    "MovementSpeed"         "0"   
+    "MovementTurnRate"    "0.0"  
+    "HasAggressiveStance"     "0"
+
+    "StatusHealth"        "1"
+    "StatusHealthRegen"     "0"
+    "StatusMana"        "0"
+    "StatusManaRegen"       "0"
+
+    "VisionDaytimeRange"    "1700"
+    "VisionNighttimeRange"    "1700"
+
+    "TeamName"          "DOTA_TEAM_BADGUYS"
+    "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+    "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+    "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+
+    "precache"
+    {
+        "model" "models/heroes/meepo/shoulders.vmdl"
+        "model" "models/heroes/items/hat_test/hat_test.vmdl"
+        "model" "models/items/meepo/colossal_crystal_chorus/colossal_crystal_chorus.vmdl"
+        "model" "models/heroes/techies/fx_techies_remotebomb.vmdl"
+        "model" "models/items/axe/axe_practos_weapon/axe_practos_weapon.vmdl"
+        "model" "models/heroes/crystal_maiden/crystal_maiden.vmdl"
+        "model" "models/heroes/omniknight/omniknightwings.vmdl"
+        "model" "models/items/lina/hairoftheslayerr/hairoftheslayerr.vmdl"
+        "model" "models/items/abaddon/mistblade/mistblade.vmdl"
+        "model" "models/heroes/life_stealer/life_stealer.vmdl"
+        "model" "models/items/lifestealer/redrage_battlewings/redrage_battlewings.vmdl"
+        "model" "models/items/lifestealer/transmuted_armaments_head/transmuted_armaments_head.vmdl"
+        "model" "models/heroes/slark/slark.vmdl"
+        "model" "models/items/slark/dark_reef_back/dark_reef_back.vmdl"
+        "model" "models/items/slark/dark_reef_head/dark_reef_head.vmdl"
+        "model" "models/items/slark/golden_barb_of_skadi/golden_barb_of_skadi.vmdl"
+        "model" "models/hats/hat.vmdl"
+        "model" "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl"
+        "model" "models/heroes/terrorblade/demon.vmdl"
+        "model" "models/heroes/wraith_king/wraith_king.vmdl"
+        "model" "models/items/wraith_king/sundered_back/sundered_back.vmdl"
+    }
+}
