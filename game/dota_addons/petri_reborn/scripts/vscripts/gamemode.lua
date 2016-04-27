@@ -111,7 +111,7 @@ function GameMode:OnAllPlayersLoaded()
   local precacheUnitName = "npc_precache_guy"
 
   PrecacheUnitByNameAsync(precacheUnitName, function()
-    for i=2,5 do
+    for i=2,11 do
       Timers:CreateTimer(2.0 * i, function (  )
         PrecacheUnitByNameAsync(precacheUnitName.."_"..tostring(i), function()
         
