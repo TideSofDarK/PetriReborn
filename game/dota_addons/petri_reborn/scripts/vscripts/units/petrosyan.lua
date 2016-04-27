@@ -129,6 +129,23 @@ function Return( keys )
         Queue           = 0
     }
 
+    local target
+	if caster:GetUnitName() == "npc_dota_hero_brewmaster" then
+		target = GameMode.villians["npc_dota_hero_death_prophet"]
+	end
+	if caster:GetUnitName() == "npc_dota_hero_death_prophet" then
+		target = GameMode.villians["npc_dota_hero_brewmaster"]
+	end
+
+	if target and (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= 5000 then
+	    local t=0
+	    Timers:CreateTimer(function (  )
+	    	caster:RemoveModifierByName("modifier_petri_solo")
+	    	t = t + 0.03
+	    	if t < 15 then return 0.03 end
+	    end)
+	end
+
   	ExecuteOrderFromTable(newOrder)
 end
 
@@ -266,7 +283,7 @@ function CheckSolo( keys )
 		target = GameMode.villians["npc_dota_hero_brewmaster"]
 	end
 
-	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length() >= 5000 then
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
 
 		local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
@@ -301,7 +318,7 @@ function CheckSolo( keys )
 		elseif time >= 4 and time < 8 then
 			limit = 1000
 			multiplier = 10
-		elseif time < 4 then
+		else 
 			limit = 500
 			multiplier = 5
 		end
@@ -310,5 +327,6 @@ function CheckSolo( keys )
 		damage = math.min(math.max(damage, 1), limit)
 
 		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
+		print(damage)
 	end
 end

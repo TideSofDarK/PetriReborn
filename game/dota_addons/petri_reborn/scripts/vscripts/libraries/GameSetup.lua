@@ -148,6 +148,31 @@ end
 -- End vote handler
 function GameSetup:VoteEnd( args )
   local results = {}
+  PrintTable(results)
+
+  for k,v in pairs(GameSetup.votes) do
+    if k == "bonus_item" then
+      for k2,v2 in pairs(v) do
+        GameMode.KVN_BONUS_ITEM[k2] = {}
+        if v2 == "trap" then
+          GameMode.KVN_BONUS_ITEM[k2]["item"] = "item_petri_trap"
+          GameMode.KVN_BONUS_ITEM[k2]["count"] = 1
+        end
+        if v2 == "2_attack" then
+          GameMode.KVN_BONUS_ITEM[k2]["item"] = "item_petri_attack_scroll"
+          GameMode.KVN_BONUS_ITEM[k2]["count"] = 2
+        end
+        if v2 == "2_evasion" then
+          GameMode.KVN_BONUS_ITEM[k2]["item"] = "item_petri_evasion_scroll"
+          GameMode.KVN_BONUS_ITEM[k2]["count"] = 2
+        end
+        if v2 == "3_alcohol" then
+          GameMode.KVN_BONUS_ITEM[k2]["item"] = "item_petri_alcohol"
+          GameMode.KVN_BONUS_ITEM[k2]["count"] = 3
+        end
+      end
+    end
+  end
   
   for k,v in pairs(GameSetup.votes) do
     local votes = {}
@@ -169,30 +194,6 @@ function GameSetup:VoteEnd( args )
     end
 
     results[k] = current
-  end
-
-  PrintTable(GameSetup.votes)
-  PrintTable(results)
-
-  for k,v in pairs(results) do
-    if k == "bonus_item" then
-      if v == "trap" then
-        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_trap"
-        GameMode.KVN_BONUS_ITEM["count"] = 1
-      end
-      if v == "2_attack" then
-        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_attack_scroll"
-        GameMode.KVN_BONUS_ITEM["count"] = 2
-      end
-      if v == "2_evasion" then
-        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_evasion_scroll"
-        GameMode.KVN_BONUS_ITEM["count"] = 2
-      end
-      if v == "3_alcohol" then
-        GameMode.KVN_BONUS_ITEM["item"] = "item_petri_alcohol"
-        GameMode.KVN_BONUS_ITEM["count"] = 3
-      end
-    end
   end
 
   CustomGameEventManager:Send_ServerToAllClients("petri_vote_results", {["results"] = results} )

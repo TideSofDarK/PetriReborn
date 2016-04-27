@@ -88,6 +88,8 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_tower_basic", context)
   PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
   PrecacheUnitByNameSync("npc_petri_gold_bag", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag2", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag3", context)
   
   -- PARTICLES
   PrecacheResource("particle", "particles/units/heroes/hero_tinker/tinker_laser.vpcf", context)

@@ -1,7 +1,10 @@
-<root> <Panel> <Image src="file://{images}/custom_game/ingame_ui/slots/boots.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/bow.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/gloves.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/pants.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/ring.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/sword.png" />
-<Image src="file://{images}/custom_game/ingame_ui/slots/torso.png" /> </Panel></root>
+<root> <Panel> <Image src="file://{images}/items/basic_coat.png" />
+<Image src="file://{images}/items/basic_leather.png" />
+<Image src="file://{images}/items/basic_parts.png" />
+<Image src="file://{images}/items/basic_shotgun.png" />
+<Image src="file://{images}/items/basic_sword.png" />
+<Image src="file://{images}/items/gem_malachite.png" />
+<Image src="file://{images}/items/gem_topaz.png" />
+<Image src="file://{images}/items/item_basic_bow.png" />
+<Image src="file://{images}/items/rune_dark_goddess.png" />
+<Image src="file://{images}/items/rune_samurai.png" /> </Panel></root>
