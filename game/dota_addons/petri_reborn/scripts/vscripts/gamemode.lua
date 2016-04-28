@@ -17,8 +17,10 @@ GameMode.PETRI_TRUE_TIME = 0
 GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
-GameMode.KVN_BONUS_ITEM["item"] = "item_petri_trap"
-GameMode.KVN_BONUS_ITEM["count"] = 1
+for i=0,12 do
+  GameMode.KVN_BONUS_ITEM[i] = {}
+  -- table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_trap", count = 1})
+end
 
 GameMode.EXIT_COUNT = 0
 
@@ -185,8 +187,12 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_gold_bag")
 
           if GameMode.KVN_BONUS_ITEM[pID] then
-            for i=1,GameMode.KVN_BONUS_ITEM[pID]["count"] do
-              newHero:AddItemByName(GameMode.KVN_BONUS_ITEM[pID]["item"])
+            for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
+              for k1,v1 in pairs(v) do
+                for i=1,v1["count"] do
+                  newHero:AddItemByName(v1["item"])
+                end               
+              end
             end
           end
 

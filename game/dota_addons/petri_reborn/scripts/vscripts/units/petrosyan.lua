@@ -104,6 +104,22 @@ end
 
 function Return( keys )
 	local caster = keys.caster
+	local target
+	if caster:GetUnitName() == "npc_dota_hero_brewmaster" then
+		target = GameMode.villians["npc_dota_hero_death_prophet"]
+	end
+	if caster:GetUnitName() == "npc_dota_hero_death_prophet" then
+		target = GameMode.villians["npc_dota_hero_brewmaster"]
+	end
+
+	if target and (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= 5000 then
+	    local t=0
+	    Timers:CreateTimer(function (  )
+	    	target:RemoveModifierByName("modifier_petri_solo")
+	    	t = t + 0.03
+	    	if t < 15 then return 0.03 end
+	    end)
+	end
 
 	caster.teleportationState = 0
 
@@ -128,23 +144,6 @@ function Return( keys )
         Position        = caster:GetAbsOrigin(), 
         Queue           = 0
     }
-
-    local target
-	if caster:GetUnitName() == "npc_dota_hero_brewmaster" then
-		target = GameMode.villians["npc_dota_hero_death_prophet"]
-	end
-	if caster:GetUnitName() == "npc_dota_hero_death_prophet" then
-		target = GameMode.villians["npc_dota_hero_brewmaster"]
-	end
-
-	if target and (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= 5000 then
-	    local t=0
-	    Timers:CreateTimer(function (  )
-	    	caster:RemoveModifierByName("modifier_petri_solo")
-	    	t = t + 0.03
-	    	if t < 15 then return 0.03 end
-	    end)
-	end
 
   	ExecuteOrderFromTable(newOrder)
 end
@@ -283,7 +282,23 @@ function CheckSolo( keys )
 		target = GameMode.villians["npc_dota_hero_brewmaster"]
 	end
 
-	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 then
+	local units = FindUnitsInRadius(caster:GetTeamNumber(),caster:GetAbsOrigin(),nil,500,DOTA_UNIT_TARGET_TEAM_BOTH,DOTA_UNIT_TARGET_ALL,DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,0,false)
+
+	for k,v in pairs(units) do
+		if v:GetUnitName() == "npc_petri_creep_bad_actor" or
+			v:GetUnitName() == "npc_petri_creep_dark_kivin" or
+			v:GetUnitName() == "npc_petri_creep_dead_actor" or
+			v:GetUnitName() == "npc_petri_creep_draconoid" or
+			v:GetUnitName() == "npc_petri_creep_good_actor" or
+			v:GetUnitName() == "npc_petri_creep_humorist" or
+			v:GetUnitName() == "npc_petri_creep_kivin" or
+			v:GetUnitName() == "npc_dota_hero_storm_spirit" then
+			return
+		end
+	end
+
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 or
+	 then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
 
 		local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
