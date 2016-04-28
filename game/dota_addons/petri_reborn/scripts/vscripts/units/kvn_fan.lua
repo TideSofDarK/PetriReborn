@@ -21,7 +21,11 @@ function SpawnTrap(keys)
 	local caster = keys.caster
 
 	local trap = CreateUnitByName("npc_petri_trap", point,  true, nil, caster, caster:GetTeam())
+
 	SetCustomBuildingModel(trap, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
+
+	caster = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
+	trap.owner = caster
 
 	InitAbilities(trap)
 	trap:AddNewModifier(trap, nil, "modifier_kill", {duration = 240})

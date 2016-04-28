@@ -189,7 +189,7 @@ function GameMode:OnHeroInGame(hero)
           if GameMode.KVN_BONUS_ITEM[pID] then
             for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
               for k1,v1 in pairs(v) do
-                for i=1,v1["count"] do
+                for i=1,tonumber(v1["count"]) do
                   newHero:AddItemByName(v1["item"])
                 end               
               end

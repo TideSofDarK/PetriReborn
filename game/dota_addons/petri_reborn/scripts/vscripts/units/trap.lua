@@ -3,6 +3,13 @@ function AddTrap(event)
 	local target = event.target
 	local ability = event.ability
 
+	if (caster.owner:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D() >= 2500 then
+		return
+	end
+
+
+	caster:RemoveModifierByName("modifier_trap")
+
 	EmitSoundOn("Hero_Techies.StasisTrap.Stun", caster) 
 
 	Timers:CreateTimer(2.1, function ()

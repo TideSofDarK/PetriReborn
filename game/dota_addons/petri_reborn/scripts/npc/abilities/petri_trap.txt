@@ -45,11 +45,6 @@
               "Function"    "AddTrap"
               "Target"  "TARGET"
             }
-            "RemoveModifier"
-            {
-              "ModifierName"  "modifier_trap"
-              "Target"     "CASTER"
-            }
           }      
         }     
       }   
