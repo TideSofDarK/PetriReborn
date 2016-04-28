@@ -148,23 +148,23 @@ end
 -- End vote handler
 function GameSetup:VoteEnd( args )
   local results = {}
-  PrintTable(results)
+  PrintTable(GameSetup.votes)
 
   for k,v in pairs(GameSetup.votes) do
     if k == "bonus_item" then
       for k2,v2 in pairs(v) do
-        GameMode.KVN_BONUS_ITEM[k2] = {}
+        GameMode.KVN_BONUS_ITEM[tonumber(k2)] = {}
         if v2 == "trap" then
-          table.insert(GameMode.KVN_BONUS_ITEM[k2], {item = "item_petri_trap", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_trap", count = 1})
         end
         if v2 == "2_attack" then
-          table.insert(GameMode.KVN_BONUS_ITEM[k2], {item = "item_petri_attack_scroll", count = 2})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_attack_scroll", count = 2})
         end
         if v2 == "2_evasion" then
-          table.insert(GameMode.KVN_BONUS_ITEM[k2], {item = "item_petri_evasion_scroll", count = 2})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_evasion_scroll", count = 2})
         end
         if v2 == "3_alcohol" then
-          table.insert(GameMode.KVN_BONUS_ITEM[k2], {item = "item_petri_alcohol", count = 3})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_alcohol", count = 3})
         end
       end
     end

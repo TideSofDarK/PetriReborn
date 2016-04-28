@@ -186,13 +186,13 @@ function GameMode:OnHeroInGame(hero)
           newHero:AddItemByName("item_petri_kvn_fan_blink")
           newHero:AddItemByName("item_petri_gold_bag")
 
+          PrintTable(GameMode.KVN_BONUS_ITEM[pID])
+
           if GameMode.KVN_BONUS_ITEM[pID] then
             for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
-              for k1,v1 in pairs(v) do
-                for i=1,tonumber(v1["count"]) do
-                  newHero:AddItemByName(v1["item"])
-                end               
-              end
+              for i=1,tonumber(v["count"]) do
+                newHero:AddItemByName(v["item"])
+              end  
             end
           end
 
