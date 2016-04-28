@@ -297,8 +297,7 @@ function CheckSolo( keys )
 		end
 	end
 
-	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 or
-	 then
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
 
 		local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
