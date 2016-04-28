@@ -286,7 +286,7 @@ function CheckSolo( keys )
 
 	for k,v in pairs(units) do
 		if v:GetUnitName() == "npc_petri_creep_bad_actor" or
-			v:GetUnitName() == "npc_petri_creep_dark_kivin" or
+			v:GetUnitName() == "npc_petri_creep_kvn_actor" or
 			v:GetUnitName() == "npc_petri_creep_dead_actor" or
 			v:GetUnitName() == "npc_petri_creep_draconoid" or
 			v:GetUnitName() == "npc_petri_creep_good_actor" or
