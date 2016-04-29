@@ -297,7 +297,7 @@ function CheckSolo( keys )
 		end
 	end
 
-	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 2950 then
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 2950 and caster:GetUnitName() ~= "npc_dota_hero_storm_spirit" then
 		caster:RemoveModifierByName("modifier_petri_solo")
 
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
