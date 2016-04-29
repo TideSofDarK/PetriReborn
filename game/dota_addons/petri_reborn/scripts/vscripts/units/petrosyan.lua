@@ -112,7 +112,7 @@ function Return( keys )
 		target = GameMode.villians["npc_dota_hero_brewmaster"]
 	end
 
-	if target and (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= 5000 then
+	if target and (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() <= 2950 then
 	    local t=0
 	    Timers:CreateTimer(function (  )
 	    	target:RemoveModifierByName("modifier_petri_solo")
@@ -297,7 +297,7 @@ function CheckSolo( keys )
 		end
 	end
 
-	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 5000 then
+	if not target or (caster:GetAbsOrigin() - target:GetAbsOrigin()):Length2D() >= 2950 then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_petri_solo",{duration = 1.0})
 
 		local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
@@ -306,35 +306,35 @@ function CheckSolo( keys )
 		local multiplier
 
 		if time >= 36 and time < 60 then
-			limit = 5000
-			multiplier = 50
+			limit = 100000
+			multiplier = 90
 		elseif time >= 32 and time < 36 then
-			limit = 4500
-			multiplier = 45
+			limit = 80000
+			multiplier = 85
 		elseif time >= 28 and time < 32 then
-			limit = 4000
-			multiplier = 40
+			limit = 60000
+			multiplier = 75
 		elseif time >= 24 and time < 28 then
-			limit = 3500
-			multiplier = 35
+			limit = 40000
+			multiplier = 60
 		elseif time >= 20 and time < 24 then
-			limit = 3000
-			multiplier = 30
+			limit = 25000
+			multiplier = 50
 		elseif time >= 16 and time < 20 then
-			limit = 2500
-			multiplier = 25
+			limit = 10000
+			multiplier = 50
 		elseif time >= 12 and time < 16 then
-			limit = 2000
-			multiplier = 20
+			limit = 5100
+			multiplier = 50
 		elseif time >= 8 and time < 12 then
-			limit = 1500
-			multiplier = 15
+			limit = 250
+			multiplier = 45
 		elseif time >= 4 and time < 8 then
-			limit = 1000
-			multiplier = 10
+			limit = 175
+			multiplier = 40
 		else 
-			limit = 500
-			multiplier = 5
+			limit = 50
+			multiplier = 30
 		end
 
 		local damage = math.ceil((caster:GetAverageTrueAttackDamage() / 100) * multiplier)
