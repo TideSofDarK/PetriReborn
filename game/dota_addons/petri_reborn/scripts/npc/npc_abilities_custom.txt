@@ -1852,7 +1852,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "70"
+	      "upgrade_rate"      "73"
 	    }
 	    "02"
 	    {
@@ -2036,7 +2036,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "83"
+	      "upgrade_rate"      "90"
 	    }
 	    "02"
 	    {
@@ -2163,12 +2163,12 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "83"
+	      "upgrade_rate"      "1000"
 	    }
 	    "02"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_limit"      "249"
+	      "upgrade_limit"      "1"
 	    }
 	  }
 	
@@ -4165,11 +4165,6 @@
 	              "ScriptFile"  "units/trap.lua"
 	              "Function"    "AddTrap"
 	              "Target"  "TARGET"
-	            }
-	            "RemoveModifier"
-	            {
-	              "ModifierName"  "modifier_trap"
-	              "Target"     "CASTER"
 	            }
 	          }      
 	        }     

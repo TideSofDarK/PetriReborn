@@ -34,7 +34,7 @@
 
 "item_petri_give_permission_to_build2"
 {
-  "ID"              "1504"
+  "ID"              "1601"
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
@@ -69,7 +69,7 @@
 
 "item_petri_give_permission_to_build3"
 {
-  "ID"              "1504"
+  "ID"              "1602"
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
