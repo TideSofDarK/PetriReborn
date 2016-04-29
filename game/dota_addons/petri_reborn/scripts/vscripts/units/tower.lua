@@ -159,7 +159,10 @@ function IceTowerOnOrbImpact(keys)
 		local modifierName = "modifier_skadi_cold_attack"
 		local maxStacks = ability:GetLevelSpecialValueFor("slow_stacks", ability:GetLevel()-1)
 
-		AddStackableModifierWithDuration(target, target, ability, modifierName, keys.ColdDuration, maxStacks)
+		
+		for i=1,maxStacks do
+			AddStackableModifierWithDuration(target, target, ability, modifierName, keys.ColdDuration, maxStacks)
+		end
 	end
 end
 
