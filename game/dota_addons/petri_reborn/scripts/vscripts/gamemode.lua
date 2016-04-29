@@ -18,9 +18,8 @@ GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
 for i=0,12 do
-  GameMode.KVN_BONUS_ITEM[i] = {}
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_trap", count = 3})
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_attack_scroll", count = 3})
+  GameMode.KVN_BONUS_ITEM = {}
+  table.insert(GameMode.KVN_BONUS_ITEM, {item = "item_petri_trap", count = 1})
 end
 
 GameMode.EXIT_COUNT = 0
@@ -185,7 +184,6 @@ function GameMode:OnHeroInGame(hero)
           newHero:SetAbilityPoints(0)
 
           newHero:AddItemByName("item_petri_kvn_fan_blink")
-          newHero:AddItemByName("item_petri_gold_bag")
 
           PrintTable(GameMode.KVN_BONUS_ITEM[pID])
 
