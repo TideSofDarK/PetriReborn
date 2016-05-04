@@ -16,7 +16,7 @@ SU.LoadedKVNMMR = {}
 function SU:Init()
   steamIDs = SU:BuildSteamIDArray()
   if SU.StatSettings ~= nil then
-    if isTest or (GameRules:IsCheatMode() == false and GetTableLength( steamIDs ) > 7) then
+    if true then
       ListenToGameEvent('game_rules_state_change', 
         function(keys)
           local state = GameRules:State_Get()
