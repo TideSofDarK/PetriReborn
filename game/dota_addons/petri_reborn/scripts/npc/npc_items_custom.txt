@@ -5635,6 +5635,81 @@
 	    }
 	  }
 	}
+	
+	"item_petri_vip_puntsygma"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1301"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  // "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_PURE"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_dagon"
+	
+	  "ItemPurchasable"       "0"
+	  
+	  "AbilityCastRange"              "700"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "60.0"
+	  "AbilityDamage" "50000"
+	
+	  "AbilityManaCost"               "20"
+	
+	  "precache"
+	  {
+	    "soundfile" "soundevents/game_sounds_heroes/game_sounds_lion.vsndevts"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "50000"
+	    }
+	    "02"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "hp"                        "50000"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Lion.Pick"
+	      "Target"        "TARGET"
+	    }
+	    "Damage"
+	    {
+	      "Target"    "TARGET"
+	      "Type"      "DAMAGE_TYPE_PURE"
+	      "Damage"    "%damage"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_puntsygma"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%hp"
+	      }
+	    }
+	  }
+	}
 	"item_petri_vip_furion"
 	{
 	  "BaseClass"           "item_datadriven"
