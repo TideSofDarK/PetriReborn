@@ -38,7 +38,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_gold_bag2"
 
-  "ItemCost"            "77777"
+  "ItemCost"            "1000"
   "ItemQuality"         "consumable"
   "ItemAliases"         "bag"
   "ItemInitialCharges"  "1"

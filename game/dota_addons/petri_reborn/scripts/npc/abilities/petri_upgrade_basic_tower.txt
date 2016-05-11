@@ -462,7 +462,7 @@
   "MaxLevel"            "8"
 
   "AbilityChannelTime"      "3.0 3.1 3.2 3.3 3.4 3.5 3.6"
-  "AbilityGoldCost"       "1 3 5 15 20 25 30"
+  "AbilityGoldCost"       "1 3 10 50 75 100 150"
 
   "precache"
   {
@@ -475,7 +475,7 @@
     "01"
     {
       "var_type"                "FIELD_INTEGER"
-      "lumber_cost"             "1000 2000 5000 50000 150000 250000 400000"
+      "lumber_cost"             "1000 2000 50000 100000 150000 250000 500000"
     }
     "02"
     {
@@ -495,7 +495,7 @@
     "05"
     {
       "var_type"                "FIELD_INTEGER"
-      "armor_reduction_stacks"  "3 9 18 27 42 54 66"
+      "armor_reduction_stacks"  "3 6 9 18 36 54 66"
     }
   }
 

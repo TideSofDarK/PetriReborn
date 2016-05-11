@@ -308,16 +308,16 @@ function CheckSolo( keys )
 		local multiplier
 
 		if time >= 36 and time < 60 then
-			limit = 100000
+			limit = 86700
 			multiplier = 90
 		elseif time >= 32 and time < 36 then
-			limit = 80000
+			limit = 70000
 			multiplier = 85
 		elseif time >= 28 and time < 32 then
-			limit = 60000
+			limit = 57500
 			multiplier = 75
 		elseif time >= 24 and time < 28 then
-			limit = 40000
+			limit = 30000
 			multiplier = 60
 		elseif time >= 20 and time < 24 then
 			limit = 25000

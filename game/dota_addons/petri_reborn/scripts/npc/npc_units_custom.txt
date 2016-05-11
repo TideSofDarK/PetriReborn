@@ -605,7 +605,7 @@
 	  "AttackRate"        "1.2"
 	  "AttackAnimationPoint"    "0.42"
 	  "AttackAcquisitionRange"  "500"
-	  "AttackRange"       "90"
+	  "AttackRange"       "120"
 	
 	  "BountyGoldMin"       "2.0"
 	  "BountyGoldMax"       "3.0"
@@ -1600,7 +1600,7 @@
 	  "MovementSpeed"    "522"
 	  "MovementTurnRate"   "0.6"
 	
-	  "StatusHealth"    "5"
+	  "StatusHealth"    "6"
 	  "StatusHealthRegen"   "0.25"
 	  "StatusMana"    "5"
 	  "StatusManaRegen"    "0"
@@ -1640,17 +1640,18 @@
 	
 	  "AbilityLayout"    "4"
 	  "Ability1"     "gather_lumber"
-	  "Ability2"     "return_resources"
-	  "Ability3"     "petri_suicide"
+	  "Ability2"     "petri_suicide"
+	  "Ability3"     "return_resources"
 	  "Ability4"     "petri_upgrade_to_cop"
+	  "Ability5"     "petri_repair"
 	
 	  "ArmorPhysical"    "0"
 	  "MagicalResistance"   "0"
 	
 	  "AttackCapabilities"  "DOTA_UNIT_CAP_NO_ATTACK"
 	
-	  "BountyGoldMin"    "7.0"
-	  "BountyGoldMax"    "15.0"
+	  "BountyGoldMin"    "6.0"
+	  "BountyGoldMax"    "14.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"    "40"
@@ -1661,8 +1662,8 @@
 	  "MovementSpeed"    "522"
 	  "MovementTurnRate"   "0.6"
 	
-	  "StatusHealth"    "5"
-	  "StatusHealthRegen"   "0.25"
+	  "StatusHealth"    "4"
+	  "StatusHealthRegen"   "0.20"
 	  "StatusMana"    "5"
 	  "StatusManaRegen"    "0"
 	
