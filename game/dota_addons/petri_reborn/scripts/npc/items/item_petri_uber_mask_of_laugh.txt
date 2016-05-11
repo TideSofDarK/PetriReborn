@@ -55,10 +55,10 @@
   
   "Modifiers"
   {
-    "modifier_passive_umol"
+    "modifier_passive_stats"
     {
       "Passive"     "1"
-      "IsHidden"      "1"
+      "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
       "Properties"
@@ -73,6 +73,17 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_passive_stats"
+          "Target"     "CASTER"
+          "Duration"    "2.0"
+        }
+      }
       
       "Orb"
       {
@@ -230,10 +241,10 @@
   
   "Modifiers"
   {
-    "modifier_passive_umol2"
+    "modifier_passive_stats"
     {
-      "Passive"     "1"
-      "IsHidden"      "1"
+      "Passive"     "0"
+      "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
       "Properties"
@@ -248,6 +259,17 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_passive_stats"
+          "Target"     "CASTER"
+          "Duration"    "2.0"
+        }
+      }
       
       "Orb"
       {
@@ -405,10 +427,10 @@
   
   "Modifiers"
   {
-    "modifier_passive_umol3"
+    "modifier_passive_stats"
     {
-      "Passive"     "1"
-      "IsHidden"      "1"
+      "Passive"     "0"
+      "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
       "Properties"
@@ -423,6 +445,17 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_passive_stats"
+          "Target"     "CASTER"
+          "Duration"    "2.0"
+        }
+      }
       
       "Orb"
       {
@@ -580,10 +613,10 @@
   
   "Modifiers"
   {
-    "modifier_passive_umol4"
+    "modifier_passive_stats"
     {
-      "Passive"     "1"
-      "IsHidden"      "1"
+      "Passive"     "0"
+      "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
       "Properties"
@@ -598,6 +631,17 @@
     {
       "Passive"     "1"
       "IsHidden"      "1"
+
+      "ThinkInterval"  "1.0"
+      "OnIntervalThink"
+      {
+        "ApplyModifier"
+        {
+          "ModifierName"  "modifier_passive_stats"
+          "Target"     "CASTER"
+          "Duration"    "2.0"
+        }
+      }
       
       "Orb"
       {
