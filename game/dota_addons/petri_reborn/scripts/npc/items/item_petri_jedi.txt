@@ -57,7 +57,7 @@
     "06"
     {
       "var_type"          "FIELD_INTEGER"
-      "grease_duration"    "40"
+      "grease_duration"    "45"
     }
     "07"
     {

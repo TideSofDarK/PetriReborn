@@ -2141,9 +2141,9 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag"
+	  "AbilityTextureName"      "item_petri_gold_bag2"
 	
-	  "ItemCost"            "77777"
+	  "ItemCost"            "1000"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges"  "1"
@@ -2903,7 +2903,7 @@
 	    "06"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "grease_duration"    "40"
+	      "grease_duration"    "45"
 	    }
 	    "07"
 	    {

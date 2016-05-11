@@ -18,8 +18,11 @@ GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
 for i=0,12 do
-  GameMode.KVN_BONUS_ITEM = {}
-  table.insert(GameMode.KVN_BONUS_ITEM, {item = "item_petri_trap", count = 1})
+  GameMode.KVN_BONUS_ITEM[i] = {}
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_trap", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_attack_scroll", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_evasion_scroll", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_gold_bag", count = 1})
 end
 
 GameMode.EXIT_COUNT = 0

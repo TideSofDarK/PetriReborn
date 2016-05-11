@@ -55,5 +55,6 @@
         "model" "models/items/juggernaut/dc_weaponupdate/dc_weaponupdate.vmdl"
         "model" "models/items/queenofpain/shadeofagony/shadeofagony.vmdl"
         "model" "models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl"
+        "model" "models/courier/baby_winter_wyvern/baby_winter_wyvern.vmdl"
     }
 }
