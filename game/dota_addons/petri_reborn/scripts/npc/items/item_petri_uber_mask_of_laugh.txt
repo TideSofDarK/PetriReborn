@@ -55,7 +55,7 @@
   
   "Modifiers"
   {
-    "modifier_passive"
+    "modifier_passive_umol"
     {
       "Passive"     "1"
       "IsHidden"      "1"
@@ -230,7 +230,7 @@
   
   "Modifiers"
   {
-    "modifier_passive"
+    "modifier_passive_umol2"
     {
       "Passive"     "1"
       "IsHidden"      "1"
@@ -405,7 +405,7 @@
   
   "Modifiers"
   {
-    "modifier_passive"
+    "modifier_passive_umol3"
     {
       "Passive"     "1"
       "IsHidden"      "1"
@@ -580,7 +580,7 @@
   
   "Modifiers"
   {
-    "modifier_passive"
+    "modifier_passive_umol4"
     {
       "Passive"     "1"
       "IsHidden"      "1"

@@ -159,7 +159,7 @@
       }
     }
 
-    "modifier_passive"
+    "modifier_passive_jedi5"
     {
       "Passive"     "1"
       "IsHidden"      "1"

@@ -115,7 +115,7 @@ function GameMode:OnPlayerReconnect(keys)
 
   Timers:CreateTimer(0, function()
     if PlayerResource:GetConnectionState(keys.PlayerID) == DOTA_CONNECTION_STATE_CONNECTED then
-      Timers:CreateTimer(1.25,
+      Timers:CreateTimer(2.25,
       function()
         --Send lumber and food info to users
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
@@ -133,8 +133,8 @@ function GameMode:OnPlayerReconnect(keys)
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
 
         --Set correct team
-        if hero:GetTeam() == DOTA_TEAM_BADGUYS then
-          player:SetTeam(DOTA_TEAM_BADGUYS)
+        if hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
+          GameMode:ReplaceWithMiniActor(player, hero:GetGold())
         end
        
         SendToServerConsole( "dota_combine_models 0" )
@@ -628,7 +628,16 @@ function GameMode:OnPlayerMakeBet( event )
     GameMode.CURRENT_LOTTERY_PLAYERS[tostring(pID)]["bet"]    = bet
   end
 
-  GameMode.assignedPlayerHeroes[pID]:ModifyGold(bet * -1, false, 0)
+  local g = bet
+  local free = ((GameMode.LOTTERY_PLAY_COUNT or 0)+1) * 20
+
+  if g <= free then
+    g = 0
+  else
+    g = g - free
+  end
+
+  GameMode.assignedPlayerHeroes[pID]:ModifyGold(g * -1, false, 0)
   GameMode.assignedPlayerHeroes[pID]:EmitSound("DOTA_Item.Hand_Of_Midas")
 
   CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )

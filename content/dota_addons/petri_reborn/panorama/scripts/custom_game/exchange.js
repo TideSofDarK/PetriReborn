@@ -3,6 +3,7 @@
 var upgrade = true;
 var curNum = -1;
 var endTime = 0;
+var lotteryCount = 0;
 
 function BetEntryHover()
 {
@@ -25,7 +26,7 @@ function MakeBetClick()
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
 	var bet = Math.abs(parseInt(betEntry.text));
-	var playerGold = Players.GetGold(Players.GetLocalPlayer());
+	var playerGold = Players.GetGold(Players.GetLocalPlayer()) + ((lotteryCount+1) * 20);
 
 	if (bet <= playerGold)
 	{
@@ -93,6 +94,10 @@ function InitExchange( args )
 
 		$( "#BetPanel" ).FindChild( "BetEntry" ).enabled = true;
 		$( "#BetPanel" ).FindChild( "Companies" ).enabled = true;
+
+		$("#HeaderLabel").text = $.Localize("exchange") + " (" + ((lotteryCount + 1) * 20) + "$ bonus)";
+
+		$( "#BetPanel" ).FindChild( "BetEntry" ).text = (lotteryCount + 1) * 20;
 		
 		curNum = -1;
 
@@ -129,6 +134,8 @@ function FinishExchange( args )
 		};	
 		
 		$.Schedule( 5.0, HidePanel );
+
+		lotteryCount++;
 	}
 }
 

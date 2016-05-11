@@ -17,9 +17,12 @@ GameMode.PETRI_TRUE_TIME = 0
 GameMode.PETRI_NAME_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
-for i=0,12 do
-  GameMode.KVN_BONUS_ITEM = {}
-  table.insert(GameMode.KVN_BONUS_ITEM, {item = "item_petri_trap", count = 1})
+for i=0,DOTA_MAX_PLAYERS do
+  GameMode.KVN_BONUS_ITEM[i] = {}
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_trap", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_attack_scroll", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_evasion_scroll", count = 2})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_gold_bag", count = 1})
 end
 
 GameMode.EXIT_COUNT = 0
@@ -112,15 +115,31 @@ function GameMode:OnAllPlayersLoaded()
 
   local precacheUnitName = "npc_precache_guy"
 
-  PrecacheUnitByNameAsync(precacheUnitName, function()
-    for i=2,11 do
-      Timers:CreateTimer(2.0 * i, function (  )
-        PrecacheUnitByNameAsync(precacheUnitName.."_"..tostring(i), function()
+  -- PrecacheUnitByNameAsync(precacheUnitName, function()
+  --   for i=2,11 do
+  --     Timers:CreateTimer(2.0 * i, function (  )
+  --       PrecacheUnitByNameAsync(precacheUnitName.."_"..tostring(i), function()
         
-        end)
-      end)
-    end
-  end)
+  --       end)
+  --     end)
+  --   end
+  -- end)
+
+  -- for i=0,DOTA_MAX_PLAYERS do
+  --   local player = PlayerResource:GetPlayer(i)
+  --   if player then
+  --     if GameMode.CustomSkinsKVs[tostring(PlayerResource:GetSteamAccountID(i))] then
+  --       for k,v in pairs(GameMode.CustomSkinsKVs[tostring(PlayerResource:GetSteamAccountID(i))]) do
+  --         -- print(k,v)
+  --         if string.match(k, "vmdl") then
+
+  --         end
+          
+  --         -- print("dick ")
+  --       end
+  --     end
+  --   end
+  -- end
   
   -- PrecacheUnitByNameAsync("npc_precache_guy", function()
   --   PrecacheUnitByNameAsync("npc_precache_guy_2", function()
@@ -567,6 +586,7 @@ function SetupCustomSkin(hero, steamID, key)
       for k2,v2 in pairs(v) do
         if v2 == "model" then
           UpdateModel(hero, k2, 1)
+          PrecacheResource("model", k2, GameRules.pc)
         end
       end
 

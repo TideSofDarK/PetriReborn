@@ -48,6 +48,7 @@ function ParseCustomBuldingKVs(entry, building, level)
 		for k2,v2 in pairs(v) do
 	        if v2 == "model" then
 	        	UpdateModel(building, k2, scale)
+	        	PrecacheResource("model", k2, GameRules.pc)
 	        end
 	    end
 

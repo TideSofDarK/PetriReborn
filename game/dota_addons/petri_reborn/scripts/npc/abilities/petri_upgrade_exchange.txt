@@ -1,6 +1,7 @@
 "petri_upgrade_exchange"
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
   "BaseClass"           "ability_datadriven"
   "AbilityTextureName"      "petri_upgrade_exchange"
 

@@ -15,15 +15,15 @@
 				<Button class="DarkTheme FlatButton" value="trap" default="true">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_trap" />
 				</Button>
-				<Button class="DarkTheme FlatButton" value="2_attack">
+<!-- 				<Button class="DarkTheme FlatButton" value="2_attack">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_2_attack" />
-				</Button>
+				</Button> -->
 				<Button class="DarkTheme FlatButton" value="2_evasion">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_2_evasion" />
 				</Button>
-				<Button class="DarkTheme FlatButton" value="3_alcohol">
+<!-- 				<Button class="DarkTheme FlatButton" value="3_alcohol">
 					<Label class="DarkTheme PrimaryText FlatLabel" text="#vote_bonus_item_3_alcohol" />
-				</Button>
+				</Button> -->
 			</Panel>
 		</Panel>
 	</Panel>

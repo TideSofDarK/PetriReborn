@@ -54,7 +54,7 @@ function UpdateAbilitiesContainer()
 	for ( var i = 0; i < Entities.GetAbilityCount( m_QueryUnit ); ++i )
 	{
 		// Костыль на количество отображаемых скиллов
-		if ( i > 5)
+		if ( i > 6)
 			break;
 
 		var ability = Entities.GetAbility( m_QueryUnit, i );

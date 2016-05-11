@@ -10,7 +10,8 @@ function Upgrade (event)
 	elseif sawmill_level == 2 then 
 		caster:AddAbility("train_petri_super_peasant")
 		caster:AddAbility("petri_upgrade_exchange")
-
+		-- caster:SwapAbilities("train_petri_super_peasant","petri_upgrade_exchange",false,true)
+		-- caster:SwapAbilities("train_petri_super_peasant","petri_upgrade_exchange",false,true)
 	elseif sawmill_level == 3 then 
 		caster:AddAbility("train_petri_mega_peasant")
 		caster:SwapAbilities("petri_upgrade_sawmill", "train_petri_mega_peasant", false, true)
