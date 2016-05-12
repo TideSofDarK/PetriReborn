@@ -22,14 +22,17 @@ function SU:Init()
           local state = GameRules:State_Get()
 
           if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-            Timers:CreateTimer(5.0, function (  )
+            -- Timers:CreateTimer(0.03, function (  )
               SU:LoadPlayersStats()
-            end)
+            -- end)
           elseif state == DOTA_GAMERULES_STATE_POST_GAME then
             SU:SavePlayersStats()
           elseif state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
             Timers:CreateTimer(1.0, function (  )
               SU.LoadedKVNMMR = SU:GetTop3MMRKVN()
+              if GetTableLength(GameMode.steamIDs) == 0 then
+                GameMode.steamIDs = SU:BuildSteamIDArray()
+              end
             end)
           end
         end, nil)
@@ -44,7 +47,7 @@ end
 function SU:LoadPlayersStats()
   local requestParams = {
     Command = "LoadPlayersStats",
-    steamIDs = GameMode.steamIDs
+    SteamIDs = GameMode.steamIDs
   }
     
   SU:SendRequest( requestParams, function(obj)

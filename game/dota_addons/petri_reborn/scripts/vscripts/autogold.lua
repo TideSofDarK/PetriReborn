@@ -28,17 +28,11 @@ end
 
 function GiveSharedGoldToHeroes(gold, hero)
   	for playerID = 0, DOTA_MAX_PLAYERS do
-      	if PlayerResource:IsValidPlayerID(playerID) then
-        	if not PlayerResource:IsBroadcaster(playerID) then
-          		if PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
-			      	local hero = GameMode.assignedPlayerHeroes[playerID] 
-			      	if IsValidEntity(hero) == true and hero:GetUnitName() == hero then
-			        	AddCustomGold( playerID, gold )
+      	local hero = GameMode.assignedPlayerHeroes[playerID] 
+      	if IsValidEntity(hero) == true and hero:GetUnitName() == hero then
+        	AddCustomGold( playerID, gold )
 
-			        	PopupParticle(gold, Vector(244,201,23), 3.0, hero)
-			      	end
-          		end
-        	end
+        	PopupParticle(gold, Vector(244,201,23), 3.0, hero)
       	end
     end
 end

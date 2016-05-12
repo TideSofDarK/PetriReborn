@@ -18,7 +18,13 @@ function build( keys )
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
 	local ability_name = ability:GetName()
-	local unit_name = GameMode.AbilityKVs[ability_name]["UnitName"]
+
+	local unit_name
+	if GameMode.AbilityKVs[ability_name] then
+		unit_name = GameMode.AbilityKVs[ability_name]["UnitName"]
+	else
+		unit_name = GameMode.ItemKVs[ability_name]["UnitName"]
+	end
 
 	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 

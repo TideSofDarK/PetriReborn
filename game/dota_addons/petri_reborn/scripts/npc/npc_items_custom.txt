@@ -586,10 +586,29 @@
 	  
 	  "Modifiers"
 	  {
+	    "modifier_passive_test"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	      "IsBuff"      "1"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_passive"
+	          "Target"     "CASTER"
+	          "Duration"    "2.0"
+	        }
+	      }
+	    }
 	    "modifier_passive"
 	    {
-	      "Passive"     "1"
+	      "Passive"     "0"
 	      "IsHidden"      "1"
+	      "IsBuff"      "1"
 	      
 	      "Properties"
 	      {
@@ -3683,6 +3702,64 @@
 	    }
 	  }
 	}
+	"item_petri_pocketexit"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1228"
+	  "AbilityTextureName"      "build_petri_exit"
+	
+	  "SideShop" "1"
+	  "ItemCost"            "0"
+	  "ItemShopTags"        "consumable"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "ward"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemSellable"        "0"
+	  "ItemPermanent"       "0"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	        "var_type"  "FIELD_INTEGER"
+	        "lumber_cost" "99999"
+	    }
+	  }
+	
+	  // BuildingHelper info
+	  "Building"            "1" //bool
+	  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+	  "BuildTime"           "600.0"
+	  "AbilityCastRange"        "100"
+	  "UpdateHealth"          "1" //bool
+	  "Scale"             "1" //bool
+	  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+	  //"CancelsBuildingGhost"      "0" //bool
+	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+	  "UnitName"            "npc_petri_exit"
+	  "AbilityCooldown"       "480.0"
+	  "AbilityGoldCost"       "0"
+	  // End of BuildingHelper info
+	
+	  "AbilityCastPoint"        "0.0"
+	  "MaxLevel"            "1"
+	
+	  // Item Info
+	  
+	  "AbilityManaCost"       "0"
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "buildings/bh_abilities.lua"
+	      "Function"        "build"
+	    }
+	    "SpendCharge" {}
+	  }
+	}
 	"item_petri_shield_of_nature"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -6405,10 +6482,28 @@
 	  
 	  "Modifiers"
 	  {
+	    "modifier_passive_test"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "ApplyModifier"
+	        {
+	          "ModifierName"  "modifier_passive"
+	          "Target"     "CASTER"
+	          "Duration"    "2.0"
+	        }
+	      }
+	    }
 	    "modifier_passive"
 	    {
-	      "Passive"     "1"
+	      "Passive"     "0"
 	      "IsHidden"      "1"
+	      "IsBuff"      "1"
 	      
 	      "Properties"
 	      {
