@@ -3,12 +3,14 @@
 
 -- Cleanup a player when they leave
 function GameMode:OnDisconnect(keys)
-  DebugPrint('[BAREBONES] Player Disconnected ' .. tostring(keys.userid))
+  print('[BAREBONES] Player Disconnected ' .. tostring(keys.userid))
 
   local name = keys.name
   local networkid = keys.networkid
   local reason = keys.reason
   local userid = keys.userid
+
+  -- FireGameEvent('petri_scaleform_revert', { player_ID = userid })
 
   Timers:CreateTimer(2.0, function (  )
     local everyoneLeft = true 

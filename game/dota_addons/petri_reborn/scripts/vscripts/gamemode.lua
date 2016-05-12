@@ -115,6 +115,12 @@ function GameMode:OnAllPlayersLoaded()
 
   local precacheUnitName = "npc_precache_guy"
 
+  Timers:CreateTimer(0.03,
+    function()
+      FireGameEvent('petri_scaleform', {  })
+      return 0.03
+    end)
+
   -- PrecacheUnitByNameAsync(precacheUnitName, function()
   --   for i=2,11 do
   --     Timers:CreateTimer(2.0 * i, function (  )

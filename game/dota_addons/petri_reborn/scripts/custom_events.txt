@@ -1,0 +1,11 @@
+"CustomEvents"
+{
+	"petri_scaleform"
+	{
+	
+	}
+	"petri_scaleform_revert"
+	{
+	
+	}
+}
