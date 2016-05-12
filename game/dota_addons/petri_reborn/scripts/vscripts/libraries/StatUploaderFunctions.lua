@@ -1,6 +1,6 @@
 require('libraries/StatUploader')
 local isTest = false
-local steamIDs;
+GameMode.steamIDs = {}
 
 ListenToGameEvent('game_rules_state_change', 
   function(keys)
@@ -14,7 +14,7 @@ ListenToGameEvent('game_rules_state_change',
 SU.LoadedKVNMMR = {}
 
 function SU:Init()
-  steamIDs = SU:BuildSteamIDArray()
+  GameMode.steamIDs = SU:BuildSteamIDArray()
   if SU.StatSettings ~= nil then
     if true then
       ListenToGameEvent('game_rules_state_change', 
@@ -22,9 +22,15 @@ function SU:Init()
           local state = GameRules:State_Get()
 
           if state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-            SU:LoadPlayersStats()
+            Timers:CreateTimer(5.0, function (  )
+              SU:LoadPlayersStats()
+            end)
           elseif state == DOTA_GAMERULES_STATE_POST_GAME then
             SU:SavePlayersStats()
+          elseif state == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+            Timers:CreateTimer(1.0, function (  )
+              SU.LoadedKVNMMR = SU:GetTop3MMRKVN()
+            end)
           end
         end, nil)
     else
@@ -38,16 +44,15 @@ end
 function SU:LoadPlayersStats()
   local requestParams = {
     Command = "LoadPlayersStats",
-    SteamIDs = steamIDs
+    steamIDs = GameMode.steamIDs
   }
     
   SU:SendRequest( requestParams, function(obj)
       -- print(obj)
       SU.LoadedStats = obj
-      CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", SU.LoadedStats )
+      CustomGameEventManager:Send_ServerToAllClients( "su_send_mmr", obj )
       
       print("Loaded players: ")
-      SU.LoadedKVNMMR = SU:GetTop3MMRKVN()
       -- PrintTable(SU.LoadedStats)   
   end)
 end
