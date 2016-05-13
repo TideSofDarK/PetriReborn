@@ -26,7 +26,7 @@ function MakeBetClick()
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
 	var bet = Math.abs(parseInt(betEntry.text));
-	var playerGold = Players.GetGold(Players.GetLocalPlayer()) + ((lotteryCount+1) * 20);
+	var playerGold = Players.GetGold(Players.GetLocalPlayer()) + ((lotteryCount+1) * 50);
 
 	if (bet <= playerGold)
 	{
@@ -95,9 +95,9 @@ function InitExchange( args )
 		$( "#BetPanel" ).FindChild( "BetEntry" ).enabled = true;
 		$( "#BetPanel" ).FindChild( "Companies" ).enabled = true;
 
-		$("#HeaderLabel").text = $.Localize("exchange") + " (" + ((lotteryCount + 1) * 20) + "$ bonus)";
+		$("#HeaderLabel").text = $.Localize("exchange") + " (" + ((lotteryCount + 1) * 50) + "$ bonus)";
 
-		$( "#BetPanel" ).FindChild( "BetEntry" ).text = (lotteryCount + 1) * 20;
+		$( "#BetPanel" ).FindChild( "BetEntry" ).text = (lotteryCount + 1) * 50;
 		
 		curNum = -1;
 

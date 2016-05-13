@@ -38,7 +38,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_gold_bag2"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "99999"
   "ItemQuality"         "consumable"
   "ItemAliases"         "bag"
   "ItemInitialCharges"  "1"
@@ -67,9 +67,9 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_gold_bag"
+  "AbilityTextureName"      "item_petri_gold_bag3"
 
-  "ItemCost"            "99999"
+  "ItemCost"            "1000"
   "ItemQuality"         "consumable"
   "ItemAliases"         "bag"
   "ItemInitialCharges"  "1"

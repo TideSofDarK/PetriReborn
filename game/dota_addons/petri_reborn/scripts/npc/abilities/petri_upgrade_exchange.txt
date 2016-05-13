@@ -12,7 +12,7 @@
   "AbilityChannelTime"      "2.5"
   "AbilityUpgradeGoldCost"    "0"
 
-  "AbilityGoldCost" "50"
+  "AbilityGoldCost" "10"
 
   "MaxLevel"            "2"
 
@@ -21,7 +21,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "lumber_cost"        "2000"
+      "lumber_cost"        "0"
     }
   }
 

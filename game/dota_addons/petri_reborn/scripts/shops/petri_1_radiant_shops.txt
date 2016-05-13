@@ -103,10 +103,11 @@
 
   "sideshop2"
   {
-    "item"    "item_petri_gold_bag2"
+    "item"    "item_petri_gold_bag3"
     "item"    "item_petri_kvn_fan_blink"
     "item"    "item_petri_kvn_fan_cool_blink"
     "item"    "item_petri_boots"
+    "item"    "item_petri_pocketexit"
   }
 
  //Secret Shop Start

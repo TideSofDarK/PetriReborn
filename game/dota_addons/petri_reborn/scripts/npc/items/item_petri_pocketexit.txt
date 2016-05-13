@@ -3,10 +3,10 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "item_datadriven"
   "ID"              "1228"
-  "AbilityTextureName"      "build_petri_exit"
+  "AbilityTextureName"      "item_exit"
 
   "SideShop" "1"
-  "ItemCost"            "0"
+  "ItemCost"            "5750"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -53,6 +53,37 @@
       "ScriptFile"      "buildings/bh_abilities.lua"
       "Function"        "build"
     }
-    "SpendCharge" {}
   }
+}
+
+
+"item_recipe_petri_pocketexit"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1229"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "3000"
+  "ItemShopTags"        "consumable"
+  "SideShop" "1"
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_pocketexit"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_exit_doorknob;"
+  }
+}
+
+"item_petri_exit_doorknob"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1230"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_exit_doorknob"
+
+  "ItemCost"            "2750"
+  "ItemShopTags"        "consumable"
+  "SideShop" "1"
+
 }

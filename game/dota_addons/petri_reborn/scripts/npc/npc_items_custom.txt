@@ -2028,7 +2028,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_rally"
+	  "AbilityTextureName"            "item_flag"
 	
 	  "AbilityCastRange" "150"
 	
@@ -2062,7 +2062,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_rally"
+	  "AbilityTextureName"            "item_flag2"
 	
 	  "AbilityCastRange" "150"
 	
@@ -2097,7 +2097,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_rally"
+	  "AbilityTextureName"            "item_flag3"
 	
 	  "AbilityCastRange" "150"
 	
@@ -2162,7 +2162,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_gold_bag2"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "99999"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges"  "1"
@@ -2191,9 +2191,9 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag"
+	  "AbilityTextureName"      "item_petri_gold_bag3"
 	
-	  "ItemCost"            "99999"
+	  "ItemCost"            "1000"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges"  "1"
@@ -3707,10 +3707,10 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1228"
-	  "AbilityTextureName"      "build_petri_exit"
+	  "AbilityTextureName"      "item_exit"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "0"
+	  "ItemCost"            "5750"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -3757,8 +3757,39 @@
 	      "ScriptFile"      "buildings/bh_abilities.lua"
 	      "Function"        "build"
 	    }
-	    "SpendCharge" {}
 	  }
+	}
+	
+	
+	"item_recipe_petri_pocketexit"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1229"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "3000"
+	  "ItemShopTags"        "consumable"
+	  "SideShop" "1"
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_pocketexit"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_exit_doorknob;"
+	  }
+	}
+	
+	"item_petri_exit_doorknob"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1230"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_exit_doorknob"
+	
+	  "ItemCost"            "2750"
+	  "ItemShopTags"        "consumable"
+	  "SideShop" "1"
+	
 	}
 	"item_petri_shield_of_nature"
 	{

@@ -72,12 +72,12 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "72"
+      "upgrade_rate"      "60"
     }
     "02"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_limit"      "144"
+      "upgrade_limit"      "120"
     }
   }
 
@@ -256,12 +256,12 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "90"
+      "upgrade_rate"      "80"
     }
     "02"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_limit"      "249"
+      "upgrade_limit"      "160"
     }
   }
 
@@ -383,12 +383,12 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "1000"
+      "upgrade_rate"      "95"
     }
     "02"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_limit"      "1"
+      "upgrade_limit"      "250"
     }
   }
 
