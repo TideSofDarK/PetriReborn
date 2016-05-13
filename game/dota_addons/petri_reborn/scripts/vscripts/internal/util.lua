@@ -457,6 +457,10 @@ function StartCooldown(caster, ability_name)
 end
 
 function EndCooldown(caster, ability_name)
+  local item = caster:HasItemInInventory(ability_name)
+  if item then
+    item:EndCooldown()
+  end
   if caster:FindAbilityByName(ability_name) ~= nil then
     caster:FindAbilityByName(ability_name):EndCooldown()
   else

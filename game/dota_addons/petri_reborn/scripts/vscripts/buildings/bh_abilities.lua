@@ -29,12 +29,20 @@ function build( keys )
 	EndCooldown(caster, ability_name)
 	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
-	if not CheckBuildingDependencies(pID, ability_name) then
+	local dependency = ability_name
+	if ability_name == "item_petri_pocketexit" then
+		dependency = "build_petri_exit"
+	end
+
+	if not CheckBuildingDependencies(pID, dependency) then
 		return false
 	end
 
 	--Build exit only after 16 min
-	if ability:GetName() == "build_petri_exit" then
+	if ability:GetName() == "build_petri_exit" or ability_name == "item_petri_pocketexit" then
+		if hero.exit and hero.exit:IsAlive() then
+			return false
+		end
 		if GameRules.PETRI_EXIT_ALLOWED == false then
 			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
@@ -115,6 +123,8 @@ function build( keys )
 			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
 			GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
+
+			hero.exit = unit
 
 			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 			Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
