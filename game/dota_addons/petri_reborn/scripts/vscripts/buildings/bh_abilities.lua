@@ -41,7 +41,7 @@ function build( keys )
 
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" or ability_name == "item_petri_pocketexit" then
-		if hero.exit and hero.exit:IsAlive() then
+		if hero.exit and hero.exit:IsNull() == false and hero.exit:IsAlive() then
 			return false
 		end
 		if GameRules.PETRI_EXIT_ALLOWED == false then
