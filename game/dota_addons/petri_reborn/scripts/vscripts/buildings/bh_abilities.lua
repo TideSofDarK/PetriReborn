@@ -24,6 +24,7 @@ function build( keys )
 		unit_name = GameMode.AbilityKVs[ability_name]["UnitName"]
 	else
 		unit_name = GameMode.ItemKVs[ability_name]["UnitName"]
+		ability:EndCooldown()
 	end
 
 	EndCooldown(caster, ability_name)
