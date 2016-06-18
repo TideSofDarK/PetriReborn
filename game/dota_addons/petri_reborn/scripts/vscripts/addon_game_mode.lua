@@ -1,7 +1,7 @@
 require('internal/util')
 require('libraries/timers')
 require('gamemode')
-require("statcollection/init")
+-- require("statcollection/init")
 
 function Precache( context )
   -- SendToServerConsole( "dota_combine_models 0" )

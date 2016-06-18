@@ -203,7 +203,7 @@ function GameMode:OnHeroInGame(hero)
         function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = ReplaceHeroWith(pID, "npc_dota_hero_rattletrap", 0, 0)
+          newHero = PlayerResource:ReplaceHeroWith(pID, "npc_dota_hero_rattletrap", 0, 0)
 
           InitAbilities(newHero)
 
@@ -256,7 +256,7 @@ function GameMode:OnHeroInGame(hero)
       -- UTIL_Remove(hero) 
       PrecacheUnitByNameAsync(petrosyanHeroName,
        function() 
-          newHero = ReplaceHeroWith(pID, petrosyanHeroName, 0, 0)
+          newHero = PlayerResource:ReplaceHeroWith(pID, petrosyanHeroName, 0, 0)
 
           -- It's dangerous to go alone, take this
           newHero:SetAbilityPoints(4)
