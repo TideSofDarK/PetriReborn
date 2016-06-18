@@ -3,7 +3,9 @@
 	"npc_petri_elena"
 	{
 	  "override_hero"     "npc_dota_hero_death_prophet"
-	
+	  "Model"   "models/heroes/wisp/wisp.vmdl"
+	  "NoCombine"   "1"
+	  
 	  "HasInventory"          "1"
 	
 	  "AbilityLayout" "6"
@@ -63,6 +65,8 @@
 	"npc_petri_kvn_fan"
 	{
 	  "override_hero"     "npc_dota_hero_rattletrap"
+	  "Model"   "models/heroes/wisp/wisp.vmdl"
+	  "NoCombine"   "1"
 	
 	  "HealthBarOffset"    "240"
 	
@@ -125,6 +129,8 @@
 	"npc_petri_mini_actor"
 	{
 	  "override_hero"     "npc_dota_hero_storm_spirit"
+	  "Model"   "models/heroes/wisp/wisp.vmdl"
+	  "NoCombine"   "1"
 	
 	  "HasInventory"          "1"
 	
@@ -179,6 +185,8 @@
 	"npc_petri_petrosyan"
 	{
 	  "override_hero"     "npc_dota_hero_brewmaster"
+	  "Model"   "models/heroes/wisp/wisp.vmdl"
+	  "NoCombine"   "1"
 	
 	  "HealthBarOffset"    "275"
 	
