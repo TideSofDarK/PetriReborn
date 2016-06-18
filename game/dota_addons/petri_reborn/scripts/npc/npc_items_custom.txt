@@ -3770,6 +3770,7 @@
 	
 	  "ItemCost"            "3000"
 	  "ItemShopTags"        "consumable"
+	  "ItemSellable"        "0"
 	  "SideShop" "1"
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_pocketexit"
@@ -3788,6 +3789,7 @@
 	
 	  "ItemCost"            "2750"
 	  "ItemShopTags"        "consumable"
+	  "ItemSellable"        "0"
 	  "SideShop" "1"
 	
 	}
@@ -5088,7 +5090,7 @@
 	        {
 	          "ModifierName"  "modifier_passive_stats"
 	          "Target"     "CASTER"
-	          "Duration"    "2.0"
+	          "Duration"    "3.0"
 	        }
 	      }
 	      
