@@ -382,4 +382,6 @@ function LoadUI()
 	$.Schedule(2.0, LoadUI);
 
 	Game.PlayerJoinTeam( DOTATeam_t.DOTA_TEAM_NOTEAM );
+
+	GameEvents.SendCustomGameEventToServer( "petri_set_lang", { "lang" : $.Localize("lang_key"), "pID" : Players.GetLocalPlayer() } );
 })();

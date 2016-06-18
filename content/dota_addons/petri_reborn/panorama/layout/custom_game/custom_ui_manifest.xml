@@ -28,6 +28,8 @@
         GameUI.CustomUIConfig().team_icons = {}
         GameUI.CustomUIConfig().team_icons[DOTATeam_t.DOTA_TEAM_GOODGUYS] = "file://{images}/custom_game/team_icons/kvn.png";
         GameUI.CustomUIConfig().team_icons[DOTATeam_t.DOTA_TEAM_BADGUYS ] = "file://{images}/custom_game/team_icons/petro.png";
+
+        
   	</script>
 	<Panel>
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_tooltip.xml" /> 		

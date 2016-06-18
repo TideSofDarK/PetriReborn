@@ -15,6 +15,7 @@ GameMode.PETRI_NO_END = false
 GameMode.PETRI_TRUE_TIME = 0
 
 GameMode.PETRI_NAME_LIST = {}
+GameMode.PETRI_LANG_LIST = {}
 
 GameMode.KVN_BONUS_ITEM = {}
 for i=0,DOTA_MAX_PLAYERS do
@@ -549,15 +550,16 @@ function SetupCustomSkin(hero, steamID, key)
       return true
     end
   end
+  local localization = GameMode.PETRI_LANG_LIST[hero:GetPlayerID()]
 
-  if GameMode.CustomSkinsKVs[key]["default"] then
-    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+  if localization then
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key][localization]) do
       if v2 == "model" then
         UpdateModel(hero, k2, 1)
       end
     end
 
-    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key]["default"]) do
+    for k2,v2 in pairs(GameMode.CustomSkinsKVs[key][localization]) do
       if v2 ~= "model" then
         Attachments:AttachProp(hero, v2, k2, nil)
       end

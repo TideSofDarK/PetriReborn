@@ -1,5 +1,12 @@
 -- This function initializes the game mode and is called before anyone loads into the game
 -- It can be used to pre-initialize any values/tables that will be needed later
+function GameMode:SetLang( event )
+  local pID = event.pID
+  local lang = event.lang
+
+  GameMode.PETRI_LANG_LIST[pID] = lang
+end
+
 function GameMode:_InitGameMode()
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( ENABLE_HERO_RESPAWN )
@@ -122,6 +129,8 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_start_vote_kick", Dynamic_Wrap(KickSystem, 'StartVoteKick'))
   CustomGameEventManager:RegisterListener( "petri_vote_kick_agree", Dynamic_Wrap(KickSystem, 'VoteKickAgree'))
   CustomGameEventManager:RegisterListener( "petri_vote_kick_disagree", Dynamic_Wrap(KickSystem, 'VoteKickDisagree'))
+
+  CustomGameEventManager:RegisterListener( "petri_set_lang", Dynamic_Wrap(GameMode, 'SetLang'))
   
   -- Grid
   CustomGameEventManager:RegisterListener( "gnv_request", Dynamic_Wrap(GNV, 'Send'))

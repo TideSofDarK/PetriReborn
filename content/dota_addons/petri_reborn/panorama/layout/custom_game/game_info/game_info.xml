@@ -38,6 +38,8 @@
 		(function() {
 			// Подписываемся на событие "Смена команды"
 		    GameEvents.Subscribe("player_team", UpdateTips);
+
+		    
 		})();
 	</script>	
 	<Panel class="GameInfo" >
