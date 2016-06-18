@@ -39,6 +39,14 @@ function Precache( context )
   --   end
   -- end
 
+  PrecacheUnitByNameSync("npc_petri_creep_bad_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_dead_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_draconoid", context)
+  PrecacheUnitByNameSync("npc_petri_creep_good_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_humorist", context)
+  PrecacheUnitByNameSync("npc_petri_creep_kvn_actor", context)
+  PrecacheUnitByNameSync("npc_petri_creep_kivin", context)
+
   -- BUILDINGS
   -- idol
   PrecacheUnitByNameSync("npc_petri_idol", context)

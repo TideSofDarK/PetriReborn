@@ -86,14 +86,6 @@ function GameMode:PostLoadPrecache()
   PrecacheUnitByNameAsync("npc_petri_cop", function(  ) end)
   PrecacheUnitByNameAsync("npc_petri_janitor", function(  ) end)
 
-  PrecacheUnitByNameAsync("npc_petri_creep_bad_actor", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_dead_actor", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_draconoid", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_good_actor", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_humorist", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_kvn_actor", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_creep_kivin", function(  ) end)
-
   PrecacheUnitByNameAsync("npc_petri_svetlakov", function(  ) end)
   PrecacheUnitByNameAsync("npc_petri_maslyakov", function(  ) end)
   PrecacheUnitByNameAsync("npc_petri_gusman", function(  ) end)
@@ -113,68 +105,6 @@ end
 
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
-
-  local precacheUnitName = "npc_precache_guy"
-
-  Timers:CreateTimer(
-    function()
-      FireGameEvent('petri_scaleform', {  })
-      return 0.03
-    end)
-
-  -- PrecacheUnitByNameAsync(precacheUnitName, function()
-  --   for i=2,11 do
-  --     Timers:CreateTimer(2.0 * i, function (  )
-  --       PrecacheUnitByNameAsync(precacheUnitName.."_"..tostring(i), function()
-        
-  --       end)
-  --     end)
-  --   end
-  -- end)
-
-  -- for i=0,DOTA_MAX_PLAYERS do
-  --   local player = PlayerResource:GetPlayer(i)
-  --   if player then
-  --     if GameMode.CustomSkinsKVs[tostring(PlayerResource:GetSteamAccountID(i))] then
-  --       for k,v in pairs(GameMode.CustomSkinsKVs[tostring(PlayerResource:GetSteamAccountID(i))]) do
-  --         -- print(k,v)
-  --         if string.match(k, "vmdl") then
-
-  --         end
-          
-  --         -- print("dick ")
-  --       end
-  --     end
-  --   end
-  -- end
-  
-  -- PrecacheUnitByNameAsync("npc_precache_guy", function()
-  --   PrecacheUnitByNameAsync("npc_precache_guy_2", function()
-  --     PrecacheUnitByNameAsync("npc_precache_guy_3", function()
-  --       PrecacheUnitByNameAsync("npc_precache_guy_4", function()
-  --         PrecacheUnitByNameAsync("npc_precache_guy_5", function()
-          
-  --         end)
-  --       end)
-  --     end)
-  --   end)
-  -- end)
-  
-  -- for i=0,12 do
-  --   local player = PlayerResource:GetPlayer(i)
-
-  --   if player ~= nil then
-  --     PrecacheUnitByNameAsync("npc_dota_hero_brewmaster", function ()
-
-  --     end, i)
-  --     PrecacheUnitByNameAsync("npc_dota_hero_death_prophet", function ()
-
-  --     end, i)
-  --     PrecacheUnitByNameAsync("npc_dota_hero_rattletrap", function ()
-
-  --     end, i)
-  --   end
-  -- end
 end
 
 function GameMode:OnHeroInGame(hero)
