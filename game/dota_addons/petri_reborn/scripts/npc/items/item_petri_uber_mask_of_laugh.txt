@@ -453,7 +453,7 @@
         {
           "ModifierName"  "modifier_passive_stats"
           "Target"     "CASTER"
-          "Duration"    "2.0"
+          "Duration"    "3.0"
         }
       }
       

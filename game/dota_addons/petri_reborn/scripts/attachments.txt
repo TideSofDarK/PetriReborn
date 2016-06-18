@@ -942,10 +942,6 @@
 	   		{
 			    "scale"  "0"
 	   		}
-	   		"models/particle/snowball.vmdl"
-	   		{
-			    "scale"  "0"
-	   		}
 	   		"models/items/lone_druid/true_form/form_of_the_atniw/form_of_the_atniw.vmdl"
 	   		{
 			    "scale"  "0"
@@ -1359,6 +1355,46 @@
 	   		"models/snowman/snowman.vmdl"
 	   		{
 			    "scale"  "1"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/houses/basichomes1/basichomes.vmdl.vmdl"
+	   		{
+			    "scale"  "60"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/houses/basichouse1/basichouse1.vmdl"
+	   		{
+			    "scale"  "65"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/houses/basiclaboratory/basiclaboratory.vmdl"
+	   		{
+			    "scale"  "55"
+			    "pitch"  "0"
+			    "roll"  "0"
+			    "ZPos"  "0"
+			    "YPos"  "0"
+			    "yaw"  "0"
+			    "XPos"  "0"
+	   		}
+	   		"models/houses/coolhouse2/coolhouse2.vmdl"
+	   		{
+			    "scale"  "70"
 			    "pitch"  "0"
 			    "roll"  "0"
 			    "ZPos"  "0"
