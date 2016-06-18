@@ -170,7 +170,7 @@ function GameMode:OnHeroInGame(hero)
           newHero.kvnScore = 0
 
           Timers:CreateTimer(function (  )
-            SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
             SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
           end)
 
@@ -215,9 +215,9 @@ function GameMode:OnHeroInGame(hero)
 
           Timers:CreateTimer(function (  )
             if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
-              SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
+              GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
             else
-              SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
+              GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
             end
           end)
 
@@ -501,7 +501,7 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
 
-      SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
+      GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
 
       for k,v in pairs(newHero:GetChildren()) do
         if v:GetClassname() == "dota_item_wearable" then
@@ -517,7 +517,7 @@ function GameMode:ReplaceWithMiniActor(player, gold)
   player:GetPlayerID())
 end
 
-function SetupCustomSkin(hero, steamID, key)
+function GameMode:SetupCustomSkin(hero, steamID, key)
   for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
     local id = tonumber(k)
 

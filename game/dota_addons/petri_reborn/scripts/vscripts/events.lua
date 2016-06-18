@@ -111,15 +111,15 @@ function GameMode:OnPlayerReconnect(keys)
 
   GameMode.assignedPlayerHeroes[keys.PlayerID] = PlayerResource:ReplaceHeroWith(keys.PlayerID,hero:GetUnitName(),hero:GetGold(),hero:GetCurrentXP())
 
-  local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
+  hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
 
   Timers:CreateTimer(function (  )
     if hero:GetUnitName() == "npc_dota_hero_brewmaster" then
-      SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "petrosyan")
+      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "petrosyan")
     elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
-      SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "elena")
+      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "elena")
     else
-      SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "kvn")
+      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "kvn")
     end
   end)
 
