@@ -35,6 +35,8 @@ GameMode.PETRI_ADDITIONAL_EXIT_GOLD = 20000
 GameMode.villians = {}
 GameMode.kvns = {}
 
+FUCKSCALEFORM = false
+
 GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
 
 require('libraries/physics')
@@ -81,15 +83,6 @@ function GameMode:PostLoadPrecache()
   PrecacheItemByNameAsync("item_petri_vip_greenkzn", function(  ) end)
   PrecacheItemByNameAsync("item_petri_vip_zeus", function(  ) end)
 
-  PrecacheUnitByNameAsync("npc_petri_cop_trap", function(  ) end)
-
-  PrecacheUnitByNameAsync("npc_petri_cop", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_janitor", function(  ) end)
-
-  PrecacheUnitByNameAsync("npc_petri_svetlakov", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_maslyakov", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_gusman", function(  ) end)
-
   PrecacheUnitByNameAsync("npc_petri_peasant", function(  ) end)
   PrecacheUnitByNameAsync("npc_petri_super_peasant", function(  ) end)
   PrecacheUnitByNameAsync("npc_petri_mega_peasant", function(  ) end)
@@ -109,6 +102,15 @@ end
 
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
+
+  if FUCKSCALEFORM == false then 
+    Timers:CreateTimer(
+      function()
+        FireGameEvent('petri_scaleform', {  })
+        return 0.03
+      end)
+    FUCKSCALEFORM = true
+  end
 
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
