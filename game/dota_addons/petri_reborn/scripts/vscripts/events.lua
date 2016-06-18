@@ -138,9 +138,15 @@ function GameMode:OnPlayerReconnect(keys)
         if hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
           GameMode:ReplaceWithMiniActor(player, hero:GetGold())
         end
-       
-        SendToServerConsole( "dota_combine_models 0" )
-        SendToConsole( "dota_combine_models 0" )
+
+        Timers:CreateTimer(function (  )
+          for k2,v2 in pairs(hero:GetChildren()) do
+            if v2:GetClassname() == "dota_item_wearable" then
+              v2:AddEffects(EF_NODRAW) 
+            end
+          end
+          return 0.03
+        end)
       end)
     else
       return 0.03
