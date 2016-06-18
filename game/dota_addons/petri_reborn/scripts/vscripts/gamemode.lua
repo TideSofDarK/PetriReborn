@@ -186,7 +186,7 @@ function GameMode:OnHeroInGame(hero)
   local player = hero:GetPlayerOwner()
   local pID = player:GetPlayerID()
  
-  if hero:GetClassname() == "npc_dota_hero_rattletrap" and not GameMode.assignedPlayerHeroes[pID] then
+  if hero:GetClassname() == "npc_dota_hero_wisp" and not GameMode.assignedPlayerHeroes[pID] then
 
     hero:SetGold(0, false)
 
