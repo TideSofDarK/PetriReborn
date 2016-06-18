@@ -109,20 +109,6 @@ function GameMode:OnPlayerReconnect(keys)
   local player = PlayerResource:GetPlayer(keys.PlayerID)
   local hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
 
-  GameMode.assignedPlayerHeroes[keys.PlayerID] = PlayerResource:ReplaceHeroWith(keys.PlayerID,hero:GetUnitName(),hero:GetGold(),hero:GetCurrentXP())
-
-  hero = GameMode.assignedPlayerHeroes[keys.PlayerID]
-
-  Timers:CreateTimer(function (  )
-    if hero:GetUnitName() == "npc_dota_hero_brewmaster" then
-      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "petrosyan")
-    elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
-      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "elena")
-    else
-      GameMode:SetupCustomSkin(hero, PlayerResource:GetSteamAccountID(keys.PlayerID), "kvn")
-    end
-  end)
-
   for k,v in pairs(hero:GetChildren()) do
     if v:GetClassname() == "dota_item_wearable" then
       v:AddEffects(EF_NODRAW) 
@@ -152,6 +138,9 @@ function GameMode:OnPlayerReconnect(keys)
         if hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
           GameMode:ReplaceWithMiniActor(player, hero:GetGold())
         end
+       
+        SendToServerConsole( "dota_combine_models 0" )
+        SendToConsole( "dota_combine_models 0" )
       end)
     else
       return 0.03
