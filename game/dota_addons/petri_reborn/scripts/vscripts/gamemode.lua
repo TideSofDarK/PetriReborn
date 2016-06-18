@@ -198,12 +198,12 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init kvn fan
     if team == 2 then
-      UTIL_Remove(hero) 
+      -- UTIL_Remove(hero) 
       PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
         function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap", player)
+          newHero = ReplaceHeroWith(pID, "npc_dota_hero_rattletrap", 0, 0)
 
           InitAbilities(newHero)
 
@@ -253,10 +253,10 @@ function GameMode:OnHeroInGame(hero)
 
      -- Init petrosyan
     if team == 3 then
-      UTIL_Remove(hero) 
+      -- UTIL_Remove(hero) 
       PrecacheUnitByNameAsync(petrosyanHeroName,
        function() 
-          newHero = CreateHeroForPlayer(petrosyanHeroName, player)
+          newHero = ReplaceHeroWith(pID, petrosyanHeroName, 0, 0)
 
           -- It's dangerous to go alone, take this
           newHero:SetAbilityPoints(4)
