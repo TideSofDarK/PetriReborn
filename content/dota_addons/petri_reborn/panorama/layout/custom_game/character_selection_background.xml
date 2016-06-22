@@ -1,0 +1,10 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/loading_screen/custom_loading_screen.css" />
+	</styles>
+	<scripts>
+	</scripts>
+	<Panel hittest="false" class="HSBackground">
+		<Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+	</Panel>
+</root>

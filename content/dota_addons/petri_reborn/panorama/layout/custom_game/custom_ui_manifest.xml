@@ -32,6 +32,8 @@
         
   	</script>
 	<Panel>
+		<CustomUIElement type="HeroSelection" layoutfile="file://{resources}/layout/custom_game/character_selection_background.xml" />
+
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ability_tooltip.xml" /> 		
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 
     	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/building_helper/building_helper.xml" /> 

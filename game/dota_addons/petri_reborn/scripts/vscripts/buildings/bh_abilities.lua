@@ -69,6 +69,8 @@ function build( keys )
 
 	end)
 
+	hero.buildingCount = hero.buildingCount + 1
+
 	keys:OnPreConstruction(function ()
         if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost 
         	then
@@ -108,8 +110,6 @@ function build( keys )
     end)
 
 	keys:OnConstructionStarted(function(unit)
-		hero.buildingCount = hero.buildingCount + 1
-
 		local gnvTable = {}
 		gnvTable["size"] = returnTable:GetVal("BuildingSize", "number")
 		gnvTable["pos"] = unit:GetAbsOrigin() + Vector(gnvTable["size"] / -2, gnvTable["size"] / -2, 0)
@@ -190,9 +190,11 @@ function build( keys )
 	end)
 
 	keys:OnConstructionFailed(function( building )
+		hero.buildingCount = hero.buildingCount - 1
 	end)
 
 	keys:OnConstructionCancelled(function( building )
+		hero.buildingCount = hero.buildingCount - 1
 	end)
 
 	-- Have a fire effect when the building goes below 50% health.

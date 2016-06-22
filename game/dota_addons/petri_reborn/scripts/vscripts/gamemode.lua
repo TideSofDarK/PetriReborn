@@ -101,24 +101,19 @@ function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
 end
 
-function GameMode:OnHeroInGame(hero)
-  DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
-
+function GameMode:CreateHero(pID)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
+  
+  local player = PlayerResource:GetPlayer(pID)
+  local team = player:GetTeamNumber()
 
-  local team = hero:GetTeamNumber()
-  local player = hero:GetPlayerOwner()
-  local pID = player:GetPlayerID()
- 
-  if hero:GetClassname() == "npc_dota_hero_wisp" and not GameMode.assignedPlayerHeroes[pID] then
-
-    hero:SetGold(0, false)
+  if not GameMode.assignedPlayerHeroes[pID] then
 
     GameMode.assignedPlayerHeroes[pID] = "temp"
 
     local newHero
 
-    MoveCamera(pID, hero)
+    -- MoveCamera(pID, hero)
 
      -- Init kvn fan
     if team == 2 then
@@ -127,7 +122,7 @@ function GameMode:OnHeroInGame(hero)
         function() 
           Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-          newHero = PlayerResource:ReplaceHeroWith(pID, "npc_dota_hero_rattletrap", 0, 0)
+          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
 
           InitAbilities(newHero)
 
@@ -180,7 +175,7 @@ function GameMode:OnHeroInGame(hero)
       -- UTIL_Remove(hero) 
       PrecacheUnitByNameAsync(petrosyanHeroName,
        function() 
-          newHero = PlayerResource:ReplaceHeroWith(pID, petrosyanHeroName, 0, 0)
+          newHero = CreateHeroForPlayer(petrosyanHeroName,player)
 
           -- It's dangerous to go alone, take this
           newHero:SetAbilityPoints(4)
@@ -289,8 +284,6 @@ function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
   
   GameMode.PETRI_GAME_HAS_STARTED = true
-
-  PauseGame(true)
 
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
 

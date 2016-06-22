@@ -13,6 +13,8 @@ function GameMode:_OnGameRulesStateChange(keys)
         if PlayerResource:IsValidPlayer(i) then
           local color = PLAYER_COLORS[i]
           PlayerResource:SetCustomPlayerColor(i, color[1], color[2], color[3])
+
+          GameMode:CreateHero(i)
         end
       end
     end
@@ -30,7 +32,7 @@ function GameMode:_OnNPCSpawned(keys)
 
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
     npc.bFirstSpawned = true
-    GameMode:OnHeroInGame(npc)
+    -- GameMode:OnHeroInGame(npc)
   end
 end
 

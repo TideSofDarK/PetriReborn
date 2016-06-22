@@ -2,6 +2,14 @@
 @define TimingFunc: linear;
 @define IterationCount: infinite;
 @define AnimationDelay: 0s;
+
+.HSBackground {
+  width: 100%;
+  height: 100%;
+
+  
+}
+
 .Headline1 {
   text-shadow: 1px 1px 1px black;
   text-align: center;

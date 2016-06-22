@@ -56,6 +56,10 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_maslyakov", context)
   PrecacheUnitByNameSync("npc_petri_gusman", context)
 
+  PrecacheUnitByNameSync("npc_dota_hero_rattletrap", context)
+  PrecacheUnitByNameSync("npc_dota_hero_brewmaster", context)
+  PrecacheUnitByNameSync("npc_dota_hero_death_prophet", context)
+
   -- BUILDINGS
   -- idol
   PrecacheUnitByNameSync("npc_petri_idol", context)

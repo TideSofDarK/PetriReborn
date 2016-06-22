@@ -1,7 +1,7 @@
 "npc_petri_mini_actor"
 {
   "override_hero"     "npc_dota_hero_storm_spirit"
-  "Model"   "models/heroes/wisp/wisp.vmdl"
+
   "NoCombine"   "1"
 
   "HasInventory"          "1"

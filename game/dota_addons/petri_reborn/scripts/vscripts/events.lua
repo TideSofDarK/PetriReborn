@@ -136,7 +136,7 @@ function GameMode:OnPlayerReconnect(keys)
 
         --Set correct team
         if hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
-          GameMode:ReplaceWithMiniActor(player, hero:GetGold())
+          player:SetTeam(hero:GetTeamNumber())
         end
        
         SendToServerConsole( "dota_combine_models 0" )
