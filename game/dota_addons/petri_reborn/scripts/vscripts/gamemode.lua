@@ -87,115 +87,108 @@ function GameMode:CreateHero(pID)
   local player = PlayerResource:GetPlayer(pID)
   local team = player:GetTeamNumber()
 
-  if not GameMode.assignedPlayerHeroes[pID] then
+  local newHero
 
-    GameMode.assignedPlayerHeroes[pID] = "temp"
+   -- Init kvn fan
+  if team == 2 then
+    -- UTIL_Remove(hero) 
+    PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+      function() 
+        Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-    local newHero
+        newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
 
-    -- MoveCamera(pID, hero)
+        InitAbilities(newHero)
 
-     -- Init kvn fan
-    if team == 2 then
-      -- UTIL_Remove(hero) 
-      PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-        function() 
-          Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
-
-          newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
-
-          InitAbilities(newHero)
-
-          newHero:SetAbilityPoints(0)
+        newHero:SetAbilityPoints(0)
 
 
-          PrintTable(GameMode.KVN_BONUS_ITEM[pID])
+        PrintTable(GameMode.KVN_BONUS_ITEM[pID])
 
-          if GameMode.KVN_BONUS_ITEM[pID] then
-            for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
-              for i=1,tonumber(v["count"]) do
-                newHero:AddItemByName(v["item"])
-              end  
-            end
+        if GameMode.KVN_BONUS_ITEM[pID] then
+          for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
+            for i=1,tonumber(v["count"]) do
+              newHero:AddItemByName(v["item"])
+            end  
           end
+        end
 
-          newHero.spawnPosition = newHero:GetAbsOrigin()
+        newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(GameRules.START_KVN_GOLD, false)
-          InitHeroValues(newHero, pID)
-          newHero.lumber = GameRules.START_KVN_LUMBER
+        newHero:SetGold(GameRules.START_KVN_GOLD, false)
+        InitHeroValues(newHero, pID)
+        newHero.lumber = GameRules.START_KVN_LUMBER
 
-          newHero.uniqueUnitList = {}
+        newHero.uniqueUnitList = {}
 
-          SetupUI(newHero)
-          SetupUpgrades(newHero)
-          SetupDependencies(newHero)
+        SetupUI(newHero)
+        SetupUpgrades(newHero)
+        SetupDependencies(newHero)
 
-          GameMode.assignedPlayerHeroes[pID] = newHero
+        GameMode.assignedPlayerHeroes[pID] = newHero
 
-          newHero.kvnScore = 0
+        newHero.kvnScore = 0
 
-          Timers:CreateTimer(function (  )
-            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
-            SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
-          end)
+        Timers:CreateTimer(function (  )
+          GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+          SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
+        end)
 
-          table.insert(GameMode.kvns, newHero)
-        end, 
-      pID)
-    end
+        table.insert(GameMode.kvns, newHero)
+      end, 
+    pID)
+  end
 
-    local petrosyanHeroName = "npc_dota_hero_brewmaster"
-    if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
-      petrosyanHeroName = "npc_dota_hero_death_prophet"
-    end
+  local petrosyanHeroName = "npc_dota_hero_brewmaster"
+  if pID == PlayerResource:GetNthPlayerIDOnTeam(DOTA_TEAM_BADGUYS, 2) then
+    petrosyanHeroName = "npc_dota_hero_death_prophet"
+  end
 
-     -- Init petrosyan
-    if team == 3 then
-      -- UTIL_Remove(hero) 
-      PrecacheUnitByNameAsync(petrosyanHeroName,
-       function() 
-          newHero = CreateHeroForPlayer(petrosyanHeroName,player)
+   -- Init petrosyan
+  if team == 3 then
+    -- UTIL_Remove(hero) 
+    PrecacheUnitByNameAsync(petrosyanHeroName,
+     function() 
+        newHero = CreateHeroForPlayer(petrosyanHeroName,player)
 
-          -- It's dangerous to go alone, take this
-          newHero:SetAbilityPoints(4)
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
-          newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
+        -- It's dangerous to go alone, take this
+        newHero:SetAbilityPoints(4)
+        newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_return"))
+        newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
+        newHero:UpgradeAbility(newHero:FindAbilityByName("petri_exploration_tower_explore_world"))
+        newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
 
-          newHero:FindAbilityByName("petri_petrosyan_passive"):ApplyDataDrivenModifier(newHero, newHero, "dummy_sleep_modifier", {})
+        newHero:FindAbilityByName("petri_petrosyan_passive"):ApplyDataDrivenModifier(newHero, newHero, "dummy_sleep_modifier", {})
 
-          newHero.spawnPosition = newHero:GetAbsOrigin()
+        newHero.spawnPosition = newHero:GetAbsOrigin()
 
-          newHero:SetGold(GameRules.START_PETROSYANS_GOLD, false)
-          InitHeroValues(newHero, pID)
+        newHero:SetGold(GameRules.START_PETROSYANS_GOLD, false)
+        InitHeroValues(newHero, pID)
 
-          SetupUI(newHero)
+        SetupUI(newHero)
 
-          GameMode.assignedPlayerHeroes[pID] = newHero
+        GameMode.assignedPlayerHeroes[pID] = newHero
 
-          newHero.petrosyanScore = 0
+        newHero.petrosyanScore = 0
 
-          GameMode.villians[petrosyanHeroName] = newHero
+        GameMode.villians[petrosyanHeroName] = newHero
 
-          Timers:CreateTimer(function (  )
-            if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
-              GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
-            else
-              GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
-            end
-          end)
-
-          if GameRules.explorationTowerCreated == nil then
-            GameRules.explorationTowerCreated = true
-            Timers:CreateTimer(0.2,
-            function()
-              GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
-              end)
+        Timers:CreateTimer(function (  )
+          if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
+            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
+          else
+            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
           end
-       end, pID)
-    end
+        end)
+
+        if GameRules.explorationTowerCreated == nil then
+          GameRules.explorationTowerCreated = true
+          Timers:CreateTimer(0.2,
+          function()
+            GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
+            end)
+        end
+     end, pID)
   end
 end
 
