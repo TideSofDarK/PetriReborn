@@ -104,15 +104,6 @@ end
 function GameMode:OnHeroInGame(hero)
   DebugPrint("[BAREBONES] Hero spawned in game for first time -- " .. hero:GetUnitName())
 
-  if FUCKSCALEFORM == false then 
-    Timers:CreateTimer(
-      function()
-        FireGameEvent('petri_scaleform', {  })
-        return 0.03
-      end)
-    FUCKSCALEFORM = true
-  end
-
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
 
   local team = hero:GetTeamNumber()
