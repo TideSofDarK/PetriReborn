@@ -157,6 +157,26 @@ function Precache( context )
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts", context)
   PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_earthshaker.vsndevts", context)
 
+  PrecacheItemByNameSync("item_petri_pile_of_wood", function(  ) end)
+  PrecacheItemByNameSync("item_petri_gold_coin", function(  ) end)
+  PrecacheItemByNameSync("item_petri_boots", function(  ) end)
+  PrecacheItemByNameSync("item_petri_hook", function(  ) end)
+  PrecacheItemByNameSync("item_petri_alcohol", function(  ) end)
+  PrecacheItemByNameSync("item_petri_vip_laguna", function(  ) end)
+  PrecacheItemByNameSync("item_petri_evasion_scroll", function(  ) end)
+  PrecacheItemByNameSync("item_petri_vip_frostbite", function(  ) end)
+  PrecacheItemByNameSync("item_petri_vip_furion", function(  ) end)
+  PrecacheItemByNameSync("item_petri_vip_greenkzn", function(  ) end)
+  PrecacheItemByNameSync("item_petri_vip_zeus", function(  ) end)
+
+  PrecacheUnitByNameSync("npc_petri_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_super_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
+
+  PrecacheUnitByNameSync("npc_petri_trap", context)
+
+  PrecacheUnitByNameSync("npc_petri_earth_wall", context)
+
   GameRules.pc = context
   GameMode().pc = context
 end

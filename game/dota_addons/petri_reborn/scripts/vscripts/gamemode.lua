@@ -71,26 +71,6 @@ require('internal/gamemode')
 
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")
-
-  PrecacheItemByNameAsync("item_petri_pile_of_wood", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_gold_coin", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_boots", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_hook", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_alcohol", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_vip_laguna", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_evasion_scroll", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_vip_frostbite", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_vip_furion", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_vip_greenkzn", function(  ) end)
-  PrecacheItemByNameAsync("item_petri_vip_zeus", function(  ) end)
-
-  PrecacheUnitByNameAsync("npc_petri_peasant", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_super_peasant", function(  ) end)
-  PrecacheUnitByNameAsync("npc_petri_mega_peasant", function(  ) end)
-
-  PrecacheUnitByNameAsync("npc_petri_trap", function(  ) end)
-
-  PrecacheUnitByNameAsync("npc_petri_earth_wall", function(  ) end)
 end
 
 function GameMode:OnFirstPlayerLoaded()
