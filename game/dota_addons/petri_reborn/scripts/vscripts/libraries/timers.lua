@@ -1,4 +1,4 @@
-TIMERS_VERSION = "1.01"
+TIMERS_VERSION = "1.05"
 
 --[[
 
@@ -8,6 +8,16 @@ TIMERS_VERSION = "1.01"
       return 1.0
     end
   )
+
+  -- The same timer as above with a shorthand call 
+  Timers(function()
+    print ("Hello. I'm running immediately and then every second thereafter.")
+    return 1.0
+  end)
+  
+
+  -- A timer which calls a function with a table context
+  Timers:CreateTimer(GameMode.someFunction, GameMode)
 
   -- A timer running every second that starts 5 seconds in the future, respects pauses
   Timers:CreateTimer(5, function()
@@ -64,27 +74,27 @@ TIMERS_THINK = 0.01
 if Timers == nil then
   print ( '[Timers] creating Timers' )
   Timers = {}
-  Timers.__index = Timers
-end
-
-function Timers:new( o )
-  o = o or {}
-  setmetatable( o, Timers )
-  return o
+  setmetatable(Timers, {
+    __call = function(t, ...)
+      return t:CreateTimer(...)
+    end
+  })
+  --Timers.__index = Timers
 end
 
 function Timers:start()
   Timers = self
   self.timers = {}
   
-  local ent = Entities:CreateByClassname("info_target") -- Entities:FindByClassname(nil, 'CWorld')
+  --local ent = Entities:CreateByClassname("info_target") -- Entities:FindByClassname(nil, 'CWorld')
+  local ent = SpawnEntityFromTableSynchronous("info_target", {targetname="timers_lua_thinker"})
   ent:SetThink("Think", self, "timers", TIMERS_THINK)
 end
 
 function Timers:Think()
-  if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
-    return
-  end
+  --if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+    --return
+  --end
 
   -- Track game time, since the dt passed in to think is actually wall-clock time not simulation time.
   local now = GameRules:GetGameTime()
@@ -112,14 +122,28 @@ function Timers:Think()
     if now >= v.endTime then
       -- Remove from timers list
       Timers.timers[k] = nil
+
+      Timers.runningTimer = k
+      Timers.removeSelf = false
       
       -- Run the callback
-      local status, nextCall = pcall(v.callback, GameRules:GetGameModeEntity(), v)
+      local status, nextCall
+      if v.context then
+        status, nextCall = xpcall(function() return v.callback(v.context, v) end, function (msg)
+                                    return msg..'\n'..debug.traceback()..'\n'
+                                  end)
+      else
+        status, nextCall = xpcall(function() return v.callback(v) end, function (msg)
+                                    return msg..'\n'..debug.traceback()..'\n'
+                                  end)
+      end
+
+      Timers.runningTimer = nil
 
       -- Make sure it worked
       if status then
         -- Check if it needs to loop
-        if nextCall then
+        if nextCall and not Timers.removeSelf then
           -- Change its end time
 
           if bOldStyle then
@@ -162,8 +186,11 @@ function Timers:HandleEventError(name, event, err)
   end
 end
 
-function Timers:CreateTimer(name, args)
+function Timers:CreateTimer(name, args, context)
   if type(name) == "function" then
+    if args ~= nil then
+      context = args
+    end
     args = {callback = name}
     name = DoUniqueString("timer")
   elseif type(name) == "table" then
@@ -190,6 +217,8 @@ function Timers:CreateTimer(name, args)
     args.endTime = now + args.endTime
   end
 
+  args.context = context
+
   Timers.timers[name] = args 
 
   return name
@@ -197,10 +226,14 @@ end
 
 function Timers:RemoveTimer(name)
   Timers.timers[name] = nil
+  if Timers.runningTimer == name then
+    Timers.removeSelf = true
+  end
 end
 
 function Timers:RemoveTimers(killAll)
   local timers = {}
+  Timers.removeSelf = true
 
   if not killAll then
     for k,v in pairs(Timers.timers) do
@@ -213,5 +246,6 @@ function Timers:RemoveTimers(killAll)
   Timers.timers = timers
 end
 
-
 if not Timers.timers then Timers:start() end
+
+GameRules.Timers = Timers
