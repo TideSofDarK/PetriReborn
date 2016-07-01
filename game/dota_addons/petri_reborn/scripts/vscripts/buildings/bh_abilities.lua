@@ -40,10 +40,7 @@ function build( keys )
 	end
 
 	--Build exit only after 16 min
-	if ability:GetName() == "build_petri_exit" or ability_name == "item_petri_pocketexit" then
-		if hero.exit and hero.exit:IsNull() == false and hero.exit:IsAlive() then
-			return false
-		end
+	if ability:GetName() == "build_petri_exit" or ability_name == "item_petri_pocketexit"  then
 		if GameRules.PETRI_EXIT_ALLOWED == false then
 			return CancelBuilding(caster, ability, pID, "#too_early_for_exit")
 		end
@@ -121,25 +118,29 @@ function build( keys )
 		end
 
 		if unit:GetUnitName() == "npc_petri_exit" then
-			Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
+			if hero.exit and hero.exit:IsNull() == false and hero.exit:IsAlive() then
+				unit:ForceKill(false)
+			else
+				Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
-			GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
+				GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
 
-			hero.exit = unit
+				hero.exit = unit
 
-			unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
-			Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
-				function() 
-					if unit:IsNull() == false and unit:IsAlive() == true and GameMode.EXIT_COUNT > 1 then
-						if GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == true then
-							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
-							GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
-							Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
-						else
-							GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
+				unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+				Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
+					function() 
+						if unit:IsNull() == false and unit:IsAlive() == true and GameMode.EXIT_COUNT > 1 then
+							if GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN == true then
+								GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_brewmaster")
+								GiveSharedGoldToHeroes(GameMode.PETRI_ADDITIONAL_EXIT_GOLD, "npc_dota_hero_death_prophet")
+								Notifications:TopToAll({text="#additional_exit_gold", duration=5, style={color="white"}, continue=false})
+							else
+								GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = true
+							end
 						end
-					end
-				end)
+					end)
+			end
 		end
 
 		caster:EmitSound("ui.inv_pickup_wood")

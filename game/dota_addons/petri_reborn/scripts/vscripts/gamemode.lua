@@ -444,6 +444,8 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 
       local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", GameRules.START_MINI_ACTORS_GOLD + gold, 0)
 
+      newHero.spawnPosition = newHero:GetAbsOrigin()
+
       GameMode.assignedPlayerHeroes[player:GetPlayerID()] = newHero
       
       newHero:SetTeam(DOTA_TEAM_BADGUYS)
@@ -509,7 +511,7 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
   end
   local localization = GameMode.PETRI_LANG_LIST[hero:GetPlayerID()]
 
-  if localization then
+  if localization and GameMode.CustomSkinsKVs[key][localization] then
     for k2,v2 in pairs(GameMode.CustomSkinsKVs[key][localization]) do
       if v2 == "model" then
         UpdateModel(hero, k2, 1)

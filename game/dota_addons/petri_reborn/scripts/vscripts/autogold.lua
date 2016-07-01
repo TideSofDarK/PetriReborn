@@ -26,12 +26,11 @@ function GameMode:RegisterAutoGold( )
 	end
 end
 
-function GiveSharedGoldToHeroes(gold, hero)
+function GiveSharedGoldToHeroes(gold, heroName)
   	for playerID = 0, DOTA_MAX_PLAYERS do
       	local hero = GameMode.assignedPlayerHeroes[playerID] 
-      	if IsValidEntity(hero) == true and hero:GetUnitName() == hero then
+      	if hero and hero:GetUnitName() == heroName then
         	AddCustomGold( playerID, gold )
-
         	PopupParticle(gold, Vector(244,201,23), 3.0, hero)
       	end
     end
@@ -67,6 +66,6 @@ function AddCustomGold( pID, gold )
       GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
     end
 
-    PlayerResource:ModifyGold(hero:GetPlayerOwnerID(), gold, false, DOTA_ModifyGold_SharedGold)
+    PlayerResource:ModifyGold(pID, gold, false, DOTA_ModifyGold_Unspecified)
   end
 end
