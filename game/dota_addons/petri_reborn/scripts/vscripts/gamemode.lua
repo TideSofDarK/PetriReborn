@@ -258,6 +258,8 @@ function GameMode:OnGameInProgress()
   
   GameMode.PETRI_GAME_HAS_STARTED = true
 
+  PauseGame(true)
+
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
 
   GameMode:TimingScores( )
