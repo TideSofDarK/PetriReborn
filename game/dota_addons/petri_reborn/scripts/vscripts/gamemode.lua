@@ -79,6 +79,29 @@ end
 
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
+
+  for pID = 0, DOTA_MAX_PLAYERS do
+    if IsValidPlayerID(pID) then
+      PrecacheUnitByNameAsync("npc_dota_hero_death_prophet",
+      function()
+        for pID = 0, DOTA_MAX_PLAYERS do
+          if IsValidPlayerID(pID) then
+            PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+            function()
+              for pID = 0, DOTA_MAX_PLAYERS do
+                if IsValidPlayerID(pID) then
+                  PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
+                  function()
+
+                  end, pID)
+                end
+              end
+            end, pID)
+          end
+        end
+      end, pID)
+    end
+  end
 end
 
 function GameMode:CreateHero(pID)
@@ -92,8 +115,8 @@ function GameMode:CreateHero(pID)
    -- Init kvn fan
   if team == 2 then
     -- UTIL_Remove(hero) 
-    PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-      function() 
+    -- PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+    --   function() 
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
@@ -135,8 +158,8 @@ function GameMode:CreateHero(pID)
         end)
 
         table.insert(GameMode.kvns, newHero)
-      end, 
-    pID)
+    --   end, 
+    -- pID)
   end
 
   local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -147,8 +170,8 @@ function GameMode:CreateHero(pID)
    -- Init petrosyan
   if team == 3 then
     -- UTIL_Remove(hero) 
-    PrecacheUnitByNameAsync(petrosyanHeroName,
-     function() 
+    -- PrecacheUnitByNameAsync(petrosyanHeroName,
+     -- function() 
         newHero = CreateHeroForPlayer(petrosyanHeroName,player)
 
         -- It's dangerous to go alone, take this
@@ -188,7 +211,7 @@ function GameMode:CreateHero(pID)
             GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Vector(784,1164,129) , true, newHero, nil, DOTA_TEAM_BADGUYS )
             end)
         end
-     end, pID)
+     -- end, pID)
   end
 end
 
@@ -258,7 +281,7 @@ function GameMode:OnGameInProgress()
   
   GameMode.PETRI_GAME_HAS_STARTED = true
 
-  PauseGame(true)
+  -- PauseGame(true)
 
   GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_BADGUYS, DOTA_MAX_PLAYERS)
 
