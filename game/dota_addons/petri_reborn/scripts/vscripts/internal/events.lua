@@ -14,9 +14,9 @@ function GameMode:_OnGameRulesStateChange(keys)
           local color = PLAYER_COLORS[i]
           PlayerResource:SetCustomPlayerColor(i, color[1], color[2], color[3])
 
-          Timers:CreateTimer(1.0, function (  )
-            GameMode:CreateHero(i)
-          end)
+          -- Timers:CreateTimer(1.0, function (  )
+          GameMode:CreateHero(i)
+          -- end)
         end
       end
     end
