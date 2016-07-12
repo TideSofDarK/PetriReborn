@@ -35,16 +35,16 @@
       {
         "ApplyModifier"
         {
-          "ModifierName"  "modifier_passive"
+          "ModifierName"  "modifier_passive_stats"
           "Target"     "CASTER"
           "Duration"    "2.0"
         }
       }
     }
-    "modifier_passive"
+    "modifier_passive_stats"
     {
       "Passive"     "0"
-      "IsHidden"      "1"
+      "IsHidden"      "0"
       "IsBuff"      "1"
       
       "Properties"
