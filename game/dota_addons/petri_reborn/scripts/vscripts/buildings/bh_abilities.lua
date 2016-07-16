@@ -119,7 +119,9 @@ function build( keys )
 
 		if unit:GetUnitName() == "npc_petri_exit" then
 			if hero.exit and hero.exit:IsNull() == false and hero.exit:IsAlive() then
-				unit:ForceKill(false)
+				Timers:CreateTimer(0.03, function ()
+					unit:ForceKill(false)
+				end)
 			else
 				Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
 
