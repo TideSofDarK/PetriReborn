@@ -13,7 +13,7 @@ BuildingHelper = {}
 BuildingAbilities = {}
 
 if not OutOfWorldVector then
-  OutOfWorldVector = Vector(11000,11000,0)
+  OutOfWorldVector = Vector(22000,22000,0)
 end
 
 MODEL_ALPHA = 100 -- Defines the transparency of the ghost model.
