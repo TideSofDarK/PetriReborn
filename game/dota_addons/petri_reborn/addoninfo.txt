@@ -5,4 +5,8 @@
 	{
 		"MaxPlayers"		"12"
 	}
+	"petri_2_radiant"
+	{
+		"MaxPlayers"		"12"
+	}
 }

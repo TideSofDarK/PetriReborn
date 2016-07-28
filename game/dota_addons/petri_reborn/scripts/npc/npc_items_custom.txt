@@ -2214,6 +2214,36 @@
 	    {}
 	  }
 	}
+	"item_petri_gold_bag2"
+	{
+	  "ID"              "1600"
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_gold_bag2"
+	
+	  "ItemCost"            "675"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "bag"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemPermanent"       "0"
+	  "ItemSellable"        "0"
+	
+	  "SideShop" "1"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "SpawnGoldBag"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
 	"item_petri_gold_coin"
 	{
 	  "BaseClass"               "item_datadriven"
@@ -6073,7 +6103,7 @@
 	
 	  "ItemPurchasable"       "0"
 	  
-	  "AbilityCastRange"              "1000"
+	  "AbilityCastRange"              "1500"
 	  "AbilityCastPoint"              "0.45"
 	
 	  "AbilityCooldown"               "0.0"
@@ -6164,6 +6194,153 @@
 	      {
 	        "MODIFIER_PROPERTY_HEALTH_BONUS" "75000"
 	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "5000" 
+	      }
+	    }
+	    "modifier_laguna_blade_datadriven"
+	    {
+	      "IsHidden"  "1"
+	      "Duration"  "0.1"
+	
+	      "OnDestroy"
+	      {
+	        "Damage"
+	        {
+	          "Target"    "TARGET"
+	          "Type"      "DAMAGE_TYPE_PURE"
+	          "Damage"    "%damage"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"item_void"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1972"
+	  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	  "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"  
+	
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_item_void"
+	
+	  "ItemPurchasable"       "1"
+	  
+	  "AbilityCastRange"              "0"
+	  "AbilityCastPoint"              "0.45"
+	
+	  "AbilityCooldown"               "300.0"
+	
+	  "AbilityManaCost"               "0"
+	
+	  "precache"
+	  {
+	    "particle"  "particles/units/heroes/hero_lion/lion_spell_finger_of_death_core.vpcf"
+	    "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
+	    "soundfile" "sounds/weapons/hero/lion/finger_of_death_impact.vsnd"
+	  }
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"                  "FIELD_INTEGER"
+	      "damage"                    "0.1"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Lion.Pick"
+	      "Target"        "TARGET"
+	    }
+	
+	    "FireSound"
+	    {
+	      "EffectName"    "Hero_Lion.FingerOfDeathImpact"
+	      "Target"        "CASTER"
+	    }
+	
+	    "FireEffect"
+	    {
+	      "EffectName"    "particles/units/heroes/hero_lion/lion_spell_finger_of_death_core.vpcf"
+	      "EffectAttachType"  "start_at_customorigin"
+	      
+	
+	      "ControlPointEntities"
+	      {
+	        "CASTER"    "attach_attack2"
+	        "TARGET"    "attach_hitloc"
+	      }
+	    }
+	
+	    "ApplyModifier"
+	    {
+	      "ModifierName"      "modifier_laguna_blade_datadriven"
+	      "Target"            "TARGET"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_vip_stats"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsBuff"      "1"
+	
+	      "OnCreated"
+	      {
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/econ/items/faceless_void/faceless_void_weapon_voidhammer/faceless_void_weapon_voidhammer.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "voidattackpoint"
+	          }
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/econ/items/faceless_void/faceless_void_head_eternalmind/faceless_void_head_eternalmind.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "voidgreenpoint"
+	          }
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/econ/items/faceless_void/faceless_void_jewel_of_aeons/fv_core_ambient_aeons.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "shoulder_fix_L"
+	          }
+	        }
+	        "FireEffect"
+	        {
+	          "EffectName"        "particles/econ/items/faceless_void/faceless_void_jewel_of_aeons/fv_core_ambient_aeons.vpcf"
+	          "EffectAttachType" "start_at_customorigin"
+	          "ControlPointEntities"
+	          {
+	              "CASTER" "shoulder_fix_R"
+	          }
+	        }
+	      }
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "0"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "0" 
 	      }
 	    }
 	    "modifier_laguna_blade_datadriven"
