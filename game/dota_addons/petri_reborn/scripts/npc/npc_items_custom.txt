@@ -2214,36 +2214,6 @@
 	    {}
 	  }
 	}
-	"item_petri_gold_bag2"
-	{
-	  "ID"              "1600"
-	  "BaseClass"                 "item_datadriven"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-	  "Model"             "models/props_gameplay/red_box.vmdl" 
-	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag2"
-	
-	  "ItemCost"            "675"
-	  "ItemQuality"         "consumable"
-	  "ItemAliases"         "bag"
-	  "ItemInitialCharges"  "1"
-	  "ItemStackable"       "0"
-	  "ItemPermanent"       "0"
-	  "ItemSellable"        "0"
-	
-	  "SideShop" "1"
-	
-	  "OnSpellStart"
-	  {
-	    "RunScript"
-	    {
-	      "ScriptFile"  "units/kvn_fan.lua"
-	      "Function"    "SpawnGoldBag"
-	    }
-	    "SpendCharge"
-	    {}
-	  }
-	}
 	"item_petri_gold_coin"
 	{
 	  "BaseClass"               "item_datadriven"
@@ -3194,6 +3164,26 @@
 	  "ItemRequirements"
 	  {
 	    "01"            "item_petri_uber_mask_of_laugh_level4;item_petri_kvn_medal"
+	  }
+	}
+	"item_petri_kvn_bag_a"
+	{
+	  "ID"              "3222"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_petri_kvn_bag_a"
+	
+	  "ItemPermanent"         "1"
+	  "ItemSellable"                  "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/bag.lua"
+	      "Function"    "OpenBag"
+	    }
 	  }
 	}
 	"item_petri_kvn_fan_blink"

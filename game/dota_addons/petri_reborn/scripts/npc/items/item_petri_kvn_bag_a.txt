@@ -1,0 +1,20 @@
+"item_petri_kvn_bag_a"
+{
+  "ID"              "3222"
+  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+  "BaseClass"           "item_datadriven"
+  "AbilityTextureName"            "item_petri_kvn_bag_a"
+
+  "ItemPermanent"         "1"
+  "ItemSellable"                  "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "items/bag.lua"
+      "Function"    "OpenBag"
+    }
+  }
+}
