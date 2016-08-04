@@ -1,5 +1,5 @@
 function OnStartTouch(trigger)
-	if string.match(trigger.caller:GetName(), string.gsub(trigger.activator:GetUnitName(), "npc_dota_hero_", "")) then
+	if string.match(trigger.caller:GetName(), string.gsub(trigger.activator:GetUnitName(), "npc_dota_hero_", "")) and trigger.activator:GetLevel() >= string.match(trigger.caller:GetName(),"%d+") then
 		local newPosition = thisEntity:GetAbsOrigin()
 
 		trigger.activator.currentArea = trigger.caller
@@ -13,4 +13,4 @@ function OnStartTouch(trigger)
 		local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
 	 	ParticleManager:SetParticleControl( particle, 0, trigger.activator:GetAbsOrigin() )
 	end
-end
+end portal_death_prophet_in_dustzone
