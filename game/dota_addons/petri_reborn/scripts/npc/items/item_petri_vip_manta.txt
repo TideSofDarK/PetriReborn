@@ -3,13 +3,17 @@
 // Date: February 2, 2015
 // Note: The number of illusions spawned is currently hardcoded in at 2.
 
-"item_manta_datadriven"
+"item_petri_vip_manta"
 {
     // General
     //-------------------------------------------------------------------------------------------------------------
     "BaseClass"                     "item_datadriven"
     "ID"                            "4147"  //Valve's version of this item uses the ID "147".
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+    "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
     "Model"                         "models/props_gameplay/red_box.vmdl" 
     "Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
     "AbilityTextureName"            "item_manta"
@@ -59,7 +63,7 @@
         "06"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "images_count"                                      "2"  //This value is currently hardcoded in item_manta.lua.
+            "images_count"                                      "2"  //This value is currently hardcoded in vip_manta.lua.
         }
         "07"
         {
@@ -127,11 +131,21 @@
     {
         "RunScript"
         {
-            "ScriptFile"                    "items/item_manta.lua"
-            "Function"                      "item_manta_datadriven_on_spell_start"
+            "ScriptFile"                    "items/vip_manta.lua"
+            "Function"                      "create_illusion"
             "CooldownMelee"                 "%cooldown_melee"
             "InvulnerabilityDuration"       "%invulnerability_duration"
             "VisionRadius"                  "%vision_radius"
+            "Target"                        "TARGET"
+        }
+        "RunScript"
+        {
+            "ScriptFile"                    "items/vip_manta.lua"
+            "Function"                      "create_illusion"
+            "CooldownMelee"                 "%cooldown_melee"
+            "InvulnerabilityDuration"       "%invulnerability_duration"
+            "VisionRadius"                  "%vision_radius"
+            "Target"                        "TARGET"
         }
     }
     
@@ -183,7 +197,7 @@
             {
                 "RunScript"
                 {
-                    "ScriptFile"        "items/item_manta.lua"
+                    "ScriptFile"        "items/vip_manta.lua"
                     "Function"          "modifier_item_manta_datadriven_invulnerability_on_destroy"
                     "IllusionOutgoingDamageMelee"   "%illusion_damage_percent_outgoing_melee"
                     "IllusionIncomingDamageMelee"   "%illusion_damage_percent_incoming_melee"

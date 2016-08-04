@@ -5,9 +5,9 @@
 ================================================================================================================= ]]
 function create_illusion(keys, illusion_origin, illusion_incoming_damage, illusion_outgoing_damage, illusion_duration)  
     local player_id = keys.target:GetPlayerID()
-    local caster_team = keys.caster:GetTeam()
+    local caster_team = keys.caster:GetTeamNumber()
     
-    local illusion = CreateUnitByName(keys.target:GetUnitName(), illusion_origin, true, keys.caster, nil, caster_team)  --handle_UnitOwner needs to be nil, or else it will crash the game.
+    local illusion = CreateUnitByName(keys.target:GetUnitName(), keys.target:GetAbsOrigin(), true, keys.caster, nil, caster_team)  --handle_UnitOwner needs to be nil, or else it will crash the game.
     illusion:SetPlayerID(keys.caster:GetPlayerID())
     illusion:SetControllableByPlayer(keys.caster:GetPlayerID(), true)
 
@@ -39,7 +39,7 @@ function create_illusion(keys, illusion_origin, illusion_incoming_damage, illusi
     end
     
     -- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle 
-    illusion:AddNewModifier(keys.caster, keys.ability, "modifier_illusion", {duration = illusion_duration, outgoing_damage = illusion_outgoing_damage, incoming_damage = illusion_incoming_damage})
+    illusion:AddNewModifier(keys.caster, keys.ability, "modifier_illusion", {duration = keys.ability:GetSpecialValueFor("illusion_duration"), outgoing_damage = keys.ability:GetSpecialValueFor("illusion_damage_percent_outgoing_melee"), incoming_damage = keys.ability:GetSpecialValueFor("illusion_damage_percent_incoming_melee")})
     
     illusion:MakeIllusion()  --Without MakeIllusion(), the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.  Without it, IsIllusion() returns false and IsRealHero() returns true.
 
