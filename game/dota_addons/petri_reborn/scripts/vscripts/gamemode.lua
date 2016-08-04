@@ -20,11 +20,10 @@ GameMode.PETRI_LANG_LIST = {}
 GameMode.KVN_BONUS_ITEM = {}
 for i=0,DOTA_MAX_PLAYERS do
   GameMode.KVN_BONUS_ITEM[i] = {}
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_kvn_fan_blink", count = 1})
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_trap", count = 2})
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_pocketexit", count = 1})
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_evasion_scroll", count = 2})
-  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_gold_bag", count = 1})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_kvn_bag_1", count = 1})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_kvn_bag_2", count = 1})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_kvn_bag_3", count = 1})
+  table.insert(GameMode.KVN_BONUS_ITEM[i], {item = "item_petri_kvn_bag_4", count = 1})
 end
 
 GameMode.EXIT_COUNT = 0

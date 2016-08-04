@@ -1,5 +1,206 @@
 "DOTAAbilities"
 {
+	// Rewrite of Manta Style
+	// Author: Rook
+	// Date: February 2, 2015
+	// Note: The number of illusions spawned is currently hardcoded in at 2.
+	
+	"item_manta_datadriven"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"                     "item_datadriven"
+	    "ID"                            "4147"  //Valve's version of this item uses the ID "147".
+	  "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	  "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
+	  "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"
+	  "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
+	    "Model"                         "models/props_gameplay/red_box.vmdl" 
+	    "Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
+	    "AbilityTextureName"            "item_manta"
+	    
+	    // Stats        
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "50.0"  //This is the cooldown when used by ranged units.
+	    "AbilityCastPoint"              "0.0"
+	    "AbilityManaCost"               "20"
+	    
+	    // Item Info
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ItemCost"                      "4950"
+	    "ItemShopTags"                  "agi;str;int;attack_speed;move_speed;hard_to_tag"
+	    "ItemQuality"                   "epic"
+	    "ItemAliases"                   "manta style"
+	    "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_ALWAYS"
+	    "ItemDeclarations"              "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_strength"                                    "10"
+	        }
+	        "02"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_agility"                                     "26"
+	        }
+	        "03"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_intelligence"                                "10"
+	        }
+	        "04"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_attack_speed"                                "15"
+	        }
+	        "05"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_movement_speed_percentage"                   "10"
+	        }
+	        "06"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "images_count"                                      "2"  //This value is currently hardcoded in item_manta.lua.
+	        }
+	        "07"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_duration"                                 "20"
+	        }
+	        "08"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_melee"            "-67"
+	        }
+	        "09"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_melee_tooltip"    "33"
+	        }   
+	        "10"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_melee"            "250"
+	        }
+	        "11"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_melee_tooltip"    "350"
+	        }           
+	        "12"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_ranged"           "-72"
+	        }
+	        "13"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_ranged_tooltip"   "28"
+	        }
+	        "14"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_ranged"           "300"
+	        }
+	        "15"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_ranged_tooltip"   "400"
+	        }
+	        "16"
+	        {
+	            "var_type"                                          "FIELD_FLOAT"
+	            "cooldown_melee"                                    "35.0"  //The cooldown for a ranged caster is the AbilityCooldown value.
+	        }
+	        "17"
+	        {
+	            "var_type"                                          "FIELD_FLOAT"
+	            "invulnerability_duration"                          "0.1"
+	        }
+	        "18"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "vision_radius"                                     "1000"
+	        }
+	    }
+	    
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"                    "items/item_manta.lua"
+	            "Function"                      "item_manta_datadriven_on_spell_start"
+	            "CooldownMelee"                 "%cooldown_melee"
+	            "InvulnerabilityDuration"       "%invulnerability_duration"
+	            "VisionRadius"                  "%vision_radius"
+	        }
+	    }
+	    
+	    "Modifiers"
+	    {
+	        "modifier_item_manta_datadriven"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	            
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"                        "%bonus_strength"
+	                "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"                         "%bonus_agility"
+	                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"                       "%bonus_intelligence"
+	                
+	                //Attack speed from Yasha-derived items affect your illusions.
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT_SECONDARY"        "%bonus_attack_speed"
+	                
+	                //Movement speed from Yasha-derived items does not stack with itself but does stack with other percentage-based movement speed bonuses.
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"           "%bonus_movement_speed_percentage"
+	            }
+	        }
+	        
+	        "modifier_item_manta_datadriven_spawning_animation"
+	        {
+	            "Duration"          ".1"
+	            "Passive"           "0"
+	            "IsHidden"          "1"
+	            
+	            "OverrideAnimation"     "ACT_DOTA_SPAWN"
+	        }
+	        "modifier_item_manta_datadriven_invulnerability"
+	        {
+	            "Duration"  "%invulnerability_duration"
+	            "Passive"   "0"
+	            "IsHidden"  "1"
+	
+	            "States"
+	            {
+	                "MODIFIER_STATE_OUT_OF_GAME"    "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	
+	            "OnDestroy"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"        "items/item_manta.lua"
+	                    "Function"          "modifier_item_manta_datadriven_invulnerability_on_destroy"
+	                    "IllusionOutgoingDamageMelee"   "%illusion_damage_percent_outgoing_melee"
+	                    "IllusionIncomingDamageMelee"   "%illusion_damage_percent_incoming_melee"
+	                    "IllusionOutgoingDamageRanged"  "%illusion_damage_percent_outgoing_ranged"
+	                    "IllusionIncomingDamageRanged"  "%illusion_damage_percent_incoming_ranged"
+	                    "IllusionDuration"              "%illusion_duration"
+	                }
+	            }               
+	        }
+	    }
+	}
 	"item_petri_alcohol"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -2034,6 +2235,7 @@
 	
 	  "ItemPermanent"         "0"
 	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
 	
 	  "AbilitySpecial"
 	  {
@@ -2068,6 +2270,7 @@
 	
 	  "ItemPermanent"         "0"
 	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
 	
 	  "AbilitySpecial"
 	  {
@@ -2103,7 +2306,8 @@
 	
 	  "ItemPermanent"         "0"
 	  "ItemSellable"                  "0"
-	
+	  "ItemDroppable"         "0"
+	  
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -2194,6 +2398,36 @@
 	  "AbilityTextureName"      "item_petri_gold_bag3"
 	
 	  "ItemCost"            "1000"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "bag"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemPermanent"       "0"
+	  "ItemSellable"        "0"
+	
+	  "SideShop" "1"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/kvn_fan.lua"
+	      "Function"    "SpawnGoldBag"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	"item_petri_gold_bag2"
+	{
+	  "ID"              "1600"
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_gold_bag2"
+	
+	  "ItemCost"            "675"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges"  "1"
@@ -3166,17 +3400,84 @@
 	    "01"            "item_petri_uber_mask_of_laugh_level4;item_petri_kvn_medal"
 	  }
 	}
-	"item_petri_kvn_bag_a"
+	"item_petri_kvn_bag_1"
 	{
 	  "ID"              "3222"
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_a"
+	  "AbilityTextureName"            "item_petri_kvn_bag_1"
 	
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
 	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/bag.lua"
+	      "Function"    "OpenBag"
+	    }
+	  }
+	}
+	
+	"item_petri_kvn_bag_2"
+	{
+	  "ID"              "3223"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_petri_kvn_bag_2"
+	
+	  "ItemPermanent"         "1"
+	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/bag.lua"
+	      "Function"    "OpenBag"
+	    }
+	  }
+	}
+	
+	"item_petri_kvn_bag_3"
+	{
+	  "ID"              "3224"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_petri_kvn_bag_3"
+	
+	  "ItemPermanent"         "1"
+	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "items/bag.lua"
+	      "Function"    "OpenBag"
+	    }
+	  }
+	}
+	
+	"item_petri_kvn_bag_4"
+	{
+	  "ID"              "3225"
+	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	
+	  "BaseClass"           "item_datadriven"
+	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	
+	  "ItemPermanent"         "1"
+	  "ItemSellable"                  "0"
+	  "ItemDroppable"         "0"
+	  
 	  "OnSpellStart"
 	  {
 	    "RunScript"
@@ -3392,6 +3693,203 @@
 	      }
 	    }
 	  }
+	}
+	// Rewrite of Manta Style
+	// Author: Rook
+	// Date: February 2, 2015
+	// Note: The number of illusions spawned is currently hardcoded in at 2.
+	
+	"item_manta_datadriven"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"                     "item_datadriven"
+	    "ID"                            "4147"  //Valve's version of this item uses the ID "147".
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	    "Model"                         "models/props_gameplay/red_box.vmdl" 
+	    "Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
+	    "AbilityTextureName"            "item_manta"
+	    
+	    // Stats        
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "50.0"  //This is the cooldown when used by ranged units.
+	    "AbilityCastPoint"              "0.0"
+	    "AbilityManaCost"               "10"
+	    
+	    // Item Info
+	    //-------------------------------------------------------------------------------------------------------------
+	    "ItemCost"                      "4950"
+	    "ItemShopTags"                  "agi;str;int;attack_speed;move_speed;hard_to_tag"
+	    "ItemQuality"                   "epic"
+	    "ItemAliases"                   "manta style"
+	    "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_ALWAYS"
+	    "ItemDeclarations"              "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
+	    
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_strength"                                    "10"
+	        }
+	        "02"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_agility"                                     "26"
+	        }
+	        "03"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_intelligence"                                "10"
+	        }
+	        "04"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_attack_speed"                                "15"
+	        }
+	        "05"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "bonus_movement_speed_percentage"                   "10"
+	        }
+	        "06"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "images_count"                                      "2"  //This value is currently hardcoded in item_manta.lua.
+	        }
+	        "07"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_duration"                                 "20"
+	        }
+	        "08"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_melee"            "-67"
+	        }
+	        "09"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_melee_tooltip"    "33"
+	        }   
+	        "10"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_melee"            "250"
+	        }
+	        "11"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_melee_tooltip"    "350"
+	        }           
+	        "12"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_ranged"           "-72"
+	        }
+	        "13"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_outgoing_ranged_tooltip"   "28"
+	        }
+	        "14"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_ranged"           "300"
+	        }
+	        "15"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "illusion_damage_percent_incoming_ranged_tooltip"   "400"
+	        }
+	        "16"
+	        {
+	            "var_type"                                          "FIELD_FLOAT"
+	            "cooldown_melee"                                    "35.0"  //The cooldown for a ranged caster is the AbilityCooldown value.
+	        }
+	        "17"
+	        {
+	            "var_type"                                          "FIELD_FLOAT"
+	            "invulnerability_duration"                          "0.1"
+	        }
+	        "18"
+	        {
+	            "var_type"                                          "FIELD_INTEGER"
+	            "vision_radius"                                     "1000"
+	        }
+	    }
+	    
+	    "OnSpellStart"
+	    {
+	        "RunScript"
+	        {
+	            "ScriptFile"                    "items/item_manta.lua"
+	            "Function"                      "item_manta_datadriven_on_spell_start"
+	            "CooldownMelee"                 "%cooldown_melee"
+	            "InvulnerabilityDuration"       "%invulnerability_duration"
+	            "VisionRadius"                  "%vision_radius"
+	        }
+	    }
+	    
+	    "Modifiers"
+	    {
+	        "modifier_item_manta_datadriven"
+	        {
+	            "Passive"           "1"
+	            "IsHidden"          "1"
+	            "Attributes"        "MODIFIER_ATTRIBUTE_MULTIPLE"
+	            
+	            "Properties"
+	            {
+	                "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"                        "%bonus_strength"
+	                "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"                         "%bonus_agility"
+	                "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"                       "%bonus_intelligence"
+	                
+	                //Attack speed from Yasha-derived items affect your illusions.
+	                "MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT_SECONDARY"        "%bonus_attack_speed"
+	                
+	                //Movement speed from Yasha-derived items does not stack with itself but does stack with other percentage-based movement speed bonuses.
+	                "MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE_UNIQUE"           "%bonus_movement_speed_percentage"
+	            }
+	        }
+	        
+	        "modifier_item_manta_datadriven_spawning_animation"
+	        {
+	            "Duration"          ".1"
+	            "Passive"           "0"
+	            "IsHidden"          "1"
+	            
+	            "OverrideAnimation"     "ACT_DOTA_SPAWN"
+	        }
+	        "modifier_item_manta_datadriven_invulnerability"
+	        {
+	            "Duration"  "%invulnerability_duration"
+	            "Passive"   "0"
+	            "IsHidden"  "1"
+	
+	            "States"
+	            {
+	                "MODIFIER_STATE_OUT_OF_GAME"    "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_INVULNERABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"
+	                "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	
+	            "OnDestroy"
+	            {
+	                "RunScript"
+	                {
+	                    "ScriptFile"        "items/item_manta.lua"
+	                    "Function"          "modifier_item_manta_datadriven_invulnerability_on_destroy"
+	                    "IllusionOutgoingDamageMelee"   "%illusion_damage_percent_outgoing_melee"
+	                    "IllusionIncomingDamageMelee"   "%illusion_damage_percent_incoming_melee"
+	                    "IllusionOutgoingDamageRanged"  "%illusion_damage_percent_outgoing_ranged"
+	                    "IllusionIncomingDamageRanged"  "%illusion_damage_percent_incoming_ranged"
+	                    "IllusionDuration"              "%illusion_duration"
+	                }
+	            }               
+	        }
+	    }
 	}
 	"item_petri_mask_of_laugh"
 	{
@@ -6220,12 +6718,14 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_item_void"
 	
-	  "ItemPurchasable"       "1"
+	  "ItemCost"            "99999"
+	
+	  "ItemPurchasable"       "0"
 	  
-	  "AbilityCastRange"              "0"
+	  "AbilityCastRange"              "1500"
 	  "AbilityCastPoint"              "0.45"
 	
-	  "AbilityCooldown"               "300.0"
+	  "AbilityCooldown"               "240.0"
 	
 	  "AbilityManaCost"               "0"
 	
@@ -6241,7 +6741,7 @@
 	    "01"
 	    {
 	      "var_type"                  "FIELD_INTEGER"
-	      "damage"                    "0.1"
+	      "damage"                    "20000"
 	    }
 	  }
 	
@@ -6329,8 +6829,8 @@
 	    
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_HEALTH_BONUS" "0"
-	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "0" 
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "150000"
+	        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "250" 
 	      }
 	    }
 	    "modifier_laguna_blade_datadriven"

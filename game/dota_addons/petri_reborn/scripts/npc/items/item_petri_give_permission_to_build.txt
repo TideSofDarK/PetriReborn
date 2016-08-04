@@ -12,6 +12,7 @@
 
   "ItemPermanent"         "0"
   "ItemSellable"                  "0"
+  "ItemDroppable"         "0"
 
   "AbilitySpecial"
   {
@@ -46,6 +47,7 @@
 
   "ItemPermanent"         "0"
   "ItemSellable"                  "0"
+  "ItemDroppable"         "0"
 
   "AbilitySpecial"
   {
@@ -81,7 +83,8 @@
 
   "ItemPermanent"         "0"
   "ItemSellable"                  "0"
-
+  "ItemDroppable"         "0"
+  
   "AbilitySpecial"
   {
     "01"

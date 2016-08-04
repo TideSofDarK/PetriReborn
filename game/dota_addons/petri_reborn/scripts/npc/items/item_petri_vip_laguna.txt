@@ -143,12 +143,14 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_item_void"
 
-  "ItemPurchasable"       "1"
+  "ItemCost"            "99999"
+
+  "ItemPurchasable"       "0"
   
-  "AbilityCastRange"              "0"
+  "AbilityCastRange"              "1500"
   "AbilityCastPoint"              "0.45"
 
-  "AbilityCooldown"               "300.0"
+  "AbilityCooldown"               "240.0"
 
   "AbilityManaCost"               "0"
 
@@ -164,7 +166,7 @@
     "01"
     {
       "var_type"                  "FIELD_INTEGER"
-      "damage"                    "0.1"
+      "damage"                    "20000"
     }
   }
 
@@ -252,8 +254,8 @@
     
       "Properties"
       {
-        "MODIFIER_PROPERTY_HEALTH_BONUS" "0"
-        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "0" 
+        "MODIFIER_PROPERTY_HEALTH_BONUS" "150000"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "250" 
       }
     }
     "modifier_laguna_blade_datadriven"
