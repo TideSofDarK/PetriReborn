@@ -39,3 +39,12 @@ GameRules.KVN_AUTO_GOLD[2] = 1800
 GameRules.KVN_AUTO_GOLD[3] = 4000
 GameRules.KVN_AUTO_GOLD[4] = 10000
 GameRules.KVN_AUTO_GOLD[5] = 16000
+
+GameRules.PETRI_LOCK_ITEMS = {}
+GameRules.PETRI_LOCK_ITEMS[1] = "item_petri_jedi"
+GameRules.PETRI_LOCK_ITEMS[2] = "item_petri_uber_mask_of_laugh_level4"
+GameRules.PETRI_LOCK_ITEMS[3] = "item_petri_uber_mask_of_laugh_level3"
+GameRules.PETRI_LOCK_ITEMS[4] = "item_petri_uber_mask_of_laugh_level2"
+GameRules.PETRI_LOCK_ITEMS[5] = "item_petri_uber_mask_of_laugh"
+GameRules.PETRI_LOCK_ITEMS[6] = "item_petri_zirconia_armor"
+GameRules.PETRI_LOCK_ITEMS[7] = "item_petri_bracer"

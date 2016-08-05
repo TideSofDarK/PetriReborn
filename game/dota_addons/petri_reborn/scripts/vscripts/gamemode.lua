@@ -203,6 +203,48 @@ function GameMode:CreateHero(pID)
           end
         end)
 
+        Timers:CreateTimer(function (  )
+          local check = (function(name) 
+            for i=1,7 do
+              print(GameRules.PETRI_LOCK_ITEMS[i], name)
+              if GameRules.PETRI_LOCK_ITEMS[i] == name then
+                print(true)
+                return true
+              end
+            end
+            return false
+          end)
+
+          if newHero.old_item then
+            local dup = false
+            for i=0,5 do
+              local item = newHero:GetItemInSlot(i)
+
+              if item and check(item:GetName()) and (item:GetName() ~= newHero.old_item or dup == true) then
+                
+                newHero:DropItemAtPosition(newHero:GetAbsOrigin(),item)
+                return 0.03
+              end
+              if item and item:GetName() == newHero.old_item then
+                dup = true
+              end
+            end
+          end
+
+          newHero.old_item = nil
+
+          for i=0,5 do
+            local item = newHero:GetItemInSlot(i)
+
+            if item and check(item:GetName()) then
+              newHero.old_item = item:GetName()
+              break
+            end
+          end
+
+          return 0.03
+        end)
+
         if GameRules.explorationTowerCreated == nil then
           GameRules.explorationTowerCreated = true
           Timers:CreateTimer(0.2,
