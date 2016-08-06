@@ -212,7 +212,7 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       local item = GetItemByID(filterTable["entindex_ability"])
 
-      if check2(purchaser) and check1(item["name"]) then
+      if item and check2(purchaser) and check1(item["name"]) then
         return false
       end
 
