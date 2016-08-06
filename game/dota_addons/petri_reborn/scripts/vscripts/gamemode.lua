@@ -39,6 +39,26 @@ FUCKSCALEFORM = false
 
 GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
 
+check1 = (function(name) 
+            for i=1,7 do
+              print(GameRules.PETRI_LOCK_ITEMS[i], name)
+              if GameRules.PETRI_LOCK_ITEMS[i] == name then
+                print(true)
+                return true
+              end
+            end
+            return false
+          end)
+
+check2 = (function(purchaser) 
+            for i=0,5 do
+              if purchaser:GetItemInSlot(i) and check1(purchaser:GetItemInSlot(i):GetName()) then
+                return true
+              end
+            end
+            return false
+          end)
+
 require('libraries/physics')
 require('libraries/projectiles')
 require('libraries/notifications')
@@ -201,48 +221,6 @@ function GameMode:CreateHero(pID)
           else
             GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
           end
-        end)
-
-        Timers:CreateTimer(function (  )
-          local check = (function(name) 
-            for i=1,7 do
-              print(GameRules.PETRI_LOCK_ITEMS[i], name)
-              if GameRules.PETRI_LOCK_ITEMS[i] == name then
-                print(true)
-                return true
-              end
-            end
-            return false
-          end)
-
-          if newHero.old_item then
-            local dup = false
-            for i=0,5 do
-              local item = newHero:GetItemInSlot(i)
-
-              if item and check(item:GetName()) and (item:GetName() ~= newHero.old_item or dup == true) then
-                
-                newHero:DropItemAtPosition(newHero:GetAbsOrigin(),item)
-                return 0.03
-              end
-              if item and item:GetName() == newHero.old_item then
-                dup = true
-              end
-            end
-          end
-
-          newHero.old_item = nil
-
-          for i=0,5 do
-            local item = newHero:GetItemInSlot(i)
-
-            if item and check(item:GetName()) then
-              newHero.old_item = item:GetName()
-              break
-            end
-          end
-
-          return 0.03
         end)
 
         if GameRules.explorationTowerCreated == nil then

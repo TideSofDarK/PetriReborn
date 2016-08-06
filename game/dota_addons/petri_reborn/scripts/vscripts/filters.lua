@@ -136,6 +136,10 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       local purchaser = EntIndexToHScript(filterTable["entindex_target"])
 
+      if check2(purchaser) and check1(item:GetName()) then
+        return false
+      end
+
       if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
         return false
       end
@@ -173,6 +177,10 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       local purchaser = EntIndexToHScript(units["0"])
 
+      if check2(purchaser) and check1(item:GetName()) then
+        return false
+      end
+
       if purchaser:GetUnitName() ~= "npc_dota_courier" and purchaser ~= item:GetPurchaser() and purchaser:GetTeamNumber() == DOTA_TEAM_BADGUYS and item:GetName() ~= "item_petri_grease" then
         return false
       end
@@ -203,6 +211,10 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
 
       local item = GetItemByID(filterTable["entindex_ability"])
+
+      if check2(purchaser) and check1(item["name"]) then
+        return false
+      end
 
       if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS and (filterTable["entindex_ability"] == 45 or filterTable["entindex_ability"] == 84) then return false end
 

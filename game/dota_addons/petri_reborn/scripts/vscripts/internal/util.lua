@@ -351,7 +351,10 @@ end
 -- ITEMS
 function GetItemByID(id)
   for k,v in pairs(GameMode.ItemKVs) do
-    if tonumber(v["ID"]) == id then return v end
+    if tonumber(v["ID"]) == id then 
+      v["name"] = k
+      return v 
+    end
   end
 end
 
