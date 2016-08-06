@@ -219,6 +219,9 @@ function GameMode:FilterExecuteOrder( filterTable )
       if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS and (filterTable["entindex_ability"] == 45 or filterTable["entindex_ability"] == 84) then return false end
 
       if item then
+        if purchaser:GetUnitName() == "npc_dota_hero_storm_spirit" and item["SideShop"] then
+          return false
+        end
         if OnEnemyShop(purchaser) then
           Notifications:Bottom(issuer, {text="#cant_buy_pudge", duration=2, style={color="red", ["font-size"]="35px"}})
           return false
