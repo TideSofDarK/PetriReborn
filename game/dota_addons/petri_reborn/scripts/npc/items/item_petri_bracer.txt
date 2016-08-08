@@ -23,27 +23,9 @@
   
   "Modifiers"
   {
-    "modifier_passive_test"
-    {
-      "Passive"      "1"
-      "IsHidden"      "1"
-      "IsDebuff"      "0"
-      "IsBuff"      "1"
-    
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "2.0"
-        }
-      }
-    }
     "modifier_passive_stats"
     {
-      "Passive"     "0"
+      "Passive"     "1"
       "IsHidden"      "0"
       "IsBuff"      "1"
       
