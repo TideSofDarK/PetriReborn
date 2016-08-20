@@ -74,16 +74,6 @@
       "Passive"     "1"
       "IsHidden"      "1"
 
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "2.0"
-        }
-      }
       
       "Orb"
       {
@@ -243,7 +233,7 @@
   {
     "modifier_passive_stats"
     {
-      "Passive"     "0"
+      "Passive"     "1"
       "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
@@ -260,16 +250,6 @@
       "Passive"     "1"
       "IsHidden"      "1"
 
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "2.0"
-        }
-      }
       
       "Orb"
       {
@@ -429,7 +409,7 @@
   {
     "modifier_passive_stats"
     {
-      "Passive"     "0"
+      "Passive"     "1"
       "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
@@ -446,16 +426,6 @@
       "Passive"     "1"
       "IsHidden"      "1"
 
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "3.0"
-        }
-      }
       
       "Orb"
       {
@@ -615,7 +585,7 @@
   {
     "modifier_passive_stats"
     {
-      "Passive"     "0"
+      "Passive"     "1"
       "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
@@ -632,16 +602,6 @@
       "Passive"     "1"
       "IsHidden"      "1"
 
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "2.0"
-        }
-      }
       
       "Orb"
       {

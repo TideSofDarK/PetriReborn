@@ -5,7 +5,7 @@
 
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_petri_kvn_bag_1"
-
+  "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
   "ItemDroppable"         "0"
@@ -27,7 +27,7 @@
 
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_petri_kvn_bag_2"
-
+  "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
   "ItemDroppable"         "0"
@@ -49,7 +49,7 @@
 
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_petri_kvn_bag_3"
-
+  "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
   "ItemDroppable"         "0"
@@ -71,7 +71,29 @@
 
   "BaseClass"           "item_datadriven"
   "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "ItemPurchasable"       "0"
+  "ItemPermanent"         "1"
+  "ItemSellable"                  "0"
+  "ItemDroppable"         "0"
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "items/bag.lua"
+      "Function"    "OpenBag"
+    }
+  }
+}
 
+"item_petri_kvn_bag_vip"
+{
+  "ID"              "3226"
+  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+  "BaseClass"           "item_datadriven"
+  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
   "ItemDroppable"         "0"

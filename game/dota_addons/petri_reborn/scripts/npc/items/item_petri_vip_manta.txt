@@ -20,7 +20,7 @@
     
     // Stats        
     //-------------------------------------------------------------------------------------------------------------
-    "AbilityCooldown"               "50.0"  //This is the cooldown when used by ranged units.
+    "AbilityCooldown"               "0.0"  //This is the cooldown when used by ranged units.
     "AbilityCastPoint"              "0.0"
     "AbilityManaCost"               "10"
     
@@ -29,6 +29,7 @@
     "ItemCost"                      "4950"
     "ItemShopTags"                  "agi;str;int;attack_speed;move_speed;hard_to_tag"
     "ItemQuality"                   "epic"
+    "ItemPurchasable"       "0"
     "ItemAliases"                   "manta style"
     "ItemDisassembleRule"           "DOTA_ITEM_DISASSEMBLE_ALWAYS"
     "ItemDeclarations"              "DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_IN_SPEECH | DECLARE_PURCHASES_TO_SPECTATORS"
@@ -43,7 +44,7 @@
         "02"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "bonus_agility"                                     "26"
+            "bonus_agility"                                     "500"
         }
         "03"
         {
@@ -58,7 +59,7 @@
         "05"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "bonus_movement_speed_percentage"                   "10"
+            "bonus_movement_speed_percentage"                   "200"
         }
         "06"
         {
@@ -73,22 +74,22 @@
         "08"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "illusion_damage_percent_outgoing_melee"            "-67"
+            "illusion_damage_percent_outgoing_melee"            "29000"
         }
         "09"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "illusion_damage_percent_outgoing_melee_tooltip"    "33"
+            "illusion_damage_percent_outgoing_melee_tooltip"    "30000"
         }   
         "10"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "illusion_damage_percent_incoming_melee"            "250"
+            "illusion_damage_percent_incoming_melee"            "1"
         }
         "11"
         {
             "var_type"                                          "FIELD_INTEGER"
-            "illusion_damage_percent_incoming_melee_tooltip"    "350"
+            "illusion_damage_percent_incoming_melee_tooltip"    "100"
         }           
         "12"
         {
@@ -113,7 +114,7 @@
         "16"
         {
             "var_type"                                          "FIELD_FLOAT"
-            "cooldown_melee"                                    "35.0"  //The cooldown for a ranged caster is the AbilityCooldown value.
+            "cooldown_melee"                                    "0.0"  //The cooldown for a ranged caster is the AbilityCooldown value.
         }
         "17"
         {

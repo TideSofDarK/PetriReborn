@@ -161,7 +161,7 @@
 
     "modifier_passive_stats"
     {
-      "Passive"     "0"
+      "Passive"     "1"
       "IsHidden"      "0"
       //"Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
 
@@ -191,19 +191,7 @@
     "modifier_item_petri_uber_mask_of_laugh"
     {
       "Passive"     "1"
-      "IsHidden"      "1"
-
-      "ThinkInterval"  "1.0"
-      "OnIntervalThink"
-      {
-        "ApplyModifier"
-        {
-          "ModifierName"  "modifier_passive_stats"
-          "Target"     "CASTER"
-          "Duration"    "2.0"
-        }
-      }
-      
+      "IsHidden"      "1"      
       "Orb"
       {
         "Priority"    "DOTA_ORB_PRIORITY_ITEM"

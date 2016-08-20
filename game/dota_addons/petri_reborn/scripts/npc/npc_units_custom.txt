@@ -691,7 +691,7 @@
 	  "Ability1"  "petri_creep_pendant"
 	  "Ability2"  "petri_gold_tick"
 	
-	  "ArmorPhysical"       "100"
+	  "ArmorPhysical"       "140"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"

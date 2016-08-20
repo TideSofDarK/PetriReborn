@@ -79,3 +79,62 @@
     "01"            "item_petri_kvn_fan_blink;"
   }
 }
+
+"item_petri_kvn_fan_cool_blink2"
+{
+  "BaseClass"       "item_datadriven"
+  "ID"              "4423"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+
+  "precache"
+  {
+    "soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+  }
+
+  "ItemAliases"         "dagger"
+  "ItemPurchasable"       "0"
+  "AbilityCastPoint"        "0.0"
+
+  "AbilityCooldown"       "0.0"
+  "AbilitySharedCooldown"         "blink"
+  
+  "AbilityManaCost"       "0"
+  
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "blink_range"     "50000"
+    }
+    
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "min_blink_range"   "200"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "items/dagger.lua"
+      "Function"    "Blink"
+      "Target"    "POINT"
+    }
+    
+    "FireSound"
+    {
+      "EffectName"  "Hero_Antimage.Blink_out"
+      "Target"    "CASTER"
+    }
+
+    "FireSound"
+    {
+      "EffectName"  "Hero_Antimage.Blink_in"
+      "Target"    "CASTER"
+    }
+  }
+}
