@@ -1,5 +1,5 @@
 function OnStartTouch(trigger)
-	if string.match(trigger.caller:GetName(), string.gsub(trigger.activator:GetUnitName(), "npc_dota_hero_", "")) and trigger.activator:GetLevel() >= tonumber(string.match(trigger.caller:GetName(),"%d+")) then
+	if string.match(trigger.caller:GetName(), string.gsub(trigger.activator:GetUnitName(), "npc_dota_hero_", "")) and (string.match(trigger.caller:GetName(),"%d+") and trigger.activator:GetLevel() >= tonumber(string.match(trigger.caller:GetName(),"%d+"))) then
 		local newPosition = thisEntity:GetAbsOrigin()
 
 		trigger.activator.currentArea = trigger.caller
