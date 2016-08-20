@@ -14,4 +14,4 @@ function OnStartTouch(trigger)
 		local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, caster )
 	 	ParticleManager:SetParticleControl( particle, 0, trigger.activator:GetAbsOrigin() )
 	end
-end portal_death_prophet_in_dustzone
+end
