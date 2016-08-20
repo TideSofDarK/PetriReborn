@@ -227,7 +227,7 @@ function GameMode:CreateHero(pID)
           GameRules.explorationTowerCreated = true
           Timers:CreateTimer(0.2,
           function()
-            GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Entities:FindAllByName("exploration_tower_position")[1] , true, newHero, nil, DOTA_TEAM_BADGUYS )
+            GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Entities:FindAllByName("exploration_tower_position")[1]:GetAbsOrigin() , true, newHero, nil, DOTA_TEAM_BADGUYS )
             end)
         end
      -- end, pID)
