@@ -3919,6 +3919,12 @@
 	  "ItemRequiresCharges" "1"
 	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 	
+	  "precache"
+	  {
+	      "soundfile"         "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+	      "particle"          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+	  }
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -3998,6 +4004,13 @@
 	          "Target"        "CASTER"
 	        }
 	
+	        "RunScript"
+	        {
+	          "ScriptFile"  "items/pill.lua"
+	          "Function"    "Crit"
+	          "damage"      "%attack_damage"
+	        }
+	
 	        "FireEffect"
 	        {
 	          "EffectName"    "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
@@ -4013,7 +4026,7 @@
 	        "FireSound"
 	        {
 	          "EffectName"    "Hero_PhantomAssassin.CoupDeGrace"
-	          "Target"        "TARGET"
+	          "Target"        "CASTER"
 	        }
 	      }
 	    }
