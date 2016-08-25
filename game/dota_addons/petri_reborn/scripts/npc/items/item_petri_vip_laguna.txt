@@ -71,6 +71,12 @@
       "ModifierName"      "modifier_laguna_blade_datadriven"
       "Target"            "TARGET"
     }
+
+    "Stun"
+    {
+      "Duration"   "2.0"
+      "Target"    "TARGET"
+    }
   }
 
   "Modifiers"

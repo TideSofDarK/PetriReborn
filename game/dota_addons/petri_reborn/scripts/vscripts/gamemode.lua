@@ -232,6 +232,15 @@ function GameMode:CreateHero(pID)
         end
      -- end, pID)
   end
+
+  for k,v in pairs(GameMode.StartItemsKVs) do
+    if k == newHero:GetUnitName() then
+      for k1,v1 in pairs(v) do
+        newHero:AddItemByName(v1)
+      end
+      break
+    end
+  end
 end
 
 function InitHeroValues(hero, pID)
@@ -379,6 +388,8 @@ function GameMode:InitGameMode()
   GameMode.HeroKVs = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
   GameMode.AbilityKVs = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
   GameMode.ItemKVs = LoadKeyValues("scripts/npc/npc_items_custom.txt")
+
+  GameMode.StartItemsKVs = LoadKeyValues("scripts/kv/start_items.kv")
 
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}

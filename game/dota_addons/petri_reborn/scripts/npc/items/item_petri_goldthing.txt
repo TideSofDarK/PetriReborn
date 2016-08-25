@@ -1,0 +1,48 @@
+"item_petri_goldthing"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "3455"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_gameplay/red_box.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_goldthing"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "0"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_INTEGER"
+      "gold"              "100"
+    }
+  }
+
+  "OnSpellStart"
+  {    
+    "SpendCharge" 
+    {}
+    "RunScript"
+    {
+      "ScriptFile"  "items/goldthing.lua"
+      "Function"    "Use"
+    }
+  }
+}
