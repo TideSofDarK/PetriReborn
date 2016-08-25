@@ -233,12 +233,16 @@ function GameMode:CreateHero(pID)
      -- end, pID)
   end
 
-  for k,v in pairs(GameMode.StartItemsKVs) do
-    if k == newHero:GetUnitName() then
-      for k1,v1 in pairs(v) do
-        newHero:AddItemByName(v1)
+  for steamid,t in pairs(GameMode.StartItemsKVs) do
+    if tonumber(steamid) == PlayerResource:GetSteamAccountID(pID) then
+      for k,v in pairs(t) do
+        if k == newHero:GetUnitName() then
+          for k1,v1 in pairs(v) do
+            newHero:AddItemByName(v1)
+          end
+          break
+        end
       end
-      break
     end
   end
 end
