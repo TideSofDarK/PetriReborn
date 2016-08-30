@@ -435,8 +435,10 @@ function CheckKVN()
         if PlayerResource:GetTeam(playerID) == DOTA_TEAM_GOODGUYS and PlayerResource:GetConnectionState(playerID) == DOTA_CONNECTION_STATE_CONNECTED then
           local hero = GameMode.assignedPlayerHeroes[playerID] or PlayerResource:GetPlayer(playerID):GetAssignedHero()
 
-          if hero:IsAlive() == true and hero:GetUnitName() == "npc_dota_hero_rattletrap" and hero:GetPlayerOwner() then
-            return false
+          if IsValidEntity(hero) then 
+            if hero:IsAlive() == true and hero:GetUnitName() == "npc_dota_hero_rattletrap" and hero:GetPlayerOwner() then
+              return false
+            end
           end
         end
       end

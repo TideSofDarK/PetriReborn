@@ -1,5 +1,33 @@
 @define animDuration: 1.75s;
 
+
+#Ad {
+  margin-left: 445px;
+  margin-top: 100px;
+
+  width: 330px;
+  height: 75px;
+
+  border-radius: 5px;
+
+  background-color: #000000bb;
+
+  box-shadow: fill #00000080 4px 4px 8px 0px;
+
+  transition: transform 0.25s linear 0.0s;
+}
+
+#AdLabel {
+    align: center center;
+    color: #ffffffbb;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#Ad:hover { 
+  transform: scale3d(1.07, 1.07, 1.07);
+}
+
 .GameSetup
 {
     width: 100%;

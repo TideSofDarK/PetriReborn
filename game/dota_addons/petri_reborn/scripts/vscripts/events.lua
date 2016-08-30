@@ -333,7 +333,26 @@ function GameMode:OnEntityKilled( keys )
 
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
-    --Notifications:TopToAll({text=PlayerResource:GetPlayerName(killedUnit:GetPlayerOwnerID()) .." ".."#kvn_fan_is_dead", duration=4, style={color="red"}, continue=false})
+    Timers:CreateTimer(1.0,
+    function()
+      if CheckKVN() and GameMode.PETRI_GAME_HAS_ENDED == false then
+        GameMode.PETRI_GAME_HAS_ENDED = true
+
+        Timers:CreateTimer(2.0,
+          function()
+            GameRules.Winner = DOTA_TEAM_BADGUYS
+            GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
+          end)
+
+        Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
+
+        for i=0,DOTA_MAX_PLAYERS do
+          if PlayerResource:IsValidPlayerID(i) then
+            PlayerResource:SetCameraTarget(i, killerEntity)
+          end
+        end
+      end
+    end)
 
     local allBuildings = Entities:FindAllByClassname("npc_dota_base_additive")
     local allCreeps = Entities:FindAllByClassname("npc_dota_creature")
@@ -353,27 +372,6 @@ function GameMode:OnEntityKilled( keys )
     if PlayerResource:GetConnectionState(killedUnit:GetPlayerOwnerID()) == DOTA_CONNECTION_STATE_CONNECTED then
       GameMode:ReplaceWithMiniActor(killedUnit:GetPlayerOwner(), killedUnit:GetGold())
     end
-
-    Timers:CreateTimer(1.0,
-    function()
-      if CheckKVN() and GameMode.PETRI_GAME_HAS_ENDED == false then
-        GameMode.PETRI_GAME_HAS_ENDED = true
-
-        Notifications:TopToAll({text="#petrosyan_win", duration=10, style={color="RED"}, continue=false})
-
-        for i=0,DOTA_MAX_PLAYERS do
-          if PlayerResource:IsValidPlayerID(i) then
-            PlayerResource:SetCameraTarget(i, killerEntity)
-          end
-        end
-
-        Timers:CreateTimer(2.0,
-          function()
-            GameRules.Winner = DOTA_TEAM_BADGUYS
-            GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
-          end)
-      end
-    end)
   end
 
   if killedUnit:GetUnitName() == "npc_petri_exit" then

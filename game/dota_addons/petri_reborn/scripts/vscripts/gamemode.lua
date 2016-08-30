@@ -99,28 +99,28 @@ end
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
 
-  for pID = 0, DOTA_MAX_PLAYERS do
-    if IsValidPlayerID(pID) then
-      PrecacheUnitByNameAsync("npc_dota_hero_death_prophet",
-      function()
-        for pID = 0, DOTA_MAX_PLAYERS do
-          if IsValidPlayerID(pID) then
-            PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-            function()
-              for pID = 0, DOTA_MAX_PLAYERS do
-                if IsValidPlayerID(pID) then
-                  PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
-                  function()
+  -- for pID = 0, DOTA_MAX_PLAYERS do
+  --   if IsValidPlayerID(pID) then
+  --     PrecacheUnitByNameAsync("npc_dota_hero_death_prophet",
+  --     function()
+  --       for pID = 0, DOTA_MAX_PLAYERS do
+  --         if IsValidPlayerID(pID) then
+  --           PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+  --           function()
+  --             for pID = 0, DOTA_MAX_PLAYERS do
+  --               if IsValidPlayerID(pID) then
+  --                 PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
+  --                 function()
 
-                  end, pID)
-                end
-              end
-            end, pID)
-          end
-        end
-      end, pID)
-    end
-  end
+  --                 end, pID)
+  --               end
+  --             end
+  --           end, pID)
+  --         end
+  --       end
+  --     end, pID)
+  --   end
+  -- end
 end
 
 function GameMode:CreateHero(pID)

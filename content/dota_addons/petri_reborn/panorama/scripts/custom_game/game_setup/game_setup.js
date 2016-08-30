@@ -367,6 +367,10 @@ function LoadUI()
 	// GameEvents.SendCustomGameEventToServer( "petri_game_setup_start_precache", {} );
 }
 
+function OpenLink() {
+	$.DispatchEvent( 'BrowserGoToURL', $.GetContextPanel(), $.Localize("ad_url"));
+}
+
 //--------------------------------------------------------------------------------------------------
 // Entry point called when the team select panel is created
 //--------------------------------------------------------------------------------------------------

@@ -9,6 +9,9 @@
 		<include src="file://{resources}/scripts/custom_game/game_setup/game_setup.js" />
 	</scripts>
 	<Panel hittest="false" class="GameSetup">
+		<Panel id="Ad">
+			<Label id="AdLabel" text="#ad" onactivate="OpenLink()"/>
+		</Panel>
 		<Panel hittest="false" id="TeamSelectContainer">
 
 			<Panel hittest="false" class="DarkTheme Primary500 z-index3" id="AppBar">
