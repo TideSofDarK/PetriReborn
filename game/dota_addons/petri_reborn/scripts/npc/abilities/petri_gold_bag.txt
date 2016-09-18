@@ -435,3 +435,97 @@
     }
   }
 }
+
+"petri_upgrade_gold_bag_to_2"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "return_resources"
+
+  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
+  "AbilityCastPoint"        "0.0"
+
+  "MaxLevel"            "1"
+
+  "AbilityChannelTime"      "5.0"
+  "AbilityGoldCost"       "300"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/gold_bag.lua"
+      "Function"        "UpgradeGoldBagTo"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+}
+
+"petri_upgrade_gold_bag_to_3"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "BaseClass"           "ability_datadriven"
+  "AbilityTextureName"      "return_resources"
+
+  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
+  "AbilityCastPoint"        "0.0"
+
+  "MaxLevel"            "1"
+
+  "AbilityChannelTime"      "5.0"
+  "AbilityGoldCost"       "300"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StartUpgrading"
+    }
+  }
+
+  "OnChannelInterrupted"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "StopUpgrading"
+    }
+  }
+
+  "OnChannelSucceeded"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "units/gold_bag.lua"
+      "Function"        "UpgradeGoldBagTo"
+    }
+    "RunScript"
+    {
+      "ScriptFile"      "internal/util.lua"
+      "Function"        "OnUpgradeSucceeded"
+    }
+  }
+}

@@ -72,6 +72,8 @@ require('libraries/StatUploaderFunctions')
 require('libraries/buildinghelper')
 require('libraries/dependencies')
 
+require('units/kvn_fan')
+
 require('buildings/bh_abilities')
 
 require('balance')

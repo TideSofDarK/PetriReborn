@@ -1,3 +1,17 @@
+function UpgradeGoldBagTo( event )
+	local caster = event.caster
+	local target = event.target
+	local ability = event.ability
+
+	caster:Kill(ability,caster)
+
+	local pID = caster:GetPlayerOwnerID()
+
+	event.caster = GameMode.assignedPlayerHeroes[pID]
+
+	SpawnGoldBag( event )
+end
+
 function GetGoldAutocast( event )
 	local caster = event.caster
 	local target = event.target
