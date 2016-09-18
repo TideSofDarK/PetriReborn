@@ -31,48 +31,53 @@
   {
     "01"
     {
-      "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "150"
+      "var_type"                    "FIELD_INTEGER"
+      "lifesteal_percent"           "150"
     }
     "02"
     {
-      "var_type"        "FIELD_INTEGER"
+      "var_type"                    "FIELD_INTEGER"
       "lifesteal_percent_building"   "13"
     }
     "03"
     {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"   "55"
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_all_stats"             "55"
     }
     "04"
     {
-      "var_type"        "FIELD_INTEGER"
-      "armor"   "20"
+      "var_type"                    "FIELD_INTEGER"
+      "armor"                       "20"
     }
     "05"
     {
-      "var_type"        "FIELD_INTEGER"
-      "invu_duration"   "18"
+      "var_type"                    "FIELD_INTEGER"
+      "invu_duration"               "18"
     }
     "06"
     {
-      "var_type"          "FIELD_INTEGER"
-      "grease_duration"    "45"
+      "var_type"                    "FIELD_INTEGER"
+      "grease_duration"             "45"
     }
     "07"
     {
-      "var_type"          "FIELD_INTEGER"
-      "armor_reducing"    "-6000"
+      "var_type"                    "FIELD_INTEGER"
+      "armor_reducing"              "-6000"
     }
     "08"
     {
-      "var_type"          "FIELD_INTEGER"
-      "corruption_duration"    "1"
+      "var_type"                    "FIELD_INTEGER"
+      "corruption_duration"         "1"
     }
     "09"
     {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "10"
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_gold_from_wall"        "10"
+    }
+    "10"
+    {
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_exp_from_wall"         "10"
     }
   }
 

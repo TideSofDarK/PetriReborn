@@ -42,6 +42,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_gold_from_wall"   "1"
     }
+    "06"
+    {
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_exp_from_wall"         "10"
+    }
   }
 
   "OnSpellStart"

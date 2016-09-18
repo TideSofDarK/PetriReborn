@@ -4,9 +4,11 @@ function BonusGoldFromWall(keys)
 	local ability = keys.ability
 
 	local bonusGold = ability:GetSpecialValueFor("bonus_gold_from_wall") or 1
+	local bonusExp = ability:GetSpecialValueFor("bonus_exp_from_wall") or 0
 
 	if target:GetUnitName() == "npc_petri_wall" and target:GetModifierStackCount("modifier_hit_stacks",target) > bonusGold then
 		AddCustomGold( caster:GetPlayerOwnerID(), bonusGold )
+		caster:AddExperience(bonusExp,0,false,false)
 
 		caster.petrosyanScore = caster.petrosyanScore + 5
 
