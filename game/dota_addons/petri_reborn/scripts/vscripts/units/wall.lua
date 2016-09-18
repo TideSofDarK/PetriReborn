@@ -48,10 +48,20 @@ function UpgradeEarth (event)
 	SetWallModel(caster, wall_level)
 end
 
+function RegenHitStacks(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+
+	local hits = math.min(caster.maxHitStacks, caster:GetModifierStackCount("modifier_hit_stacks",caster) + caster:GetModifierStackCount("modifier_hit_stacks_regen",caster))
+
+	caster:SetModifierStackCount("modifier_hit_stacks",caster,hits)
+end
+
 function UpdateAttributes(wall, level, ability)
 	local newHealth = ability:GetLevelSpecialValueFor("health_points", level - 1)
 	local newArmor = ability:GetLevelSpecialValueFor("armor", level - 1)
-	local newMana = ability:GetLevelSpecialValueFor("mana_points", level - 1)
+	local newHits = ability:GetLevelSpecialValueFor("hit_stacks", level - 1)
+	local newHitsRegen = ability:GetLevelSpecialValueFor("hit_stacks_regen", level - 1)
 	local fullHP = wall:GetHealth() == wall:GetMaxHealth()
 
 	wall:SetBaseMaxHealth(newHealth)
@@ -60,9 +70,12 @@ function UpdateAttributes(wall, level, ability)
 		wall:SetHealth(newHealth)
 	end
 
-	wall:RemoveModifierByName("modifier_mana")
-	ability:ApplyDataDrivenModifier(wall, wall, "modifier_mana", {})
-	wall:SetModifierStackCount("modifier_mana", wall, newMana)
+	wall.maxHitStacks = newHits
+	wall:RemoveModifierByName("modifier_hit_stacks")
+	ability:ApplyDataDrivenModifier(wall, wall, "modifier_hit_stacks", {})
+	wall:SetModifierStackCount("modifier_hit_stacks", wall, newHits)
+
+	wall:SetModifierStackCount("modifier_hit_stacks_regen", wall, newHitsRegen)
 
 	wall:RemoveModifierByName("modifier_armor")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_armor", {})

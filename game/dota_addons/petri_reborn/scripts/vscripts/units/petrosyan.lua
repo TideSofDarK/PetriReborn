@@ -5,12 +5,14 @@ function BonusGoldFromWall(keys)
 
 	local bonusGold = ability:GetSpecialValueFor("bonus_gold_from_wall") or 1
 
-	if target:GetUnitName() == "npc_petri_wall" then
+	if target:GetUnitName() == "npc_petri_wall" and target:GetModifierStackCount("modifier_hit_stacks",target) > bonusGold then
 		AddCustomGold( caster:GetPlayerOwnerID(), bonusGold )
 
 		caster.petrosyanScore = caster.petrosyanScore + 5
 
 		PopupParticle(bonusGold, Vector(244,201,23), 3.0, caster)
+
+		target:SetModifierStackCount("modifier_hit_stacks",target,target:GetModifierStackCount("modifier_hit_stacks",target) - bonusGold)
 	end
 
 	if target:HasAbility("petri_creep_pendant") == true 

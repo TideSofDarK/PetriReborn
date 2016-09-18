@@ -38,8 +38,6 @@
 
   "StatusHealth"        "30"     
   "StatusHealthRegen"     "0"     
-  "StatusMana"        "0"     
-  "StatusManaRegen"     "0"     
   "StatusMana"        "10"     
   "StatusManaRegen"     "1.0"   
 

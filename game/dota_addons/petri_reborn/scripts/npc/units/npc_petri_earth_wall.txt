@@ -42,8 +42,8 @@
 
   "StatusHealth"        "250"     
   "StatusHealthRegen"     "2"     
-  "StatusMana"        "0"     
-  "StatusManaRegen"     "0"     
+  "StatusMana"        "10"     
+  "StatusManaRegen"     "1.0"   
 
   "TeamName"     "DOTA_TEAM_GOODGUYS"
   "CombatClassAttack"   "DOTA_COMBAT_CLASS_ATTACK_BASIC"
