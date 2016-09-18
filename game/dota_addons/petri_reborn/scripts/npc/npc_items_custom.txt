@@ -2025,6 +2025,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "max"    "2"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "damage_reducer"    "-50"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -2033,6 +2038,37 @@
 	    {
 	      "ScriptFile"  "units/kvn_fan.lua"
 	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_flag_aura"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/lab.lua"
+	          "Function"    "ApplyDecreaseDamageAura"
+	        }
+	      }
+	    }
+	    "modifier_decrease_damage"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_reducer"
+	      }
 	    }
 	  }
 	}
@@ -2060,6 +2096,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "max"    "3"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "damage_reducer"    "-66.7"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -2068,6 +2109,37 @@
 	    {
 	      "ScriptFile"  "units/kvn_fan.lua"
 	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_flag_aura"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/lab.lua"
+	          "Function"    "ApplyDecreaseDamageAura"
+	        }
+	      }
+	    }
+	    "modifier_decrease_damage"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_reducer"
+	      }
 	    }
 	  }
 	}
@@ -2096,6 +2168,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "max"    "4"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "damage_reducer"    "-75"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -2104,6 +2181,37 @@
 	    {
 	      "ScriptFile"  "units/kvn_fan.lua"
 	      "Function"    "GivePermissionToBuild"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_flag_aura"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "ThinkInterval"  "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/lab.lua"
+	          "Function"    "ApplyDecreaseDamageAura"
+	        }
+	      }
+	    }
+	    "modifier_decrease_damage"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "0"
+	      "IsDebuff"      "1"
+	    
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE" "%damage_reducer"
+	      }
 	    }
 	  }
 	}
