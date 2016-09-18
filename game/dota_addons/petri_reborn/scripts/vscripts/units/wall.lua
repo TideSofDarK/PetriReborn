@@ -51,7 +51,7 @@ end
 function UpdateAttributes(wall, level, ability)
 	local newHealth = ability:GetLevelSpecialValueFor("health_points", level - 1)
 	local newArmor = ability:GetLevelSpecialValueFor("armor", level - 1)
-
+	local newMana = ability:GetLevelSpecialValueFor("mana_points", level - 1)
 	local fullHP = wall:GetHealth() == wall:GetMaxHealth()
 
 	wall:SetBaseMaxHealth(newHealth)
@@ -59,6 +59,10 @@ function UpdateAttributes(wall, level, ability)
 	if fullHP then
 		wall:SetHealth(newHealth)
 	end
+
+	wall:RemoveModifierByName("modifier_mana")
+	ability:ApplyDataDrivenModifier(wall, wall, "modifier_mana", {})
+	wall:SetModifierStackCount("modifier_mana", wall, newMana)
 
 	wall:RemoveModifierByName("modifier_armor")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_armor", {})

@@ -16,17 +16,16 @@
 
   "ItemPurchasable"       "0"
   
-  "AbilityCastRange"              "1500"
+  "AbilityCastRange"              "750"
   "AbilityCastPoint"              "0.45"
 
-  "AbilityCooldown"               "0.0"
+  "AbilityCooldown"               "240.0"
 
   "AbilityManaCost"               "0"
 
   "precache"
   {
     "particle"  "particles/units/heroes/hero_lion/lion_spell_finger_of_death_core.vpcf"
-    "particle"  "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
     "soundfile" "sounds/weapons/hero/lion/finger_of_death_impact.vsnd"
   }
 
@@ -35,7 +34,7 @@
     "01"
     {
       "var_type"                  "FIELD_INTEGER"
-      "damage"                    "150000"
+      "damage"                    "500"
     }
   }
 
@@ -74,7 +73,7 @@
 
     "Stun"
     {
-      "Duration"   "2.0"
+      "Duration"   "3.5"
       "Target"    "TARGET"
     }
   }
@@ -87,32 +86,11 @@
       "IsHidden"      "1"
       "IsBuff"      "1"
 
-      "OnCreated"
-      {
-        "FireEffect"
-        {
-          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
-          "EffectAttachType" "start_at_customorigin"
-          "ControlPointEntities"
-          {
-              "CASTER" "attach_attack1"
-          }
-        }
-        "FireEffect"
-        {
-          "EffectName"        "particles/units/heroes/hero_lina/lina_flame_hand.vpcf"
-          "EffectAttachType" "start_at_customorigin"
-          "ControlPointEntities"
-          {
-              "CASTER" "attach_attack2"
-          }
-        }
-      }
     
       "Properties"
       {
-        "MODIFIER_PROPERTY_HEALTH_BONUS" "75000"
-        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "5000" 
+        "MODIFIER_PROPERTY_HEALTH_BONUS" "2000"
+        "MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" "500" 
       }
     }
     "modifier_laguna_blade_datadriven"

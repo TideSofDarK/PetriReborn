@@ -2,6 +2,20 @@
 {
 	"Particles"
 	{
+		"models/customlegion/customlegionsword/customlegionsword.vmdl"
+		{
+		    "particles/econ/items/legion/legion_weapon_voth_domosh/legion_arcana_weapon.vpcf"
+		    {
+		   		"0"  "weaponsword"
+		    }
+		}
+		"models/customlegion/customlegionsword/customlegionsword2.vmdl"
+		{
+		    "particles/econ/items/legion/legion_weapon_voth_domosh/legion_arcana_weapon.vpcf"
+		    {
+		   		"0"  "weaponsword"
+		    }
+		}
 		"models/items/warlock/ceaseless/ceaseless.vmdl"
 		{
 		    "particles/econ/items/warlock/warlock_staff_ceaseless_ambient/warlock_ceaseless_ambient_glow.vpcf"
@@ -453,6 +467,51 @@
 				"YPos"		"0"
 				"yaw"		"0"
 				"XPos"		"0"
+			}
+		}
+	}
+	"models/customlegion/customlegion.vmdl"
+	{
+		"Lefthand"
+		{
+			"models/customlegion/customlegionsword/customlegionsword2.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"0"
+				"roll"		"28"
+				"ZPos"		"62"
+				"YPos"		"-2"
+				"yaw"		"-90"
+				"XPos"		"-1"
+			}
+		}
+		"Righthand"
+		{
+			"models/customlegion/customlegionsword/customlegionsword.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-3"
+				"roll"		"160"
+				"ZPos"		"61"
+				"YPos"		"3"
+				"yaw"		"-27"
+				"XPos"		"2"
+			}
+		}
+	}
+	"models/customsven/customsven.vmdl"
+	{
+		"svenweapon"
+		{
+			"models/items/sven/rhinoceros_weapon/rhinoceros_weapon.vmdl"
+			{
+				"scale"		"1"
+				"pitch"		"-163"
+				"roll"		"-73"
+				"ZPos"		"-91"
+				"YPos"		"-42"
+				"yaw"		"240"
+				"XPos"		"-14"
 			}
 		}
 	}
@@ -2102,6 +2161,22 @@
 				"YPos"		"13"
 				"yaw"		"-90"
 				"XPos"		"-56"
+			}
+		}
+	}
+	"models/assasin/assasin.vmdl"
+	{
+		"attach_attack1"
+		{
+			"models/items/sven/fiend_cleaver_axe/fiend_cleaver_axe.vmdl"
+			{
+				"scale"		"0.6"
+				"pitch"		"7"
+				"roll"		"-49"
+				"ZPos"		"-103"
+				"YPos"		"-36"
+				"yaw"		"-21"
+				"XPos"		"-10"
 			}
 		}
 	}

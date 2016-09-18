@@ -24,6 +24,45 @@ BAG_CONTENTS["item_petri_kvn_bag_3"]["2"] = "item_petri_kvn_fan_blink"
 BAG_CONTENTS["item_petri_kvn_bag_4"] = {}
 BAG_CONTENTS["item_petri_kvn_bag_4"]["0"] = "item_petri_give_permission_to_build3"
 
+BAG_CONTENTS["item_petri_kvn_bag_donate4in1"] = {}
+BAG_CONTENTS["item_petri_kvn_bag_donate4in1"]["0"] = "item_petri_kvn_bag_donate4"
+BAG_CONTENTS["item_petri_kvn_bag_donate4in1"]["1"] = "item_petri_kvn_bag_donate3"
+BAG_CONTENTS["item_petri_kvn_bag_donate4in1"]["2"] = "item_petri_kvn_bag_donate2"
+BAG_CONTENTS["item_petri_kvn_bag_donate4in1"]["3"] = "item_petri_kvn_bag_donate1"
+
+BAG_CONTENTS["item_petri_kvn_bag_vip"] = {}
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["0"] = "item_petri_vip_laguna"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["1"] = "item_petri_gold_bag"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["2"] = "item_petri_uber_mask_of_laugh_level4"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["3"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["4"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["6"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["7"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["8"] = "item_petri_vip_manta"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["9"] = "item_petri_kvn_fan_cool_blink2"
+
+BAG_CONTENTS["item_petri_kvn_bag_vip"] = {}
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["0"] = "item_petri_vip_laguna"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["1"] = "item_petri_gold_bag"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["2"] = "item_petri_uber_mask_of_laugh_level4"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["3"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["4"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["6"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["7"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["8"] = "item_petri_vip_manta"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["9"] = "item_petri_kvn_fan_cool_blink2"
+
+BAG_CONTENTS["item_petri_kvn_bag_vip"] = {}
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["0"] = "item_petri_vip_laguna"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["1"] = "item_petri_gold_bag"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["2"] = "item_petri_uber_mask_of_laugh_level4"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["3"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["4"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["6"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["7"] = "item_petri_trap"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["8"] = "item_petri_vip_manta"
+BAG_CONTENTS["item_petri_kvn_bag_vip"]["9"] = "item_petri_kvn_fan_cool_blink2"
+
 BAG_CONTENTS["item_petri_kvn_bag_vip"] = {}
 BAG_CONTENTS["item_petri_kvn_bag_vip"]["0"] = "item_petri_vip_laguna"
 BAG_CONTENTS["item_petri_kvn_bag_vip"]["1"] = "item_petri_gold_bag"

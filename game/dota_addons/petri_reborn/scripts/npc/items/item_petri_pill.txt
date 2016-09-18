@@ -92,6 +92,518 @@
             }
           }
       }
+      "OnCreated"
+      {
+        "FireEffect"
+        {
+          "EffectName"        "particles/units/heroes/heroes_underlord/underlord_ambient.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "head"
+          }
+        }
+      }
+    }
+
+    "modifier_crits_crit"
+    {
+      "IsHidden"  "1"
+
+      "Properties"
+      {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%damage"
+      }
+
+      "OnAttackLanded"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_crits_crit"
+          "Target"        "CASTER"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"  "items/pill.lua"
+          "Function"    "Crit"
+          "damage"      "%attack_damage"
+        }
+
+        "FireEffect"
+        {
+          "EffectName"    "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+          "EffectAttachType"  "start_at_customorigin"
+          
+          "ControlPointEntities"
+          {
+            "TARGET"    "follow_origin"
+            "TARGET"    "follow_origin"
+          }
+        }
+
+        "FireSound"
+        {
+          "EffectName"    "Hero_PhantomAssassin.CoupDeGrace"
+          "Target"        "CASTER"
+        }
+      }
+    }
+  }
+}
+
+
+"item_petri_pill_legion"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "3457"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_gameplay/red_box.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_pill"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "0"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "precache"
+  {
+      "soundfile"         "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+      "particle"          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "damage"              "100"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "chance"              "0"
+    }
+  }
+
+  "OnSpellStart"
+  {    
+    "SpendCharge" 
+    {}
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_crits"
+      "Target"     "CASTER"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_crits"
+    {
+      "Passive"      "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "0"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "RemoveOnDeath"       "0"
+  
+      "OnAttackStart"
+      {
+          "RemoveModifier"
+          {
+              "ModifierName"  "modifier_crits_crit"
+              "Target"        "CASTER"
+          }
+
+          "Random"
+          {
+            "Chance"        "%chance"
+            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+
+            "OnSuccess"
+            {
+              "ApplyModifier"
+              {
+                "ModifierName"  "modifier_crits_crit"
+                "Target"        "CASTER"
+              }
+            }
+          }
+      }
+      "OnCreated"
+      {
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/legion/legion_weapon_voth_domosh/legion_arcana_ambient_eye_glow.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "eye1"
+          }
+        }
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/legion/legion_weapon_voth_domosh/legion_arcana_ambient_eye_glow.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "eye2"
+          }
+        }
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/legion/legion_weapon_voth_domosh/legion_ambient_arcana.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "hitloc"
+          }
+        }
+      }
+    }
+
+    "modifier_crits_crit"
+    {
+      "IsHidden"  "1"
+
+      "Properties"
+      {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%damage"
+      }
+
+      "OnAttackLanded"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_crits_crit"
+          "Target"        "CASTER"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"  "items/pill.lua"
+          "Function"    "Crit"
+          "damage"      "%attack_damage"
+        }
+
+        "FireEffect"
+        {
+          "EffectName"    "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+          "EffectAttachType"  "start_at_customorigin"
+          
+          "ControlPointEntities"
+          {
+            "TARGET"    "follow_origin"
+            "TARGET"    "follow_origin"
+          }
+        }
+
+        "FireSound"
+        {
+          "EffectName"    "Hero_PhantomAssassin.CoupDeGrace"
+          "Target"        "CASTER"
+        }
+      }
+    }
+  }
+}
+
+"item_petri_pill_sf"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "3458"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_gameplay/red_box.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_pill"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "0"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "precache"
+  {
+      "soundfile"         "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+      "particle"          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "damage"              "100"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "chance"              "0"
+    }
+  }
+
+  "OnSpellStart"
+  {    
+    "SpendCharge" 
+    {}
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_crits"
+      "Target"     "CASTER"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_crits"
+    {
+      "Passive"      "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "0"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "RemoveOnDeath"       "0"
+  
+      "OnAttackStart"
+      {
+          "RemoveModifier"
+          {
+              "ModifierName"  "modifier_crits_crit"
+              "Target"        "CASTER"
+          }
+
+          "Random"
+          {
+            "Chance"        "%chance"
+            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+
+            "OnSuccess"
+            {
+              "ApplyModifier"
+              {
+                "ModifierName"  "modifier_crits_crit"
+                "Target"        "CASTER"
+              }
+            }
+          }
+      }
+      "OnCreated"
+      {
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/shadow_fiend/sf_desolation/sf_desolation_ambient_plasma.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "handl"
+          }
+        }
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/shadow_fiend/sf_desolation/sf_desolation_ambient_plasma_r.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "handr"
+          }
+        }
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/shadow_fiend/sf_fire_arcana/sf_fire_arcana_trail.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "attach_origin"
+          }
+        }
+      }
+    }
+
+    "modifier_crits_crit"
+    {
+      "IsHidden"  "1"
+
+      "Properties"
+      {
+          "MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" "%damage"
+      }
+
+      "OnAttackLanded"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_crits_crit"
+          "Target"        "CASTER"
+        }
+
+        "RunScript"
+        {
+          "ScriptFile"  "items/pill.lua"
+          "Function"    "Crit"
+          "damage"      "%attack_damage"
+        }
+
+        "FireEffect"
+        {
+          "EffectName"    "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+          "EffectAttachType"  "start_at_customorigin"
+          
+          "ControlPointEntities"
+          {
+            "TARGET"    "follow_origin"
+            "TARGET"    "follow_origin"
+          }
+        }
+
+        "FireSound"
+        {
+          "EffectName"    "Hero_PhantomAssassin.CoupDeGrace"
+          "Target"        "CASTER"
+        }
+      }
+    }
+  }
+}
+
+
+"item_petri_pill_slark"
+{
+  "BaseClass"               "item_datadriven"
+  "ID"                      "3459"
+  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"                   "models/props_gameplay/red_box.vmdl" 
+  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_pill"
+
+  "AbilityCastPoint"      "0"
+  "AbilityCooldown"       "0"
+  "AbilityManaCost"       "0"
+  
+  "ItemShareability"      "ITEM_FULLY_SHAREABLE"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemPermanent"         "0"
+  "ItemSellable"          "0"
+  "ItemKillable"          "1"
+  "ItemPurchasable"       "0"
+
+  "ItemStackable" "0"
+  "ItemPermanent" "0"
+  "ItemInitialCharges" "1"
+  "ItemDisplayCharges" "1"
+  "ItemRequiresCharges" "1"
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
+  "precache"
+  {
+      "soundfile"         "soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+      "particle"          "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+  }
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "damage"              "100"
+    }
+    "02"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "chance"              "0"
+    }
+  }
+
+  "OnSpellStart"
+  {    
+    "SpendCharge" 
+    {}
+    "ApplyModifier"
+    {
+      "ModifierName"  "modifier_crits"
+      "Target"     "CASTER"
+    }
+  }
+
+  "Modifiers"
+  {
+    "modifier_crits"
+    {
+      "Passive"      "0"
+      "IsHidden"      "0"
+      "IsDebuff"      "0"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "RemoveOnDeath"       "0"
+  
+      "OnAttackStart"
+      {
+          "RemoveModifier"
+          {
+              "ModifierName"  "modifier_crits_crit"
+              "Target"        "CASTER"
+          }
+
+          "Random"
+          {
+            "Chance"        "%chance"
+            "PseudoRandom"  "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+
+            "OnSuccess"
+            {
+              "ApplyModifier"
+              {
+                "ModifierName"  "modifier_crits_crit"
+                "Target"        "CASTER"
+              }
+            }
+          }
+      }
+      "OnCreated"
+      {
+        "FireEffect"
+        {
+          "EffectName"        "particles/econ/items/slark/slark_gilded_edge/slark_gilded_edge_ambient.vpcf"
+          "EffectAttachType" "start_at_customorigin"
+          "ControlPointEntities"
+          {
+              "CASTER" "weapon_2"
+          }
+        }
+      }
     }
 
     "modifier_crits_crit"

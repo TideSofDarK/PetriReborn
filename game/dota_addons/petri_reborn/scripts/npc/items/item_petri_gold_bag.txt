@@ -76,7 +76,7 @@
   "ItemStackable"       "0"
   "ItemPermanent"       "0"
   "ItemSellable"        "0"
-
+  "AbilityManaCost"               "20"
   "SideShop" "1"
 
   "OnSpellStart"
