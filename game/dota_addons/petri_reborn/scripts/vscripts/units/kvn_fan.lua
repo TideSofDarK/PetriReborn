@@ -138,10 +138,12 @@ function SpawnGoldBag( keys )
 		unit_name = "npc_petri_gold_bag3"
 	end
 
-	local bag = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
+	local bag = CreateUnitByName(unit_name, keys.pos or caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	SetCustomBuildingModel(bag, PlayerResource:GetSteamAccountID(pID))
 	bag:SetControllableByPlayer(caster:GetPlayerOwnerID(), false)
 	bag.spawnPosition = caster:GetAbsOrigin()
+
+	bag:EmitSound("DOTA_Item.Hand_Of_Midas")
 
 	if GameMode.assignedPlayerHeroes[pID].currentGoldBag and not GameMode.assignedPlayerHeroes[pID].currentGoldBag:IsNull() then
 		DestroyEntityBasedOnHealth(caster, GameMode.assignedPlayerHeroes[pID].currentGoldBag)
@@ -160,6 +162,8 @@ function SpawnGoldBag( keys )
 
 		bag:SwapAbilities(storeAbility:GetName(), "petri_empty2", false, true)
 	end
+
+	return bag
 end
 
 function Deny(keys)

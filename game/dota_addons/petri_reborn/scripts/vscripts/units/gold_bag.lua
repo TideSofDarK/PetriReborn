@@ -3,13 +3,19 @@ function UpgradeGoldBagTo( event )
 	local target = event.target
 	local ability = event.ability
 
-	caster:Kill(ability,caster)
-
 	local pID = caster:GetPlayerOwnerID()
 
 	event.caster = GameMode.assignedPlayerHeroes[pID]
+	event.pos = caster:GetAbsOrigin()
 
-	SpawnGoldBag( event )
+	local newBag = SpawnGoldBag( event )
+
+	UTIL_Remove(caster)
+
+	PlayerResource:SetOverrideSelectionEntity(pID, newBag)
+	Timers:CreateTimer(0.03, function ()
+		PlayerResource:SetOverrideSelectionEntity(pID, nil)
+	end)
 end
 
 function GetGoldAutocast( event )
@@ -123,6 +129,17 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 			local time = GameMode.PETRI_TRUE_TIME
 			hero.bagRecord = string.format("%.2d:%.2d", time/60%60, time%60)
 			print(hero.bagRecord)
+		end
+
+		if not string.match(ability:GetName(), "3") then 
+			if string.match(ability:GetName(), "2") then
+				caster:AddAbility("petri_upgrade_gold_bag_to_3")
+				caster:SwapAbilities("petri_upgrade_gold_bag_to_3","petri_empty1",true,false)
+			else
+				caster:AddAbility("petri_upgrade_gold_bag_to_2")
+				caster:SwapAbilities("petri_upgrade_gold_bag_to_2","petri_empty1",true,false)
+			end
+			InitAbilities(caster)
 		end
 	end
 end

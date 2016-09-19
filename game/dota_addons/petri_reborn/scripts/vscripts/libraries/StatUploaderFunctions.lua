@@ -153,13 +153,14 @@ function SU:GetPetriMMR()
 end
 
 function SU:BuildMMRArray()
-
     local top_kvn_mmr = SU.LoadedKVNMMR or SU:GetTop3MMRKVN()
 
     local kvn_mmr = (top_kvn_mmr[1] or 3000) + (top_kvn_mmr[2] or 3000) + (top_kvn_mmr[3] or 3000)
     local petri_mmr = SU:GetPetriMMR()
 
     local players = {}
+
+    if not SU.LoadedStats then return players end
 
     for playerID = 0, DOTA_MAX_PLAYERS do
       if PlayerResource:IsValidPlayerID(playerID) then

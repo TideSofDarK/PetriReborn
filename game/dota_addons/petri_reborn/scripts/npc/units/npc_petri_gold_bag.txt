@@ -13,7 +13,7 @@
   "Ability1"          "petri_gold_bag_get_gold"     
   "Ability2"          "petri_upgrade_gold_bag"     
   "Ability3"          "petri_gold_bag_blink"
-  "Ability4"          "petri_upgrade_gold_bag_to_2"
+  "Ability4"          "petri_empty1"
   "Ability5"          "petri_empty2"
   "Ability6"          "petri_building"
 
@@ -62,7 +62,7 @@
   "Ability1"          "petri_gold_bag_get_gold2"     
   "Ability2"          "petri_upgrade_gold_bag2"     
   "Ability3"          "petri_gold_bag_blink"
-  "Ability4"          "petri_upgrade_gold_bag_to_3"
+  "Ability4"          "petri_empty1"
   "Ability5"          "petri_empty2"
   "Ability6"          "petri_building"
 

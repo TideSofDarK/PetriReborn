@@ -70,11 +70,15 @@ function UpdateAttributes(wall, level, ability)
 		wall:SetHealth(newHealth)
 	end
 
+	local balancedHits = newHits - ((wall.maxHitStacks or 0) - (wall:GetModifierStackCount("modifier_hit_stacks",wall) or 0))
+
 	wall.maxHitStacks = newHits
 	wall:RemoveModifierByName("modifier_hit_stacks")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_hit_stacks", {})
-	wall:SetModifierStackCount("modifier_hit_stacks", wall, newHits)
+	wall:SetModifierStackCount("modifier_hit_stacks", wall, balancedHits)
 
+	wall:RemoveModifierByName("modifier_hit_stacks_regen")
+	ability:ApplyDataDrivenModifier(wall, wall, "modifier_hit_stacks_regen", {})
 	wall:SetModifierStackCount("modifier_hit_stacks_regen", wall, newHitsRegen)
 
 	wall:RemoveModifierByName("modifier_armor")

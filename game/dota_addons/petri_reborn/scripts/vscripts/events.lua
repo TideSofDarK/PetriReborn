@@ -395,6 +395,18 @@ function GameMode:OnEntityKilled( keys )
     if killedUnit.newShop then UTIL_Remove(killedUnit.newShop) end
   end
 
+  -- Wall is killed
+  if killedUnit:GetUnitName() == "npc_petri_wall" then
+    local units = FindUnitsInRadius(killedUnit:GetTeamNumber(), killedUnit:GetAbsOrigin(), nil, 500, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+    local stacks = ((killedUnit.maxHitStacks or 0) - (killedUnit:GetModifierStackCount("modifier_hit_stacks",killedUnit) or 0))
+
+    for k,v in pairs(units) do
+      if v:GetUnitName() == "npc_petri_wall" then
+        v:SetModifierStackCount("modifier_hit_stacks", v, (v:GetModifierStackCount("modifier_hit_stacks",v) or 0) - stacks)
+      end
+    end
+  end
+
   -- Remove building
   if killedUnit:HasAbility("petri_building") then
     if killedUnit.RemoveBuilding ~= nil then killedUnit:RemoveBuilding(true) end

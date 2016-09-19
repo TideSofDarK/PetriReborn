@@ -101,6 +101,13 @@
       "IsHidden" "0"
 
       "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "Priority"                     "MODIFIER_PRIORITY_ULTRA"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
+      }
     }
     "modifier_hit_stacks_regen"
     {

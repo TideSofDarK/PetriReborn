@@ -10,7 +10,7 @@ function BonusGoldFromWall(keys)
 		AddCustomGold( caster:GetPlayerOwnerID(), bonusGold )
 		caster:AddExperience(bonusExp,0,false,false)
 
-		caster.petrosyanScore = caster.petrosyanScore + 5
+		caster.petrosyanScore = (caster.petrosyanScore or 0) + 5
 
 		PopupParticle(bonusGold, Vector(244,201,23), 3.0, caster)
 
