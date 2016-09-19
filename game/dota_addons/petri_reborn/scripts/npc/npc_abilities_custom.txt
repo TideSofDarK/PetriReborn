@@ -1311,7 +1311,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
+	      "stun_chance"      "50 50 50 50 50 50 50 20 25 30 40 50"
 	    }
 	    "02"
 	    {
@@ -1321,27 +1321,27 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_FLOAT"
-	      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0"
+	      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0 100.0 125.0"
 	    }
 	    "04"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "stun_cooldown"      "20"
+	      "stun_cooldown"      "90 85 80 75 70 65 60 20 20 20 17 17"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "damage"        "45 80 150 300 600 1000 5000 25000 70000"
+	      "damage"        "15 30 50 100 200 500 1000 25000 50000 100000 200000 500000"
 	    }
 	    "06"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
+	      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20 20 20"
 	    }
 	    "07"
 	    {
 	      "var_type"          "FIELD_FLOAT"
-	      "stun_duration"        "1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6"
+	      "stun_duration"        "0.01 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5"
 	    }
 	  }
 	
@@ -2233,7 +2233,7 @@
 	  "MaxLevel"            "1"
 	
 	  "AbilityChannelTime"      "5.0"
-	  "AbilityGoldCost"       "300"
+	  "AbilityGoldCost"       "600"
 	
 	  "OnSpellStart"
 	  {
@@ -2280,7 +2280,7 @@
 	  "MaxLevel"            "1"
 	
 	  "AbilityChannelTime"      "5.0"
-	  "AbilityGoldCost"       "300"
+	  "AbilityGoldCost"       "900"
 	
 	  "OnSpellStart"
 	  {
@@ -4340,12 +4340,12 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "250 750 5000 15000 35000 50000 75000"
+	      "lumber_cost"        "100 500 2000 10000 35000 50000 75000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "20 50 100 250 500 1000 1750"
+	      "attack"        "25 75 150 350 750 1000 1500"
 	    }
 	    "03"
 	    {
@@ -4524,7 +4524,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "55 150 450 4000 32000 48000 88000"
+	      "attack"        "55 150 450 8000 60000 100000 150000"
 	    }
 	    "03"
 	    {
@@ -5089,7 +5089,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "10"
+	  "MaxLevel"            "12"
 	
 	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0"
 	  "AbilityGoldCost"       "0 5 40 80 400 600 1200 1800 3000"
@@ -5104,27 +5104,27 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "250 2000 6000 10000 50000 100000 200000 500000 1000000"
+	      "lumber_cost"        "250 2000 6000 10000 40000 80000 200000 400000 800000 1500000 2500000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "500 1000 2000 3000 4000 5000 6000 7000 8000"
+	      "health_points"        "500 1000 2000 3000 4000 5000 6000 7000 8000 9000 10000"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "hit_stacks"        "300 400 590 750 900 1300 1650 2800 5300 9000 12800 15000"
+	      "hit_stacks"        "25 50 100 150 200 250 1000 1250 1500 1750 2000"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "hit_stacks_regen"        "1 2 3 4 5 6 7 8 9 10 11 12"
+	      "hit_stacks_regen"        "1 2 2 2 3 3 4 4 4 5 5"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "63 143 180 270 1000 2000 3600 7000 10000"
+	      "armor"        "63 143 180 270 1000 2000 3600 7000 10000 12000 15000"
 	    }
 	  }
 	
@@ -5737,7 +5737,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "500 750 1000 1250"
+	  "AbilityGoldCost"       "250 500 750 1000"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -5758,7 +5758,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "3000 15000 60000 125000"
+	      "attack"        "5000 30000 100000 200000"
 	    }
 	    "03"
 	    {
@@ -5926,17 +5926,17 @@
 	    "03"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks"         "300 400 590 750 900 1300 1650 2800 5300 9000 12800 15000"
+	      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 2000 2500 3000"
 	    }
 	    "04"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks_regen"          "1 2 3 4 5 6 7 8 9 10 11 12"
+	      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 4 4 4"
 	    }
 	    "05"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "armor"               "150 300 820 1060 1300 1950 2575 4250 5640 8000 10200 15000"
+	      "armor"               "145 290 800 1000 1250 1900 2500 4150 5500 7800 10000 14500"
 	    }
 	  }
 	
@@ -5974,14 +5974,14 @@
 	
 	  "Modifiers"
 	  {
-	    "modifier_hit_stacks_gold"
+	    "modifier_roshan_gold"
 	    {
 	      "Passive"      "0"
 	      "IsHidden"      "1"
 	      "IsDebuff"      "0"
 	    
-	      "EffectName"                "particles/units/heroes/hero_warlock/warlock_fatal_bonds__2icon.vpcf"
-	      "EffectAttachType"          "follow_overhead"
+	      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
+	      "StatusEffectPriority"  "10"
 	    }
 	    "modifier_wall_notification"
 	    {

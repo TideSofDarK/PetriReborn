@@ -45,7 +45,7 @@
     "06"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_exp_from_wall"         "10"
+      "bonus_exp_from_wall"         "1"
     }
   }
 
@@ -223,6 +223,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_gold_from_wall"   "2"
     }
+    "06"
+    {
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_exp_from_wall"         "2"
+    }
   }
 
   "OnSpellStart"
@@ -399,6 +404,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_gold_from_wall"   "3"
     }
+    "06"
+    {
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_exp_from_wall"         "3"
+    }
   }
 
   "OnSpellStart"
@@ -573,7 +583,12 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "5"
+      "bonus_gold_from_wall"   "6"
+    }
+    "06"
+    {
+      "var_type"                    "FIELD_INTEGER"
+      "bonus_exp_from_wall"         "4"
     }
   }
 

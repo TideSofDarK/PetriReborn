@@ -33,17 +33,17 @@
     "03"
     {
       "var_type"            "FIELD_INTEGER"
-      "hit_stacks"         "300 400 590 750 900 1300 1650 2800 5300 9000 12800 15000"
+      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 2000 2500 3000"
     }
     "04"
     {
       "var_type"            "FIELD_INTEGER"
-      "hit_stacks_regen"          "1 2 3 4 5 6 7 8 9 10 11 12"
+      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 4 4 4"
     }
     "05"
     {
       "var_type"            "FIELD_INTEGER"
-      "armor"               "150 300 820 1060 1300 1950 2575 4250 5640 8000 10200 15000"
+      "armor"               "145 290 800 1000 1250 1900 2500 4150 5500 7800 10000 14500"
     }
   }
 
@@ -81,14 +81,14 @@
 
   "Modifiers"
   {
-    "modifier_hit_stacks_gold"
+    "modifier_roshan_gold"
     {
       "Passive"      "0"
       "IsHidden"      "1"
       "IsDebuff"      "0"
     
-      "EffectName"                "particles/units/heroes/hero_warlock/warlock_fatal_bonds__2icon.vpcf"
-      "EffectAttachType"          "follow_overhead"
+      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
+      "StatusEffectPriority"  "10"
     }
     "modifier_wall_notification"
     {

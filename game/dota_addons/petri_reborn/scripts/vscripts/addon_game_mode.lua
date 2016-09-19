@@ -47,9 +47,9 @@ function Precache( context )
   --PrecacheUnitByNameSync("npc_petri_creep_kvn_actor", context)
   --PrecacheUnitByNameSync("npc_petri_creep_kivin", context)
 
-  --PrecacheUnitByNameSync("npc_petri_cop_trap", context)
+  PrecacheUnitByNameSync("npc_petri_cop_trap", context)
 
---  PrecacheUnitByNameSync("npc_petri_cop", context)
+  PrecacheUnitByNameSync("npc_petri_cop", context)
   --PrecacheUnitByNameSync("npc_petri_janitor", context)
 
   --PrecacheUnitByNameSync("npc_petri_svetlakov", context)
@@ -76,7 +76,7 @@ function Precache( context )
   --PrecacheResource("model", "models/items/undying/idol_of_ruination/idol_tower.vmdl", context)
   --PrecacheResource("model", "models/items/undying/idol_of_ruination/idol_tower_gold.vmdl", context)
 
-  --PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
+  PrecacheUnitByNameSync("npc_petri_tower_of_evil", context)
   --PrecacheUnitByNameSync("npc_petri_exploration_tree", context)
   
   -- wall
@@ -86,13 +86,14 @@ function Precache( context )
   --PrecacheResource("model", "models/heroes/oracle/crystal_ball.vmdl", context)
   --PrecacheResource("model", "models/props_items/bloodstone.vmdl", context)
   --PrecacheResource("model", "models/props_magic/bad_crystals002.vmdl", context)
-  --PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
-  --PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
-  --PrecacheResource("model", "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl", context)
-  --PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
-  --PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
-  --PrecacheResource("model", "models/creeps/roshan/aegis.vmdl", context)
-  --PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+  PrecacheResource("model", "models/heroes/undying/undying_flesh_golem.vmdl", context)
+  PrecacheResource("model", "models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl", context)
+  PrecacheResource("model", "models/items/terrorblade/dotapit_s3_fallen_light_metamorphosis/dotapit_s3_fallen_light_metamorphosis.vmdl", context)
+  PrecacheResource("model", "models/items/warlock/golem/obsidian_golem/obsidian_golem.vmdl", context)
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
+  PrecacheResource("model", "models/creeps/roshan/aegis.vmdl", context)
+  PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+  PrecacheResource("model", "models/earthwallspirit/earthwallspirit.vmdl", context)
   
   -- sawmill
   --PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)
@@ -105,12 +106,12 @@ function Precache( context )
   --PrecacheResource("model", "models/props_structures/tent_dk_med.vmdl", context)
   --PrecacheResource("model", "models/props_structures/tent_dk_large.vmdl", context)
 
-  --PrecacheUnitByNameSync("npc_petri_sawmill", context)
-  --PrecacheUnitByNameSync("npc_petri_tower_basic", context)
-  --PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
-  --PrecacheUnitByNameSync("npc_petri_gold_bag", context)
-  --PrecacheUnitByNameSync("npc_petri_gold_bag2", context)
-  --PrecacheUnitByNameSync("npc_petri_gold_bag3", context)
+  PrecacheUnitByNameSync("npc_petri_sawmill", context)
+  PrecacheUnitByNameSync("npc_petri_tower_basic", context)
+  PrecacheUnitByNameSync("npc_petri_exploration_tower", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag2", context)
+  PrecacheUnitByNameSync("npc_petri_gold_bag3", context)
   
   -- PARTICLES
   PrecacheResource("particle", "particles/units/heroes/hero_tinker/tinker_laser.vpcf", context)
@@ -159,13 +160,13 @@ function Precache( context )
 
 
 
-  --PrecacheUnitByNameSync("npc_petri_peasant", context)
-  --PrecacheUnitByNameSync("npc_petri_super_peasant", context)
-  --PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_super_peasant", context)
+  PrecacheUnitByNameSync("npc_petri_mega_peasant", context)
 
-  --PrecacheUnitByNameSync("npc_petri_trap", context)
+  PrecacheUnitByNameSync("npc_petri_trap", context)
 
-  --PrecacheUnitByNameSync("npc_petri_earth_wall", context)
+  PrecacheUnitByNameSync("npc_petri_earth_wall", context)
 
   GameRules.pc = context
   GameMode().pc = context

@@ -448,7 +448,7 @@
   "MaxLevel"            "1"
 
   "AbilityChannelTime"      "5.0"
-  "AbilityGoldCost"       "300"
+  "AbilityGoldCost"       "600"
 
   "OnSpellStart"
   {
@@ -495,7 +495,7 @@
   "MaxLevel"            "1"
 
   "AbilityChannelTime"      "5.0"
-  "AbilityGoldCost"       "300"
+  "AbilityGoldCost"       "900"
 
   "OnSpellStart"
   {

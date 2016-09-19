@@ -21,7 +21,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "stun_chance"      "0 0 0 0 0 0 0 20 25 30"
+      "stun_chance"      "50 50 50 50 50 50 50 20 25 30 40 50"
     }
     "02"
     {
@@ -31,27 +31,27 @@
     "03"
     {
       "var_type"          "FIELD_FLOAT"
-      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0"
+      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0 100.0 125.0"
     }
     "04"
     {
       "var_type"      "FIELD_INTEGER"
-      "stun_cooldown"      "20"
+      "stun_cooldown"      "90 85 80 75 70 65 60 20 20 20 17 17"
     }
     "05"
     {
       "var_type"          "FIELD_INTEGER"
-      "damage"        "45 80 150 300 600 1000 5000 25000 70000"
+      "damage"        "15 30 50 100 200 500 1000 25000 50000 100000 200000 500000"
     }
     "06"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
+      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20 20 20"
     }
     "07"
     {
       "var_type"          "FIELD_FLOAT"
-      "stun_duration"        "1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6"
+      "stun_duration"        "0.01 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5"
     }
   }
 
