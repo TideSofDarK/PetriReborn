@@ -10,7 +10,8 @@ function UpgradeGoldBagTo( event )
 
 	local newBag = SpawnGoldBag( event )
 
-	UTIL_Remove(caster)
+	caster:AddNoDraw()
+	caster:Kill(ability,caster)
 
 	PlayerResource:SetOverrideSelectionEntity(pID, newBag)
 	Timers:CreateTimer(0.03, function ()
