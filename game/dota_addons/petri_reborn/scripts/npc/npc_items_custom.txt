@@ -3774,6 +3774,8 @@
 	
 	  "SideShop" "1"
 	
+	  "ItemSellable"          "0"
+	
 	  "AbilityCastPoint"        "0.0"
 	
 	  "AbilityCooldown"       "8.0"
