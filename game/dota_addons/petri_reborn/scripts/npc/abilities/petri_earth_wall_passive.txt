@@ -48,6 +48,11 @@
       "var_type"          "FIELD_INTEGER"
       "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
     }
+    "07"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "stun_duration"        "1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6"
+    }
   }
 
   "OnUpgrade"
@@ -172,7 +177,7 @@
             {
               "ModifierName"  "modifier_stunned"
               "Target"     "TARGET"
-              "Duration"    "1.6"
+              "Duration"    "%stun_duration"
             }
             "RemoveModifier"
             {

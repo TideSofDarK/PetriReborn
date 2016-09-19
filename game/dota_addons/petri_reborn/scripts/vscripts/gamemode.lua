@@ -545,7 +545,6 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
       for k2,v2 in pairs(v) do
         if v2 == "model" then
           UpdateModel(hero, k2, 1)
-          PrecacheResource("model", k2, GameRules.pc)
         end
       end
 

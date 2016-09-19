@@ -1338,6 +1338,11 @@
 	      "var_type"          "FIELD_INTEGER"
 	      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20"
 	    }
+	    "07"
+	    {
+	      "var_type"          "FIELD_FLOAT"
+	      "stun_duration"        "1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6 1.6"
+	    }
 	  }
 	
 	  "OnUpgrade"
@@ -1462,7 +1467,7 @@
 	            {
 	              "ModifierName"  "modifier_stunned"
 	              "Target"     "TARGET"
-	              "Duration"    "1.6"
+	              "Duration"    "%stun_duration"
 	            }
 	            "RemoveModifier"
 	            {
@@ -5157,6 +5162,15 @@
 	
 	  "Modifiers"
 	  {
+	    "modifier_hit_stacks_gold"
+	    {
+	      "Passive"      "0"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "EffectName"                "particles/units/heroes/hero_warlock/warlock_fatal_bonds__2icon.vpcf"
+	      "EffectAttachType"          "follow_overhead"
+	    }
 	    "modifier_wall_notification"
 	    {
 	      "Passive"      "1"
@@ -5960,14 +5974,14 @@
 	
 	  "Modifiers"
 	  {
-	    "modifier_roshan_gold"
+	    "modifier_hit_stacks_gold"
 	    {
 	      "Passive"      "0"
 	      "IsHidden"      "1"
 	      "IsDebuff"      "0"
 	    
-	      "StatusEffectName"     "particles/econ/items/effigies/status_fx_effigies/status_effect_effigy_gold_lvl2.vpcf"      
-	      "StatusEffectPriority"  "10"
+	      "EffectName"                "particles/units/heroes/hero_warlock/warlock_fatal_bonds__2icon.vpcf"
+	      "EffectAttachType"          "follow_overhead"
 	    }
 	    "modifier_wall_notification"
 	    {

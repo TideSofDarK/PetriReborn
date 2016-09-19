@@ -23,8 +23,6 @@ function Upgrade (event)
 		InitAbilities(caster)
 	elseif wall_level == 8 then
 		GameMode.FIRST_ZOMBIE = GameMode.FIRST_ZOMBIE or math.floor(GameMode.PETRI_TRUE_TIME)
-	elseif wall_level == 12 then
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_roshan_gold", {})
 	end
 	
 	StartAnimation(caster, {duration=-1, activity=ACT_DOTA_IDLE , rate=1.5})
@@ -55,6 +53,12 @@ function RegenHitStacks(keys)
 	local hits = math.min(caster.maxHitStacks, caster:GetModifierStackCount("modifier_hit_stacks",caster) + caster:GetModifierStackCount("modifier_hit_stacks_regen",caster))
 
 	caster:SetModifierStackCount("modifier_hit_stacks",caster,hits)
+
+	if (hits / caster.maxHitStacks) > 0.3 then
+		ability:ApplyDataDrivenModifier(caster,caster,"modifier_hit_stacks_gold",{})
+	else
+		caster:RemoveModifierByName("modifier_hit_stacks_gold")
+	end
 end
 
 function UpdateAttributes(wall, level, ability)
@@ -73,7 +77,7 @@ function UpdateAttributes(wall, level, ability)
 	local balancedHits = newHits - ((wall.maxHitStacks or 0) - (wall:GetModifierStackCount("modifier_hit_stacks",wall) or 0))
 
 	wall.maxHitStacks = newHits
-	wall:RemoveModifierByName("modifier_hit_stacks")
+	-- wall:RemoveModifierByName("modifier_hit_stacks")
 	ability:ApplyDataDrivenModifier(wall, wall, "modifier_hit_stacks", {})
 	wall:SetModifierStackCount("modifier_hit_stacks", wall, balancedHits)
 

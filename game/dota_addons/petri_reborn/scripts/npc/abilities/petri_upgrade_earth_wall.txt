@@ -81,6 +81,15 @@
 
   "Modifiers"
   {
+    "modifier_hit_stacks_gold"
+    {
+      "Passive"      "0"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+    
+      "EffectName"                "particles/units/heroes/hero_warlock/warlock_fatal_bonds__2icon.vpcf"
+      "EffectAttachType"          "follow_overhead"
+    }
     "modifier_wall_notification"
     {
       "Passive"      "1"
