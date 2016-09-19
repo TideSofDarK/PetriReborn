@@ -5171,6 +5171,16 @@
 	        }
 	      }
 	    }
+	    "modifier_armor"
+	    {
+	      "IsPassive"  "1"
+	      "IsHidden" "1"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "1"
+	      }
+	    }
 	    "modifier_hit_stacks"
 	    {
 	      "IsPassive"  "1"
