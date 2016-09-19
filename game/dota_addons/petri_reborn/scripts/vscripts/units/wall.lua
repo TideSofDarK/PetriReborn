@@ -54,7 +54,7 @@ function RegenHitStacks(keys)
 
 	caster:SetModifierStackCount("modifier_hit_stacks",caster,hits)
 
-	if (hits / caster.maxHitStacks) > 0.3 then
+	if (hits / caster.maxHitStacks) > 0.05 then
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_hit_stacks_gold",{})
 	else
 		caster:RemoveModifierByName("modifier_hit_stacks_gold")
