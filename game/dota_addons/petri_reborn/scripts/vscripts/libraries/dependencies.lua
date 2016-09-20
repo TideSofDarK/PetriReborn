@@ -65,7 +65,8 @@ function CheckUpgradeDependencies(pID, upgrade, level)
 		end
 	end
 
-	if GameMode.DependenciesKVs[upgrade.."_"..level.."_alt"] then
+	if allow == false and GameMode.DependenciesKVs[upgrade.."_"..level.."_alt"] then
+		allow = true
 		for k,v in pairs(GameMode.DependenciesKVs[upgrade.."_"..level.."_alt"]) do
 			if CheckDependency(pID, k, v) == false then
 				allow = false
