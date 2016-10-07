@@ -121,7 +121,7 @@ function CandyBonusPetriDamage( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
-	local damage = caster:GetAverageTrueAttackDamage()
+	local damage = caster:GetAverageTrueAttackDamage(caster)
 	damage = math.floor(damage * 0.25)
 
 	ability:ApplyDataDrivenModifier(caster, caster, "modifier_bonus_damage", {})

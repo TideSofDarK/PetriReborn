@@ -123,7 +123,7 @@ function CreepSplashDamage( keys )
                 local damageTable = {
                     victim = unit,
                     attacker = caster,
-                    damage = caster:GetAverageTrueAttackDamage() * (ability:GetSpecialValueFor("bonus_damage_percent") / 100),
+                    damage = caster:GetAverageTrueAttackDamage(unit) * (ability:GetSpecialValueFor("bonus_damage_percent") / 100),
                     damage_type = DAMAGE_TYPE_PHYSICAL
                 }
 
@@ -193,7 +193,7 @@ function SplitShotDamage( keys )
     damage_table.attacker = caster
     damage_table.victim = target
     damage_table.damage_type = 1
-    damage_table.damage = caster:GetAverageTrueAttackDamage()
+    damage_table.damage = caster:GetAverageTrueAttackDamage(target)
 
     ApplyDamage(damage_table)
 end

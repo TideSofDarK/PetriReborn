@@ -18,7 +18,7 @@ function BonusGoldFromWall(keys)
 	end
 
 	if target:HasAbility("petri_creep_pendant") == true 
-	and caster:GetAverageTrueAttackDamage() >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
+	and caster:GetAverageTrueAttackDamage(caster) >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
 		if caster:HasModifier("modifier_bonus_damage") then
 			caster:RemoveModifierByName("modifier_bonus_damage")
 		end
@@ -343,7 +343,7 @@ function CheckSolo( keys )
 			multiplier = 30
 		end
 
-		local damage = math.ceil((caster:GetAverageTrueAttackDamage() / 100) * multiplier)
+		local damage = math.ceil((caster:GetAverageTrueAttackDamage(caster) / 100) * multiplier)
 		damage = math.min(math.max(damage, 1), limit)
 
 		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
