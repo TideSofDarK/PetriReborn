@@ -40,7 +40,7 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "1"
+      "bonus_gold_from_wall"   "2"
     }
     "06"
     {
@@ -221,12 +221,12 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "2"
+      "bonus_gold_from_wall"   "4"
     }
     "06"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_exp_from_wall"         "2"
+      "bonus_exp_from_wall"         "3"
     }
   }
 
@@ -402,12 +402,12 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "3"
+      "bonus_gold_from_wall"   "5"
     }
     "06"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_exp_from_wall"         "3"
+      "bonus_exp_from_wall"         "4"
     }
   }
 
@@ -583,12 +583,12 @@
     "05"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_gold_from_wall"   "6"
+      "bonus_gold_from_wall"   "30"
     }
     "06"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_exp_from_wall"         "4"
+      "bonus_exp_from_wall"         "10"
     }
   }
 

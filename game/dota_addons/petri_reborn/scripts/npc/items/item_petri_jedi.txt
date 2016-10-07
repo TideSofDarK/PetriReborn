@@ -72,7 +72,7 @@
     "09"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_gold_from_wall"        "10"
+      "bonus_gold_from_wall"        "100"
     }
     "10"
     {

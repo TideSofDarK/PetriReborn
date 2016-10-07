@@ -1321,7 +1321,7 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_FLOAT"
-	      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0 100.0 125.0"
+	      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0 120.0 400.0"
 	    }
 	    "04"
 	    {
@@ -1331,7 +1331,7 @@
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "damage"        "15 30 50 100 200 500 1000 25000 50000 100000 200000 500000"
+	      "damage"        "15 30 50 100 200 500 1000 10000 50000 100000 200000 500000"
 	    }
 	    "06"
 	    {
@@ -1341,7 +1341,7 @@
 	    "07"
 	    {
 	      "var_type"          "FIELD_FLOAT"
-	      "stun_duration"        "0.01 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5"
+	      "stun_duration"        "0.02 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5"
 	    }
 	  }
 	
@@ -4507,7 +4507,7 @@
 	  "MaxLevel"            "8"
 	
 	  "AbilityChannelTime"      "2.0 2.1 2.2 2.3 2.4 2.5 2.6"
-	  "AbilityGoldCost"       "0 50 100 150 200 250 300"
+	  "AbilityGoldCost"       "0 50 100 125 150 175 200"
 	
 	  "precache"
 	  {
@@ -4519,7 +4519,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 5000 25000 100000 200000 300000 400000"
+	      "lumber_cost"        "1000 5000 20000 50000 100000 150000 200000"
 	    }
 	    "02"
 	    {
@@ -4529,7 +4529,7 @@
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack_rate"        "10 15 20 30 40 50 60"
+	      "attack_rate"        "15 30 40 50 60 75 90"
 	    }
 	    "04"
 	    {
@@ -5091,8 +5091,8 @@
 	
 	  "MaxLevel"            "12"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0"
-	  "AbilityGoldCost"       "0 5 40 80 400 600 1200 1800 3000"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 70.0 90.0"
+	  "AbilityGoldCost"       "0 5 40 80 400 600 1200 1800 3000 7000 12000"
 	
 	  "precache"
 	  {
@@ -5109,7 +5109,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "500 1000 2000 3000 4000 5000 6000 7000 8000 9000 10000"
+	      "health_points"        "500 1000 2000 3000 4000 5500 6000 7000 8000 12500 17500"
 	    }
 	    "03"
 	    {
@@ -5300,7 +5300,7 @@
 	  "AbilityCastPoint"        "0.0"
 	
 	  "AbilityManaCost"       "0"
-	  "AbilityGoldCost"       "750"
+	  "AbilityGoldCost"       "500"
 	  "AbilityChannelTime"      "5.5"
 	
 	  "MaxLevel"  "0"
@@ -5926,12 +5926,12 @@
 	    "03"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 2000 2500 3000"
+	      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 1500 2000 5000"
 	    }
 	    "04"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 4 4 4"
+	      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 5 10 20"
 	    }
 	    "05"
 	    {
