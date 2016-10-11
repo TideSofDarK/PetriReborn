@@ -35,6 +35,20 @@ function BuyLumber(keys)
 	AddLumber( caster:GetPlayerOwner(), lumber )
 end
 
+function BuyGold(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+
+	if CheckLumber(caster:GetPlayerOwner(), ability:GetSpecialValueFor("lumber_cost"), false) then
+		SpendLumber(caster:GetPlayerOwner(), ability:GetSpecialValueFor("lumber_cost"))
+
+		caster:EmitSound("ui.inv_pickup_wood")
+		PopupParticle(ability:GetSpecialValueFor("gold"), Vector(244,201,23), 3.0, caster)
+
+		AddCustomGold( caster:GetPlayerOwnerID(), ability:GetSpecialValueFor("gold") )
+	end
+end
+
 function UpgradeExchange( keys )
 	local caster = keys.caster
 	local ability = keys.ability
