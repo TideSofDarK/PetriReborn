@@ -882,6 +882,42 @@
 	    }
 	  }
 	}
+	
+	"petri_buy_gold"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_buy_gold"
+	
+	  "AbilityCastPoint"        "0.0"
+	
+	  "AbilityCooldown" "0.1"
+	
+	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    { 
+	      "var_type"  "FIELD_INTEGER"
+	      "lumber_cost" "1000000"
+	    }
+	    "02"
+	    {
+	      "var_type"          "FIELD_INTEGER"
+	      "gold"      "200"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/sawmill.lua"
+	      "Function"        "BuyGold"
+	    }
+	  }
+	}
 	"petri_cop"
 	{
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
@@ -4519,7 +4555,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 5000 20000 50000 250000 450000 650000"
+	      "lumber_cost"        "1000 5000 20000 50000 100000 150000 200000"
 	    }
 	    "02"
 	    {
