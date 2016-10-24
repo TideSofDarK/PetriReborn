@@ -860,7 +860,7 @@
 	
 	  "AbilityCooldown" "0.1"
 	
-	  "AbilityGoldCost" "125"
+	  "AbilityGoldCost" "100"
 	
 	  "MaxLevel"            "1"
 	
@@ -869,7 +869,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber"      "10000"
+	      "lumber"      "30000"
 	    }
 	  }
 	
@@ -4555,7 +4555,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "1000 5000 20000 50000 100000 150000 200000"
+	      "lumber_cost"        "1000 5000 20000 50000 250000 450000 650000"
 	    }
 	    "02"
 	    {

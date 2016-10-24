@@ -206,7 +206,7 @@ end
 function ReadComedyBook( keys )
 	local caster = keys.caster
 	
-	caster:SetBaseStrength(caster:GetBaseStrength() + 25)
+	caster:SetBaseStrength(caster:GetBaseStrength() + 250)
 
 	caster:CalculateStatBonus()
 end
