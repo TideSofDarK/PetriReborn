@@ -1,0 +1,7 @@
+$sequence layer_idlesfraretry2 "idlesfraretry2.dmx" fps 24.000000 hidden
+$sequence idlesfraretry2 "idlesfraretry2.dmx" fps 24.000000 noanimation {
+	numframes 1440
+	blendlayer layer_idlesfraretry2 0 4 1435 1439
+	event AE_WPN_HIDE 0
+	event AE_WPN_UNHIDE 1439
+}

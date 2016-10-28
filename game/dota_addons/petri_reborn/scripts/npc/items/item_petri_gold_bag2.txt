@@ -1,0 +1,30 @@
+"item_petri_gold_bag2"
+{
+  "ID"              "1600"
+  "BaseClass"                 "item_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_gold_bag2"
+
+  "ItemCost"            "675"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "bag"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "0"
+  "ItemPermanent"       "0"
+  "ItemSellable"        "0"
+
+  "SideShop" "1"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/kvn_fan.lua"
+      "Function"    "SpawnGoldBag"
+    }
+    "SpendCharge"
+    {}
+  }
+}

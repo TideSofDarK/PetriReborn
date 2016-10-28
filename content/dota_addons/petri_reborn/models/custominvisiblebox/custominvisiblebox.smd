@@ -1,0 +1,10 @@
+version 1
+nodes
+  0 "Cloth_R3C0"  -1
+end
+skeleton
+time 0
+  0 0.484001 0.591511 0.554686 -0.240236 0.000000 -1.570796
+end
+triangles
+end
