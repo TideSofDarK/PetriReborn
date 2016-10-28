@@ -591,6 +591,20 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
         v2:AddEffects(EF_NODRAW) 
       end
     end
+
+    if hero:GetUnitName() == "npc_dota_hero_brewmaster" then
+      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_arms.vmdl")
+      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_head.vmdl")
+      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_tail.vmdl")
+      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_back.vmdl")
+      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_legs.vmdl")
+    elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
+      Wearables:AttachWearable(hero, "")
+    elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
+      Wearables:AttachWearable(hero, "")
+    elseif hero:GetUnitName() == "npc_dota_hero_rattletrap" then
+      Wearables:AttachWearable(hero, "")
+    end
   end
 end
 
