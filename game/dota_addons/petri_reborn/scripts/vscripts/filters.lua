@@ -176,7 +176,7 @@ function GameMode:FilterExecuteOrder( filterTable )
       local item = EntIndexToHScript(filterTable["entindex_target"]):GetContainedItem()
 
       local purchaser = EntIndexToHScript(units["0"])
-
+      if item:GetName() == "item_petri_candy" then return true end
       if check2(purchaser) and check1(item:GetName()) then
         return false
       end
