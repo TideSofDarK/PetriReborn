@@ -437,6 +437,13 @@ function GameMode:OnEntityKilled( keys )
         CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
       end
     end
+
+    chance = math.random(1, 100)
+    if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
+      if chance <= 50 then
+        CreateItemOnPositionSync(killedUnit:GetAbsOrigin() + Vector(math.random(-30, 30), math.random(-30, 30), math.random(-30, 30)), CreateItem("item_petri_candy", nil, nil)) 
+      end
+    end
   end
 
   if killedUnit.childEntity then

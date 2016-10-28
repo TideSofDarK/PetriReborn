@@ -235,6 +235,8 @@ function GameMode:CreateHero(pID)
      -- end, pID)
   end
 
+  ParticleManager:CreateParticle("particles/rain_fx/econ_weather_spring.vpcf", PATTACH_EYES_FOLLOW, newHero)
+
   for steamid,t in pairs(GameMode.StartItemsKVs) do
     if tonumber(steamid) == PlayerResource:GetSteamAccountID(pID) then
       for k,v in pairs(t) do

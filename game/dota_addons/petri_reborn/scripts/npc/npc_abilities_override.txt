@@ -2,17 +2,17 @@
 {
   "Version"   "1"
 
-  "item_petri_candy" "REMOVE"
-  "item_petri_candy_1_kvn" "REMOVE"
-  "item_petri_candy_2_kvn" "REMOVE"
-  "item_petri_candy_3_kvn" "REMOVE"
-  "item_petri_candy_4_kvn" "REMOVE"
-  "item_petri_candy_5_kvn" "REMOVE"
-  "item_petri_candy_1_petri" "REMOVE"
-  "item_petri_candy_2_petri" "REMOVE"
-  "item_petri_candy_3_petri" "REMOVE"
-  "item_petri_candy_4_petri" "REMOVE"
-  "item_petri_candy_5_petri" "REMOVE"
+  // "item_petri_candy" "REMOVE"
+  // "item_petri_candy_1_kvn" "REMOVE"
+  // "item_petri_candy_2_kvn" "REMOVE"
+  // "item_petri_candy_3_kvn" "REMOVE"
+  // "item_petri_candy_4_kvn" "REMOVE"
+  // "item_petri_candy_5_kvn" "REMOVE"
+  // "item_petri_candy_1_petri" "REMOVE"
+  // "item_petri_candy_2_petri" "REMOVE"
+  // "item_petri_candy_3_petri" "REMOVE"
+  // "item_petri_candy_4_petri" "REMOVE"
+  // "item_petri_candy_5_petri" "REMOVE"
 
   "item_petri_give_permission_to_build"
   {
