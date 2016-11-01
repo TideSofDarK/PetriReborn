@@ -25,8 +25,8 @@ function SetBackground()
 	var backList = defaultBackgrounds;
 	var dayMonth = curDate % 10000;
 
-	if (dayMonth > 1024 && dayMonth < 1107)
-		backList = halloween;
+	// if (dayMonth > 1024 && dayMonth < 1107)
+	// 	backList = halloween;
 
 	var backNum = Math.floor(Math.random() * backList.length);
 	backgroundPanel.BLoadLayout( backgroundPath + backList[backNum] + ".xml", false, false );

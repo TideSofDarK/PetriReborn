@@ -1,7 +1,7 @@
 "item_petri_vip_frostbite"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "1970"
+  "ID"              "5956"
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
   "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
   "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"

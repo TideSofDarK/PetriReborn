@@ -160,6 +160,7 @@ function GameSetup:VoteEnd( args )
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_pocketexit", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_evasion_scroll", count = 2})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_gold_bag", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_candy_4_kvn", count = 3})
         end
         if v2 == "2_attack" then
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_kvn_fan_blink", count = 1})
@@ -167,14 +168,17 @@ function GameSetup:VoteEnd( args )
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_trap", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_gold_bag2", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_exit_doorknob", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_candy_4_kvn", count = 2})
         end
         if v2 == "2_evasion" then
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_kvn_fan_blink", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_give_permission_to_build2", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_gold_bag3", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_candy_4_kvn", count = 1})
         end
         if v2 == "3_alcohol" then
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_give_permission_to_build3", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_candy_4_kvn", count = 1})
         end
       end
     end

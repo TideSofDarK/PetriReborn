@@ -235,8 +235,6 @@ function GameMode:CreateHero(pID)
      -- end, pID)
   end
 
-  ParticleManager:CreateParticle("particles/rain_fx/econ_weather_spring.vpcf", PATTACH_EYES_FOLLOW, newHero)
-
   for steamid,t in pairs(GameMode.StartItemsKVs) do
     if tonumber(steamid) == PlayerResource:GetSteamAccountID(pID) then
       for k,v in pairs(t) do
@@ -599,11 +597,19 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
       Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_back.vmdl")
       Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_legs.vmdl")
     elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
-      Wearables:AttachWearable(hero, "")
+      Wearables:AttachWearable(hero, "models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl")
+      Wearables:AttachWearable(hero, "models/items/queenofpain/sanguine_shoulders/sanguine_shoulders.vmdl")
+      Wearables:AttachWearable(hero, "models/items/queenofpain/sanguine_weapon/sanguine_weapon.vmdl")
+      Wearables:AttachWearable(hero, "models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl")
     elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
       Wearables:AttachWearable(hero, "")
     elseif hero:GetUnitName() == "npc_dota_hero_rattletrap" then
-      Wearables:AttachWearable(hero, "")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_arms/haze_atrocity_arms.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_head/haze_atrocity_head.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_offhand/haze_atrocity_offhand.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_shoulder/haze_atrocity_shoulder.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_tail/haze_atrocity_tail.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_weapon/haze_atrocity_weapon.vmdl")
     end
   end
 end

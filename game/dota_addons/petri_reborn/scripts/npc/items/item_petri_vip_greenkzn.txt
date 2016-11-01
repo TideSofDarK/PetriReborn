@@ -1,7 +1,7 @@
 "item_petri_vip_greenkzn"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "1969"
+  "ID"              "5957"
   "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
   "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_BOTH"
   "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_ALL"

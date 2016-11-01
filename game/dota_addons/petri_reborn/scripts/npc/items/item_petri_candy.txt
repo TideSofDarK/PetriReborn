@@ -48,7 +48,7 @@
 "item_petri_candy_1_kvn"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1969"
+  "ID"                      "1701"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
@@ -156,7 +156,7 @@
 "item_petri_candy_2_kvn"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1968"
+  "ID"                      "1702"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
@@ -231,7 +231,7 @@
 "item_petri_candy_3_kvn"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1967"
+  "ID"                      "1703"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -360,7 +360,7 @@
 "item_petri_candy_4_kvn"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1966"
+  "ID"                      "1704"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -453,7 +453,7 @@
 "item_petri_candy_5_kvn"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1965"
+  "ID"                      "1705"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -586,7 +586,7 @@
 "item_petri_candy_1_petri"
 {
   "BaseClass"       "item_datadriven"
-  "ID"              "1964"
+  "ID"              "1706"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
   "AbilityTextureName"      "item_candy_1"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
@@ -702,7 +702,7 @@
 "item_petri_candy_2_petri"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1963"
+  "ID"                      "1707"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
@@ -776,7 +776,7 @@
 "item_petri_candy_3_petri"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1962"
+  "ID"                      "1708"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
@@ -881,7 +881,7 @@
 "item_petri_candy_4_petri"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1961"
+  "ID"                      "1709"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
   "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
@@ -983,7 +983,7 @@
 "item_petri_candy_5_petri"
 {
   "BaseClass"               "item_datadriven"
-  "ID"                      "1960"
+  "ID"                      "1710"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
   "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
