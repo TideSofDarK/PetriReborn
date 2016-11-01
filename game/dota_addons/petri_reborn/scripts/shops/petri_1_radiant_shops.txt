@@ -108,11 +108,6 @@
     "item"    "item_petri_kvn_fan_cool_blink"
     "item"    "item_petri_boots"
     "item"    "item_petri_pocketexit"
-    "item"    "item_petri_candy_1_kvn"
-    "item"    "item_petri_candy_2_kvn"
-    "item"    "item_petri_candy_3_kvn"
-    "item"    "item_petri_candy_4_kvn"
-    "item"    "item_petri_candy_5_kvn"
   }
 
  //Secret Shop Start
