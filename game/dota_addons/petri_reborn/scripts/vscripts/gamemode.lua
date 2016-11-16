@@ -609,25 +609,27 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
     end
 
     if hero:GetUnitName() == "npc_dota_hero_brewmaster" then
-      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_arms.vmdl")
-      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_head.vmdl")
-      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_tail.vmdl")
-      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_back.vmdl")
-      Wearables:AttachWearable(hero, "models/items/nightstalker/black_nihility/black_nihility_legs.vmdl")
+      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_arms/reddragon_arms.vmdl")
+      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_back/reddragon_back.vmdl")
+      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_offhand/reddragon_offhand.vmdl")
+      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_shoulder/reddragon_shoulder.vmdl")
+      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_weapon/reddragon_weapon.vmdl")
     elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
-      Wearables:AttachWearable(hero, "models/items/crystal_maiden/cowl_of_ice/cowl_of_ice.vmdl")
-      Wearables:AttachWearable(hero, "models/items/queenofpain/sanguine_shoulders/sanguine_shoulders.vmdl")
-      Wearables:AttachWearable(hero, "models/items/queenofpain/sanguine_weapon/sanguine_weapon.vmdl")
-      Wearables:AttachWearable(hero, "models/items/queenofpain/bloody_raven_wings/bloody_raven_wings.vmdl")
-    elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
-      Wearables:AttachWearable(hero, "")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/fatal_blossom_nails/fatal_blossom_nails.vmdl")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_armor/burial_robes_armor.vmdl")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_belt/burial_robes_belt.vmdl")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_legs/burial_robes_legs.vmdl")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_head/burial_robes_head.vmdl")
+      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_vortex/burial_robes_vortex.vmdl")
     elseif hero:GetUnitName() == "npc_dota_hero_rattletrap" then
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_arms/haze_atrocity_arms.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_head/haze_atrocity_head.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_offhand/haze_atrocity_offhand.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_shoulder/haze_atrocity_shoulder.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_tail/haze_atrocity_tail.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rikimaru/haze_atrocity_weapon/haze_atrocity_weapon.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_helm/forge_warrior_helm.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_claw/forge_warrior_claw.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl")
+      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_steam_exoskeleton/forge_warrior_steam_exoskeleton.vmdl")
+    elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
+      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_armor/raikage_ares_armor.vmdl")
+      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_arms/raikage_ares_arms.vmdl")
+      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_head/raikage_ares_head.vmdl")
     end
   end
 end
