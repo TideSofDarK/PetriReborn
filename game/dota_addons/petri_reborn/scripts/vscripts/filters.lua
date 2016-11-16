@@ -12,7 +12,7 @@ function GameMode:FilterExecuteOrder( filterTable )
     local y = tonumber(filterTable["position_y"])
     local z = tonumber(filterTable["position_z"])
     local point = Vector(x,y,z)
-
+    PrintTable(filterTable)
     local issuerUnit
     if units["0"] then
       issuerUnit = EntIndexToHScript(units["0"])
@@ -292,48 +292,6 @@ function GameMode:ModifyGoldFilter(event)
   event["reliable"] = 0
 
   local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
-
-  if event.reason_const == DOTA_ModifyGold_HeroKill then
-    if GameRules:GetDOTATime(false, false) < 120 then return false end
-
-    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
-      GiveSharedGoldToTeam(math.floor(90 * GetGoldModifier()), DOTA_TEAM_BADGUYS)
-    end
-
-    return false
-  elseif event.reason_const == DOTA_ModifyGold_Unspecified then
-    if event.player_id_const and PlayerResource:GetTeam(event.player_id_const) == DOTA_TEAM_BADGUYS then
-      if GameRules:GetDOTATime(false, false) < 120 then return false end
-
-      GiveSharedGoldToTeam(math.floor(event["gold"] * GetGoldModifier()), DOTA_TEAM_BADGUYS)
-
-      return false
-    end
-  elseif event.reason_const == DOTA_ModifyGold_CreepKill then
-    if PlayerResource:GetTeam(event["player_id_const"]) == DOTA_TEAM_BADGUYS and
-      event["gold"] >= 5000 then -- boss
-
-      Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
-      Notifications:TopToAll({text=tostring(event["gold"]/2).." ", duration=4, style={color="red"}, continue=true})
-      Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
-
-      if event["gold"] >= 10000 then
-       CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
-       Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
-      end
-      if event["gold"] >= 20000 then
-        for i=1,5 do
-          CreateItemOnPositionSync(GameMode.assignedPlayerHeroes[event.player_id_const]:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
-        end
-      end
-      event["gold"] = event["gold"]/2
-      GiveSharedGoldToTeam(math.floor(event["gold"]), DOTA_TEAM_BADGUYS)
-      return false
-    end
-  end
-
-  AddCustomGold( event.player_id_const, math.floor(event["gold"]) )
-  PopupParticle(math.floor(event["gold"]) , Vector(244,201,23), 3.0, hero)
 
   return false
 end

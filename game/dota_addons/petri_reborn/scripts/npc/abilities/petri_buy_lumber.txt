@@ -8,7 +8,7 @@
 
   "AbilityCooldown" "0.1"
 
-  "AbilityGoldCost" "100"
+  "AbilityGoldCost" "%100"
 
   "MaxLevel"            "1"
 

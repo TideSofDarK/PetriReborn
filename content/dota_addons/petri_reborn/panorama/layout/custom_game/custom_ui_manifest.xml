@@ -6,7 +6,7 @@
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_PANEL, false );     //Hero actions UI.
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP, false );     //Minimap.
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_PANEL, false );      //Entire Inventory UI
-	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_SHOP, false );     //Shop portion of the Inventory.
+	    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_SHOP, false );     //Shop portion of the Inventory.
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_ITEMS, false );      //Player items.
 	    //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_QUICKBUY, false );     //Quickbuy.
 	    GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_INVENTORY_COURIER, false );      //Courier controls.
@@ -48,6 +48,8 @@
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/timeofday/timeofday.xml" />
 
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/exchange/exchange.xml" />
+
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/shop.xml" />
         
         <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/game_setup/game_setup.xml" />
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/kick_system/kick_system.xml" />

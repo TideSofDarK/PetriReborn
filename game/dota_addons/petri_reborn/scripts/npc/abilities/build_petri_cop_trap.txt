@@ -17,7 +17,7 @@
   // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
   "UnitName"            "npc_petri_cop_trap"
   "AbilityCooldown"       "0"
-  "AbilityGoldCost"       "100"
+  "AbilityGoldCost"       "%100"
   // End of BuildingHelper info
 
   "AbilityCastPoint"        "0.0"

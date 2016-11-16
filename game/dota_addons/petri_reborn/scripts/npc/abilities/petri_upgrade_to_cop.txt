@@ -5,7 +5,7 @@
   "AbilityTextureName"      "petri_upgrade_to_cop"
   "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 
-  "AbilityGoldCost"       "25"
+  "AbilityGoldCost"       "%25"
 
   "MaxLevel"            "1"
 

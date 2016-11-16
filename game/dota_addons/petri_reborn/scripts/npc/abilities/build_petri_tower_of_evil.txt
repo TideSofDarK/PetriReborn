@@ -17,7 +17,7 @@
   // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
   "UnitName"            "npc_petri_tower_of_evil"
   "AbilityCooldown"       "0"
-  "AbilityGoldCost"       "350"
+  "AbilityGoldCost"       "%350"
   // End of BuildingHelper info
 
   "AbilityCastPoint"        "0.0"

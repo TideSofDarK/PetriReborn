@@ -1,5 +1,25 @@
 "DOTAAbilities"
 {
+	"item_courier"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"45"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"15"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"donkey;chicken;animal courier"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemStockMax"					"1"
+	    "ItemStockInitial"        		"5"
+	    "ItemStockTime"         		"75.0"
+		"ItemSupport"					"1"
+	}
 	// Rewrite of Manta Style
 	// Author: Rook
 	// Date: February 2, 2015

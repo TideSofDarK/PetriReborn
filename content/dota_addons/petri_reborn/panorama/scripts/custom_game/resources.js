@@ -16,7 +16,7 @@ function UpdateResources( )
 
 	if (resourceTable)
 	{
- 		$( "#TotalGoldText" ).text = isEnemy ? "0" : String(gold);
+ 		$( "#TotalGoldText" ).text = isEnemy ? "0" : resourceTable["gold"];
 	 	$( "#TotalLumberText" ).text = isEnemy ? "0" : resourceTable["lumber"];
 	 	$( "#TotalFoodText" ).text = isEnemy ? "0/0" : resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
 	}
@@ -37,6 +37,11 @@ function HidePanels()
 
 function GetGoldCosts( eventArgs )
 {
+	for (var ab in eventArgs) {
+		for (var lvl in eventArgs[ab]) {
+			eventArgs[ab][lvl] = eventArgs[ab][lvl].replace("%", "");
+		}
+	}
     GameUI.CustomUIConfig().goldCosts = eventArgs;
 }
 
@@ -56,6 +61,26 @@ function GetSpecialValues( eventArgs )
     GameEvents.Subscribe( "dota_player_update_query_unit", HidePanels );
     GameEvents.Subscribe("player_team", HidePanels);
 
+    GameEvents.Subscribe("petri_set_builds", (function (eventArgs) {
+        GameUI.CustomUIConfig().itemBuilds = eventArgs;
+    }));
+
+    GameEvents.Subscribe( "petri_set_shops", (function (eventArgs) {
+    	GameUI.CustomUIConfig().shopsKVs = {};
+    	for (var t in eventArgs) {
+    		GameUI.CustomUIConfig().shopsKVs[t] = {};
+    		var i = 1;
+    		for (var item in eventArgs[t]) {
+    			$.Msg("item"+i);
+    			GameUI.CustomUIConfig().shopsKVs[t][i] = eventArgs[t]["item"+i];
+    			i++;
+    		}
+    	}
+    	$.Msg(GameUI.CustomUIConfig().shopsKVs);
+    }));
+    GameEvents.Subscribe( "petri_set_items", (function (eventArgs) {
+    	GameUI.CustomUIConfig().itemsKVs = eventArgs;
+    }));
     GameEvents.Subscribe( "petri_set_gold_costs", GetGoldCosts );
     GameEvents.Subscribe( "petri_set_dependencies_table", GetDependencies );
     GameEvents.Subscribe( "petri_set_special_values_table", GetSpecialValues );

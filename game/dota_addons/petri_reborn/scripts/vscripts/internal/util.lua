@@ -115,6 +115,22 @@ function GetGoldModifier()
   return 1.0
 end
 
+function GetAbilityGoldCost( ability )
+  if ability and GameMode.AbilityKVs[ability:GetName()] then
+    local costString = GameMode.AbilityKVs[ability:GetName()].AbilityGoldCost
+    if string.match(costString, " ") then
+      local prices = Split(costString, " ")
+
+      local value, stuff = string.gsub(prices[ability:GetLevel()], '%%', '')
+      return tonumber(value)
+    else
+      local value, stuff = string.gsub(costString, '%%', '')
+      return tonumber(value)
+    end
+  end
+  return 0
+end
+
 function PrintDebugMessageToClientConsole( message )
   CustomGameEventManager:Send_ServerToAllClients( "petri_debug_client_message", message )
 end
@@ -156,7 +172,7 @@ function GetMoveToBuildingPosition( unit, target )
 end
 
 function PayGoldCost(ability)
-  local cost = ability:GetGoldCost(ability:GetLevel())
+  local cost = GetAbilityGoldCost( ability )
   if PlayerResource:GetGold(ability:GetOwnerEntity():GetPlayerOwnerID()) >= cost then
     ability:PayGoldCost()
     return true
@@ -516,11 +532,13 @@ function StartUpgrading (event)
 
   local level = ability:GetLevel() - 1
 
-  local gold_cost = ability:GetGoldCost(level) or 0
+  local gold_cost = GetAbilityGoldCost( ability )
   local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
-  PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
+  if GetCustomGold( pID ) < gold_cost then
+    return
+  end
 
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
@@ -542,7 +560,7 @@ function StartUpgrading (event)
     caster.foodSpent = caster.foodSpent or 0
     caster.foodSpent = caster.foodSpent + food_cost
 
-    PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
+    SpendCustomGold( pID, gold_cost )
     
     if not event["Permanent"] then
       ability:SetActivated(false)
@@ -574,7 +592,7 @@ function StopUpgrading(event)
     hero.lumber = hero.lumber + caster.lastSpentLumber
     hero.food = hero.food - caster.lastSpentFood
     caster.foodSpent = caster.foodSpent - caster.lastSpentFood
-    PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), caster.lastSpentGold, false, 0)
+    AddCustomGold( caster:GetPlayerOwnerID(), caster.lastSpentGold )
   end
 
   caster.lastSpentLumber = 0
@@ -670,7 +688,7 @@ function ReturnGold(player)
   local playerID = player:GetPlayerID() 
   local hero = player:GetAssignedHero() 
   if hero.lastSpentGold ~= nil then
-    PlayerResource:ModifyGold(playerID, hero.lastSpentGold,false,0)
+    AddCustomGold( playerID, hero.lastSpentGold )
     hero.lastSpentGold = nil
   end
 end
@@ -838,3 +856,47 @@ COLOR_PURPLE = '\x1A'
 COLOR_ORANGE = '\x1B'
 COLOR_LRED = '\x1C'
 COLOR_GOLD = '\x1D'
+
+function __genOrderedIndex( t )
+    local orderedIndex = {}
+    for key in pairs(t) do
+        table.insert( orderedIndex, key )
+    end
+    table.sort( orderedIndex )
+    return orderedIndex
+end
+
+function orderedNext(t, state)
+    -- Equivalent of the next function, but returns the keys in the alphabetic
+    -- order. We use a temporary ordered key table that is stored in the
+    -- table being iterated.
+
+    local key = nil
+    --print("orderedNext: state = "..tostring(state) )
+    if state == nil then
+        -- the first time, generate the index
+        t.__orderedIndex = __genOrderedIndex( t )
+        key = t.__orderedIndex[1]
+    else
+        -- fetch the next value
+        for i = 1,table.getn(t.__orderedIndex) do
+            if t.__orderedIndex[i] == state then
+                key = t.__orderedIndex[i+1]
+            end
+        end
+    end
+
+    if key then
+        return key, t[key]
+    end
+
+    -- no more value to return, cleanup
+    t.__orderedIndex = nil
+    return
+end
+
+function orderedPairs(t)
+    -- Equivalent of the pairs() function on tables. Allows to iterate
+    -- in order
+    return orderedNext, t, nil
+end

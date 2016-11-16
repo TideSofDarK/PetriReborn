@@ -1,0 +1,79 @@
+<root>
+  <styles>
+    <include src="file://{resources}/styles/custom_game/shop.css" />
+  </styles>
+  <scripts>
+    <include src="file://{resources}/scripts/custom_game/shop.js" />
+  </scripts>
+  <snippets>
+    <snippet name="Item">
+      <Panel class="Item">
+        <DOTAItemImage itemname="item_petri_butt" id="ItemImage"/>
+      </Panel>
+    </snippet>
+    <snippet name="GuideBlock">
+      <Panel class="ShopGuideBlock">
+        <Label class="ShopTabText" id="ShopGuideBlockLabel" text="#DOTA_Item_Build_1st_Spot"/>
+        <Panel class="ShopGuideBlockItems" id="ShopGuideBlockItems">
+          
+        </Panel>
+      </Panel>
+    </snippet>
+  </snippets>
+  <Panel hittest="false" class="ShopRoot">
+    <Button id="ShopButton" onactivate="ToggleShop()">
+      <Label class="ShopTabText" id="" text="#Shop"/>
+    </Button>
+  	<Panel class="Hide" id="ShopWindow">
+      <Panel class="" id="ShopTabs">
+        <Panel id="Petri">
+          <Button class="ShopTab" id="BasicShopTab" onactivate="OpenTab('BasicShop')">
+            <Label class="ShopTabText" id="" text="#BasicShop"/>
+          </Button>    
+          <Button class="ShopTab" id="AdvancedShopTab" onactivate="OpenTab('AdvancedShop')">
+            <Label class="ShopTabText" id="" text="#AdvancedShop"/>
+          </Button>  
+          <Button class="ShopTab" id="SecretShopTab" onactivate="OpenTab('SecretShop')">
+            <Label class="ShopTabText" id="" text="#SecretShop"/>
+          </Button>  
+        </Panel>
+        <Panel id="KVN">
+          <Button class="ShopTab" id="SideShopTab" onactivate="OpenTab('SideShop')">
+            <Label class="ShopTabText" id="" text="#SideShop"/>
+          </Button>    
+        </Panel>
+      </Panel>
+      <Panel id="ShopColumns">
+        <Panel class="ShopContents" id="AdvancedShopContents">
+          <Panel class="ShopColumn" id="basics"/>
+          <Panel class="ShopColumn" id="support"/>
+          <Panel class="ShopColumn" id="magics"/>
+          <Panel class="ShopColumn" id="defense"/>
+          <Panel class="ShopColumn" id="weapons"/>
+          <Panel class="ShopColumn" id="artifacts"/>
+        </Panel>
+        <Panel class="ShopContents" id="SideShopContents">
+          <Panel class="ShopColumn" id="sideshop1"/>
+          <Panel class="ShopColumn" id="sideshop2"/>
+        </Panel>
+        <Panel class="ShopContents" id="SecretShopContents">
+          <Panel class="ShopColumn" id="secretshop"/>
+        </Panel>
+        <Panel class="ShopContents" id="BasicShopContents">
+          <Panel class="ShopColumn" id="consumables"/>
+          <Panel class="ShopColumn" id="attributes"/>
+          <Panel class="ShopColumn" id="weapons_armor"/>
+          <Panel class="ShopColumn" id="misc"/>
+        </Panel>
+      </Panel>
+      <Panel id="ShopRecipe">
+        <Panel id="ShopRecipeContainer">
+        </Panel>
+        <Label class="ShopTabText" id="ShopRecipeLabel" text="#ChooseItem"/>
+      </Panel>
+  	</Panel>  
+    <Panel id="ShopGuide" class="Hide">
+
+    </Panel>	
+  </Panel>
+</root>

@@ -26,7 +26,8 @@ function MakeBetClick()
 
 	var betEntry = $( "#BetPanel" ).FindChild( "BetEntry" );
 	var bet = Math.abs(parseInt(betEntry.text));
-	var playerGold = Players.GetGold(Players.GetLocalPlayer()) + ((lotteryCount+1) * 50);
+	var curRes = CustomNetTables.GetTableValue("players_resources", GameUI.CustomUIConfig().GetSelectedUnitOwner());
+	var playerGold = curRes["gold"] + ((lotteryCount+1) * 50);
 
 	if (bet <= playerGold)
 	{

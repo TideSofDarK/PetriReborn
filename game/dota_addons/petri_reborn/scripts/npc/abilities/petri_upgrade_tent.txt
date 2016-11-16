@@ -8,7 +8,7 @@
   "AbilityCastPoint"        "0.0"
 
   "AbilityManaCost"       "0"
-  "AbilityGoldCost"       "0"
+  "AbilityGoldCost"       "%0"
   "AbilityChannelTime"      "2.5"
   "AbilityUpgradeGoldCost"    "0"
 

@@ -158,8 +158,7 @@ function GameMode:CreateHero(pID)
         end
 
         newHero.spawnPosition = newHero:GetAbsOrigin()
-
-        newHero:SetGold(GameRules.START_KVN_GOLD, false)
+        
         InitHeroValues(newHero, pID)
         newHero.lumber = GameRules.START_KVN_LUMBER
 
@@ -170,6 +169,8 @@ function GameMode:CreateHero(pID)
         SetupDependencies(newHero)
 
         GameMode.assignedPlayerHeroes[pID] = newHero
+
+        SetCustomGold( pID, GameRules.START_KVN_GOLD )
 
         newHero.kvnScore = 0
 
@@ -206,12 +207,13 @@ function GameMode:CreateHero(pID)
 
         newHero.spawnPosition = newHero:GetAbsOrigin()
 
-        newHero:SetGold(GameRules.START_PETROSYANS_GOLD, false)
         InitHeroValues(newHero, pID)
 
         SetupUI(newHero)
 
         GameMode.assignedPlayerHeroes[pID] = newHero
+
+        SetCustomGold( pID, GameRules.START_PETROSYANS_GOLD )
 
         newHero.petrosyanScore = 0
 
@@ -293,6 +295,15 @@ end
 function SetupUI(newHero)
   local player = newHero:GetPlayerOwner()
   local pID = player:GetPlayerID()
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_items", GameMode.ItemKVs )
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
 
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
@@ -397,6 +408,13 @@ function GameMode:InitGameMode()
 
   GameMode.StartItemsKVs = LoadKeyValues("scripts/kv/start_items.kv")
 
+  GameMode.shopsKVs = LoadKeyValues("scripts/shops/petri_1_radiant_shops.txt")
+
+  GameMode.ItemBuilds = {}
+  GameMode.ItemBuilds["npc_dota_hero_brewmaster"] = LoadKeyValues("itembuilds/default_brewmaster.txt")
+  GameMode.ItemBuilds["npc_dota_hero_death_prophet"] = LoadKeyValues("itembuilds/default_death_prophet.txt")
+  GameMode.ItemBuilds["npc_dota_hero_rattletrap"] = LoadKeyValues("itembuilds/default_rattletrap.txt")
+
   GameMode.abilityLayouts = {}
   GameMode.abilityGoldCosts = {}
   GameMode.specialValues = {}
@@ -487,7 +505,7 @@ function GameMode:InitGameMode()
           AddKeyToNetTable(k, "players_resources", "lumber", v.lumber)
           AddKeyToNetTable(k, "players_resources", "food", v.food)
           AddKeyToNetTable(k, "players_resources", "maxFood", v.maxFood)
-          AddKeyToNetTable(k, "players_resources", "gold", PlayerResource:GetGold(k))
+          AddKeyToNetTable(k, "players_resources", "gold", GetCustomGold( v:GetPlayerOwnerID() ))
         end
       end
     end
@@ -686,4 +704,89 @@ function Wearables:Remove(unit)
     end
 
     unit.wearables = {}
+end
+
+function GameMode:BuyItem(keys)
+  local pID = keys.PlayerID
+  local item = keys.itemname
+  local hero = EntIndexToHScript(tonumber(keys.hero))
+
+  if hero:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+    local allents = Entities:FindAllByClassname("trigger_shop")
+    local touch = false
+    for k,v in pairs(allents) do
+      if v:GetName() == "team_2_idol" then
+        if (v:GetAbsOrigin() - hero:GetAbsOrigin()):Length2D() < 390 then
+          touch = true
+          break
+        end
+      end
+    end
+    if not touch then
+      return touch
+    end
+  else
+    if not Entities:FindByName(nil,"PetrosyanShopTrigger"):IsTouching(hero) then
+      return false
+    end
+  end
+
+  local tmp = {}
+
+  local toBuy, toDelete = GetItemList( hero, item, tmp )
+
+  local cost = 0
+
+  for k,v in pairs(toBuy) do
+    if v and v ~= "" then
+      cost = cost + GameMode.ItemKVs[v].ItemCost
+    end
+  end
+  
+  for k,v in pairs(toDelete) do
+    for i=0,11 do
+      local it = hero:GetItemInSlot(i)
+      if it and it:GetName() == v and it:GetName() ~= item then
+        hero:RemoveItem(it)
+        break
+      end
+    end
+  end
+
+  if cost <= GetCustomGold( hero:GetPlayerID() ) then
+    SpendCustomGold( pID, cost )
+    hero:AddItem(CreateItem(item,hero,hero))
+    hero:EmitSound("General.Buy")
+  else
+    Notifications:Bottom(hero:GetPlayerOwner(), {text="#dota_hud_error_not_enough_gold", duration=1, style={color="red", ["font-size"]="50px", border="0px solid blue"}})
+  end
+end
+
+function GetItemList( hero, item, t, t2 )
+  if hero:HasItemInInventory(item) and not t then
+    return {}, { [1] = item }
+  end
+  if string.match(item, "recipe_") then return { [1] = item }, {} end
+  if not GameMode.ItemKVs[string.gsub(item, "item_", "item_recipe_")] then return { [1] = item }, {} end
+  local recipe = Split(GameMode.ItemKVs[string.gsub(item, "item_", "item_recipe_")].ItemRequirements["01"], ";")
+
+  local recipeName = string.gsub(item, "item_", "item_recipe_")
+
+  t = t or {}
+  t2 = t2 or {}
+
+  
+  table.insert(recipe, recipeName)
+
+  for k,v in pairs(recipe) do
+    local check, delete = GetItemList( hero, v )
+    for k2,v2 in pairs(check) do
+      table.insert(t, v2)
+    end
+    for k2,v2 in pairs(delete) do
+      table.insert(t2, v2)
+    end
+  end
+
+  return t, t2
 end

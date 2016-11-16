@@ -14,7 +14,7 @@ function GameMode:LumberAndGoldCommand()
     local playerID = cmdPlayer:GetPlayerID()
     if playerID ~= nil and playerID ~= -1 then
       GameMode.assignedPlayerHeroes[playerID].lumber = GameMode.assignedPlayerHeroes[playerID].lumber + 15000000
-      PlayerResource:ModifyGold(playerID, 99999, false, 0) 
+      AddCustomGold( playerID, 999999 )
     end
   end
 end

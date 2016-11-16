@@ -6,7 +6,7 @@
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 
-  "AbilityGoldCost"       "30"
+  "AbilityGoldCost"       "%30"
   "AbilityChannelTime"      "5"
   "AbilityUpgradeGoldCost"    "0"
 

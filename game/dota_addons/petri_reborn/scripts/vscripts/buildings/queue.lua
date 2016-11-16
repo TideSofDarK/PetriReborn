@@ -8,9 +8,11 @@ function EnqueueUnit( event, food )
 	local caster = event.caster
 	local ability = event.ability
 	local player = caster:GetPlayerOwner():GetPlayerID()
-	local gold_cost = ability:GetGoldCost( ability:GetLevel() - 1 )
+	local gold_cost = GetAbilityGoldCost( ability )
 
-	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 0)
+	if GetCustomGold( pID ) < gold_cost then
+		return
+	end
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
@@ -31,7 +33,7 @@ function EnqueueUnit( event, food )
 		if CheckFood(caster:GetPlayerOwner(), tonumber(event.food),true)== false then 
 			return 
 		else
-			PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 0)
+			SpendCustomGold( caster:GetPlayerOwnerID(), gold_cost )
 			SpendFood(caster:GetPlayerOwner(), tonumber(event.food))
 			hero.numberOfUnits = hero.numberOfUnits + 1
 			if tonumber(event.food) == 6 then hero.numberOfMegaWorkers = hero.numberOfMegaWorkers + 1 end
@@ -86,7 +88,7 @@ function DequeueUnit( event )
 	-- Get tied ability
 	local train_ability_name = string.gsub(item_ability_name, "item_", "")
 	local train_ability = caster:FindAbilityByName(train_ability_name)
-	local gold_cost = train_ability:GetGoldCost( train_ability:GetLevel() - 1 )
+	local gold_cost = GetAbilityGoldCost( train_ability )
 	
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 
@@ -113,7 +115,7 @@ function DequeueUnit( event )
 	            caster:RemoveItem(item)
 	            
 	            -- Refund ability cost
-	            PlayerResource:ModifyGold(player, gold_cost, false, 0)
+	            AddCustomGold( player, gold_cost )
 
 	            hero.numberOfUnits = hero.numberOfUnits - 1
 

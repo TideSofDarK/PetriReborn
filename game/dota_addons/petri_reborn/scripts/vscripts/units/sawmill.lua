@@ -27,6 +27,10 @@ function BuyLumber(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 
+	if SpendCustomGold( player, GetAbilityGoldCost( ability ) ) == false then
+		return
+	end
+
 	local lumber = ability:GetSpecialValueFor("lumber")
 
 	caster:EmitSound("ui.inv_pickup_wood")

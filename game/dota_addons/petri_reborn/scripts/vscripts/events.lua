@@ -333,6 +333,8 @@ function GameMode:OnEntityKilled( keys )
 
   -- KVN fan is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_rattletrap" then
+    GiveSharedGoldToTeam(math.floor(90 * GetGoldModifier()), DOTA_TEAM_BADGUYS)
+
     Timers:CreateTimer(1.0,
     function()
       if CheckKVN() and GameMode.PETRI_GAME_HAS_ENDED == false then
@@ -409,6 +411,11 @@ function GameMode:OnEntityKilled( keys )
 
   -- Remove building
   if killedUnit:HasAbility("petri_building") then
+    if GameRules:GetDOTATime(false, false) >= 120 then 
+      local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
+      GiveSharedGoldToTeam(math.floor(bounty * GetGoldModifier()), DOTA_TEAM_BADGUYS)
+    end
+
     if killedUnit.RemoveBuilding ~= nil then killedUnit:RemoveBuilding(true) end
     local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
     if hero then
@@ -506,6 +513,31 @@ function GameMode:OnEntityKilled( keys )
 
   -- Respawn creep
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") then
+    local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
+
+    if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and bounty >= 5000 then -- boss
+
+      Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
+      Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
+      Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
+
+      if bounty >= 10000 then
+       CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+       Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
+      end
+      if bounty >= 20000 then
+        for i=1,5 do
+          CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+        end
+      end
+      bounty = bounty/2
+      GiveSharedGoldToTeam(bounty, DOTA_TEAM_BADGUYS)
+      return false
+    else
+      AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
+      PopupParticle(bounty, Vector(244,201,23), 3.0, killerEntity)
+    end
+
     if GameRules:IsDaytime() == false then
 
       killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
@@ -656,7 +688,7 @@ function GameMode:OnPlayerMakeBet( event )
     g = g - free
   end
 
-  GameMode.assignedPlayerHeroes[pID]:ModifyGold(g * -1, false, 0)
+  SpendCustomGold( pID, g )
   GameMode.assignedPlayerHeroes[pID]:EmitSound("DOTA_Item.Hand_Of_Midas")
 
   CustomGameEventManager:Send_ServerToAllClients("petri_bank_updated", {["bank"] = GameMode.CURRENT_BANK} )

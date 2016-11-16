@@ -56,16 +56,54 @@ function GiveSharedGoldToTeam(gold, team)
 end
 
 function AddCustomGold( pID, gold )
-  local hero = GameMode.assignedPlayerHeroes[pID]
+	local hero = GameMode.assignedPlayerHeroes[pID]
 
-  if hero then
-    hero.allEarnedGold = hero.allEarnedGold or 0
-    hero.allEarnedGold = hero.allEarnedGold + gold
+	if hero then
+		hero._customGold = hero._customGold or 0
 
-    if hero.allEarnedGold >= 100000 and not GameMode.FIRST_MONEY then
-      GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
-    end
+		hero.allEarnedGold = hero.allEarnedGold or 0
+		hero.allEarnedGold = hero.allEarnedGold + gold
 
-    PlayerResource:ModifyGold(pID, gold, false, DOTA_ModifyGold_Unspecified)
-  end
+		if hero.allEarnedGold >= 100000 and not GameMode.FIRST_MONEY then
+		  GameMode.FIRST_MONEY = math.floor(GameMode.PETRI_TRUE_TIME)
+		end
+
+		hero._customGold = hero._customGold + gold
+	end
+end
+
+function SpendCustomGold( pID, gold )
+	local hero = GameMode.assignedPlayerHeroes[pID]
+
+	if hero then
+		hero._customGold = hero._customGold or 0
+
+		if hero._customGold - gold < 0 then
+			return false 
+		end
+		
+		hero._customGold = math.max(0, hero._customGold - gold)
+
+		return true
+	end
+end
+
+function GetCustomGold( pID )
+	local hero = GameMode.assignedPlayerHeroes[pID]
+
+	if hero then
+		hero._customGold = hero._customGold or 0
+		return hero._customGold
+	end
+
+	return 0
+end
+
+function SetCustomGold( pID, gold )
+	local hero = GameMode.assignedPlayerHeroes[pID]
+
+	if hero then
+		hero._customGold = gold
+		return gold
+	end
 end

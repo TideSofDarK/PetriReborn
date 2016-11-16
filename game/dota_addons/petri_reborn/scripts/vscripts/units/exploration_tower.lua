@@ -5,6 +5,10 @@ function ExploreWorld(keys)
 	local ability = keys.ability
 	local ability_level = ability:GetLevel() - 1
 
+	if SpendCustomGold( player, GetAbilityGoldCost( ability ) ) == false then
+		return
+	end
+
 	GameMode.explorationTower:FindAbilityByName(ability:GetName()):StartCooldown(ability:GetCooldown(-1))
 
 	-- Just because i can

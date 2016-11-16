@@ -13,7 +13,12 @@ function build( keys )
 
 	local ability = keys.ability
 	
-	local gold_cost = ability:GetGoldCost(1)
+	local gold_cost = GetAbilityGoldCost( ability )
+
+	if GetCustomGold( pID ) < gold_cost then
+		return
+	end
+
 	local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", ability:GetLevel()-1)
 	local food_cost = ability:GetLevelSpecialValueFor("food_cost", ability:GetLevel()-1)
 
@@ -28,7 +33,6 @@ function build( keys )
 	end
 
 	EndCooldown(caster, ability_name)
-	PlayerResource:ModifyGold(pID, gold_cost, false, 7) 
 
 	local dependency = ability_name
 	if ability_name == "item_petri_pocketexit" then
@@ -99,8 +103,7 @@ function build( keys )
 
 			SpendLumber(player, lumber_cost)
 			SpendFood(player, food_cost)
-
-			PlayerResource:ModifyGold(pID, -1 * gold_cost, false, 7)
+			SpendCustomGold( pID, gold_cost )
 
 			StartCooldown(caster, ability_name)
 		end

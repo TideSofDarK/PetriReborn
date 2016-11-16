@@ -2,66 +2,66 @@
 {
   "consumables"
   {
-    "item"        "item_courier"
-    "item"        "item_petri_ward"
-    "item"        "item_petri_cola"
+    "item1"        "item_courier"
+    "item2"        "item_petri_ward"
+    "item3"        "item_petri_cola"
   }
 
   "attributes"
   {
-    "item"    "item_petri_butt"
-    "item"    "item_petri_stone_of_power"
-    "item"        "item_petri_book_of_laugh"
-    "item"        "item_petri_comedy_book"
-    "item"        "item_petri_comedy_story"
+    "item1"        "item_petri_butt"
+    "item2"        "item_petri_stone_of_power"
+    "item3"        "item_petri_book_of_laugh"
+    "item4"        "item_petri_comedy_book"
+    "item5"        "item_petri_comedy_story"
   }
 
   "weapons_armor"
   {
-    "item"    "item_petri_mask_of_laugh"
-    "item"        "item_petri_snares_1"
-    "item"        "item_petri_snares_2"
+    "item1"        "item_petri_mask_of_laugh"
+    "item2"        "item_petri_snares_1"
+    "item3"        "item_petri_snares_2"
   }
 
   "misc"
   {
     
-    "item"    "item_petri_kvn_medal"
-    "item"    "item_petri_grease"
-    "item"    "item_petri_mega_sith"
+    "item1"        "item_petri_kvn_medal"
+    "item2"        "item_petri_grease"
+    "item3"        "item_petri_mega_sith"
   }   
 
   "basics"
   {
-    "item"    "item_petri_bracer"
-    "item"    "item_petri_zirconia_armor"
-    "item"    "item_petri_uber_mask_of_laugh"
-    "item"    "item_petri_uber_mask_of_laugh_level2"
-    "item"    "item_petri_uber_mask_of_laugh_level3"
-    "item"    "item_petri_uber_mask_of_laugh_level4"
-    "item"    "item_petri_jedi"
+    "item1"    "item_petri_bracer"
+    "item2"    "item_petri_zirconia_armor"
+    "item3"    "item_petri_uber_mask_of_laugh"
+    "item4"    "item_petri_uber_mask_of_laugh_level2"
+    "item5"    "item_petri_uber_mask_of_laugh_level3"
+    "item6"    "item_petri_uber_mask_of_laugh_level4"
+    "item7"    "item_petri_jedi"
   }
 
   "support"
   {
-    "item"    "item_petri_chicken"
-    "item"    "item_petri_cow"
-    "item"    "item_petri_dragon"
-    "item"    "item_petri_kvn_heart"
+    "item1"    "item_petri_chicken"
+    "item2"    "item_petri_cow"
+    "item3"    "item_petri_dragon"
+    "item4"    "item_petri_kvn_heart"
   }
 
   "magics"
   {
-    "item"    "item_petri_megahammer"
-    "item"    "item_petri_simple_sword"
-    "item"    "item_petri_hyperubersword"
-    "item"    "item_petri_kladenets_sword"
-    "item"    "item_petri_perfect_sword"
-    "item"    "item_petri_titan_sword"
-    "item"    "item_petri_magic_axe"
-    "item"    "item_petri_grond"
-    "item"    "item_petri_thunder"
-    "item"    "item_petri_trident"
+    "item1"    "item_petri_megahammer"
+    "item2"    "item_petri_simple_sword"
+    "item3"    "item_petri_hyperubersword"
+    "item4"    "item_petri_kladenets_sword"
+    "item5"    "item_petri_perfect_sword"
+    "item6"    "item_petri_titan_sword"
+    "item7"    "item_petri_magic_axe"
+    "item8"    "item_petri_grond"
+    "item9"    "item_petri_thunder"
+    "item10"    "item_petri_trident"
   }
 
   "defense"
@@ -71,15 +71,15 @@
 
   "weapons"
   {
-    "item"    "item_petri_helmet"
-    "item"    "item_petri_vest"
-    "item"    "item_petri_supervest"
-    "item"    "item_petri_supermegavest"
-    "item"    "item_petri_superthing"
-    "item"    "item_petri_shield_of_nature"
-    "item"    "item_petri_shield_of_hell"
-    "item"    "item_petri_shield_of_heaven"
-    "item"    "item_petri_best_shield"
+    "item1"    "item_petri_helmet"
+    "item2"    "item_petri_vest"
+    "item3"    "item_petri_supervest"
+    "item4"    "item_petri_supermegavest"
+    "item5"    "item_petri_superthing"
+    "item6"    "item_petri_shield_of_nature"
+    "item7"    "item_petri_shield_of_hell"
+    "item8"    "item_petri_shield_of_heaven"
+    "item9"    "item_petri_best_shield"
   }
 
  // Level 4 - Orange / Orb / Artifacts
@@ -93,21 +93,21 @@
 
   "sideshop1"
   {
-    "item"    "item_petri_trap"
-    "item"    "item_petri_evasion_scroll"
-    "item"    "item_petri_attack_scroll"
-    "item"    "item_petri_alcohol"
+    "item1"    "item_petri_trap"
+    "item2"    "item_petri_evasion_scroll"
+    "item3"    "item_petri_attack_scroll"
+    "item4"    "item_petri_alcohol"
   }
 
  //Sideshop Page 2
 
   "sideshop2"
   {
-    "item"    "item_petri_gold_bag3"
-    "item"    "item_petri_kvn_fan_blink"
-    "item"    "item_petri_kvn_fan_cool_blink"
-    "item"    "item_petri_boots"
-    "item"    "item_petri_pocketexit"
+    "item1"    "item_petri_gold_bag3"
+    "item2"    "item_petri_kvn_fan_blink"
+    "item3"    "item_petri_kvn_fan_cool_blink"
+    "item4"    "item_petri_boots"
+    "item5"    "item_petri_pocketexit"
   }
 
  //Secret Shop Start
@@ -115,6 +115,6 @@
 
   "secretshop"
   {
-    "item"    "item_petri_hook"
+    "item1"    "item_petri_hook"
   }
 }

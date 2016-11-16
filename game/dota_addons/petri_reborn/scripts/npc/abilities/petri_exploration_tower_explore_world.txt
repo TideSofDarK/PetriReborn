@@ -6,7 +6,7 @@
 
   "AbilitySharedWithTeammates" "1"
 
-  "AbilityGoldCost"       "500"
+  "AbilityGoldCost"       "%500"
   "AbilityCooldown"       "25"
 
   "MaxLevel"            "1"

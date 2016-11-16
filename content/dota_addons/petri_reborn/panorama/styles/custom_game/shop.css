@@ -1,0 +1,212 @@
+.ShopRoot {
+	width: 100%;
+	height: 100%;
+}
+
+#ShopWindow {
+	width: 420px;
+	height: 780px;
+
+	background-color: #0F0F0FEB;
+
+	align: right center;
+
+	margin-bottom: 145px;
+
+	flow-children: down;
+
+	transition-property: blur, transform, opacity, width, height, wash-color, pre-transform-scale2d;
+	transition-duration: 0.3s, 0.3s, 0.3s;
+	transition-timing-function: ease-in;
+}
+
+.Hide {
+	transform: translate3d( 75px, 0px, 0px );
+	blur: gaussian( 15.0 );
+	opacity: 0.0;
+
+	sound-out: "General.SelectAction";
+	sound: "General.SelectAction";
+}
+
+#ShopTabs {
+	width: 100%;
+	height: 50px;
+}
+
+#Petri, #KVN {
+	width: 100%;
+	height: 100%;
+
+	flow-children: right;
+}
+
+.ShopTab {
+	width: 140px;
+	height: 50px;
+
+	background-color: #08080826;
+
+	/*border-right: 1px solid #bbbbbb2A;*/
+	border-bottom: 3px solid #bbbbbb;
+}
+
+.ShopTab:selected {
+	border-bottom: 3px solid #0000FF;
+}
+
+.ShopTabText {
+	align: center center;
+	font-size: 22px;
+	font-family: Goudy Trajan Medium,FZKai-Z03,TH Sarabun New,YDYGO 540;
+	color: #bbbbbb;
+}
+
+.ShopTab:hover .ShopTabText,
+.ShopTabHighlight .ShopTabText,
+ {
+	color: white;
+}
+
+.ShopTabHighlight {
+	border-bottom: 3px solid white;
+}
+
+.Item {
+	width: 88px;
+	height: 64px;
+}
+
+.Selected #ItemImage {
+	border: 1px solid white;
+}
+
+#ItemImage {
+	width: 100%;
+	height: 100%;
+}
+
+.ShopColumn {
+	width: 88px;
+	height: 100%;
+
+	flow-children: down;
+}
+
+.ShopColumn .Item {
+	width: 64px;
+	height: 58px;
+
+	padding-bottom: 12px;
+}
+
+.ShopContents {
+	align: center top;
+
+	width: fit-children;
+	height: 100%;
+
+	flow-children: right;
+}
+
+#ShopColumns {
+	width: 100%;
+	height: 80%;
+
+	flow-children: none;
+
+	margin-top: 20px;
+}
+
+.AdvancedShopContents {
+	position: 0px 0px 0px;
+}
+
+#ShopRecipe {
+	width: 100%;
+	height: 100%;
+
+	background-color: #080808F2;
+}
+
+#ShopRecipeContainer {
+	align: center center;
+
+	width: fit-children;
+	height: fit-children;
+
+	flow-children: right;
+}
+
+#ShopRecipeContainer .Item {
+	width: 75px;
+	height: 51px;
+
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+#ShopButton {
+	align: right bottom;
+
+	width: 100px;
+	height: 40px;
+
+	margin-right: 15px;
+	margin-bottom: 165px;
+
+	background-color: #E6E600A2;
+
+	border-radius: 2px;	
+	border: 4px solid #b4b400A2;
+}
+
+#ShopButton Label {
+	color: white;
+}
+
+#ShopButton:hover {
+	wash-color: #bbbbbb;
+}
+
+#ShopGuide {
+	width: 207px;
+	height: 850px;
+
+	background-color: #0F0F0FF2;
+	border-radius: 7px;
+
+	align: right center;
+
+	margin-bottom: 145px;
+	margin-right: 419px;
+
+	flow-children: down;
+
+	transition-property: blur, transform, opacity, width, height, wash-color, pre-transform-scale2d;
+	transition-duration: 0.3s, 0.3s, 0.3s;
+	transition-timing-function: ease-in;
+}
+
+.ShopGuideBlock {
+	width: fit-children;
+	height: fit-children;
+
+	margin-top: 15px;
+
+	margin-left: 15px;
+
+	flow-children: down;
+}
+
+.ShopGuideBlockItems .Item {
+	width: 56px;
+	height: 41px;
+
+	margin-top: 8px;
+}
+
+.ShopGuideBlock Label {
+	horizontal-align: left;
+	font-size: 20px;
+}

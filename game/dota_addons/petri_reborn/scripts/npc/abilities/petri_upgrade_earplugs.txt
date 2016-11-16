@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
 
-  "AbilityGoldCost"       "50 75 100 125 175 250 420"
+  "AbilityGoldCost"       "%50 %75 %100 %125 %175 %250 %420"
   "AbilityChannelTime"      "2.5 2.6 2.7 2.8 2.9 3.0 3.1"
 
   "MaxLevel"            "8"

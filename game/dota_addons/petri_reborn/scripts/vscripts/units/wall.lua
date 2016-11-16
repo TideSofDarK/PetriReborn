@@ -138,10 +138,8 @@ function ApplyBonusArmor( keys )
 	local caster = keys.caster
 	local ability = keys.ability
 
-	local gold_cost = ability:GetGoldCost(ability:GetLevel()-1)
-
-	PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), gold_cost, false, 7) 
-
+	local gold_cost = GetAbilityGoldCost( ability )
+	
 	if caster.glyph_charges > 0 then
 		local charge_replenish_time = ability:GetLevelSpecialValueFor( "time", ( ability:GetLevel() - 1 ) )
 		local stack_modifier = keys.modifier_name
@@ -167,7 +165,7 @@ function ApplyBonusArmor( keys )
 		caster:SetModifierStackCount( stack_modifier, ability, next_charge )
 		caster.glyph_charges = next_charge
 
-		PlayerResource:ModifyGold(caster:GetPlayerOwnerID(), -gold_cost, false, 7) 
+		SpendCustomGold(caster:GetPlayerOwnerID(), -gold_cost)
 	end
 end
 
