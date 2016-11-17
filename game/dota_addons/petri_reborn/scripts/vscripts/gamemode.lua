@@ -735,6 +735,24 @@ function MoveToStash( hero, slot )
   end
 end
 
+function LockInventory(hero)
+  local num = hero:GetNumItemsInInventory()
+  if num >= 1 then
+    for i=1,num do
+      hero:AddItemByName("item_petri_locker")
+    end
+  end
+end
+
+function UnlockInventory(hero)
+  for i=0,5 do
+    local it = hero:GetItemInSlot(i)
+    if it and it:GetName() == "item_petri_locker" then
+      return i
+    end
+  end
+end
+
 function GameMode:BuyItem(keys)
   local pID = keys.PlayerID
   local item = keys.itemname
@@ -757,9 +775,10 @@ function GameMode:BuyItem(keys)
     if cost <= GetCustomGold( hero:GetPlayerID() ) then
       SpendCustomGold( pID, cost )
       if target == "stash" then
-        print(item)
+        LockInventory(hero)
         hero:AddItem(CreateItem(item,hero,hero))
         MoveToStash( hero, FindItemSlot( hero, item ) )
+        UnlockInventory(hero)
       elseif IsValidEntity(target) then
         target:AddItem(CreateItem(item,hero,hero))
       end
@@ -778,8 +797,10 @@ function GameMode:BuyItem(keys)
         SpendCustomGold( pID, partCost )
 
         if target == "stash" then
+          LockInventory(hero)
           hero:AddItem(CreateItem(v,hero,hero))
           MoveToStash( hero, FindItemSlot( hero, v ) )
+          UnlockInventory(hero)
         elseif IsValidEntity(target) and target.SwapItems then
           target:AddItem(CreateItem(v,hero,hero))
         elseif target == "inventory" then
