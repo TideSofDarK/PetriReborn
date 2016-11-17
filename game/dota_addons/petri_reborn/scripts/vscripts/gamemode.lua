@@ -736,10 +736,15 @@ function MoveToStash( hero, slot )
 end
 
 function LockInventory(hero)
-  local num = hero:GetNumItemsInInventory()
-  if num >= 1 then
-    for i=1,num do
-      hero:AddItemByName("item_petri_locker")
+  for i=0,5 do
+    local it = hero:GetItemInSlot(i)
+    if it then
+      ExecuteOrderFromTable({ UnitIndex = hero:entindex(), 
+          OrderType = DOTA_UNIT_ORDER_SET_ITEM_COMBINE_LOCK,
+          AbilityIndex = it:entindex(), 
+          TargetIndex = 1,
+          Queue = 0})
+      print("shit")
     end
   end
 end
@@ -747,8 +752,12 @@ end
 function UnlockInventory(hero)
   for i=0,5 do
     local it = hero:GetItemInSlot(i)
-    if it and it:GetName() == "item_petri_locker" then
-      return i
+    if it then
+      ExecuteOrderFromTable({ UnitIndex = hero:entindex(), 
+          OrderType = DOTA_UNIT_ORDER_SET_ITEM_COMBINE_LOCK,
+          AbilityIndex = it:entindex(), 
+          TargetIndex = 0,
+          Queue = 0})
     end
   end
 end
@@ -771,6 +780,15 @@ function GameMode:BuyItem(keys)
     end
   end
 
+  
+
+  -- for i=0,5 do
+  --   local it = hero:GetItemInSlot(i)
+  --   if it and it:GetName() == "item_petri_locker" then
+  --     hero:RemoveItem(it)
+  --   end
+  -- end
+  
   local function confirm(target)
     if cost <= GetCustomGold( hero:GetPlayerID() ) then
       SpendCustomGold( pID, cost )
@@ -791,20 +809,23 @@ function GameMode:BuyItem(keys)
   end
 
   local function confirmParts(target)
+    PrintTable(toBuy)
     for k,v in pairs(toBuy) do
-      local partCost = GameMode.ItemKVs[v].ItemCost
-      if partCost <= GetCustomGold( hero:GetPlayerID() ) then
-        SpendCustomGold( pID, partCost )
+      if v ~= "" then
+        local partCost = GameMode.ItemKVs[v].ItemCost
+        if partCost <= GetCustomGold( hero:GetPlayerID() ) then
+          SpendCustomGold( pID, partCost )
 
-        if target == "stash" then
-          LockInventory(hero)
-          hero:AddItem(CreateItem(v,hero,hero))
-          MoveToStash( hero, FindItemSlot( hero, v ) )
-          UnlockInventory(hero)
-        elseif IsValidEntity(target) and target.SwapItems then
-          target:AddItem(CreateItem(v,hero,hero))
-        elseif target == "inventory" then
-          hero:AddItem(CreateItem(v,hero,hero))
+          if target == "stash" then
+            LockInventory(hero)
+            hero:AddItem(CreateItem(v,hero,hero))
+            MoveToStash( hero, FindItemSlot( hero, v ) )
+            UnlockInventory(hero)
+          elseif IsValidEntity(target) and target.SwapItems then
+            target:AddItem(CreateItem(v,hero,hero))
+          elseif target == "inventory" then
+            hero:AddItem(CreateItem(v,hero,hero))
+          end
         end
       end
     end

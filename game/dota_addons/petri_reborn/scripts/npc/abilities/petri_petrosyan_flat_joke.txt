@@ -5,8 +5,8 @@
 	"AbilityTextureName"			"petri_petrosyan_flat_joke"
 
 	"AbilityCooldown"				"7.0"
-	"AbilityManaCost"				"100"
-	"AbilityDamage"					"75 130 200""
+	// "AbilityManaCost"				"100"
+	"AbilityDamage"					"75 130 200"
 
 	"MaxLevel" "5"
 
