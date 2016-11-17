@@ -161,7 +161,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_perfect_sword"
 
-  "ItemCost"            "1132"
+  "ItemCost"            "931"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "perfect sword"
@@ -206,7 +206,7 @@
   "ItemResult"          "item_petri_perfect_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_kladenets_sword;item_petri_hyperubersword"
+    "01"            "item_petri_kladenets_sword"
   }
 }
 
