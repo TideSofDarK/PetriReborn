@@ -626,6 +626,7 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
       Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_claw/forge_warrior_claw.vmdl")
       Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl")
       Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_steam_exoskeleton/forge_warrior_steam_exoskeleton.vmdl")
+      Wearables:AttachWearable(hero, "particles/econ/items/clockwerk/clockwerk_mortar_forge/clockwerk_mortar_ambient.vpcf")
     elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
       Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_armor/raikage_ares_armor.vmdl")
       Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_arms/raikage_ares_arms.vmdl")
