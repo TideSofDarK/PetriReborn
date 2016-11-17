@@ -62,7 +62,22 @@ function GetSpecialValues( eventArgs )
     GameEvents.Subscribe("player_team", HidePanels);
 
     GameEvents.Subscribe("petri_set_builds", (function (eventArgs) {
-        GameUI.CustomUIConfig().itemBuilds = eventArgs;
+        GameUI.CustomUIConfig().itemBuilds = {};
+        for (var hero in eventArgs) {
+            GameUI.CustomUIConfig().itemBuilds[hero] = {};
+            GameUI.CustomUIConfig().itemBuilds[hero].Items = {};
+            var s = 1;
+            for (var t in eventArgs[hero].Items) {
+                var i = 1;
+                GameUI.CustomUIConfig().itemBuilds[hero].Items["#"+hero+s] = {};
+                for (var item in eventArgs[hero].Items["#"+hero+s]) {
+                    GameUI.CustomUIConfig().itemBuilds[hero].Items["#"+hero+s][i] = eventArgs[hero].Items["#"+hero+s]["item"+i];
+                    i++;
+                }
+                s++;
+            }
+        }
+        $.Msg(GameUI.CustomUIConfig().itemBuilds);
     }));
 
     GameEvents.Subscribe( "petri_set_shops", (function (eventArgs) {

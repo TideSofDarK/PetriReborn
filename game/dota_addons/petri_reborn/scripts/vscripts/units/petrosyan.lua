@@ -85,6 +85,14 @@ function FarSight( event )
     AddFOWViewer(caster:GetTeamNumber(), target, reveal_radius, duration, false)
 end
 
+function FlatJoke( keys )
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+
+	ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
+end
+
 function Sleep(keys)
 	local caster = keys.caster
 	local target = keys.target

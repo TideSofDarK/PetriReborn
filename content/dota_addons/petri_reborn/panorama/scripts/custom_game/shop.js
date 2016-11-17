@@ -67,14 +67,17 @@ function SetupItems() {
 
 		var x = 0;
 		var y = 0;
+		var i = 1;
 		for (var item in items) {
-			var itemPanel = CreateItem(guideBlock.FindChildTraverse("ShopGuideBlockItems"), items[item]);
+			var itemPanel = CreateItem(guideBlock.FindChildTraverse("ShopGuideBlockItems"), items[i]);
 			itemPanel.style.position = (x * 60) + "px " + (y * 44) + "px " + "0px;";
 			x++;
 			if ((x ) % 3 == 0) {
 				x = 0;
 				y++;
 			}
+
+			i++;
 		}
 	}
 }
@@ -120,7 +123,7 @@ function CreateItem(r, itemname) {
 	item.itemname = itemname;
 
 	item.SetPanelEvent('oncontextmenu', (function () {
-		GameEvents.SendCustomGameEventToServer("petri_buy_item", { itemname : itemname, hero : Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ) });
+		GameEvents.SendCustomGameEventToServer("petri_buy_item", { itemname : itemname, hero : Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ), buyer : Players.GetLocalPlayerPortraitUnit() });
 	}));
 	item.SetPanelEvent('onactivate', (function () {
 		if (selectedItem) {

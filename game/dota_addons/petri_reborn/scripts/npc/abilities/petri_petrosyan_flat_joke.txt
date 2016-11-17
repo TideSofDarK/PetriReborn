@@ -4,7 +4,11 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"petri_petrosyan_flat_joke"
 
-	"MaxLevel" "1"
+	"AbilityCooldown"				"7.0"
+	"AbilityManaCost"				"100"
+	"AbilityDamage"					"75 130 200""
+
+	"MaxLevel" "5"
 
 	"precache"
 	{	
@@ -16,12 +20,12 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"joke_damage"				"1"
+			"joke_damage"				"1 2 3 4 5"
 		}
 		"02"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"crit_chance"				"10"
+			"crit_chance"				"10 15 20 25 30"
 		}
 	}
 
@@ -44,6 +48,11 @@
 		        	"Chance" 	"%crit_chance"
 		        	"OnSuccess"
 		        	{
+		        		"RunScript"
+		        		{
+					    	"ScriptFile"    "units/petrosyan.lua"
+					   		"Function"      "FlatJoke"
+		        		}
 		        		"LinearProjectile"
 		        		{
 		        			"Target"		 	"ATTACKER"
