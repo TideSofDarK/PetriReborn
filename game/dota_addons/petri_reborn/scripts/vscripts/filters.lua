@@ -242,9 +242,9 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       if item and item.purchaseTime and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
         if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME then
-          AddCustomGold( issuer, GameMode.ItemKVs[item:GetName()].ItemCost )
+          AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost) )
         else
-          AddCustomGold( issuer, GameMode.ItemKVs[item:GetName()].ItemCost / 2)
+          AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost / 2))
         end
 
         EmitSoundOnClient("Quickbuy.Confirmation", PlayerResource:GetPlayer(issuer))
