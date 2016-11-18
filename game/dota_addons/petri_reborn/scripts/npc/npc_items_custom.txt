@@ -4049,9 +4049,54 @@
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1605"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_locker"
+	
+	
+	  "OnSpellStart"
+	  {     
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_cola_active"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_cola_active"
+	    {
+	      "Duration"                "%buff_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "0"
+	      "EffectName"              "particles/items_fx/black_king_bar_avatar.vpcf"
+	      "EffectAttachType"        "PATTACH_ABSORIGIN"
+	
+	      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+	
+	      "OnCreated"
+	      {
+	        "RemoveModifier"
+	        {
+	          "ModifierName"  "modifier_blinding_light"
+	          "Target"     "CASTER"
+	        }
+	      }
+	          
+	      "States"
+	      {
+	        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
 	}
 	"item_petri_mask_of_laugh"
 	{
@@ -5579,7 +5624,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "1132"
+	  "ItemCost"            "931"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -5624,7 +5669,7 @@
 	  "ItemResult"          "item_petri_perfect_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_kladenets_sword;item_petri_hyperubersword"
+	    "01"            "item_petri_kladenets_sword"
 	  }
 	}
 	
