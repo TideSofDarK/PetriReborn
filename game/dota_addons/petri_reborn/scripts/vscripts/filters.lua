@@ -237,6 +237,18 @@ function GameMode:FilterExecuteOrder( filterTable )
       if OnEnemyShop(purchaser) then
         return false
       end
+
+      local item = EntIndexToHScript(filterTable.entindex_ability) 
+
+      if item and item.purchaseTime and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
+        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME then
+          AddCustomGold( issuer, GameMode.ItemKVs[item:GetName()].ItemCost )
+        else
+          AddCustomGold( issuer, GameMode.ItemKVs[item:GetName()].ItemCost / 2)
+        end
+
+        EmitSoundOnClient("Quickbuy.Confirmation", PlayerResource:GetPlayer(issuer))
+      end
     elseif order_type == DOTA_UNIT_ORDER_GLYPH then
       return false
     elseif order_type == DOTA_UNIT_ORDER_CAST_TARGET_TREE then
@@ -289,11 +301,19 @@ function GameMode:FilterExecuteOrder( filterTable )
 end
 
 function GameMode:ModifyGoldFilter(event)
-  event["reliable"] = 0
-
-  local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
-
   return false
+  -- event["reliable"] = 0
+
+  -- local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
+
+  -- if event.reason_const == DOTA_ModifyGold_SellItem then
+
+  --   AddCustomGold( event.player_id_const, event["gold"] )
+    
+  --   return false
+  -- end
+
+  -- return false
 end
 
 function GameMode:ModifyExperienceFilter(filterTable)

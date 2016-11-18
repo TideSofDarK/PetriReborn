@@ -29,7 +29,6 @@ function OnAttacked(event)
 	local ability = event.ability
 
 	caster:SetHealth(caster:GetHealth()-1)
-	print("Asd")
 
 	local stacks = caster:GetModifierStackCount("modifier_evasion_stacks",caster)
 

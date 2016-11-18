@@ -416,7 +416,6 @@ end
 
 function IsHiddenBehavior(ability)
   local behavior = GameMode.AbilityKVs[ability]["AbilityBehavior"]
-  print(behavior)
   return string.match(behavior, "DOTA_ABILITY_BEHAVIOR_HIDDEN")
 end
 

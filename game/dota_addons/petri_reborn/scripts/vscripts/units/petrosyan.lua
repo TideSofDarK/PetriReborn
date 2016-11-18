@@ -353,6 +353,5 @@ function CheckSolo( keys )
 		damage = math.min(math.max(damage, 1), limit)
 
 		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
-		print(damage)
 	end
 end

@@ -129,7 +129,6 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 		if not hero.bagRecord then
 			local time = GameMode.PETRI_TRUE_TIME
 			hero.bagRecord = string.format("%.2d:%.2d", time/60%60, time%60)
-			print(hero.bagRecord)
 		end
 
 		if not string.match(ability:GetName(), "3") then 

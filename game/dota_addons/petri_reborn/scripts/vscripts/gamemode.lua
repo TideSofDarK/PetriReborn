@@ -12,8 +12,6 @@ GameMode.PETRI_GAME_HAS_ENDED = false
 
 GameMode.PETRI_NO_END = false
 
-GameMode.PETRI_TRUE_TIME = 0
-
 GameMode.PETRI_NAME_LIST = {}
 GameMode.PETRI_LANG_LIST = {}
 
@@ -41,9 +39,7 @@ GameRules.Winner = GameRules.Winner or DOTA_TEAM_BADGUYS
 
 check1 = (function(name) 
             for i=1,7 do
-              print(GameRules.PETRI_LOCK_ITEMS[i], name)
               if GameRules.PETRI_LOCK_ITEMS[i] == name then
-                print(true)
                 return true
               end
             end
@@ -744,7 +740,6 @@ function LockInventory(hero)
           AbilityIndex = it:entindex(), 
           TargetIndex = 1,
           Queue = 0})
-      print("shit")
     end
   end
 end
@@ -760,6 +755,12 @@ function UnlockInventory(hero)
           Queue = 0})
     end
   end
+end
+
+function AddItem( owner, unit, item )
+  local item = unit:AddItem(CreateItem(item,owner,owner))
+  item:SetPurchaser(owner)
+  item.purchaseTime = GameMode.PETRI_TRUE_TIME
 end
 
 function GameMode:BuyItem(keys)
@@ -780,7 +781,8 @@ function GameMode:BuyItem(keys)
     end
   end
 
-  
+  -- PrintTable(toBuy)
+  PrintTable(toDelete)
 
   -- for i=0,5 do
   --   local it = hero:GetItemInSlot(i)
@@ -794,11 +796,11 @@ function GameMode:BuyItem(keys)
       SpendCustomGold( pID, cost )
       if target == "stash" then
         LockInventory(hero)
-        hero:AddItem(CreateItem(item,hero,hero))
+        AddItem( hero, hero, item )
         MoveToStash( hero, FindItemSlot( hero, item ) )
         UnlockInventory(hero)
       elseif IsValidEntity(target) then
-        target:AddItem(CreateItem(item,hero,hero))
+        AddItem( hero, target, item )
       end
       hero:EmitSound("General.Buy")
       return true
@@ -809,7 +811,6 @@ function GameMode:BuyItem(keys)
   end
 
   local function confirmParts(target)
-    PrintTable(toBuy)
     for k,v in pairs(toBuy) do
       if v ~= "" then
         local partCost = GameMode.ItemKVs[v].ItemCost
@@ -818,13 +819,16 @@ function GameMode:BuyItem(keys)
 
           if target == "stash" then
             LockInventory(hero)
-            hero:AddItem(CreateItem(v,hero,hero))
-            MoveToStash( hero, FindItemSlot( hero, v ) )
+            AddItem( hero, hero, v )
+            local slot = FindItemSlot( hero, v )
+            if slot then
+              MoveToStash( hero, slot )
+            end
             UnlockInventory(hero)
           elseif IsValidEntity(target) and target.SwapItems then
-            target:AddItem(CreateItem(v,hero,hero))
+            AddItem( hero, target, v )
           elseif target == "inventory" then
-            hero:AddItem(CreateItem(v,hero,hero))
+            AddItem( hero, hero, v )
           end
         end
       end
@@ -846,7 +850,7 @@ function GameMode:BuyItem(keys)
       return touch
     end
   else
-    if CheckShopRange( hero ) then
+    if CheckShopRange( buyer ) then
       if IsValidEntity(buyer) and buyer:GetUnitName() == "npc_dota_courier" then
         local allItems = true
         for k,v in pairs(toDelete) do
@@ -881,16 +885,30 @@ function GameMode:BuyItem(keys)
         end
       end
     else
-      local allItems = true
+      local allItems = false
       for k,v in pairs(toDelete) do
         if CheckStash(hero, v) == false then
           allItems = false
           break
+        else
+          allItems = true
         end
       end
 
-      if allItems then
+      local reallyAll = true
+      for k,v in pairs(toBuy) do
+        if v ~= "" then
+          reallyAll = false
+          break
+        end
+      end
+
+      if reallyAll then
+        cost = GameMode.ItemKVs[item].ItemCost
+        confirm("stash")
+      elseif allItems then
         if confirm("stash") then
+          PrintTable(toDelete)
           RemoveItems( hero, "stash", toDelete )
         end
       else
@@ -905,8 +923,8 @@ function RemoveItems( hero, c, t )
     for k,v in pairs(t) do
       for i=minSlot,maxSlot do
         local it = unit:GetItemInSlot(i)
-        if it and it:GetName() == item then
-          return i
+        if it and it:GetName() == v then
+          unit:RemoveItem(it)
         end
       end
     end
@@ -994,6 +1012,16 @@ function CheckShopRange( hero )
     return true
   end
 
+  return false
+end
+
+function CheckShopRangeAll( hero )
+  local trigger = Entities:FindByName(nil,"PetrosyanShopTrigger")
+
+  if trigger:IsTouching(hero) then
+    return true
+  end
+
   local chicks = Entities:FindAllByName("npc_dota_courier")
 
   for k,v in pairs(chicks) do
@@ -1028,3 +1056,10 @@ function CheckForItem(hero, item)
 
   return false
 end
+
+if LOADED then
+  return
+end
+LOADED = true
+
+GameMode.PETRI_TRUE_TIME = 0
