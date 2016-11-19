@@ -337,14 +337,16 @@ function GameMode:OnGameInProgress()
         return
       end
 
-      local ents = Entities:FindAllByName("npc_petri_creep_special"..tostring(creepID))
+      local ents = Entities:FindAllByName("npc_dota_creature")
 
       for k,v in pairs(ents) do
-        local pos = v:GetAbsOrigin()
+        if v.GetUnitName and v:GetUnitName() == "npc_petri_creep_special"..tostring(creepID) then
+          local pos = v:GetAbsOrigin()
 
-        v:ForceKill(false)
+          v:ForceKill(false)
 
-        local unit = CreateUnitByName("npc_petri_creep_special"..tostring(creepID  + 1),pos,true,nil,nil,DOTA_TEAM_NEUTRALS)
+          local unit = CreateUnitByName("npc_petri_creep_special"..tostring(creepID  + 1),pos,true,nil,nil,DOTA_TEAM_NEUTRALS)
+        end
       end
 
       creepID = creepID + 1
