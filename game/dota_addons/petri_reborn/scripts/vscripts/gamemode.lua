@@ -330,6 +330,28 @@ function GameMode:OnGameInProgress()
   GameMode:TimingScores( )
   GameMode:RegisterAutoGold( )
 
+  local creepID = 1
+  Timers:CreateTimer(6 * 60,
+    function()
+      if creepID == 8 then
+        return
+      end
+
+      local ents = Entities:FindAllByName("npc_petri_creep_special"..tostring(creepID))
+
+      for k,v in pairs(ents) do
+        local pos = v:GetAbsOrigin()
+
+        v:ForceKill(false)
+
+        local unit = CreateUnitByName("npc_petri_creep_special"..tostring(creepID  + 1),pos,true,nil,nil,DOTA_TEAM_NEUTRALS)
+      end
+
+      creepID = creepID + 1
+
+      return 8.0
+    end)
+
   Timers:CreateTimer(1.0,
     function()
       GameMode.PETRI_TRUE_TIME = GameMode.PETRI_TRUE_TIME + 1
