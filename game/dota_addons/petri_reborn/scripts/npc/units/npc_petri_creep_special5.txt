@@ -1,0 +1,49 @@
+"npc_petri_creep_special5"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+  "ModelScale"        "1.2"
+  "SoundSet"          "Creep_Good_Melee"  
+  "Level"           "3"
+  "HealthBarOffset"     "140"
+
+  "vscripts"     "units/creep.lua"
+
+  
+
+  "ArmorPhysical"       "0"
+  "MagicalResistance"     "0"
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
+  "AttackDamageMin"     "15.0"
+  "AttackDamageMax"     "53.0"
+  "AttackRate"        "0.7"
+  "AttackAnimationPoint"    "0.39"
+  "AttackAcquisitionRange"  "500"
+  "AttackRange"       "90"
+
+  "BountyGoldMin"       "6.0"
+  "BountyGoldMax"       "7.0"
+  "BountyXP"          "14"  
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
+  "RingRadius"        "50"
+  
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+  "MovementSpeed"       "270"
+  "MovementTurnRate"      "0.5"
+
+  "StatusHealth"        "340"
+  "StatusHealthRegen"     "0"
+  "StatusMana"        "0"
+  "StatusManaRegen"     "0"
+
+  "VisionDaytimeRange"    "800"
+  "VisionNighttimeRange"    "800"
+
+  "TeamName"          "DOTA_TEAM_NEUTRALS"
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
+  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+}
