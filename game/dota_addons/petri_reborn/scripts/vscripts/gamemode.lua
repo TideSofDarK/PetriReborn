@@ -343,7 +343,7 @@ function GameMode:OnGameInProgress()
         if v.GetUnitName and v:GetUnitName() == "npc_petri_creep_special"..tostring(creepID) then
           local pos = v:GetAbsOrigin()
 
-          v:ForceKill(false)
+          UTIL_Remove(v)
 
           local unit = CreateUnitByName("npc_petri_creep_special"..tostring(creepID  + 1),pos,true,nil,nil,DOTA_TEAM_NEUTRALS)
         end
