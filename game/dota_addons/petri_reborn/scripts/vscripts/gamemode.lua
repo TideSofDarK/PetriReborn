@@ -349,7 +349,7 @@ function GameMode:OnGameInProgress()
 
       creepID = creepID + 1
 
-      return 8.0
+      return 8.0 * 60
     end)
 
   Timers:CreateTimer(1.0,
