@@ -194,18 +194,31 @@ function GameMode:BuyItem(keys)
           confirmParts(buyer)
         end
       else
-        local allItems = true
+        local allItems = false
         for k,v in pairs(toDelete) do
-          if CheckRange(hero, v, 0, 11) == false then
+          if CheckStash(hero, v) == false then
             allItems = false
+            break
+          else
+            allItems = true
+          end
+        end
+
+        local reallyAll = true
+        for k,v in pairs(toBuy) do
+          if v ~= "" then
+            reallyAll = false
             break
           end
         end
 
-        if allItems then
-          if confirm(hero) then
-            RemoveItems( hero, hero, toDelete )
-          end
+        if reallyAll then
+          cost = GameMode.ItemKVs[item].ItemCost
+          confirm(hero)
+        elseif allItems then
+            if confirm(hero) then
+              RemoveItems( hero, hero, toDelete )
+            end
         else
           confirmParts(hero)
         end

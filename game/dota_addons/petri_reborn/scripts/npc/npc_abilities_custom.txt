@@ -3495,7 +3495,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"petri_petrosyan_flat_joke"
 	
-		"AbilityCooldown"				"7.0"
+		"AbilityCooldown"				"7.0 6.0 5.0 4.0 3.0"
 		// "AbilityManaCost"				"100"
 		"AbilityDamage"					"75 130 200"
 	
@@ -3557,7 +3557,12 @@
 							    "TargetTypes"    	"DOTA_UNIT_TARGET_ALL"
 							    "HasFrontalCone" 	"1"
 							    "ProvidesVision" 	"0"
-							}     
+							}
+							"RemoveModifier"
+							{
+								"ModifierName"	"modifier_flat_joke_datadriven"
+								"Target" 		"CASTER"
+							}
 	          			}
 	        		}
 		    	}

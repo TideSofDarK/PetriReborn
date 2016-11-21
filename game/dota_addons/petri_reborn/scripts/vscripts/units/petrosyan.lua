@@ -91,6 +91,9 @@ function FlatJoke( keys )
 	local ability = keys.ability
 
 	ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
+	Timers:CreateTimer(ability:GetCooldown(ability:GetLevel()), function (  )
+		ability:ApplyDataDrivenModifier(caster,caster,"modifier_flat_joke_datadriven",{})
+	end)
 end
 
 function Sleep(keys)
