@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_megahammer"
 
-  "ItemCost"            "12"
+  "ItemCost"            "1"
   "ItemShopTags"          "damage"
   "ItemQuality"         "component"
   "ItemAliases"         "megahammer"
@@ -17,7 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "4"
+      "bonus_damage"      "1"
     }
   }
   

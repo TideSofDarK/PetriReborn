@@ -47,8 +47,8 @@ USE_CUSTOM_XP_VALUES = true             -- Should we use custom XP values to lev
 -- Fill this table up with the required XP per level if you want to change it
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[1] = 0 
-XP_PER_LEVEL_TABLE[2] = 10
-XP_PER_LEVEL_TABLE[3] = 20
+XP_PER_LEVEL_TABLE[2] = 30
+XP_PER_LEVEL_TABLE[3] = 60
 XP_PER_LEVEL_TABLE[4] = 25
 XP_PER_LEVEL_TABLE[5] = 35
 XP_PER_LEVEL_TABLE[6] = 50

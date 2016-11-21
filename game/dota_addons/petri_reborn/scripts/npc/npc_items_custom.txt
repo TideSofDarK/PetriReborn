@@ -792,7 +792,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_bracer"
 	
-	  "ItemCost"            "50"
+	  "ItemCost"            "60"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -802,7 +802,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "3"
+	      "bonus_all_stats"    "20"
 	    }
 	  }
 	  
@@ -816,7 +816,6 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
 	      }
@@ -4145,7 +4144,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_megahammer"
 	
-	  "ItemCost"            "12"
+	  "ItemCost"            "1"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "megahammer"
@@ -4155,7 +4154,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "4"
+	      "bonus_damage"      "1"
 	    }
 	  }
 	  
@@ -5425,7 +5424,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_simple_sword"
 	
-	  "ItemCost"            "30"
+	  "ItemCost"            "10"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "simple sword"
@@ -5435,7 +5434,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "10"
+	      "bonus_damage"      "6"
 	    }
 	  }
 	  
@@ -5462,7 +5461,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1"
+	  "ItemCost"            "9"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5482,7 +5481,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_hyperubersword"
 	
-	  "ItemCost"            "201"
+	  "ItemCost"            "50"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "common"
 	  "ItemAliases"         "hyperubersword"
@@ -5519,7 +5518,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "159"
+	  "ItemCost"            "39"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5539,7 +5538,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kladenets_sword"
 	
-	  "ItemCost"            "381"
+	  "ItemCost"            "200"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kladenets sword"
@@ -5577,14 +5576,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "180"
+	  "ItemCost"            "139"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_kladenets_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_hyperubersword;"
+	    "01"            "item_petri_megahammer;item_petri_simple_sword;item_petri_hyperubersword"
 	  }
 	}
 	
@@ -5597,7 +5596,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "931"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -5642,7 +5641,7 @@
 	  "ItemResult"          "item_petri_perfect_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_kladenets_sword"
+	    "01"            "item_petri_simple_sword;item_petri_hyperubersword;item_petri_kladenets_sword"
 	  }
 	}
 	
@@ -5700,7 +5699,7 @@
 	  "ItemResult"          "item_petri_titan_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_perfect_sword;"
+	    "01"            "item_petri_hyperubersword;item_petri_kladenets_sword;item_petri_perfect_sword;"
 	  }
 	}
 	
@@ -5758,7 +5757,7 @@
 	  "ItemResult"          "item_petri_magic_axe"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_titan_sword"
+	    "01"            "item_petri_kladenets_sword;item_petri_perfect_sword;item_petri_titan_sword"
 	  }
 	}
 	
@@ -5816,7 +5815,7 @@
 	  "ItemResult"          "item_petri_grond"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_magic_axe;"
+	    "01"            "item_petri_perfect_sword;item_petri_titan_sword;item_petri_magic_axe"
 	  }
 	}
 	
@@ -5874,7 +5873,7 @@
 	  "ItemResult"          "item_petri_thunder"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_grond;"
+	    "01"            "item_petri_titan_sword;item_petri_magic_axe;item_petri_grond;"
 	  }
 	}
 	
@@ -5932,7 +5931,7 @@
 	  "ItemResult"          "item_petri_trident"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_thunder"
+	    "01"            "item_petri_magic_axe;item_petri_grond;item_petri_thunder"
 	  }
 	}
 	"item_petri_trap"
