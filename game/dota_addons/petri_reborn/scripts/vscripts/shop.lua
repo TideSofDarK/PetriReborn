@@ -216,7 +216,6 @@ function GameMode:BuyItem(keys)
           cost = GameMode.ItemKVs[item].ItemCost
           confirm(buyer)
         elseif allItems or #toDelete == 0 then
-        if allItems then
           if confirm(buyer) then
             RemoveItems( hero, buyer, toDelete )
           end
