@@ -5,13 +5,13 @@
 
 #ShopWindow {
 	width: 420px;
-	height: 780px;
+	height: 675px;
 
 	background-color: #0F0F0FEB;
 
 	align: right center;
 
-	margin-bottom: 145px;
+	margin-bottom: 235px;
 
 	flow-children: down;
 
