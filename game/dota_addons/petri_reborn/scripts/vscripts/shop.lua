@@ -231,7 +231,7 @@ function GameMode:BuyItem(keys)
         if reallyAll then
           cost = GameMode.ItemKVs[item].ItemCost
           confirm(hero)
-        elseif allItems then
+        elseif allItems or #toDelete == 0 then
           if confirm(hero) then
             RemoveItems( hero, hero, toDelete )
           end
@@ -261,7 +261,7 @@ function GameMode:BuyItem(keys)
       if reallyAll then
         cost = GameMode.ItemKVs[item].ItemCost
         confirm("stash")
-      elseif allItems then
+      elseif allItems or #toDelete == 0 then
         if confirm("stash") then
           PrintTable(toDelete)
           RemoveItems( hero, "stash", toDelete )
