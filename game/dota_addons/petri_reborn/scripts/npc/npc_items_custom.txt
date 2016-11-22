@@ -943,10 +943,13 @@
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1502"
-	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_butt"
+	
+	  "AbilityCooldown"       "60"
+	  "AbilitySharedCooldown"         "heal"
 	
 	  "ItemCost"            "1"
 	  "ItemShopTags"          "health_pool"
@@ -959,6 +962,25 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_health"      "60"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "buff_duration"     "12"
+	    }
+	    "03"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "health_per_second"   "5"
+	    }
+	  }
+	
+	  "OnSpellStart"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"      "CASTER"
+	      "ModifierName"    "modifier_item_petri_butt_active"
 	    }
 	  }
 	  
@@ -973,6 +995,22 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	      }
+	    }
+	
+	    "modifier_item_petri_butt_active"
+	    {
+	      "Duration"                "%buff_duration"
+	      "Passive"         "0"
+	      "IsHidden"          "0"
+	      "IsBuff"          "1"
+	      "IsDebuff"          "0"
+	      "IsPurgable"        "1"
+	      "TextureName"       "item_petri_butt"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
 	      }
 	    }
 	  }
@@ -5628,6 +5666,24 @@
 	  }
 	}
 	
+	"item_recipe_petri_simple_sword"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1519"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "9"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_simple_sword"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_megahammer"
+	  }
+	}
+	
 	
 	"item_petri_hyperubersword"
 	{
@@ -5675,14 +5731,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "39"
+	  "ItemCost"            "20"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_hyperubersword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_simple_sword;item_petri_megahammer"
+	    "01"            "item_petri_simple_sword;item_petri_simple_sword;item_petri_simple_sword;"
 	  }
 	}
 	
@@ -5733,14 +5789,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "189"
+	  "ItemCost"            "100"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_kladenets_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_megahammer;item_petri_simple_sword;item_petri_hyperubersword"
+	    "01"            "item_petri_hyperubersword;item_petri_hyperubersword;item_petri_hyperubersword"
 	  }
 	}
 	
@@ -5791,14 +5847,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "940"
+	  "ItemCost"            "500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_perfect_sword"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_simple_sword;item_petri_hyperubersword;item_petri_kladenets_sword"
+	    "01"            "item_petri_kladenets_sword;item_petri_kladenets_sword;item_petri_kladenets_sword"
 	  }
 	}
 	

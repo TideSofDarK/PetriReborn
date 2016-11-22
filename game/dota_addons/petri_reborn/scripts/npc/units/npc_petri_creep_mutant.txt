@@ -1,31 +1,30 @@
-"npc_petri_creep_draconoid"
+"npc_petri_creep_mutant"
 {
   "BaseClass"         "npc_dota_creature"
-  "Model"           "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl"
-  "ModelScale"        "0.40"
-  "SoundSet"          "Creep_Good_Range"
-  "Level"           "8"
-  "HealthBarOffset"     "160"
+  "Model"           "models/heroes/faceless_void/faceless_void.vmdl"
+  "ModelScale"        "1.1"
+  "Level"           "9"
+  "HealthBarOffset"     "140"
 
   "vscripts"     "units/creep.lua"
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "80"
+  "ArmorPhysical"       "20"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "512159.33"
-  "AttackDamageMax"     "792682.01"
+  "AttackDamageMin"     "14011.10"
+  "AttackDamageMax"     "155200.0"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "61.0"
-  "BountyGoldMax"       "64.0"
-  "BountyXP"          "200"  
+  "BountyGoldMin"       "41.0"
+  "BountyGoldMax"       "43.0"
+  "BountyXP"          "70"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -34,7 +33,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "10172"
+  "StatusHealth"        "7700"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -46,4 +45,18 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+  "Creature"
+  {
+    "DisableClumpingBehavior"  "1"
+
+    "AttachWearables"
+    {
+      "Wearable1" { "ItemDef" "90" }
+      "Wearable1" { "ItemDef" "5381" }
+      "Wearable1" { "ItemDef" "5382" }
+      "Wearable1" { "ItemDef" "5383" }
+      "Wearable1" { "ItemDef" "5384" }
+    }
+  }
 }

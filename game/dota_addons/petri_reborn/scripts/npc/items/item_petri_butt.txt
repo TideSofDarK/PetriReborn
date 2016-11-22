@@ -2,10 +2,13 @@
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1502"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_butt"
+
+  "AbilityCooldown"       "60"
+  "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "1"
   "ItemShopTags"          "health_pool"
@@ -18,6 +21,25 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_health"      "60"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "buff_duration"     "12"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "health_per_second"   "5"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_butt_active"
     }
   }
   
@@ -32,6 +54,22 @@
       "Properties"
       {
         "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+
+    "modifier_item_petri_butt_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "1"
+      "TextureName"       "item_petri_butt"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
       }
     }
   }

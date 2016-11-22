@@ -37,6 +37,24 @@
   }
 }
 
+"item_recipe_petri_simple_sword"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1519"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "9"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_simple_sword"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_megahammer"
+  }
+}
+
 
 "item_petri_hyperubersword"
 {
@@ -84,14 +102,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "39"
+  "ItemCost"            "20"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_hyperubersword"
   "ItemRequirements"
   {
-    "01"            "item_petri_simple_sword;item_petri_megahammer"
+    "01"            "item_petri_simple_sword;item_petri_simple_sword;item_petri_simple_sword;"
   }
 }
 
@@ -142,14 +160,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "189"
+  "ItemCost"            "100"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_kladenets_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_megahammer;item_petri_simple_sword;item_petri_hyperubersword"
+    "01"            "item_petri_hyperubersword;item_petri_hyperubersword;item_petri_hyperubersword"
   }
 }
 
@@ -200,14 +218,14 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "940"
+  "ItemCost"            "500"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
   "ItemResult"          "item_petri_perfect_sword"
   "ItemRequirements"
   {
-    "01"            "item_petri_simple_sword;item_petri_hyperubersword;item_petri_kladenets_sword"
+    "01"            "item_petri_kladenets_sword;item_petri_kladenets_sword;item_petri_kladenets_sword"
   }
 }
 

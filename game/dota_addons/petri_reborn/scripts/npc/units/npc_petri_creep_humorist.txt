@@ -3,7 +3,7 @@
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"
   "ModelScale"        "1.1"
-  "Level"           "5"
+  "Level"           "7"
   "HealthBarOffset"     "140"
 
   "vscripts"     "units/creep.lua"

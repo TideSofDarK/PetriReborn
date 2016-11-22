@@ -1,7 +1,7 @@
-"npc_petri_creep_draconoid"
+"npc_petri_creep_draconoid2"
 {
   "BaseClass"         "npc_dota_creature"
-  "Model"           "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_small.vmdl"
+  "Model"           "models/creeps/neutral_creeps/n_creep_thunder_lizard/n_creep_thunder_lizard_big.vmdl"
   "ModelScale"        "0.40"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "8"
