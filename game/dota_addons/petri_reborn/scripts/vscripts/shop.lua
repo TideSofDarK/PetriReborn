@@ -4,6 +4,8 @@ end
 
 CUSTOM_SHOP_STOCK = {}
 
+chicks = {}
+
 function Shop:Init()
   for k,v in pairs(GameMode.ItemKVs) do
     local itemName = k
@@ -93,6 +95,8 @@ function GameMode:BuyItem(keys)
   local hero = EntIndexToHScript(tonumber(keys.hero))
   local buyer = EntIndexToHScript(tonumber(keys.buyer))
 
+  hero.tempShopInstance = {}
+
   local tmp = {}
 
   local toBuy, toDelete = GetItemList( hero, item, tmp )
@@ -105,8 +109,10 @@ function GameMode:BuyItem(keys)
     end
   end
 
-  -- PrintTable(toBuy)
-  -- PrintTable(toDelete)
+  chicks = Entities:FindAllByName("npc_dota_courier") or {}
+
+  PrintTable(toBuy)
+  PrintTable(toDelete)
 
   -- for i=0,5 do
   --   local it = hero:GetItemInSlot(i)
@@ -137,10 +143,17 @@ function GameMode:BuyItem(keys)
   end
 
   local function confirmParts(target)
+    local newCost = 0
     for k,v in pairs(toBuy) do
-      if v ~= "" and CheckStock( v, hero ) then
-        local partCost = GameMode.ItemKVs[v].ItemCost
-        if partCost <= GetCustomGold( hero:GetPlayerID() ) then
+      if v ~= "" and GameMode.ItemKVs[v] and CheckStock( v, hero ) then
+        newCost = newCost + GameMode.ItemKVs[v].ItemCost
+      end
+    end
+
+    if newCost <= GetCustomGold( hero:GetPlayerID() ) then
+      for k,v in pairs(toBuy) do
+        if v ~= "" and CheckStock( v, hero ) then
+          local partCost = GameMode.ItemKVs[v].ItemCost
           SpendCustomGold( pID, partCost )
 
           if target == "stash" then
@@ -158,6 +171,9 @@ function GameMode:BuyItem(keys)
           end
         end
       end
+    else
+      Notifications:Bottom(hero:GetPlayerOwner(), {text="#dota_hud_error_not_enough_gold", duration=1, style={color="red", ["font-size"]="50px", border="0px solid blue"}})
+      return false
     end
   end
 
@@ -216,9 +232,9 @@ function GameMode:BuyItem(keys)
           cost = GameMode.ItemKVs[item].ItemCost
           confirm(hero)
         elseif allItems then
-            if confirm(hero) then
-              RemoveItems( hero, hero, toDelete )
-            end
+          if confirm(hero) then
+            RemoveItems( hero, hero, toDelete )
+          end
         else
           confirmParts(hero)
         end
@@ -255,6 +271,8 @@ function GameMode:BuyItem(keys)
       end
     end
   end
+
+  hero.tempShopInstance = nil
 end
 
 function RemoveItems( hero, c, t )
@@ -276,8 +294,6 @@ function RemoveItems( hero, c, t )
     r( hero, t, stashMin, stashMax )
     return
   elseif IsValidEntity(c) and c.SwapItems then
-    local chicks = Entities:FindAllByName("npc_dota_courier")
-
     for k,v in pairs(chicks) do
       if IsValidEntity(v) and v:GetTeamNumber() == hero:GetTeamNumber() then
         r( v, t, 0, 5 )
@@ -292,6 +308,8 @@ end
 
 function GetItemList( hero, item, t, t2 )
   if CheckForItem(hero, item) and not t then
+    print("checking for: ", item)
+    hero.tempShopInstance[item] = hero.tempShopInstance[item] + 1
     return {}, { [1] = item }
   end
   if string.match(item, "recipe_") then return { [1] = item }, {} end
@@ -361,8 +379,6 @@ function CheckShopRangeAll( hero )
     return true
   end
 
-  local chicks = Entities:FindAllByName("npc_dota_courier")
-
   for k,v in pairs(chicks) do
     if trigger:IsTouching(v) then
       return true
@@ -373,21 +389,30 @@ function CheckShopRangeAll( hero )
 end
 
 function CheckForItem(hero, item)
+  hero.tempShopInstance[item] = hero.tempShopInstance[item] or 0 
+  
+  local current = 0
+
   for i=0,11 do
     local it = hero:GetItemInSlot(i)
     if it and it:GetName() == item then
-      return hero
+      current = current + 1
+      print(item)
+      if current > hero.tempShopInstance[item] then
+        return hero
+      end
     end
   end
-
-  local chicks = Entities:FindAllByName("npc_dota_courier")
 
   for k,v in pairs(chicks) do
     if IsValidEntity(v) and v:GetTeamNumber() == hero:GetTeamNumber() then
       for i=0,5 do
         local it = v:GetItemInSlot(i)
         if it and it:GetName() == item then
-          return v
+          current = current + 1
+          if current > hero.tempShopInstance[item] then
+            return v
+          end
         end
       end
     end
