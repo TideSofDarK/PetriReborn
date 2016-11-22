@@ -194,14 +194,28 @@ function GameMode:BuyItem(keys)
   else
     if CheckShopRange( buyer ) then
       if IsValidEntity(buyer) and buyer:GetUnitName() == "npc_dota_courier" then
-        local allItems = true
+        local allItems = false
         for k,v in pairs(toDelete) do
           if CheckStash(hero, v) == false then
             allItems = false
             break
+          else
+            allItems = true
           end
         end
 
+        local reallyAll = true
+        for k,v in pairs(toBuy) do
+          if v ~= "" then
+            reallyAll = false
+            break
+          end
+        end
+
+        if reallyAll then
+          cost = GameMode.ItemKVs[item].ItemCost
+          confirm(buyer)
+        elseif allItems or #toDelete == 0 then
         if allItems then
           if confirm(buyer) then
             RemoveItems( hero, buyer, toDelete )
@@ -212,7 +226,7 @@ function GameMode:BuyItem(keys)
       else
         local allItems = false
         for k,v in pairs(toDelete) do
-          if CheckStash(hero, v) == false then
+          if CheckRange(hero, v, 0, 11) == false then
             allItems = false
             break
           else
@@ -263,7 +277,6 @@ function GameMode:BuyItem(keys)
         confirm("stash")
       elseif allItems or #toDelete == 0 then
         if confirm("stash") then
-          PrintTable(toDelete)
           RemoveItems( hero, "stash", toDelete )
         end
       else
@@ -286,7 +299,7 @@ function RemoveItems( hero, c, t )
       end
     end
   end
-
+  PrintTable(t)
   if c == "stash" then
     local stashMin = 6
     local stashMax = 11
@@ -294,10 +307,14 @@ function RemoveItems( hero, c, t )
     r( hero, t, stashMin, stashMax )
     return
   elseif IsValidEntity(c) and c.SwapItems then
-    for k,v in pairs(chicks) do
-      if IsValidEntity(v) and v:GetTeamNumber() == hero:GetTeamNumber() then
-        r( v, t, 0, 5 )
-        return
+    if c:IsRealHero() then
+      r( c, t, 0, 11 )
+    else
+      for k,v in pairs(chicks) do
+        if IsValidEntity(v) and v:GetTeamNumber() == hero:GetTeamNumber() then
+          r( v, t, 0, 5 )
+          return
+        end
       end
     end
   elseif c == "inventory" then
