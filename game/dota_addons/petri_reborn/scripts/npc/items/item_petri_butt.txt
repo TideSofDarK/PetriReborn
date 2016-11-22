@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_butt"
 
-  "ItemCost"            "10"
+  "ItemCost"            "1"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
   "ItemAliases"         "butt"
@@ -34,5 +34,62 @@
         "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
       }
     }
+  }
+}
+
+"item_petri_butt2"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1197"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_butt2"
+
+  "ItemCost"            "5"
+  "ItemShopTags"          "health_pool"
+  "ItemQuality"         "component"
+  "ItemAliases"         "butt"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_health"      "250"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_butt_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_butt2"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1198"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "4"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_butt2"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_butt;"
   }
 }

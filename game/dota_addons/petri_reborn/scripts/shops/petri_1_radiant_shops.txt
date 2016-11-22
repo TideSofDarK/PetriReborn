@@ -33,35 +33,38 @@
 
   "basics"
   {
-    "item1"    "item_petri_bracer"
-    "item2"    "item_petri_zirconia_armor"
-    "item3"    "item_petri_uber_mask_of_laugh"
-    "item4"    "item_petri_uber_mask_of_laugh_level2"
-    "item5"    "item_petri_uber_mask_of_laugh_level3"
-    "item6"    "item_petri_uber_mask_of_laugh_level4"
-    "item7"    "item_petri_jedi"
+    "item1"    "item_petri_tourmaline_patch"
+    "item2"    "item_petri_jade_amulet"
+    "item3"    "item_petri_bracer"
+    "item4"    "item_petri_zirconia_armor"
+    "item5"    "item_petri_uber_mask_of_laugh"
+    "item6"    "item_petri_uber_mask_of_laugh_level2"
+    "item7"    "item_petri_uber_mask_of_laugh_level3"
+    "item8"    "item_petri_uber_mask_of_laugh_level4"
+    "item9"    "item_petri_jedi"
   }
 
   "support"
   {
-    "item1"    "item_petri_chicken"
-    "item2"    "item_petri_cow"
-    "item3"    "item_petri_dragon"
-    "item4"    "item_petri_kvn_heart"
+    "item1"    "item_petri_butt"
+    "item2"    "item_petri_butt2"
+    "item3"    "item_petri_chicken"
+    "item4"    "item_petri_cow"
+    "item5"    "item_petri_dragon"
+    "item6"    "item_petri_kvn_heart"
   }
 
   "magics"
   {
-    "item1"    "item_petri_megahammer"
-    "item2"    "item_petri_simple_sword"
-    "item3"    "item_petri_hyperubersword"
-    "item4"    "item_petri_kladenets_sword"
-    "item5"    "item_petri_perfect_sword"
-    "item6"    "item_petri_titan_sword"
-    "item7"    "item_petri_magic_axe"
-    "item8"    "item_petri_grond"
-    "item9"    "item_petri_thunder"
-    "item10"    "item_petri_trident"
+    "item1"    "item_petri_simple_sword"
+    "item2"    "item_petri_hyperubersword"
+    "item3"    "item_petri_kladenets_sword"
+    "item4"    "item_petri_perfect_sword"
+    "item5"    "item_petri_titan_sword"
+    "item6"    "item_petri_magic_axe"
+    "item7"    "item_petri_grond"
+    "item8"    "item_petri_thunder"
+    "item9"    "item_petri_trident"
   }
 
   "defense"
@@ -117,4 +120,4 @@
   {
     "item1"    "item_petri_hook"
   }
-}
+} 

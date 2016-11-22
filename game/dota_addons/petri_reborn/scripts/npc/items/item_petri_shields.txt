@@ -51,7 +51,7 @@
   "ItemResult"          "item_petri_shield_of_nature"
   "ItemRequirements"
   {
-    "01"            "item_petri_superthing;"
+    "01"            "item_petri_supermegavest;item_petri_superthing;"
   }
 }
 
@@ -108,7 +108,7 @@
   "ItemResult"          "item_petri_shield_of_hell"
   "ItemRequirements"
   {
-    "01"            "item_petri_shield_of_nature;"
+    "01"            "item_petri_superthing;item_petri_shield_of_nature;"
   }
 }
 
@@ -165,7 +165,7 @@
   "ItemResult"          "item_petri_shield_of_heaven"
   "ItemRequirements"
   {
-    "01"            "item_petri_shield_of_hell;"
+    "01"            "item_petri_shield_of_nature;item_petri_shield_of_hell;"
   }
 }
 

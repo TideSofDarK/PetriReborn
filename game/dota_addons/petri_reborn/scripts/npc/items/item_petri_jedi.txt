@@ -42,7 +42,7 @@
     "03"
     {
       "var_type"                    "FIELD_INTEGER"
-      "bonus_all_stats"             "55"
+      "bonus_all_stats"             "475"
     }
     "04"
     {
@@ -284,7 +284,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "56000"
+  "ItemCost"            "100000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

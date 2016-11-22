@@ -783,14 +783,14 @@
 	    }
 	  }
 	}
-	"item_petri_bracer"
+	"item_petri_tourmaline_patch"
 	{
 	  "BaseClass"           "item_datadriven"
-	  "ID"              "1500"
+	  "ID"              "1120"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_bracer"
+	  "AbilityTextureName"      "item_petri_tourmaline_patch"
 	
 	  "ItemCost"            "60"
 	  "ItemShopTags"          "agi;int;str"
@@ -822,6 +822,123 @@
 	    }
 	  }
 	}
+	
+	"item_petri_jade_amulet"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1121"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_jade_amulet"
+	
+	  "ItemCost"            "200"
+	  "ItemShopTags"          "agi;int;str"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "bracer"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"    "50"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_passive_stats"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "0"
+	      "IsBuff"      "1"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_jade_amulet"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1122"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "140"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_jade_amulet"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_tourmaline_patch;"
+	  }
+	}
+	
+	"item_petri_bracer"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1123"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_bracer"
+	
+	  "ItemCost"            "500"
+	  "ItemShopTags"          "agi;int;str"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "bracer"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_all_stats"    "100"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_passive_stats"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "0"
+	      "IsBuff"      "1"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+	      }
+	    }
+	  }
+	}
+	
+	
+	"item_recipe_petri_bracer"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1521"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "300"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_bracer"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_jade_amulet;"
+	  }
+	}
 	"item_petri_butt"
 	{
 	  "BaseClass"           "item_datadriven"
@@ -831,7 +948,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_butt"
 	
-	  "ItemCost"            "10"
+	  "ItemCost"            "1"
 	  "ItemShopTags"          "health_pool"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "butt"
@@ -858,6 +975,63 @@
 	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
 	      }
 	    }
+	  }
+	}
+	
+	"item_petri_butt2"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1197"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_butt2"
+	
+	  "ItemCost"            "5"
+	  "ItemShopTags"          "health_pool"
+	  "ItemQuality"         "component"
+	  "ItemAliases"         "butt"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "bonus_health"      "250"
+	    }
+	  }
+	  
+	  "Modifiers"
+	  {
+	    "modifier_item_petri_butt_datadriven"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+	      }
+	    }
+	  }
+	}
+	
+	"item_recipe_petri_butt2"
+	{
+	  "BaseClass"           "item_datadriven"
+	  "ID"              "1198"
+	  "Model" "models/props_gameplay/recipe.mdl"
+	  "AbilityTextureName"      "item_recipe"
+	
+	  "ItemCost"            "4"
+	  "ItemShopTags"          ""
+	
+	  "ItemRecipe"          "1"
+	  "ItemResult"          "item_petri_butt2"
+	  "ItemRequirements"
+	  {
+	    "01"            "item_petri_butt;"
 	  }
 	}
 	"item_petri_candy"
@@ -3299,7 +3473,7 @@
 	    "03"
 	    {
 	      "var_type"                    "FIELD_INTEGER"
-	      "bonus_all_stats"             "55"
+	      "bonus_all_stats"             "475"
 	    }
 	    "04"
 	    {
@@ -3541,7 +3715,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "56000"
+	  "ItemCost"            "100000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5178,7 +5352,7 @@
 	  "ItemResult"          "item_petri_shield_of_nature"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_superthing;"
+	    "01"            "item_petri_supermegavest;item_petri_superthing;"
 	  }
 	}
 	
@@ -5235,7 +5409,7 @@
 	  "ItemResult"          "item_petri_shield_of_hell"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_shield_of_nature;"
+	    "01"            "item_petri_superthing;item_petri_shield_of_nature;"
 	  }
 	}
 	
@@ -5292,7 +5466,7 @@
 	  "ItemResult"          "item_petri_shield_of_heaven"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_shield_of_hell;"
+	    "01"            "item_petri_shield_of_nature;item_petri_shield_of_hell;"
 	  }
 	}
 	
@@ -5454,23 +5628,6 @@
 	  }
 	}
 	
-	"item_recipe_petri_simple_sword"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1519"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_recipe"
-	
-	  "ItemCost"            "9"
-	  "ItemShopTags"          ""
-	
-	  "ItemRecipe"          "1"
-	  "ItemResult"          "item_petri_simple_sword"
-	  "ItemRequirements"
-	  {
-	    "01"            "item_petri_megahammer"
-	  }
-	}
 	
 	"item_petri_hyperubersword"
 	{
@@ -5538,7 +5695,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kladenets_sword"
 	
-	  "ItemCost"            "200"
+	  "ItemCost"            "250"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kladenets sword"
@@ -5548,7 +5705,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "50"
+	      "bonus_damage"      "100"
 	    }
 	  }
 	  
@@ -5576,7 +5733,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "139"
+	  "ItemCost"            "189"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5596,7 +5753,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "1250"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -5606,7 +5763,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "145"
+	      "bonus_damage"      "500"
 	    }
 	  }
 	  
@@ -5634,7 +5791,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "550"
+	  "ItemCost"            "940"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5654,7 +5811,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_titan_sword"
 	
-	  "ItemCost"            "1521"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "titan sword"
@@ -5664,7 +5821,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "430"
+	      "bonus_damage"      "2000"
 	    }
 	  }
 	  
@@ -5692,7 +5849,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "590"
+	  "ItemCost"            "3450"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5712,7 +5869,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_magic_axe"
 	
-	  "ItemCost"            "2321"
+	  "ItemCost"            "12500"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "magic axe"
@@ -5722,7 +5879,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "2200"
+	      "bonus_damage"      "5000"
 	    }
 	  }
 	  
@@ -5750,7 +5907,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "800"
+	  "ItemCost"            "6000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5770,7 +5927,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_grond"
 	
-	  "ItemCost"            "5321"
+	  "ItemCost"            "50000"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "grond"
@@ -5780,7 +5937,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_damage"      "5100"
+	      "bonus_damage"      "20000"
 	    }
 	  }
 	  
@@ -5808,7 +5965,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "3000"
+	  "ItemCost"            "31250"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5997,7 +6154,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "500"
+	  "ItemCost"            "3000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -6017,7 +6174,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "25"
+	      "bonus_all_stats"   "250"
 	    }
 	    "04"
 	    {
@@ -6055,7 +6212,6 @@
 	
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
 	      }
@@ -6155,14 +6311,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "339"
+	  "ItemCost"            "1500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_uber_mask_of_laugh"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_mask_of_laugh;item_petri_butt;item_petri_zirconia_armor"
+	    "01"            "item_petri_mask_of_laugh;item_petri_zirconia_armor"
 	  }
 	}
 	
@@ -6178,7 +6334,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "1500"
+	  "ItemCost"            "7500"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -6198,7 +6354,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "40"
+	      "bonus_all_stats"   "300"
 	    }
 	    "04"
 	    {
@@ -6236,7 +6392,6 @@
 	
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
 	      }
@@ -6336,7 +6491,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "4500"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6359,7 +6514,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "5000"
+	  "ItemCost"            "27500"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -6379,7 +6534,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "45"
+	      "bonus_all_stats"   "350"
 	    }
 	    "04"
 	    {
@@ -6517,7 +6672,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "3500"
+	  "ItemCost"            "20000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6540,7 +6695,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "15000"
+	  "ItemCost"            "77500"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -6560,7 +6715,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"   "50"
+	      "bonus_all_stats"   "425"
 	    }
 	    "04"
 	    {
@@ -6698,7 +6853,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "10000"
+	  "ItemCost"            "50000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6816,7 +6971,7 @@
 	  "ItemResult"          "item_petri_supervest"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_vest;"
+	    "01"            "item_petri_helmet;item_petri_vest;"
 	  }
 	}
 	
@@ -6872,7 +7027,7 @@
 	  "ItemResult"          "item_petri_supermegavest"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_supervest;"
+	    "01"            "item_petri_vest;item_petri_supervest;"
 	  }
 	}
 	
@@ -6928,7 +7083,7 @@
 	  "ItemResult"          "item_petri_superthing"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_supermegavest"
+	    "01"            "item_petri_supervest;item_petri_supermegavest"
 	  }
 	}
 	"item_petri_vip_frostbite"
@@ -8169,7 +8324,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_zirconia_armor"
 	
-	  "ItemCost"            "150"
+	  "ItemCost"            "1500"
 	  "ItemShopTags"          "agi;int;str"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "bracer"
@@ -8179,12 +8334,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_all_stats"    "15"
-	    }
-	    "02"
-	    {
-	      "var_type"        "FIELD_INTEGER"
-	      "bonus_armor"      "0"
+	      "bonus_all_stats"    "200"
 	    }
 	  }
 	  
@@ -8198,11 +8348,8 @@
 	      
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
 	        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
-	
-	        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
 	      }
 	    }
 	  }
@@ -8215,7 +8362,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "100"
+	  "ItemCost"            "1000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

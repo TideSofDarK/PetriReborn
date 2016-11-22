@@ -106,7 +106,7 @@
   "ItemResult"          "item_petri_supervest"
   "ItemRequirements"
   {
-    "01"            "item_petri_vest;"
+    "01"            "item_petri_helmet;item_petri_vest;"
   }
 }
 
@@ -162,7 +162,7 @@
   "ItemResult"          "item_petri_supermegavest"
   "ItemRequirements"
   {
-    "01"            "item_petri_supervest;"
+    "01"            "item_petri_vest;item_petri_supervest;"
   }
 }
 
@@ -218,6 +218,6 @@
   "ItemResult"          "item_petri_superthing"
   "ItemRequirements"
   {
-    "01"            "item_petri_supermegavest"
+    "01"            "item_petri_supervest;item_petri_supermegavest"
   }
 }

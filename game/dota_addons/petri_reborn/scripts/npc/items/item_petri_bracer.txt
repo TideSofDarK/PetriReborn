@@ -1,11 +1,11 @@
-"item_petri_bracer"
+"item_petri_tourmaline_patch"
 {
   "BaseClass"           "item_datadriven"
-  "ID"              "1500"
+  "ID"              "1120"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_bracer"
+  "AbilityTextureName"      "item_petri_tourmaline_patch"
 
   "ItemCost"            "60"
   "ItemShopTags"          "agi;int;str"
@@ -35,5 +35,122 @@
         "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
       }
     }
+  }
+}
+
+"item_petri_jade_amulet"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1121"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_jade_amulet"
+
+  "ItemCost"            "200"
+  "ItemShopTags"          "agi;int;str"
+  "ItemQuality"         "component"
+  "ItemAliases"         "bracer"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"    "50"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_passive_stats"
+    {
+      "Passive"     "1"
+      "IsHidden"      "0"
+      "IsBuff"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_jade_amulet"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1122"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "140"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_jade_amulet"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_tourmaline_patch;"
+  }
+}
+
+"item_petri_bracer"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1123"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_bracer"
+
+  "ItemCost"            "500"
+  "ItemShopTags"          "agi;int;str"
+  "ItemQuality"         "component"
+  "ItemAliases"         "bracer"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_all_stats"    "100"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_passive_stats"
+    {
+      "Passive"     "1"
+      "IsHidden"      "0"
+      "IsBuff"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
+        "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+  }
+}
+
+
+"item_recipe_petri_bracer"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1521"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "300"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_bracer"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_jade_amulet;"
   }
 }

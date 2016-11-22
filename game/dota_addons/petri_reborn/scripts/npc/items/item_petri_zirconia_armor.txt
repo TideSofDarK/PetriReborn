@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_zirconia_armor"
 
-  "ItemCost"            "150"
+  "ItemCost"            "1500"
   "ItemShopTags"          "agi;int;str"
   "ItemQuality"         "component"
   "ItemAliases"         "bracer"
@@ -17,12 +17,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_all_stats"    "15"
-    }
-    "02"
-    {
-      "var_type"        "FIELD_INTEGER"
-      "bonus_armor"      "0"
+      "bonus_all_stats"    "200"
     }
   }
   
@@ -36,11 +31,8 @@
       
       "Properties"
       {
-        "MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"    "%bonus_all_stats"
         "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
         "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
-
-        "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"    "%bonus_armor"
       }
     }
   }
@@ -53,7 +45,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "100"
+  "ItemCost"            "1000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

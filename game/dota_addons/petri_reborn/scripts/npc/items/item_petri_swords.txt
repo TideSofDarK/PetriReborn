@@ -37,23 +37,6 @@
   }
 }
 
-"item_recipe_petri_simple_sword"
-{
-  "BaseClass"           "item_datadriven"
-  "ID"              "1519"
-  "Model" "models/props_gameplay/recipe.mdl"
-  "AbilityTextureName"      "item_recipe"
-
-  "ItemCost"            "9"
-  "ItemShopTags"          ""
-
-  "ItemRecipe"          "1"
-  "ItemResult"          "item_petri_simple_sword"
-  "ItemRequirements"
-  {
-    "01"            "item_petri_megahammer"
-  }
-}
 
 "item_petri_hyperubersword"
 {
@@ -121,7 +104,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kladenets_sword"
 
-  "ItemCost"            "200"
+  "ItemCost"            "250"
   "ItemShopTags"          "damage"
   "ItemQuality"         "component"
   "ItemAliases"         "kladenets sword"
@@ -131,7 +114,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "50"
+      "bonus_damage"      "100"
     }
   }
   
@@ -159,7 +142,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "139"
+  "ItemCost"            "189"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -179,7 +162,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_perfect_sword"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "1250"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "perfect sword"
@@ -189,7 +172,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "145"
+      "bonus_damage"      "500"
     }
   }
   
@@ -217,7 +200,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "550"
+  "ItemCost"            "940"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -237,7 +220,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_titan_sword"
 
-  "ItemCost"            "1521"
+  "ItemCost"            "5000"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "titan sword"
@@ -247,7 +230,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "430"
+      "bonus_damage"      "2000"
     }
   }
   
@@ -275,7 +258,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "590"
+  "ItemCost"            "3450"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -295,7 +278,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_magic_axe"
 
-  "ItemCost"            "2321"
+  "ItemCost"            "12500"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "magic axe"
@@ -305,7 +288,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "2200"
+      "bonus_damage"      "5000"
     }
   }
   
@@ -333,7 +316,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "800"
+  "ItemCost"            "6000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -353,7 +336,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_grond"
 
-  "ItemCost"            "5321"
+  "ItemCost"            "50000"
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "grond"
@@ -363,7 +346,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "bonus_damage"      "5100"
+      "bonus_damage"      "20000"
     }
   }
   
@@ -391,7 +374,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "3000"
+  "ItemCost"            "31250"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
