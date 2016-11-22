@@ -7,6 +7,8 @@
   "HealthBarOffset"     "140"
   "GameSoundsFile"      "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 
+  "HasInventory"                "1"
+
   "vscripts"     "units/creep.lua"
 
   "ArmorPhysical"       "0"
