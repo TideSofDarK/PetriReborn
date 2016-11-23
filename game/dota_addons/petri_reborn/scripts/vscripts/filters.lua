@@ -242,7 +242,7 @@ function GameMode:FilterExecuteOrder( filterTable )
 
       if item and item.purchaseTime and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
         print(GameMode.ItemKVs[item:GetName()].ItemSellFullPrice)
-        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == "1" then
+        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == 1 then
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost) )
         else
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost / 2))
