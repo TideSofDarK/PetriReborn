@@ -303,7 +303,20 @@ function CheckSolo( keys )
 			v:GetUnitName() == "npc_petri_creep_dead_actor" or
 			v:GetUnitName() == "npc_petri_creep_draconoid" or
 			v:GetUnitName() == "npc_petri_creep_good_actor" or
+			v:GetUnitName() == "npc_petri_creep_draconoid2" or
 			v:GetUnitName() == "npc_petri_creep_humorist" or
+			v:GetUnitName() == "npc_petri_creep_petro_assistant" or
+			v:GetUnitName() == "npc_petri_creep_fat_troll" or
+			v:GetUnitName() == "npc_petri_creep_mutant" or
+			v:GetUnitName() == "npc_petri_creep_special1" or
+			v:GetUnitName() == "npc_petri_creep_special2" or
+			v:GetUnitName() == "npc_petri_creep_special3" or
+			v:GetUnitName() == "npc_petri_creep_special4" or
+			v:GetUnitName() == "npc_petri_creep_special5" or
+			v:GetUnitName() == "npc_petri_creep_special6" or
+			v:GetUnitName() == "npc_petri_creep_special7" or
+			v:GetUnitName() == "npc_petri_creep_special8" or
+			v:GetUnitName() == "npc_petri_creep_special9" or
 			v:GetUnitName() == "npc_petri_creep_kivin" or
 			v:GetUnitName() == "npc_dota_hero_storm_spirit" then
 			return
@@ -321,34 +334,34 @@ function CheckSolo( keys )
 		local multiplier
 
 		if time >= 36 and time < 60 then
-			limit = 92000
+			limit = 0
 			multiplier = 90
 		elseif time >= 32 and time < 36 then
-			limit = 70000
+			limit = 0
 			multiplier = 85
 		elseif time >= 28 and time < 32 then
-			limit = 57500
+			limit = 0
 			multiplier = 75
 		elseif time >= 24 and time < 28 then
-			limit = 30000
+			limit = 0
 			multiplier = 60
 		elseif time >= 20 and time < 24 then
-			limit = 25000
+			limit = 0
 			multiplier = 50
 		elseif time >= 16 and time < 20 then
-			limit = 10000
+			limit = 0
 			multiplier = 50
 		elseif time >= 12 and time < 16 then
-			limit = 5100
+			limit = 0
 			multiplier = 50
 		elseif time >= 8 and time < 12 then
-			limit = 250
+			limit = 0
 			multiplier = 45
 		elseif time >= 4 and time < 8 then
-			limit = 175
+			limit = 0
 			multiplier = 40
 		else 
-			limit = 50
+			limit = 0
 			multiplier = 30
 		end
 

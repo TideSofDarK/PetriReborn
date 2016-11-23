@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_butt"
 
-  "AbilityCooldown"       "60"
+  "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "1"
@@ -25,12 +25,12 @@
     "02"
     {
       "var_type"        "FIELD_INTEGER"
-      "buff_duration"     "12"
+      "buff_duration"     "5"
     }
     "03"
     {
       "var_type"        "FIELD_FLOAT"
-      "health_per_second"   "5"
+      "health_per_second"   "15"
     }
   }
 
@@ -65,7 +65,6 @@
       "IsBuff"          "1"
       "IsDebuff"          "0"
       "IsPurgable"        "1"
-      "TextureName"       "item_petri_butt"
       
       "Properties"
       {
@@ -79,12 +78,15 @@
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1197"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_butt2"
 
-  "ItemCost"            "5"
+  "AbilityCooldown"       "75"
+  "AbilitySharedCooldown"         "heal"
+
+  "ItemCost"            "10"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
   "ItemAliases"         "butt"
@@ -96,11 +98,30 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_health"      "250"
     }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "buff_duration"     "10"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "health_per_second"   "30"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_butt2_active"
+    }
   }
   
   "Modifiers"
   {
-    "modifier_item_petri_butt_datadriven"
+    "modifier_item_petri_butt2_datadriven"
     {
       "Passive"     "1"
       "IsHidden"      "1"
@@ -109,6 +130,21 @@
       "Properties"
       {
         "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+
+    "modifier_item_petri_butt2_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
       }
     }
   }
@@ -121,7 +157,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "4"
+  "ItemCost"            "9"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -129,5 +165,99 @@
   "ItemRequirements"
   {
     "01"            "item_petri_butt;"
+  }
+}
+
+"item_petri_butt3"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1199"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_butt3"
+
+  "AbilityCooldown"       "60"
+  "AbilitySharedCooldown"         "heal"
+
+  "ItemCost"            "200"
+  "ItemShopTags"          "health_pool"
+  "ItemQuality"         "component"
+  "ItemAliases"         "butt"
+
+  "AbilitySpecial"
+  {
+    "01"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "bonus_health"      "750"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "buff_duration"     "12"
+    }
+    "03"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "health_per_second"   "75"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_butt3_active"
+    }
+  }
+  
+  "Modifiers"
+  {
+    "modifier_item_petri_butt3_datadriven"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      "Attributes"    "MODIFIER_ATTRIBUTE_MULTIPLE"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_BONUS"    "%bonus_health"
+      }
+    }
+
+    "modifier_item_petri_butt3_active"
+    {
+      "Duration"                "%buff_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%health_per_second"
+      }
+    }
+  }
+}
+
+"item_recipe_petri_butt3"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1200"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "190"
+  "ItemShopTags"          ""
+
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_butt3"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_butt2;"
   }
 }

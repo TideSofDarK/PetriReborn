@@ -1,4 +1,4 @@
-"npc_petri_creep_bad_actor"
+"npc_petri_creep_bad_actor_arena_helper"
 {
   "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"

@@ -167,7 +167,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1500"
+  "ItemCost"            "1499"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -370,7 +370,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "27500"
+  "ItemCost"            "30000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -528,7 +528,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "20000"
+  "ItemCost"            "22500"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -551,7 +551,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "77500"
+  "ItemCost"            "80000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"

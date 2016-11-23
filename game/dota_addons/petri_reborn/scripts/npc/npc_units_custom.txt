@@ -399,6 +399,8 @@
 	  "HealthBarOffset"     "140"
 	  "GameSoundsFile"      "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	
+	  "HasInventory"                "1"
+	
 	  "vscripts"     "units/creep.lua"
 	
 	  "ArmorPhysical"       "0"
@@ -436,8 +438,16 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	  "Creature"
+	  {
+	    "EquippedItems"
+	    {
+	      "Butt"    {    "Item"    "item_petri_butt"    }
+	      "Megahammer"    {    "Item"    "item_petri_megahammer"    }
+	    }
+	  }
 	}
-	"npc_petri_creep_bad_actor"
+	"npc_petri_creep_bad_actor_arena_helper"
 	{
 	  "BaseClass"         "npc_dota_creature"
 	  "Model"           "models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"
@@ -446,6 +456,8 @@
 	  "HealthBarOffset"     "140"
 	  "GameSoundsFile"      "soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	
+	  "HasInventory"                "1"
+	
 	  "vscripts"     "units/creep.lua"
 	
 	  "ArmorPhysical"       "0"
@@ -483,6 +495,14 @@
 	  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
 	  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
 	  "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	  "Creature"
+	  {
+	    "EquippedItems"
+	    {
+	      "Butt"    {    "Item"    "item_petri_butt"    }
+	    }
+	  }
 	}
 	"npc_petri_creep_dark_kivin"
 	{
@@ -596,13 +616,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "80"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "512159.33"
-	  "AttackDamageMax"     "792682.01"
+	  "AttackDamageMin"     "50.33"
+	  "AttackDamageMax"     "50.01"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -619,7 +639,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10172"
+	  "StatusHealth"        "50350"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -645,13 +665,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "80"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "512159.33"
-	  "AttackDamageMax"     "792682.01"
+	  "AttackDamageMin"     "50.33"
+	  "AttackDamageMax"     "50.01"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -668,7 +688,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10172"
+	  "StatusHealth"        "50350"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -693,13 +713,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "20"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "14011.10"
-	  "AttackDamageMax"     "155200.0"
+	  "AttackDamageMin"     "20.10"
+	  "AttackDamageMax"     "20.0"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -716,7 +736,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "7700"
+	  "StatusHealth"        "2200"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -787,13 +807,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "20"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "14011.10"
-	  "AttackDamageMax"     "155200.0"
+	  "AttackDamageMin"     "10.10"
+	  "AttackDamageMax"     "20.0"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -810,7 +830,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "7700"
+	  "StatusHealth"        "20300"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -947,13 +967,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "-1000"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "862.88"
-	  "AttackDamageMax"     "9700"
+	  "AttackDamageMin"     "20.88"
+	  "AttackDamageMax"     "30"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -970,7 +990,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "2200"
+	  "StatusHealth"        "600"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -1044,13 +1064,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "20"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "14011.10"
-	  "AttackDamageMax"     "155200.0"
+	  "AttackDamageMin"     "111.10"
+	  "AttackDamageMax"     "200.0"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -1067,7 +1087,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "7700"
+	  "StatusHealth"        "150425"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -1106,13 +1126,13 @@
 	
 	  "Ability1"     "petri_creep_swipes"
 	
-	  "ArmorPhysical"       "20"
+	  "ArmorPhysical"       "0"
 	  "MagicalResistance"     "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "14011.10"
-	  "AttackDamageMax"     "155200.0"
+	  "AttackDamageMin"     "10.10"
+	  "AttackDamageMax"     "20.0"
 	  "AttackRate"        "0.37"
 	  "AttackAnimationPoint"    "0.01"
 	  "AttackAcquisitionRange"  "500"
@@ -1129,7 +1149,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "7700"
+	  "StatusHealth"        "5250"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -1167,9 +1187,9 @@
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "30.0"
-	  "BountyGoldMax"       "35.0"
-	  "BountyXP"          "30"  
+	  "BountyGoldMin"       "25.0"
+	  "BountyGoldMax"       "32.0"
+	  "BountyXP"          "25"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -1209,16 +1229,16 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "15.0"
-	  "AttackDamageMax"     "53.0"
+	  "AttackDamageMin"     "70.0"
+	  "AttackDamageMax"     "100.0"
 	  "AttackRate"        "0.7"
 	  "AttackAnimationPoint"    "0.39"
 	  "AttackAcquisitionRange"  "500"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "6.0"
-	  "BountyGoldMax"       "7.0"
-	  "BountyXP"          "14"  
+	  "BountyGoldMin"       "45.0"
+	  "BountyGoldMax"       "50.0"
+	  "BountyXP"          "45"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
 	  "RingRadius"        "50"
@@ -1227,7 +1247,7 @@
 	  "MovementSpeed"       "270"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "340"
+	  "StatusHealth"        "600"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"

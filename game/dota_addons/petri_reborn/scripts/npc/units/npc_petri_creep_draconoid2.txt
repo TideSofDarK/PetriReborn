@@ -7,17 +7,19 @@
   "Level"           "8"
   "HealthBarOffset"     "160"
 
+  "HasInventory"                "1"
+
   "vscripts"     "units/creep.lua"
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "80"
+  "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "512159.33"
-  "AttackDamageMax"     "792682.01"
+  "AttackDamageMin"     "50.33"
+  "AttackDamageMax"     "50.01"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
@@ -34,7 +36,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "10172"
+  "StatusHealth"        "50350"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

@@ -4,12 +4,12 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"petri_petrosyan_flat_joke"
 
-	"AbilityCooldown"				"8.0 8.0 8.0 8.0 8.0"
+	"AbilityCooldown"				"8.0 7.0 6.0 5.0 4.0"
 	// "AbilityManaCost"				"100"
 	"AbilityDamage"					"75 130 200"
 
 	"MaxLevel" "5"
-	"LevelsBetweenUpgrades" "2"
+	"LevelsBetweenUpgrades" "7"
 	"precache"
 	{	
 		"particle"		"particles/petri_flat_joke.vpcf"
@@ -20,7 +20,7 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"joke_damage"				"1 2 2 2 2"
+			"joke_damage"				"1 2 5 10 20"
 		}
 		"02"
 		{

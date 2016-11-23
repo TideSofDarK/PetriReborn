@@ -2,10 +2,13 @@
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1120"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_tourmaline_patch"
+
+  "AbilityCooldown"       "60"
+  "AbilitySharedCooldown"         "laugh"
 
   "ItemCost"            "60"
   "ItemShopTags"          "agi;int;str"
@@ -18,6 +21,20 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_all_stats"    "20"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"   "6"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
     }
   }
   
@@ -35,6 +52,34 @@
         "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
       }
     }
+    "modifier_item_petri_uber_mask_of_laugh_active"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "CASTER"
+        }
+      }
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
   }
 }
 
@@ -42,10 +87,13 @@
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1121"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_jade_amulet"
+
+  "AbilityCooldown"       "60"
+  "AbilitySharedCooldown"         "laugh"
 
   "ItemCost"            "200"
   "ItemShopTags"          "agi;int;str"
@@ -58,6 +106,20 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_all_stats"    "50"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"   "7"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
     }
   }
   
@@ -73,6 +135,34 @@
       {
         "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
         "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+    "modifier_item_petri_uber_mask_of_laugh_active"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "CASTER"
+        }
+      }
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }
@@ -100,10 +190,13 @@
 {
   "BaseClass"           "item_datadriven"
   "ID"              "1123"
-  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_bracer"
+
+  "AbilityCooldown"       "60"
+  "AbilitySharedCooldown"         "laugh"
 
   "ItemCost"            "500"
   "ItemShopTags"          "agi;int;str"
@@ -116,6 +209,20 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_all_stats"    "100"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "invu_duration"   "8"
+    }
+  }
+
+  "OnSpellStart"
+  {
+    "ApplyModifier"
+    {
+      "Target"      "CASTER"
+      "ModifierName"    "modifier_item_petri_uber_mask_of_laugh_active"
     }
   }
   
@@ -131,6 +238,34 @@
       {
         "MODIFIER_PROPERTY_STATS_AGILITY_BONUS"     "%bonus_all_stats"
         "MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"   "%bonus_all_stats"
+      }
+    }
+    "modifier_item_petri_uber_mask_of_laugh_active"
+    {
+      "Duration"                "%invu_duration"
+      "Passive"         "0"
+      "IsHidden"          "0"
+      "IsBuff"          "1"
+      "IsDebuff"          "0"
+      "IsPurgable"        "0"
+      "EffectName"              "particles/items3_fx/lotus_orb_shield.vpcf"
+      "EffectAttachType"        "PATTACH_ABSORIGIN"
+
+      "Attributes"    "MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE"
+
+      "OnCreated"
+      {
+        "RemoveModifier"
+        {
+          "ModifierName"  "modifier_blinding_light"
+          "Target"     "CASTER"
+        }
+      }
+          
+      "States"
+      {
+        "MODIFIER_STATE_ATTACK_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
+        "MODIFIER_STATE_MAGIC_IMMUNE"           "MODIFIER_STATE_VALUE_ENABLED"
       }
     }
   }

@@ -48,10 +48,11 @@
   {
     "item1"    "item_petri_butt"
     "item2"    "item_petri_butt2"
-    "item3"    "item_petri_chicken"
-    "item4"    "item_petri_cow"
-    "item5"    "item_petri_dragon"
-    "item6"    "item_petri_kvn_heart"
+    "item3"    "item_petri_butt3"
+    "item4"    "item_petri_chicken"
+    "item5"    "item_petri_cow"
+    "item6"    "item_petri_dragon"
+    "item7"    "item_petri_kvn_heart"
   }
 
   "magics"
@@ -79,10 +80,10 @@
     "item3"    "item_petri_supervest"
     "item4"    "item_petri_supermegavest"
     "item5"    "item_petri_superthing"
-    "item6"    "item_petri_shield_of_nature"
-    "item7"    "item_petri_shield_of_hell"
-    "item8"    "item_petri_shield_of_heaven"
-    "item9"    "item_petri_best_shield"
+    "item6"    "item_petri_shield_of_hell"
+    "item7"    "item_petri_shield_of_heaven"
+    "item8"    "item_petri_best_shield"
+    "item9"    "item_petri_crysis_armor"
   }
 
  // Level 4 - Orange / Orb / Artifacts

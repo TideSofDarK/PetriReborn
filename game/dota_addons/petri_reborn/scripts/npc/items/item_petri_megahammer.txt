@@ -12,12 +12,19 @@
   "ItemQuality"         "component"
   "ItemAliases"         "megahammer"
 
+  "ItemSellFullPrice" "1"
+
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_damage"      "1"
+    }   
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "full_price"      "1"
     }
   }
   

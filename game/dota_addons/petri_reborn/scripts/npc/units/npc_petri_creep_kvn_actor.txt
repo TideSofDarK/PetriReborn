@@ -6,17 +6,19 @@
   "Level"           "4"
   "HealthBarOffset"     "140"
 
+  "HasInventory"                "1"
+
   "vscripts"     "units/creep.lua"
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "-1000"
+  "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "862.88"
-  "AttackDamageMax"     "9700"
+  "AttackDamageMin"     "20.88"
+  "AttackDamageMax"     "30"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
@@ -33,7 +35,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "2200"
+  "StatusHealth"        "600"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -45,4 +47,15 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+  "Creature"
+  {
+    "EquippedItems"
+    {
+      "Bracer"    {    "Item"    "item_petri_bracer"    }
+      "Chicken"    {    "Item"    "item_petri_chicken"    }
+      "Supermegavest"    {    "Item"    "item_petri_supermegavest"    }
+      "Kladenets_sword"    {    "Item"    "item_petri_kladenets_sword"    }
+      "Mask_of_laugh"    {    "Item"    "item_petri_mask_of_laugh"    }
+    }
+  }
 }

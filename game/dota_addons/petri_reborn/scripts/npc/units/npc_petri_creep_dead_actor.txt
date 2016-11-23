@@ -7,6 +7,8 @@
   "Level"           "3"
   "HealthBarOffset"     "140"
 
+  "HasInventory"                "1"
+
   "vscripts"     "units/creep.lua"
 
   
@@ -46,4 +48,15 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+  "Creature"
+  {
+    "EquippedItems"
+    {
+      "Jade_amulet"    {    "Item"    "item_petri_jade_amulet"    }
+      "Butt3"    {    "Item"    "item_petri_butt3"    }
+      "Supervest"    {    "Item"    "item_petri_supervest"    }
+      "Hyperubersword"    {    "Item"    "item_petri_hyperubersword"    }
+      "Mask_of_laugh"    {    "Item"    "item_petri_mask_of_laugh"    }
+    }
+  }
 }
