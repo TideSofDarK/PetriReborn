@@ -8,13 +8,18 @@ function GameMode:LumberCommand()
   end
 end
 
-function GameMode:LumberAndGoldCommand()
+function GameMode:LumberAndGoldCommand(g)
   local cmdPlayer = Convars:GetCommandClient()
   if cmdPlayer then
     local playerID = cmdPlayer:GetPlayerID()
     if playerID ~= nil and playerID ~= -1 then
       GameMode.assignedPlayerHeroes[playerID].lumber = GameMode.assignedPlayerHeroes[playerID].lumber + 15000000
-      AddCustomGold( playerID, 999999 )
+      if g and tonumber(g) then
+        AddCustomGold( playerID, tonumber(g) )
+      else
+        AddCustomGold( playerID, 999999 )
+      end
+      
     end
   end
 end
