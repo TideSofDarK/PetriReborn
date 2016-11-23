@@ -241,7 +241,7 @@ function GameMode:FilterExecuteOrder( filterTable )
       local item = EntIndexToHScript(filterTable.entindex_ability) 
 
       if item and item.purchaseTime and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
-        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == "0" then
+        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == "1" then
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost) )
         else
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost / 2))
