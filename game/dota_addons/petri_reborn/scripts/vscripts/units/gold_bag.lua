@@ -146,7 +146,7 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 				caster:AddAbility("petri_upgrade_gold_bag_to_3")
 				caster:SwapAbilities("petri_upgrade_gold_bag_to_3","petri_empty1",true,false)
 				InitAbilities(caster)
-			else
+			elseif not string.match(ability:GetName(), "4") then
 				caster:AddAbility("petri_upgrade_gold_bag_to_2")
 				caster:SwapAbilities("petri_upgrade_gold_bag_to_2","petri_empty1",true,false)
 				InitAbilities(caster)
