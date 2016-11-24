@@ -71,7 +71,7 @@ function Upgrade( event )
 	end
 
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
-	local gold = PlayerResource:GetGold(pID)
+	local gold = GetCustomGold( pID )
 
 	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
 	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
@@ -102,7 +102,7 @@ function UpgradeOnce( event )
 	local pID = caster:GetPlayerOwnerID()
 
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
-	local gold = PlayerResource:GetGold(pID)
+	local gold = GetCustomGold( pID )
 
 	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
 	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
@@ -145,14 +145,16 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 			if string.match(ability:GetName(), "2") then
 				caster:AddAbility("petri_upgrade_gold_bag_to_3")
 				caster:SwapAbilities("petri_upgrade_gold_bag_to_3","petri_empty1",true,false)
+				InitAbilities(caster)
 			else
 				caster:AddAbility("petri_upgrade_gold_bag_to_2")
 				caster:SwapAbilities("petri_upgrade_gold_bag_to_2","petri_empty1",true,false)
+				InitAbilities(caster)
 			end
 		elseif not string.match(ability:GetName(), "4") then 
 			caster:AddAbility("petri_upgrade_gold_bag_to_4")
 			caster:SwapAbilities("petri_upgrade_gold_bag_to_4","petri_empty1",true,false)
+			InitAbilities(caster)
 		end
-		InitAbilities(caster)
 	end
 end
