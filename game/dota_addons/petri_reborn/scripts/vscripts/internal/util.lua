@@ -543,8 +543,7 @@ function StartUpgrading (event)
 
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
-    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false 
-    or PlayerResource:GetGold(pID) < gold_cost then
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false  then
     Timers:CreateTimer(0.06,
       function()
           caster:InterruptChannel()

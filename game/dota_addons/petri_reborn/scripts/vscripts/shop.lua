@@ -199,6 +199,35 @@ function GameMode:BuyItem(keys)
     end
     if not touch then
       return touch
+    else
+      local allItems = false
+      for k,v in pairs(toDelete) do
+        if CheckRange(hero, v, 0, 11) == false then
+          allItems = false
+          break
+        else
+          allItems = true
+        end
+      end
+
+      local reallyAll = true
+      for k,v in pairs(toBuy) do
+        if v ~= "" then
+          reallyAll = false
+          break
+        end
+      end
+
+      if reallyAll then
+        cost = GameMode.ItemKVs[item].ItemCost
+        confirm(hero)
+      elseif allItems or #toDelete == 0 then
+        if confirm(hero) then
+          RemoveItems( hero, hero, toDelete )
+        end
+      else
+        confirmParts(hero)
+      end
     end
   else
     if CheckShopRange( buyer ) then
