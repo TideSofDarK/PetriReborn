@@ -537,13 +537,10 @@ function StartUpgrading (event)
   local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
 
-  if GetCustomGold( pID ) < gold_cost then
-    return
-  end
-
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
-    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false  then
+    or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false 
+    or GetCustomGold( pID ) < gold_cost then
     Timers:CreateTimer(0.06,
       function()
           caster:InterruptChannel()
