@@ -12,6 +12,7 @@ function Shop:Init()
     CUSTOM_SHOP_STOCK[itemName] = v.ItemStockInitial or 1
     if v.ItemStockTime then
       Timers:CreateTimer(v.ItemStockTime, function (  )
+        CUSTOM_SHOP_STOCK[itemName] = CUSTOM_SHOP_STOCK[itemName] or 0
         CUSTOM_SHOP_STOCK[itemName] = CUSTOM_SHOP_STOCK[itemName] + 1
         return v.ItemStockTime
       end)

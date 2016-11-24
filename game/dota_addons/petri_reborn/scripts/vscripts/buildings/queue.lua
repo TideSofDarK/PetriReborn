@@ -10,7 +10,7 @@ function EnqueueUnit( event, food )
 	local player = caster:GetPlayerOwner():GetPlayerID()
 	local gold_cost = GetAbilityGoldCost( ability )
 
-	if GetCustomGold( pID ) < gold_cost then
+	if GetCustomGold( caster:GetPlayerOwnerID() ) < gold_cost then
 		return
 	end
 
