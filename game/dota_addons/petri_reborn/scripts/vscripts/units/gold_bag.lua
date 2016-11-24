@@ -104,12 +104,12 @@ function UpgradeOnce( event )
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	local gold = PlayerResource:GetGold(pID)
 
+	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
+	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
+
 	if GetCustomGold( pID ) < upgradeRate then
 		return
 	end
-
-	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
-	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
 
 	if gold >= upgradeRate then
 		SpendCustomGold( pID, upgradeRate )
