@@ -155,7 +155,7 @@ function SpawnGoldBag( keys )
 
 	bag:SetModifierStackCount("modifier_gold_bag", bag, GameMode.assignedPlayerHeroes[pID].goldBagStacks)
 
-	local storeAbility = bag:FindAbilityByName("petri_upgrade_gold_bag") or bag:FindAbilityByName("petri_upgrade_gold_bag2") or bag:FindAbilityByName("petri_upgrade_gold_bag3")
+	local storeAbility = bag:FindAbilityByName("petri_upgrade_gold_bag") or bag:FindAbilityByName("petri_upgrade_gold_bag2") or bag:FindAbilityByName("petri_upgrade_gold_bag3") or bag:FindAbilityByName("petri_upgrade_gold_bag4")
 
 	local upgradeRate = storeAbility:GetSpecialValueFor("upgrade_rate")
 	local upgradeLimit = storeAbility:GetSpecialValueFor("upgrade_limit")
