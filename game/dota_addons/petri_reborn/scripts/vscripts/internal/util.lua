@@ -118,7 +118,7 @@ function GetGoldModifier()
 end
 
 function GetAbilityGoldCost( ability )
-  if ability and GameMode.AbilityKVs[ability:GetName()] then
+  if ability and GameMode.AbilityKVs[ability:GetName()] and GameMode.AbilityKVs[ability:GetName()].AbilityGoldCost then
     local costString = GameMode.AbilityKVs[ability:GetName()].AbilityGoldCost
     if string.match(costString, " ") then
       local prices = Split(costString, " ")
@@ -536,7 +536,7 @@ function StartUpgrading (event)
   local gold_cost = GetAbilityGoldCost( ability )
   local lumber_cost = ability:GetLevelSpecialValueFor("lumber_cost", level) or 0
   local food_cost = ability:GetLevelSpecialValueFor("food_cost", level) or 0
-
+  print(gold_cost, GetCustomGold( pID ))
   if CheckLumber(caster:GetPlayerOwner(), lumber_cost,true) == false
     or CheckFood(caster:GetPlayerOwner(), food_cost,true) == false
     or CheckUpgradeDependencies(pID, ability:GetName(), ability:GetLevel()) == false 
