@@ -132,6 +132,7 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 		caster:SwapAbilities("petri_upgrade_gold_bag", "petri_empty2", false, true)
 		caster:SwapAbilities("petri_upgrade_gold_bag2", "petri_empty2", false, true)
 		caster:SwapAbilities("petri_upgrade_gold_bag3", "petri_empty2", false, true)
+		caster:SwapAbilities("petri_upgrade_gold_bag4", "petri_empty2", false, true)
 
 		GameMode.FIRST_BAG = GameMode.FIRST_BAG or math.floor(GameMode.PETRI_TRUE_TIME)
 
@@ -148,7 +149,10 @@ function CheckLimit( caster, ability, upgradeLimit, hero )
 				caster:AddAbility("petri_upgrade_gold_bag_to_2")
 				caster:SwapAbilities("petri_upgrade_gold_bag_to_2","petri_empty1",true,false)
 			end
-			InitAbilities(caster)
+		elseif not string.match(ability:GetName(), "4") then 
+			caster:AddAbility("petri_upgrade_gold_bag_to_4")
+			caster:SwapAbilities("petri_upgrade_gold_bag_to_4","petri_empty1",true,false)
 		end
+		InitAbilities(caster)
 	end
 end
