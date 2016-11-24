@@ -55,7 +55,6 @@
       "Uber_mask_of_laugh_level3"    {    "Item"    "item_petri_uber_mask_of_laugh_level3"    }
       "Cow"    {    "Item"    "item_petri_dragon"    }
       "Best_shield"    {    "Item"    "item_petri_best_shield"    }
-      "Thunder"    {    "Item"    "item_petri_thunder"    }
     }
   }
 }

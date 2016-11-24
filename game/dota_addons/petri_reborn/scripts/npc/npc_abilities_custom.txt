@@ -1751,7 +1751,7 @@
 	
 	  "AbilityCooldown" "15 13 11 10 9 8 7 6 5"
 	
-	  "MaxLevel"            "9"
+	  "MaxLevel"            "11"
 	
 	  "precache"
 	  {
@@ -1763,7 +1763,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "gold"      "1 1 1 2 6 8 10 15 18"
+	      "gold"      "1 1 1 2 6 8 10 15 18 25 35"
 	    }
 	  }
 	
@@ -2317,6 +2317,181 @@
 	
 	  "AbilityChannelTime"      "5.0"
 	  "AbilityGoldCost"       "%900"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StartUpgrading"
+	    }
+	  }
+	
+	  "OnChannelInterrupted"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "StopUpgrading"
+	    }
+	  }
+	
+	  "OnChannelSucceeded"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_bag.lua"
+	      "Function"        "UpgradeGoldBagTo"
+	    }
+	    "RunScript"
+	    {
+	      "ScriptFile"      "internal/util.lua"
+	      "Function"        "OnUpgradeSucceeded"
+	    }
+	  }
+	}
+	
+	"petri_gold_bag_get_gold4"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "alchemist_goblins_greed"
+	
+	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+	  "AbilityCastPoint"        "0.0"
+	  "AbilityCooldown"        "6.025"
+	
+	  "MaxLevel"            "1"
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"       "CASTER"
+	      "ModifierName" "modifier_gold_bag_get_gold_autocast"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_bag.lua"
+	      "Function"        "GetGold"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_gold_bag_get_gold_autocast"
+	    {
+	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "6.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	
+	"petri_upgrade_gold_bag4"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	
+	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
+	  "AbilityCastPoint"        "0.0"
+	
+	  "MaxLevel"            "1"
+	
+	  "AbilitySpecial"
+	  {
+	    "01"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_rate"      "115"
+	    }
+	    "02"
+	    {
+	      "var_type"      "FIELD_INTEGER"
+	      "upgrade_limit"      "350"
+	    }
+	  }
+	
+	  "OnUpgrade"
+	  {
+	    "ApplyModifier"
+	    {
+	      "Target"       "CASTER"
+	      "ModifierName" "modifier_gold_bag"
+	    }
+	  }
+	  
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"      "units/gold_bag.lua"
+	      "Function"        "UpgradeOnce"
+	    }
+	  }
+	
+	  "Modifiers"
+	  {
+	    "modifier_gold_bag"
+	    {
+	      "IsHidden"  "0"
+	      "Passive"   "1"
+	    }
+	
+	    "modifier_gold_bag_upgrading_autocast"
+	    {
+	      "Passive"   "1"
+	      "IsHidden"  "1"
+	
+	      "ThinkInterval" "1.0"
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "Upgrade"
+	        }
+	      }
+	    }
+	  }
+	}
+	
+	"petri_upgrade_gold_bag_to_4"
+	{
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "BaseClass"           "ability_datadriven"
+	  "AbilityTextureName"      "return_resources"
+	
+	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
+	  "AbilityCastPoint"        "0.0"
+	
+	  "MaxLevel"            "1"
+	
+	  "AbilityChannelTime"      "5.0"
+	  "AbilityGoldCost"       "%1000"
 	
 	  "OnSpellStart"
 	  {
@@ -5139,10 +5314,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "12"
+	  "MaxLevel"            "14"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 70.0 90.0"
-	  "AbilityGoldCost"       "%0 %5 %40 %80 %400 %600 %1200 %1800 %3000 %7000 %12000"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 70.0 90.0 100.0 100.0"
+	  "AbilityGoldCost"       "%0 %5 %40 %80 %400 %600 %1200 %1800 %3000 %7000 %12000 16000 18000"
 	
 	  "precache"
 	  {
@@ -5154,27 +5329,27 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "lumber_cost"        "250 2000 6000 10000 40000 80000 200000 400000 800000 1500000 2500000"
+	      "lumber_cost"        "250 2000 6000 10000 40000 80000 200000 400000 800000 1500000 2500000 2750000 3000000"
 	    }
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "500 1000 2000 3000 4000 5500 6000 7000 8000 12500 17500"
+	      "health_points"        "500 1000 2000 3000 4000 5500 6000 7000 8000 12500 17500 20000 25000"
 	    }
 	    "03"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "hit_stacks"        "25 50 100 150 200 250 1000 1250 1500 1750 2000"
+	      "hit_stacks"        "25 50 100 150 200 250 1000 1250 1500 1750 2000 2500 3000"
 	    }
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "hit_stacks_regen"        "1 2 2 2 3 3 4 4 4 5 5"
+	      "hit_stacks_regen"        "1 2 2 2 3 3 4 4 4 5 5 7 10"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "63 143 180 270 1000 2000 3600 7000 10000 12000 15000"
+	      "armor"        "63 143 180 270 1000 2000 3600 7000 10000 12000 15000 17500 20000"
 	    }
 	  }
 	
@@ -5429,7 +5604,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75"
+	  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %100 %115"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -5438,19 +5613,19 @@
 	
 	  "AbilityMultiOrder" "1"
 	
-	  "MaxLevel"            "9"
+	  "MaxLevel"            "11"
 	
 	  "AbilitySpecial"
 	  {
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "food_cost"        "0 0 0 0 0 0 7 0"
+	      "food_cost"        "0 0 0 0 0 0 7 0 0 0"
 	    }
 	    "02"
 	    { 
 	      "var_type"  "FIELD_INTEGER"
-	      "lumber_cost" "300 700 2000 7500 15000 30000 125000 175000"
+	      "lumber_cost" "300 700 2000 7500 15000 30000 125000 175000 250000 500000"
 	    }
 	  }
 	
@@ -5951,10 +6126,10 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "MaxLevel"            "13"
+	  "MaxLevel"            "15"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0"
-	  "AbilityGoldCost"       "%0 %5 %50 %80 %100 %350 %600 %900 %2500 %5000 %7500 %15000"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0 120.0 120.0"
+	  "AbilityGoldCost"       "%0 %5 %50 %80 %100 %350 %600 %900 %2500 %5000 %7500 %15000 %17500 %22500"
 	
 	  "precache"
 	  {
@@ -5966,27 +6141,27 @@
 	    "01"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "lumber_cost"         "250 2500 4000 7500 10000 15000 25000 40000 75000 150000 500000 1000000"
+	      "lumber_cost"         "250 2500 4000 7500 10000 15000 25000 40000 75000 150000 500000 1000000 1250000 1500000"
 	    }
 	    "02"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "health_points"       "300 400 590 750 900 1300 1650 2800 5300 9000 12800 15000"
+	      "health_points"       "300 400 590 750 900 1300 1650 2800 5300 9000 12800 15000 17500 20000"
 	    }
 	    "03"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 1500 2000 5000"
+	      "hit_stacks"         "50 100 150 200 250 300 400 500 1000 1500 2000 5000 7500 10000"
 	    }
 	    "04"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 5 10 20"
+	      "hit_stacks_regen"          "1 1 1 2 2 2 2 3 3 5 10 20 30 50"
 	    }
 	    "05"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "armor"               "145 290 800 1000 1250 1900 2500 4150 5500 7800 10000 14500"
+	      "armor"               "145 290 800 1000 1250 1900 2500 4150 5500 7800 10000 14500 20000 30000"
 	    }
 	  }
 	
@@ -6101,7 +6276,7 @@
 	  "AbilityCooldown"       "0"
 	  "AbilityManaCost"       "0"
 	
-	  "MaxLevel" "12"
+	  "MaxLevel" "14"
 	
 	  "precache"
 	  {
@@ -6113,7 +6288,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "armor_bonus"     "150 175 200 225 250 1200 5000 5250 5500 5750 6000 6500"
+	      "armor_bonus"     "150 175 200 225 250 1200 5000 5250 5500 5750 6000 6500 8000 10000"
 	    }
 	    "02"
 	    {
@@ -6123,7 +6298,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "duration"     "10 6 6 6 6 6 6 5 5 5 5 5"
+	      "duration"     "10 6 6 6 6 6 6 5 5 5 5 5 5 5"
 	    }
 	    "04"
 	    {

@@ -14,6 +14,8 @@
 
   "ItemSellFullPrice" "1"
 
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -79,6 +81,8 @@
 
   "ItemSellFullPrice" "1"
 
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -142,6 +146,8 @@
   "ItemAliases"         "kladenets sword"
 
   "ItemSellFullPrice" "1"
+
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 
   "AbilitySpecial"
   {
@@ -208,6 +214,8 @@
 
   "ItemSellFullPrice" "1"
 
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -273,6 +281,8 @@
 
   "ItemSellFullPrice" "1"
   
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -338,6 +348,8 @@
 
   "ItemSellFullPrice" "1"
   
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -403,6 +415,8 @@
 
   "ItemSellFullPrice" "1"
   
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -466,6 +480,8 @@
   "ItemQuality"         "unique"
   "ItemAliases"         "thunder"
 
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+
   "AbilitySpecial"
   {
     "01"
@@ -506,6 +522,8 @@
   "ItemShopTags"          "damage"
   "ItemQuality"         "unique"
   "ItemAliases"         "trident"
+  
+  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
   
   "AbilitySpecial"
   {
