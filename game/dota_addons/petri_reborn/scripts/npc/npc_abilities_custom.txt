@@ -3500,7 +3500,7 @@
 		"AbilityDamage"					"75 130 200"
 	
 		"MaxLevel" "5"
-		"LevelsBetweenUpgrades" "7"
+		"LevelsBetweenUpgrades" "5"
 		"precache"
 		{	
 			"particle"		"particles/petri_flat_joke.vpcf"

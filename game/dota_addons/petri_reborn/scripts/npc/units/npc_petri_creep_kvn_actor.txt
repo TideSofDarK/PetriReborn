@@ -6,8 +6,6 @@
   "Level"           "4"
   "HealthBarOffset"     "140"
 
-  "HasInventory"                "1"
-
   "vscripts"     "units/creep.lua"
 
   "Ability1"     "petri_creep_swipes"
@@ -25,7 +23,7 @@
   "AttackRange"       "90"
 
   "BountyGoldMin"       "18.0"
-  "BountyGoldMax"       "20.0"
+  "BountyGoldMax"       "21.0"
   "BountyXP"          "22"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -47,15 +45,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-  "Creature"
-  {
-    "EquippedItems"
-    {
-      "Bracer"    {    "Item"    "item_petri_bracer"    }
-      "Chicken"    {    "Item"    "item_petri_chicken"    }
-      "Supermegavest"    {    "Item"    "item_petri_supermegavest"    }
-      "Kladenets_sword"    {    "Item"    "item_petri_kladenets_sword"    }
-      "Mask_of_laugh"    {    "Item"    "item_petri_mask_of_laugh"    }
-    }
-  }
 }

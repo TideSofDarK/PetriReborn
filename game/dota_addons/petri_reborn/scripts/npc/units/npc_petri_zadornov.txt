@@ -1,7 +1,7 @@
-"npc_petri_svetlakov"
+"npc_petri_zadornov"
 {
   "BaseClass"     "npc_dota_creature"
-  "Model"      "models/heroes/omniknight/omniknight.vmdl"
+  "Model"      "models/heroes/lich/lich.vmdl"
   "ModelScale"    "1.8"
   "Level"      "1"
   "HealthBarOffset"    "240"
@@ -14,15 +14,15 @@
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageMin"    "100.0"
-  "AttackDamageMax"    "200.0"
+  "AttackDamageMax"    "100.0"
   "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"    "1"
   "AttackAnimationPoint"  "0.433"
   "AttackAcquisitionRange" "500"
   "AttackRange"     "90"
 
-  "BountyGoldMin"    "2900.0"
-  "BountyGoldMax"    "3050.0"
+  "BountyGoldMin"    "150000.0"
+  "BountyGoldMax"    "150000.0"
 
   "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
   //"RingRadius"    "40"
@@ -33,7 +33,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "11000"
+  "StatusHealth"    "100"
   "StatusHealthRegen"   "3"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"
@@ -52,8 +52,10 @@
 
     "AttachWearables"
     {
-        "Wearable1" { "ItemDef" "45" }
-        "Wearable2" { "ItemDef" "46" }
+        "Wearable1" { "ItemDef" "6949" }
+        "Wearable2" { "ItemDef" "7064" }
+        "Wearable1" { "ItemDef" "7065" }
+        "Wearable2" { "ItemDef" "7066" }
     }
   }
 }

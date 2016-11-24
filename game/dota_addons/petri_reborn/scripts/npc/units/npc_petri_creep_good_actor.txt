@@ -6,8 +6,6 @@
   "Level"           "2"
   "HealthBarOffset"     "140"
 
-  "HasInventory"                "1"
-
   "vscripts"     "units/creep.lua"
 
   "ArmorPhysical"       "0"
@@ -19,7 +17,7 @@
   "AttackDamageMax"     "2.5"
   "AttackRate"        "1.2"
   "AttackAnimationPoint"    "0.42"
-  "AttackAcquisitionRange"  "500"
+  "AttackAcquisitionRange"  "1300"
   "AttackRange"       "120"
 
   "BountyGoldMin"       "2.0"
@@ -45,15 +43,4 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-  "Creature"
-  {
-    "EquippedItems"
-    {
-      "Tourmaline_patch"    {    "Item"    "item_petri_tourmaline_patch"    }
-      "Butt2"    {    "Item"    "item_petri_butt2"    }
-      "Vest"    {    "Item"    "item_petri_vest"    }
-      "Simple_sword"    {    "Item"    "item_petri_simple_sword"    }
-      "Mask_of_laugh"    {    "Item"    "item_petri_mask_of_laugh"    }
-    }
-  }
 }

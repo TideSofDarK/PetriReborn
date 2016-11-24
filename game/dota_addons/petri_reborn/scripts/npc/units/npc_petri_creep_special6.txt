@@ -20,7 +20,7 @@
   "AttackDamageMax"     "53.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
-  "AttackAcquisitionRange"  "500"
+  "AttackAcquisitionRange"  "800"
   "AttackRange"       "90"
 
   "BountyGoldMin"       "6.0"
