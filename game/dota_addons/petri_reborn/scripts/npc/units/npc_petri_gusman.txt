@@ -9,20 +9,20 @@
   "AbilityLayout"    "4"
   "Ability1" "petri_magic_immune"
 
-  "ArmorPhysical"    "3000"
+  "ArmorPhysical"    "0"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"    "60000000.0"
-  "AttackDamageMax"    "60000000.0"
+  "AttackDamageMin"    "10.0"
+  "AttackDamageMax"    "10.0"
   "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"    "1"
   "AttackAnimationPoint"  "0.433"
   "AttackAcquisitionRange" "500"
   "AttackRange"     "90"
 
-  "BountyGoldMin"    "26000.0"
-  "BountyGoldMax"    "26000.0"
+  "BountyGoldMin"    "50000.0"
+  "BountyGoldMax"    "50000.0"
 
   "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
   //"RingRadius"    "40"
@@ -33,7 +33,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "50000"
+  "StatusHealth"    "1000"
   "StatusHealthRegen"   "3"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"

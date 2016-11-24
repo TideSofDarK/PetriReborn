@@ -3244,7 +3244,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "heal"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "2000"
 	  "ItemShopTags"          "health_pool"
 	  "ItemQuality"         "component"
 	
@@ -3321,7 +3321,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "800"
+	  "ItemCost"            "1800"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3423,7 +3423,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "heal"
 	
-	  "ItemCost"            "9000"
+	  "ItemCost"            "8000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6310,7 +6310,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_perfect_sword"
 	
-	  "ItemCost"            "1250"
+	  "ItemCost"            "2000"
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "perfect sword"
@@ -6355,7 +6355,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1000"
+	  "ItemCost"            "1750"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6420,7 +6420,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "3750"
+	  "ItemCost"            "3000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

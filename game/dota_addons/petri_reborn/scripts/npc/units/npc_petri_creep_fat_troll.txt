@@ -6,8 +6,6 @@
   "Level"           "5"
   "HealthBarOffset"     "140"
 
-  "HasInventory"                "1"
-
   "vscripts"     "units/creep.lua"
 
   "Ability1"     "petri_creep_swipes"
@@ -24,8 +22,8 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "41.0"
-  "BountyGoldMax"       "43.0"
+  "BountyGoldMin"       "33.0"
+  "BountyGoldMax"       "37.0"
   "BountyXP"          "70"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"

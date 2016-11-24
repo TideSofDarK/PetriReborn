@@ -1,31 +1,32 @@
-"npc_petri_creep_dead_actor"
+"npc_petri_creep_fat_troll_arena_helper"
 {
   "BaseClass"         "npc_dota_creature"
-  "Model"           "models/items/undying/idol_of_ruination/ruin_wight_minion_gold.vmdl"
-  "ModelScale"        "1.2"
-  "SoundSet"          "Creep_Good_Melee"  
-  "Level"           "3"
+  "Model"           "models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"
+  "ModelScale"        "1"
+  "Level"           "5"
   "HealthBarOffset"     "140"
+
+  "HasInventory"                "1"
 
   "vscripts"     "units/creep.lua"
 
-  
+  "Ability1"     "petri_creep_swipes"
 
   "ArmorPhysical"       "0"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "3.0"
-  "AttackDamageMax"     "6.0"
-  "AttackRate"        "0.7"
-  "AttackAnimationPoint"    "0.39"
+  "AttackDamageMin"     "20.10"
+  "AttackDamageMax"     "20.0"
+  "AttackRate"        "0.37"
+  "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "3.0"
-  "BountyGoldMax"       "5.0"
-  "BountyXP"          "10"  
+  "BountyGoldMin"       "41.0"
+  "BountyGoldMax"       "43.0"
+  "BountyXP"          "70"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -34,7 +35,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "75"
+  "StatusHealth"        "2200"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -46,4 +47,15 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+  "Creature"
+  {
+    "EquippedItems"
+    {
+      "Zirconia_armor"    {    "Item"    "item_petri_zirconia_armor"    }
+      "Chicken"    {    "Item"    "item_petri_chicken"    }
+      "Superthing"    {    "Item"    "item_petri_superthing"    }
+      "Titan_sword"    {    "Item"    "item_petri_titan_sword"    }
+      "Mask_of_laugh"    {    "Item"    "item_petri_mask_of_laugh"    }
+    }
+  }
 }

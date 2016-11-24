@@ -46,12 +46,12 @@
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"
   "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationShipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
-
   "Creature"
   {
     "EquippedItems"
     {
       "Butt"    {    "Item"    "item_petri_butt"    }
+      "Megahammer"    {    "Item"    "item_petri_megahammer"    }
     }
   }
 }

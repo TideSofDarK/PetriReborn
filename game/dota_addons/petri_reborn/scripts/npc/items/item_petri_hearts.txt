@@ -10,7 +10,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "heal"
 
-  "ItemCost"            "1000"
+  "ItemCost"            "2000"
   "ItemShopTags"          "health_pool"
   "ItemQuality"         "component"
 
@@ -87,7 +87,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "800"
+  "ItemCost"            "1800"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -189,7 +189,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "heal"
 
-  "ItemCost"            "9000"
+  "ItemCost"            "8000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
