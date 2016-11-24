@@ -27,7 +27,7 @@ function BuyLumber(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 
-	if SpendCustomGold( player, GetAbilityGoldCost( ability ) ) == false then
+	if SpendCustomGold( caster:GetPlayerOwnerID(), GetAbilityGoldCost( ability ) ) == false then
 		return
 	end
 
