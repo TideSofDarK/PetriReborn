@@ -12,7 +12,7 @@ function GameMode:FilterExecuteOrder( filterTable )
     local y = tonumber(filterTable["position_y"])
     local z = tonumber(filterTable["position_z"])
     local point = Vector(x,y,z)
-    PrintTable(filterTable)
+
     local issuerUnit
     if units["0"] then
       issuerUnit = EntIndexToHScript(units["0"])
@@ -239,10 +239,8 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
 
       local item = EntIndexToHScript(filterTable.entindex_ability) 
-
-      if item and item.purchaseTime and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
-        print(GameMode.ItemKVs[item:GetName()].ItemSellFullPrice)
-        if item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == 1 then
+      if item  and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
+        if (item.purchaseTime and item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME) or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == 1 then
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost) )
         else
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost / 2))

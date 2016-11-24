@@ -34,11 +34,14 @@ end
 function FindItemSlot( unit, item )
   for i=0,11 do
     local it = unit:GetItemInSlot(i)
-
-    if it and it:GetName() == item then
-      return i
+    
+    if it then
+      if it == item then
+        return i 
+      end
     end
   end
+  print("no such item")
 end
 
 function MoveToStash( hero, slot )
@@ -49,7 +52,7 @@ function MoveToStash( hero, slot )
 
       if not it then
         hero:SwapItems(slot,i)
-        return true
+        return i
       end
     end
 
@@ -58,7 +61,7 @@ function MoveToStash( hero, slot )
 end
 
 function LockInventory(hero)
-  for i=0,5 do
+  for i=0,11 do
     local it = hero:GetItemInSlot(i)
     if it then
       ExecuteOrderFromTable({ UnitIndex = hero:entindex(), 
@@ -71,7 +74,7 @@ function LockInventory(hero)
 end
 
 function UnlockInventory(hero)
-  for i=0,5 do
+  for i=0,11 do
     local it = hero:GetItemInSlot(i)
     if it then
       ExecuteOrderFromTable({ UnitIndex = hero:entindex(), 
@@ -83,10 +86,13 @@ function UnlockInventory(hero)
   end
 end
 
-function AddItem( owner, unit, item )
-  local item = unit:AddItem(CreateItem(item,owner,owner))
+function AddItem( owner, unit, item_name )
+  local item_entity = CreateItem(item_name,owner,owner)
+  local item = unit:AddItemByName(item_name)
   item:SetPurchaser(owner)
   item.purchaseTime = GameMode.PETRI_TRUE_TIME
+
+  return item
 end
 
 function GameMode:BuyItem(keys)
@@ -121,14 +127,16 @@ function GameMode:BuyItem(keys)
   --   end
   -- end
   
-  local function confirm(target)
+  local function confirm(target, deleteItems)
     if CheckStock( item, hero ) then
       if cost <= GetCustomGold( hero:GetPlayerID() ) then
         SpendCustomGold( pID, cost )
+
         if target == "stash" then
           LockInventory(hero)
-          AddItem( hero, hero, item )
-          MoveToStash( hero, FindItemSlot( hero, item ) )
+          local item_entity = AddItem( hero, hero, item )
+          local slot = FindItemSlot( hero, item_entity )
+          local target_slot = MoveToStash( hero, slot )
           UnlockInventory(hero)
         elseif IsValidEntity(target) then
           AddItem( hero, target, item )
@@ -158,8 +166,8 @@ function GameMode:BuyItem(keys)
 
           if target == "stash" then
             LockInventory(hero)
-            AddItem( hero, hero, v )
-            local slot = FindItemSlot( hero, v )
+            local item_entity = AddItem( hero, hero, v )
+            local slot = FindItemSlot( hero, item_entity )
             if slot then
               MoveToStash( hero, slot )
             end
@@ -298,7 +306,7 @@ function RemoveItems( hero, c, t )
       end
     end
   end
-  PrintTable(t)
+
   if c == "stash" then
     local stashMin = 6
     local stashMax = 11
