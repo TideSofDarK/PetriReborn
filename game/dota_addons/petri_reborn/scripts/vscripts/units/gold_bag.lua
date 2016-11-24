@@ -81,7 +81,12 @@ function Upgrade( event )
 		local actualCount = count
 		if goldModifier+count > upgradeLimit then actualCount = upgradeLimit - goldModifier end
 		local cost = actualCount*upgradeRate
-		PlayerResource:SpendGold(pID, cost, 0)
+
+		if GetCustomGold( pID ) < cost then
+			return
+		end
+
+		SpendCustomGold( pID, cost )
 
 		GameMode.assignedPlayerHeroes[pID].goldBagStacks = goldModifier+actualCount
 
@@ -99,11 +104,15 @@ function UpgradeOnce( event )
 	local goldModifier = caster:GetModifierStackCount("modifier_gold_bag", caster)
 	local gold = PlayerResource:GetGold(pID)
 
+	if GetCustomGold( pID ) < upgradeRate then
+		return
+	end
+
 	local upgradeRate = ability:GetSpecialValueFor("upgrade_rate")
 	local upgradeLimit = ability:GetSpecialValueFor("upgrade_limit")
 
 	if gold >= upgradeRate then
-		PlayerResource:SpendGold(pID, upgradeRate, 0)
+		SpendCustomGold( pID, upgradeRate )
 
 		GameMode.assignedPlayerHeroes[pID].goldBagStacks = goldModifier+1
 
