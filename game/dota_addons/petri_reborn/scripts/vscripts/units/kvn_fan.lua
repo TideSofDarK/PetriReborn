@@ -137,6 +137,9 @@ function SpawnGoldBag( keys )
 	if string.match(ability:GetName(), "3") then 
 		unit_name = "npc_petri_gold_bag3"
 	end
+	if string.match(ability:GetName(), "4") then 
+		unit_name = "npc_petri_gold_bag4"
+	end
 
 	local bag = CreateUnitByName(unit_name, keys.pos or caster:GetAbsOrigin(), true, nil, caster, DOTA_TEAM_GOODGUYS)
 	SetCustomBuildingModel(bag, PlayerResource:GetSteamAccountID(pID))

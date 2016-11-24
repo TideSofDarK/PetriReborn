@@ -3053,23 +3053,25 @@
 	    {}
 	  }
 	}
-	"item_petri_gold_bag2"
+	
+	
+	"item_petri_gold_bag4"
 	{
-	  "ID"              "1600"
+	  "ID"              "1111"
 	  "BaseClass"                 "item_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag2"
+	  "AbilityTextureName"      "item_petri_gold_bag4"
 	
-	  "ItemCost"            "675"
+	  "ItemCost"            "2500"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "bag"
 	  "ItemInitialCharges"  "1"
 	  "ItemStackable"       "0"
 	  "ItemPermanent"       "0"
 	  "ItemSellable"        "0"
-	
+	  "AbilityManaCost"               "20"
 	  "SideShop" "1"
 	
 	  "OnSpellStart"
@@ -6123,6 +6125,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6188,6 +6192,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6251,6 +6257,8 @@
 	  "ItemAliases"         "kladenets sword"
 	
 	  "ItemSellFullPrice" "1"
+	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 	
 	  "AbilitySpecial"
 	  {
@@ -6317,6 +6325,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6382,6 +6392,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	  
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6447,6 +6459,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	  
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6512,6 +6526,8 @@
 	
 	  "ItemSellFullPrice" "1"
 	  
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6575,6 +6591,8 @@
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "thunder"
 	
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
+	
 	  "AbilitySpecial"
 	  {
 	    "01"
@@ -6615,6 +6633,8 @@
 	  "ItemShopTags"          "damage"
 	  "ItemQuality"         "unique"
 	  "ItemAliases"         "trident"
+	  
+	  "ItemDisassembleRule" "DOTA_ITEM_DISASSEMBLE_NEVER"
 	  
 	  "AbilitySpecial"
 	  {

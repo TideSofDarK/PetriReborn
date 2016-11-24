@@ -9,7 +9,7 @@
 
   "AbilityCooldown" "15 13 11 10 9 8 7 6 5"
 
-  "MaxLevel"            "9"
+  "MaxLevel"            "11"
 
   "precache"
   {
@@ -21,7 +21,7 @@
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "gold"      "1 1 1 2 6 8 10 15 18"
+      "gold"      "1 1 1 2 6 8 10 15 18 25 35"
     }
   }
 

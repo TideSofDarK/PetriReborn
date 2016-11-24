@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75"
+  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %100 %115"
 
   "AbilityManaCost"       "0"
   
@@ -16,19 +16,19 @@
 
   "AbilityMultiOrder" "1"
 
-  "MaxLevel"            "9"
+  "MaxLevel"            "11"
 
   "AbilitySpecial"
   {
     "01"
     {
       "var_type"          "FIELD_INTEGER"
-      "food_cost"        "0 0 0 0 0 0 7 0"
+      "food_cost"        "0 0 0 0 0 0 7 0 0 0"
     }
     "02"
     { 
       "var_type"  "FIELD_INTEGER"
-      "lumber_cost" "300 700 2000 7500 15000 30000 125000 175000"
+      "lumber_cost" "300 700 2000 7500 15000 30000 125000 175000 250000 500000"
     }
   }
 
