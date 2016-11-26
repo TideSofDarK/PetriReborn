@@ -77,6 +77,10 @@
 	height: 64px;
 }
 
+.OutOfStock {
+	wash-color: #bbbbbb;
+}
+
 .Selected #ItemImage {
 	border: 1px solid white;
 }
@@ -209,4 +213,35 @@
 .ShopGuideBlock Label {
 	horizontal-align: left;
 	font-size: 20px;
+}
+
+#StockLabel {
+	align: left center;
+
+	margin-left: 7px;
+
+	font-size: 22px;
+	font-family: RadianceM;
+	color: white;
+}
+
+#ShopQuickbuy {
+	width: 204px;
+	height: 66px;
+
+	align: right bottom;
+
+	margin-bottom: 93px;
+	margin-right: 9px;
+
+	flow-children: right;
+
+	background-color: #080808ff;
+}
+
+#ShopQuickbuy .Item {
+	width: 43px;
+	height: 31px;
+
+	margin: 4px;
 }

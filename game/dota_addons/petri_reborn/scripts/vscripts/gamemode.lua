@@ -320,6 +320,8 @@ end
 
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  Shop:Init()
   
   GameMode.PETRI_GAME_HAS_STARTED = true
 
@@ -539,8 +541,6 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "getgold", Dynamic_Wrap(GameMode, 'GetGold'), "Get all gold", FCVAR_CHEAT )
 
   BuildingHelper:Init()
-
-  Shop:Init()
 
   --Update player's UI
   Timers:CreateTimer(0.03,

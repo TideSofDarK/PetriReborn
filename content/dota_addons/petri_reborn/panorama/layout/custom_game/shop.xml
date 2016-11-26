@@ -9,6 +9,7 @@
     <snippet name="Item">
       <Panel class="Item">
         <DOTAItemImage itemname="item_petri_butt" id="ItemImage"/>
+        <Label id="StockLabel" />
       </Panel>
     </snippet>
     <snippet name="GuideBlock">
@@ -75,5 +76,8 @@
     <Panel id="ShopGuide" class="Hide">
 
     </Panel>	
+    <Panel id="ShopQuickbuy" class="">
+
+    </Panel>  
   </Panel>
 </root>
