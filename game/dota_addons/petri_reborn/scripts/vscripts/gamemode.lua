@@ -354,6 +354,30 @@ function GameMode:OnGameInProgress()
       return 8.0 * 60
     end)
 
+    local creepID = 1
+  Timers:CreateTimer(6 * 60,
+    function()
+      if creepID == 8 then
+        return
+      end
+
+      local ents = Entities:FindAllByName("npc_dota_creature")
+
+      for k,v in pairs(ents) do
+        if v.GetUnitName and v:GetUnitName() == "npc_petri_creep_special_arena_helper"..tostring(creepID) then
+          local pos = v:GetAbsOrigin()
+
+          UTIL_Remove(v)
+
+          local unit = CreateUnitByName("npc_petri_creep_special_arena_helper"..tostring(creepID  + 1),pos,true,nil,nil,DOTA_TEAM_BADGUYS)
+        end
+      end
+
+      creepID = creepID + 1
+
+      return 8.0 * 60
+    end)
+
   Timers:CreateTimer(1.0,
     function()
       GameMode.PETRI_TRUE_TIME = GameMode.PETRI_TRUE_TIME + 1

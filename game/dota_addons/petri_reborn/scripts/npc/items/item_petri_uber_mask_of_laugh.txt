@@ -10,7 +10,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "3000"
+  "ItemCost"            "5000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -167,7 +167,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1499"
+  "ItemCost"            "3499"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -190,7 +190,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "7500"
+  "ItemCost"            "15000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -347,7 +347,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "4500"
+  "ItemCost"            "10000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -370,7 +370,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "30000"
+  "ItemCost"            "50000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -528,7 +528,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "22500"
+  "ItemCost"            "35000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -551,7 +551,7 @@
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
   
-  "ItemCost"            "80000"
+  "ItemCost"            "125000"
   "ItemShopTags"          "unique"
   "ItemQuality"         "epic"
   "ItemAliases"         "uber mask of laugh"
@@ -709,7 +709,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "50000"
+  "ItemCost"            "75000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"

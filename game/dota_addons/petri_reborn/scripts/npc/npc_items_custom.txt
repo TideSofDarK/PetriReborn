@@ -574,6 +574,108 @@
 	  }
 	}
 	
+	"item_petri_book_of_experience1"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1131"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	
+	  "ItemCost"            "1"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "720"
+	  "ItemStockInitial" "0"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "ReadBookOfExperience1"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	
+	"item_petri_book_of_experience2"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1132"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	
+	  "ItemCost"            "10"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "1680"
+	  "ItemStockInitial" "0"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "ReadBookOfExperience2"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	
+	"item_petri_book_of_experience3"
+	{
+	  "BaseClass"                 "item_datadriven"
+	  "ID"              "1133"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	
+	  "ItemCost"            "225"
+	  "ItemShopTags"          "consumable"
+	  "ItemQuality"           "consumable"
+	  "ItemAliases"         "book"
+	  "ItemInitialCharges" "1"
+	
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "45"
+	  "ItemStockInitial" "5"
+	
+	  "ItemStackable"         "1"
+	  "ItemPermanent"         "0"
+	
+	  "OnSpellStart"
+	  {
+	    "RunScript"
+	    {
+	      "ScriptFile"  "units/petrosyan.lua"
+	      "Function"    "ReadBookOfExperience3"
+	    }
+	    "SpendCharge"
+	    {}
+	  }
+	}
+	
 	"item_petri_snares_1"
 	{
 	  "BaseClass"                 "item_datadriven"
@@ -3624,7 +3726,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "250000"
+	  "ItemCost"            "450000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4197,7 +4299,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "100000"
+	  "ItemCost"            "875000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6742,7 +6844,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "3000"
+	  "ItemCost"            "5000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -6899,7 +7001,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1499"
+	  "ItemCost"            "3499"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -6922,7 +7024,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "7500"
+	  "ItemCost"            "15000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -7079,7 +7181,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "4500"
+	  "ItemCost"            "10000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -7102,7 +7204,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "30000"
+	  "ItemCost"            "50000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -7260,7 +7362,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "22500"
+	  "ItemCost"            "35000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -7283,7 +7385,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "80000"
+	  "ItemCost"            "125000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -7441,7 +7543,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "50000"
+	  "ItemCost"            "75000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

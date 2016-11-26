@@ -192,6 +192,108 @@
   }
 }
 
+"item_petri_book_of_experience1"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1131"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_book_of_laugh"
+
+  "ItemCost"            "1"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStockMax" "10" 
+  "ItemStockTime" "720"
+  "ItemStockInitial" "0"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadBookOfExperience1"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+
+"item_petri_book_of_experience2"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1132"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_book_of_laugh"
+
+  "ItemCost"            "10"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStockMax" "10" 
+  "ItemStockTime" "1680"
+  "ItemStockInitial" "0"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadBookOfExperience2"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+
+"item_petri_book_of_experience3"
+{
+  "BaseClass"                 "item_datadriven"
+  "ID"              "1133"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "item_petri_book_of_laugh"
+
+  "ItemCost"            "225"
+  "ItemShopTags"          "consumable"
+  "ItemQuality"           "consumable"
+  "ItemAliases"         "book"
+  "ItemInitialCharges" "1"
+
+  "ItemStockMax" "10" 
+  "ItemStockTime" "45"
+  "ItemStockInitial" "5"
+
+  "ItemStackable"         "1"
+  "ItemPermanent"         "0"
+
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"  "units/petrosyan.lua"
+      "Function"    "ReadBookOfExperience3"
+    }
+    "SpendCharge"
+    {}
+  }
+}
+
 "item_petri_snares_1"
 {
   "BaseClass"                 "item_datadriven"

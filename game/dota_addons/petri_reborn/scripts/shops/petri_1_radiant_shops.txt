@@ -14,6 +14,8 @@
     "item3"        "item_petri_book_of_laugh"
     "item4"        "item_petri_comedy_book"
     "item5"        "item_petri_comedy_story"
+    "item5"        "item_petri_book_of_experience1"
+    "item5"        "item_petri_book_of_experience2"
   }
 
   "weapons_armor"

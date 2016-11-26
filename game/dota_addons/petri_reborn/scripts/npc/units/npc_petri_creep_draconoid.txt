@@ -25,9 +25,9 @@
   "AttackAcquisitionRange"  "500"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "61.0"
-  "BountyGoldMax"       "64.0"
-  "BountyXP"          "200"  
+  "BountyGoldMin"       "500.0"
+  "BountyGoldMax"       "500.0"
+  "BountyXP"          "500"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"

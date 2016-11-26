@@ -605,7 +605,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "upgrade_rate"      "125"
+      "upgrade_rate"      "200"
     }
     "02"
     {
@@ -670,7 +670,7 @@
   "MaxLevel"            "1"
 
   "AbilityChannelTime"      "5.0"
-  "AbilityGoldCost"       "%1000"
+  "AbilityGoldCost"       "%1500"
 
   "OnSpellStart"
   {
