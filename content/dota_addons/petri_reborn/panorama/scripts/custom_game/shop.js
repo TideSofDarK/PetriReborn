@@ -1,5 +1,7 @@
 var selectedItem;
 
+var shopItems = {};
+
 function ToggleShop() {
 	$("#ShopWindow").ToggleClass("Hide");
 	$("#ShopGuide").ToggleClass("Hide");
@@ -39,7 +41,7 @@ function SetupItems() {
 				(function () {
 					var itemname = GameUI.CustomUIConfig().shopsKVs[key][key2];
 
-					CreateItem(r, itemname)
+					shopItems[itemname] = CreateItem(r, itemname);
 				})();
 			}
 			if (r.Children().length == 0) {
@@ -79,6 +81,31 @@ function SetupItems() {
 
 			i++;
 		}
+	}
+}
+
+function OpenQuickbuy(itemname) {
+	for (var key in $("#ShopQuickbuy").Children()) {
+		var child = $("#ShopQuickbuy").Children()[key];
+		if (child == selectedItem) {
+			selectedItem = undefined;
+		}
+		child.RemoveAndDeleteChildren();
+		child.DeleteAsync(0.0);
+	}
+
+	var recipeName = itemname.replace("item_", "item_recipe_");
+	var recipe = GameUI.CustomUIConfig().itemsKVs[recipeName];
+	if (recipe) {
+		recipe = recipe.ItemRequirements["01"];
+		recipe = recipe.split(";");
+
+		for (var key in recipe) {
+			var recipePart = recipe[key];
+			CreateItem($("#ShopQuickbuy"), recipePart)
+		}
+
+		CreateItem($("#ShopQuickbuy"), recipeName)
 	}
 }
 
@@ -132,11 +159,36 @@ function CreateItem(r, itemname) {
 		selectedItem = item;
 		item.AddClass("Selected");
 		OpenRecipe(itemname)
+		OpenQuickbuy(itemname)
 	}));
 
 	return item;
 }
 
+var convertTime = (function (d) {
+	d = Number(d);
+	var h = Math.floor(d / 3600);
+	var m = Math.floor(d % 3600 / 60);
+	var s = Math.floor(d % 3600 % 60);
+	return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s); 
+});
+
+function ShopStock(table_name, key, data) {
+	if (shopItems[key]) {
+		$.Msg(CustomNetTables.GetTableValue(table_name, key).count);
+		if (CustomNetTables.GetTableValue(table_name, key).count == 0) {
+			shopItems[key].AddClass("OutOfStock");
+			shopItems[key].FindChildTraverse("StockLabel").visible = true;
+		} else {
+			shopItems[key].RemoveClass("OutOfStock");
+			shopItems[key].FindChildTraverse("StockLabel").visible = false;
+		}
+		shopItems[key].FindChildTraverse("StockLabel").text = convertTime(CustomNetTables.GetTableValue(table_name, key).time);
+	}
+}
+
 (function () {
+	CustomNetTables.SubscribeNetTableListener("shop", ShopStock)
+
 	SetupItems();
 })();

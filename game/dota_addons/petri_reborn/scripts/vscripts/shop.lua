@@ -2,28 +2,51 @@ if not _G.Shop then
   Shop = class({})
 end
 
-CUSTOM_SHOP_STOCK = {}
-
-chicks = {}
-
 function Shop:Init()
+  CUSTOM_SHOP_STOCK = {}
+
+  chicks = {}
+
   for k,v in pairs(GameMode.ItemKVs) do
     local itemName = k
-    CUSTOM_SHOP_STOCK[itemName] = v.ItemStockInitial or 1
-    if v.ItemStockTime then
-      Timers:CreateTimer(v.ItemStockTime, function (  )
-        CUSTOM_SHOP_STOCK[itemName] = CUSTOM_SHOP_STOCK[itemName] or 0
-        CUSTOM_SHOP_STOCK[itemName] = CUSTOM_SHOP_STOCK[itemName] + 1
-        return v.ItemStockTime
+
+    if v.ItemStockTime and v.ItemStockTime > 0 then
+      CUSTOM_SHOP_STOCK[itemName] = {
+        stockTime = v.ItemStockTime,
+        stockInitial = v.ItemStockInitial
+      }
+
+      CustomNetTables:SetTableValue("shop", itemName, {count = CUSTOM_SHOP_STOCK[itemName].stockInitial, time = CUSTOM_SHOP_STOCK[itemName].stockTime})
+
+      Timers:CreateTimer(0.0, function (  )
+        local oldValue = CustomNetTables:GetTableValue("shop", itemName)["time"] - 1
+        local oldStock = CustomNetTables:GetTableValue("shop", itemName)["count"] 
+        if oldValue <= 0 then
+          CustomNetTables:SetTableValue("shop", itemName, {count = oldStock + 1, time = CUSTOM_SHOP_STOCK[itemName].stockTime})
+        else
+          CustomNetTables:SetTableValue("shop", itemName, {count = oldStock, time = oldValue})
+        end
+        return 1.0
       end)
+    else
+      CUSTOM_SHOP_STOCK[itemName] = -1
     end
   end
+
+end
+
+function SpendStock(item)
+  if CUSTOM_SHOP_STOCK[item] == -1 then return 1 end
+
+  local oldValue = CustomNetTables:GetTableValue("shop", item)["time"]
+  local oldStock = CustomNetTables:GetTableValue("shop", item)["count"] 
+  CustomNetTables:SetTableValue("shop", item, {count = oldStock - 1, time = oldValue})
 end
 
 function CheckStock( item, hero )
-  if not CUSTOM_SHOP_STOCK[item] then return 1 end
+  if CUSTOM_SHOP_STOCK[item] == -1 then return 1 end
 
-  local stock = CUSTOM_SHOP_STOCK[item]
+  local stock = CustomNetTables:GetTableValue("shop", item)["count"]
 
   if hero and stock == 0 then
     Notifications:Bottom(hero:GetPlayerOwner(), {text="#DOTA_Shop_Item_Error_Out_of_Stock", duration=1, style={color="red", ["font-size"]="50px", border="0px solid blue"}})
@@ -132,17 +155,18 @@ function GameMode:BuyItem(keys)
     if CheckStock( item, hero ) then
       if cost <= GetCustomGold( hero:GetPlayerID() ) then
         SpendCustomGold( pID, cost )
-
         if target == "stash" then
           LockInventory(hero)
           local item_entity = AddItem( hero, hero, item )
           local slot = FindItemSlot( hero, item_entity )
           local target_slot = MoveToStash( hero, slot )
-          UnlockInventory(hero)
+          -- UnlockInventory(hero)
         elseif IsValidEntity(target) then
           AddItem( hero, target, item )
         end
+
         hero:EmitSound("General.Buy")
+        SpendStock(item)
         return true
       else
         Notifications:Bottom(hero:GetPlayerOwner(), {text="#dota_hud_error_not_enough_gold", duration=1, style={color="red", ["font-size"]="50px", border="0px solid blue"}})

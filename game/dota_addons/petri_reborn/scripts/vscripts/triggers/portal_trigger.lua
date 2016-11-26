@@ -1,11 +1,8 @@
 PORTAL_LEVELS = {}
-PORTAL_LEVELS[1] = 1
-PORTAL_LEVELS[2] = 5
-PORTAL_LEVELS[3] = 20
-PORTAL_LEVELS[4] = 25
-PORTAL_LEVELS[5] = 40
-PORTAL_LEVELS[6] = 60
-PORTAL_LEVELS[7] = 80
+PORTAL_LEVELS["1portal_brewmaster_in_portalarena1"] = 1
+PORTAL_LEVELS["3portal_brewmaster_in_portalarena2"] = 5
+PORTAL_LEVELS["40portal_brewmaster_in_portalarena5"] = 20
+PORTAL_LEVELS["portal_trigger_boss_a_input"] = 20
 
 function CheckFarmPlaces(trigger, activator)
 	local triggerName = trigger:GetName ()
@@ -95,10 +92,10 @@ function Activate(keys)
 
 	local name = thisEntity:GetName()
 
-	if IsCreepPortal( name ) == true then
+	if PORTAL_LEVELS[name] then
 		Timers:CreateTimer(20, function (  )
-			local number = GetPortalNumber( name )
-
+			local number = PORTAL_LEVELS[name]
+			print("Asdasdasdasdsdas", number)
 			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 
 			local oldPos = unit:GetAbsOrigin()
@@ -109,7 +106,7 @@ function Activate(keys)
 			InitAbilities(unit)
 
 			Timers:CreateTimer(10, function (  )
-				PopupStaticParticle(PORTAL_LEVELS[number], Vector(255,255,255), unit)
+				PopupStaticParticle(number, Vector(255,255,255), unit)
 			end)
 		end)
 	end
