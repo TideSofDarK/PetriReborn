@@ -515,8 +515,7 @@ function GameMode:OnEntityKilled( keys )
   local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
 
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") or bounty >= 2900 then
-    if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and bounty >= 5000 then -- boss
-
+    if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and bounty >= 2900 then -- boss
       Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
       Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
       Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
@@ -536,31 +535,31 @@ function GameMode:OnEntityKilled( keys )
     else
       AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
       PopupParticle(bounty, Vector(244,201,23), 3.0, killerEntity)
-    end
 
-    if GameRules:IsDaytime() == false then
+      if GameRules:IsDaytime() == false then
 
-      killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
-      Notifications:Bottom(killerEntity:GetPlayerOwnerID(), {text="#no_farm_tonight", duration=5, style={color="red", ["font-size"]="45px"}})
+        killerEntity:CastAbilityNoTarget(killerEntity:FindAbilityByName("petri_petrosyan_return"), killerEntity:GetPlayerOwnerID())
+        Notifications:Bottom(killerEntity:GetPlayerOwnerID(), {text="#no_farm_tonight", duration=5, style={color="red", ["font-size"]="45px"}})
+        
+        Timers:CreateTimer(0.04,
+        function()
+          MoveCamera(killerEntity:GetPlayerOwnerID(), killerEntity)
+        end)
+        
+      end
       
-      Timers:CreateTimer(0.04,
+      Timers:CreateTimer(0.4,
       function()
-        MoveCamera(killerEntity:GetPlayerOwnerID(), killerEntity)
+        local particleName = "particles/items2_fx/shadow_amulet_activate_runes.vpcf"
+        local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, killedUnit )
+        ParticleManager:SetParticleControl( particle, 0, killedUnit:GetAbsOrigin() )
       end)
-      
-    end
-    
-    Timers:CreateTimer(0.4,
-    function()
-      local particleName = "particles/items2_fx/shadow_amulet_activate_runes.vpcf"
-      local particle = ParticleManager:CreateParticle( particleName, PATTACH_CUSTOMORIGIN, killedUnit )
-      ParticleManager:SetParticleControl( particle, 0, killedUnit:GetAbsOrigin() )
-    end)
 
-    Timers:CreateTimer(0.37,
-    function()
-      local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
-    end)
+      Timers:CreateTimer(0.37,
+      function()
+        local newUnit = CreateUnitByName(killedUnit:GetUnitName(), killedUnit:GetAbsOrigin(),true, nil,nil,DOTA_TEAM_NEUTRALS)
+      end)
+    end
   end
 end
 
