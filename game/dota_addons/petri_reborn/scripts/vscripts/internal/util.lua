@@ -21,30 +21,36 @@ POPUP_SYMBOL_POST_POINTFIVE = 8
 function GetExpTickModifier()
   local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
   
-  if time >= 40 then
+  if time >= 80 then
     return 0.0
-  elseif time >= 33 and time < 40 then
-    return 10.0
+  elseif time >= 33 and time < 80 then
+    return 5.0
   elseif time >= 32 and time < 33 then
     return 0.0
   elseif time >= 28 and time < 32 then
-    return 8.0
+    return 4.0
   elseif time >= 24 and time < 28 then
     return 0.0
   elseif time >= 20 and time < 24 then
-    return 6.0
+    return 3.0
   elseif time >= 16 and time < 20 then
     return 0.0
-  elseif time >= 12 and time < 16 then
-    return 50.0
+  elseif time >= 15 and time < 16 then
+    return 5.0
+  elseif time >= 14 and time < 15 then
+    return 10.0
+  elseif time >= 12 and time < 14 then
+    return 15.0
+  elseif time >= 12 and time < 13 then
+    return 20.0
   elseif time >= 8 and time < 12 then
     return 0.0
   elseif time >= 6 and time < 8 then
     return 1.0
   elseif time >= 5 and time < 6 then
-    return 2.0
+    return 1.0
   elseif time >= 4 and time < 5 then
-    return 3.0
+    return 2.0
   elseif time >= 2 and time < 4 then
     return 0.0
   elseif time < 2 then
@@ -56,28 +62,28 @@ end
 function GetGoldTickModifier()
   local time = math.floor(GameMode.PETRI_TRUE_TIME/60)
   
-  if time >= 40 then
+  if time >= 80 then
     return 0.0
-  elseif time >= 33 and time < 40 then
-    return 50.0
+  elseif time >= 33 and time < 80 then
+    return 5.0
   elseif time >= 32 and time < 33 then
     return 0.0
   elseif time >= 28 and time < 32 then
-    return 25.0
+    return 4.0
   elseif time >= 24 and time < 28 then
     return 0.0
   elseif time >= 20 and time < 24 then
-    return 10.0
+    return 3.0
   elseif time >= 16 and time < 20 then
     return 0.0
   elseif time >= 12 and time < 16 then
-    return 4.0
+    return 2.0
   elseif time >= 8 and time < 12 then
     return 0.0
   elseif time >= 6 and time < 8 then
     return 1.0
   elseif time >= 4 and time < 6 then
-    return 0.0
+    return 1.0
   elseif time >= 2 and time < 4 then
     return 0.0
   elseif time < 2 then

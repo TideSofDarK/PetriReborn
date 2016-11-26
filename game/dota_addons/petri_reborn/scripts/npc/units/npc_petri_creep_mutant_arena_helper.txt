@@ -65,7 +65,6 @@
       "Uber_mask_of_laugh_level4"    {    "Item"    "item_petri_uber_mask_of_laugh_level4"    }
       "Cow"    {    "Item"    "item_petri_dragon"    }
       "Crysis_armor"    {    "Item"    "item_petri_crysis_armor"    }
-      "Crysis_armor"    {    "Item"    "item_petri_crysis_armor"    }
     }
   }
 }

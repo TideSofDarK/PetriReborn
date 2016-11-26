@@ -205,6 +205,21 @@ function ReadBookOfLaugh( keys )
 	caster:HeroLevelUp(true)
 end
 
+function ReadBookOfExperience1( keys )
+	local caster = keys.caster
+	caster:AddExperience(3,0,false,false)
+end
+
+function ReadBookOfExperience2( keys )
+	local caster = keys.caster
+	caster:AddExperience(100,0,false,false)
+end
+
+function ReadBookOfExperience3( keys )
+	local caster = keys.caster
+	caster:AddExperience(1,0,false,false)
+end
+
 function ReadComedyStory( keys )
 	local caster = keys.caster
 

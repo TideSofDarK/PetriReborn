@@ -1,7 +1,7 @@
 "npc_petri_creep_special7"
 {
   "BaseClass"         "npc_dota_creature"
-  "Model"           "models/creeps/nian/nian_creep.vmdl"
+  "Model"           "models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
   "ModelScale"        "1.2"
   "SoundSet"          "Creep_Good_Melee"  
   "Level"           "3"
@@ -16,16 +16,16 @@
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "15.0"
-  "AttackDamageMax"     "53.0"
+  "AttackDamageMin"     "3000000.0"
+  "AttackDamageMax"     "3365762.0"
   "AttackRate"        "0.7"
   "AttackAnimationPoint"    "0.39"
   "AttackAcquisitionRange"  "800"
   "AttackRange"       "90"
 
-  "BountyGoldMin"       "6.0"
-  "BountyGoldMax"       "7.0"
-  "BountyXP"          "14"  
+  "BountyGoldMin"       "2000.0"
+  "BountyGoldMax"       "2000.0"
+  "BountyXP"          "5000"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -34,7 +34,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "340"
+  "StatusHealth"        "430425"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
