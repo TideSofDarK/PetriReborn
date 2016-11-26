@@ -160,7 +160,7 @@ function GameMode:BuyItem(keys)
           local item_entity = AddItem( hero, hero, item )
           local slot = FindItemSlot( hero, item_entity )
           local target_slot = MoveToStash( hero, slot )
-          -- UnlockInventory(hero)
+          UnlockInventory(hero)
         elseif IsValidEntity(target) then
           AddItem( hero, target, item )
         end
