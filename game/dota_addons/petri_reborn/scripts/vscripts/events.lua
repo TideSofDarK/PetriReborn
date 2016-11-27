@@ -382,7 +382,7 @@ function GameMode:OnEntityKilled( keys )
     end
   end
 
-  if killedUnit:GetUnitName() == "npc_petri_exit" or string.match(unit:GetUnitName(), "miracle") then
+  if killedUnit:GetUnitName() == "npc_petri_exit" or string.match(killedUnit:GetUnitName(), "miracle") then
     GameMode.EXIT_COUNT = GameMode.EXIT_COUNT - 1
     if GameMode.EXIT_COUNT == 0 then
       GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
