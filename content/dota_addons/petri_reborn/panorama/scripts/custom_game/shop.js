@@ -23,7 +23,7 @@ function OpenTab(arg) {
 }
 
 function SetupItems() {
-	if (!GameUI.CustomUIConfig().shopsKVs) {
+	if (!GameUI.CustomUIConfig().shopsKVs || !GameUI.CustomUIConfig().itemBuilds) {
 		$.Schedule(0.1, SetupItems)
 		return;
 	}

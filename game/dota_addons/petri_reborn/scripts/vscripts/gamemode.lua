@@ -293,14 +293,18 @@ function SetupUI(newHero)
   local player = newHero:GetPlayerOwner()
   local pID = player:GetPlayerID()
 
-  --Send lumber and food info to users
-  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
+  Timers:CreateTimer(0.0, function ()
+    --Send lumber and food info to users
+    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
+
+    --Send lumber and food info to users
+    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
+
+    return 1.0
+  end)
 
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_items", GameMode.ItemKVs )
-
-  --Send lumber and food info to users
-  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
 
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
