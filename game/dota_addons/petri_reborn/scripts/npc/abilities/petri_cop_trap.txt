@@ -98,7 +98,7 @@
   "AbilityChannelTime"      "4.5"
   "AbilityUpgradeGoldCost"    "0"
 
-  "AbilityGoldCost" "750"
+  "AbilityGoldCost" "%750"
 
   "precache"
   {
