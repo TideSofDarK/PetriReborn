@@ -5,7 +5,7 @@
     "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
     "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
     
-    "AbilityCastRange"              "650"
+    "AbilityCastRange"              "1500"
 
     "precache"
     {
@@ -68,7 +68,7 @@
                     "Target"
                     {
                         "Center"      "TARGET"
-                        "Radius"     "650"
+                        "Radius"     "1500"
                         "Teams"     "DOTA_UNIT_TARGET_TEAM_BOTH"
                         "Types"     "DOTA_UNIT_TARGET_HERO"
                         "Flags"     "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
