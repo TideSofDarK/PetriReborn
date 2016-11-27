@@ -293,16 +293,6 @@ function SetupUI(newHero)
   local player = newHero:GetPlayerOwner()
   local pID = player:GetPlayerID()
 
-  Timers:CreateTimer(0.0, function ()
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
-
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
-
-    return 1.0
-  end)
-
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_items", GameMode.ItemKVs )
 
@@ -324,6 +314,16 @@ end
 
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
+
+  Timers:CreateTimer(0.0, function ()
+    --Send lumber and food info to users
+    CustomGameEventManager:Send_ServerToAllPlayers( "petri_set_builds", GameMode.ItemBuilds )
+
+    --Send lumber and food info to users
+    CustomGameEventManager:Send_ServerToAllPlayers( "petri_set_shops", GameMode.shopsKVs )
+
+    return 1.0
+  end)
 
   Shop:Init()
   
