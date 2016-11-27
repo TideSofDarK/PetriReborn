@@ -310,20 +310,16 @@ function SetupUI(newHero)
 
   --Send special values
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
+
+  --Send lumber and food info to users
+  CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
 end
 
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
-
-  Timers:CreateTimer(0.0, function ()
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToAllPlayers( "petri_set_builds", GameMode.ItemBuilds )
-
-    --Send lumber and food info to users
-    CustomGameEventManager:Send_ServerToAllPlayers( "petri_set_shops", GameMode.shopsKVs )
-
-    return 1.0
-  end)
 
   Shop:Init()
   
@@ -536,6 +532,9 @@ function GameMode:InitGameMode()
   -- Fix xp bounties
   GameRules:GetGameModeEntity():SetModifyExperienceFilter(Dynamic_Wrap(GameMode, "ModifyExperienceFilter"), GameMode)
 
+  -- Fix up damage
+  GameRules:GetGameModeEntity():SetDamageFilter(Dynamic_Wrap(GameMode, "DamageFilter"), GameMode)
+
   -- Commands
   Convars:RegisterCommand( "lumber", Dynamic_Wrap(GameMode, 'LumberCommand'), "Gives you lumber", FCVAR_CHEAT )
   Convars:RegisterCommand( "lag", Dynamic_Wrap(GameMode, 'LumberAndGoldCommand'), "Gives you lumber and gold", FCVAR_CHEAT )
@@ -698,8 +697,37 @@ end
 
 function KVNWin(keys)
   local caster = keys.caster
+  local ability = keys.ability
 
-  if GameMode.PETRI_NO_END == false then
+  local s = true
+
+  if ability:GetName() == "petri_miracle1" then
+    s = false
+    for _,v in pairs(Entities:FindAllByName("npc_petri_miracle1")) do
+      if IsValidEntity(v) and v:IsAlive() then
+        s = true
+        break
+      end
+    end
+  elseif ability:GetName() == "petri_miracle2" then
+    s = false
+    for _,v in pairs(Entities:FindAllByName("npc_petri_miracle2")) do
+      if IsValidEntity(v) and v:IsAlive() then
+        s = true
+        break
+      end
+    end
+  elseif ability:GetName() == "petri_miracle3" then
+    s = false
+    for _,v in pairs(Entities:FindAllByName("npc_petri_miracle3")) do
+      if IsValidEntity(v) and v:IsAlive() then
+        s = true
+        break
+      end
+    end
+  end
+
+  if GameMode.PETRI_NO_END == false and s then
     if GameMode.PETRI_GAME_HAS_ENDED == false then
       GameMode.PETRI_GAME_HAS_ENDED = true
 

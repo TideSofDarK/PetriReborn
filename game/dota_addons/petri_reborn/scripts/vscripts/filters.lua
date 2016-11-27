@@ -315,6 +315,38 @@ function GameMode:ModifyGoldFilter(event)
   -- return false
 end
 
+DAMAGE_FILTERS = {}
+DAMAGE_FILTERS["npc_petri_loose_trigger1"] = 1000
+DAMAGE_FILTERS["npc_petri_loose_trigger2"] = 5000
+DAMAGE_FILTERS["npc_petri_loose_trigger3"] = 10000
+
+function GameMode:DamageFilter( filter_table )
+    local victim = EntIndexToHScript(filter_table["entindex_victim_const"])
+
+    local attacker
+    if not filter_table["entindex_attacker_const"] then
+        attacker = victim
+        filter_table["entindex_attacker_const"] = filter_table["entindex_victim_const"]
+    else
+        attacker = EntIndexToHScript(filter_table["entindex_attacker_const"])
+    end
+    
+    local damage = filter_table["damage"]
+    local damage_type = filter_table["damagetype_const"]
+
+    if damage_type ~= DAMAGE_TYPE_PHYSICAL then
+      damage_type = DAMAGE_TYPE_PURE
+    end
+
+    if DAMAGE_FILTERS[victim:GetUnitName()] then
+      if damage < DAMAGE_FILTERS[victim:GetUnitName()] then
+        return false
+      end
+    end
+
+    return true
+end
+
 function GameMode:ModifyExperienceFilter(filterTable)
   if not filterTable["player_id_const"] or not PlayerResource:GetPlayer(filterTable["player_id_const"]) then return false end
   if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS 

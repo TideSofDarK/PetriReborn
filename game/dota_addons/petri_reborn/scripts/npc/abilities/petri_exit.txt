@@ -22,3 +22,78 @@
     }
   }
 }
+
+"petri_miracle1"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "build_petri_exit"
+
+  "Modifiers"
+  {
+    "modifier_exit"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "gamemode.lua"
+          "Function"    "KVNWin"
+        }
+      }
+    }
+  }
+}
+
+"petri_miracle2"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "build_petri_exit"
+
+  "Modifiers"
+  {
+    "modifier_exit"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "gamemode.lua"
+          "Function"    "KVNWin"
+        }
+      }
+    }
+  }
+}
+
+"petri_miracle3"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+  "AbilityTextureName" "build_petri_exit"
+
+  "Modifiers"
+  {
+    "modifier_exit"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+
+      "OnCreated"
+      {
+        "RunScript"
+        {
+          "ScriptFile"  "gamemode.lua"
+          "Function"    "KVNWin"
+        }
+      }
+    }
+  }
+}

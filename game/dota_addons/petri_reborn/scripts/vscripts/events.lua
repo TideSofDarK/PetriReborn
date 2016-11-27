@@ -120,6 +120,12 @@ function GameMode:OnPlayerReconnect(keys)
       Timers:CreateTimer(2.25,
       function()
         --Send lumber and food info to users
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_builds", GameMode.ItemBuilds )
+
+        --Send lumber and food info to users
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_shops", GameMode.shopsKVs )
+        
+        --Send lumber and food info to users
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_ability_layouts", GameMode.abilityLayouts )
 
         --Send gold costs
@@ -376,7 +382,7 @@ function GameMode:OnEntityKilled( keys )
     end
   end
 
-  if killedUnit:GetUnitName() == "npc_petri_exit" then
+  if killedUnit:GetUnitName() == "npc_petri_exit" or string.match(unit:GetUnitName(), "miracle") then
     GameMode.EXIT_COUNT = GameMode.EXIT_COUNT - 1
     if GameMode.EXIT_COUNT == 0 then
       GameMode.PETRI_ADDITIONAL_EXIT_GOLD_GIVEN = false
