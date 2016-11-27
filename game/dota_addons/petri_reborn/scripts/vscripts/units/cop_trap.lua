@@ -10,7 +10,7 @@ function Upgrade( keys )
 	local ability = keys.ability
 
 	local passive = caster:FindAbilityByName("petri_cop_trap")
-	if passive then
+	if passive and SpendCustomGold( caster:GetPlayerOwnerID(), GetAbilityGoldCost( ability ) ) then
 		passive:UpgradeAbility(false)
 		
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_upgraded", {})

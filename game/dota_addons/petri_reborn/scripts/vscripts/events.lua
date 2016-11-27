@@ -514,8 +514,8 @@ function GameMode:OnEntityKilled( keys )
   -- Respawn creep
   local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
 
-  if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") or bounty >= 2900 then
-    if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and bounty >= 2900 then -- boss
+  if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") or string.match(killedUnit:GetUnitName (), "boss") then
+    if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and string.match(killedUnit:GetUnitName (), "boss") then -- boss
       Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
       Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
       Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
