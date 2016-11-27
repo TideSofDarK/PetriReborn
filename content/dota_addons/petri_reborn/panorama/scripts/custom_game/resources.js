@@ -4,6 +4,17 @@ var currentResources = {};
 
 (function(){Math.clamp=function(a,b,c){return Math.max(b,Math.min(c,a));}})();
 
+function commafy( num ) {
+    var str = num.toString().split('.');
+    if (str[0].length >= 5) {
+        str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+        str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+}
+
 function UpdateResources( )
 {
 	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
@@ -16,7 +27,7 @@ function UpdateResources( )
 
 	if (resourceTable)
 	{
- 		$( "#TotalGoldText" ).text = isEnemy ? "0" : resourceTable["gold"];
+ 		$( "#TotalGoldText" ).text = isEnemy ? "0" : commafy(resourceTable["gold"]);
 	 	$( "#TotalLumberText" ).text = isEnemy ? "0" : resourceTable["lumber"];
 	 	$( "#TotalFoodText" ).text = isEnemy ? "0/0" : resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
 	}

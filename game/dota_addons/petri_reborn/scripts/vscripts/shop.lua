@@ -65,7 +65,6 @@ function FindItemSlot( unit, item )
       end
     end
   end
-  print("no such item")
 end
 
 function MoveToStash( hero, slot )
@@ -141,7 +140,7 @@ function GameMode:BuyItem(keys)
 
   chicks = Entities:FindAllByName("npc_dota_courier") or {}
 
-  PrintTable(toBuy)
+  -- PrintTable(toBuy)
   PrintTable(toDelete)
 
   -- for i=0,5 do
@@ -356,6 +355,7 @@ function RemoveItems( hero, c, t )
         local it = unit:GetItemInSlot(i)
         if it and it:GetName() == v then
           unit:RemoveItem(it)
+          break
         end
       end
     end
@@ -386,7 +386,6 @@ end
 
 function GetItemList( hero, item, t, t2 )
   if CheckForItem(hero, item) and not t then
-    print("checking for: ", item)
     hero.tempShopInstance[item] = hero.tempShopInstance[item] + 1
     return {}, { [1] = item }
   end
@@ -475,7 +474,6 @@ function CheckForItem(hero, item)
     local it = hero:GetItemInSlot(i)
     if it and it:GetName() == item then
       current = current + 1
-      print(item)
       if current > hero.tempShopInstance[item] then
         return hero
       end
