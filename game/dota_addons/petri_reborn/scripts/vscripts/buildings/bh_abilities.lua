@@ -121,7 +121,9 @@ function build( keys )
 		end
 
 		if unit:GetUnitName() == "npc_petri_exit" or string.match(unit:GetUnitName(), "miracle") then
-			if hero.exit and hero.exit:IsNull() == false and hero.exit:IsAlive() then
+			hero.exit = hero.exit or {}
+			
+			if hero.exit[unit:GetUnitName()] and hero.exit[unit:GetUnitName()]:IsNull() == false and hero.exit[unit:GetUnitName()]:IsAlive() then
 				Timers:CreateTimer(0.03, function ()
 					unit:ForceKill(false)
 				end)
@@ -130,7 +132,7 @@ function build( keys )
 
 				GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
 
-				hero.exit = unit
+				hero.exit[unit:GetUnitName()] = unit
 
 				unit.childEntity = CreateUnitByName("petri_dummy_1400vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 				-- Timers:CreateTimer(GameMode.PETRI_ADDITIONAL_EXIT_GOLD_TIME, 
