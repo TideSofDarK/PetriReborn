@@ -110,7 +110,10 @@
     "item2"    "item_petri_kvn_fan_blink"
     "item3"    "item_petri_kvn_fan_cool_blink"
     "item4"    "item_petri_boots"
-    "item5"    "item_petri_pocketexit"
+    "item5"    "item_petri_pocketmiracle1"
+    "item6"    "item_petri_pocketmiracle2"
+    "item7"    "item_petri_pocketmiracle3"
+    "item8"    "item_petri_pocketexit"
   }
 
  //Secret Shop Start

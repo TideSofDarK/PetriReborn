@@ -1,10 +1,34 @@
 PORTALS_LEVELS = {}
-PORTALS_LEVELS["40portal_brewmaster_in_portalarena5"] 		= true
-PORTALS_LEVELS["25portal_brewmaster_in_portalarena4"] 		= true
-PORTALS_LEVELS["60portal_brewmaster_in_portalarena6"] 		= true
-PORTALS_LEVELS["40portal_death_prophet_in_portalarena5"] 	= true
-PORTALS_LEVELS["25portal_death_prophet_in_portalarena4"] 	= true
-PORTALS_LEVELS["60portal_death_prophet_in_portalarena6"] 	= true
+PORTALS_LEVELS["1portal_brewmaster_in_portalarena1"] = true
+PORTALS_LEVELS["3portal_brewmaster_in_portalarena2"] = true
+PORTALS_LEVELS["10portal_brewmaster_in_portalarena3"] = true
+PORTALS_LEVELS["20portal_brewmaster_in_portalarena4"] = true
+PORTALS_LEVELS["30portal_brewmaster_in_portalarena5"] = true
+PORTALS_LEVELS["40portal_brewmaster_in_portalarena6"] = true
+PORTALS_LEVELS["50portal_brewmaster_in_portalarena7"] = true
+PORTALS_LEVELS["60portal_brewmaster_in_portalarena8"] = true
+PORTALS_LEVELS["70portal_brewmaster_in_portalarena9"] = true
+PORTALS_LEVELS["1portal_brewmaster_in_portalarena11"] = true
+PORTALS_LEVELS["1portal_death_prophet_in_portalarena1"] = true
+PORTALS_LEVELS["3portal_death_prophet_in_portalarena2"] = true
+PORTALS_LEVELS["10portal_death_prophet_in_portalarena3"] = true
+PORTALS_LEVELS["20portal_death_prophet_in_portalarena4"] = true
+PORTALS_LEVELS["30portal_death_prophet_in_portalarena5"] = true
+PORTALS_LEVELS["40portal_death_prophet_in_portalarena6"] = true
+PORTALS_LEVELS["50portal_death_prophet_in_portalarena7"] = true
+PORTALS_LEVELS["60portal_death_prophet_in_portalarena8"] = true
+PORTALS_LEVELS["70portal_death_prophet_in_portalarena9"] = true
+PORTALS_LEVELS["1portal_death_prophet_in_portalarena11"] = true
+PORTALS_LEVELS["1portal_storm_spirit_in_portalarena1"] = true
+PORTALS_LEVELS["3portal_storm_spirit_in_portalarena2"] = true
+PORTALS_LEVELS["10portal_storm_spirit_in_portalarena3"] = true
+PORTALS_LEVELS["20portal_storm_spirit_in_portalarena4"] = true
+PORTALS_LEVELS["30portal_storm_spirit_in_portalarena5"] = true
+PORTALS_LEVELS["40portal_storm_spirit_in_portalarena6"] = true
+PORTALS_LEVELS["50portal_storm_spirit_in_portalarena7"] = true
+PORTALS_LEVELS["60portal_storm_spirit_in_portalarena8"] = true
+PORTALS_LEVELS["70portal_storm_spirit_in_portalarena9"] = true
+PORTALS_LEVELS["1portal_storm_spirit_in_portalarena11"] = true
 
 PORTAL_LEVELS = {}
 PORTAL_LEVELS["1portal_brewmaster_in_portalarena1"] = 1
@@ -18,6 +42,11 @@ PORTAL_LEVELS["60portal_brewmaster_in_portalarena8"] = 60
 PORTAL_LEVELS["70portal_brewmaster_in_portalarena9"] = 70
 PORTAL_LEVELS["80portal_brewmaster_in_portalarena10"] = 80
 PORTAL_LEVELS["1portal_brewmaster_in_portalarena11"] = 777
+PORTAL_LEVELS["2portal_brewmaster_in_portalboss1"] = 1
+PORTAL_LEVELS["2portal_brewmaster_in_portalboss2"] = 2
+PORTAL_LEVELS["2portal_brewmaster_in_portalboss3"] = 3
+PORTAL_LEVELS["2portal_brewmaster_in_portalboss4"] = 4
+PORTAL_LEVELS["2portal_brewmaster_in_portalboss5"] = 5
 
 function OnStartTouch(trigger)
 	if string.match(trigger.caller:GetName(), string.gsub(trigger.activator:GetUnitName(), "npc_dota_hero_", "")) and (string.match(trigger.caller:GetName(),"%d+") == nil or trigger.activator:GetLevel() >= tonumber(string.match(trigger.caller:GetName(),"%d+"))) then

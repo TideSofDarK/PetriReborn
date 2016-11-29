@@ -5,8 +5,11 @@
 	  "override_hero"     "npc_dota_hero_death_prophet"
 	
 	  "NoCombine"   "1"
-	  
+	
+	  "HealthBarOffset"    "275"
+	
 	  "HasInventory"          "1"
+	  "ConsideredHero"        "1"
 	
 	  "AbilityLayout" "6"
 	
@@ -26,16 +29,16 @@
 	  "AttackRange"                "81"
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
-	  "AttackRate" "0.39"
+	  "AttackRate" "1.51"
 	  "AttackAnimationPoint"       "0.269"
 	
-	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
-	  "AttributeBaseStrength"   "1"
+	  "AttributePrimary"      "DOTA_ATTRIBUTE_AGILITY"
+	  "AttributeBaseStrength"   "0"
 	  "AttributeStrengthGain"   "1.25"
 	  "AttributeBaseIntelligence" "1"
 	  "AttributeIntelligenceGain" "0.25"
-	  "AttributeBaseAgility"    "1"
-	  "AttributeAgilityGain"    "0.0"
+	  "AttributeBaseAgility"    "0.24"
+	  "AttributeAgilityGain"    "0.24"
 	
 	  "BountyXP"          "0"                 
 	  "BountyGoldMin"       "10"                   
@@ -149,18 +152,19 @@
 	  "MagicalResistance"       "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
-	  "AttackRange"                "75"
+	  "AttackRange"                "81"
 	  "AttackDamageMin"     "2"
 	  "AttackDamageMax"     "2"
-	  "AttackRate" "0.39"
+	  "AttackRate" "1.51"
+	  "AttackAnimationPoint"       "0.269"
 	
-	  "AttributePrimary"      "DOTA_ATTRIBUTE_STRENGTH"
-	  "AttributeBaseStrength"   "1"
-	  "AttributeStrengthGain"   "0.8"
+	  "AttributePrimary"      "DOTA_ATTRIBUTE_AGILITY"
+	  "AttributeBaseStrength"   "0"
+	  "AttributeStrengthGain"   "1.25"
 	  "AttributeBaseIntelligence" "1"
 	  "AttributeIntelligenceGain" "0.25"
-	  "AttributeBaseAgility"    "1"
-	  "AttributeAgilityGain"    "0.25"
+	  "AttributeBaseAgility"    "0.24"
+	  "AttributeAgilityGain"    "0.24"
 	
 	  "BountyXP"          "0"                 
 	  "BountyGoldMin"       "10"                   
@@ -208,6 +212,7 @@
 	  "MagicalResistance"       "0"
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+	  "AttackAcquisitionRange"  "200"
 	  "AttackRange"                "81"
 	  "AttackDamageMin"     "1"
 	  "AttackDamageMax"     "2"

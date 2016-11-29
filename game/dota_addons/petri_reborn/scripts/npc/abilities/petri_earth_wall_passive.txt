@@ -4,7 +4,7 @@
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
 
-  "MaxLevel"            "10"
+  "MaxLevel"            "14"
 
   "precache"
   {
@@ -21,7 +21,7 @@
     "01"
     {
       "var_type"      "FIELD_INTEGER"
-      "stun_chance"      "50 50 50 50 50 50 50 20 25 30 40 50"
+      "stun_chance"      "50 50 50 50 50 50 50 20 25 30 40 50 50 50"
     }
     "02"
     {
@@ -31,27 +31,28 @@
     "03"
     {
       "var_type"          "FIELD_FLOAT"
-      "regeneration"        "2.5 5.0 10.0 20.0 30.0 40.0 50.0 60.0 80.0 120.0 400.0"
+      "regeneration"        "2.5 3.5 7.0 20.0 30.0 40.0 50.0 300.0 80.0 120.0 300.0 400.0 400.0"
     }
     "04"
     {
       "var_type"      "FIELD_INTEGER"
-      "stun_cooldown"      "90 85 80 75 70 65 60 20 20 20 17 17"
+      "stun_cooldown"      "90 85 80 75 70 65 60 20 20 20 17 17 16 15"
     }
+    // дамаг расчитывать, от базы +30//
     "05"
     {
       "var_type"          "FIELD_INTEGER"
-      "damage"        "15 30 50 100 200 500 1000 10000 50000 100000 200000 500000"
+      "damage"        "-25 -20 -10 30 70 170 220 470 4970 9970 49970 599970 1499970 2499970"
     }
     "06"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20 20 20"
+      "attack_range_bonus"        "600 600 600 600 600 600 600 20 20 20 20 20 20 20"
     }
     "07"
     {
       "var_type"          "FIELD_FLOAT"
-      "stun_duration"        "0.02 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5"
+      "stun_duration"        "0.02 0.05 0.1 0.2 0.3 0.4 0.5 2.0 2.0 2.0 2.5 2.5 2.5 2.5"
     }
   }
 

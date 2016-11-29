@@ -14,8 +14,8 @@
   "MagicalResistance"     "0"
 
   "AttackCapabilities"        "DOTA_UNIT_CAP_RANGED_ATTACK"
-  "AttackDamageMin"            "8200000.0"
-  "AttackDamageMax"            "8200000.0"
+  "AttackDamageMin"            "57077003.0"
+  "AttackDamageMax"            "57077003.0"
   "AttackRate"                 "0.3"
   "AttackAnimationPoint"       "0.39"
   "AttackAcquisitionRange"     "200"

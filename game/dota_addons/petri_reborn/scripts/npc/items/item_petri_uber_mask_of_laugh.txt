@@ -20,7 +20,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "7"
+      "lifesteal_percent"   "10"
     }
     "02"
     {
@@ -200,7 +200,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "35"
+      "lifesteal_percent"   "25"
     }
     "02"
     {
@@ -380,7 +380,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "75"
+      "lifesteal_percent"   "50"
     }
     "02"
     {
@@ -561,7 +561,7 @@
     "01"
     {
       "var_type"        "FIELD_INTEGER"
-      "lifesteal_percent"   "150"
+      "lifesteal_percent"   "100"
     }
     "02"
     {
