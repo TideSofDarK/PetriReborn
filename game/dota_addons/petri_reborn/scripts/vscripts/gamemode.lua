@@ -331,6 +331,13 @@ end
 function GameMode:OnGameInProgress()
   DebugPrint("[BAREBONES] The game has officially begun")
 
+  Timers:CreateTimer(30.0,
+    function()
+      for k,v in pairs(GameMode.villians) do
+        v:RemoveModifierByName("dummy_sleep_modifier")
+      end
+    end)
+
   Shop:Init()
   
   GameMode.PETRI_GAME_HAS_STARTED = true
