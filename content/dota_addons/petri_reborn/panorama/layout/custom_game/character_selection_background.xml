@@ -2,9 +2,22 @@
 	<styles>
 		<include src="file://{resources}/styles/custom_game/loading_screen/custom_loading_screen.css" />
 	</styles>
-	<scripts>
-	</scripts>
+	<script>
+		(function() {
+		    GameEvents.Subscribe("petri_spawning_queue", function (args) {
+		        var queue = (Players.GetLocalPlayer() - args.queue);
+
+		        if (queue == 0) {
+		            $("#loadingLabel").text = "Spawning...";
+		        } else {
+		            $("#loadingLabel").text = "You are queued for spawn: " + queue;
+		        }
+		    });
+		})();
+	</script>
 	<Panel hittest="false" class="HSBackground">
 		<Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+
+		<Label id="loadingLabel" text="Loading..." />
 	</Panel>
 </root>

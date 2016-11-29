@@ -8,18 +8,50 @@ function GameMode:_OnGameRulesStateChange(keys)
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
     GameMode:PostLoadPrecache()
 
-    if USE_CUSTOM_COLORS_FOR_PLAYERS then
-      for i=0,DOTA_MAX_PLAYERS do
-        if PlayerResource:IsValidPlayer(i) then
-          local color = PLAYER_COLORS[i]
-          PlayerResource:SetCustomPlayerColor(i, color[1], color[2], color[3])
+    self.spawnQueueID = -1
 
-          Timers:CreateTimer(1.0, function (  )
-            GameMode:CreateHero(i)
-          end)
-        end
+    self.spawnDelay = 2.25
+
+    EasyTimers:CreateTimer(function()
+      -- Timers:CreateTimer(function ()
+      --   if not self.heroesSpawned then
+      --     PauseGame(true)
+      --     return 0.03
+      --   end
+      --   PauseGame(false)
+      -- end)
+
+      self.playerQueue = function ()
+          PauseGame(true)
+          self.spawnQueueID = self.spawnQueueID + 1
+
+          -- Update queue info
+          CustomGameEventManager:Send_ServerToAllClients("petri_spawning_queue", {queue = self.spawnQueueID})
+
+          -- End pause if every player is checked
+          if self.spawnQueueID > 24 then
+              self.spawnQueueID = nil
+              self.heroesSpawned = true
+              PauseGame(false)
+              return
+          end
+
+          -- Skip disconnected players
+          if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
+              self.playerQueue()
+              return
+          end
+
+          -- Keep spawning
+          EasyTimers:CreateTimer(function()
+              local color = PLAYER_COLORS[self.spawnQueueID]
+              PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
+              GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
+          end, 'spawning', self.spawnDelay)
       end
-    end
+
+      self.playerQueue()
+    end, 'spawning_start', 4.0)
   elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     GameMode:OnGameInProgress()
 

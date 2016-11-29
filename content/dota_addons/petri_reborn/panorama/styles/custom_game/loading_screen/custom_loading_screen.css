@@ -3,6 +3,16 @@
 @define IterationCount: infinite;
 @define AnimationDelay: 0s;
 
+#loadingLabel {
+  align: center bottom;
+  margin-bottom: 100px;
+  font-size: 50px;
+  font-family: Goudy Trajan Medium,FZKai-Z03,TH Sarabun New,YDYGO 540;
+  width: fit-children;
+  color: white;
+  text-shadow: 2px 2px 8px 3.0 #000000b0;
+}
+
 .HSBackground {
   width: 100%;
   height: 100%;

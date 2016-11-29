@@ -87,6 +87,8 @@ require('filters')
 require('commands')
 require('internal/gamemode')
 
+require('easytimers')
+
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
@@ -122,7 +124,22 @@ function GameMode:OnAllPlayersLoaded()
   -- end
 end
 
-function GameMode:CreateHero(pID)
+function GameMode:AddItems( newHero )
+  for steamid,t in pairs(GameMode.StartItemsKVs) do
+    if tonumber(steamid) == PlayerResource:GetSteamAccountID(newHero:GetPlayerOwnerID()) then
+      for k,v in pairs(t) do
+        if k == newHero:GetUnitName() then
+          for k1,v1 in pairs(v) do
+            newHero:AddItemByName(v1)
+          end
+          break
+        end
+      end
+    end
+  end
+end
+
+function GameMode:CreateHero(pID, callback)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
   
   local player = PlayerResource:GetPlayer(pID)
@@ -133,8 +150,8 @@ function GameMode:CreateHero(pID)
    -- Init kvn fan
   if team == 2 then
     -- UTIL_Remove(hero) 
-    -- PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-    --   function() 
+    PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+      function() 
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
@@ -177,8 +194,11 @@ function GameMode:CreateHero(pID)
         end)
 
         table.insert(GameMode.kvns, newHero)
-    --   end, 
-    -- pID)
+
+        GameMode:AddItems( newHero )
+        callback()
+      end, 
+    pID)
   end
 
   local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -189,8 +209,8 @@ function GameMode:CreateHero(pID)
    -- Init petrosyan
   if team == 3 then
     -- UTIL_Remove(hero) 
-    -- PrecacheUnitByNameAsync(petrosyanHeroName,
-     -- function() 
+    PrecacheUnitByNameAsync(petrosyanHeroName,
+     function() 
         newHero = CreateHeroForPlayer(petrosyanHeroName,player)
 
         -- It's dangerous to go alone, take this
@@ -231,20 +251,10 @@ function GameMode:CreateHero(pID)
             GameMode.explorationTower = CreateUnitByName( "npc_petri_exploration_tower" , Entities:FindAllByName("exploration_tower_position")[1]:GetAbsOrigin() , true, newHero, nil, DOTA_TEAM_BADGUYS )
             end)
         end
-     -- end, pID)
-  end
 
-  for steamid,t in pairs(GameMode.StartItemsKVs) do
-    if tonumber(steamid) == PlayerResource:GetSteamAccountID(pID) then
-      for k,v in pairs(t) do
-        if k == newHero:GetUnitName() then
-          for k1,v1 in pairs(v) do
-            newHero:AddItemByName(v1)
-          end
-          break
-        end
-      end
-    end
+        GameMode:AddItems( newHero )
+        callback()
+     end, pID)
   end
 end
 
