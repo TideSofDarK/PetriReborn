@@ -1,4 +1,4 @@
-"npc_petri_gusman"
+"npc_petri_boss_gusman"
 {
   "BaseClass"     "npc_dota_creature"
   "Model"      "models/heroes/necrolyte/necrolyte.vmdl"
@@ -9,12 +9,12 @@
   "AbilityLayout"    "4"
   "Ability1" "petri_magic_immune"
 
-  "ArmorPhysical"    "0"
+  "ArmorPhysical"    "1000"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"    "10.0"
-  "AttackDamageMax"    "10.0"
+  "AttackDamageMin"    "2000000.0"
+  "AttackDamageMax"    "2000000.0"
   "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"    "1"
   "AttackAnimationPoint"  "0.433"
@@ -33,7 +33,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "1000"
+  "StatusHealth"    "200000"
   "StatusHealthRegen"   "3"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"

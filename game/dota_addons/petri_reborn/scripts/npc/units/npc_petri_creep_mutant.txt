@@ -12,13 +12,13 @@
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "0"
+  "ArmorPhysical"       "1650"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "111.10"
-  "AttackDamageMax"     "200.0"
+  "AttackDamageMin"     "184851.10"
+  "AttackDamageMax"     "184851.0"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
@@ -35,7 +35,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "175425"
+  "StatusHealth"        "1504"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

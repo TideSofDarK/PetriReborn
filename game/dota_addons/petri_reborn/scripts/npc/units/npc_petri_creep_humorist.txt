@@ -12,13 +12,13 @@
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "0"
+  "ArmorPhysical"       "50"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-  "AttackDamageMin"     "10.10"
-  "AttackDamageMax"     "20.0"
+  "AttackDamageMin"     "12326.10"
+  "AttackDamageMax"     "12326.0"
   "AttackRate"        "0.37"
   "AttackAnimationPoint"    "0.01"
   "AttackAcquisitionRange"  "500"
@@ -26,7 +26,7 @@
 
   "BountyGoldMin"       "320.0"
   "BountyGoldMax"       "320.0"
-  "BountyXP"          "300"  
+  "BountyXP"          "3000"  
 
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
@@ -35,7 +35,7 @@
   "MovementSpeed"       "270"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "20300"
+  "StatusHealth"        "5050"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

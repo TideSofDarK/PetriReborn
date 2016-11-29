@@ -1,4 +1,4 @@
-"npc_petri_maslyakov"
+"npc_petri_boss_maslyakov"
 {
   "BaseClass"     "npc_dota_creature"
   "Model"      "models/heroes/keeper_of_the_light/keeper_of_the_light.vmdl"
@@ -9,12 +9,12 @@
   "AbilityLayout"    "4"
   "Ability1" "petri_magic_immune"
 
-  "ArmorPhysical"    "0"
+  "ArmorPhysical"    "1000"
   "MagicalResistance"   "0"
 
   "AttackCapabilities"  "DOTA_UNIT_CAP_MELEE_ATTACK"
-  "AttackDamageMin"    "100.0"
-  "AttackDamageMax"    "100.0"
+  "AttackDamageMin"    "250000.0"
+  "AttackDamageMax"    "250000.0"
   "AttackDamageType"   "DAMAGE_TYPE_ArmorPhysical"
   "AttackRate"    "1"
   "AttackAnimationPoint"  "0.433"
@@ -33,7 +33,7 @@
   "MovementSpeed"    "522"
   "MovementTurnRate"   "0.6"
 
-  "StatusHealth"    "1000"
+  "StatusHealth"    "40000"
   "StatusHealthRegen"   "3"
   "StatusMana"    "0"
   "StatusManaRegen"    "0"

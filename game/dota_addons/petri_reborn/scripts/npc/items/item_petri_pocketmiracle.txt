@@ -1,0 +1,192 @@
+"item_petri_pocketmiracle1"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "item_datadriven"
+  "ID"              "1112"
+  "AbilityTextureName"      "item_petri_miracle1"
+
+  "SideShop" "1"
+  "ItemCost"            "1"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "ward"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "0"
+  "ItemSellable"        "0"
+  "ItemPermanent"       "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    { 
+        "var_type"  "FIELD_INTEGER"
+        "lumber_cost" "10"
+    }
+  }
+
+  // BuildingHelper info
+  "Building"            "1" //bool
+  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+  "BuildTime"           "600.0"
+  "AbilityCastRange"        "100"
+  "UpdateHealth"          "1" //bool
+  "Scale"             "1" //bool
+  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+  //"CancelsBuildingGhost"      "0" //bool
+  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+  "UnitName"            "npc_petri_miracle1"
+  "AbilityCooldown"       "480.0"
+  "AbilityGoldCost"       "0"
+  // End of BuildingHelper info
+
+  "AbilityCastPoint"        "0.0"
+  "MaxLevel"            "1"
+
+  // Item Info
+  
+  "AbilityManaCost"       "0"
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "buildings/bh_abilities.lua"
+      "Function"        "build"
+    }
+  }
+}
+
+"item_petri_pocketmiracle2"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "item_datadriven"
+  "ID"              "1113"
+  "AbilityTextureName"      "item_petri_miracle2"
+
+  "SideShop" "1"
+  "ItemCost"            "1"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "ward"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "0"
+  "ItemSellable"        "0"
+  "ItemPermanent"       "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    { 
+        "var_type"  "FIELD_INTEGER"
+        "lumber_cost" "10"
+    }
+  }
+
+  // BuildingHelper info
+  "Building"            "1" //bool
+  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+  "BuildTime"           "600.0"
+  "AbilityCastRange"        "100"
+  "UpdateHealth"          "1" //bool
+  "Scale"             "1" //bool
+  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+  //"CancelsBuildingGhost"      "0" //bool
+  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+  "UnitName"            "npc_petri_miracle2"
+  "AbilityCooldown"       "480.0"
+  "AbilityGoldCost"       "0"
+  // End of BuildingHelper info
+
+  "AbilityCastPoint"        "0.0"
+  "MaxLevel"            "1"
+
+  // Item Info
+  
+  "AbilityManaCost"       "0"
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "buildings/bh_abilities.lua"
+      "Function"        "build"
+    }
+  }
+}
+
+"item_petri_pocketmiracle3"
+{
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "BaseClass"           "item_datadriven"
+  "ID"              "1114"
+  "AbilityTextureName"      "item_petri_miracle3"
+
+  "SideShop" "1"
+  "ItemCost"            "1"
+  "ItemShopTags"        "consumable"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "ward"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "0"
+  "ItemSellable"        "0"
+  "ItemPermanent"       "0"
+
+  "AbilitySpecial"
+  {
+    "01"
+    { 
+        "var_type"  "FIELD_INTEGER"
+        "lumber_cost" "10"
+    }
+  }
+
+  // BuildingHelper info
+  "Building"            "1" //bool
+  "BuildingSize"          "2" // this is (3x64) by (3x64) units, so 9 squares.
+  "BuildTime"           "600.0"
+  "AbilityCastRange"        "100"
+  "UpdateHealth"          "1" //bool
+  "Scale"             "1" //bool
+  "PlayerCanControl"        "1" //bool. Should the player issuing this build command be able to control the building once built?
+  //"CancelsBuildingGhost"      "0" //bool
+  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
+  "UnitName"            "npc_petri_miracle3"
+  "AbilityCooldown"       "480.0"
+  "AbilityGoldCost"       "0"
+  // End of BuildingHelper info
+
+  "AbilityCastPoint"        "0.0"
+  "MaxLevel"            "1"
+
+  // Item Info
+  
+  "AbilityManaCost"       "0"
+  
+  "OnSpellStart"
+  {
+    "RunScript"
+    {
+      "ScriptFile"      "buildings/bh_abilities.lua"
+      "Function"        "build"
+    }
+  }
+}
+
+"item_recipe_petri_pocketmiracle3"
+{
+  "BaseClass"           "item_datadriven"
+  "ID"              "1115"
+  "Model" "models/props_gameplay/recipe.mdl"
+  "AbilityTextureName"      "item_recipe"
+
+  "ItemCost"            "3000"
+  "ItemShopTags"        "consumable"
+  "ItemSellable"        "0"
+  "SideShop" "1"
+  "ItemRecipe"          "1"
+  "ItemResult"          "item_petri_pocketmiracle3"
+  "ItemRequirements"
+  {
+    "01"            "item_petri_exit_doorknob;"
+  }
+}

@@ -1,0 +1,126 @@
+"npc_petri_miracle1"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/items/courier/krobeling_gold/krobeling_gold.vmdl"
+  "ModelScale"                "1.0"
+  "SoundSet"          "Creep_Good_Range"          
+  "Level"           "1"
+
+  "AbilityLayout"       "4"
+  "Ability1"         "petri_building"
+  "Ability2"          "petri_miracle1"
+
+  "ArmorPhysical"       "0"     
+  "MagicalResistance"       "0"     
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+
+  "BountyXP"          "0"     
+  "BountyGoldMin"       "10"     
+  "BountyGoldMax"       "10"     
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"   
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+  "MovementSpeed"       "0"   
+  "MovementTurnRate"      "0.0"   
+  "FollowRange"       "0"   
+  
+  "StatusHealth"        "6000"     
+  "StatusHealthRegen"     "0"     
+  "StatusMana"        "0"     
+  "StatusManaRegen"     "0"     
+  
+  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+  
+  "VisionDaytimeRange"    "500"   
+  "VisionNighttimeRange"    "500"   
+}
+
+
+"npc_petri_miracle2"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/items/juggernaut/ward/dc_wardupate/dc_wardupate.vmdl"
+  "ModelScale"        "1.0"
+  "SoundSet"          "Creep_Good_Range"          
+  "Level"           "1"
+
+  "AbilityLayout"       "4"
+  "Ability1"         "petri_building"
+  "Ability2"          "petri_miracle2"
+  
+  "ArmorPhysical"       "0"     
+  "MagicalResistance"       "0"     
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+
+  "BountyXP"          "0"     
+  "BountyGoldMin"       "10"     
+  "BountyGoldMax"       "10"     
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"   
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+  "MovementSpeed"       "0"   
+  "MovementTurnRate"      "0.0"   
+  "FollowRange"       "0"   
+  
+  "StatusHealth"        "6000"     
+  "StatusHealthRegen"     "0"     
+  "StatusMana"        "0"     
+  "StatusManaRegen"     "0"     
+  
+  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+  
+  "VisionDaytimeRange"    "500"   
+  "VisionNighttimeRange"    "500"   
+}
+
+"npc_petri_miracle3"
+{
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
+  "ModelScale"        "1.0"
+  "SoundSet"          "Creep_Good_Range"          
+  "Level"           "1"
+
+  "AbilityLayout"       "4"
+  "Ability1"         "petri_building"
+  "Ability2"          "petri_miracle3"
+  
+  "ArmorPhysical"       "0"     
+  "MagicalResistance"       "0"     
+
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"    
+
+  "BountyXP"          "0"     
+  "BountyGoldMin"       "10"     
+  "BountyGoldMax"       "10"     
+
+  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"   
+
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"     
+  "MovementSpeed"       "0"   
+  "MovementTurnRate"      "0.0"   
+  "FollowRange"       "0"   
+  
+  "StatusHealth"        "6000"     
+  "StatusHealthRegen"     "0"     
+  "StatusMana"        "0"     
+  "StatusManaRegen"     "0"     
+  
+  "TeamName"          "DOTA_TEAM_GOODGUYS"      
+  "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+  
+  "VisionDaytimeRange"    "500"   
+  "VisionNighttimeRange"    "500"   
+}
