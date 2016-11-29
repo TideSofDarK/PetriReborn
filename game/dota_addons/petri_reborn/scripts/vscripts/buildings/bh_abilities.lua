@@ -50,6 +50,24 @@ function build( keys )
 		end
 	end
 
+		if ability:GetName() == "build_petri_miracle1" or ability_name == "item_petri_pocketmiracle1"  then
+		if GameRules.PETRI_MIRACLE1_ALLOWED == false then
+			return CancelBuilding(caster, ability, pID, "#too_early_for_miracle1")
+		end
+	end
+
+		if ability:GetName() == "build_petri_miracle2" or ability_name == "item_petri_pocketmiracle2"  then
+		if GameRules.PETRI_MIRACLE2_ALLOWED == false then
+			return CancelBuilding(caster, ability, pID, "#too_early_for_miracle2")
+		end
+	end
+
+		if ability:GetName() == "build_petri_miracle3" or ability_name == "item_petri_pocketmiracle3"  then
+		if GameRules.PETRI_MIRACLE3_ALLOWED == false then
+			return CancelBuilding(caster, ability, pID, "#too_early_for_miracle3")
+		end
+	end
+
 	-- Cancel building if limit is reached
 	if hero.buildingCount >= GameRules.PETRI_MAX_BUILDING_COUNT_PER_PLAYER then
 		return CancelBuilding(caster, ability, pID, "#building_limit_is_reached")
@@ -128,7 +146,7 @@ function build( keys )
 					unit:ForceKill(false)
 				end)
 			else
-				Notifications:TopToAll({text="#exit_construction_is_started", duration=10, style={color="blue"}, continue=false})
+				Notifications:TopToAll({text="#exit_construction_is_started", duratione=10, style={color="blue"}, continue=false})
 
 				GameMode.EXIT_COUNT = GameMode.EXIT_COUNT + 1
 

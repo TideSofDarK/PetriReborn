@@ -419,6 +419,39 @@ function GameMode:OnGameInProgress()
       Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#exit_warning", duration=4, style={color="red", ["font-size"]="45px"}})
     end)
 
+    Timers:CreateTimer((GameRules.PETRI_MIRACLE1_MARK * 60),
+    function()
+      GameRules.PETRI_MIRACLE1_ALLOWED = true
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle1_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer((GameRules.PETRI_MIRACLE1_WARNING * 60),
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle1_warning", duration=4, style={color="red", ["font-size"]="45px"}})
+    end)
+
+      Timers:CreateTimer((GameRules.PETRI_MIRACLE2_MARK * 60),
+    function()
+      GameRules.PETRI_MIRACLE2_ALLOWED = true
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer((GameRules.PETRI_MIRACLE2_WARNING * 60),
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle2_warning", duration=4, style={color="red", ["font-size"]="45px"}})
+    end)
+
+      Timers:CreateTimer((GameRules.PETRI_MIRACLE3_MARK * 60),
+    function()
+      GameRules.PETRI_MIRACLE3_ALLOWED = true
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle3_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+    end)
+
+  Timers:CreateTimer((GameRules.PETRI_MIRACLE3_WARNING * 60),
+    function()
+      Notifications:TopToTeam(DOTA_TEAM_GOODGUYS, {text="#miracle3_warning", duration=4, style={color="red", ["font-size"]="45px"}})
+    end)
+
   Timers:CreateTimer((GameRules.PETRI_TIME_LIMIT * 60),
     function()
       PetrosyanWin()
