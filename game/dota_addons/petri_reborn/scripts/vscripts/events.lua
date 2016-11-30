@@ -539,8 +539,8 @@ function GameMode:OnEntityKilled( keys )
       GiveSharedGoldToTeam(bounty, DOTA_TEAM_BADGUYS)
       return false
     else
-      AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
-      PopupParticle(bounty, Vector(244,201,23), 3.0, killerEntity)
+      -- AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
+      -- PopupParticle(bounty, Vector(244,201,23), 3.0, killerEntity)
 
       if GameRules:IsDaytime() == false then
 

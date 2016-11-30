@@ -300,19 +300,16 @@ function GameMode:FilterExecuteOrder( filterTable )
 end
 
 function GameMode:ModifyGoldFilter(event)
-  return false
-  -- event["reliable"] = 0
-
   -- local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
 
-  -- if event.reason_const == DOTA_ModifyGold_SellItem then
+  if event.reason_const == DOTA_ModifyGold_CreepKill then
 
-  --   AddCustomGold( event.player_id_const, event["gold"] )
+    AddCustomGold( event.player_id_const, event["gold"] )
     
-  --   return false
-  -- end
+    return false
+  end
 
-  -- return false
+  return false
 end
 
 DAMAGE_FILTERS = {}
