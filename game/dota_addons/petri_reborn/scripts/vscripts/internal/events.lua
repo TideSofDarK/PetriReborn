@@ -13,16 +13,8 @@ function GameMode:_OnGameRulesStateChange(keys)
     self.spawnDelay = 2.25
 
     EasyTimers:CreateTimer(function()
-      Timers:CreateTimer(function ()
-        if not self.heroesSpawned then
-          PauseGame(true)
-          return 0.03
-        end
-        PauseGame(false)
-      end)
-
+      PauseGame(true)
       self.playerQueue = function ()
-          PauseGame(true)
           self.spawnQueueID = self.spawnQueueID + 1
 
           -- Update queue info
@@ -55,7 +47,7 @@ function GameMode:_OnGameRulesStateChange(keys)
                 GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
                 return
             end
-          end, 'spawning', self.spawnDelay)
+          end, DoUniqueString('spawning'), self.spawnDelay)
       end
 
       self.playerQueue()
@@ -89,7 +81,7 @@ function GameMode:_OnEntityKilled( keys )
     killerEntity = EntIndexToHScript( keys.entindex_attacker )
   end
 
-  if killedUnit:IsRealHero() then 
+  if killedUnit:IsRealHero() then
     DebugPrint("KILLED, KILLER: " .. killedUnit:GetName() .. " -- " .. killerEntity:GetName())
     if END_GAME_ON_KILLS and GetTeamHeroKills(killerEntity:GetTeam()) >= KILLS_TO_END_GAME_FOR_TEAM then
       GameRules:SetSafeToLeave( true )
@@ -111,7 +103,7 @@ function GameMode:_OnConnectFull(keys)
   local entIndex = keys.index+1
   -- The Player entity of the joining user
   local ply = EntIndexToHScript(entIndex)
-  
+
   local userID = keys.userid
 
   self.vUserIds = self.vUserIds or {}

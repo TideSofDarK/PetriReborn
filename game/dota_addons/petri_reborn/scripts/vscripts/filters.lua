@@ -37,13 +37,13 @@ function GameMode:FilterExecuteOrder( filterTable )
 
     if PlayerResource:GetTeam(issuer) == DOTA_TEAM_GOODGUYS then
       if abilityIndex and IsMultiOrderAbility(EntIndexToHScript(abilityIndex)) then
-        local ability = EntIndexToHScript(abilityIndex) 
+        local ability = EntIndexToHScript(abilityIndex)
         local abilityName = ability:GetAbilityName()
 
         if not GameMode.SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()] then return false end
 
         local entityList = GameMode.SELECTED_UNITS[issuerUnit:GetPlayerOwnerID()]
-        
+
         for _,entityIndex in pairs(entityList) do
           local caster = EntIndexToHScript(entityIndex)
           if caster and caster:HasAbility(abilityName) then
@@ -58,11 +58,11 @@ function GameMode:FilterExecuteOrder( filterTable )
                 FakeStopOrder(caster)
                 ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, TargetIndex = targetIndex, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
               else --order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE or order_type == DOTA_UNIT_ORDER_CAST_TOGGLE_AUTO
-                if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then 
-                  Timers:CreateTimer(function() 
+                if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
+                  Timers:CreateTimer(function()
                     caster:CastAbilityNoTarget(abil, caster:GetPlayerOwnerID())
-                  end) 
-                else 
+                  end)
+                else
                   ExecuteOrderFromTable({ UnitIndex = entityIndex, OrderType = order_type, AbilityIndex = abil:GetEntityIndex(), Queue = queue})
                 end
               end
@@ -73,7 +73,7 @@ function GameMode:FilterExecuteOrder( filterTable )
       end
     end
 
-    if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then 
+    if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
 
       if filterTable["entindex_target"] >= 6 and PlayerResource:GetTeam(issuer) ~= DOTA_TEAM_BADGUYS then
         return false
@@ -123,7 +123,7 @@ function GameMode:FilterExecuteOrder( filterTable )
 
           local oldItem = hero:GetItemInSlot(stashSlot)
 
-          
+
           ent:DropItemAtPositionImmediate(oldItem, Vector(10000,10000,10000))
 
           ent:AddItem(oldItem)
@@ -144,12 +144,12 @@ function GameMode:FilterExecuteOrder( filterTable )
         return false
       end
 
-      if issuerUnit:GetUnitName() == "npc_dota_courier" and purchaser:IsHero() == true 
+      if issuerUnit:GetUnitName() == "npc_dota_courier" and purchaser:IsHero() == true
         and (issuerUnit:GetAbsOrigin() - purchaser:GetAbsOrigin()):Length() < 400 then
 
         local hasSpace = false
         for i=0,5 do
-          if purchaser:GetItemInSlot(i) == nil then 
+          if purchaser:GetItemInSlot(i) == nil then
             hasSpace = true
             break
           end
@@ -188,17 +188,17 @@ function GameMode:FilterExecuteOrder( filterTable )
       if item:IsCastOnPickup() == true then
         if EntIndexToHScript(units["0"]):GetUnitName() == "npc_petri_cop" then
           return true
-        else 
+        else
           return false
         end
       end
 
-      if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then 
+      if purchaser:GetTeam() == DOTA_TEAM_GOODGUYS then
         if CheckShopType(item:GetName(), "SideShop") == false then
           return false
         end
       end
-      if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then 
+      if purchaser:GetTeam() == DOTA_TEAM_BADGUYS then
         if CheckShopType(item:GetName(), "SecretShop") == false then
           return false
         end
@@ -238,7 +238,7 @@ function GameMode:FilterExecuteOrder( filterTable )
         return false
       end
 
-      local item = EntIndexToHScript(filterTable.entindex_ability) 
+      local item = EntIndexToHScript(filterTable.entindex_ability)
       if item and GameMode.ItemKVs[item:GetName()].ItemSellable ~= "0" then
         if (item.purchaseTime and item.purchaseTime + 10 > GameMode.PETRI_TRUE_TIME) or GameMode.ItemKVs[item:GetName()].ItemSellFullPrice == 1 then
           AddCustomGold( issuer, math.floor(GameMode.ItemKVs[item:GetName()].ItemCost) )
@@ -258,7 +258,7 @@ function GameMode:FilterExecuteOrder( filterTable )
         if abilityName == "gather_lumber" then
           if issuerUnit:FindModifierByName("modifier_returning_resources") then
             issuerUnit:RemoveModifierByName("modifier_chopping_wood")
-          
+
             issuerUnit:CastAbilityNoTarget(issuerUnit:FindAbilityByName("return_resources"), issuer)
 
             return false
@@ -273,12 +273,12 @@ function GameMode:FilterExecuteOrder( filterTable )
 
         if abilityName == "petri_open_basic_buildings_menu" or abilityName == "petri_open_advanced_buildings_menu"
           or abilityName == "petri_close_basic_buildings_menu" or abilityName == "petri_close_advanced_buildings_menu" then
-          issuerUnit.lastOrder = DOTA_UNIT_ORDER_MOVE_ITEM 
+          issuerUnit.lastOrder = DOTA_UNIT_ORDER_MOVE_ITEM
         end
       else return false end
     elseif order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
       local target = EntIndexToHScript(targetIndex)
-      for n, unit_index in pairs(units) do 
+      for n, unit_index in pairs(units) do
         local unit = EntIndexToHScript(unit_index)
         if UnitCanAttackTarget(unit, target) then
           unit.skip = true
@@ -286,9 +286,9 @@ function GameMode:FilterExecuteOrder( filterTable )
         end
       end
       return false
-    elseif order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET then 
+    elseif order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET then
       local target = EntIndexToHScript(targetIndex)
-      
+
       if target:HasAbility("petri_building") == true then
         issuerUnit:MoveToPosition(GetMoveToBuildingPosition(issuerUnit,target))
 
@@ -299,15 +299,25 @@ function GameMode:FilterExecuteOrder( filterTable )
     return true
 end
 
+GOLD_FILTERS = {}
+GOLD_FILTERS[3950] = 1
+GOLD_FILTERS[9866] = 1
+GOLD_FILTERS[40000] = 1
+GOLD_FILTERS[100000] = 1
+GOLD_FILTERS[300000] = 1
+
 function GameMode:ModifyGoldFilter(event)
   -- local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
 
   if event.reason_const == DOTA_ModifyGold_CreepKill then
     event["gold"] = math.floor(event["gold"])
-    AddCustomGold( event.player_id_const, event["gold"] )
-    PopupParticle(event["gold"], Vector(244,201,23), 3.0, GameMode.assignedPlayerHeroes[event.player_id_const])
-    
-    return false
+
+    if GOLD_FILTERS[event["gold"]] then
+
+    else
+      AddCustomGold( event.player_id_const, event["gold"] )
+      PopupParticle(event["gold"], Vector(244,201,23), 3.0, GameMode.assignedPlayerHeroes[event.player_id_const])
+    end
   end
 
   return false
@@ -328,7 +338,7 @@ function GameMode:DamageFilter( filter_table )
     else
         attacker = EntIndexToHScript(filter_table["entindex_attacker_const"])
     end
-    
+
     local damage = filter_table["damage"]
     local damage_type = filter_table["damagetype_const"]
 
@@ -347,9 +357,9 @@ end
 
 function GameMode:ModifyExperienceFilter(filterTable)
   if not filterTable["player_id_const"] or not PlayerResource:GetPlayer(filterTable["player_id_const"]) then return false end
-  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS 
-    or PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_BADGUYS 
-    then return false end 
+  if PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_GOODGUYS
+    or PlayerResource:GetPlayer(filterTable["player_id_const"]):GetTeam() == DOTA_TEAM_BADGUYS
+    then return false end
   return true
 end
 
