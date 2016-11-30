@@ -36,6 +36,11 @@ function GameMode:_OnGameRulesStateChange(keys)
               return
           end
 
+          if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
+            self.playerQueue()
+            return
+          end
+
           -- Keep spawning
           EasyTimers:CreateTimer(function()
             -- Skip disconnected players
