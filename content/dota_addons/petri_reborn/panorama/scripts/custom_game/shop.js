@@ -22,21 +22,33 @@ function OpenTab(arg) {
 	$("#" + arg + "Contents").visible = true;
 }
 
-function SetupItems() {
+function Clean(panel) {
+	var children = panel.Children();
+	for (var key in children) {
+		children[key].RemoveAndDeleteChildren();
+		children[key].DeleteAsync(0.0);
+	}
+}
+
+function SetupItems(team, hero) {
 	if (!GameUI.CustomUIConfig().shopsKVs || !GameUI.CustomUIConfig().itemBuilds) {
 		$.Schedule(0.1, SetupItems)
 		return;
 	}
 
+	Clean($("#ShopGuide"));
+	Clean($("#ShopQuickbuy"));
+
 	$("#Petri").visible = false;
 	$("#KVN").visible = false;
 
-	var team = Entities.GetTeamNumber(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ));
-	var heroName = Entities.GetUnitName(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ));
+	var team = team || Entities.GetTeamNumber(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ));
+	var heroName = hero || Entities.GetUnitName(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ));
 
 	for (var key in GameUI.CustomUIConfig().shopsKVs) {
 		var r = $("#ShopWindow").FindChildTraverse(key);
 		if (r) {
+			Clean(r);
 			for (var key2 in GameUI.CustomUIConfig().shopsKVs[key]) {
 				(function () {
 					var itemname = GameUI.CustomUIConfig().shopsKVs[key][key2];
@@ -59,28 +71,33 @@ function SetupItems() {
 		OpenTab("BasicShop");
 	}
 
-	for (var t in GameUI.CustomUIConfig().itemBuilds[heroName].Items) {
-		var items = GameUI.CustomUIConfig().itemBuilds[heroName].Items[t];
+	if (GameUI.CustomUIConfig().itemBuilds[heroName]) {
+		for (var t in GameUI.CustomUIConfig().itemBuilds[heroName].Items) {
+			var items = GameUI.CustomUIConfig().itemBuilds[heroName].Items[t];
 
-		var guideBlock = $.CreatePanel("Panel", $("#ShopGuide"), t.replace("#", ""));
-		guideBlock.BLoadLayoutSnippet("GuideBlock");
+			var guideBlock = $.CreatePanel("Panel", $("#ShopGuide"), t.replace("#", ""));
+			guideBlock.BLoadLayoutSnippet("GuideBlock");
 
-		guideBlock.FindChildTraverse("ShopGuideBlockLabel").text = $.Localize(t.replace("#", ""));
+			guideBlock.FindChildTraverse("ShopGuideBlockLabel").text = $.Localize(t.replace("#", ""));
 
-		var x = 0;
-		var y = 0;
-		var i = 1;
-		for (var item in items) {
-			var itemPanel = CreateItem(guideBlock.FindChildTraverse("ShopGuideBlockItems"), items[i]);
-			itemPanel.style.position = (x * 60) + "px " + (y * 44) + "px " + "0px;";
-			x++;
-			if ((x ) % 3 == 0) {
-				x = 0;
-				y++;
+			var x = 0;
+			var y = 0;
+			var i = 1;
+			for (var item in items) {
+				var itemPanel = CreateItem(guideBlock.FindChildTraverse("ShopGuideBlockItems"), items[i]);
+				itemPanel.style.position = (x * 60) + "px " + (y * 44) + "px " + "0px;";
+				x++;
+				if ((x ) % 3 == 0) {
+					x = 0;
+					y++;
+				}
+
+				i++;
 			}
-
-			i++;
 		}
+		$("#ShopGuide").visible = true;
+	} else {
+		$("#ShopGuide").visible = false;
 	}
 }
 
@@ -175,7 +192,6 @@ var convertTime = (function (d) {
 
 function ShopStock(table_name, key, data) {
 	if (shopItems[key]) {
-		$.Msg(CustomNetTables.GetTableValue(table_name, key).count);
 		if (CustomNetTables.GetTableValue(table_name, key).count == 0) {
 			shopItems[key].AddClass("OutOfStock");
 			shopItems[key].FindChildTraverse("StockLabel").visible = true;
@@ -187,7 +203,12 @@ function ShopStock(table_name, key, data) {
 	}
 }
 
+function ChangeTeam(args) {
+	SetupItems(args.team, args.hero);
+}
+
 (function () {
+	GameEvents.Subscribe("petri_team", ChangeTeam);
 	CustomNetTables.SubscribeNetTableListener("shop", ShopStock)
 
 	SetupItems();

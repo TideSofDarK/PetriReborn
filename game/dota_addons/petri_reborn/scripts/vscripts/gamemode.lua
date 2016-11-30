@@ -155,6 +155,7 @@ function GameMode:CreateHero(pID, callback)
     -- UTIL_Remove(hero) 
     PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
       function() 
+        self.playerQueue()
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
@@ -199,7 +200,6 @@ function GameMode:CreateHero(pID, callback)
         table.insert(GameMode.kvns, newHero)
 
         GameMode:AddItems( newHero )
-        self.playerQueue()
       end, 
     pID)
 
@@ -216,6 +216,7 @@ function GameMode:CreateHero(pID, callback)
     -- UTIL_Remove(hero) 
     PrecacheUnitByNameAsync(petrosyanHeroName,
      function() 
+        self.playerQueue()
         newHero = CreateHeroForPlayer(petrosyanHeroName,player)
 
         -- It's dangerous to go alone, take this
@@ -258,7 +259,6 @@ function GameMode:CreateHero(pID, callback)
         end
 
         GameMode:AddItems( newHero )
-        self.playerQueue()
      end, pID)
     return
   end
@@ -600,6 +600,7 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "tspu", Dynamic_Wrap(GameMode, 'TestStaticPopup'), "Test static popup", FCVAR_CHEAT )
   Convars:RegisterCommand( "deg", Dynamic_Wrap(GameMode, 'DontEndGame'), "Dont end game", FCVAR_CHEAT )
   Convars:RegisterCommand( "getgold", Dynamic_Wrap(GameMode, 'GetGold'), "Get all gold", FCVAR_CHEAT )
+  Convars:RegisterCommand( "tc", Dynamic_Wrap(GameMode, 'TestCommand'), "TestCommand", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 
@@ -628,7 +629,7 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       -- GameRules:SetCustomGameTeamMaxPlayers(DOTA_TEAM_GOODGUYS, PlayerResource:GetPlayerCountForTeam(DOTA_TEAM_GOODGUYS)-1)
 
       player:SetTeam(DOTA_TEAM_BADGUYS)
-
+      CustomGameEventManager:Send_ServerToPlayer(player,"petri_team",{team = DOTA_TEAM_BADGUYS, hero = "npc_dota_hero_storm_spirit"})
       local newHero = PlayerResource:ReplaceHeroWith(player:GetPlayerID(), "npc_dota_hero_storm_spirit", GameRules.START_MINI_ACTORS_GOLD + gold, 0)
 
       newHero.spawnPosition = newHero:GetAbsOrigin()

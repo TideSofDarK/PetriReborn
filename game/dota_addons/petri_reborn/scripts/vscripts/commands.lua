@@ -1,3 +1,16 @@
+
+function GameMode:TestCommand()
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      GameMode.assignedPlayerHeroes[playerID]:SetTeam(DOTA_TEAM_BADGUYS)
+      PlayerResource:GetPlayer(playerID):SetTeam(DOTA_TEAM_BADGUYS)
+      CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID),"petri_team",{team = DOTA_TEAM_BADGUYS, hero = "npc_dota_hero_storm_spirit"})
+    end
+  end
+end
+
 function GameMode:LumberCommand()
   local cmdPlayer = Convars:GetCommandClient()
   if cmdPlayer then
