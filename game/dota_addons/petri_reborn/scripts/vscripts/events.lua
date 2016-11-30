@@ -540,7 +540,6 @@ function GameMode:OnEntityKilled( keys )
       return false
     else
       -- AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
-      -- PopupParticle(bounty, Vector(244,201,23), 3.0, killerEntity)
 
       if GameRules:IsDaytime() == false then
 

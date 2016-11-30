@@ -59,6 +59,8 @@ function AddCustomGold( pID, gold )
 	local hero = GameMode.assignedPlayerHeroes[pID]
 
 	if hero then
+		local gold = math.floor(gold)
+
 		hero._customGold = hero._customGold or 0
 
 		hero.allEarnedGold = hero.allEarnedGold or 0
