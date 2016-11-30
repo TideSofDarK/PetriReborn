@@ -49,7 +49,9 @@ function GameMode:_OnGameRulesStateChange(keys)
                 return
             else
                 local color = PLAYER_COLORS[self.spawnQueueID]
-                PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
+                if color then
+                  PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
+                end
                 GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
                 return
             end
