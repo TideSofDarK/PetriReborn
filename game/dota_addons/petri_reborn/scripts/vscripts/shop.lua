@@ -141,7 +141,7 @@ function GameMode:BuyItem(keys)
   chicks = Entities:FindAllByName("npc_dota_courier") or {}
 
   -- PrintTable(toBuy)
-  PrintTable(toDelete)
+  -- PrintTable(toDelete)
 
   -- for i=0,5 do
   --   local it = hero:GetItemInSlot(i)
@@ -209,7 +209,7 @@ function GameMode:BuyItem(keys)
     end
   end
 
-  if hero:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+  if hero:GetTeamNumber() == DOTA_TEAM_GOODGUYS and GameMode.ItemKVs[item].SideShop then
     local allents = Entities:FindAllByClassname("trigger_shop")
     local touch = false
     for k,v in pairs(allents) do

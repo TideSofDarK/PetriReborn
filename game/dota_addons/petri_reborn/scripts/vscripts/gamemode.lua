@@ -202,6 +202,8 @@ function GameMode:CreateHero(pID, callback)
         self.playerQueue()
       end, 
     pID)
+
+    return
   end
 
   local petrosyanHeroName = "npc_dota_hero_brewmaster"
@@ -258,7 +260,10 @@ function GameMode:CreateHero(pID, callback)
         GameMode:AddItems( newHero )
         self.playerQueue()
      end, pID)
+    return
   end
+
+  self.playerQueue()
 end
 
 function InitHeroValues(hero, pID)
