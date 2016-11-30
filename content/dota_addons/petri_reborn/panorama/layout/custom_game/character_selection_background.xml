@@ -8,9 +8,9 @@
 		        var queue = (Players.GetLocalPlayer() - args.queue);
 
 		        if (queue == 0) {
-		            $("#loadingLabel").text = "Spawning...";
+		            $("#loadingLabel").text = $.Localize("spawning");
 		        } else {
-		            $("#loadingLabel").text = "You are queued for spawn: " + queue;
+		            $("#loadingLabel").text = $.Localize("queued_for_spawn") + queue;
 		        }
 		    });
 		})();
@@ -18,6 +18,6 @@
 	<Panel hittest="false" class="HSBackground">
 		<Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
 
-		<Label id="loadingLabel" text="Loading..." />
+		<Label id="loadingLabel" text="#loading" />
 	</Panel>
 </root>
