@@ -36,17 +36,18 @@ function GameMode:_OnGameRulesStateChange(keys)
               return
           end
 
-          -- Skip disconnected players
-          if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
-              self.playerQueue()
-              return
-          end
-
           -- Keep spawning
           EasyTimers:CreateTimer(function()
-              local color = PLAYER_COLORS[self.spawnQueueID]
-              PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
-              GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
+            -- Skip disconnected players
+            if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
+                self.playerQueue()
+                return
+            else
+                local color = PLAYER_COLORS[self.spawnQueueID]
+                PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
+                GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
+                return
+            end
           end, 'spawning', self.spawnDelay)
       end
 
