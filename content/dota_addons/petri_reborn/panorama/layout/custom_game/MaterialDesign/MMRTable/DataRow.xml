@@ -4,6 +4,10 @@
     <include src="file://{resources}/styles/custom_game/custom_data_table.css" />
   </styles>
   <script>
+  	function RoundToTwo (num) {    
+    	return +(Math.round(num + "e+2")  + "e-2");
+	}
+
 	function GetSteamID32( fullSteamID ) {
 	    var steamIDPart = Number(fullSteamID.substring(3)),
 	        steamID32 = String(steamIDPart - 61197960265728);
@@ -25,16 +29,17 @@
 	function FillRowData( data )
 	{
 		$.Msg("Fill data")
+
 		var info = GetPLayerInfoBySteamID( data.SteamID )
-	
+
 		$( "#Avatar" ).steamid = info.player_steamid;
 		$( "#PlayerNameLabel" ).text = info.player_name;
 
-		var winrate = data.PetriGames == "0" ? 0 : parseInt(data.PetriWins) / parseInt(data.PetriGames) * 100;
+		var winrate = RoundToTwo (data.PetriGames == "0" ? 0 : parseInt(data.PetriWins) / parseInt(data.PetriGames) * 100);
 		$( "#PetriWinrateLabel" ).text =  winrate + "% (" + data.PetriWins + "/" + data.PetriGames + ")";
 		$( "#PetriRatingLabel" ).text =  data.PetriRating;
 		
-		winrate = data.KVNGames == "0" ? 0 : parseInt(data.KVNWins) / parseInt(data.KVNGames) * 100; 
+		winrate = RoundToTwo (data.KVNGames == "0" ? 0 : parseInt(data.KVNWins) / parseInt(data.KVNGames) * 100); 
 		$( "#KVNWinrateLabel" ).text =  winrate +  "% (" + data.KVNWins + "/" + data.KVNGames + ")";
 		$( "#KVNRatingLabel" ).text =  data.KVNRating;
 	}
