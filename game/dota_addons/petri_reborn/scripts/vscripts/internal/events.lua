@@ -13,13 +13,13 @@ function GameMode:_OnGameRulesStateChange(keys)
     self.spawnDelay = 2.25
 
     EasyTimers:CreateTimer(function()
-      -- Timers:CreateTimer(function ()
-      --   if not self.heroesSpawned then
-      --     PauseGame(true)
-      --     return 0.03
-      --   end
-      --   PauseGame(false)
-      -- end)
+      Timers:CreateTimer(function ()
+        if not self.heroesSpawned then
+          PauseGame(true)
+          return 0.03
+        end
+        PauseGame(false)
+      end)
 
       self.playerQueue = function ()
           PauseGame(true)
