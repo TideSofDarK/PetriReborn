@@ -21,6 +21,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "7"
     }
+    "02"
+    {
+      "var_type"        "FIELD_INTEGER"
+      "full_price"      "15"
+    }
   }
   
   "Modifiers"
@@ -78,6 +83,11 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "20"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_0,INTEGER"
+      "full_price"      "100"
     }
   }
   
@@ -137,6 +147,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "50"
     }
+    "02"
+    {
+      "var_type"        "FIELD_0,INTEGER"
+      "full_price"      "500"
+    }
   }
   
   "Modifiers"
@@ -194,6 +209,11 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "125"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_0,INTEGER"
+      "full_price"      "2000"
     }
   }
   

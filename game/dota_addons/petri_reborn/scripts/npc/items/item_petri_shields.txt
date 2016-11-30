@@ -21,6 +21,11 @@
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "300"
     }
+    "02"
+    {
+      "var_type"        "FIELD_0,INTEGER"
+      "full_price"      "5000"
+    }
   }
 
   "Modifiers"
@@ -79,6 +84,11 @@
     {
       "var_type"        "FIELD_INTEGER"
       "bonus_armor"      "750"
+    }
+    "02"
+    {
+      "var_type"        "FIELD_0,INTEGER"
+      "full_price"      "15000"
     }
   }
 

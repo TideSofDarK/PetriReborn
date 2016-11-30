@@ -3021,8 +3021,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "50000.0"
-	  "BountyGoldMax"    "50000.0"
+	  "BountyGoldMin"    "100000.0"
+	  "BountyGoldMax"    "100000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -3230,7 +3230,7 @@
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10"
+	  "StatusHealth"        "500"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -3268,7 +3268,7 @@
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10"
+	  "StatusHealth"        "5000"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -3306,7 +3306,7 @@
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "10"
+	  "StatusHealth"        "50000"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -3342,8 +3342,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "20000.0"
-	  "BountyGoldMax"    "20000.0"
+	  "BountyGoldMin"    "40000.0"
+	  "BountyGoldMax"    "40000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -3588,8 +3588,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "4933.0"
-	  "BountyGoldMax"    "5025.0"
+	  "BountyGoldMin"    "9866.0"
+	  "BountyGoldMax"    "10050.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -3806,8 +3806,8 @@
 	  "AttackAcquisitionRange" "3000"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "1500.0"
-	  "BountyGoldMax"    "1500.0"
+	  "BountyGoldMin"    "3000.0"
+	  "BountyGoldMax"    "3000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -4163,8 +4163,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "150000.0"
-	  "BountyGoldMax"    "150000.0"
+	  "BountyGoldMin"    "300000.0"
+	  "BountyGoldMax"    "300000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"

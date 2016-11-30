@@ -1,10 +1,6 @@
 "AddonInfo"
 {
 	"TeamCount"		"2"
-	"petri_3_radiant"
-	{
-		"MaxPlayers"		"12"
-	}
 	"petri_2_radiant"
 	{
 		"MaxPlayers"		"12"

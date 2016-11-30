@@ -17,12 +17,12 @@
   "Ability7"        "attribute_bonus"
   "Ability8"        "petri_petrosyan_passive"
 
-  "ArmorPhysical"       "1"                 
+  "ArmorPhysical"       "0"                 
   "MagicalResistance"       "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
   "AttackRange"                "81"
-  "AttackDamageMin"     "2"
+  "AttackDamageMin"     "1"
   "AttackDamageMax"     "2"
   "AttackRate" "1.51"
   "AttackAnimationPoint"       "0.269"

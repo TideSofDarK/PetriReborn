@@ -187,6 +187,6 @@
   "ItemResult"          "item_petri_pocketmiracle3"
   "ItemRequirements"
   {
-    "01"            "item_petri_exit_doorknob;"
+    "01"            "item_petri_miracle3_piece;"
   }
 }

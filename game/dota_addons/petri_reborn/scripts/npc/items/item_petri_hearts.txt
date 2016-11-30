@@ -7,7 +7,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_chicken"
 
-  "AbilityCooldown"       "60"
+  "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "2000"
@@ -107,7 +107,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_cow"
 
-  "AbilityCooldown"       "60"
+  "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "10000"
@@ -209,7 +209,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_dragon"
 
-  "AbilityCooldown"       "60"
+  "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "50000"
@@ -309,7 +309,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_kvn_heart"
   
-  "AbilityCooldown"       "60"
+  "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
 
   "ItemCost"            "300000"

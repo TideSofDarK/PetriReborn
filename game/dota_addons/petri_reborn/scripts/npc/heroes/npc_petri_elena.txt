@@ -24,6 +24,7 @@
   "MagicalResistance"       "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
+  "AttackAcquisitionRange"  "200"
   "AttackRange"                "81"
   "AttackDamageMin"     "2"
   "AttackDamageMax"     "2"
@@ -47,7 +48,7 @@
   "RingRadius"        "70"
 
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
-  "MovementSpeed"       "600"
+  "MovementSpeed"       "522"
   "MovementTurnRate"      "5.0"                 
 
   "StatusHealth"        "55"                 

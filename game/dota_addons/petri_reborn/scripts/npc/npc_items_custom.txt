@@ -3345,7 +3345,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_chicken"
 	
-	  "AbilityCooldown"       "60"
+	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
 	
 	  "ItemCost"            "2000"
@@ -3445,7 +3445,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_cow"
 	
-	  "AbilityCooldown"       "60"
+	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
 	
 	  "ItemCost"            "10000"
@@ -3547,7 +3547,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_dragon"
 	
-	  "AbilityCooldown"       "60"
+	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
 	
 	  "ItemCost"            "50000"
@@ -3647,7 +3647,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_kvn_heart"
 	  
-	  "AbilityCooldown"       "60"
+	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
 	
 	  "ItemCost"            "300000"
@@ -5876,12 +5876,12 @@
 	//   }
 	// }
 	
-	"item_petri_exit_doorknob"
+	"item_petri_miracle3_piece"
 	{
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1230"
 	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_exit_doorknob"
+	  "AbilityTextureName"      "item_petri_miracle3_piece"
 	
 	  "ItemCost"            "2750"
 	  "ItemShopTags"        "consumable"
@@ -6078,7 +6078,7 @@
 	  "ItemResult"          "item_petri_pocketmiracle3"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_exit_doorknob;"
+	    "01"            "item_petri_miracle3_piece;"
 	  }
 	}
 	"item_petri_shield_of_hell"
@@ -6103,6 +6103,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "300"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_0,INTEGER"
+	      "full_price"      "5000"
 	    }
 	  }
 	
@@ -6162,6 +6167,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "750"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_0,INTEGER"
+	      "full_price"      "15000"
 	    }
 	  }
 	
@@ -7767,6 +7777,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "7"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_INTEGER"
+	      "full_price"      "15"
+	    }
 	  }
 	  
 	  "Modifiers"
@@ -7824,6 +7839,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "20"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_0,INTEGER"
+	      "full_price"      "100"
 	    }
 	  }
 	  
@@ -7883,6 +7903,11 @@
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "50"
 	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_0,INTEGER"
+	      "full_price"      "500"
+	    }
 	  }
 	  
 	  "Modifiers"
@@ -7940,6 +7965,11 @@
 	    {
 	      "var_type"        "FIELD_INTEGER"
 	      "bonus_armor"      "125"
+	    }
+	    "02"
+	    {
+	      "var_type"        "FIELD_0,INTEGER"
+	      "full_price"      "2000"
 	    }
 	  }
 	  
