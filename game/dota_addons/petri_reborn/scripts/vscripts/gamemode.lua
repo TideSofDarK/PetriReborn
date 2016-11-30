@@ -143,6 +143,9 @@ function GameMode:CreateHero(pID, callback)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
   
   local player = PlayerResource:GetPlayer(pID)
+  if not player or not pID or PlayerResource:GetConnectionState(pID) < 1 then
+    self.playerQueue()
+  end
   local team = player:GetTeamNumber()
 
   local newHero
@@ -196,7 +199,7 @@ function GameMode:CreateHero(pID, callback)
         table.insert(GameMode.kvns, newHero)
 
         GameMode:AddItems( newHero )
-        callback()
+        self.playerQueue()
       end, 
     pID)
   end
@@ -253,7 +256,7 @@ function GameMode:CreateHero(pID, callback)
         end
 
         GameMode:AddItems( newHero )
-        callback()
+        self.playerQueue()
      end, pID)
   end
 end
