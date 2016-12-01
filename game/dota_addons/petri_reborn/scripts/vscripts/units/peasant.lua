@@ -228,8 +228,9 @@ function CheckBuildingPosition( event )
 
 		    PopupParticle(lumber_gathered, Vector(10, 200, 90), 3.0, caster)
 		    
-		    EmitSoundOnLocationForAllies(caster:GetAbsOrigin(), "ui.inv_pickup_wood", caster) 
-		   
+		   	-- EmitSoundOnLocationWithCaster(caster:GetAbsOrigin(), "KVN.GatherWood", caster)
+		   	caster:EmitSound("KVN.GatherWood")
+
 			AddLumber( hero:GetPlayerOwner(), lumber_gathered )
 		end
 
