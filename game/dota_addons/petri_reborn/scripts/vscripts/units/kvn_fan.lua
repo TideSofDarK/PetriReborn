@@ -131,11 +131,14 @@ function SpawnGoldBag( keys )
 	GameMode.assignedPlayerHeroes[pID].goldBagStacks = GameMode.assignedPlayerHeroes[pID].goldBagStacks or 0
 
 	local unit_name = "npc_petri_gold_bag"
+	local upgrade_name = "petri_upgrade_gold_bag_to_2"
 	if string.match(ability:GetName(), "2") then 
 		unit_name = "npc_petri_gold_bag2"
+		upgrade_name = "petri_upgrade_gold_bag_to_3"
 	end
 	if string.match(ability:GetName(), "3") then 
 		unit_name = "npc_petri_gold_bag3"
+		upgrade_name = "petri_upgrade_gold_bag_to_4"
 	end
 	if string.match(ability:GetName(), "4") then 
 		unit_name = "npc_petri_gold_bag4"
@@ -164,6 +167,10 @@ function SpawnGoldBag( keys )
 		bag:SetModifierStackCount("modifier_gold_bag", bag,upgradeLimit)
 
 		bag:SwapAbilities(storeAbility:GetName(), "petri_empty2", false, true)
+
+		bag:AddAbility(upgrade_name):UpgradeAbility(false)
+
+		bag:SwapAbilities("petri_empty1", upgrade_name, false, true)
 	end
 
 	return bag
