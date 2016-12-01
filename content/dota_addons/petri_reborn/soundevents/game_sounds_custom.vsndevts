@@ -121,40 +121,40 @@
 }
 
 
-"Start"
+"KVN.GatherWood"
 {
 	"operator_stacks"
 	{
 		"update_stack"
 		{
-			"update_operator"
+			"reference_operator"
 			{
 				"operator"		"sos_reference_stack"
-				"reference_stack"		"src1_3d"
+				"reference_stack"		"dota_update_default"
 				"operator_variables"
 				{
 					"vsnd_files"
 					{
 						"value"
 						{
-							"value0"		"sounds/start.vsnd"
+							"value0"		"sounds/ui/inventory/wood_pickup_01.vsnd"
 						}
 					}
 					"volume_min"
 					{
-						"value"		"1.000000"
+						"value"		"0.200000"
 					}
 					"volume_max"
 					{
-						"value"		"1.000000"
+						"value"		"0.300000"
 					}
 					"pitch_min"
 					{
-						"value"		"0.950000"
+						"value"		"1.000000"
 					}
 					"pitch_max"
 					{
-						"value"		"1.050000"
+						"value"		"1.300000"
 					}
 					"chan_type"
 					{

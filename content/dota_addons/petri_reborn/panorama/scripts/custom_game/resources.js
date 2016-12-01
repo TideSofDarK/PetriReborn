@@ -17,6 +17,8 @@ function commafy( num ) {
 
 function UpdateResources( )
 {
+    $.Schedule( 0.03, UpdateResources );
+    
 	var isEnemy = GameUI.CustomUIConfig().IsEnemySelected();
 	var player = Entities.IsCourier(GameUI.CustomUIConfig().selected_unit)
 		? Players.GetLocalPlayer()
@@ -31,8 +33,6 @@ function UpdateResources( )
 	 	$( "#TotalLumberText" ).text = isEnemy ? "0" : resourceTable["lumber"];
 	 	$( "#TotalFoodText" ).text = isEnemy ? "0/0" : resourceTable["food"] + "/" + String(Math.clamp(parseInt(resourceTable["maxFood"]),0,250));
 	}
-
-	$.Schedule( 0.03, UpdateResources );
 }
 
 function HidePanels()
