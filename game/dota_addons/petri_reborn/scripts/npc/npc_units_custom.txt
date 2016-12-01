@@ -1005,7 +1005,7 @@
 	  "AttackDamageMax"     "2.5"
 	  "AttackRate"        "1.2"
 	  "AttackAnimationPoint"    "0.42"
-	  "AttackAcquisitionRange"  "1300"
+	  "AttackAcquisitionRange"  "900"
 	  "AttackRange"       "120"
 	
 	  "BountyGoldMin"       "2.0"
@@ -3589,7 +3589,7 @@
 	  "AttackRange"     "90"
 	
 	  "BountyGoldMin"    "9866.0"
-	  "BountyGoldMax"    "10050.0"
+	  "BountyGoldMax"    "9866.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -3806,8 +3806,8 @@
 	  "AttackAcquisitionRange" "3000"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "3000.0"
-	  "BountyGoldMax"    "3000.0"
+	  "BountyGoldMin"    "3950.0"
+	  "BountyGoldMax"    "3950.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"

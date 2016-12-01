@@ -3263,7 +3263,7 @@
 	  "ItemAliases"         "grease"
 	
 	  "ItemStockMax" "10" 
-	  "ItemStockTime" "1680"
+	  "ItemStockTime" "1200"
 	  "ItemStockInitial" "0"
 	
 	  "AbilitySpecial"
