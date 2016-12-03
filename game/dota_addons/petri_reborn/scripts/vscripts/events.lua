@@ -474,7 +474,9 @@ function GameMode:OnEntityKilled( keys )
     killedUnit:SetTimeUntilRespawn(10.0)
     Timers:CreateTimer(10.0,
     function()
-      killedUnit:RespawnHero(false, false, false)
+      if killedUnit:IsNull() == false then
+        killedUnit:RespawnHero(false, false, false)
+      end
     end)
   end
 

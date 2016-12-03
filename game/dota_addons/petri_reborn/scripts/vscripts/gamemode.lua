@@ -610,7 +610,7 @@ function GameMode:InitGameMode()
     
     if GameMode.assignedPlayerHeroes then
       for k,v in pairs(GameMode.assignedPlayerHeroes) do
-        if GameMode.assignedPlayerHeroes[k] then
+        if GameMode.assignedPlayerHeroes[k] and v:IsNull() == false then
           AddKeyToNetTable(k, "players_resources", "lumber", v.lumber)
           AddKeyToNetTable(k, "players_resources", "food", v.food)
           AddKeyToNetTable(k, "players_resources", "maxFood", v.maxFood)
