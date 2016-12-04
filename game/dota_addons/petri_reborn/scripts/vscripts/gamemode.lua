@@ -764,6 +764,7 @@ function KVNWin(keys)
     s = false
     for _,v in pairs(Entities:FindAllByName("npc_petri_miracle1")) do
       if IsValidEntity(v) and v:IsAlive() then
+        print("111111111111111111")
         s = true
         break
       end
@@ -772,6 +773,7 @@ function KVNWin(keys)
     s = false
     for _,v in pairs(Entities:FindAllByName("npc_petri_miracle2")) do
       if IsValidEntity(v) and v:IsAlive() then
+        print("22222222222222222")
         s = true
         break
       end
@@ -780,6 +782,7 @@ function KVNWin(keys)
     s = false
     for _,v in pairs(Entities:FindAllByName("npc_petri_miracle3")) do
       if IsValidEntity(v) and v:IsAlive() then
+        print("333333333333333")
         s = true
         break
       end
@@ -787,7 +790,9 @@ function KVNWin(keys)
   end
 
   if GameMode.PETRI_NO_END == false and s then
+    print("aaaaaaaaaaaaaaaaaa")
     if GameMode.PETRI_GAME_HAS_ENDED == false then
+      print("bbbbbbbbbbbbbbbbbbbb")
       GameMode.PETRI_GAME_HAS_ENDED = true
 
       Notifications:TopToAll({text="#kvn_win", duration=100, style={color="green"}, continue=false})
