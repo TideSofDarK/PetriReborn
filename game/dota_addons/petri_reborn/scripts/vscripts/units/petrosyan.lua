@@ -333,6 +333,7 @@ function CheckSolo( keys )
 			v:GetUnitName() == "npc_petri_creep_special9" or
 			v:GetUnitName() == "npc_petri_creep_kivin" or
 			v:GetUnitName() == "npc_dota_hero_storm_spirit" then
+			caster:RemoveModifierByName("modifier_petri_solo")
 			return
 		end
 	end
@@ -383,5 +384,7 @@ function CheckSolo( keys )
 		damage = math.min(math.max(damage, 1), limit)
 
 		caster:SetModifierStackCount("modifier_petri_solo",caster,damage)
+	else
+		caster:RemoveModifierByName("modifier_petri_solo")
 	end
 end
