@@ -1824,17 +1824,15 @@
 	
 		"vscripts"     "units/creep.lua"
 	
-		
-	
 		"ArmorPhysical"       "0"
 		"MagicalResistance"     "0"
 	
 		"AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-		"AttackDamageMin"     "10000.0"
-		"AttackDamageMax"     "100000.0"
-		"AttackRate"        "0.7"
-		"AttackAnimationPoint"    "0.39"
+		"AttackDamageMin"     "800000.0"
+		"AttackDamageMax"     "1000000.0"
+		"AttackRate"        "0.3"
+		"AttackAnimationPoint"    "0.29"
 		"AttackAcquisitionRange"  "800"
 		"AttackRange"       "90"
 	
@@ -1882,8 +1880,8 @@
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackDamageMin"     "2000000.0"
 	  "AttackDamageMax"     "2750000.0"
-	  "AttackRate"        "0.7"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackRate"        "0.3"
+	  "AttackAnimationPoint"    "0.29"
 	  "AttackAcquisitionRange"  "800"
 	  "AttackRange"       "90"
 	
@@ -1931,8 +1929,8 @@
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
 	  "AttackDamageMin"     "2500000.0"
 	  "AttackDamageMax"     "3000000.0"
-	  "AttackRate"        "0.7"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackRate"        "0.2"
+	  "AttackAnimationPoint"    "0.19"
 	  "AttackAcquisitionRange"  "800"
 	  "AttackRange"       "90"
 	
@@ -1978,10 +1976,10 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "3000000.0"
-	  "AttackDamageMax"     "3365762.0"
-	  "AttackRate"        "0.7"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackDamageMin"     "8000000.0"
+	  "AttackDamageMax"     "8500000.0"
+	  "AttackRate"        "0.15"
+	  "AttackAnimationPoint"    "0.18"
 	  "AttackAcquisitionRange"  "800"
 	  "AttackRange"       "90"
 	
@@ -2027,15 +2025,15 @@
 	
 	  "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"
 	  "AttackDamageType"      "DAMAGE_TYPE_ArmorPhysical"
-	  "AttackDamageMin"     "3000000.0"
-	  "AttackDamageMax"     "3365762.0"
-	  "AttackRate"        "0.7"
-	  "AttackAnimationPoint"    "0.39"
+	  "AttackDamageMin"     "7500000.0"
+	  "AttackDamageMax"     "8500000.0"
+	  "AttackRate"        "0.3"
+	  "AttackAnimationPoint"    "0.30"
 	  "AttackAcquisitionRange"  "800"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "2000.0"
-	  "BountyGoldMax"       "2000.0"
+	  "BountyGoldMin"       "1500.0"
+	  "BountyGoldMax"       "1500.0"
 	  "BountyXP"          "50000"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -2451,8 +2449,8 @@
 	  "AttackAcquisitionRange"  "800"
 	  "AttackRange"       "90"
 	
-	  "BountyGoldMin"       "2000.0"
-	  "BountyGoldMax"       "2000.0"
+	  "BountyGoldMin"       "1500.0"
+	  "BountyGoldMax"       "1500.0"
 	  "BountyXP"          "5000"  
 	
 	  "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
@@ -3230,7 +3228,7 @@
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "500"
+	  "StatusHealth"        "800"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -3306,7 +3304,7 @@
 	  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
 	  "MovementTurnRate"      "0.5"
 	
-	  "StatusHealth"        "50000"
+	  "StatusHealth"        "70000"
 	  "StatusHealthRegen"     "0"
 	  "StatusMana"        "0"
 	  "StatusManaRegen"     "0"
@@ -3342,8 +3340,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "40000.0"
-	  "BountyGoldMax"    "40000.0"
+	  "BountyGoldMin"    "50000.0"
+	  "BountyGoldMax"    "50000.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"
@@ -3441,7 +3439,7 @@
 	}
 	"npc_petri_miracle1"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/items/courier/krobeling_gold/krobeling_gold.vmdl"
 	  "ModelScale"                "1.0"
 	  "SoundSet"          "Creep_Good_Range"          
@@ -3450,6 +3448,9 @@
 	  "AbilityLayout"       "4"
 	  "Ability1"         "petri_building"
 	  "Ability2"          "petri_miracle1"
+	  "Ability3"          "petri_miracle_heal"
+	  "Ability4"          "petri_miracle_earthstun"
+	  "Ability5"          "petri_miracle_silence"
 	
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -3484,7 +3485,7 @@
 	
 	"npc_petri_miracle2"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/items/juggernaut/ward/dc_wardupate/dc_wardupate.vmdl"
 	  "ModelScale"        "1.0"
 	  "SoundSet"          "Creep_Good_Range"          
@@ -3492,7 +3493,7 @@
 	
 	  "AbilityLayout"       "4"
 	  "Ability1"         "petri_building"
-	  "Ability2"          "petri_miracle2"
+	  "Ability2"          "petri_exit"
 	  
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -3526,7 +3527,7 @@
 	
 	"npc_petri_miracle3"
 	{
-	  "BaseClass"         "npc_dota_creature"
+	  "BaseClass"         "npc_dota_base_additive"
 	  "Model"           "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
 	  "ModelScale"        "1.0"
 	  "SoundSet"          "Creep_Good_Range"          
@@ -3534,7 +3535,7 @@
 	
 	  "AbilityLayout"       "4"
 	  "Ability1"         "petri_building"
-	  "Ability2"          "petri_miracle3"
+	  "Ability2"          "petri_exit"
 	  
 	  "ArmorPhysical"       "0"     
 	  "MagicalResistance"       "0"     
@@ -3588,8 +3589,8 @@
 	  "AttackAcquisitionRange" "500"
 	  "AttackRange"     "90"
 	
-	  "BountyGoldMin"    "9866.0"
-	  "BountyGoldMax"    "9866.0"
+	  "BountyGoldMin"    "19866.0"
+	  "BountyGoldMax"    "19866.0"
 	
 	  "BoundsHullName"   "DOTA_HULL_SIZE_HUGE"
 	  //"RingRadius"    "40"

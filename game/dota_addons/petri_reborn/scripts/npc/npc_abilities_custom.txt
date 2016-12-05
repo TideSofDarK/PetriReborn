@@ -2502,7 +2502,7 @@
 	    "01"
 	    {
 	      "var_type"      "FIELD_INTEGER"
-	      "upgrade_rate"      "200"
+	      "upgrade_rate"      "175"
 	    }
 	    "02"
 	    {
@@ -3663,6 +3663,346 @@
 	      }
 	    }
 	  }
+	}
+	"petri_miracle_earthstun"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+	    "FightRecapLevel"               "1"
+	    "AbilityTextureName"            "lina_light_strike_array"
+	    
+	    "AbilityCastRange"              "625"
+	    "AbilityCastPoint"              "0.45 0.45 0.45 0.45"
+	    "AOERadius"                     "%light_strike_array_aoe"
+	
+	    // Precache
+	    //-------------------------------------------------------------------------------------------------------------
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	        "particle"          "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+	        "particle"          "particles/units/heroes/hero_lina/lina_spell_light_strike_array_ray_team.vpcf"
+	        "particle"          "particles/generic_gameplay/generic_stunned.vpcf"
+	    }
+	    
+	    // Time     
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "7.0 7.0 7.0 7.0"
+	    "AbilityDuration"               "1.6 1.8 2.0 2.2"
+	
+	    // Damage.
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityDamage"                 "90 150 210 280"
+	
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityManaCost"               "0 0 0 0"
+	
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"                  "FIELD_INTEGER"
+	            "light_strike_array_aoe"    "225"
+	        }
+	        
+	        "02"
+	        {
+	            "var_type"                      "FIELD_FLOAT"
+	            "light_strike_array_delay_time" "0.5"
+	        }
+	                    
+	        "03"
+	        {
+	            "var_type"                      "FIELD_FLOAT"
+	            "light_strike_array_stun_duration"  "1.6 1.8 2.0 2.2"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Ability.PreLightStrikeArray"
+	            "Target"        "CASTER"
+	        }
+	
+	        "FireEffect"
+	        {
+	            "EffectName"    "particles/units/heroes/hero_lina/lina_spell_light_strike_array_ray_team.vpcf"
+	            "EffectAttachType"  "start_at_customorigin"
+	            "TargetPoint"       "POINT"
+	
+	            "ControlPoints"
+	            {
+	                "01"    "%light_strike_array_aoe 0 0"
+	                "03"    "0 0 0"
+	            }
+	        }
+	
+	        "DelayedAction"
+	        {
+	            "Delay"     "%light_strike_array_delay_time"
+	
+	            "Action"
+	            {
+	                "FireSound"
+	                {
+	                    "EffectName"    "Ability.LightStrikeArray"
+	                    "Target"        "CASTER"
+	                }
+	
+	                "FireEffect"
+	                {
+	                    "EffectName"    "particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+	                    "EffectAttachType"  "start_at_customorigin"
+	                    "TargetPoint"       "POINT"
+	
+	                    "ControlPoints"
+	                    {
+	                        "00"    "POINT"
+	                        "01"    "%light_strike_array_aoe 0 0"
+	                        "03"    "0 0 0"
+	                    }
+	                }
+	                
+	                "DestroyTrees"
+	                {
+	                    "Target"    "POINT"
+	                    "Radius"    "%light_strike_array_aoe"
+	                }
+	
+	                "ActOnTargets"
+	                {
+	                    "Target"
+	                    {
+	                        "Center" "POINT"
+	                        "Radius" "%light_strike_array_aoe"
+	                        "Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY" 
+	                        "Types" "DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+	                    }
+	
+	                    "Action"
+	                    {
+	                        "Damage"
+	                        {
+	                            "Target"    "TARGET"
+	                            "Type"      "DAMAGE_TYPE_MAGICAL"
+	                            "Damage"    "%AbilityDamage"
+	                        }
+	
+	                        "ApplyModifier"
+	                        {
+	                            "ModifierName"  "modifier_light_strike_array_datadriven"
+	                            "Target"        "TARGET"
+	                            "Duration"      "%light_strike_array_stun_duration"
+	                        }                       
+	                    }
+	                }               
+	            }
+	        }
+	    }
+	
+	    "Modifiers"
+	    {
+	        "modifier_light_strike_array_datadriven"
+	        {
+	            "IsDebuff"  "1"
+	            "OverrideAnimation" "ACT_DOTA_DISABLED"
+	
+	            "EffectName"    "particles/generic_gameplay/generic_stunned.vpcf"
+	            "EffectAttachType"  "follow_overhead"
+	
+	            "States"
+	            {
+	                "MODIFIER_STATE_STUNNED"    "MODIFIER_STATE_VALUE_ENABLED"
+	            }
+	        }
+	    }
+	}
+	"petri_miracle_heal"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	  "BaseClass"                 "ability_datadriven"
+	  "AbilityTextureName"      "petri_repair"
+	  "MaxLevel"            "1"
+	
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastRange"              "700"
+	    "AbilityCastPoint"              "0.5 0.5 0.5 0.5"
+	    
+	    // Time     
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "10.0"
+	    
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityManaCost"               "0 0 0 0"
+	    
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	
+	    "precache"
+	    {
+	        "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+	        "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "FireSound"
+	        {
+	            "EffectName"    "Hero_Omniknight.Purification"
+	            "Target"        "TARGET"
+	        }        
+	        "FireEffect"
+	        {
+	            "Target"            "TARGET"
+	            "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+	            "EffectAttachType"  "follow_origin"
+	        }
+	        "RunScript"
+	        {
+	          "ScriptFile"  "units/miracle.lua"
+	          "Function"    "MiracleHeal"
+	        }
+	    }
+	}
+	
+	"petri_miracle_silence"
+	{
+	    // General
+	    //-------------------------------------------------------------------------------------------------------------
+	    "BaseClass"             "ability_datadriven"
+	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	    "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
+	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
+	    "AbilityTextureName"            "leshrac_split_earth"
+	
+	    "precache"
+	    {
+	        "soundfile"         "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+	        "particle"          "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
+	        "particle"          "particles/generic_gameplay/generic_stunned.vpcf"
+	    }
+	
+	    // Casting
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCastRange"              "750"
+	    "AbilityCastPoint"              "0.7"
+	    "AOERadius"                     "%radius"
+	    
+	    // Time     
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityCooldown"               "2"
+	
+	    // Cost
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityManaCost"               "0"
+	    
+	    // Damage.
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilityDamage"                 "300"
+	    "AbilityDuration"               "2"
+	    
+	    // Special
+	    //-------------------------------------------------------------------------------------------------------------
+	    "AbilitySpecial"
+	    {
+	        "01"
+	        {
+	            "var_type"          "FIELD_FLOAT"
+	            "delay"             "0.35"
+	        }
+	        
+	        "02"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "radius"            "225"
+	        }
+	        
+	        "03"
+	        {
+	            "var_type"          "FIELD_INTEGER"
+	            "duration"          "2"
+	        }
+	    }
+	
+	    "OnSpellStart"
+	    {
+	        "DelayedAction"
+	        {
+	            "Delay"     "%delay"
+	            "Action"    
+	            {
+	                "FireEffect"
+	                {
+	                    "EffectName"        "particles/units/heroes/hero_leshrac/leshrac_split_earth.vpcf"
+	                    "EffectAttachType"  "start_at_customorigin"
+	                    "TargetPoint"       "POINT"
+	
+	                    "ControlPoints"
+	                    {
+	                        "01"    "%radius %radius %radius"
+	                    }
+	                }
+	
+	                "FireSound"
+	                {
+	                    "EffectName"    "Hero_Leshrac.Split_Earth"
+	                    "Target"        "CASTER"
+	                }
+	
+	                "DestroyTrees"
+	                {
+	                    "Target"        "POINT"
+	                    "Radius"        "%radius"
+	                }
+	
+	                "ActOnTargets"
+	                {
+	                    "Target"
+	                    {
+	                        "Center"    "POINT"
+	                        "Radius"    "%radius"
+	                        "Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	                        "Types"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	                    }
+	                
+	                    "Action"
+	                    {
+	                        "Damage"
+	                        {
+	                            "Target"        "TARGET"
+	                            "Type"          "DAMAGE_TYPE_MAGICAL"
+	                            "Damage"        "%AbilityDamage"
+	                        }
+	
+	                        "Stun"
+	                        {
+	                            "Target"     "TARGET"
+	                            "Duration"   "%duration"
+	                        }
+	                    }
+	                }
+	            }
+	        }       
+	    }
 	}
 	"petri_petrosyan_explore"
 	{
@@ -4825,7 +5165,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "15 75 750 12500 30000 300000 800000"
+	      "attack"        "15 75 750 12500 30000 300000 1300000"
 	    }
 	    "03"
 	    {
@@ -4979,12 +5319,12 @@
 	    "04"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_rate"        "-5"
+	      "slow_rate"        "-2"
 	    }
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "slow_stacks"        "1 2 3 4 5 6 7"
+	      "slow_stacks"        "3 5 6 7 8 9 10"
 	    }
 	  }
 	
@@ -5085,7 +5425,7 @@
 	  "MaxLevel"            "8"
 	
 	  "AbilityChannelTime"      "3.0 3.1 3.2 3.3 3.4 3.5 3.6"
-	  "AbilityGoldCost"       "%1 %20 %100 %250 %500 %750 %3000"
+	  "AbilityGoldCost"       "%0 %0 %10 %20 %25 %30 %50"
 	
 	  "precache"
 	  {
@@ -5098,7 +5438,7 @@
 	    "01"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "lumber_cost"             "1000 2000 50000 100000 150000 250000 500000"
+	      "lumber_cost"             "500 2500 100000 150000 150000 160000 200000"
 	    }
 	    "02"
 	    {
@@ -5113,12 +5453,12 @@
 	    "04"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "armor_reduction"         "-3"
+	      "armor_reduction"         "-10"
 	    }
 	    "05"
 	    {
 	      "var_type"                "FIELD_INTEGER"
-	      "armor_reduction_stacks"  "1 3 5 20 25 30 50"
+	      "armor_reduction_stacks"  "1 3 10 25 75 150 200"
 	    }
 	  }
 	
@@ -5218,7 +5558,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	
-	  "AbilityGoldCost"       "%25 %35 %50 %65 %100 %1000 %1250 %1500 %1750 %2000 %2250 %2500 %2750 %5000 %12500 %15000"
+	  "AbilityGoldCost"       "%25 %35 %50 %65 %100 %1000 %1250 %1500 %1750 %2000 %2250 %2500 %2750 %5000 %5500 %6500"
 	  "AbilityChannelTime"      "2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3 3.4 3.5 3.6 3.7 3.8 3.9"
 	
 	  "MaxLevel"            "17"
@@ -5234,7 +5574,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_armor"  "50 90 180 270 360 450 660 1100 1500 1900 2300 2700 3000 4000 5750 6750"
+	      "bonus_armor"  "50 90 180 270 360 450 660 1100 1500 1900 2300 2700 3000 4000 5000 6500"
 	    }
 	    "03"
 	    {
@@ -5325,7 +5665,7 @@
 	    "01"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "bonus_hp"  "4"
+	      "bonus_hp"  "13"
 	    }
 	  }
 	
@@ -5392,7 +5732,7 @@
 	
 	  "MaxLevel"            "14"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 70.0 90.0 120.0 140.0"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 70.0 150.0 165.0 180.0"
 	  "AbilityGoldCost"       "%0 %5 %40 %80 %400 %600 %1200 %1800 %3000 %7000 %12000 %21000 %26000"
 	
 	  "precache"
@@ -5410,7 +5750,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "health_points"        "500 600 600 1600 1700 1800 2500 2500 2500 9000 30000 80000 150000"
+	      "health_points"        "350 600 600 1600 1700 1800 2500 2500 2500 9000 30000 80000 150000"
 	    }
 	    "03"
 	    {
@@ -5425,7 +5765,7 @@
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "63 130 144 270 350 500 700 3500 5000 9500 15000 17500 20000"
+	      "armor"        "63 130 144 270 350 500 700 3500 4500 9500 13750 15300 20000"
 	    }
 	  }
 	
@@ -5680,7 +6020,7 @@
 	
 	  "AbilityCastPoint"        "0.0"
 	  
-	  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %600 %1000"
+	  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %600 %750"
 	
 	  "AbilityManaCost"       "0"
 	  
@@ -6059,7 +6399,7 @@
 	    "02"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "attack"        "1000 30000 350000 700000"
+	      "attack"        "1000 30000 350000 1250000"
 	    }
 	    "03"
 	    {
@@ -6204,7 +6544,7 @@
 	
 	  "MaxLevel"            "15"
 	
-	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 80.0 95.0 105.0 150.0 170.0"
+	  "AbilityChannelTime"      "4.0 6.0 7.0 8.5 10.0 15.0 20.0 30.0 50.0 80.0 95.0 170.0 180.0 195.0"
 	  "AbilityGoldCost"       "%0 %5 %50 %80 %100 %350 %600 %900 %2500 %5000 %7500 %15000 %22500 %28500"
 	
 	  "precache"
@@ -6222,7 +6562,7 @@
 	    "02"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "health_points"       "250 350 550 575 600 625 650 1200 1500 2000 5087 15450 35500 72500"
+	      "health_points"       "250 350 550 600 625 650 675 1200 1500 2000 5087 15450 35500 72500"
 	    }
 	    "03"
 	    {
@@ -6237,7 +6577,7 @@
 	    "05"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "armor"               "40 70 175 200 250 300 800 900 3000 7800 10000 14500 20000 25000"
+	      "armor"               "40 70 175 250 300 350 800 900 3000 7800 9000 13500 20000 25000"
 	    }
 	  }
 	

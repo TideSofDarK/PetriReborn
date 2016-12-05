@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %600 %1000"
+  "AbilityGoldCost"       "%0 %0 %0 %0 %10 %25 %40 %75 %600 %750"
 
   "AbilityManaCost"       "0"
   

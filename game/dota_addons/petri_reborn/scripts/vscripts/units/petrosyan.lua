@@ -23,8 +23,8 @@ function BonusGoldFromWall(keys)
 			caster:RemoveModifierByName("modifier_bonus_damage")
 		end
 
-		AddCustomGold( caster:GetPlayerOwnerID(), 5000 )
-		PopupParticle(5000, Vector(244,201,23), 1.0, caster)
+		AddCustomGold( caster:GetPlayerOwnerID(), 3000 )
+		PopupParticle(3000, Vector(244,201,23), 1.0, caster)
 	end
 end
 

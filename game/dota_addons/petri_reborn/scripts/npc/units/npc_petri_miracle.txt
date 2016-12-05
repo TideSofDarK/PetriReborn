@@ -1,6 +1,6 @@
 "npc_petri_miracle1"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/courier/krobeling_gold/krobeling_gold.vmdl"
   "ModelScale"                "1.0"
   "SoundSet"          "Creep_Good_Range"          
@@ -9,6 +9,9 @@
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
   "Ability2"          "petri_miracle1"
+  "Ability3"          "petri_miracle_heal"
+  "Ability4"          "petri_miracle_earthstun"
+  "Ability5"          "petri_miracle_silence"
 
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
@@ -43,7 +46,7 @@
 
 "npc_petri_miracle2"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/juggernaut/ward/dc_wardupate/dc_wardupate.vmdl"
   "ModelScale"        "1.0"
   "SoundSet"          "Creep_Good_Range"          
@@ -51,7 +54,7 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
-  "Ability2"          "petri_miracle2"
+  "Ability2"          "petri_exit"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
@@ -85,7 +88,7 @@
 
 "npc_petri_miracle3"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/witchdoctor/wd_ward/ribbitar_ward/ribbitar_ward.vmdl"
   "ModelScale"        "1.0"
   "SoundSet"          "Creep_Good_Range"          
@@ -93,7 +96,7 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
-  "Ability2"          "petri_miracle3"
+  "Ability2"          "petri_exit"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     

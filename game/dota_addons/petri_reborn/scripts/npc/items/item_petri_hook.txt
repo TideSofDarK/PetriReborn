@@ -10,7 +10,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_hook"
 
-  "ItemCost"            "37000"
+  "ItemCost"            "75000"
   "ItemQuality"         "secret_shop"
   "ItemAliases"         "hook"
   "ItemSellable"  "0"

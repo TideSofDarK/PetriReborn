@@ -1,0 +1,56 @@
+"petri_miracle_heal"
+{
+    // General
+    //-------------------------------------------------------------------------------------------------------------
+  "BaseClass"                 "ability_datadriven"
+  "AbilityTextureName"      "petri_repair"
+  "MaxLevel"            "1"
+
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
+
+    // Casting
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCastRange"              "700"
+    "AbilityCastPoint"              "0.5 0.5 0.5 0.5"
+    
+    // Time     
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityCooldown"               "10.0"
+    
+    // Cost
+    //-------------------------------------------------------------------------------------------------------------
+    "AbilityManaCost"               "0 0 0 0"
+    
+    // Special
+    //-------------------------------------------------------------------------------------------------------------
+
+    "precache"
+    {
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+        "particle"  "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+
+    }
+
+    "OnSpellStart"
+    {
+        "FireSound"
+        {
+            "EffectName"    "Hero_Omniknight.Purification"
+            "Target"        "TARGET"
+        }        
+        "FireEffect"
+        {
+            "Target"            "TARGET"
+            "EffectName"        "particles/units/heroes/hero_omniknight/omniknight_purification_cast.vpcf"
+            "EffectAttachType"  "follow_origin"
+        }
+        "RunScript"
+        {
+          "ScriptFile"  "units/miracle.lua"
+          "Function"    "MiracleHeal"
+        }
+    }
+}
+
