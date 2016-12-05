@@ -762,8 +762,8 @@ function KVNWin(keys)
 
   if ability:GetName() == "petri_miracle1" then
     s = false
-    for _,v in pairs(Entities:FindAllByName("npc_petri_loose_trigger1")) do
-      if IsValidEntity(v) and v:IsAlive() then
+    for _,v in pairs(Entities:FindAllByName("npc_dota_creature")) do
+      if IsValidEntity(v) and v:IsAlive() and v:IsNull() == false and v:GetUnitName() == "npc_petri_loose_trigger1" then
         print("111111111111111111")
         s = true
         break
@@ -771,8 +771,8 @@ function KVNWin(keys)
     end
   elseif ability:GetName() == "petri_miracle2" then
     s = false
-    for _,v in pairs(Entities:FindAllByName("npc_petri_loose_trigger2")) do
-      if IsValidEntity(v) and v:IsAlive() then
+    for _,v in pairs(Entities:FindAllByName("npc_dota_creature")) do
+      if IsValidEntity(v) and v:IsAlive() and v:IsNull() == false and v:GetUnitName() == "npc_petri_loose_trigger2" then
         print("22222222222222222")
         s = true
         break
@@ -780,8 +780,8 @@ function KVNWin(keys)
     end
   elseif ability:GetName() == "petri_miracle3" then
     s = false
-    for _,v in pairs(Entities:FindAllByName("npc_petri_loose_trigger3")) do
-      if IsValidEntity(v) and v:IsAlive() then
+    for _,v in pairs(Entities:FindAllByName("npc_dota_creature")) do
+      if IsValidEntity(v) and v:IsAlive() and v:IsNull() == false and v:GetUnitName() == "npc_petri_loose_trigger3" then
         print("333333333333333")
         s = true
         break
