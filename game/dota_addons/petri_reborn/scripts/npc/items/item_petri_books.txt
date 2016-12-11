@@ -41,7 +41,7 @@
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "item_petri_comedy_story"
 
-  "ItemCost"            "33000"
+  "ItemCost"            "200000"
   "ItemShopTags"          "consumable"
   "ItemQuality"           "consumable"
   "ItemAliases"         "book"
@@ -49,6 +49,10 @@
 
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+
+  "ItemStockMax" "999" 
+  "ItemStockTime" "3000"
+  "ItemStockInitial" "0"
 
   "OnSpellStart"
   {
@@ -154,7 +158,7 @@
   "ItemPurchasable"         "0"
   "ItemSellable"          "0"
 
-  "ItemCost"            "2300"
+  "ItemCost"            "30000"
   "ItemShopTags"          "consumable"
   "ItemQuality"           "consumable"
   "ItemAliases"         "book"
@@ -162,6 +166,10 @@
 
   "ItemStackable"         "1"
   "ItemPermanent"         "0"
+
+  "ItemStockMax" "999" 
+  "ItemStockTime" "3000"
+  "ItemStockInitial" "0"
 
   "OnSpellStart"
   {
@@ -186,7 +194,7 @@
   
       "Properties"
       {
-        "MODIFIER_PROPERTY_HEALTH_BONUS" "500"
+        "MODIFIER_PROPERTY_HEALTH_BONUS" "50000"
       }
     }
   }

@@ -22,7 +22,7 @@ function Shop:Init()
         local oldValue = CustomNetTables:GetTableValue("shop", itemName)["time"] - 1
         local oldStock = CustomNetTables:GetTableValue("shop", itemName)["count"] 
         if oldValue <= 0 then
-          CustomNetTables:SetTableValue("shop", itemName, {count = oldStock + 1, time = CUSTOM_SHOP_STOCK[itemName].stockTime})
+          CustomNetTables:SetTableValue("shop", itemName, {count = oldStock + 500, time = CUSTOM_SHOP_STOCK[itemName].stockTime})
         else
           CustomNetTables:SetTableValue("shop", itemName, {count = oldStock, time = oldValue})
         end

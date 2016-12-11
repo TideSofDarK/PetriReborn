@@ -138,7 +138,7 @@ function build( keys )
 			hero.uniqueUnitList[unit_name] = true
 		end
 
-		if unit:GetUnitName() == "npc_petri_exit" or string.match(unit:GetUnitName(), "miracle") then
+		if unit:GetUnitName() == "npc_petri_exit" then
 			hero.exit = hero.exit or {}
 			
 			if hero.exit[unit:GetUnitName()] and hero.exit[unit:GetUnitName()]:IsNull() == false and hero.exit[unit:GetUnitName()]:IsAlive() then
@@ -165,6 +165,54 @@ function build( keys )
 				-- 			end
 				-- 		end
 				-- 	end)
+			end
+		end
+
+		if unit:GetUnitName() == "npc_petri_miracle1" then
+			hero.miracle1 = hero.miracle1 or {}
+			
+			if hero.miracle1[unit:GetUnitName()] and hero.miracle1[unit:GetUnitName()]:IsNull() == false and hero.miracle1[unit:GetUnitName()]:IsAlive() then
+				Timers:CreateTimer(0.03, function ()
+					unit:ForceKill(false)
+				end)
+			else
+				Notifications:TopToAll({text="#miracle1_construction_is_started", duratione=10, style={color="blue"}, continue=false})
+
+				hero.miracle1[unit:GetUnitName()] = unit
+
+				unit.childEntity = CreateUnitByName("petri_dummy_100vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+			end
+		end
+
+		if unit:GetUnitName() == "npc_petri_miracle2" then
+			hero.miracle2 = hero.miracle2 or {}
+			
+			if hero.miracle2[unit:GetUnitName()] and hero.miracle2[unit:GetUnitName()]:IsNull() == false and hero.miracle2[unit:GetUnitName()]:IsAlive() then
+				Timers:CreateTimer(0.03, function ()
+					unit:ForceKill(false)
+				end)
+			else
+				Notifications:TopToAll({text="#miracle2_construction_is_started", duratione=10, style={color="blue"}, continue=false})
+
+				hero.miracle2[unit:GetUnitName()] = unit
+
+				unit.childEntity = CreateUnitByName("petri_dummy_300vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
+			end
+		end
+
+		if unit:GetUnitName() == "npc_petri_miracle3" then
+			hero.miracle3 = hero.miracle3 or {}
+			
+			if hero.miracle3[unit:GetUnitName()] and hero.miracle3[unit:GetUnitName()]:IsNull() == false and hero.miracle3[unit:GetUnitName()]:IsAlive() then
+				Timers:CreateTimer(0.03, function ()
+					unit:ForceKill(false)
+				end)
+			else
+				Notifications:TopToAll({text="#miracle3_construction_is_started", duratione=10, style={color="blue"}, continue=false})
+
+				hero.miracle3[unit:GetUnitName()] = unit
+
+				unit.childEntity = CreateUnitByName("petri_dummy_500vision", keys.caster:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 			end
 		end
 

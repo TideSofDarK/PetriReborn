@@ -22,7 +22,7 @@
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "800"
+  "StatusHealth"        "1000"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -60,7 +60,7 @@
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "5000"
+  "StatusHealth"        "7500"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
@@ -98,7 +98,7 @@
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_NONE"
   "MovementTurnRate"      "0.5"
 
-  "StatusHealth"        "70000"
+  "StatusHealth"        "100000"
   "StatusHealthRegen"     "0"
   "StatusMana"        "0"
   "StatusManaRegen"     "0"

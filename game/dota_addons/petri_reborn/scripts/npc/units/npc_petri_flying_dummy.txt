@@ -45,12 +45,36 @@
   "VisionNighttimeRange"    "1800"   
 }
 
+"petri_dummy_100vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "100" 
+  "VisionNighttimeRange"    "100"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
+
 "petri_dummy_300vision"
 {
   "BaseClass"         "npc_dota_creature"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "300" 
   "VisionNighttimeRange"    "300"
+  "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
+  "AbilityLayout"       "4"
+  "Ability1"          "petri_dummy_invisibility"
+}
+
+"petri_dummy_500vision"
+{
+  "BaseClass"         "npc_dota_creature"
+  "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
+  "VisionDaytimeRange"    "500" 
+  "VisionNighttimeRange"    "500"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
   "AbilityLayout"       "4"

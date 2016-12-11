@@ -324,9 +324,9 @@ function GameMode:ModifyGoldFilter(event)
 end
 
 DAMAGE_FILTERS = {}
-DAMAGE_FILTERS["npc_petri_loose_trigger1"] = 800
-DAMAGE_FILTERS["npc_petri_loose_trigger2"] = 5000
-DAMAGE_FILTERS["npc_petri_loose_trigger3"] = 70000
+DAMAGE_FILTERS["npc_petri_loose_trigger1"] = 1000
+DAMAGE_FILTERS["npc_petri_loose_trigger2"] = 7500
+DAMAGE_FILTERS["npc_petri_loose_trigger3"] = 100000
 
 function GameMode:DamageFilter( filter_table )
     local victim = EntIndexToHScript(filter_table["entindex_victim_const"])

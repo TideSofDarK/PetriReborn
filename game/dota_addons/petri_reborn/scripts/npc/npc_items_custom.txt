@@ -423,7 +423,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "item_petri_comedy_story"
 	
-	  "ItemCost"            "33000"
+	  "ItemCost"            "200000"
 	  "ItemShopTags"          "consumable"
 	  "ItemQuality"           "consumable"
 	  "ItemAliases"         "book"
@@ -431,6 +431,10 @@
 	
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
+	
+	  "ItemStockMax" "999" 
+	  "ItemStockTime" "3000"
+	  "ItemStockInitial" "0"
 	
 	  "OnSpellStart"
 	  {
@@ -536,7 +540,7 @@
 	  "ItemPurchasable"         "0"
 	  "ItemSellable"          "0"
 	
-	  "ItemCost"            "2300"
+	  "ItemCost"            "30000"
 	  "ItemShopTags"          "consumable"
 	  "ItemQuality"           "consumable"
 	  "ItemAliases"         "book"
@@ -544,6 +548,10 @@
 	
 	  "ItemStackable"         "1"
 	  "ItemPermanent"         "0"
+	
+	  "ItemStockMax" "999" 
+	  "ItemStockTime" "3000"
+	  "ItemStockInitial" "0"
 	
 	  "OnSpellStart"
 	  {
@@ -568,7 +576,7 @@
 	  
 	      "Properties"
 	      {
-	        "MODIFIER_PROPERTY_HEALTH_BONUS" "500"
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "50000"
 	      }
 	    }
 	  }
@@ -4298,7 +4306,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "875000"
+	  "ItemCost"            "855000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -5806,7 +5814,7 @@
 	  "AbilityTextureName"      "item_exit"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "5750"
+	  "ItemCost"            "1"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -7586,7 +7594,7 @@
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
 	  
-	  "ItemCost"            "125000"
+	  "ItemCost"            "145000"
 	  "ItemShopTags"          "unique"
 	  "ItemQuality"         "epic"
 	  "ItemAliases"         "uber mask of laugh"
@@ -7744,7 +7752,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "75000"
+	  "ItemCost"            "95000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

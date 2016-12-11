@@ -6,7 +6,7 @@
   "AbilityTextureName"      "item_exit"
 
   "SideShop" "1"
-  "ItemCost"            "5750"
+  "ItemCost"            "1"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"

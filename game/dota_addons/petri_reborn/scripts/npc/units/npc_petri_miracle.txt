@@ -8,10 +8,8 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
-  "Ability2"          "petri_miracle1"
-  "Ability3"          "petri_miracle_heal"
-  "Ability4"          "petri_miracle_earthstun"
-  "Ability5"          "petri_miracle_silence"
+  "Ability2"         "petri_miracle1"
+  "Ability3"         "petri_miracle_heal"
 
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
@@ -54,7 +52,8 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
-  "Ability2"          "petri_exit"
+  "Ability2"         "petri_miracle2"
+  "Ability3"         "petri_miracle_stun"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     
@@ -96,7 +95,8 @@
 
   "AbilityLayout"       "4"
   "Ability1"         "petri_building"
-  "Ability2"          "petri_exit"
+  "Ability2"         "petri_miracle3"
+  "Ability3"         "petri_miracle_silence"
   
   "ArmorPhysical"       "0"     
   "MagicalResistance"       "0"     

@@ -306,7 +306,7 @@ function StartRepairing(event)
 	local target = event.target
 	local ability = event.ability
 
-	if target:GetUnitName() == "npc_petri_exit" or target:GetUnitName() == "npc_petri_earth_wall" then return end
+	if target:GetUnitName() == "npc_petri_exit" or target:GetUnitName() == "npc_petri_earth_wall" or target:GetUnitName() == "npc_petri_miracle1" or target:GetUnitName() == "npc_petri_miracle2" or target:GetUnitName() == "npc_petri_miracle3" then return end
 
 	if target:HasAbility("petri_building") ~= true then
 		Notifications:Bottom(caster:GetPlayerOwnerID(), {text="#repair_target_is_not_a_building", duration=1, style={color="red", ["font-size"]="45px"}})
