@@ -51,23 +51,29 @@ function ApplyDamageAura(event)
 	local units = FindUnitsInRadius(DOTA_TEAM_GOODGUYS, caster:GetAbsOrigin(), nil, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
 	
 	for k,v in pairs(units) do
-		if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and
-			v:HasAbility("petri_building") and v:GetAttackCapability() == 2 then
+		local ignore_tower = false
+		if v:HasAbility("petri_upgrade_death_tower") or v:HasAbility("petri_upgrade_ice_tower") then
+			ignore_tower = true
+		end
+		if not ignore_tower then
+			if v:GetPlayerOwnerID() == caster:GetPlayerOwnerID() and
+				v:HasAbility("petri_building") and v:GetAttackCapability() == 2 then
 
-			ability:ApplyDataDrivenModifier(caster, v, "modifier_damage", {})
+				ability:ApplyDataDrivenModifier(caster, v, "modifier_damage", {})
 
-			if (v:FindModifierByName("modifier_damage") ~= nil and v:GetModifierStackCount("modifier_damage", v) < newDamage) 
-				or (v:FindModifierByName("modifier_damage") == nil) then
-				v:RemoveModifierByName("modifier_damage")
-				ability:ApplyDataDrivenModifier(v, v, "modifier_damage", { })
-				v:SetModifierStackCount("modifier_damage", v, newDamage)
-			end
+				if (v:FindModifierByName("modifier_damage") ~= nil and v:GetModifierStackCount("modifier_damage", v) < newDamage) 
+					or (v:FindModifierByName("modifier_damage") == nil) then
+					v:RemoveModifierByName("modifier_damage")
+					ability:ApplyDataDrivenModifier(v, v, "modifier_damage", { })
+					v:SetModifierStackCount("modifier_damage", v, newDamage)
+				end
 
-			if (v:FindModifierByName("modifier_range") ~= nil and v:GetModifierStackCount("modifier_range", v) < newRange) 
-				or (v:FindModifierByName("modifier_range") == nil) then
-				v:RemoveModifierByName("modifier_range")
-				ability:ApplyDataDrivenModifier(v, v, "modifier_range", { })
-				v:SetModifierStackCount("modifier_range", v, newRange)
+				if (v:FindModifierByName("modifier_range") ~= nil and v:GetModifierStackCount("modifier_range", v) < newRange) 
+					or (v:FindModifierByName("modifier_range") == nil) then
+					v:RemoveModifierByName("modifier_range")
+					ability:ApplyDataDrivenModifier(v, v, "modifier_range", { })
+					v:SetModifierStackCount("modifier_range", v, newRange)
+				end
 			end
 		end
 	end
