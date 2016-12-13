@@ -7,7 +7,7 @@
 
   "AbilityCastPoint"        "0.0"
   
-  "AbilityGoldCost"       "%400 %1100 %1550"
+  "AbilityGoldCost"       "%250 %1100 %1650"
 
   "AbilityManaCost"       "0"
   
@@ -28,7 +28,7 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "1000 30000 350000 1250000"
+      "attack"        "1000 30000 600000 1600000"
     }
     "03"
     {
