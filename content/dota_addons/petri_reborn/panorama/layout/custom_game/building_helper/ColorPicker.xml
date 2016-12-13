@@ -3,10 +3,10 @@
     <include src="file://{resources}/styles/custom_game/building_helper/ColorPicker.css" />
   </styles>
   <scripts>
-    <include src="file://{resources}/scripts/custom_game/building_helper/ColorPicker.js" />
+    <!-- <include src="file://{resources}/scripts/custom_game/building_helper/ColorPicker.js" /> -->
   </scripts>
   <Panel hittest="false" class="ColorPicker">
-    <Panel class="GradientPanel" id="GradientPanel" hittest="true" onmouseover="OnHoverGradientPanel()" onmouseout="OnLeaveGradientPanel()">
+<!--     <Panel class="GradientPanel" id="GradientPanel" hittest="true" onmouseover="OnHoverGradientPanel()" onmouseout="OnLeaveGradientPanel()">
       <Panel class="GradientMarker" id="GradientMarker" />
       <Panel class="Gradient" id="Gradient" />
     </Panel>
@@ -14,6 +14,6 @@
       <Panel class="Marker" id="Marker" />
       <Panel class="WhiteGradient" />
       <Panel class="BlackGradient" />
-    </Panel> 
+    </Panel>  -->
   </Panel> 
 </root> 
