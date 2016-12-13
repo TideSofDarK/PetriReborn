@@ -1,7 +1,7 @@
 "use strict";
 
-var PREPARE_TIME = 5;
-var SELECT_PETR_TIME = 17;
+var PREPARE_TIME = 2;
+var SELECT_PETR_TIME = 2;
 
 var isHostShuffle = false;
 

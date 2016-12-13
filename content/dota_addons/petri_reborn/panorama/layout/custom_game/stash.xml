@@ -1,0 +1,41 @@
+<root>
+	<styles>
+	</styles>
+	<script>
+	(function () {
+	    var parent = $.GetContextPanel().GetParent();
+	    while(parent.id != "Hud")
+	        parent = parent.GetParent();
+
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").enabled = false;
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").visible = false;
+
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("shop_launcher_block").FindChildTraverse("quickbuy").enabled = false;
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("shop_launcher_block").FindChildTraverse("quickbuy").visible = false;
+
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("shop_launcher_block").FindChildTraverse("stash").AddClass("StashVisible");
+
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("shop_launcher_block").FindChildTraverse("stash").style.marginBottom = "31px;";
+
+	    var center_block = parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
+
+	    center_block.FindChildTraverse("abilities").DeleteAsync(0.0);
+
+	    GameUI.CustomUIConfig().abilities = $.CreatePanel("Panel", center_block, "abilities")
+	    GameUI.CustomUIConfig().abilities.style.flowChildren = "right;";
+	    GameUI.CustomUIConfig().abilities.style.marginBottom = "30px;";
+	    GameUI.CustomUIConfig().abilities.style.marginLeft = "260px;";
+	    GameUI.CustomUIConfig().abilities.style.verticalAlign = "bottom;";
+	    GameUI.CustomUIConfig().abilities.style.horizontalAlign = "center;";
+
+	    GameUI.CustomUIConfig().abilities.style.minWidth = "200px;";
+	    GameUI.CustomUIConfig().abilities.style.width = "fit-children;";
+	    GameUI.CustomUIConfig().abilities.style.minHeight = "80px;";
+	    GameUI.CustomUIConfig().abilities.style.paddingLeft = "-2px;";
+	    GameUI.CustomUIConfig().abilities.style.paddingRight = "-2px;";
+	})();
+	</script>
+	<Panel hittest="false" class="Root">
+    </Panel>
+</root>
+

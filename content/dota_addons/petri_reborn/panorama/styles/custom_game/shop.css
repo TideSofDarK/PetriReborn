@@ -157,7 +157,7 @@
 	height: 40px;
 
 	margin-right: 15px;
-	margin-bottom: 165px;
+	margin-bottom: 225px;
 
 	background-color: #E6E600A2;
 
@@ -231,12 +231,12 @@
 
 	align: right bottom;
 
-	margin-bottom: 93px;
+	margin-bottom: 150px;
 	margin-right: 9px;
 
 	flow-children: right;
 
-	background-color: #080808ff;
+	background-color: #353A3EAA;
 }
 
 #ShopQuickbuy .Item {

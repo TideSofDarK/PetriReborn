@@ -235,7 +235,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_idol"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "%5"
+	  "AbilityGoldCost"       "5000000"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"

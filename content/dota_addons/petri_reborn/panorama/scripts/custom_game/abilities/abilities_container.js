@@ -28,9 +28,12 @@ function GetSelectedUnitOwner()
 function UpdateAbilitiesContainer()
 {
 	var queryUnit = GameUI.CustomUIConfig().selected_unit;
-	var abilityListPanel = $( "#AbilityList" );
-	if ( !abilityListPanel )
+	var abilityListPanel = GameUI.CustomUIConfig().abilities;
+
+	if ( !abilityListPanel ) {
+		$.Schedule(0.2, UpdateAbilitiesContainer)
 		return;
+	}
 
 	$.GetContextPanel().SetHasClass( "flip", Game.IsHUDFlipped())
 

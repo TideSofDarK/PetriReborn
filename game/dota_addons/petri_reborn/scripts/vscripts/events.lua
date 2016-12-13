@@ -325,6 +325,10 @@ function GameMode:OnEntityKilled( keys )
 
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
+  if not GameMode.assignedPlayerHeroes then
+    return 
+  end
+
   local hero = GameMode.assignedPlayerHeroes[killedUnit:GetPlayerOwnerID()]
 
   if killedUnit.hasNumber == true then

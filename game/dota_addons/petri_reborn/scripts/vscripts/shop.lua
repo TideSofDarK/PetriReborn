@@ -70,7 +70,7 @@ end
 function MoveToStash( hero, slot )
   local target = hero:GetItemInSlot(slot)
   if target then
-    for i=6,11 do
+    for i=6+3,11+3 do
       local it = hero:GetItemInSlot(i)
 
       if not it then
@@ -362,8 +362,8 @@ function RemoveItems( hero, c, t )
   end
 
   if c == "stash" then
-    local stashMin = 6
-    local stashMax = 11
+    local stashMin = 6+3
+    local stashMax = 11+3
 
     r( hero, t, stashMin, stashMax )
     return
@@ -426,8 +426,8 @@ function CheckRange(hero, item, min, max)
 end
 
 function CheckStash(hero, item)
-  local stashMin = 6
-  local stashMax = 11
+  local stashMin = 6+3
+  local stashMax = 11+3
 
   for i=stashMin,stashMax do
     local it = hero:GetItemInSlot(i)

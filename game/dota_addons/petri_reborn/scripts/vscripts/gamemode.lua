@@ -158,7 +158,7 @@ function GameMode:CreateHero(pID, callback)
         self.playerQueue()
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
-        newHero = CreateHeroForPlayer("npc_dota_hero_rattletrap",player)
+        newHero = PlayerResource:ReplaceHeroWith(pID,"npc_dota_hero_rattletrap",0,0)
 
         InitAbilities(newHero)
 
@@ -217,7 +217,7 @@ function GameMode:CreateHero(pID, callback)
     PrecacheUnitByNameAsync(petrosyanHeroName,
      function() 
         self.playerQueue()
-        newHero = CreateHeroForPlayer(petrosyanHeroName,player)
+        newHero = PlayerResource:ReplaceHeroWith(pID,petrosyanHeroName,0,0)
 
         -- It's dangerous to go alone, take this
         newHero:SetAbilityPoints(4)

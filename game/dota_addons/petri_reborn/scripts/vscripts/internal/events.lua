@@ -51,7 +51,7 @@ function GameMode:_OnGameRulesStateChange(keys)
       end
 
       self.playerQueue()
-    end, 'spawning_start', 4.0)
+    end, 'spawning_start', 1.0)
   elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     GameMode:OnGameInProgress()
 

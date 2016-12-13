@@ -224,10 +224,6 @@ function GetQuadStatus( pos )
 
 function GetScreenResolution()
 {
-    // Full screen viewport
-    GameUI.SetRenderTopInsetOverride(0);
-    GameUI.SetRenderBottomInsetOverride(0);
-
     var x = 0;
     var y = 0;
 
@@ -242,10 +238,6 @@ function GetScreenResolution()
     {
         pos = GameUI.GetScreenWorldPosition( 0, ++y );
     } while(pos != null);    
-
-    // Full screen viewport
-    GameUI.SetRenderTopInsetOverride(topInsetOverride);
-    GameUI.SetRenderBottomInsetOverride(bottomInsetOverride);
 
     return [x - 1, y - 1];
 }
