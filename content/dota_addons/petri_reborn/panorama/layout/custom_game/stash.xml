@@ -33,6 +33,17 @@
 	    GameUI.CustomUIConfig().abilities.style.minHeight = "80px;";
 	    GameUI.CustomUIConfig().abilities.style.paddingLeft = "-2px;";
 	    GameUI.CustomUIConfig().abilities.style.paddingRight = "-2px;";
+
+	    // parent.FindChildTraverse("StatBranch").style.visibility = "collapse;";
+	    parent.FindChildTraverse("StatBranch").enabled = false;
+	    parent.FindChildTraverse("StatBranch").hittest = false;
+	    parent.FindChildTraverse("StatBranch").hittestchildren = false;
+	    parent.FindChildTraverse("StatBranch").SetPanelEvent("onhover", function () {
+		    parent.FindChildTraverse("StatBranch").enabled = false;
+		    parent.FindChildTraverse("StatBranch").hittest = false;
+		    parent.FindChildTraverse("StatBranch").hittestchildren = false;
+	    })
+	    // parent.FindChildTraverse("PortraitContainer").style.marginLeft = "146px;";
 	})();
 	</script>
 	<Panel hittest="false" class="Root">

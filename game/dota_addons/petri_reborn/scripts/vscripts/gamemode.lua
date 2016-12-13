@@ -139,14 +139,11 @@ function GameMode:AddItems( newHero )
   end
 end
 
-function GameMode:CreateHero(pID, callback)
+function GameMode:OnHeroInGame(pID, team)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
   
   local player = PlayerResource:GetPlayer(pID)
-  if not player or not pID or PlayerResource:GetConnectionState(pID) < 1 then
-    self.playerQueue()
-  end
-  local team = player:GetTeamNumber()
+  local team = team
 
   local newHero
 
@@ -155,7 +152,7 @@ function GameMode:CreateHero(pID, callback)
     -- UTIL_Remove(hero) 
     PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
       function() 
-        self.playerQueue()
+        -- self.playerQueue()
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = PlayerResource:ReplaceHeroWith(pID,"npc_dota_hero_rattletrap",0,0)
@@ -182,9 +179,9 @@ function GameMode:CreateHero(pID, callback)
 
         newHero.uniqueUnitList = {}
 
-        SetupUI(newHero)
-        SetupUpgrades(newHero)
-        SetupDependencies(newHero)
+        SetupUI(pID)
+        SetupUpgrades(pID)
+        SetupDependencies(pID)
 
         GameMode.assignedPlayerHeroes[pID] = newHero
 
@@ -216,7 +213,7 @@ function GameMode:CreateHero(pID, callback)
     -- UTIL_Remove(hero) 
     PrecacheUnitByNameAsync(petrosyanHeroName,
      function() 
-        self.playerQueue()
+        -- self.playerQueue()
         newHero = PlayerResource:ReplaceHeroWith(pID,petrosyanHeroName,0,0)
 
         -- It's dangerous to go alone, take this
@@ -232,7 +229,7 @@ function GameMode:CreateHero(pID, callback)
 
         InitHeroValues(newHero, pID)
 
-        SetupUI(newHero)
+        SetupUI(pID)
 
         GameMode.assignedPlayerHeroes[pID] = newHero
 
@@ -263,7 +260,7 @@ function GameMode:CreateHero(pID, callback)
     return
   end
 
-  self.playerQueue()
+  -- self.playerQueue()
 end
 
 function InitHeroValues(hero, pID)
@@ -281,17 +278,11 @@ function InitHeroValues(hero, pID)
   GameMode.SELECTED_UNITS[pID]["0"] = hero:entindex()
 end
 
-function SetupDependencies(newHero)
-  local player = newHero:GetPlayerOwner()
-  local pID = player:GetPlayerID()
-
+function SetupDependencies(pID)
   CustomNetTables:SetTableValue( "players_dependencies", tostring(pID), {} );
 end
 
-function SetupUpgrades(newHero)
-  local player = newHero:GetPlayerOwner()
-  local pID = player:GetPlayerID()
-
+function SetupUpgrades(pID)
   local upgradeAbilities = {}
 
   for ability_name,ability_info in pairs(GameMode.AbilityKVs) do
@@ -307,9 +298,9 @@ function SetupUpgrades(newHero)
   --PrintTable(CustomNetTables:GetTableValue("players_upgrades", tostring(pID)))
 end
 
-function SetupUI(newHero)
-  local player = newHero:GetPlayerOwner()
-  local pID = player:GetPlayerID()
+function SetupUI(pID)
+  local player = PlayerResource:GetPlayer(pID)
+  if not player then return end
 
   --Send lumber and food info to users
   CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_items", GameMode.ItemKVs )

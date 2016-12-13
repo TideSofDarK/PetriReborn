@@ -13,7 +13,7 @@ var y_mult = 1;
 
 function GetOffsetX( element, offset)
 {
-  if (element.paneltype == "CustomUIElement")
+  if (element && element.paneltype == "CustomUIElement")
   {
     // magic number, ширина панели на разрешении 16:9
     x_mult = 480 / element.desiredlayoutwidth;
@@ -25,7 +25,7 @@ function GetOffsetX( element, offset)
 
 function GetOffsetY( element, offset)
 {
-  if (element.paneltype == "CustomUIElement")
+  if (element && element.paneltype == "CustomUIElement")
   {
     // magic number, высота панели на разрешении 16:9
     y_mult = 121 / element.desiredlayoutheight;
@@ -37,6 +37,7 @@ function GetOffsetY( element, offset)
 
 function SetPosition()
 {
+  if (!m_panel) return;
   var x = (GetOffsetX( m_panel, 0) + m_panel.actuallayoutwidth) * x_mult;
   var y = (GetOffsetY( m_panel, 0) - ( $.GetContextPanel().actuallayoutheight - m_panel.actuallayoutheight )) * y_mult;
 
