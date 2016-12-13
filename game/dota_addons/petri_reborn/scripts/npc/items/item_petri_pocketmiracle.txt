@@ -6,7 +6,7 @@
   "AbilityTextureName"      "item_petri_miracle1"
 
   "SideShop" "1"
-  "ItemCost"            "1"
+  "ItemCost"            "10"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -64,7 +64,7 @@
   "AbilityTextureName"      "item_petri_miracle2"
 
   "SideShop" "1"
-  "ItemCost"            "1"
+  "ItemCost"            "100"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -122,7 +122,7 @@
   "AbilityTextureName"      "item_petri_miracle3"
 
   "SideShop" "1"
-  "ItemCost"            "1"
+  "ItemCost"            "500"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -172,21 +172,21 @@
   }
 }
 
-"item_recipe_petri_pocketmiracle3"
-{
-  "BaseClass"           "item_datadriven"
-  "ID"              "1115"
-  "Model" "models/props_gameplay/recipe.mdl"
-  "AbilityTextureName"      "item_recipe"
+// "item_recipe_petri_pocketmiracle3"
+// {
+//   "BaseClass"           "item_datadriven"
+//   "ID"              "1115"
+//   "Model" "models/props_gameplay/recipe.mdl"
+//   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "3000"
-  "ItemShopTags"        "consumable"
-  "ItemSellable"        "0"
-  "SideShop" "1"
-  "ItemRecipe"          "1"
-  "ItemResult"          "item_petri_pocketmiracle3"
-  "ItemRequirements"
-  {
-    "01"            "item_petri_miracle3_piece;"
-  }
-}
+//   "ItemCost"            "3000"
+//   "ItemShopTags"        "consumable"
+//   "ItemSellable"        "0"
+//   "SideShop" "1"
+//   "ItemRecipe"          "1"
+//   "ItemResult"          "item_petri_pocketmiracle3"
+//   "ItemRequirements"
+//   {
+//     "01"            "item_petri_miracle3_piece;"
+//   }
+// }

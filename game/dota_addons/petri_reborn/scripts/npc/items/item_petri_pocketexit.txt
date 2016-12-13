@@ -6,7 +6,7 @@
   "AbilityTextureName"      "item_exit"
 
   "SideShop" "1"
-  "ItemCost"            "1"
+  "ItemCost"            "14999"
   "ItemShopTags"        "consumable"
   "ItemQuality"         "consumable"
   "ItemAliases"         "ward"
@@ -76,16 +76,16 @@
 //   }
 // }
 
-"item_petri_miracle3_piece"
-{
-  "BaseClass"           "item_datadriven"
-  "ID"              "1230"
-  "Model" "models/props_gameplay/recipe.mdl"
-  "AbilityTextureName"      "item_petri_miracle3_piece"
+// "item_petri_miracle3_piece"
+// {
+//   "BaseClass"           "item_datadriven"
+//   "ID"              "1230"
+//   "Model" "models/props_gameplay/recipe.mdl"
+//   "AbilityTextureName"      "item_petri_miracle3_piece"
 
-  "ItemCost"            "2750"
-  "ItemShopTags"        "consumable"
-  "ItemSellable"        "0"
-  "SideShop" "1"
+//   "ItemCost"            "2750"
+//   "ItemShopTags"        "consumable"
+//   "ItemSellable"        "0"
+//   "SideShop" "1"
 
-}
+// }

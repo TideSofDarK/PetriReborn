@@ -23,12 +23,12 @@
     "02"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack"        "5 10 35 50 100 125 20000"
+      "attack"        "10 25 75 150 250 500 10000"
     }
     "03"
     {
       "var_type"          "FIELD_INTEGER"
-      "attack_rate"        "20 40 50 60 70 90 120"
+      "attack_rate"        "20 40 50 60 70 90 240"
     }
   }
 

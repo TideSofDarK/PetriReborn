@@ -5814,7 +5814,7 @@
 	  "AbilityTextureName"      "item_exit"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "1"
+	  "ItemCost"            "14999"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -5884,19 +5884,19 @@
 	//   }
 	// }
 	
-	"item_petri_miracle3_piece"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1230"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_petri_miracle3_piece"
+	// "item_petri_miracle3_piece"
+	// {
+	//   "BaseClass"           "item_datadriven"
+	//   "ID"              "1230"
+	//   "Model" "models/props_gameplay/recipe.mdl"
+	//   "AbilityTextureName"      "item_petri_miracle3_piece"
 	
-	  "ItemCost"            "2750"
-	  "ItemShopTags"        "consumable"
-	  "ItemSellable"        "0"
-	  "SideShop" "1"
+	//   "ItemCost"            "2750"
+	//   "ItemShopTags"        "consumable"
+	//   "ItemSellable"        "0"
+	//   "SideShop" "1"
 	
-	}
+	// }
 	"item_petri_pocketmiracle1"
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
@@ -5905,7 +5905,7 @@
 	  "AbilityTextureName"      "item_petri_miracle1"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "1"
+	  "ItemCost"            "10"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -5963,7 +5963,7 @@
 	  "AbilityTextureName"      "item_petri_miracle2"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "1"
+	  "ItemCost"            "100"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -6021,7 +6021,7 @@
 	  "AbilityTextureName"      "item_petri_miracle3"
 	
 	  "SideShop" "1"
-	  "ItemCost"            "1"
+	  "ItemCost"            "500"
 	  "ItemShopTags"        "consumable"
 	  "ItemQuality"         "consumable"
 	  "ItemAliases"         "ward"
@@ -6071,24 +6071,24 @@
 	  }
 	}
 	
-	"item_recipe_petri_pocketmiracle3"
-	{
-	  "BaseClass"           "item_datadriven"
-	  "ID"              "1115"
-	  "Model" "models/props_gameplay/recipe.mdl"
-	  "AbilityTextureName"      "item_recipe"
+	// "item_recipe_petri_pocketmiracle3"
+	// {
+	//   "BaseClass"           "item_datadriven"
+	//   "ID"              "1115"
+	//   "Model" "models/props_gameplay/recipe.mdl"
+	//   "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "3000"
-	  "ItemShopTags"        "consumable"
-	  "ItemSellable"        "0"
-	  "SideShop" "1"
-	  "ItemRecipe"          "1"
-	  "ItemResult"          "item_petri_pocketmiracle3"
-	  "ItemRequirements"
-	  {
-	    "01"            "item_petri_miracle3_piece;"
-	  }
-	}
+	//   "ItemCost"            "3000"
+	//   "ItemShopTags"        "consumable"
+	//   "ItemSellable"        "0"
+	//   "SideShop" "1"
+	//   "ItemRecipe"          "1"
+	//   "ItemResult"          "item_petri_pocketmiracle3"
+	//   "ItemRequirements"
+	//   {
+	//     "01"            "item_petri_miracle3_piece;"
+	//   }
+	// }
 	"item_petri_shield_of_hell"
 	{
 	  "BaseClass"           "item_datadriven"

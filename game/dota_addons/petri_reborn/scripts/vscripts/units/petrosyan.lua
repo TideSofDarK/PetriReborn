@@ -23,8 +23,8 @@ function BonusGoldFromWall(keys)
 			caster:RemoveModifierByName("modifier_bonus_damage")
 		end
 
-		AddCustomGold( caster:GetPlayerOwnerID(), 3000 )
-		PopupParticle(3000, Vector(244,201,23), 1.0, caster)
+		AddCustomGold( caster:GetPlayerOwnerID(), 3500 )
+		PopupParticle(3500, Vector(244,201,23), 1.0, caster)
 	end
 end
 
@@ -332,7 +332,10 @@ function CheckSolo( keys )
 			v:GetUnitName() == "npc_petri_creep_special8" or
 			v:GetUnitName() == "npc_petri_creep_special9" or
 			v:GetUnitName() == "npc_petri_creep_kivin" or
-			v:GetUnitName() == "npc_dota_hero_storm_spirit" then
+			v:GetUnitName() == "npc_dota_hero_storm_spirit" or
+			v:GetUnitName() == "npc_petri_loose_trigger1" or
+			v:GetUnitName() == "npc_petri_loose_trigger2" or
+			v:GetUnitName() == "npc_petri_loose_trigger3" then
 			caster:RemoveModifierByName("modifier_petri_solo")
 			return
 		end

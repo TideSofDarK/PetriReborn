@@ -157,7 +157,7 @@ function GameSetup:VoteEnd( args )
         if v2 == "trap" then
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_kvn_fan_blink", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_trap", count = 2})
-          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_pocketmiracle3", count = 1})
+          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_pocketexit", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_evasion_scroll", count = 2})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_gold_bag", count = 1})
         end
@@ -166,7 +166,6 @@ function GameSetup:VoteEnd( args )
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_give_permission_to_build", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_trap", count = 1})
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_gold_bag2", count = 1})
-          table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_miracle3_piece", count = 1})
         end
         if v2 == "2_evasion" then
           table.insert(GameMode.KVN_BONUS_ITEM[tonumber(k2)], {item = "item_petri_kvn_fan_blink", count = 1})
