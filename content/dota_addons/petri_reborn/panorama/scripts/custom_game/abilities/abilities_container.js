@@ -135,6 +135,7 @@ function SetSelectedUnit()
 	var iPlayerID = Players.GetLocalPlayer();
 	GameEvents.SendCustomGameEventToServer( "set_player_name", { pID: iPlayerID, name: Game.GetPlayerInfo( iPlayerID ).player_name })
 
+
 	Update();
 })();
 
