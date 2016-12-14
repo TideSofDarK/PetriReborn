@@ -91,8 +91,9 @@ function build( keys )
 	hero.buildingCount = hero.buildingCount + 1
 
 	keys:OnPreConstruction(function ()
-        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or PlayerResource:GetGold(pID) < gold_cost 
+        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or GetCustomGold( pID ) < gold_cost 
         	then
+        	print(gold_cost)
         	return false
 		else
 			if caster.currentArea ~= nil then

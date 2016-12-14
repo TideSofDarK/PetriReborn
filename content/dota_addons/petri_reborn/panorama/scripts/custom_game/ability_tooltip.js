@@ -13,6 +13,9 @@ var y_mult = 1;
 
 function GetOffsetX( element, offset)
 {
+  if (!element) {
+    return 0;
+  }
   if (element && element.paneltype == "CustomUIElement")
   {
     // magic number, ширина панели на разрешении 16:9
@@ -25,6 +28,9 @@ function GetOffsetX( element, offset)
 
 function GetOffsetY( element, offset)
 {
+  if (!element) {
+    return 0;
+  }
   if (element && element.paneltype == "CustomUIElement")
   {
     // magic number, высота панели на разрешении 16:9

@@ -3,6 +3,8 @@
 	padding: 5px;
 	flow-children: right;
 	z-index: 5;
+
+	margin-top: 200px;
 }
 
 #AbilityTooltip
