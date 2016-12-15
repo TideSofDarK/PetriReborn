@@ -95,6 +95,37 @@ function Precache( context )
   PrecacheResource("model", "models/creeps/roshan/aegis.vmdl", context)
   PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
   PrecacheResource("model", "models/earthwall/earthwall.vmdl", context)
+
+  PrecacheResource("model", "models/items/brewmaster/reddragon_arms/reddragon_arms.vmdl", context)
+  PrecacheResource("model", "models/items/brewmaster/reddragon_back/reddragon_back.vmdl", context)
+  PrecacheResource("model", "models/items/brewmaster/reddragon_offhand/reddragon_offhand.vmdl", context)
+  PrecacheResource("model", "models/items/brewmaster/reddragon_shoulder/reddragon_shoulder.vmdl", context)
+  PrecacheResource("model", "models/items/brewmaster/reddragon_weapon/reddragon_weapon.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/fatal_blossom_nails/fatal_blossom_nails.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/burial_robes_armor/burial_robes_armor.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/burial_robes_belt/burial_robes_belt.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/burial_robes_legs/burial_robes_legs.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/burial_robes_head/burial_robes_head.vmdl", context)
+  PrecacheResource("model", "models/items/death_prophet/burial_robes_vortex/burial_robes_vortex.vmdl", context)
+
+
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_helm/forge_warrior_helm.vmdl", context)
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_claw/forge_warrior_claw.vmdl", context)
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl", context)
+  PrecacheResource("model", "models/items/rattletrap/forge_warrior_steam_exoskeleton/forge_warrior_steam_exoskeleton.vmdl", context)
+  PrecacheResource("model", "models/items/storm_spirit/raikage_ares_armor/raikage_ares_armor.vmdl", context)
+  PrecacheResource("model", "models/items/storm_spirit/raikage_ares_arms/raikage_ares_arms.vmdl", context)
+  PrecacheResource("model", "models/items/storm_spirit/raikage_ares_head/raikage_ares_head.vmdl", context)
+  
+
+  for k,v in pairs(LoadKeyValues("scripts/kv/custom_buildings.kv")) do
+    for _,m in pairs(v) do
+      for __,g in pairs(m) do
+        print(__)
+        PrecacheResource("model", __, context)
+      end
+    end
+  end
   
   -- sawmill
   --PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)
