@@ -28,17 +28,9 @@ function GetSelectedUnitOwner()
 function UpdateAbilitiesContainer()
 {
 	var queryUnit = GameUI.CustomUIConfig().selected_unit;
-	var abilityListPanel = GameUI.CustomUIConfig().abilities;
+	var abilityListPanel = GameUI.CustomUIConfig().abilities.Children();
 
-	if ( !abilityListPanel ) {
-		$.Schedule(0.2, UpdateAbilitiesContainer)
-		return;
-	}
-
-	$.GetContextPanel().SetHasClass( "flip", Game.IsHUDFlipped())
-
-	// Прячем панель скиллов
-	abilityListPanel.style["visibility"] = "collapse";
+	// $.GetContextPanel().SetHasClass( "flip", Game.IsHUDFlipped())
 
 	var bSameUnit = ( m_QueryUnit == queryUnit );
 	m_QueryUnit = queryUnit;
@@ -52,8 +44,6 @@ function UpdateAbilitiesContainer()
 	if ( !bPointsToSpend )
 		Game.EndAbilityLearnMode();
 
-	// update all the panels
-	var nUsedPanels = 0;
 	for ( var i = 0; i < Entities.GetAbilityCount( m_QueryUnit ); ++i )
 	{
 		// Костыль на количество отображаемых скиллов
@@ -61,38 +51,35 @@ function UpdateAbilitiesContainer()
 			break;
 
 		var ability = Entities.GetAbility( m_QueryUnit, i );
+		var name = Abilities.GetAbilityName(ability)
 
 		if ( ability == -1 )
 			continue;
 
 		if ( !Abilities.IsDisplayedAbility( ability ) )
 			continue;
-		
-		if ( nUsedPanels >= m_AbilityPanels.length )
-		{
-			// create a new panel
-			var abilityPanel = $.CreatePanel( "Panel", abilityListPanel, "" );
-			abilityPanel.BLoadLayout( "file://{resources}/layout/custom_game/abilities/ability.xml", false, false );
-			m_AbilityPanels.push( abilityPanel );
-		}
 
-		// update the panel for the current unit / ability
-		var abilityPanel = m_AbilityPanels[ nUsedPanels ];
-		abilityPanel.SetAbility( ability, m_QueryUnit, Game.IsInAbilityLearnMode() );
-		
-		nUsedPanels++;
+	    for (var p in abilityListPanel) {
+	    	var panel = abilityListPanel[p];
+
+			if (panel.FindChildTraverse("AbilityImage").abilityname == name) {
+				var button = panel.FindChildTraverse("AbilityButton");
+				try {
+					// if (button.subPanel) {
+						// button.subPanel.RemoveAndDeleteChildren()
+						// button.subPanel.DeleteAsync(0.0);
+					// }
+					if (!button.subPanel) {
+						button.subPanel = $.CreatePanel( "Panel", button, name );
+						button.subPanel.BLoadLayout( "file://{resources}/layout/custom_game/abilities/ability.xml", false, false );
+					}
+					button.subPanel.SetAbility(ability, m_QueryUnit);
+				} catch (err) {
+
+				}
+			}
+	    }
 	}
-
-	// clear any remaining panels
-	for ( var i = nUsedPanels; i < m_AbilityPanels.length; ++i )
-	{
-		var abilityPanel = m_AbilityPanels[ i ];
-		abilityPanel.SetAbility( -1, -1, false );
-	}
-
-	// Если есть дочерние панели, то показываем основную
-	if ( nUsedPanels > 0)
-		abilityListPanel.style["visibility"] = "visible";
 }
 
 function Update()
@@ -121,21 +108,21 @@ function SetSelectedUnit()
 {
 	GameUI.CustomUIConfig().IsEnemySelected = IsEnemySelected;
 	GameUI.CustomUIConfig().GetSelectedUnitOwner = GetSelectedUnitOwner;
- 
-	//GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
 
-    GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
-    GameEvents.Subscribe( "dota_player_update_query_unit", SetQueryUnit );
-
-	GameEvents.Subscribe( "dota_hero_ability_points_changed", UpdateAbilitiesContainer );
-    GameEvents.Subscribe( "dota_learn_mode_toggled", UpdateAbilitiesContainer);
-
-	GameEvents.Subscribe( "dota_player_gained_level", UpdateAbilitiesContainer );
+	GameEvents.Subscribe( "dota_player_update_selected_unit", SetSelectedUnit );
+	GameEvents.Subscribe( "dota_player_update_query_unit", SetQueryUnit );
 
 	var iPlayerID = Players.GetLocalPlayer();
 	GameEvents.SendCustomGameEventToServer( "set_player_name", { pID: iPlayerID, name: Game.GetPlayerInfo( iPlayerID ).player_name })
 
 
-	Update();
+	$.Schedule(5.0, function () {
+		GameUI.CustomUIConfig().Hack();
+
+		GameEvents.Subscribe( "dota_ability_changed", UpdateAbilitiesContainer );
+
+		UpdateAbilitiesContainer()
+		Update();
+	})
 })();
 

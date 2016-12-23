@@ -73,8 +73,8 @@
 
 .AbilityPanel
 {
-	margin-top: 15px;
-	margin-bottom: 15px;
+	width: 100%;
+	height: 100%;
 }
 
 .AbilityPanel.no_ability
@@ -114,6 +114,8 @@
 
 #UpgradeBorder
 {
+	width: 100%;
+	height: 100%;
 	background-color: transparent;
 }
 
@@ -138,10 +140,9 @@
 	wash-color: #303030;
 }
 
-.insufficient_mana DOTAAbilityImage
+.insufficient_mana
 {
-	saturation: 1;
-	wash-color: #1569be;
+	background-color: #00007fbb;
 }
 
 .potential_upgrade.no_level DOTAAbilityImage
@@ -153,6 +154,7 @@
 #AbilityStatusBorder
 {
 	border: 3px solid transparent;
+	visibility: collapse;
 }
 
 .auto_cast_enabled #AbilityStatusBorder

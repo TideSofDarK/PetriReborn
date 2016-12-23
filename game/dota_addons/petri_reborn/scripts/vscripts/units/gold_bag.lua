@@ -31,6 +31,16 @@ function Spawn ( entityKeyValues  )
 	Timers:CreateTimer(3.65,
     function()
     	thisEntity:GetAbilityByIndex(0):ToggleAutoCast()
+    	Timers:CreateTimer(function (  )
+    		if not thisEntity:IsNull() and thisEntity:IsAlive() then
+	    		if thisEntity:GetAbilityByIndex(0):IsCooldownReady() and thisEntity:GetAbilityByIndex(0):GetAutoCastState() then
+	    			thisEntity:CastAbilityNoTarget(thisEntity:GetAbilityByIndex(0), thisEntity:GetPlayerOwnerID())
+	    			return 6.03
+	    		else
+	    			return 0.03
+	    		end
+    		end
+    	end)
     end)
 end 
 
@@ -44,6 +54,7 @@ function GetGold( event )
 	
 	if caster:IsSilenced() == false then
 		AddCustomGold( pID, gold )
+		ability:StartCooldown(6.025)
 	end
 end
 

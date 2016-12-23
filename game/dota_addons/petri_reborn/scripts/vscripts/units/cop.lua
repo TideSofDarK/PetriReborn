@@ -1,6 +1,11 @@
 function SpawnCop( keys )
 	local caster = keys.caster
 	local ability = keys.ability
+	local player = caster:GetPlayerOwnerID()
+
+	if SpendCustomGold( player, GetAbilityGoldCost( ability ) ) == false then
+		return
+	end
 
 	local hero = GameMode.assignedPlayerHeroes[caster:GetPlayerOwnerID()]
 

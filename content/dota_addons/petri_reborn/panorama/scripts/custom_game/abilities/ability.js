@@ -17,8 +17,9 @@ function SetAbility( ability, queryUnit, bInLevelUp )
 	var canUpgradeRet = Abilities.CanAbilityBeUpgraded( m_Ability );
 	var canUpgrade = ( canUpgradeRet == AbilityLearnResult_t.ABILITY_CAN_BE_UPGRADED );
 	
+	$.GetContextPanel().ability = ability;
 	$.GetContextPanel().SetHasClass( "no_ability", ( ability == -1 ) );
-	$.GetContextPanel().SetHasClass( "learnable_ability", bInLevelUp && canUpgrade );
+	// $.GetContextPanel().SetHasClass( "learnable_ability", bInLevelUp && canUpgrade );
 
 	RebuildAbilityUI();
 	UpdateAbility();
@@ -122,7 +123,7 @@ function UpdateAbility()
 	    goldCost = GameUI.CustomUIConfig().goldCosts [ Abilities.GetAbilityName( m_Ability ) ][ String(abilityLevel) ];
     }
     catch( error ) { }
-
+    // 
     var shared = Abilities.GetAbilityName(m_Ability) == "petri_exploration_tower_explore_world";
 
 	$.GetContextPanel().SetHasClass( "no_level", noLevel || isEnemy );
@@ -130,9 +131,9 @@ function UpdateAbility()
 	
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost || manaCost == undefined || isActivated == false || isEnemy) );
 	$.GetContextPanel().SetHasClass( "no_food_cost", ( 0 == foodCost || foodCost == undefined || isActivated == false || isEnemy) );
-	$.GetContextPanel().SetHasClass( "no_gold_cost", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy));
+	$.GetContextPanel().SetHasClass( "no_gold_cost_c", ( 0 == goldCost || goldCost == undefined || isActivated == false || isEnemy) );
 	$.GetContextPanel().SetHasClass( "no_lumber_cost", ( 0 == lumberCost || isActivated == false || isEnemy) );
-
+	// $.Msg(Abilities.GetAbilityName( m_Ability ), $.GetContextPanel().BHasClass("no_gold_cost"));
 	$.GetContextPanel().SetHasClass( "insufficient_mana", (!CheckSpellCost() || !CheckDependencies() || isActivated == false) && !isEnemy && !shared );
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(m_Ability) );
 	$.GetContextPanel().SetHasClass( "toggle_enabled", Abilities.GetToggleState(m_Ability) );
@@ -161,15 +162,15 @@ function UpdateAbility()
 		var cooldownLength = Abilities.GetCooldownLength( m_Ability );
 		var cooldownRemaining = Abilities.GetCooldownTimeRemaining( m_Ability );
 		var cooldownPercent = cooldownRemaining / cooldownLength;
-		$( "#CooldownTimer" ).text = Math.ceil( cooldownRemaining );
-		$( "#CooldownOverlay" ).style.clip = "radial(50% 50%, 0deg, " + cooldownPercent * -360 + "deg)";
+		$( "#CooldownTimer" ).text = "";
+		// $( "#CooldownOverlay" ).style.clip = "radial(50% 50%, 0deg, " + cooldownPercent * -360 + "deg)";
 	}
 }
 
-function AbilityShowTooltip()
+function AbilityShowTooltip(ab)
 {
 	var abilityButton = $( "#AbilityButton" );
-	var abilityName = Abilities.GetAbilityName( m_Ability );
+	var abilityName = Abilities.GetAbilityName( ab );
 	// If you don't have an entity, you can still show a tooltip that doesn't account for the entity
 	//$.DispatchEvent( "DOTAShowAbilityTooltip", abilityButton, abilityName );
 	
@@ -177,7 +178,7 @@ function AbilityShowTooltip()
 	//$.DispatchEvent( "DOTAShowAbilityTooltipForEntityIndex", abilityButton, abilityName, m_QueryUnit );
 
 	var tooltip = GameUI.CustomUIConfig().tooltip;
-	tooltip.ShowTooltip(abilityButton, m_Ability);
+	tooltip.ShowTooltip(abilityButton, ab);
 }
 
 function AbilityHideTooltip()
@@ -270,6 +271,8 @@ function RebuildAbilityUI()
 (function()
 {
 	$.GetContextPanel().SetAbility = SetAbility;
+	$.GetContextPanel().AbilityShowTooltip = AbilityShowTooltip;
+	$.GetContextPanel().AbilityHideTooltip = AbilityHideTooltip;
 
 	GameEvents.Subscribe( "dota_ability_changed", RebuildAbilityUI ); // major rebuild
 	AutoUpdateAbility(); // initial update of dynamic state

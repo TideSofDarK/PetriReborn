@@ -2,7 +2,7 @@
 	<styles>
 	</styles>
 	<script>
-	(function () {
+	function Hack() {
 	    var parent = $.GetContextPanel().GetParent();
 	    while(parent.id != "Hud")
 	        parent = parent.GetParent();
@@ -19,22 +19,33 @@
 
 	    var center_block = parent.FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
 
-	    if (!GameUI.CustomUIConfig().abilities) {
-		    center_block.FindChildTraverse("abilities").DeleteAsync(0.0);
 
-		    GameUI.CustomUIConfig().abilities = $.CreatePanel("Panel", center_block, "abilities")
-		    GameUI.CustomUIConfig().abilities.style.flowChildren = "right;";
-		    GameUI.CustomUIConfig().abilities.style.marginBottom = "30px;";
-		    GameUI.CustomUIConfig().abilities.style.marginLeft = "260px;";
-		    GameUI.CustomUIConfig().abilities.style.verticalAlign = "bottom;";
-		    GameUI.CustomUIConfig().abilities.style.horizontalAlign = "center;";
+	    GameUI.CustomUIConfig().abilities = center_block.FindChildTraverse("abilities");
 
-		    GameUI.CustomUIConfig().abilities.style.minWidth = "200px;";
-		    GameUI.CustomUIConfig().abilities.style.width = "fit-children;";
-		    GameUI.CustomUIConfig().abilities.style.minHeight = "80px;";
-		    GameUI.CustomUIConfig().abilities.style.paddingLeft = "-2px;";
-		    GameUI.CustomUIConfig().abilities.style.paddingRight = "-2px;";
+	    for (var p in GameUI.CustomUIConfig().abilities.Children()) {
+	    	(function () {
+		    	var panel = GameUI.CustomUIConfig().abilities.Children()[p];
+
+		    	var image = panel.FindChildTraverse("AbilityButton");
+				image.SetPanelEvent("onmouseover", function () {
+					if (image.subPanel) {
+						$.Msg(image.subPanel.id);
+						image.subPanel.AbilityShowTooltip(image.subPanel.ability);
+					}
+				})
+
+				image.SetPanelEvent("onmouseout", function () {
+					if (image.subPanel) {
+						image.subPanel.AbilityHideTooltip();
+					}
+				})
+
+		    	var goldCost = panel.FindChildTraverse("GoldCost")
+		    	goldCost.style.fontSize = "9px;";
+	    	})();
+
 	    }
+
 
 	    // parent.FindChildTraverse("StatBranch").style.visibility = "collapse;";
 	    parent.FindChildTraverse("StatBranch").enabled = false;
@@ -45,7 +56,13 @@
 		    parent.FindChildTraverse("StatBranch").hittest = false;
 		    parent.FindChildTraverse("StatBranch").hittestchildren = false;
 	    })
+	    $.Msg("asdasdasd");
+	    
 	    // parent.FindChildTraverse("PortraitContainer").style.marginLeft = "146px;";
+	}
+
+	(function () {
+		GameUI.CustomUIConfig().Hack = Hack;
 	})();
 	</script>
 	<Panel hittest="false" class="Root">

@@ -194,6 +194,20 @@ function GameMode:OnHeroInGame(pID, team)
           SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
         end)
 
+        if newHero then
+          EasyTimers:CreateTimer(function()
+            local abilities = newHero:GetAbilityCount() - 1
+            for i = 0, abilities do
+              if newHero:GetAbilityByIndex(i) then
+                if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                    newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                    newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+                end
+              end
+            end
+          end, DoUniqueString('fixHotKey'), 2)
+        end
+
         table.insert(GameMode.kvns, newHero)
 
         GameMode:AddItems( newHero )
@@ -255,12 +269,24 @@ function GameMode:OnHeroInGame(pID, team)
             end)
         end
 
+        if newHero then
+          EasyTimers:CreateTimer(function()
+            local abilities = newHero:GetAbilityCount() - 1
+            for i = 0, abilities do
+              if newHero:GetAbilityByIndex(i) then
+                if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                    newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                    newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+                end
+              end
+            end
+          end, DoUniqueString('fixHotKey'), 2)
+        end
+
         GameMode:AddItems( newHero )
      end, pID)
     return
   end
-
-  -- self.playerQueue()
 end
 
 function InitHeroValues(hero, pID)

@@ -33,25 +33,6 @@
     "modifier_gold_bag_get_gold_autocast"
     {
       "IsHidden"  "1"
-
-      "OnCreated"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
-
-      "ThinkInterval" "6.05" // whatever
-      "OnIntervalThink"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
     }
   }
 }
@@ -217,25 +198,6 @@
     "modifier_gold_bag_get_gold_autocast"
     {
       "IsHidden"  "1"
-
-      "OnCreated"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
-
-      "ThinkInterval" "6.05" // whatever
-      "OnIntervalThink"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
     }
   }
 }
@@ -344,25 +306,6 @@
     "modifier_gold_bag_get_gold_autocast"
     {
       "IsHidden"  "1"
-
-      "OnCreated"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
-
-      "ThinkInterval" "6.05" // whatever
-      "OnIntervalThink"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
     }
   }
 }
@@ -565,25 +508,6 @@
     "modifier_gold_bag_get_gold_autocast"
     {
       "IsHidden"  "1"
-
-      "OnCreated"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
-
-      "ThinkInterval" "6.05" // whatever
-      "OnIntervalThink"
-      {
-        "RunScript"
-        {
-          "ScriptFile"    "units/gold_bag.lua"
-          "Function"      "GetGoldAutocast"
-        }
-      }
     }
   }
 }

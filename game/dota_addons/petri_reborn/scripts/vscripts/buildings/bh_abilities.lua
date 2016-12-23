@@ -43,6 +43,10 @@ function build( keys )
 		return false
 	end
 
+	if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or GetCustomGold( pID ) < gold_cost then
+		return CancelBuilding(caster, ability, pID, "")
+	end
+
 	--Build exit only after 16 min
 	if ability:GetName() == "build_petri_exit" or ability_name == "item_petri_pocketexit"  then
 		if GameRules.PETRI_EXIT_ALLOWED == false then
@@ -91,9 +95,7 @@ function build( keys )
 	hero.buildingCount = hero.buildingCount + 1
 
 	keys:OnPreConstruction(function ()
-        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or GetCustomGold( pID ) < gold_cost 
-        	then
-        	print(gold_cost)
+        if not CheckLumber(player, lumber_cost,true) or not CheckFood(player, food_cost,true) or GetCustomGold( pID ) < gold_cost then
         	return false
 		else
 			if caster.currentArea ~= nil then
