@@ -235,7 +235,7 @@
 	  // Note: if unit uses a npc_dota_hero baseclass, you must use the npc_dota_hero name.
 	  "UnitName"            "npc_petri_idol"
 	  "AbilityCooldown"       "0"
-	  "AbilityGoldCost"       "%500"
+	  "AbilityGoldCost"       "%5"
 	  // End of BuildingHelper info
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1930,6 +1930,25 @@
 	    "modifier_gold_bag_get_gold_autocast"
 	    {
 	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "6.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
 	    }
 	  }
 	}
@@ -2095,6 +2114,25 @@
 	    "modifier_gold_bag_get_gold_autocast"
 	    {
 	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "6.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
 	    }
 	  }
 	}
@@ -2203,6 +2241,25 @@
 	    "modifier_gold_bag_get_gold_autocast"
 	    {
 	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "6.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
 	    }
 	  }
 	}
@@ -2405,6 +2462,25 @@
 	    "modifier_gold_bag_get_gold_autocast"
 	    {
 	      "IsHidden"  "1"
+	
+	      "OnCreated"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
+	
+	      "ThinkInterval" "6.05" // whatever
+	      "OnIntervalThink"
+	      {
+	        "RunScript"
+	        {
+	          "ScriptFile"    "units/gold_bag.lua"
+	          "Function"      "GetGoldAutocast"
+	        }
+	      }
 	    }
 	  }
 	}
@@ -4144,7 +4220,7 @@
 	"petri_petrosyan_passive"
 	{
 	  "BaseClass" "ability_datadriven"
-	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	
 	  "MaxLevel" "1"
 	
