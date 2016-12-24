@@ -22,6 +22,19 @@
 
 	    GameUI.CustomUIConfig().abilities = center_block.FindChildTraverse("abilities");
 
+	    var hide = function () {
+	    		for (var c in GameUI.CustomUIConfig().abilities.Children()) {
+	    			if (GameUI.CustomUIConfig().abilities.Children()[c].id == "Ability6" || GameUI.CustomUIConfig().abilities.Children()[c].id == "Ability7" || GameUI.CustomUIConfig().abilities.Children()[c].id == "Ability8") {
+	    			GameUI.CustomUIConfig().abilities.Children()[c].visible = false;
+	    		}
+	    	}
+		    $.Schedule(0.1, function () {
+				hide()
+		    })
+	    }
+
+	    hide();
+
 	    for (var p in GameUI.CustomUIConfig().abilities.Children()) {
 	    	(function () {
 		    	var panel = GameUI.CustomUIConfig().abilities.Children()[p];
