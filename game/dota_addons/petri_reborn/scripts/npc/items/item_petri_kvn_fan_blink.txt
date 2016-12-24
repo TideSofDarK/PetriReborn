@@ -3,7 +3,7 @@
   "BaseClass"       "item_datadriven"
   "ID"              "1989"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-  "AbilityTextureName"      "item_petri_kvn_fan_blink"
+  "AbilityTextureName"      "custom/petri_kvn_fan_blink"
 
   "precache"
   {

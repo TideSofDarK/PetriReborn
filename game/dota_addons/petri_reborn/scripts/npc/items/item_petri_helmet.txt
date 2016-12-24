@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_helmet"
+  "AbilityTextureName"      "custom/petri_helmet"
 
   "ItemCost"            "5"
   "ItemShopTags"          "armor"

@@ -16,7 +16,7 @@
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
     "Model"                         "models/props_gameplay/red_box.vmdl" 
     "Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
-    "AbilityTextureName"            "item_manta"
+    "AbilityTextureName"            "custom/manta"
     
     // Stats        
     //-------------------------------------------------------------------------------------------------------------

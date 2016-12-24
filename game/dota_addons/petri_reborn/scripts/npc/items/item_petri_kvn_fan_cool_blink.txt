@@ -3,7 +3,7 @@
   "BaseClass"       "item_datadriven"
   "ID"              "1991"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+  "AbilityTextureName"      "custom/petri_kvn_fan_cool_blink"
 
   "precache"
   {
@@ -85,7 +85,7 @@
   "BaseClass"       "item_datadriven"
   "ID"              "4423"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+  "AbilityTextureName"      "custom/petri_kvn_fan_cool_blink"
 
   "precache"
   {

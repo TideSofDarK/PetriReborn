@@ -38,7 +38,7 @@
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	    "Model"                         "models/props_gameplay/red_box.vmdl" 
 	    "Effect"                        "particles/generic_gameplay/dropped_item.vpcf"
-	    "AbilityTextureName"            "item_manta"
+	    "AbilityTextureName"            "custom/manta"
 	    
 	    // Stats        
 	    //-------------------------------------------------------------------------------------------------------------
@@ -229,7 +229,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_alcohol"
+	  "AbilityTextureName"      "custom/petri_alcohol"
 	
 	  "AbilityCastPoint"              "0"
 	  "AbilityCooldown"       "100"
@@ -305,7 +305,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/recipe.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_attack_scroll"
+	  "AbilityTextureName"      "custom/petri_attack_scroll"
 	
 	  "AbilityCastPoint"              "0"
 	  "AbilityCooldown"       "75"
@@ -387,7 +387,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	  "AbilityTextureName"      "custom/petri_book_of_laugh"
 	
 	  "ItemCost"            "225"
 	  "ItemShopTags"          "consumable"
@@ -421,7 +421,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_comedy_story"
+	  "AbilityTextureName"      "custom/petri_comedy_story"
 	
 	  "ItemCost"            "200000"
 	  "ItemShopTags"          "consumable"
@@ -455,7 +455,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_comedy_book"
+	  "AbilityTextureName"      "custom/petri_comedy_book"
 	
 	  "ItemCost"            "2500"
 	  "ItemShopTags"          "consumable"
@@ -485,7 +485,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_comedy_book"
+	  "AbilityTextureName"      "custom/petri_comedy_book"
 	
 	  "ItemPurchasable"         "0"
 	  "ItemSellable"          "0"
@@ -535,7 +535,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_comedy_story"
+	  "AbilityTextureName"      "custom/petri_comedy_story"
 	
 	  "ItemPurchasable"         "0"
 	  "ItemSellable"          "0"
@@ -589,7 +589,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	  "AbilityTextureName"      "custom/petri_book_of_laugh"
 	
 	  "ItemCost"            "1"
 	  "ItemShopTags"          "consumable"
@@ -623,7 +623,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	  "AbilityTextureName"      "custom/petri_book_of_laugh"
 	
 	  "ItemCost"            "10"
 	  "ItemShopTags"          "consumable"
@@ -657,7 +657,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_book_of_laugh"
+	  "AbilityTextureName"      "custom/petri_book_of_laugh"
 	
 	  "ItemCost"            "225"
 	  "ItemShopTags"          "consumable"
@@ -691,7 +691,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_snares"
+	  "AbilityTextureName"      "custom/petri_snares"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -734,7 +734,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_snares_2"
+	  "AbilityTextureName"      "custom/petri_snares_2"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -777,7 +777,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_boots"
+	  "AbilityTextureName"      "custom/petri_boots"
 	
 	  "AbilityCooldown"       "30"
 	
@@ -900,7 +900,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_tourmaline_patch"
+	  "AbilityTextureName"      "custom/petri_tourmaline_patch"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -985,7 +985,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_jade_amulet"
+	  "AbilityTextureName"      "custom/petri_jade_amulet"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -1088,7 +1088,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_bracer"
+	  "AbilityTextureName"      "custom/petri_bracer"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -1191,7 +1191,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_butt"
+	  "AbilityTextureName"      "custom/petri_butt"
 	
 	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
@@ -1267,7 +1267,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_butt2"
+	  "AbilityTextureName"      "custom/petri_butt2"
 	
 	  "AbilityCooldown"       "75"
 	  "AbilitySharedCooldown"         "heal"
@@ -1361,7 +1361,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_butt3"
+	  "AbilityTextureName"      "custom/petri_butt3"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "heal"
@@ -1454,7 +1454,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_halloween_candy_corn"
+	  "AbilityTextureName"      "custom/halloween_candy_corn"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -1503,7 +1503,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_1"
+	  "AbilityTextureName"      "custom/candy_1"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "240"
@@ -1609,7 +1609,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_2"
+	  "AbilityTextureName"      "custom/candy_2"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "180"
@@ -1686,7 +1686,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_3"
+	  "AbilityTextureName"      "custom/candy_3"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "720"
@@ -1817,7 +1817,7 @@
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_4"
+	  "AbilityTextureName"      "custom/candy_4"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "2.5"
@@ -1908,7 +1908,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_5"
+	  "AbilityTextureName"      "custom/candy_5"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "120"
@@ -2037,7 +2037,7 @@
 	  "BaseClass"       "item_datadriven"
 	  "ID"              "1706"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "item_candy_1"
+	  "AbilityTextureName"      "custom/candy_1"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
 	
@@ -2155,7 +2155,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_2"
+	  "AbilityTextureName"      "custom/candy_2"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "240"
@@ -2231,7 +2231,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_3"
+	  "AbilityTextureName"      "custom/candy_3"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "40"
@@ -2336,7 +2336,7 @@
 	  "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_4"
+	  "AbilityTextureName"      "custom/candy_4"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "240"
@@ -2438,7 +2438,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
 	  "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_candy_5"
+	  "AbilityTextureName"      "custom/candy_5"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "60"
@@ -2568,7 +2568,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_cola"
+	  "AbilityTextureName"      "custom/petri_cola"
 	
 	  "AbilityCastPoint"              "0"
 	  "AbilityCooldown"       "60"
@@ -2644,7 +2644,7 @@
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
 	  "Model"             "models/props_gameplay/recipe.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_evasion_scroll"
+	  "AbilityTextureName"      "custom/petri_evasion_scroll"
 	
 	  "AbilityCastRange"              "1600"
 	  "AbilityCastPoint"              "0"
@@ -2818,7 +2818,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_flag"
+	  "AbilityTextureName"            "custom/flag"
 	
 	  "AbilityCastRange" "150"
 	
@@ -2889,7 +2889,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_flag2"
+	  "AbilityTextureName"            "custom/flag2"
 	
 	  "AbilityCastRange" "150"
 	
@@ -2961,7 +2961,7 @@
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_flag3"
+	  "AbilityTextureName"            "custom/flag3"
 	
 	  "AbilityCastRange" "150"
 	
@@ -3030,7 +3030,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_goldthing"
+	  "AbilityTextureName"      "custom/petri_goldthing"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -3078,7 +3078,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag"
+	  "AbilityTextureName"      "custom/petri_gold_bag"
 	
 	  "ItemCost"            "88888"
 	  "ItemQuality"         "consumable"
@@ -3109,7 +3109,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag2"
+	  "AbilityTextureName"      "custom/petri_gold_bag2"
 	
 	  "ItemCost"            "99999"
 	  "ItemQuality"         "consumable"
@@ -3140,7 +3140,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag3"
+	  "AbilityTextureName"      "custom/petri_gold_bag3"
 	
 	  "ItemCost"            "1000"
 	  "ItemQuality"         "consumable"
@@ -3172,7 +3172,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_bag4"
+	  "AbilityTextureName"      "custom/petri_gold_bag4"
 	
 	  "ItemCost"            "2500"
 	  "ItemQuality"         "consumable"
@@ -3202,7 +3202,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/gold_coin001.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_gold_coin"
+	  "AbilityTextureName"      "custom/petri_gold_coin"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -3252,7 +3252,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_grease"
+	  "AbilityTextureName"      "custom/petri_grease"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "100"
@@ -3351,7 +3351,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_chicken"
+	  "AbilityTextureName"      "custom/petri_chicken"
 	
 	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
@@ -3451,7 +3451,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_cow"
+	  "AbilityTextureName"      "custom/petri_cow"
 	
 	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
@@ -3553,7 +3553,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_dragon"
+	  "AbilityTextureName"      "custom/petri_dragon"
 	
 	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
@@ -3653,7 +3653,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_kvn_heart"
+	  "AbilityTextureName"      "custom/petri_kvn_heart"
 	  
 	  "AbilityCooldown"       "90"
 	  "AbilitySharedCooldown"         "heal"
@@ -3751,7 +3751,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_helmet"
+	  "AbilityTextureName"      "custom/petri_helmet"
 	
 	  "ItemCost"            "5"
 	  "ItemShopTags"          "armor"
@@ -3798,7 +3798,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_hook"
+	  "AbilityTextureName"      "custom/petri_hook"
 	
 	  "ItemCost"            "75000"
 	  "ItemQuality"         "secret_shop"
@@ -3998,7 +3998,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_janitor"
+	  "AbilityTextureName"      "custom/petri_janitor"
 	
 	  "ItemCost"            "15"
 	  "ItemShopTags"        "spec"
@@ -4028,7 +4028,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_jedi"
+	  "AbilityTextureName"      "custom/petri_jedi"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -4322,7 +4322,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_1"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_1"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4344,7 +4344,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_2"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_2"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4366,7 +4366,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_3"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_3"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4388,7 +4388,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4410,7 +4410,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4434,7 +4434,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4457,7 +4457,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4480,7 +4480,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4503,7 +4503,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4526,7 +4526,7 @@
 	  "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	
 	  "BaseClass"           "item_datadriven"
-	  "AbilityTextureName"            "item_petri_kvn_bag_4"
+	  "AbilityTextureName"            "custom/petri_kvn_bag_4"
 	  "ItemPurchasable"       "0"
 	  "ItemPermanent"         "1"
 	  "ItemSellable"                  "0"
@@ -4546,7 +4546,7 @@
 	  "BaseClass"       "item_datadriven"
 	  "ID"              "1989"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "item_petri_kvn_fan_blink"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_blink"
 	
 	  "precache"
 	  {
@@ -4636,7 +4636,7 @@
 	  "BaseClass"       "item_datadriven"
 	  "ID"              "1991"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_cool_blink"
 	
 	  "precache"
 	  {
@@ -4718,7 +4718,7 @@
 	  "BaseClass"       "item_datadriven"
 	  "ID"              "4423"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "item_petri_kvn_fan_cool_blink"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_cool_blink"
 	
 	  "precache"
 	  {
@@ -4778,7 +4778,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_kvn_medal"
+	  "AbilityTextureName"      "custom/petri_kvn_medal"
 	
 	  "ItemCost"            "20000"
 	  "ItemShopTags"          "hard_to_tag"
@@ -4824,7 +4824,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_mask_of_laugh"
+	  "AbilityTextureName"      "custom/petri_mask_of_laugh"
 	  
 	  "ItemCost"            "1"
 	  "ItemShopTags"          "unique"
@@ -4907,7 +4907,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_megahammer"
+	  "AbilityTextureName"      "custom/petri_megahammer"
 	
 	  "ItemCost"            "1"
 	  "ItemShopTags"          "damage"
@@ -4966,7 +4966,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_mega_sith"
+	  "AbilityTextureName"      "custom/petri_mega_sith"
 	
 	  "AbilityCastRange"              "600"
 	  "AbilityCastPoint"              "0.01"
@@ -5111,7 +5111,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_structures/m2_fence_01.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_pile_of_wood"
+	  "AbilityTextureName"      "custom/petri_pile_of_wood"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -5160,7 +5160,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_pill"
+	  "AbilityTextureName"      "custom/petri_pill"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -5315,7 +5315,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_pill"
+	  "AbilityTextureName"      "custom/petri_pill"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -5487,7 +5487,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_pill"
+	  "AbilityTextureName"      "custom/petri_pill"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -5660,7 +5660,7 @@
 	  "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "Model"                   "models/props_gameplay/red_box.vmdl" 
 	  "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_pill"
+	  "AbilityTextureName"      "custom/petri_pill"
 	
 	  "AbilityCastPoint"      "0"
 	  "AbilityCooldown"       "0"
@@ -5811,7 +5811,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1228"
-	  "AbilityTextureName"      "item_exit"
+	  "AbilityTextureName"      "custom/exit"
 	
 	  "SideShop" "1"
 	  "ItemCost"            "14999"
@@ -5902,7 +5902,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1112"
-	  "AbilityTextureName"      "item_petri_miracle1"
+	  "AbilityTextureName"      "custom/petri_miracle1"
 	
 	  "SideShop" "1"
 	  "ItemCost"            "10"
@@ -5960,7 +5960,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1113"
-	  "AbilityTextureName"      "item_petri_miracle2"
+	  "AbilityTextureName"      "custom/petri_miracle2"
 	
 	  "SideShop" "1"
 	  "ItemCost"            "100"
@@ -6018,7 +6018,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "item_datadriven"
 	  "ID"              "1114"
-	  "AbilityTextureName"      "item_petri_miracle3"
+	  "AbilityTextureName"      "custom/petri_miracle3"
 	
 	  "SideShop" "1"
 	  "ItemCost"            "500"
@@ -6096,7 +6096,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_shield_of_hell"
+	  "AbilityTextureName"      "custom/petri_shield_of_hell"
 	
 	  "ItemCost"            "5000"
 	  "ItemShopTags"          "armor"
@@ -6160,7 +6160,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_shield_of_heaven"
+	  "AbilityTextureName"      "custom/petri_shield_of_heaven"
 	
 	  "ItemCost"            "15000"
 	  "ItemShopTags"          "armor"
@@ -6224,7 +6224,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_best_shield"
+	  "AbilityTextureName"      "custom/petri_best_shield"
 	
 	  "ItemCost"            "150000"
 	  "ItemShopTags"          "armor"
@@ -6308,7 +6308,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_crysis_nanoshit"
+	  "AbilityTextureName"      "custom/petri_crysis_nanoshit"
 	
 	  "ItemCost"            "400000"
 	  "ItemShopTags"          "armor"
@@ -6389,7 +6389,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_stone_of_power"
+	  "AbilityTextureName"      "custom/petri_stone_of_power"
 	
 	  "ItemCost"            "5000"
 	  "ItemShopTags"          "str"
@@ -6427,7 +6427,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_simple_sword"
+	  "AbilityTextureName"      "custom/petri_simple_sword"
 	
 	  "ItemCost"            "10"
 	  "ItemShopTags"          "damage"
@@ -6494,7 +6494,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_hyperubersword"
+	  "AbilityTextureName"      "custom/petri_hyperubersword"
 	
 	  "ItemCost"            "50"
 	  "ItemShopTags"          "damage"
@@ -6560,7 +6560,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_kladenets_sword"
+	  "AbilityTextureName"      "custom/petri_kladenets_sword"
 	
 	  "ItemCost"            "250"
 	  "ItemShopTags"          "damage"
@@ -6627,7 +6627,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_perfect_sword"
+	  "AbilityTextureName"      "custom/petri_perfect_sword"
 	
 	  "ItemCost"            "2000"
 	  "ItemShopTags"          "damage"
@@ -6694,7 +6694,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_titan_sword"
+	  "AbilityTextureName"      "custom/petri_titan_sword"
 	
 	  "ItemCost"            "5000"
 	  "ItemShopTags"          "damage"
@@ -6761,7 +6761,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_magic_axe"
+	  "AbilityTextureName"      "custom/petri_magic_axe"
 	
 	  "ItemCost"            "12500"
 	  "ItemShopTags"          "damage"
@@ -6828,7 +6828,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_grond"
+	  "AbilityTextureName"      "custom/petri_grond"
 	
 	  "ItemCost"            "50000"
 	  "ItemShopTags"          "damage"
@@ -6895,7 +6895,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_thunder"
+	  "AbilityTextureName"      "custom/petri_thunder"
 	
 	  "ItemCost"            "200000"
 	  "ItemShopTags"          "damage"
@@ -6938,7 +6938,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_trident"
+	  "AbilityTextureName"      "custom/petri_trident"
 	
 	  "ItemCost"            "1000000"
 	  "ItemShopTags"          "damage"
@@ -6997,7 +6997,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_trap"
+	  "AbilityTextureName"      "custom/petri_trap"
 	
 	  "precache"
 	  {
@@ -7048,7 +7048,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh"
+	  "AbilityTextureName"      "custom/petri_uber_mask_of_laugh"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -7228,7 +7228,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level2"
+	  "AbilityTextureName"      "custom/petri_uber_mask_of_laugh_level2"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -7408,7 +7408,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level3"
+	  "AbilityTextureName"      "custom/petri_uber_mask_of_laugh_level3"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -7589,7 +7589,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_uber_mask_of_laugh_level4"
+	  "AbilityTextureName"      "custom/petri_uber_mask_of_laugh_level4"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -7769,7 +7769,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_vest"
+	  "AbilityTextureName"      "custom/petri_vest"
 	
 	  "ItemCost"            "15"
 	  "ItemShopTags"          "armor"
@@ -7832,7 +7832,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_supervest"
+	  "AbilityTextureName"      "custom/petri_supervest"
 	
 	  "ItemCost"            "100"
 	  "ItemShopTags"          "armor"
@@ -7895,7 +7895,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_supermegavest"
+	  "AbilityTextureName"      "custom/petri_supermegavest"
 	
 	  "ItemCost"            "500"
 	  "ItemShopTags"          "armor"
@@ -7958,7 +7958,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_superthing"
+	  "AbilityTextureName"      "custom/petri_superthing"
 	
 	  "ItemCost"            "2000"
 	  "ItemShopTags"          "armor"
@@ -8026,7 +8026,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_vip_frostbite"
+	  "AbilityTextureName"      "custom/petri_vip_frostbite"
 	
 	  "ItemPurchasable"       "0"
 	  
@@ -8245,7 +8245,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_vip_furion"
+	  "AbilityTextureName"      "custom/petri_vip_furion"
 	
 	  "ItemPurchasable"       "0"
 	  
@@ -8363,7 +8363,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_vip_greenkzn"
+	  "AbilityTextureName"      "custom/petri_vip_greenkzn"
 	
 	  "ItemPurchasable"       "0"
 	  
@@ -8594,7 +8594,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_item_void"
+	  "AbilityTextureName"      "custom/petri_item_void"
 	
 	  "ItemCost"            "99999"
 	
@@ -8953,7 +8953,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_vip_terror"
+	  "AbilityTextureName"      "custom/petri_vip_terror"
 	
 	  "ItemPurchasable"       "0"
 	  
@@ -9070,7 +9070,7 @@
 	
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_maelstrom"
+	  "AbilityTextureName"      "custom/maelstrom"
 	
 	  "ItemPurchasable"       "0"
 	  
@@ -9201,7 +9201,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_ward"
+	  "AbilityTextureName"      "custom/petri_ward"
 	
 	  "ItemCost"            "25"
 	  "ItemShopTags"        "consumable"
@@ -9249,7 +9249,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "Model"             "models/props_gameplay/red_box.vmdl" 
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-	  "AbilityTextureName"      "item_petri_zirconia_armor"
+	  "AbilityTextureName"      "custom/petri_zirconia_armor"
 	
 	  "AbilityCooldown"       "60"
 	  "AbilitySharedCooldown"         "laugh"
@@ -9347,7 +9347,7 @@
 	"item_train_petri_mega_peasant"
 	{
 	  "BaseClass"                 "item_datadriven"
-	  "AbilityTextureName"      "item_train_petri_mega_peasant"
+	  "AbilityTextureName"      "custom/train_petri_mega_peasant"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	  "AbilityCastPoint"        "0"
 	
@@ -9367,7 +9367,7 @@
 	"item_train_petri_peasant"
 	{
 	  "BaseClass"                 "item_datadriven"
-	  "AbilityTextureName"      "item_train_petri_peasant"
+	  "AbilityTextureName"      "custom/train_petri_peasant"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	  "AbilityCastPoint"        "0"
 	
@@ -9387,7 +9387,7 @@
 	"item_train_petri_super_peasant"
 	{
 	  "BaseClass"                 "item_datadriven"
-	  "AbilityTextureName"      "item_train_petri_super_peasant"
+	  "AbilityTextureName"      "custom/train_petri_super_peasant"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 	  "AbilityCastPoint"        "0"
 	

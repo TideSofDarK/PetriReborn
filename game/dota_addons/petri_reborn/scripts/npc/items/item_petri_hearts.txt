@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_chicken"
+  "AbilityTextureName"      "custom/petri_chicken"
 
   "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
@@ -105,7 +105,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_cow"
+  "AbilityTextureName"      "custom/petri_cow"
 
   "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
@@ -207,7 +207,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_dragon"
+  "AbilityTextureName"      "custom/petri_dragon"
 
   "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
@@ -307,7 +307,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_kvn_heart"
+  "AbilityTextureName"      "custom/petri_kvn_heart"
   
   "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"

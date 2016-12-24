@@ -1,7 +1,7 @@
 "train_petri_super_peasant"
 {
   "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "train_petri_super_peasant"
+  "AbilityTextureName"      "custom/train_petri_super_peasant"
   "MaxLevel"            "1"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"

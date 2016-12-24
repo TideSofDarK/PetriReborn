@@ -7,7 +7,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
   "Model"             "models/props_gameplay/recipe.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_evasion_scroll"
+  "AbilityTextureName"      "custom/petri_evasion_scroll"
 
   "AbilityCastRange"              "1600"
   "AbilityCastPoint"              "0"

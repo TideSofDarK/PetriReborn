@@ -1,7 +1,7 @@
 "item_train_petri_peasant"
 {
   "BaseClass"                 "item_datadriven"
-  "AbilityTextureName"      "item_train_petri_peasant"
+  "AbilityTextureName"      "custom/train_petri_peasant"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
   "AbilityCastPoint"        "0"
 

@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_shield_of_hell"
+  "AbilityTextureName"      "custom/petri_shield_of_hell"
 
   "ItemCost"            "5000"
   "ItemShopTags"          "armor"
@@ -69,7 +69,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_shield_of_heaven"
+  "AbilityTextureName"      "custom/petri_shield_of_heaven"
 
   "ItemCost"            "15000"
   "ItemShopTags"          "armor"
@@ -133,7 +133,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_best_shield"
+  "AbilityTextureName"      "custom/petri_best_shield"
 
   "ItemCost"            "150000"
   "ItemShopTags"          "armor"
@@ -217,7 +217,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_crysis_nanoshit"
+  "AbilityTextureName"      "custom/petri_crysis_nanoshit"
 
   "ItemCost"            "400000"
   "ItemShopTags"          "armor"

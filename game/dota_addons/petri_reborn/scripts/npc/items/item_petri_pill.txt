@@ -5,7 +5,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"                   "models/props_gameplay/red_box.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_pill"
+  "AbilityTextureName"      "custom/petri_pill"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"
@@ -160,7 +160,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"                   "models/props_gameplay/red_box.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_pill"
+  "AbilityTextureName"      "custom/petri_pill"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"
@@ -332,7 +332,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"                   "models/props_gameplay/red_box.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_pill"
+  "AbilityTextureName"      "custom/petri_pill"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"
@@ -505,7 +505,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"                   "models/props_gameplay/red_box.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_pill"
+  "AbilityTextureName"      "custom/petri_pill"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"

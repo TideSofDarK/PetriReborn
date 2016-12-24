@@ -8,7 +8,7 @@
 
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_hook"
+  "AbilityTextureName"      "custom/petri_hook"
 
   "ItemCost"            "75000"
   "ItemQuality"         "secret_shop"
