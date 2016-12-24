@@ -41,7 +41,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_cop_trap"
+	  "AbilityTextureName"      "custom/build_petri_cop_trap"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  // BuildingHelper info
@@ -124,7 +124,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_exploration_tree"
+	  "AbilityTextureName"      "custom/build_petri_exploration_tree"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  // BuildingHelper info
 	  "Building"            "1" //bool
@@ -161,7 +161,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_gold_tower"
+	  "AbilityTextureName"      "custom/build_petri_gold_tower"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilitySpecial"
@@ -211,7 +211,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_idol"
+	  "AbilityTextureName"      "custom/build_petri_idol"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilitySpecial"
@@ -258,7 +258,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_lab"
+	  "AbilityTextureName"      "custom/build_petri_lab"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilitySpecial"
@@ -305,7 +305,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "npc_petri_sawmill"
+	  "AbilityTextureName"      "custom/npc_petri_sawmill"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  // BuildingHelper info
@@ -343,7 +343,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_tent"
+	  "AbilityTextureName"      "custom/build_petri_tent"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  // BuildingHelper info
@@ -381,7 +381,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_tower_basic"
+	  "AbilityTextureName"      "custom/build_petri_tower_basic"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilitySpecial"
@@ -428,7 +428,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_tower_of_evil"
+	  "AbilityTextureName"      "custom/build_petri_tower_of_evil"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  // BuildingHelper info
@@ -466,7 +466,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_wall"
+	  "AbilityTextureName"      "custom/build_petri_wall"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilitySpecial"
@@ -511,7 +511,7 @@
 	"gather_lumber"
 	{
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "gather_lumber"
+	  "AbilityTextureName"      "custom/gather_lumber"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
@@ -854,7 +854,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_buy_lumber"
+	  "AbilityTextureName"      "custom/petri_buy_lumber"
 	
 	  "AbilityCastPoint"        "0.0"
 	
@@ -887,7 +887,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_buy_gold"
+	  "AbilityTextureName"      "custom/petri_buy_gold"
 	
 	  "AbilityCastPoint"        "0.0"
 	
@@ -1033,7 +1033,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
 	  "MaxLevel" "1"
-	  "AbilityTextureName"      "rattletrap_power_cogs"
+	  "AbilityTextureName"      "custom/rattletrap_power_cogs"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1117,7 +1117,7 @@
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	  "BaseClass"           "ability_datadriven"
 	  "MaxLevel" "1"
-	  "AbilityTextureName"            "rubick_empty1" 
+	  "AbilityTextureName"            "custom/rubick_empty1" 
 	
 	  "AbilitySpecial"
 	  {
@@ -1328,7 +1328,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
+	  "AbilityTextureName"            "custom/earth_spirit_geomagnetic_grip"
 	
 	  "MaxLevel"            "14"
 	
@@ -1547,7 +1547,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1" 
+	  "AbilityTextureName"            "custom/rubick_empty1" 
 	
 	  "IsHidden"         "1"
 	}
@@ -1556,7 +1556,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "custom/rubick_empty1"
 	  "IsHidden"         "1"
 	}
 	"petri_empty3"
@@ -1564,7 +1564,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "custom/rubick_empty1"
 	  "IsHidden"         "1"
 	}
 	"petri_empty4"
@@ -1572,7 +1572,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "custom/rubick_empty1"
 	  "IsHidden"         "1"
 	}
 	"petri_empty5"
@@ -1580,7 +1580,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "custom/rubick_empty1"
 	  "IsHidden"         "1"
 	}
 	"petri_empty6"
@@ -1588,7 +1588,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	  "MaxLevel"            "0"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"            "rubick_empty1"
+	  "AbilityTextureName"            "custom/rubick_empty1"
 	  "IsHidden"         "1"
 	}
 	"petri_sword_attack_sound"
@@ -1625,7 +1625,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "build_petri_exit"
+	  "AbilityTextureName" "custom/build_petri_exit"
 	
 	  "Modifiers"
 	  {
@@ -1650,7 +1650,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "build_petri_exit"
+	  "AbilityTextureName" "custom/build_petri_exit"
 	
 	  "Modifiers"
 	  {
@@ -1675,7 +1675,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "build_petri_exit"
+	  "AbilityTextureName" "custom/build_petri_exit"
 	
 	  "Modifiers"
 	  {
@@ -1700,7 +1700,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "build_petri_exit"
+	  "AbilityTextureName" "custom/build_petri_exit"
 	
 	  "Modifiers"
 	  {
@@ -1724,7 +1724,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityTextureName"      "custom/petri_exploration_tree_explore"
 	
 	  "AbilitySharedWithTeammates" "1"
 	
@@ -1751,7 +1751,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityTextureName"      "custom/petri_exploration_tree_explore"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityManaCost"       "50"
@@ -1820,7 +1820,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityTextureName"      "custom/alchemist_goblins_greed"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1899,7 +1899,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityTextureName"      "custom/alchemist_goblins_greed"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
@@ -1938,7 +1938,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_gold_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2007,7 +2007,7 @@
 	{
 	  "BaseClass"       "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-	  "AbilityTextureName"      "antimage_blink"
+	  "AbilityTextureName"      "custom/antimage_blink"
 	
 	  "MaxLevel" "1"
 	
@@ -2064,7 +2064,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityTextureName"      "custom/alchemist_goblins_greed"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
@@ -2103,7 +2103,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_gold_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2172,7 +2172,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityTextureName"      "custom/alchemist_goblins_greed"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
@@ -2211,7 +2211,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_gold_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2280,7 +2280,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "return_resources"
+	  "AbilityTextureName"      "custom/return_resources"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2327,7 +2327,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "return_resources"
+	  "AbilityTextureName"      "custom/return_resources"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2374,7 +2374,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "alchemist_goblins_greed"
+	  "AbilityTextureName"      "custom/alchemist_goblins_greed"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "AbilityCastPoint"        "0.0"
@@ -2414,7 +2414,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_gold_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2483,7 +2483,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "return_resources"
+	  "AbilityTextureName"      "custom/return_resources"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_IDLE"
 	  "AbilityCastPoint"        "0.0"
@@ -2623,7 +2623,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "undying_tombstone"
+	  "AbilityTextureName" "custom/undying_tombstone"
 	  
 	  "Modifiers"
 	  {
@@ -2650,7 +2650,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "undying_tombstone"
+	  "AbilityTextureName" "custom/undying_tombstone"
 	  
 	  "Modifiers"
 	  {
@@ -2697,7 +2697,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "riki_permanent_invisibility"
+	  "AbilityTextureName" "custom/riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
@@ -2726,7 +2726,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "riki_permanent_invisibility"
+	  "AbilityTextureName" "custom/riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
@@ -2752,7 +2752,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "riki_permanent_invisibility"
+	  "AbilityTextureName" "custom/riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
@@ -2782,7 +2782,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "riki_permanent_invisibility"
+	  "AbilityTextureName" "custom/riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
@@ -2842,7 +2842,7 @@
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "MaxLevel"            "1"
 	
-	  "AbilityTextureName"      "courier_take_stash_items"
+	  "AbilityTextureName"      "custom/courier_take_stash_items"
 	
 	  "AbilityManaCost"       "0"
 	
@@ -2881,7 +2881,7 @@
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	  "MaxLevel"            "1"
 	
-	  "AbilityTextureName"      "courier_transfer_items"
+	  "AbilityTextureName"      "custom/courier_transfer_items"
 	
 	  "AbilityManaCost"       "0"
 	
@@ -2914,7 +2914,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_kvn_fan_open_basic_buildings_menu"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_open_basic_buildings_menu"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "MaxLevel"            "1"
@@ -2933,7 +2933,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_kvn_fan_open_advanced_buildings_menu"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_open_advanced_buildings_menu"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "MaxLevel"            "1"
@@ -2952,7 +2952,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_close_buildings_menu"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "MaxLevel"            "1"
@@ -2971,7 +2971,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+	  "AbilityTextureName"      "custom/petri_kvn_fan_close_buildings_menu"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "MaxLevel"            "1"
@@ -3023,7 +3023,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-	  "AbilityTextureName" "riki_permanent_invisibility"
+	  "AbilityTextureName" "custom/riki_permanent_invisibility"
 	  
 	  "Modifiers"
 	  {
@@ -3067,7 +3067,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	  "AbilityTextureName"      "petri_mini_actor_chains"
+	  "AbilityTextureName"      "custom/petri_mini_actor_chains"
 	
 	  "AbilityCastRange"        "800"
 	  "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150"
@@ -3238,7 +3238,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName"      "petri_mini_actor_drink"
+	  "AbilityTextureName"      "custom/petri_mini_actor_drink"
 	
 	  "AbilityCastRange"        "700"
 	  "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
@@ -3357,7 +3357,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 	  "AbilityUnitTargetFlags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
-	  "AbilityTextureName"      "petri_mini_actor_drop_butt"
+	  "AbilityTextureName"      "custom/petri_mini_actor_drop_butt"
 	
 	  "AbilityCastRange"        "650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350"
 	  "AbilityCastAnimation"      "ACT_DOTA_ATTACK"
@@ -3477,7 +3477,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_mini_actor_pull_eyes"
+	  "AbilityTextureName"      "custom/petri_mini_actor_pull_eyes"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastRange"        "1000"
@@ -3593,7 +3593,7 @@
 	    // General
 	    //-------------------------------------------------------------------------------------------------------------
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "omniknight_purification"
+	  "AbilityTextureName"      "custom/omniknight_purification"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -3653,7 +3653,7 @@
 	    "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
 	    "FightRecapLevel"               "1"
-	    "AbilityTextureName"            "petri_miracle_silence"
+	    "AbilityTextureName"            "custom/petri_miracle_silence"
 	    "AOERadius"                     "400"
 	    "MaxLevel"            "1"
 	    // Precache
@@ -3781,7 +3781,7 @@
 	    "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
 	    "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
 	    "FightRecapLevel"               "1"
-	    "AbilityTextureName"            "petri_miracle_stun"
+	    "AbilityTextureName"            "custom/petri_miracle_stun"
 	    "AOERadius"                     "%bolt_aoe"
 	    "MaxLevel"            "1"
 	
@@ -3919,7 +3919,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_exploration_tree_explore"
+	  "AbilityTextureName"      "custom/petri_exploration_tree_explore"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityManaCost"       "10 20 30 40 50 60 70 80 90 100 110 120 130 140 150 160 170 180 190"
@@ -3995,7 +3995,7 @@
 	{
 		"BaseClass"				"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"petri_petrosyan_flat_joke"
+		"AbilityTextureName"			"custom/petri_petrosyan_flat_joke"
 	
 		"AbilityCooldown"				"8.0 7.5 7.0 6.5 6.0"
 		// "AbilityManaCost"				"100"
@@ -4090,7 +4090,7 @@
 	  "AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	  "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 	  //"AbilityUnitTargetFlags"    "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-	  "AbilityTextureName"      "petri_petrosyan_laugh_burst"
+	  "AbilityTextureName"      "custom/petri_petrosyan_laugh_burst"
 	
 	  "AbilityCastRange"        "700"
 	  "AbilityCastPoint"        "0.5"
@@ -4233,7 +4233,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_petrosyan_return"
+	  "AbilityTextureName"      "custom/petri_petrosyan_return"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -4257,7 +4257,7 @@
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName" "petri_sleep"
+	  "AbilityTextureName" "custom/petri_sleep"
 	
 	  "MaxLevel" "20"
 	
@@ -4310,7 +4310,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityTextureName" "meepo_earthbind"
+	  "AbilityTextureName" "custom/meepo_earthbind"
 	
 	  "MaxLevel" "1"
 	
@@ -4401,7 +4401,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityTextureName" "naga_siren_ensnare"
+	  "AbilityTextureName" "custom/naga_siren_ensnare"
 	
 	  "MaxLevel" "1"
 	
@@ -4488,7 +4488,7 @@
 	{
 	  "BaseClass"       "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
-	  "AbilityTextureName"      "petri_petrosyan_wind_walk"
+	  "AbilityTextureName"      "custom/petri_petrosyan_wind_walk"
 	
 	  "AbilityCooldown"       "15 15 15 15 15 15 15 15 15 15 15 15 15 15 15 14 13 12 11 10"
 	
@@ -4606,7 +4606,7 @@
 	"petri_repair"
 	{
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "petri_repair"
+	  "AbilityTextureName"      "custom/petri_repair"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
@@ -4744,7 +4744,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "techies_suicide"
+	  "AbilityTextureName"      "custom/techies_suicide"
 	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
 	  "MaxLevel"            "1"
@@ -4781,7 +4781,7 @@
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO"
-	  "AbilityTextureName" "techies_stasis_trap"
+	  "AbilityTextureName" "custom/techies_stasis_trap"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
 	
 	  "AoeRadius" "100"
@@ -4876,7 +4876,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_basic_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_basic_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -4957,7 +4957,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_elements_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_elements_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5050,7 +5050,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_fire_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_fire_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5193,7 +5193,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_ice_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_ice_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5327,7 +5327,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_death_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_death_tower"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5464,7 +5464,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_concrete"
+	  "AbilityTextureName"      "custom/petri_upgrade_concrete"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -5561,7 +5561,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_earplugs"
+	  "AbilityTextureName"      "custom/petri_upgrade_earplugs"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -5635,7 +5635,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "earth_spirit_boulder_smash"
+	  "AbilityTextureName"      "custom/earth_spirit_boulder_smash"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5785,7 +5785,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "AbilityType"                   "DOTA_ABILITY_TYPE_ULTIMATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_exchange"
+	  "AbilityTextureName"      "custom/petri_upgrade_exchange"
 	
 	  "AbilityCastPoint"        "0.0"
 	
@@ -5846,7 +5846,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_eye"
+	  "AbilityTextureName"      "custom/petri_upgrade_eye"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -5926,7 +5926,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_gold_tower"
+	  "AbilityTextureName"      "custom/petri_upgrade_gold_tower"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -5992,7 +5992,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "holdout_culling_blade"
+	  "AbilityTextureName"      "custom/holdout_culling_blade"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -6055,7 +6055,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "shredder_whirling_death"
+	  "AbilityTextureName"      "custom/shredder_whirling_death"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -6111,7 +6111,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "build_petri_tent"
+	  "AbilityTextureName"      "custom/build_petri_tent"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -6170,7 +6170,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "holdout_focusfire"
+	  "AbilityTextureName"      "custom/holdout_focusfire"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -6284,7 +6284,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_tower_of_evil"
+	  "AbilityTextureName"      "custom/petri_upgrade_tower_of_evil"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -6369,7 +6369,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_to_cop"
+	  "AbilityTextureName"      "custom/petri_upgrade_to_cop"
 	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
 	  "AbilityGoldCost"       "%25"
@@ -6394,7 +6394,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "earth_spirit_petrify"
+	  "AbilityTextureName"      "custom/earth_spirit_petrify"
 	
 	  "AbilityCastPoint"        "0.0"
 	
@@ -6447,7 +6447,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "petri_upgrade_wall"
+	  "AbilityTextureName"      "custom/petri_upgrade_wall"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -6596,7 +6596,7 @@
 	{
 	  "BaseClass"           "ability_datadriven"
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_AOE"
-	  "AbilityTextureName"      "petri_wall_glyph"
+	  "AbilityTextureName"      "custom/petri_wall_glyph"
 	  "AOERadius"                     "%radius"
 	
 	  "AbilityCastPoint"              "0"
@@ -6694,7 +6694,7 @@
 	"return_resources"
 	{
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "return_resources"
+	  "AbilityTextureName"      "custom/return_resources"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle
@@ -6749,7 +6749,7 @@
 	"train_petri_mega_peasant"
 	{
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "train_petri_mega_peasant"
+	  "AbilityTextureName"      "custom/train_petri_mega_peasant"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
@@ -6830,7 +6830,7 @@
 	"train_petri_peasant"
 	{
 	  "BaseClass"                 "ability_datadriven"
-	  "AbilityTextureName"      "train_petri_peasant"
+	  "AbilityTextureName"      "custom/train_petri_peasant"
 	  "MaxLevel"            "1"
 	
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"

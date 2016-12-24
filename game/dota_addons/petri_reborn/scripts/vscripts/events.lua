@@ -527,6 +527,7 @@ function GameMode:OnEntityKilled( keys )
   local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
 
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") or string.match(killedUnit:GetUnitName (), "boss") then
+    killerEntity:AddExperience(killedUnit:GetDeathXP(),0,false,true)
     if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and string.match(killedUnit:GetUnitName (), "boss") then -- boss
       Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
       Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
