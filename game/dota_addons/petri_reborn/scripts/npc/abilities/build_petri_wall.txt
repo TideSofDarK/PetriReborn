@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "build_petri_wall"
+  "AbilityTextureName"      "custom/build_petri_wall"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "AbilitySpecial"

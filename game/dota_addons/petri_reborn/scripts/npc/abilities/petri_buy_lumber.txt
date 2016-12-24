@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_buy_lumber"
+  "AbilityTextureName"      "custom/petri_buy_lumber"
 
   "AbilityCastPoint"        "0.0"
 
@@ -35,7 +35,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_buy_gold"
+  "AbilityTextureName"      "custom/petri_buy_gold"
 
   "AbilityCastPoint"        "0.0"
 

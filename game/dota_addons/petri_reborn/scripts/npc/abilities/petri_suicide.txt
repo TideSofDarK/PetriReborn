@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "techies_suicide"
+  "AbilityTextureName"      "custom/techies_suicide"
   "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 
   "MaxLevel"            "1"

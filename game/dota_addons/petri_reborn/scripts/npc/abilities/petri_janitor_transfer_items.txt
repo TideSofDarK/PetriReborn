@@ -8,7 +8,7 @@
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
   "MaxLevel"            "1"
 
-  "AbilityTextureName"      "courier_transfer_items"
+  "AbilityTextureName"      "custom/courier_transfer_items"
 
   "AbilityManaCost"       "0"
 

@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "npc_petri_sawmill"
+  "AbilityTextureName"      "custom/npc_petri_sawmill"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   // BuildingHelper info

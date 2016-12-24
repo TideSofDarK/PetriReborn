@@ -1,7 +1,7 @@
 "petri_repair"
 {
   "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "petri_repair"
+  "AbilityTextureName"      "custom/petri_repair"
   "MaxLevel"            "1"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"

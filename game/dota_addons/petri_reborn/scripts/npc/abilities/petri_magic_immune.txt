@@ -2,7 +2,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" "riki_permanent_invisibility"
+  "AbilityTextureName" "custom/riki_permanent_invisibility"
   
   "Modifiers"
   {

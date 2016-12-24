@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "build_petri_exploration_tree"
+  "AbilityTextureName"      "custom/build_petri_exploration_tree"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
   // BuildingHelper info
   "Building"            "1" //bool

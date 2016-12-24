@@ -3,7 +3,7 @@
     // General
     //-------------------------------------------------------------------------------------------------------------
   "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "omniknight_purification"
+  "AbilityTextureName"      "custom/omniknight_purification"
   "MaxLevel"            "1"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"

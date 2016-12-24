@@ -89,7 +89,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
   "MaxLevel" "1"
-  "AbilityTextureName"      "rattletrap_power_cogs"
+  "AbilityTextureName"      "custom/rattletrap_power_cogs"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "AbilityCastPoint"        "0.0"

@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "holdout_culling_blade"
+  "AbilityTextureName"      "custom/holdout_culling_blade"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "AbilityCastPoint"        "0.0"

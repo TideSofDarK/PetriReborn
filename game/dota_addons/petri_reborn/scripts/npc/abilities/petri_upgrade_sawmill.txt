@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "shredder_whirling_death"
+  "AbilityTextureName"      "custom/shredder_whirling_death"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 

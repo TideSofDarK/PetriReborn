@@ -2,7 +2,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" "build_petri_exit"
+  "AbilityTextureName" "custom/build_petri_exit"
 
   "Modifiers"
   {
@@ -27,7 +27,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" "build_petri_exit"
+  "AbilityTextureName" "custom/build_petri_exit"
 
   "Modifiers"
   {
@@ -52,7 +52,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" "build_petri_exit"
+  "AbilityTextureName" "custom/build_petri_exit"
 
   "Modifiers"
   {
@@ -77,7 +77,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
-  "AbilityTextureName" "build_petri_exit"
+  "AbilityTextureName" "custom/build_petri_exit"
 
   "Modifiers"
   {

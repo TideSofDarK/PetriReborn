@@ -5,7 +5,7 @@
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-  "AbilityTextureName" "meepo_earthbind"
+  "AbilityTextureName" "custom/meepo_earthbind"
 
   "MaxLevel" "1"
 
@@ -96,7 +96,7 @@
   "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-  "AbilityTextureName" "naga_siren_ensnare"
+  "AbilityTextureName" "custom/naga_siren_ensnare"
 
   "MaxLevel" "1"
 

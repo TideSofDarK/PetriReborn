@@ -8,7 +8,7 @@
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
   "BaseClass"           "ability_datadriven"
   "MaxLevel" "1"
-  "AbilityTextureName"            "rubick_empty1" 
+  "AbilityTextureName"            "custom/rubick_empty1" 
 
   "AbilitySpecial"
   {

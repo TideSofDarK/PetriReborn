@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_basic_tower"
+  "AbilityTextureName"      "custom/petri_upgrade_basic_tower"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
@@ -83,7 +83,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_elements_tower"
+  "AbilityTextureName"      "custom/petri_upgrade_elements_tower"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
@@ -176,7 +176,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_fire_tower"
+  "AbilityTextureName"      "custom/petri_upgrade_fire_tower"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
@@ -319,7 +319,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_ice_tower"
+  "AbilityTextureName"      "custom/petri_upgrade_ice_tower"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
@@ -453,7 +453,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_death_tower"
+  "AbilityTextureName"      "custom/petri_upgrade_death_tower"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 

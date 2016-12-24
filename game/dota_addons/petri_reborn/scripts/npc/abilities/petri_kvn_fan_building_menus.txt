@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_kvn_fan_open_basic_buildings_menu"
+  "AbilityTextureName"      "custom/petri_kvn_fan_open_basic_buildings_menu"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "MaxLevel"            "1"
@@ -21,7 +21,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_kvn_fan_open_advanced_buildings_menu"
+  "AbilityTextureName"      "custom/petri_kvn_fan_open_advanced_buildings_menu"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "MaxLevel"            "1"
@@ -40,7 +40,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+  "AbilityTextureName"      "custom/petri_kvn_fan_close_buildings_menu"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "MaxLevel"            "1"
@@ -59,7 +59,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_kvn_fan_close_buildings_menu"
+  "AbilityTextureName"      "custom/petri_kvn_fan_close_buildings_menu"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "MaxLevel"            "1"

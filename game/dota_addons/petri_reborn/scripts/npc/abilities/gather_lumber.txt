@@ -1,7 +1,7 @@
 "gather_lumber"
 {
   "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "gather_lumber"
+  "AbilityTextureName"      "custom/gather_lumber"
   "MaxLevel"            "1"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"

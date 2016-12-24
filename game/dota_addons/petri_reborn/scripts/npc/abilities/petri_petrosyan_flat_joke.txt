@@ -2,7 +2,7 @@
 {
 	"BaseClass"				"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"petri_petrosyan_flat_joke"
+	"AbilityTextureName"			"custom/petri_petrosyan_flat_joke"
 
 	"AbilityCooldown"				"8.0 7.5 7.0 6.5 6.0"
 	// "AbilityManaCost"				"100"

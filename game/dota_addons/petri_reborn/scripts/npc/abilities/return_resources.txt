@@ -1,7 +1,7 @@
 "return_resources"
 {
   "BaseClass"                 "ability_datadriven"
-  "AbilityTextureName"      "return_resources"
+  "AbilityTextureName"      "custom/return_resources"
   "MaxLevel"            "1"
 
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN" //Fake Toggle

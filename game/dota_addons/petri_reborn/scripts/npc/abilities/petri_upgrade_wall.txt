@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_upgrade_wall"
+  "AbilityTextureName"      "custom/petri_upgrade_wall"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 

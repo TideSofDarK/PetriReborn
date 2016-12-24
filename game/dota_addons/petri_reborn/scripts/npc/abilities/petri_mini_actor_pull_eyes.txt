@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "petri_mini_actor_pull_eyes"
+  "AbilityTextureName"      "custom/petri_mini_actor_pull_eyes"
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
   "AbilityCastRange"        "1000"

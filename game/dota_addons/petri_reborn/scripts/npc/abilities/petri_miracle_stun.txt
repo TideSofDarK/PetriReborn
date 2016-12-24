@@ -9,7 +9,7 @@
     "AbilityUnitDamageType"         "DAMAGE_TYPE_MAGICAL"   
     "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
     "FightRecapLevel"               "1"
-    "AbilityTextureName"            "petri_miracle_stun"
+    "AbilityTextureName"            "custom/petri_miracle_stun"
     "AOERadius"                     "%bolt_aoe"
     "MaxLevel"            "1"
 
