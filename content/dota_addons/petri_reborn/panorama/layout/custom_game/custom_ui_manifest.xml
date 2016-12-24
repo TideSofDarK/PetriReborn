@@ -55,7 +55,7 @@
         
         <CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/game_setup/game_setup.xml" />
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/kick_system/kick_system.xml" />
-        <!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" /> -->
+        <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/dummy.xml" />
 
         <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/statcollection.xml" />
 	</Panel>
