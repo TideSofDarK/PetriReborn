@@ -4,7 +4,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_1"
+  "AbilityTextureName"            "custom/petri_kvn_bag_1"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -26,7 +26,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_2"
+  "AbilityTextureName"            "custom/petri_kvn_bag_2"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -48,7 +48,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_3"
+  "AbilityTextureName"            "custom/petri_kvn_bag_3"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -70,7 +70,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -92,7 +92,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -116,7 +116,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -139,7 +139,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -162,7 +162,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -185,7 +185,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"
@@ -208,7 +208,7 @@
   "AbilityBehavior"     "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_petri_kvn_bag_4"
+  "AbilityTextureName"            "custom/petri_kvn_bag_4"
   "ItemPurchasable"       "0"
   "ItemPermanent"         "1"
   "ItemSellable"                  "0"

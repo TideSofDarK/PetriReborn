@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_butt"
+  "AbilityTextureName"      "custom/petri_butt"
 
   "AbilityCooldown"       "90"
   "AbilitySharedCooldown"         "heal"
@@ -81,7 +81,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_butt2"
+  "AbilityTextureName"      "custom/petri_butt2"
 
   "AbilityCooldown"       "75"
   "AbilitySharedCooldown"         "heal"
@@ -175,7 +175,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_butt3"
+  "AbilityTextureName"      "custom/petri_butt3"
 
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "heal"

@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_tourmaline_patch"
+  "AbilityTextureName"      "custom/petri_tourmaline_patch"
 
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
@@ -90,7 +90,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_jade_amulet"
+  "AbilityTextureName"      "custom/petri_jade_amulet"
 
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"
@@ -193,7 +193,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_bracer"
+  "AbilityTextureName"      "custom/petri_bracer"
 
   "AbilityCooldown"       "60"
   "AbilitySharedCooldown"         "laugh"

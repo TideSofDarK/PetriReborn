@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_book_of_laugh"
+  "AbilityTextureName"      "custom/petri_book_of_laugh"
 
   "ItemCost"            "225"
   "ItemShopTags"          "consumable"
@@ -39,7 +39,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_comedy_story"
+  "AbilityTextureName"      "custom/petri_comedy_story"
 
   "ItemCost"            "200000"
   "ItemShopTags"          "consumable"
@@ -73,7 +73,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_comedy_book"
+  "AbilityTextureName"      "custom/petri_comedy_book"
 
   "ItemCost"            "2500"
   "ItemShopTags"          "consumable"
@@ -103,7 +103,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_comedy_book"
+  "AbilityTextureName"      "custom/petri_comedy_book"
 
   "ItemPurchasable"         "0"
   "ItemSellable"          "0"
@@ -153,7 +153,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_comedy_story"
+  "AbilityTextureName"      "custom/petri_comedy_story"
 
   "ItemPurchasable"         "0"
   "ItemSellable"          "0"
@@ -207,7 +207,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_book_of_laugh"
+  "AbilityTextureName"      "custom/petri_book_of_laugh"
 
   "ItemCost"            "1"
   "ItemShopTags"          "consumable"
@@ -241,7 +241,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_book_of_laugh"
+  "AbilityTextureName"      "custom/petri_book_of_laugh"
 
   "ItemCost"            "10"
   "ItemShopTags"          "consumable"
@@ -275,7 +275,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_book_of_laugh"
+  "AbilityTextureName"      "custom/petri_book_of_laugh"
 
   "ItemCost"            "225"
   "ItemShopTags"          "consumable"
@@ -309,7 +309,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_snares"
+  "AbilityTextureName"      "custom/petri_snares"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"
@@ -352,7 +352,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_snares_2"
+  "AbilityTextureName"      "custom/petri_snares_2"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"

@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"             "models/props_gameplay/recipe.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_attack_scroll"
+  "AbilityTextureName"      "custom/petri_attack_scroll"
 
   "AbilityCastPoint"              "0"
   "AbilityCooldown"       "75"

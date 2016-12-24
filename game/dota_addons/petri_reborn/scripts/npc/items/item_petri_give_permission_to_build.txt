@@ -6,7 +6,7 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_flag"
+  "AbilityTextureName"            "custom/flag"
 
   "AbilityCastRange" "150"
 
@@ -77,7 +77,7 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_flag2"
+  "AbilityTextureName"            "custom/flag2"
 
   "AbilityCastRange" "150"
 
@@ -149,7 +149,7 @@
   "AbilityUnitTargetType" "DOTA_UNIT_TARGET_ALL"
 
   "BaseClass"           "item_datadriven"
-  "AbilityTextureName"            "item_flag3"
+  "AbilityTextureName"            "custom/flag3"
 
   "AbilityCastRange" "150"
 

@@ -5,7 +5,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_halloween_candy_corn"
+  "AbilityTextureName"      "custom/halloween_candy_corn"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "0"
@@ -54,7 +54,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_ALL"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_1"
+  "AbilityTextureName"      "custom/candy_1"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "240"
@@ -160,7 +160,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_2"
+  "AbilityTextureName"      "custom/candy_2"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "180"
@@ -237,7 +237,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_3"
+  "AbilityTextureName"      "custom/candy_3"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "720"
@@ -368,7 +368,7 @@
   "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_YES"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_4"
+  "AbilityTextureName"      "custom/candy_4"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "2.5"
@@ -459,7 +459,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_5"
+  "AbilityTextureName"      "custom/candy_5"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "120"
@@ -588,7 +588,7 @@
   "BaseClass"       "item_datadriven"
   "ID"              "1706"
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-  "AbilityTextureName"      "item_candy_1"
+  "AbilityTextureName"      "custom/candy_1"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
 
@@ -706,7 +706,7 @@
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_2"
+  "AbilityTextureName"      "custom/candy_2"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "240"
@@ -782,7 +782,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_3"
+  "AbilityTextureName"      "custom/candy_3"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "40"
@@ -887,7 +887,7 @@
   "SpellImmunityType"         "SPELL_IMMUNITY_ENEMIES_YES"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_4"
+  "AbilityTextureName"      "custom/candy_4"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "240"
@@ -989,7 +989,7 @@
   "AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
   "Model"                   "models/props_gameplay/halloween_candy.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_candy_5"
+  "AbilityTextureName"      "custom/candy_5"
 
   "AbilityCastPoint"      "0"
   "AbilityCooldown"       "60"

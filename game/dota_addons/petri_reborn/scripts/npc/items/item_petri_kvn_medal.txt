@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_kvn_medal"
+  "AbilityTextureName"      "custom/petri_kvn_medal"
 
   "ItemCost"            "20000"
   "ItemShopTags"          "hard_to_tag"

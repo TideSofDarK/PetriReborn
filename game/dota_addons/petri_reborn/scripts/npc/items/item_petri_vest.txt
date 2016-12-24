@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_vest"
+  "AbilityTextureName"      "custom/petri_vest"
 
   "ItemCost"            "15"
   "ItemShopTags"          "armor"
@@ -68,7 +68,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_supervest"
+  "AbilityTextureName"      "custom/petri_supervest"
 
   "ItemCost"            "100"
   "ItemShopTags"          "armor"
@@ -131,7 +131,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_supermegavest"
+  "AbilityTextureName"      "custom/petri_supermegavest"
 
   "ItemCost"            "500"
   "ItemShopTags"          "armor"
@@ -194,7 +194,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_PASSIVE"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_superthing"
+  "AbilityTextureName"      "custom/petri_superthing"
 
   "ItemCost"            "2000"
   "ItemShopTags"          "armor"

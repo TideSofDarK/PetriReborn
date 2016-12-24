@@ -5,7 +5,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "Model"             "models/props_gameplay/red_box.vmdl" 
   "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
-  "AbilityTextureName"      "item_petri_alcohol"
+  "AbilityTextureName"      "custom/petri_alcohol"
 
   "AbilityCastPoint"              "0"
   "AbilityCooldown"       "100"

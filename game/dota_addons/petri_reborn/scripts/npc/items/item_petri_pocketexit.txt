@@ -3,7 +3,7 @@
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_ITEM | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "item_datadriven"
   "ID"              "1228"
-  "AbilityTextureName"      "item_exit"
+  "AbilityTextureName"      "custom/exit"
 
   "SideShop" "1"
   "ItemCost"            "14999"
