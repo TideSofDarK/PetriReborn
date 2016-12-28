@@ -112,10 +112,13 @@ end
 function AddItem( owner, unit, item_name )
   local item_entity = CreateItem(item_name,owner,owner)
   local item = unit:AddItemByName(item_name)
-  item:SetPurchaser(owner)
-  item.purchaseTime = GameMode.PETRI_TRUE_TIME
+  if item then
+    item:SetPurchaser(owner)
+    item.purchaseTime = GameMode.PETRI_TRUE_TIME
 
-  return item
+    return item
+  end
+
 end
 
 function GameMode:BuyItem(keys)
@@ -157,8 +160,13 @@ function GameMode:BuyItem(keys)
         if target == "stash" then
           LockInventory(hero)
           local item_entity = AddItem( hero, hero, item )
-          local slot = FindItemSlot( hero, item_entity )
-          local target_slot = MoveToStash( hero, slot )
+          if item_entity then
+            if GameMode.ItemKVs[item] and tonumber(GameMode.ItemKVs[item].ItemInitialCharges) then
+            else
+              local slot = FindItemSlot( hero, item_entity )
+              local target_slot = MoveToStash( hero, slot )
+            end
+          end
           UnlockInventory(hero)
         elseif IsValidEntity(target) then
           AddItem( hero, target, item )
