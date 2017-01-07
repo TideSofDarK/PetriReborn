@@ -66,6 +66,11 @@
 	    "DisableClumpingBehavior" "1" 
 	  }         
 	}
+	"npc_petri_elena"
+	{
+	  "override_hero"     "npc_dota_hero_wisp"
+	  "Ability1"        "petri_hide_io"       
+	}
 	"npc_petri_kvn_fan"
 	{
 	  "override_hero"     "npc_dota_hero_rattletrap"

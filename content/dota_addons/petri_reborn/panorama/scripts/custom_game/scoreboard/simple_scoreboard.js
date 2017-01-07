@@ -1,7 +1,7 @@
 "use strict";
 
 var g_ScoreboardHandle = null;
-var visible;
+var visible = false;
 
 function AutoUpdateScoreboard()
 {
@@ -47,7 +47,16 @@ function SetFlyoutScoreboardVisible( bVisible )
 
 	SetFlyoutScoreboardVisible( false );
 
-	$.RegisterEventHandler( "DOTACustomUI_SetFlyoutScoreboardVisible", $.GetContextPanel(), SetFlyoutScoreboardVisible );
+    var parent = $.GetContextPanel().GetParent();
+    while(parent.id != "Hud")
+        parent = parent.GetParent();
+
+    var button = parent.FindChildTraverse("ToggleScoreboardButton");
+
+    button.SetPanelEvent("onactivate", function () {
+    	SetFlyoutScoreboardVisible(!visible);
+    })
+
 	// Подписываемся на событие "Смена команды"
     GameEvents.Subscribe("player_team", UpdatePlayers);	
 })();

@@ -69,7 +69,7 @@ function GameMode:_OnNPCSpawned(keys)
     GameMode.spawnedArray = GameMode.spawnedArray or {}
 
     if not GameMode.spawnedArray[npc:GetPlayerID()] then
-      GameMode:OnHeroInGame(npc:GetPlayerID(), npc:GetTeamNumber())
+      GameMode:OnHeroInGame(npc:GetPlayerID(), npc:GetTeamNumber(), npc)
       GameMode.spawnedArray[npc:GetPlayerID()] = true
     end
   end

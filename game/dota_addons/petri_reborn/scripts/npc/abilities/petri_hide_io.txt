@@ -1,0 +1,18 @@
+"petri_hide_io"
+{
+  "BaseClass" "ability_datadriven"
+  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+  
+  "Modifiers"
+  {
+    "modifier_hide_io"
+    {
+      "Passive" "1"
+      
+      "States"
+      {
+        "MODIFIER_STATE_NOT_ON_MINIMAP"           "MODIFIER_STATE_VALUE_ENABLED"
+      }
+    }
+  }   
+}

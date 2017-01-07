@@ -139,13 +139,16 @@ function GameMode:AddItems( newHero )
   end
 end
 
-function GameMode:OnHeroInGame(pID, team)
+function GameMode:OnHeroInGame(pID, team, wisp)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
   
   local player = PlayerResource:GetPlayer(pID)
   local team = team
 
   local newHero
+
+  InitAbilities(wisp)
+  print(wisp:GetAbilityByIndex(0):GetName())
 
    -- Init kvn fan
   if team == 2 then
@@ -156,6 +159,7 @@ function GameMode:OnHeroInGame(pID, team)
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = PlayerResource:ReplaceHeroWith(pID,"npc_dota_hero_rattletrap",0,0)
+        UTIL_Remove(wisp)
 
         InitAbilities(newHero)
 
@@ -229,6 +233,7 @@ function GameMode:OnHeroInGame(pID, team)
      function() 
         -- self.playerQueue()
         newHero = PlayerResource:ReplaceHeroWith(pID,petrosyanHeroName,0,0)
+        UTIL_Remove(wisp)
 
         -- It's dangerous to go alone, take this
         newHero:SetAbilityPoints(4)

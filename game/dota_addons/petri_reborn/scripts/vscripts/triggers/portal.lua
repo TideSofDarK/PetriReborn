@@ -102,6 +102,14 @@ end
 
 function CheckBoss(trigger, activator)
 	local triggerName = trigger:GetName ()
+	if string.match(triggerName, "2portal_brewmaster_in_portalboss1") or string.match(triggerName, "2portal_death_prophet_in_portalboss1") or string.match(triggerName, "2portal_storm_spirit_in_portalboss1") then
+		if GameMode.PETRI_TRUE_TIME > 480 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000 then 
+			return false 
+		else 
+			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_1_notification", duration=4, style={color="white", ["font-size"]="45px"}})
+			return true 
+		end
+	end
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss2") or string.match(triggerName, "2portal_death_prophet_in_portalboss2") or string.match(triggerName, "2portal_storm_spirit_in_portalboss2") then
 		if GameMode.PETRI_TRUE_TIME > 1200 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000 then 
 			return false 
