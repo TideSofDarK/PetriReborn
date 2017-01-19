@@ -103,7 +103,7 @@ end
 function CheckBoss(trigger, activator)
 	local triggerName = trigger:GetName ()
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss1") or string.match(triggerName, "2portal_death_prophet_in_portalboss1") or string.match(triggerName, "2portal_storm_spirit_in_portalboss1") then
-		if GameMode.PETRI_TRUE_TIME > 480 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000 then 
+		if activator:GetLevel() >= 20 and (GameMode.PETRI_TRUE_TIME > 480 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000) then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_1_notification", duration=4, style={color="white", ["font-size"]="45px"}})
@@ -111,7 +111,7 @@ function CheckBoss(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss2") or string.match(triggerName, "2portal_death_prophet_in_portalboss2") or string.match(triggerName, "2portal_storm_spirit_in_portalboss2") then
-		if GameMode.PETRI_TRUE_TIME > 1200 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000 then 
+		if activator:GetLevel() >= 30 and (GameMode.PETRI_TRUE_TIME > 1200 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000) then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_2_notification", duration=4, style={color="white", ["font-size"]="45px"}})
@@ -119,7 +119,7 @@ function CheckBoss(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss3") or string.match(triggerName, "2portal_death_prophet_in_portalboss3") or string.match(triggerName, "2portal_storm_spirit_in_portalboss3") then
-	if GameMode.PETRI_TRUE_TIME > 1680 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 9000000000 then 
+		if activator:GetLevel() >= 30 and (GameMode.PETRI_TRUE_TIME > 1680 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 9000000000) then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_3_notification", duration=4, style={color="white", ["font-size"]="45px"}})
@@ -127,7 +127,7 @@ function CheckBoss(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss4") or string.match(triggerName, "2portal_death_prophet_in_portalboss4") or string.match(triggerName, "2portal_storm_spirit_in_portalboss4") then
-		if GameMode.PETRI_TRUE_TIME > 2160 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000 then 
+		if activator:GetLevel() >= 30 and (GameMode.PETRI_TRUE_TIME > 2160 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000) then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_4_notification", duration=4, style={color="white", ["font-size"]="45px"}})
@@ -135,8 +135,7 @@ function CheckBoss(trigger, activator)
 		end
 	end
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss5") or string.match(triggerName, "2portal_death_prophet_in_portalboss5") or string.match(triggerName, "2portal_storm_spirit_in_portalboss5") then
-		if GameMode.PETRI_TRUE_TIME > 2640 
-			or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 90000000000 then 
+		if activator:GetLevel() >= 30 and (GameMode.PETRI_TRUE_TIME > 2640 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 90000000000) then 
 			return false 
 		else 
 			Notifications:TopToTeam(DOTA_TEAM_BADGUYS, {text="#boss_5_notification", duration=4, style={color="white", ["font-size"]="45px"}})

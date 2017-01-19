@@ -7,6 +7,38 @@
 	    while(parent.id != "Hud")
 	        parent = parent.GetParent();
 
+	    var radar = parent.FindChildTraverse("lower_hud").FindChildTraverse("RadarButton");
+	    radar.FindChildTraverse("RadarIcon").style.backgroundImage = "url(\"s2r://panorama/images/hud/reborn/icon_scan_on_psd.vtex\");";
+	    radar.FindChildTraverse("CooldownCover").visible = false;
+	    radar.FindChildTraverse("RadarIcon").SetPanelEvent("onactivate", function () {
+	    	var queryUnit = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+			for ( var i = 0; i < 23; ++i )
+			{
+				var ability = Entities.GetAbility( queryUnit, i );
+				if ( ability == -1 )
+					continue;
+				
+				if (Abilities.GetAbilityName(ability) == "petri_exploration_tower_explore_world")
+				{
+					Abilities.ExecuteAbility(ability, queryUnit, false)
+					return;
+				}
+			}
+	    })
+	    radar.SetPanelEvent('onmouseover', function() {
+	    	
+	    	var queryUnit = Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() );
+	    	if (Entities.GetTeamNumber( queryUnit ) == 3) {
+		        var ability = "petri_exploration_tower_explore_world";
+
+		        $.DispatchEvent('DOTAShowAbilityTooltip', radar, ability);
+	    	}
+	    });
+	    radar.SetPanelEvent('onmouseout', function() {
+	        $.DispatchEvent('DOTAHideAbilityTooltip');
+	        $.DispatchEvent('DOTAHideTitleTextTooltip');
+	    });
+
 	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").enabled = false;
 	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").visible = false;
 
@@ -76,6 +108,7 @@
 
 	(function () {
 		GameUI.CustomUIConfig().Hack = Hack;
+		Hack();
 	})();
 	</script>
 	<Panel hittest="false" class="Root">

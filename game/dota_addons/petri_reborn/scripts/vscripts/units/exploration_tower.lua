@@ -6,6 +6,7 @@ function ExploreWorld(keys)
 	local ability_level = ability:GetLevel() - 1
 
 	if SpendCustomGold( player, GetAbilityGoldCost( ability ) ) == false then
+		ability:EndCooldown()
 		return
 	end
 

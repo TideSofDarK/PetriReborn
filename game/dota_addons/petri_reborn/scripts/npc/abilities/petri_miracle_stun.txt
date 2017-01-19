@@ -47,7 +47,7 @@
         "01"
         {
             "var_type"              "FIELD_FLOAT"
-            "bolt_stun_duration"    "3.0"
+            "bolt_stun_duration"    "6.0"
         }
         "02"
         {

@@ -678,6 +678,20 @@ function GameMode:ReplaceWithMiniActor(player, gold)
         end
       end
 
+      if newHero then
+        EasyTimers:CreateTimer(function()
+          local abilities = newHero:GetAbilityCount() - 1
+          for i = 0, abilities do
+            if newHero:GetAbilityByIndex(i) then
+              if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                  newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                  newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+              end
+            end
+          end
+        end, DoUniqueString('fixHotKey'), 2)
+      end
+
       Timers:CreateTimer(0.03, function ()
         newHero.spawnPosition = newHero:GetAbsOrigin()
       end)
@@ -704,16 +718,16 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
       end
 
       for k2,v2 in pairs(v) do
-        if v2 ~= "model" then
-          Attachments:AttachProp(hero, v2, k2, nil)
+        if v2 == "wearable" then
+          Wearables:AttachWearable(hero, k2)
         end
       end
 
-      for k1,v1 in pairs(hero:GetChildren()) do
-        if v1:GetClassname() == "dota_item_wearable" then
-          v1:AddEffects(EF_NODRAW) 
-        end
-      end
+      -- for k1,v1 in pairs(hero:GetChildren()) do
+      --   if v1:GetClassname() == "dota_item_wearable" then
+      --     v1:AddEffects(EF_NODRAW) 
+      --   end
+      -- end
 
       return true
     end
@@ -728,40 +742,16 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
     end
 
     for k2,v2 in pairs(GameMode.CustomSkinsKVs[key][localization]) do
-      if v2 ~= "model" then
-        Attachments:AttachProp(hero, v2, k2, nil)
+      if v2 == "wearable" then
+        Wearables:AttachWearable(hero, k2)
       end
     end
 
-    for k2,v2 in pairs(hero:GetChildren()) do
-      if v2:GetClassname() == "dota_item_wearable" then
-        v2:AddEffects(EF_NODRAW) 
-      end
-    end
-
-    if hero:GetUnitName() == "npc_dota_hero_brewmaster" then
-      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_arms/reddragon_arms.vmdl")
-      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_back/reddragon_back.vmdl")
-      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_offhand/reddragon_offhand.vmdl")
-      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_shoulder/reddragon_shoulder.vmdl")
-      Wearables:AttachWearable(hero, "models/items/brewmaster/reddragon_weapon/reddragon_weapon.vmdl")
-    elseif hero:GetUnitName() == "npc_dota_hero_death_prophet" then
-      Wearables:AttachWearable(hero, "models/items/death_prophet/fatal_blossom_nails/fatal_blossom_nails.vmdl")
-      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_armor/burial_robes_armor.vmdl")
-      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_belt/burial_robes_belt.vmdl")
-      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_legs/burial_robes_legs.vmdl")
-      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_head/burial_robes_head.vmdl")
-      Wearables:AttachWearable(hero, "models/items/death_prophet/burial_robes_vortex/burial_robes_vortex.vmdl")
-    elseif hero:GetUnitName() == "npc_dota_hero_rattletrap" then
-      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_helm/forge_warrior_helm.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_claw/forge_warrior_claw.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_rocket_cannon/forge_warrior_rocket_cannon.vmdl")
-      Wearables:AttachWearable(hero, "models/items/rattletrap/forge_warrior_steam_exoskeleton/forge_warrior_steam_exoskeleton.vmdl")
-    elseif hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
-      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_armor/raikage_ares_armor.vmdl")
-      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_arms/raikage_ares_arms.vmdl")
-      Wearables:AttachWearable(hero, "models/items/storm_spirit/raikage_ares_head/raikage_ares_head.vmdl")
-    end
+    -- for k2,v2 in pairs(hero:GetChildren()) do
+    --   if v2:GetClassname() == "dota_item_wearable" then
+    --     v2:AddEffects(EF_NODRAW) 
+    --   end
+    -- end
   end
 end
 

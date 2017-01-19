@@ -123,6 +123,8 @@ function OpenQuickbuy(itemname) {
 		}
 
 		CreateItem($("#ShopQuickbuy"), recipeName)
+	} else {
+		CreateItem($("#ShopQuickbuy"), itemname)
 	}
 }
 
@@ -152,7 +154,9 @@ function OpenRecipe(itemname) {
 		CreateItem($("#ShopRecipeContainer"), recipeName)
 	}
 	else {
-		$("#ShopRecipeLabel").visible = true;
+		$("#ShopRecipeLabel").visible = false;
+		CreateItem($("#ShopRecipeContainer"), itemname)
+		// $("#ShopRecipeLabel").visible = true;
 	}
 }
 
@@ -204,6 +208,23 @@ function ShopStock(table_name, key, data) {
 }
 
 function ChangeTeam(args) {
+	for (var key in $("#ShopRecipeContainer").Children()) {
+		var child = $("#ShopRecipeContainer").Children()[key];
+		if (child == selectedItem) {
+			selectedItem = undefined;
+		}
+		child.RemoveAndDeleteChildren();
+		child.DeleteAsync(0.0);
+	}
+	
+	for (var key in $("#ShopQuickbuy").Children()) {
+		var child = $("#ShopQuickbuy").Children()[key];
+		if (child == selectedItem) {
+			selectedItem = undefined;
+		}
+		child.RemoveAndDeleteChildren();
+		child.DeleteAsync(0.0);
+	}
 	SetupItems(args.team, args.hero);
 }
 

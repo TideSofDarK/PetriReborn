@@ -18,7 +18,7 @@ function BonusGoldFromWall(keys)
 	end
 
 	if target:HasAbility("petri_creep_pendant") == true 
-	and caster:GetAverageTrueAttackDamage(caster) >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) then
+	and caster:GetAverageTrueAttackDamage(caster) >= target:FindAbilityByName("petri_creep_pendant"):GetLevelSpecialValueFor( "damage", -1 ) and math.floor(GameMode.PETRI_TRUE_TIME/60) >= 48 then
 		if caster:HasModifier("modifier_bonus_damage") then
 			caster:RemoveModifierByName("modifier_bonus_damage")
 		end
@@ -89,8 +89,10 @@ function FlatJoke( keys )
 	local target = keys.target
 	local ability = keys.ability
 
-	ability:StartCooldown(ability:GetCooldown(ability:GetLevel()))
-	Timers:CreateTimer(ability:GetCooldown(ability:GetLevel()), function (  )
+	local cooldown = ability:GetCooldown(ability:GetLevel()-1)
+
+	ability:StartCooldown(cooldown)
+	Timers:CreateTimer(cooldown, function (  )
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_flat_joke_datadriven",{})
 	end)
 end

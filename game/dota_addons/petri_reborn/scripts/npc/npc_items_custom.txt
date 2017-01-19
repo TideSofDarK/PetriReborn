@@ -335,7 +335,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "attack_percentage_bonus"     "80"
+	      "attack_percentage_bonus"     "90"
 	    }
 	    "02"
 	    {
@@ -345,7 +345,7 @@
 	    "03"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "duration"     "10"
+	      "duration"     "15"
 	    }
 	  }
 	
@@ -2724,7 +2724,7 @@
 	    "12"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "dodge_chance"     "20"
+	      "dodge_chance"     "30"
 	    }
 	    "13"
 	    {
@@ -3567,7 +3567,7 @@
 	    "01"
 	    {
 	      "var_type"        "FIELD_INTEGER"
-	      "bonus_health"      "200000"
+	      "bonus_health"      "120000"
 	    }
 	    "02"
 	    {
@@ -4306,7 +4306,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "855000"
+	  "ItemCost"            "825000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -4780,7 +4780,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "custom/petri_kvn_medal"
 	
-	  "ItemCost"            "20000"
+	  "ItemCost"            "50000"
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"

@@ -283,7 +283,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "855000"
+  "ItemCost"            "825000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
