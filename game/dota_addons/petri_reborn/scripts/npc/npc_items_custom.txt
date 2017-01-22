@@ -6980,14 +6980,14 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "400000"
+	  "ItemCost"            "800000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
 	  "ItemResult"          "item_petri_trident"
 	  "ItemRequirements"
 	  {
-	    "01"            "item_petri_thunder;item_petri_thunder;item_petri_thunder"
+	    "01"            "item_petri_thunder"
 	  }
 	}
 	"item_petri_trap"
