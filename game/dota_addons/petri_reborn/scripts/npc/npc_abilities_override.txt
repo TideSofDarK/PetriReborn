@@ -1,6 +1,16 @@
 "DOTAAbilities"
 {
-  "Version"   "1"
+  "special_bonus_mp_regen_3"
+  {
+    "AbilitySpecial"
+    {
+      "01"
+      {
+        "var_type"          "FIELD_INTEGER"
+        "value"       "0"
+      }
+    }
+  }
 
   "item_petri_candy" "REMOVE"
   "item_petri_candy_1_kvn" "REMOVE"
