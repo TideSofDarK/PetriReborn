@@ -53,6 +53,7 @@
 
 
 	    GameUI.CustomUIConfig().abilities = center_block.FindChildTraverse("abilities");
+	    GameUI.CustomUIConfig().abilities.style.marginBottom = "0px;";
 
 	    var hide = function () {
 	    		for (var c in GameUI.CustomUIConfig().abilities.Children()) {
