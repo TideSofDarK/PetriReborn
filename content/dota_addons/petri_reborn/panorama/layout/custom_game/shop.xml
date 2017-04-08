@@ -79,5 +79,8 @@
     <Panel id="ShopQuickbuy" class="">
 
     </Panel>  
+    <Button id="ReApplySkin" onactivate="ReApplySkin()">
+      <Label class="ShopTabText" text="R"/>
+    </Button>  
   </Panel>
 </root>

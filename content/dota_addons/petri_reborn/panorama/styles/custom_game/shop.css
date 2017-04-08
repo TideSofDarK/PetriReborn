@@ -245,3 +245,19 @@
 
 	margin: 4px;
 }
+
+#ReApplySkin {
+	width: 24px;
+	height: 24px;
+
+	align: right bottom;
+
+	margin: 9px;
+	margin-bottom: 120px;
+
+	background-color: #353A3EAA;
+}
+
+#ReApplySkin:hover {
+	brightness: 2.0;
+}

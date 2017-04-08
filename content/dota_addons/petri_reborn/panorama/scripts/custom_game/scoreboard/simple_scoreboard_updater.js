@@ -1,5 +1,20 @@
 "use strict";
 
+(function () {
+	GameEvents.Subscribe("petri_set_icon", function (args) {
+		var playerPanel = $.GetContextPanel().GetParent().FindChild( "_dynamic_player_" + args.pID )
+		var playerPortrait = playerPanel.FindChildTraverse( "HeroIcon" );
+		if ( playerPortrait )
+		{
+			if ( args.hero !== "" )
+			{
+				playerPortrait.custom = true;
+				playerPortrait.SetImage( "file://{images}/heroes/" + args.hero + ".png" );
+			}
+		}
+	})
+})();
+
 //=============================================================================
 //=============================================================================
 function _ScoreboardUpdater_SetTextSafe( panel, childName, textValue )
@@ -64,7 +79,7 @@ function _ScoreboardUpdater_UpdatePlayerPanel( scoreboardConfig, playersContaine
 		_ScoreboardUpdater_SetTextSafe( playerPanel, "Assists", playerInfo.player_assists );
 
 		var playerPortrait = playerPanel.FindChildInLayoutFile( "HeroIcon" );
-		if ( playerPortrait )
+		if ( playerPortrait && !playerPortrait.custom )
 		{
 			if ( playerInfo.player_selected_hero !== "" )
 			{

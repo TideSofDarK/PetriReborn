@@ -228,6 +228,10 @@ function ChangeTeam(args) {
 	SetupItems(args.team, args.hero);
 }
 
+function ReApplySkin() {
+	GameEvents.SendCustomGameEventToServer("petri_reapplyskin", {})
+}
+
 (function () {
 	GameEvents.Subscribe("petri_team", ChangeTeam);
 	CustomNetTables.SubscribeNetTableListener("shop", ShopStock)

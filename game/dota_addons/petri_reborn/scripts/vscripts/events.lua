@@ -140,13 +140,12 @@ function GameMode:OnPlayerReconnect(keys)
         --Send special values
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_set_special_values_table", GameMode.specialValues )
 
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_close_spawning", { state = false } )
+
         --Set correct team
         if hero:GetUnitName() == "npc_dota_hero_storm_spirit" then
           player:SetTeam(hero:GetTeamNumber())
         end
-       
-        SendToServerConsole( "dota_combine_models 0" )
-        SendToConsole( "dota_combine_models 0" )
       end)
     else
       return 0.03

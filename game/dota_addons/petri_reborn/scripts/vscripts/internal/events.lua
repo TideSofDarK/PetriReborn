@@ -7,56 +7,61 @@ function GameMode:_OnGameRulesStateChange(keys)
     GameMode:OnAllPlayersLoaded()
   elseif newState == DOTA_GAMERULES_STATE_HERO_SELECTION then
     GameMode:PostLoadPrecache()
-
-    -- self.spawnQueueID = -1
-
-    -- self.spawnDelay = 2.25
-
-    -- EasyTimers:CreateTimer(function()
-    --   PauseGame(true)
-    --   self.playerQueue = function ()
-    --       self.spawnQueueID = self.spawnQueueID + 1
-
-    --       -- Update queue info
-    --       CustomGameEventManager:Send_ServerToAllClients("petri_spawning_queue", {queue = self.spawnQueueID})
-
-    --       -- End pause if every player is checked
-    --       if self.spawnQueueID > 24 then
-    --           self.spawnQueueID = nil
-    --           self.heroesSpawned = true
-    --           PauseGame(false)
-    --           return
-    --       end
-
-    --       if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
-    --         self.playerQueue()
-    --         return
-    --       end
-
-    --       -- Keep spawning
-    --       EasyTimers:CreateTimer(function()
-    --         -- Skip disconnected players
-    --         if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
-    --             self.playerQueue()
-    --             return
-    --         else
-    --             local color = PLAYER_COLORS[self.spawnQueueID]
-    --             if color then
-    --               PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
-    --             end
-    --             GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
-    --             return
-    --         end
-    --       end, DoUniqueString('spawning'), self.spawnDelay)
-    --   end
-
-    --   self.playerQueue()
-    -- end, 'spawning_start', 1.0)
   elseif newState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
     GameMode:OnGameInProgress()
 
-    SendToServerConsole( "dota_combine_models 0" )
-    SendToConsole( "dota_combine_models 0" )
+    self.spawnQueueID = -1
+
+    self.spawnDelay = 2.25
+
+    EasyTimers:CreateTimer(function()
+      if not self.heroesSpawned then
+        PauseGame(true)
+        return 0.03
+      else
+        PauseGame(false)
+      end
+    end, 'auto_pause', 0.03)
+
+    EasyTimers:CreateTimer(function()
+      PauseGame(true)
+      self.playerQueue = function ()
+          self.spawnQueueID = self.spawnQueueID + 1
+
+          -- Update queue info
+          CustomGameEventManager:Send_ServerToAllClients("petri_spawning_queue", {queue = self.spawnQueueID})
+
+          -- End pause if every player is checked
+          if self.spawnQueueID > 24 then
+              self.spawnQueueID = nil
+              self.heroesSpawned = true
+              return
+          end
+
+          if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
+            self.playerQueue()
+            return
+          end
+
+          -- Keep spawning
+          EasyTimers:CreateTimer(function()
+            -- Skip disconnected players
+            if PlayerResource:GetConnectionState(self.spawnQueueID) < 1 then
+                self.playerQueue()
+                return
+            else
+                local color = PLAYER_COLORS[self.spawnQueueID]
+                if color then
+                  PlayerResource:SetCustomPlayerColor(self.spawnQueueID, color[1], color[2], color[3])
+                end
+                GameMode:CreateHero(self.spawnQueueID, self.playerQueue)
+                return
+            end
+          end, DoUniqueString('spawning'), self.spawnDelay)
+      end
+
+      self.playerQueue()
+    end, 'spawning_start', 1.0)
   end
 end
 
@@ -66,12 +71,12 @@ function GameMode:_OnNPCSpawned(keys)
 
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
     npc.bFirstSpawned = true
-    GameMode.spawnedArray = GameMode.spawnedArray or {}
+    -- GameMode.spawnedArray = GameMode.spawnedArray or {}
 
-    if not GameMode.spawnedArray[npc:GetPlayerID()] then
-      GameMode:OnHeroInGame(npc:GetPlayerID(), npc:GetTeamNumber(), npc)
-      GameMode.spawnedArray[npc:GetPlayerID()] = true
-    end
+    -- if not GameMode.spawnedArray[npc:GetPlayerID()] then
+    --   GameMode:OnHeroInGame(npc:GetPlayerID(), npc:GetTeamNumber(), npc)
+    --   GameMode.spawnedArray[npc:GetPlayerID()] = true
+    -- end
   end
 end
 

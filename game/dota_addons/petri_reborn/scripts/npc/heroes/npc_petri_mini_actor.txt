@@ -3,6 +3,7 @@
   "override_hero"     "npc_dota_hero_storm_spirit"
 
   "NoCombine"   "1"
+  "DisableWearables" "1" 
 
   "HasInventory"          "1"
 
@@ -16,6 +17,14 @@
   "Ability6"        "petri_mini_actor_phase"
   "Ability7"        "attribute_bonus"
   "Ability8"        "petri_petrosyan_passive"
+  "Ability10"   "special_bonus_attack_damage_20"
+  "Ability11"   "special_bonus_mp_regen_3"
+  "Ability12"   "special_bonus_hp_200"
+  "Ability13"   "special_bonus_intelligence_10"
+  "Ability14"   "special_bonus_attack_speed_40"
+  "Ability15"   "special_bonus_armor_8"
+  "Ability16"   "special_bonus_spell_amplify_10"
+  "Ability17"   "special_bonus_unique_storm_spirit"
 
   "ArmorPhysical"       "0"                 
   "MagicalResistance"       "0"

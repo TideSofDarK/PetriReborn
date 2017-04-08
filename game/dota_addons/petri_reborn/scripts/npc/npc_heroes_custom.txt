@@ -5,6 +5,7 @@
 	  "override_hero"     "npc_dota_hero_death_prophet"
 	
 	  "NoCombine"   "1"
+	  "DisableWearables" "1" 
 	
 	  "HealthBarOffset"    "275"
 	
@@ -21,6 +22,14 @@
 	  "Ability6"        "petri_petrosyan_return"
 	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
+	  "Ability10"   "special_bonus_spell_amplify_4"
+	  "Ability11"   "special_bonus_magic_resistance_8"
+	  "Ability12"   "special_bonus_unique_death_prophet_2"
+	  "Ability13"   "special_bonus_cast_range_100"
+	  "Ability14"   "special_bonus_cooldown_reduction_10"
+	  "Ability15"   "special_bonus_movement_speed_25"
+	  "Ability16"   "special_bonus_hp_400"
+	  "Ability17"   "special_bonus_unique_death_prophet"
 	
 	  "ArmorPhysical"       "0"                 
 	  "MagicalResistance"       "0"
@@ -66,7 +75,7 @@
 	    "DisableClumpingBehavior" "1" 
 	  }         
 	}
-	"npc_petri_elena"
+	"npc_petri_io"
 	{
 	  "override_hero"     "npc_dota_hero_wisp"
 	  "Ability1"        "petri_hide_io"       
@@ -76,6 +85,7 @@
 	  "override_hero"     "npc_dota_hero_rattletrap"
 	
 	  "NoCombine"   "1"
+	  "DisableWearables" "1" 
 	
 	  "HealthBarOffset"    "240"
 	
@@ -90,6 +100,14 @@
 	  "Ability5"        "petri_kvn_fan_deny"
 	  "Ability6"        "petri_empty1"
 	  "Ability7"        "return_resources"
+	  "Ability10"   "special_bonus_armor_4"
+	  "Ability11"   "special_bonus_mp_200"
+	  "Ability12"   "special_bonus_attack_damage_50"
+	  "Ability13"   "special_bonus_unique_clockwerk_2"
+	  "Ability14"   "special_bonus_respawn_reduction_25"
+	  "Ability15"   "special_bonus_magic_resistance_12"
+	  "Ability16"   "special_bonus_hp_400"
+	  "Ability17"   "special_bonus_unique_clockwerk"
 	  
 	  "ArmorPhysical"       "0"
 	  "MagicalResistance"       "0"
@@ -140,6 +158,7 @@
 	  "override_hero"     "npc_dota_hero_storm_spirit"
 	
 	  "NoCombine"   "1"
+	  "DisableWearables" "1" 
 	
 	  "HasInventory"          "1"
 	
@@ -153,6 +172,14 @@
 	  "Ability6"        "petri_mini_actor_phase"
 	  "Ability7"        "attribute_bonus"
 	  "Ability8"        "petri_petrosyan_passive"
+	  "Ability10"   "special_bonus_attack_damage_20"
+	  "Ability11"   "special_bonus_mp_regen_3"
+	  "Ability12"   "special_bonus_hp_200"
+	  "Ability13"   "special_bonus_intelligence_10"
+	  "Ability14"   "special_bonus_attack_speed_40"
+	  "Ability15"   "special_bonus_armor_8"
+	  "Ability16"   "special_bonus_spell_amplify_10"
+	  "Ability17"   "special_bonus_unique_storm_spirit"
 	
 	  "ArmorPhysical"       "0"                 
 	  "MagicalResistance"       "0"
@@ -197,6 +224,7 @@
 	  "override_hero"     "npc_dota_hero_brewmaster"
 	
 	  "NoCombine"   "1"
+	  "DisableWearables" "1" 
 	
 	  "HealthBarOffset"    "275"
 	
@@ -213,6 +241,14 @@
 	  "Ability6"        "petri_petrosyan_return"
 	  "Ability7"        "petri_petrosyan_passive"
 	  "Ability8"        "petri_exploration_tower_explore_world"
+	  "Ability10"   "special_bonus_attack_speed_30"
+	  "Ability11"   "special_bonus_mp_regen_3"
+	  "Ability12"   "special_bonus_unique_brewmaster_2"
+	  "Ability13"   "special_bonus_magic_resistance_10"
+	  "Ability14"   "special_bonus_respawn_reduction_35"
+	  "Ability15"   "special_bonus_strength_20"
+	  "Ability16"   "special_bonus_attack_damage_75"
+	  "Ability17"   "special_bonus_unique_brewmaster"
 	
 	  "ArmorPhysical"       "0"                 
 	  "MagicalResistance"       "0"

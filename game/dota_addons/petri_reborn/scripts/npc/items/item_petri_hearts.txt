@@ -87,7 +87,7 @@
   "Model" "models/props_gameplay/recipe.mdl"
   "AbilityTextureName"      "item_recipe"
 
-  "ItemCost"            "1800"
+  "ItemCost"            "2000"
   "ItemShopTags"          ""
 
   "ItemRecipe"          "1"
@@ -338,6 +338,11 @@
       "var_type"        "FIELD_FLOAT"
       "health_per_second"   "666666"
     }
+    "05"
+    {
+      "var_type"        "FIELD_FLOAT"
+      "bonus_evasion"   "10"
+    }
   }
 
   "OnSpellStart"
@@ -351,6 +356,17 @@
   
   "Modifiers"
   {
+    "modifier_item_petri_kvn_heart_evasion"
+    {
+      "Passive"     "1"
+      "IsHidden"      "1"
+      
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%bonus_evasion"
+      }
+    }
+    
     "modifier_item_petri_kvn_heart"
     {
       "Passive"     "1"

@@ -4,7 +4,16 @@
 	flow-children: right;
 	z-index: 5;
 
-	margin-top: 200px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 230px;
+
+	/*margin-top: 200px;*/
+}
+
+.AbilityTooltipRoot.Hide {
+	visibility: collapse;
+	opacity: 0.0;
 }
 
 #AbilityTooltip

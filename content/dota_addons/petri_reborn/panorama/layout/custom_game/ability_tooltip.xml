@@ -6,7 +6,7 @@
   <scripts>
     <include src="file://{resources}/scripts/custom_game/ability_tooltip.js" />
   </scripts>
-  <Panel hittest="false" class="AbilityTooltipRoot">
+  <Panel hittest="false" class="AbilityTooltipRoot Hide">
 
     <Panel hittest="false" class="rounded z-index1" id="AbilityTooltip">
       <Panel class="DarkTheme Cards z-index1" id="Header">

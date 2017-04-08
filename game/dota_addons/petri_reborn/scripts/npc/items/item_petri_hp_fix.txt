@@ -1,0 +1,34 @@
+"item_petri_hp_fix"
+{
+  "ID"              "6543"
+  "BaseClass"                 "item_datadriven"
+  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+  "Model"             "models/props_gameplay/red_box.vmdl" 
+  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+  "AbilityTextureName"      "custom/petri_gold_bag"
+
+  "ItemCost"            "88888"
+  "ItemQuality"         "consumable"
+  "ItemAliases"         "bag"
+  "ItemInitialCharges"  "1"
+  "ItemStackable"       "0"
+  "ItemPermanent"       "0"
+  "ItemSellable"        "0"
+
+  "Modifiers"
+  {
+    "modifier_hp_hack"
+    {
+      "Passive"      "1"
+      "IsHidden"      "1"
+      "IsDebuff"      "0"
+    
+      "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+
+      "Properties"
+      {
+        "MODIFIER_PROPERTY_HEALTH_BONUS" "-400"
+      }
+    }
+  }
+}

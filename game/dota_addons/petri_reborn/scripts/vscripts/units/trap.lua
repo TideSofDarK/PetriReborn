@@ -17,6 +17,9 @@ function AddTrap(event)
 			RemoveInvuModifiers(target)
 
 			ability:ApplyDataDrivenModifier(caster, target, "modifier_techies_stasis_trap_stunned", { duration = 5})
+			target:AddNewModifier(target,ability,"modifier_disarmed", { duration = 5})
+			target:AddNewModifier(target,ability,"modifier_silence", { duration = 5})
+			
 			
 			DestroyEntityBasedOnHealth(caster,caster)
 		end

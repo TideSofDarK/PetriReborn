@@ -3433,7 +3433,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "1800"
+	  "ItemCost"            "2000"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"
@@ -3684,6 +3684,11 @@
 	      "var_type"        "FIELD_FLOAT"
 	      "health_per_second"   "666666"
 	    }
+	    "05"
+	    {
+	      "var_type"        "FIELD_FLOAT"
+	      "bonus_evasion"   "10"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -3697,6 +3702,17 @@
 	  
 	  "Modifiers"
 	  {
+	    "modifier_item_petri_kvn_heart_evasion"
+	    {
+	      "Passive"     "1"
+	      "IsHidden"      "1"
+	      
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_EVASION_CONSTANT" "%bonus_evasion"
+	      }
+	    }
+	    
 	    "modifier_item_petri_kvn_heart"
 	    {
 	      "Passive"     "1"
@@ -3805,6 +3821,10 @@
 	  "ItemAliases"         "hook"
 	  "ItemSellable"  "0"
 	  "SecretShop" "1"
+	  
+	  "ItemStockMax" "10" 
+	  "ItemStockTime" "1680"
+	  "ItemStockInitial" "0"
 	  
 	  "precache"
 	  {
@@ -3987,6 +4007,40 @@
 	        "MODIFIER_STATE_NO_HEALTH_BAR"  "MODIFIER_STATE_VALUE_ENABLED"        
 	        "MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
 	        "MODIFIER_STATE_UNSELECTABLE"   "MODIFIER_STATE_VALUE_ENABLED"
+	      }
+	    }
+	  }
+	}
+	"item_petri_hp_fix"
+	{
+	  "ID"              "6543"
+	  "BaseClass"                 "item_datadriven"
+	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	  "Model"             "models/props_gameplay/red_box.vmdl" 
+	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
+	  "AbilityTextureName"      "custom/petri_gold_bag"
+	
+	  "ItemCost"            "88888"
+	  "ItemQuality"         "consumable"
+	  "ItemAliases"         "bag"
+	  "ItemInitialCharges"  "1"
+	  "ItemStackable"       "0"
+	  "ItemPermanent"       "0"
+	  "ItemSellable"        "0"
+	
+	  "Modifiers"
+	  {
+	    "modifier_hp_hack"
+	    {
+	      "Passive"      "1"
+	      "IsHidden"      "1"
+	      "IsDebuff"      "0"
+	    
+	      "Attributes"    "MODIFIER_ATTRIBUTE_PERMANENT"
+	
+	      "Properties"
+	      {
+	        "MODIFIER_PROPERTY_HEALTH_BONUS" "-400"
 	      }
 	    }
 	  }
@@ -4780,7 +4834,7 @@
 	  "Effect"            "particles/generic_gameplay/dropped_item.vpcf"
 	  "AbilityTextureName"      "custom/petri_kvn_medal"
 	
-	  "ItemCost"            "50000"
+	  "ItemCost"            "15000"
 	  "ItemShopTags"          "hard_to_tag"
 	  "ItemQuality"         "component"
 	  "ItemAliases"         "kvn medal"
@@ -5094,7 +5148,7 @@
 	  "Model" "models/props_gameplay/recipe.mdl"
 	  "AbilityTextureName"      "item_recipe"
 	
-	  "ItemCost"            "16500"
+	  "ItemCost"            "4900"
 	  "ItemShopTags"          ""
 	
 	  "ItemRecipe"          "1"

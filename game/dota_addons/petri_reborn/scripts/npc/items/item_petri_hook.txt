@@ -16,6 +16,10 @@
   "ItemSellable"  "0"
   "SecretShop" "1"
   
+  "ItemStockMax" "10" 
+  "ItemStockTime" "1680"
+  "ItemStockInitial" "0"
+  
   "precache"
   {
     "soundfile"     "soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"

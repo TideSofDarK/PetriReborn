@@ -1,4 +1,4 @@
-"npc_petri_elena"
+"npc_petri_io"
 {
   "override_hero"     "npc_dota_hero_wisp"
   "Ability1"        "petri_hide_io"       

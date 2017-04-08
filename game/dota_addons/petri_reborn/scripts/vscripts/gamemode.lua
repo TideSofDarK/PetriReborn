@@ -89,6 +89,8 @@ require('internal/gamemode')
 
 require('easytimers')
 
+require('internal/modifier_model_change')
+
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")
 end
@@ -99,29 +101,6 @@ end
 
 function GameMode:OnAllPlayersLoaded()
   DebugPrint("[BAREBONES] All Players have loaded into the game")
-
-  -- for pID = 0, DOTA_MAX_PLAYERS do
-  --   if IsValidPlayerID(pID) then
-  --     PrecacheUnitByNameAsync("npc_dota_hero_death_prophet",
-  --     function()
-  --       for pID = 0, DOTA_MAX_PLAYERS do
-  --         if IsValidPlayerID(pID) then
-  --           PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-  --           function()
-  --             for pID = 0, DOTA_MAX_PLAYERS do
-  --               if IsValidPlayerID(pID) then
-  --                 PrecacheUnitByNameAsync("npc_dota_hero_brewmaster",
-  --                 function()
-
-  --                 end, pID)
-  --               end
-  --             end
-  --           end, pID)
-  --         end
-  --       end
-  --     end, pID)
-  --   end
-  -- end
 end
 
 function GameMode:AddItems( newHero )
@@ -139,11 +118,18 @@ function GameMode:AddItems( newHero )
   end
 end
 
-function GameMode:OnHeroInGame(pID, team, wisp)
+function GameMode:CreateHero(pID, callback)
   GameMode.assignedPlayerHeroes = GameMode.assignedPlayerHeroes or {}
   
   local player = PlayerResource:GetPlayer(pID)
-  local team = team
+  if not player then
+    callback()
+  end
+  local team = player:GetTeam()
+  local wisp = player:GetAssignedHero()
+  if not IsValidEntity(wisp) then
+    callback()
+  end
 
   local newHero
 
@@ -153,20 +139,21 @@ function GameMode:OnHeroInGame(pID, team, wisp)
    -- Init kvn fan
   if team == 2 then
     -- UTIL_Remove(hero) 
-    PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-      function() 
+    -- PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+    --   function() 
         -- self.playerQueue()
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
         newHero = PlayerResource:ReplaceHeroWith(pID,"npc_dota_hero_rattletrap",0,0)
-        UTIL_Remove(wisp)
+        -- UTIL_Remove(wisp)
 
         InitAbilities(newHero)
 
-        newHero:SetAbilityPoints(0)
+        -- newHero:SetAbilityPoints(0)
+        -- local item = CreateItem("item_petri_hp_fix",newHero,newHero)
+        -- item:ApplyDataDrivenModifier(newHero,newHero,"modifier_hp_hack",{})
 
-
-        PrintTable(GameMode.KVN_BONUS_ITEM[pID])
+        -- PrintTable(GameMode.KVN_BONUS_ITEM[pID])
 
         if GameMode.KVN_BONUS_ITEM[pID] then
           for k,v in pairs(GameMode.KVN_BONUS_ITEM[pID]) do
@@ -194,29 +181,33 @@ function GameMode:OnHeroInGame(pID, team, wisp)
         newHero.kvnScore = 0
 
         Timers:CreateTimer(function (  )
-          GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "kvn")
+          newHero.key = "kvn"
+          GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), newHero.key)
           SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
         end)
 
         if newHero then
-          -- EasyTimers:CreateTimer(function()
-          --   local abilities = newHero:GetAbilityCount() - 1
-          --   for i = 0, abilities do
-          --     if newHero:GetAbilityByIndex(i) then
-          --       if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
-          --           newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
-          --           newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
-          --       end
-          --     end
-          --   end
-          -- end, DoUniqueString('fixHotKey'), 2)
+          EasyTimers:CreateTimer(function()
+            local abilities = newHero:GetAbilityCount() - 1
+            for i = 0, abilities do
+              if newHero:GetAbilityByIndex(i) then
+                if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                    newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                    newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+                end
+              end
+            end
+          end, DoUniqueString('fixHotKey'), 2)
         end
 
         table.insert(GameMode.kvns, newHero)
 
         GameMode:AddItems( newHero )
-      end, 
-    pID)
+
+        callback()
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_close_spawning", { state = false } )
+    --   end, 
+    -- pID)
 
     return
   end
@@ -229,11 +220,11 @@ function GameMode:OnHeroInGame(pID, team, wisp)
    -- Init petrosyan
   if team == 3 then
     -- UTIL_Remove(hero) 
-    PrecacheUnitByNameAsync(petrosyanHeroName,
-     function() 
+    -- PrecacheUnitByNameAsync(petrosyanHeroName,
+    --  function() 
         -- self.playerQueue()
         newHero = PlayerResource:ReplaceHeroWith(pID,petrosyanHeroName,0,0)
-        UTIL_Remove(wisp)
+        -- UTIL_Remove(wisp)
 
         -- It's dangerous to go alone, take this
         newHero:SetAbilityPoints(4)
@@ -260,9 +251,11 @@ function GameMode:OnHeroInGame(pID, team, wisp)
 
         Timers:CreateTimer(function (  )
           if petrosyanHeroName ~= "npc_dota_hero_death_prophet" then
-            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "petrosyan")
+            newHero.key = "petrosyan"
+            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), newHero.key)
           else
-            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), "elena")
+            newHero.key = "elena"
+            GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), newHero.key)
           end
         end)
 
@@ -275,21 +268,24 @@ function GameMode:OnHeroInGame(pID, team, wisp)
         end
 
         if newHero then
-          -- EasyTimers:CreateTimer(function()
-          --   local abilities = newHero:GetAbilityCount() - 1
-          --   for i = 0, abilities do
-          --     if newHero:GetAbilityByIndex(i) then
-          --       if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
-          --           newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
-          --           newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
-          --       end
-          --     end
-          --   end
-          -- end, DoUniqueString('fixHotKey'), 2)
+          EasyTimers:CreateTimer(function()
+            local abilities = newHero:GetAbilityCount() - 1
+            for i = 0, abilities do
+              if newHero:GetAbilityByIndex(i) then
+                if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                    newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                    newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+                end
+              end
+            end
+          end, DoUniqueString('fixHotKey'), 2)
         end
 
         GameMode:AddItems( newHero )
-     end, pID)
+
+        callback()
+        CustomGameEventManager:Send_ServerToPlayer( player, "petri_close_spawning", { state = false } )
+     -- end, pID)
     return
   end
 end
@@ -670,7 +666,8 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_passive"))
       newHero:UpgradeAbility(newHero:FindAbilityByName("petri_petrosyan_flat_joke"))
 
-      GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), "miniactors")
+      newHero.key = "miniactors"
+      GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(player:GetPlayerID()), newHero.key)
 
       for k,v in pairs(newHero:GetChildren()) do
         if v:GetClassname() == "dota_item_wearable" then
@@ -679,17 +676,17 @@ function GameMode:ReplaceWithMiniActor(player, gold)
       end
 
       if newHero then
-        -- EasyTimers:CreateTimer(function()
-        --   local abilities = newHero:GetAbilityCount() - 1
-        --   for i = 0, abilities do
-        --     if newHero:GetAbilityByIndex(i) then
-        --       if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
-        --           newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
-        --           newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
-        --       end
-        --     end
-        --   end
-        -- end, DoUniqueString('fixHotKey'), 2)
+        EasyTimers:CreateTimer(function()
+          local abilities = newHero:GetAbilityCount() - 1
+          for i = 0, abilities do
+            if newHero:GetAbilityByIndex(i) then
+              if string.find(newHero:GetAbilityByIndex(i):GetAbilityName(), "special") then
+                  newHero:GetAbilityByIndex(i):SetAbilityIndex(14+i)
+                  newHero:RemoveAbility(newHero:GetAbilityByIndex(i):GetAbilityName())
+              end
+            end
+          end
+        end, DoUniqueString('fixHotKey'), 2)
       end
 
       Timers:CreateTimer(0.03, function ()
@@ -706,20 +703,19 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
 
     if steamID == id then
       for k2,v2 in pairs(v) do
-        if v2 == "model" then
-          UpdateModel(hero, k2, 1)
+        if v2 == "wearable" then
+          Wearables:AttachWearable(hero, k2)
         end
-      end
-
-      for k2,v2 in pairs(v) do
         if v2 == "scale" then
           hero:SetModelScale(tonumber(k2))
         end
-      end
-
-      for k2,v2 in pairs(v) do
-        if v2 == "wearable" then
-          Wearables:AttachWearable(hero, k2)
+        if v2 == "model" then
+          -- UpdateModel(hero, k2, 1)
+          hero.model = k2
+          hero:AddNewModifier(hero,nil,"modifier_model_change",{})
+        end
+        if v2 == "hero" then
+          CustomGameEventManager:Send_ServerToAllClients("petri_set_icon",{hero = k2, pID = hero:GetPlayerID()})
         end
       end
 
@@ -833,6 +829,15 @@ function PetrosyanWin()
           GameRules:SetGameWinner(DOTA_TEAM_BADGUYS) 
         end)
     end
+  end
+end
+
+function GameMode:ReApplySkin( keys )
+  local steamID = PlayerResource:GetSteamAccountID(keys.PlayerID)
+  local hero = PlayerResource:GetPlayer(keys.PlayerID):GetAssignedHero()
+
+  if steamID and hero and hero.key then
+    GameMode:SetupCustomSkin(hero, steamID, hero.key)
   end
 end
 

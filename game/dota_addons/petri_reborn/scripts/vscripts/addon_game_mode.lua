@@ -117,15 +117,25 @@ function Precache( context )
   PrecacheResource("model", "models/items/storm_spirit/raikage_ares_arms/raikage_ares_arms.vmdl", context)
   PrecacheResource("model", "models/items/storm_spirit/raikage_ares_head/raikage_ares_head.vmdl", context)
   
-
-  for k,v in pairs(LoadKeyValues("scripts/kv/custom_buildings.kv")) do
+  for k,v in pairs(LoadKeyValues("scripts/kv/custom_skins.kv")) do
     for _,m in pairs(v) do
       for __,g in pairs(m) do
-        print(__)
-        PrecacheResource("model", __, context)
+        if string.match(__, "vmdl") then
+          print(__)
+          PrecacheResource("model", __, context)
+        end
       end
     end
   end
+
+  -- for k,v in pairs(LoadKeyValues("scripts/kv/custom_buildings.kv")) do
+  --   for _,m in pairs(v) do
+  --     for __,g in pairs(m) do
+  --       print(__)
+  --       PrecacheResource("model", __, context)
+  --     end
+  --   end
+  -- end
   
   -- sawmill
   --PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)

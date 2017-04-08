@@ -278,10 +278,10 @@ function SetPositionRotation( element, position, rotation ) {
 
   //Revert previous transformation
   element.style.transform = "translate3d(" +
-          -oldPosition[0] + "px, " + -oldPosition[1] + "px, 0px) rotateZ("+(-oldRotation)+"deg)";
+          -oldPosition[0] + "px, " + -oldPosition[1] + "px, 0px)";
 
   //Apply new transformation
-  element.style.transform = "rotateZ("+rotation+"deg) translate3d(" +
+  element.style.transform = "translate3d(" +
           position[0] + "px, " + position[1] + "px, 0px)";
 
   element.oldPosition = position;
@@ -290,10 +290,13 @@ function SetPositionRotation( element, position, rotation ) {
 
 function ShowTooltip( panel, abilityID )
 {
-  if (!panel)
+  $.Msg((/item[1-9]/g).test(abilityID));
+  if (!panel || !abilityID || (/item[1-9]/g).test(abilityID))
     return;
 
   m_panel = panel;
+
+  // $.GetContextPanel().style.transform = "translate3d(" + position[0] + "px, " + position[1] + "px, 0px)";
 
   FillDescription( abilityID );
   FillCosts( abilityID );
@@ -302,26 +305,26 @@ function ShowTooltip( panel, abilityID )
   FillSpecials( abilityID );
 
   //$.GetContextPanel().style.position = "-1000px 0px 0px;";
-  SetPositionRotation( $.GetContextPanel(), [-400, 0], 0 );
+  // SetPositionRotation( $.GetContextPanel(), [0, 0], 0 );
   
   // Delay to recalculate sizes
-  $.Schedule(0.1, SetPosition);
-  $.GetContextPanel().visible = true; 
+  // $.Schedule(0.1, SetPosition);
+  $.GetContextPanel().SetHasClass("Hide", false)
 }
 
 function HideTooltip()
 {
-  $.GetContextPanel().visible = false;
+  $.GetContextPanel().SetHasClass("Hide", true)
 }
 
 (function () {
-  SetPositionRotation( $.GetContextPanel(), [-400, 0], 0 );
-
   GameEvents.Subscribe( "dota_player_update_selected_unit", HideTooltip );
   GameEvents.Subscribe( "dota_player_update_query_unit", HideTooltip );
 
   $.GetContextPanel().ShowTooltip = ShowTooltip;
   $.GetContextPanel().HideTooltip = HideTooltip;
+
+  HideTooltip();
 
   GameUI.CustomUIConfig().tooltip = $.GetContextPanel();
 })();

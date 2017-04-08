@@ -4,19 +4,34 @@
 	</styles>
 	<script>
 		(function() {
-		    GameEvents.Subscribe("petri_spawning_queue", function (args) {
-		        var queue = (Players.GetLocalPlayer() - args.queue);
+			$.GetContextPanel().visible = false;
+		    if (Players.IsSpectator(Players.GetLocalPlayer())) {
+		    	$.GetContextPanel().visible = false;
+		    } else {
+		    	$.GetContextPanel().visible = true;
+			    GameEvents.Subscribe("petri_close_spawning", function (args) {
+			    $.Msg(args)
+			     $.Msg(args.state == 1)
+			     if (args.state != 1) {
+			     $.GetContextPanel().DeleteAsync(0.0)
+			     $.GetContextPanel().RemoveAndDeleteChildren()
+			     }
+			        <!-- $.GetContextPanel().visible = args.state == 1; -->
+			    });
+			    GameEvents.Subscribe("petri_spawning_queue", function (args) {
+			        var queue = (Players.GetLocalPlayer() - args.queue);
 
-		        if (queue == 0) {
-		            $("#loadingLabel").text = $.Localize("spawning");
-		        } else {
-		            $("#loadingLabel").text = $.Localize("queued_for_spawn") + queue;
-		        }
-		    });
+			        if (queue == 0) {
+			            $("#loadingLabel").text = $.Localize("spawning");
+			        } else if (queue > 0){
+			            $("#loadingLabel").text = $.Localize("queued_for_spawn") + queue;
+			        }
+			    });
+		    }
 		})();
 	</script>
 	<Panel hittest="false" class="HSBackground">
-		<Image class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
+		<Image id="BGImage" class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
 
 		<Label id="loadingLabel" text="#loading" />
 	</Panel>

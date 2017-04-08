@@ -133,6 +133,8 @@ function GameMode:_InitGameMode()
   CustomGameEventManager:RegisterListener( "petri_set_lang", Dynamic_Wrap(GameMode, 'SetLang'))
 
   CustomGameEventManager:RegisterListener( "petri_buy_item", Dynamic_Wrap(GameMode, 'BuyItem'))
+
+  CustomGameEventManager:RegisterListener( "petri_reapplyskin", Dynamic_Wrap(GameMode, 'ReApplySkin'))
   
   -- Grid
   CustomGameEventManager:RegisterListener( "gnv_request", Dynamic_Wrap(GNV, 'Send'))

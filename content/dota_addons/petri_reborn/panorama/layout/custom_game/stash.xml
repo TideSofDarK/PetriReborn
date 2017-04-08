@@ -7,7 +7,7 @@
 	    while(parent.id != "Hud")
 	        parent = parent.GetParent();
 
-	    var radar = parent.FindChildTraverse("lower_hud").FindChildTraverse("RadarButton");
+	    var radar = parent.FindChildTraverse("RadarButton");
 	    radar.FindChildTraverse("RadarIcon").style.backgroundImage = "url(\"s2r://panorama/images/hud/reborn/icon_scan_on_psd.vtex\");";
 	    radar.FindChildTraverse("CooldownCover").visible = false;
 	    radar.FindChildTraverse("RadarIcon").SetPanelEvent("onactivate", function () {
