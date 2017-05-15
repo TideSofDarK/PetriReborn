@@ -1,6 +1,6 @@
 "npc_petri_janitor"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/items/courier/babka_bewitcher/babka_bewitcher_flying.vmdl"
   "ModelScale"    "1.1"
   "Level"      "1"

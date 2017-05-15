@@ -1,6 +1,6 @@
 "npc_petri_boss_gusman"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/heroes/necrolyte/necrolyte.vmdl"
   "ModelScale"    "1.8"
   "Level"      "1"

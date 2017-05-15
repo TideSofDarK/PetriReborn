@@ -1,6 +1,6 @@
 "npc_petri_creep_special_arena_helper7"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/creeps/lane_creeps/creep_dire_hulk/creep_dire_diretide_ancient_hulk.vmdl"
   "ModelScale"        "1.2"
   "SoundSet"          "Creep_Good_Melee"  

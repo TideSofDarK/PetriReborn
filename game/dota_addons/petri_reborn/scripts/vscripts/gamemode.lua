@@ -619,6 +619,8 @@ function GameMode:InitGameMode()
   Convars:RegisterCommand( "deg", Dynamic_Wrap(GameMode, 'DontEndGame'), "Dont end game", FCVAR_CHEAT )
   Convars:RegisterCommand( "getgold", Dynamic_Wrap(GameMode, 'GetGold'), "Get all gold", FCVAR_CHEAT )
   Convars:RegisterCommand( "tc", Dynamic_Wrap(GameMode, 'TestCommand'), "TestCommand", FCVAR_CHEAT )
+  Convars:RegisterCommand( "fgs", Dynamic_Wrap(GameMode, 'FinishGameSetup'), "FinishGameSetup", FCVAR_CHEAT )
+  Convars:RegisterCommand( "st", Dynamic_Wrap(GameMode, 'SetTime'), "SetTime", FCVAR_CHEAT )
 
   BuildingHelper:Init()
 
@@ -703,16 +705,22 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
 
     if steamID == id then
       for k2,v2 in pairs(v) do
+        if v2 == "model" then
+          UpdateModel(hero, k2, 1)
+          hero.model = k2
+          hero:AddNewModifier(hero,nil,"modifier_model_change",{})
+        end
+      end
+
+      for k2,v2 in pairs(v) do
+        if type(v2) == "table" then
+          hero[k2] = v2
+        end
         if v2 == "wearable" then
           Wearables:AttachWearable(hero, k2)
         end
         if v2 == "scale" then
           hero:SetModelScale(tonumber(k2))
-        end
-        if v2 == "model" then
-          -- UpdateModel(hero, k2, 1)
-          hero.model = k2
-          hero:AddNewModifier(hero,nil,"modifier_model_change",{})
         end
         if v2 == "hero" then
           CustomGameEventManager:Send_ServerToAllClients("petri_set_icon",{hero = k2, pID = hero:GetPlayerID()})
@@ -749,6 +757,8 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
     --   end
     -- end
   end
+
+  hero:MoveToPosition(hero:GetAbsOrigin())
 end
 
 function SetupVIPItems(hero, steamID)
@@ -838,6 +848,7 @@ function GameMode:ReApplySkin( keys )
 
   if steamID and hero and hero.key then
     GameMode:SetupCustomSkin(hero, steamID, hero.key)
+    -- EndAnimation(hero)
   end
 end
 

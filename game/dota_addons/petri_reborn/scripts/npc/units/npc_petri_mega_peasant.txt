@@ -1,6 +1,6 @@
 "npc_petri_mega_peasant"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/heroes/shredder/shredder.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"

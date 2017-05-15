@@ -531,7 +531,6 @@ function GameMode:OnEntityKilled( keys )
       Notifications:TopToAll({text="#boss_is_killed_1", duration=4, style={color="red"}, continue=false})
       Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
       Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
-
       if bounty >= 9866 then
        CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
        Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})

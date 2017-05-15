@@ -1,6 +1,6 @@
 "npc_petri_boss_maslyakov"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/heroes/keeper_of_the_light/keeper_of_the_light.vmdl"
   "ModelScale"    "1.8"
   "Level"      "1"

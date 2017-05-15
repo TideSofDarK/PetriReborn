@@ -372,6 +372,7 @@ local _CODE_TO_ANIMATION_TRANSLATE = {
   [368]="twinblade_run",
   [369]="twinblade_run_injured",
   [370]="windwalk",
+  [371]="basher",
 }
 
 function modifier_animation_translate_permanent:OnCreated(keys) 

@@ -1,6 +1,6 @@
 "npc_petri_boss_zadornov"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/heroes/lich/lich.vmdl"
   "ModelScale"    "1.3"
   "Level"      "1"

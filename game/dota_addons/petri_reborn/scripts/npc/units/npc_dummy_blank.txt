@@ -241,7 +241,7 @@
 
 "npc_dummy_upgraded_eye_vision"
 {
-  "BaseClass" "npc_dota_creature" 
+  "BaseClass" "npc_dota_base_additive" 
   "Model" "models/development/invisiblebox.vmdl" 
   "Level" "1"
 

@@ -1,3 +1,8 @@
+function GameMode:SetTime(t)
+  if t and tonumber(t) then
+    GameMode.PETRI_TRUE_TIME = t * 60
+  end
+end
 
 function GameMode:TestCommand()
   local cmdPlayer = Convars:GetCommandClient()
@@ -72,4 +77,17 @@ end
 
 function GameMode:DontEndGame(  )
   GameMode.PETRI_NO_END = true
+end
+
+function GameMode:FinishGameSetup(g)
+  local cmdPlayer = Convars:GetCommandClient()
+  if cmdPlayer then
+    local playerID = cmdPlayer:GetPlayerID()
+    if playerID ~= nil and playerID ~= -1 then
+      cmdPlayer:SetTeam(tonumber(g))
+      GameRules:FinishCustomGameSetup()
+
+      StartAnimation(cmdPlayer:GetAssignedHero(), {duration=0.5, activity=ACT_DOTA_ATTACK_EVENT_BASH, rate=2.0, translate="basher"})
+    end
+  end
 end

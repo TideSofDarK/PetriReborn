@@ -1,6 +1,6 @@
 "npc_petri_ward"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"
   "ModelScale"        "0.7"
   "Level"           "0"

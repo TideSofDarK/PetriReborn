@@ -4053,7 +4053,7 @@
 			    	"MODIFIER_STATE_LOW_ATTACK_PRIORITY"           "MODIFIER_STATE_VALUE_ENABLED"
 			    }
 	
-			    "OnAttackLanded"
+			    "OnAttackStart"
 			    {
 			        "Random"
 			        {

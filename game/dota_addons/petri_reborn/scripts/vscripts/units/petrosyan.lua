@@ -91,6 +91,17 @@ function FlatJoke( keys )
 
 	local cooldown = ability:GetCooldown(ability:GetLevel()-1)
 
+	if caster[ability:GetName()] then
+		local void_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_POINT_FOLLOW, caster)
+		ParticleManager:SetParticleControlEnt(void_pfx, 0, caster, PATTACH_POINT_FOLLOW, "attach_hitloc", caster:GetOrigin(), true)
+		ParticleManager:SetParticleControl(void_pfx, 1, Vector(radius,0,0))
+		ParticleManager:ReleaseParticleIndex(void_pfx)
+
+		caster:EmitSound(caster[ability:GetName()].sound)
+		
+		StartAnimation(caster, {duration=0.5, activity=_G[caster[ability:GetName()].anim], rate=2.0, translate=caster[ability:GetName()].translate})
+	end
+
 	ability:StartCooldown(cooldown)
 	Timers:CreateTimer(cooldown, function (  )
 		ability:ApplyDataDrivenModifier(caster,caster,"modifier_flat_joke_datadriven",{})

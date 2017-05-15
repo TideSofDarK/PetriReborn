@@ -1,6 +1,6 @@
 "npc_petri_exploration_tower"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
   "ModelScale"                "0.8"
   "Level"           "1"

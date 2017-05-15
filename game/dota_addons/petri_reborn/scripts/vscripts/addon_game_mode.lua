@@ -128,14 +128,20 @@ function Precache( context )
     end
   end
 
-  -- for k,v in pairs(LoadKeyValues("scripts/kv/custom_buildings.kv")) do
-  --   for _,m in pairs(v) do
-  --     for __,g in pairs(m) do
-  --       print(__)
-  --       PrecacheResource("model", __, context)
-  --     end
-  --   end
-  -- end
+  for k,v in pairs(LoadKeyValues("scripts/kv/custom_buildings.kv")) do
+    for _,m in pairs(v) do
+      if type(m) == "table" then
+        for __,g in pairs(m) do
+          if g == "model" then
+            print(__)
+            PrecacheResource("model", __, context)
+          end
+        end
+      else
+        PrecacheResource("model", m, context)
+      end
+    end
+  end
   
   -- sawmill
   --PrecacheResource("model", "models/props_structures/bad_barracks001_ranged.vmdl", context)

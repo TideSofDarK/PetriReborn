@@ -1,6 +1,6 @@
 "npc_petri_creep_mutant"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/heroes/faceless_void/faceless_void.vmdl"
   "ModelScale"        "1.1"
   "Level"           "9"

@@ -1,6 +1,6 @@
 "npc_petri_creep_dark_kivin"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/props_structures/tower_dragon_black.vmdl"
   "ModelScale"        "1.1"
   "SoundSet"          "Creep_Good_Range"

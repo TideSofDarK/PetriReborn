@@ -1,0 +1,94 @@
+"CDOTARichPresence persistent data"
+{
+	"76561197995352729"
+	{
+		"event_18"
+		{
+			"trophy_level"		"2"
+		}
+	}
+	"76561198021202309"
+	{
+		"event_18"
+		{
+			"trophy_level"		"2"
+		}
+	}
+	"76561198028445707"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198035264997"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198073581600"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198074558978"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198081267869"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198085846446"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198090295355"
+	{
+		"event_18"
+		{
+			"trophy_level"		"2"
+		}
+	}
+	"76561198095717082"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198115523162"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+	"76561198116113044"
+	{
+		"event_18"
+		{
+			"trophy_level"		"2"
+		}
+	}
+	"76561198128011165"
+	{
+		"event_18"
+		{
+			"trophy_level"		"1"
+		}
+	}
+}

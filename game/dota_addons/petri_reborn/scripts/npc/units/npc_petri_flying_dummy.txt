@@ -1,7 +1,7 @@
 "npc_petri_flying_dummy"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model" "models/development/invisiblebox.vmdl" 
   "ModelScale"                "0.8"
   "SoundSet"          "Creep_Good_Range"          
@@ -47,7 +47,7 @@
 
 "petri_dummy_100vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "100" 
   "VisionNighttimeRange"    "100"
@@ -59,7 +59,7 @@
 
 "petri_dummy_300vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "300" 
   "VisionNighttimeRange"    "300"
@@ -71,7 +71,7 @@
 
 "petri_dummy_500vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "500" 
   "VisionNighttimeRange"    "500"
@@ -83,7 +83,7 @@
 
 "petri_dummy_600vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "600" 
   "VisionNighttimeRange"    "600"
@@ -95,7 +95,7 @@
 
 "petri_dummy_1000vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1000"  
@@ -108,7 +108,7 @@
 
 "petri_dummy_1400vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1400"  
@@ -121,7 +121,7 @@
 
 "petri_dummy_1800vision"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1800"  

@@ -1,6 +1,6 @@
 "npc_petri_creep_minifarm"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/heroes/huskar/huskar.vmdl"
   "ModelScale"        "1"
   "SoundSet"          "Creep_Good_Melee"  

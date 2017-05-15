@@ -1,7 +1,7 @@
 "npc_petri_gold_bag"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -50,7 +50,7 @@
 "npc_petri_gold_bag2"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -99,7 +99,7 @@
 "npc_petri_gold_bag3"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -148,7 +148,7 @@
 "npc_petri_gold_bag4"
 {
   
-  "BaseClass"         "npc_dota_creature"  
+  "BaseClass"         "npc_dota_base_additive"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          

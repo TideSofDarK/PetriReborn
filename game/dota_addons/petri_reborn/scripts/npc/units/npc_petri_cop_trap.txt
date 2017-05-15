@@ -1,6 +1,6 @@
 "npc_petri_cop_trap"
 {
-  "BaseClass"         "npc_dota_creature"
+  "BaseClass"         "npc_dota_base_additive"
   "Model"           "models/items/rattletrap/cog_tesla/cog_tesla.vmdl"
   "ModelScale"        "1.85"
   "Level"           "1"

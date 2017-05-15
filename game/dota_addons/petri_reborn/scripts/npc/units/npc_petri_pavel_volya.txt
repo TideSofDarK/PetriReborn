@@ -1,6 +1,6 @@
 "npc_petri_boss_pavel_volya"
 {
-  "BaseClass"     "npc_dota_creature"
+  "BaseClass"     "npc_dota_base_additive"
   "Model"      "models/heroes/antimage/antimage.vmdl"
   "ModelScale"    "1.8"
   "Level"      "1"
