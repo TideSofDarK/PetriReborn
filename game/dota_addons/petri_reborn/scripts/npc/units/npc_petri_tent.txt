@@ -1,14 +1,14 @@
 "npc_petri_tent"
 {
   "BaseClass"         "npc_dota_base_additive"  
-  "Model"           "models/props_structures/tent_dk_small.vmdl"  
+  "Model"           "models/props_structures/tent_dk_med.vmdl"  
   "ModelScale"                "0.3"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "1"
 
   "vscripts"                    "units/food_building.lua"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_upgrade_tent"     
   "Ability2"          "petri_building"
   
@@ -36,7 +36,7 @@
   
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "100"   

@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "custom/earth_spirit_boulder_smash"
+  "AbilityTextureName"      "earth_spirit_boulder_smash"
 
   "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 
@@ -43,7 +43,7 @@
     "05"
     {
       "var_type"          "FIELD_INTEGER"
-      "armor"        "63 130 144 270 350 500 700 3500 4500 7000 15750 15300 20000"
+      "armor"        "63 130 144 270 350 500 700 3500 4500 7000 16750 16300 21000"
     }
   }
 

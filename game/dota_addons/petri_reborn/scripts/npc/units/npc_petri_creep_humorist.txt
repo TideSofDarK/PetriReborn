@@ -1,6 +1,6 @@
 "npc_petri_creep_humorist"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"
   "ModelScale"        "1.1"
   "Level"           "7"
@@ -12,7 +12,7 @@
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "50"
+  "ArmorPhysical"       "25"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"

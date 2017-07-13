@@ -1,13 +1,13 @@
 "npc_petri_exploration_tower"
 {
-  "BaseClass"         "npc_dota_base_additive"
-  "Model"           "models/props_structures/wooden_sentry_tower001.vmdl"
-  "ModelScale"                "0.8"
+  "BaseClass"         "npc_dota_creature"
+  "Model"           "models/props_structures/tower_dragon_white.vmdl"
+  "ModelScale"                "1.1"
   "Level"           "1"
 
   "HealthBarOffset"    "290"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_exploration_tower_explore_world"
   
   "ArmorPhysical"       "25000000"     

@@ -3,7 +3,7 @@
   "BaseClass"               "item_datadriven"
   "ID"                      "1977"
   "AbilityBehavior"         "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-  "Model"                   "models/props_structures/m2_fence_01.vmdl" 
+  "Model"                   "models/props_tree/olive/tree_oldolive_stump.vmdl" 
   "Effect"                  "particles/generic_gameplay/dropped_item.vpcf"
   "AbilityTextureName"      "custom/petri_pile_of_wood"
 

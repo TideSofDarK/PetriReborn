@@ -39,6 +39,12 @@
 	        $.DispatchEvent('DOTAHideTitleTextTooltip');
 	    });
 
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("level_stats_frame").visible = false;
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("StatBranch").visible = false;
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("PortraitBacker").style.width = "160px;";
+	    parent.FindChildTraverse("HUDElements").FindChildTraverse("PortraitBackerColor").style.width = "160px;";
+	    <!-- parent.FindChildTraverse("HUDElements").FindChildTraverse("stats_container").style.width = "136px;"; -->
+
 	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").enabled = false;
 	    parent.FindChildTraverse("HUDElements").FindChildTraverse("shop").visible = false;
 

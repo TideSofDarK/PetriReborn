@@ -214,6 +214,10 @@ function CreateProjectiles( keys )
     local caster = keys.caster
     local ability = keys.ability
 
+    if caster:GetUnitName() == "npc_petri_creep_dark_kivin" then
+        AddFOWViewer(caster:GetTeam(),caster:GetAbsOrigin(),2000,2.0,false)
+    end
+
     if GameRules:IsDaytime() == false then
         ability:ApplyDataDrivenModifier(caster, caster, "modifier_tick_projectile", {})
     end

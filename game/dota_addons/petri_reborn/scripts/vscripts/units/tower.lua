@@ -9,10 +9,10 @@ function UpgradeDeath (event)
 	local ability = event.ability
 
 	local tower_level = ability:GetLevel()
-
+	
 	UpdateModel(caster, GetModelNameForTower(TOWER_DEATH), 0.58 + (tower_level/30))
-	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "death")
-
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "death_"..tostring(tower_level))
+	
 	caster:RemoveAbility("petri_upgrade_ice_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
 	caster:RemoveAbility("petri_upgrade_to_earth_wall")
@@ -32,7 +32,7 @@ function UpgradeIce (event)
 	local tower_level = ability:GetLevel()
 
 	UpdateModel(caster, GetModelNameForTower(TOWER_ICE), 0.70 + (tower_level/30))
-	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "cold")
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "cold_"..tostring(tower_level))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_fire_tower")
@@ -53,7 +53,7 @@ function UpgradeFire (event)
 	local tower_level = ability:GetLevel()
 
 	UpdateModel(caster, GetModelNameForTower(TOWER_FIRE), 0.78 + (tower_level/30))
-	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "fire")
+	SetCustomBuildingModel(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()), "fire_"..tostring(tower_level))
 
 	caster:RemoveAbility("petri_upgrade_death_tower")
 	caster:RemoveAbility("petri_upgrade_ice_tower")

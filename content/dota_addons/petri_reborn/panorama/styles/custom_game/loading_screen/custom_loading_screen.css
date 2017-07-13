@@ -20,6 +20,11 @@
   
 }
 
+.Hide {
+  visibility: collapse;
+}
+
+
 .Headline1 {
   text-shadow: 1px 1px 1px black;
   text-align: center;
@@ -300,3 +305,4 @@
     transform: translateX( 0px ) translateY( 0px );
   }
 }
+

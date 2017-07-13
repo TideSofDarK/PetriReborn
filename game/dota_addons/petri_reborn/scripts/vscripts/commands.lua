@@ -9,7 +9,8 @@ function GameMode:TestCommand()
   if cmdPlayer then
     local playerID = cmdPlayer:GetPlayerID()
     if playerID ~= nil and playerID ~= -1 then
-      print(GameMode.assignedPlayerHeroes[playerID]:GetBaseAttackTime(), GameMode.assignedPlayerHeroes[playerID]:GetAttackAnimationPoint())
+      local hero = GameMode.assignedPlayerHeroes[playerID]
+      print(hero:GetAttackSpeed(), hero:GetAttacksPerSecond(), hero:GetAttackAnimationPoint())
     end
   end
 end

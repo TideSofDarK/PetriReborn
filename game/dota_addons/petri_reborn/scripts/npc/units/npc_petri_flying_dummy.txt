@@ -1,7 +1,7 @@
 "npc_petri_flying_dummy"
 {
   
-  "BaseClass"         "npc_dota_base_additive"  
+  "BaseClass"         "npc_dota_creature"  
   "Model" "models/development/invisiblebox.vmdl" 
   "ModelScale"                "0.8"
   "SoundSet"          "Creep_Good_Range"          
@@ -47,87 +47,87 @@
 
 "petri_dummy_100vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "100" 
   "VisionNighttimeRange"    "100"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_300vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "300" 
   "VisionNighttimeRange"    "300"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_500vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "500" 
   "VisionNighttimeRange"    "500"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_600vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "600" 
   "VisionNighttimeRange"    "600"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_1000vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1000"  
   "VisionNighttimeRange"    "1000"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_1400vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1400"  
   "VisionNighttimeRange"    "1400"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }
 
 "petri_dummy_1800vision"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/development/invisiblebox.vmdl"
   "AttackCapabilities"    "DOTA_UNIT_CAP_NO_ATTACK"
   "VisionDaytimeRange"    "1800"  
   "VisionNighttimeRange"    "1800"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
   "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_dummy_invisibility"
 }

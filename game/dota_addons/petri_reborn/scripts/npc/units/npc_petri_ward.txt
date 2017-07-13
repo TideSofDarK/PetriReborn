@@ -1,6 +1,6 @@
 "npc_petri_ward"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/items/wards/eyeofforesight/eyeofforesight.vmdl"
   "ModelScale"        "0.7"
   "Level"           "0"
@@ -9,7 +9,7 @@
 
   "vscripts" "units/ward.lua"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1" "petri_invisibility"
   
   "ArmorPhysical"       "0"

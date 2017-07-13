@@ -90,6 +90,8 @@ require('internal/gamemode')
 require('easytimers')
 
 require('internal/modifier_model_change')
+require('internal/modifier_bonus_life')
+require('internal/modifier_tribune')
 
 function GameMode:PostLoadPrecache()
   DebugPrint("[BAREBONES] Performing Post-Load precache")
@@ -124,11 +126,14 @@ function GameMode:CreateHero(pID, callback)
   local player = PlayerResource:GetPlayer(pID)
   if not player then
     callback()
+    return
   end
   local team = player:GetTeam()
   local wisp = player:GetAssignedHero()
   if not IsValidEntity(wisp) then
+    print("asadasd")
     callback()
+    return
   end
 
   local newHero
@@ -139,8 +144,12 @@ function GameMode:CreateHero(pID, callback)
    -- Init kvn fan
   if team == 2 then
     -- UTIL_Remove(hero) 
-    -- PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
-    --   function() 
+    PrecacheUnitByNameAsync("npc_dota_hero_rattletrap",
+      function() 
+        player = PlayerResource:GetPlayer(pID)
+        if not player then
+          callback()
+        end
         -- self.playerQueue()
         Notifications:Top(pID, {text="#start_game", duration=5, style={color="white", ["font-size"]="45px"}})
 
@@ -183,7 +192,7 @@ function GameMode:CreateHero(pID, callback)
         Timers:CreateTimer(function (  )
           newHero.key = "kvn"
           GameMode:SetupCustomSkin(newHero, PlayerResource:GetSteamAccountID(pID), newHero.key)
-          SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
+          GameMode:SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
         end)
 
         if newHero then
@@ -206,8 +215,8 @@ function GameMode:CreateHero(pID, callback)
 
         callback()
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_close_spawning", { state = false } )
-    --   end, 
-    -- pID)
+      end, 
+    pID)
 
     return
   end
@@ -220,8 +229,12 @@ function GameMode:CreateHero(pID, callback)
    -- Init petrosyan
   if team == 3 then
     -- UTIL_Remove(hero) 
-    -- PrecacheUnitByNameAsync(petrosyanHeroName,
-    --  function() 
+    PrecacheUnitByNameAsync(petrosyanHeroName,
+     function() 
+        player = PlayerResource:GetPlayer(pID)
+        if not player then
+          callback()
+        end
         -- self.playerQueue()
         newHero = PlayerResource:ReplaceHeroWith(pID,petrosyanHeroName,0,0)
         -- UTIL_Remove(wisp)
@@ -242,6 +255,10 @@ function GameMode:CreateHero(pID, callback)
         SetupUI(pID)
 
         GameMode.assignedPlayerHeroes[pID] = newHero
+
+        Timers:CreateTimer(function (  )
+          GameMode:SetupVIPItems(newHero, PlayerResource:GetSteamAccountID(pID))
+        end)
 
         SetCustomGold( pID, GameRules.START_PETROSYANS_GOLD )
 
@@ -285,7 +302,7 @@ function GameMode:CreateHero(pID, callback)
 
         callback()
         CustomGameEventManager:Send_ServerToPlayer( player, "petri_close_spawning", { state = false } )
-     -- end, pID)
+     end, pID)
     return
   end
 end
@@ -591,7 +608,7 @@ function GameMode:InitGameMode()
         for k,v in pairs(ability_info["AbilitySpecial"]) do
           for k1,v1 in pairs(v) do
             if k1 ~= "var_type" and k1 ~= "lumber_cost" and k1 ~= "food_cost" then
-              table.insert(GameMode.specialValues[ability_name], k1)
+              table.insert(GameMode.specialValues[ability_name], {name = k1, value = v1})
             end
           end
         end
@@ -700,6 +717,9 @@ function GameMode:ReplaceWithMiniActor(player, gold)
 end
 
 function GameMode:SetupCustomSkin(hero, steamID, key)
+  if IsInToolsMode() then
+    GameMode.CustomSkinsKVs = LoadKeyValues("scripts/kv/custom_skins.kv")
+  end
   for k,v in pairs(GameMode.CustomSkinsKVs[key]) do
     local id = tonumber(k)
 
@@ -724,6 +744,20 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
         end
         if v2 == "hero" then
           CustomGameEventManager:Send_ServerToAllClients("petri_set_icon",{hero = k2, pID = hero:GetPlayerID()})
+        end
+        if string.match(k2, "particle") then
+          local attach = _G[v2.attach]
+          if v2.attach == -1 then
+            attach = -1
+          end
+          local p = ParticleManager:CreateParticle(v2.particle, attach, hero)     
+          if v.color then
+            print(v.color["1"], v.color["2"], v.color["3"], v.color.cp)
+            ParticleManager:SetParticleControl(p,tonumber(v.color.cp),Vector(v.color["1"], v.color["2"], v.color["3"]))
+          end
+        end
+        if v2 == "animation" then
+          StartAnimation(hero, {duration=-1, activity=_G[k2], rate=1})
         end
       end
 
@@ -761,7 +795,7 @@ function GameMode:SetupCustomSkin(hero, steamID, key)
   hero:MoveToPosition(hero:GetAbsOrigin())
 end
 
-function SetupVIPItems(hero, steamID)
+function GameMode:SetupVIPItems(hero, steamID)
   for k,v in pairs(GameMode.VIPItemsKVs) do
     if k == tostring(steamID) then
       for item,count in pairs(v) do

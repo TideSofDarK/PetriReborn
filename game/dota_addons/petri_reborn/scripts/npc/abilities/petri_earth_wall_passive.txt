@@ -2,7 +2,7 @@
 {
   "BaseClass" "ability_datadriven"
   "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-  "AbilityTextureName"            "custom/earth_spirit_geomagnetic_grip"
+  "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
 
   "MaxLevel"            "14"
 

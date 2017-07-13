@@ -1,13 +1,13 @@
 "npc_petri_trap"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/heroes/techies/fx_techiesfx_stasis.vmdl"
   "ModelScale"        "1.0"
   "Level"           "4"
   "HealthBarOffset"       "140"
   "HasInventory"        "0"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"  "petri_invisibility"
   "Ability2"  "petri_trap"
   

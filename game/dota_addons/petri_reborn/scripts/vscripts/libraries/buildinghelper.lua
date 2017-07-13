@@ -490,6 +490,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
   building:SetControllableByPlayer(pID, true)
   building:SetOwner(PlayerResource:GetPlayer(pID))
   building:SetHullRadius(building:GetHullRadius()+5)
+  building:AddNoDraw()
 
   local customScale
 
@@ -511,7 +512,6 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
   if instantBuild == false then
     building.state = "building"
-    
 
     -- Prevent regen messing with the building spawn hp gain
     local regen = building:GetBaseHealthRegen()
@@ -587,6 +587,13 @@ function BuildingHelper:InitializeBuildingEntity( keys )
       bScaling=true
     end
 
+
+    Timers:CreateTimer(0.1, function()
+      building:RemoveNoDraw()
+      building.sandstormFX = ParticleManager:CreateParticle("particles/units/heroes/hero_sandking/sandking_sandstorm.vpcf", PATTACH_POINT_FOLLOW, building)
+      ParticleManager:SetParticleControl(building.sandstormFX, 1, Vector(buildingTable:GetVal("BuildingSize", "number") * 64, buildingTable:GetVal("BuildingSize", "number") * 64, 0))
+    end)
+
     -- Health Timers
     -- If the tick would be faster than 1 frame, adjust the HP gained per frame
     building.updateHealthTimer = DoUniqueString('health') 
@@ -616,6 +623,12 @@ function BuildingHelper:InitializeBuildingEntity( keys )
 
           building.state = "complete"
           building.bUpdatingHealth = false
+
+          ParticleManager:DestroyParticle(building.sandstormFX, false)
+
+          if building:GetPlayerOwner() and building:IsAlive() then
+            building:EmitSound("KVN.BuildingComplete")
+          end
           
           -- Write buildings layes
           local mapping = {}
@@ -681,6 +694,7 @@ function BuildingHelper:InitializeBuildingEntity( keys )
     local fMaxScale = buildingTable:GetVal("MaxScale", "float")
     building:SetModelScale(fMaxScale)
     building.state = "complete"
+    building:RemoveNoDraw()
     if callbacks.onConstructionCompleted ~= nil then
       callbacks.onConstructionCompleted(building)
     end

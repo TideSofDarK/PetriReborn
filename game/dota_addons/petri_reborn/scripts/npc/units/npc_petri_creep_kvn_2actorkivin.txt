@@ -1,6 +1,6 @@
 "npc_petri_creep_kvn_2actorkivin"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/heroes/rubick/rubick.vmdl"
   "ModelScale"        "0.6"
   "Level"           "7"

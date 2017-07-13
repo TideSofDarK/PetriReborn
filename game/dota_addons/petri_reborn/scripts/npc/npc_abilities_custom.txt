@@ -1033,7 +1033,7 @@
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
 	  "MaxLevel" "1"
-	  "AbilityTextureName"      "custom/rattletrap_power_cogs"
+	  "AbilityTextureName"      "rattletrap_power_cogs"
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
 	  "AbilityCastPoint"        "0.0"
@@ -1328,7 +1328,7 @@
 	{
 	  "BaseClass" "ability_datadriven"
 	  "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	  "AbilityTextureName"            "custom/earth_spirit_geomagnetic_grip"
+	  "AbilityTextureName"            "earth_spirit_geomagnetic_grip"
 	
 	  "MaxLevel"            "14"
 	
@@ -4329,7 +4329,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityTextureName" "custom/meepo_earthbind"
+	  "AbilityTextureName" "meepo_earthbind"
 	
 	  "MaxLevel" "1"
 	
@@ -4420,7 +4420,7 @@
 	  "AbilityUnitTargetTeam" "DOTA_UNIT_TARGET_TEAM_ENEMY"
 	  "AbilityUnitTargetType" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	  "SpellImmunityType"             "SPELL_IMMUNITY_ENEMIES_NO"
-	  "AbilityTextureName" "custom/naga_siren_ensnare"
+	  "AbilityTextureName" "naga_siren_ensnare"
 	
 	  "MaxLevel" "1"
 	
@@ -4763,7 +4763,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "custom/techies_suicide"
+	  "AbilityTextureName"      "techies_suicide"
 	  "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 	
 	  "MaxLevel"            "1"
@@ -4778,8 +4778,8 @@
 	  {
 	    "FireSound"
 	    {
-	        "EffectName"    "Hero_Techies.Suicide"
-	        "Target"        "CASTER"
+	      "EffectName"    "Hero_Techies.Suicide"
+	      "Target"        "CASTER"
 	    }
 	    "FireEffect"
 	    {
@@ -5597,6 +5597,11 @@
 	      "var_type"          "FIELD_INTEGER"
 	      "bonus_hp"  "13"
 	    }
+	    "02"
+	    {
+	      "var_type"          "FIELD_FLOAT"
+	      "bonus_regen"  "0.7"
+	    }
 	  }
 	
 	  "OnSpellStart"
@@ -5646,6 +5651,7 @@
 	      "Properties"
 	      {
 	        "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+	        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%bonus_regen"
 	      }
 	    }
 	  }
@@ -5654,7 +5660,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "custom/earth_spirit_boulder_smash"
+	  "AbilityTextureName"      "earth_spirit_boulder_smash"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -5695,7 +5701,7 @@
 	    "05"
 	    {
 	      "var_type"          "FIELD_INTEGER"
-	      "armor"        "63 130 144 270 350 500 700 3500 4500 7000 15750 15300 20000"
+	      "armor"        "63 130 144 270 350 500 700 3500 4500 7000 16750 16300 21000"
 	    }
 	  }
 	
@@ -6074,7 +6080,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "custom/shredder_whirling_death"
+	  "AbilityTextureName"      "shredder_whirling_death"
 	
 	  "AbilityCastAnimation"      "ACT_DOTA_DISABLED"
 	
@@ -6413,7 +6419,7 @@
 	{
 	  "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	  "BaseClass"           "ability_datadriven"
-	  "AbilityTextureName"      "custom/earth_spirit_petrify"
+	  "AbilityTextureName"      "earth_spirit_petrify"
 	
 	  "AbilityCastPoint"        "0.0"
 	
@@ -6507,7 +6513,7 @@
 	    "05"
 	    {
 	      "var_type"            "FIELD_INTEGER"
-	      "armor"               "40 70 175 250 300 350 850 900 3000 7800 9000 14500 20750 25000"
+	      "armor"               "40 70 175 250 300 350 850 900 3000 7800 9000 15500 21750 26000"
 	    }
 	  }
 	

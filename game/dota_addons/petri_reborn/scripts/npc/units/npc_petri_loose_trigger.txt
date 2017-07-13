@@ -1,8 +1,8 @@
 "npc_petri_loose_trigger1"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/items/courier/krobeling/krobeling.vmdl"
-  "ModelScale"        "2.0"
+  "ModelScale"        "1.0"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "1"
   "HealthBarOffset"     "290"
@@ -38,9 +38,9 @@
 
 "npc_petri_loose_trigger2"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/items/juggernaut/ward_foo.vmdl"
-  "ModelScale"        "2.0"
+  "ModelScale"        "1.0"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "1"
   "HealthBarOffset"     "290"
@@ -76,9 +76,9 @@
 
 "npc_petri_loose_trigger3"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/items/juggernaut/ward/healing_gills_of_the_lost_isles/healing_gills_of_the_lost_isles.vmdl"
-  "ModelScale"        "2.0"
+  "ModelScale"        "1.0"
   "SoundSet"          "Creep_Good_Range"
   "Level"           "1"
   "HealthBarOffset"     "290"

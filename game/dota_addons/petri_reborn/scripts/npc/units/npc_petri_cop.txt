@@ -1,6 +1,6 @@
 "npc_petri_cop"
 {
-  "BaseClass"     "npc_dota_base_additive"
+  "BaseClass"     "npc_dota_creature"
   "Model"      "models/items/courier/dokkaebi_nexon_courier/dokkaebi_nexon_courier.vmdl"
   "ModelScale"    "1.5"
   "Level"      "2"

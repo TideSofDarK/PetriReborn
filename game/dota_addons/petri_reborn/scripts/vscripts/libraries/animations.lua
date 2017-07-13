@@ -442,7 +442,15 @@ local _ANIMATION_TRANSLATE_TO_CODE = {
   twinblade_run=368,
   twinblade_run_injured=369,
   windwalk=370,  
-  basher=371,  
+  light=371,
+  level1=372,
+  level2=373,
+  level3=374,
+  level4=375,
+  level5=376,
+  level6=377,
+  showcase=378,
+  basher=379
 }
 
 function StartAnimation(unit, table)

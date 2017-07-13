@@ -7,7 +7,7 @@
   "HealthBarOffset"       "230"
   "HasInventory"        "1"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"       "6"
   "Ability1"          "petri_upgrade_sawmill"
   "Ability2"          ""
   "Ability3"          ""

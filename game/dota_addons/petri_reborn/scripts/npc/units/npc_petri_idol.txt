@@ -9,7 +9,7 @@
 
   "vscripts"                    "units/idol.lua"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_buy_lumber"
   "Ability2"          "petri_buy_gold"
   "Ability3"          "petri_building"

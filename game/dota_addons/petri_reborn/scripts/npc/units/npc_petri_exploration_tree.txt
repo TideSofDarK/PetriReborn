@@ -9,7 +9,7 @@
 
   "Unique"  "1"
   
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"          "petri_exploration_tree_explore"     
   "Ability2"          "petri_upgrade_eye"
   "Ability3"          "petri_building"
@@ -37,7 +37,7 @@
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
 
   "VisionDaytimeRange"    "1000"   

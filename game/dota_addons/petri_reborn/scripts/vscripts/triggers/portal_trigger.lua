@@ -95,7 +95,6 @@ function Activate(keys)
 	if PORTAL_LEVELS[name] then
 		Timers:CreateTimer(20, function (  )
 			local number = PORTAL_LEVELS[name]
-			print("Asdasdasdasdsdas", number)
 			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 
 			local oldPos = unit:GetAbsOrigin()

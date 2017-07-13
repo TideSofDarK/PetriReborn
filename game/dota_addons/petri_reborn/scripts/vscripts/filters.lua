@@ -308,19 +308,19 @@ GOLD_FILTERS[300000] = 1
 
 function GameMode:ModifyGoldFilter(event)
   -- local hero = GameMode.assignedPlayerHeroes[event.player_id_const]
-
-  if event.reason_const == DOTA_ModifyGold_CreepKill then
-    event["gold"] = math.floor(event["gold"])
-
-    if GOLD_FILTERS[event["gold"]] then
-
-    else
-      AddCustomGold( event.player_id_const, event["gold"] )
-      PopupParticle(event["gold"], Vector(244,201,23), 3.0, GameMode.assignedPlayerHeroes[event.player_id_const])
-    end
-  end
-
   return false
+  -- if event.reason_const == DOTA_ModifyGold_CreepKill or event.reason_const == 0 then
+  --   event["gold"] = math.floor(event["gold"])
+
+  --   if GOLD_FILTERS[event["gold"]] then
+
+  --   else
+  --     AddCustomGold( event.player_id_const, event["gold"] )
+  --     PopupParticle(event["gold"], Vector(244,201,23), 3.0, GameMode.assignedPlayerHeroes[event.player_id_const])
+  --   end
+  -- end
+
+  -- return false
 end
 
 DAMAGE_FILTERS = {}

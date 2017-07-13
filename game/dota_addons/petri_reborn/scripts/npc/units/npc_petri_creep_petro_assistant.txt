@@ -1,6 +1,6 @@
 "npc_petri_creep_petro_assistant"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/lane_creeps/creep_radiant_hulk/creep_radiant_ancient_hulk.vmdl"
   "ModelScale"        "0.6"
   "Level"           "6"
@@ -12,7 +12,7 @@
 
   "Ability1"     "petri_creep_swipes"
 
-  "ArmorPhysical"       "17"
+  "ArmorPhysical"       "8"
   "MagicalResistance"     "0"
 
   "AttackCapabilities"    "DOTA_UNIT_CAP_MELEE_ATTACK"

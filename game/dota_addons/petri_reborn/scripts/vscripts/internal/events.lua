@@ -1,3 +1,19 @@
+function GameMode:FixHero( event )
+  if GameMode.spawnQueueID == nil or (GameMode.spawnQueueID and GameMode.spawnQueueID > 0) then
+    local pID = tonumber(event.PlayerID)
+    local ply = PlayerResource:GetPlayer(pID)
+
+    if ply then
+      local hero = ply:GetAssignedHero()
+      if hero and hero:GetUnitName() == "npc_dota_hero_wisp" then
+        GameMode:CreateHero(pID, function (  )
+          
+        end)
+      end
+    end
+  end
+end
+
 -- The overall game state has changed
 function GameMode:_OnGameRulesStateChange(keys)
   local newState = GameRules:State_Get()
@@ -61,7 +77,7 @@ function GameMode:_OnGameRulesStateChange(keys)
       end
 
       self.playerQueue()
-    end, 'spawning_start', 1.0)
+    end, 'spawning_start', 2.0)
   end
 end
 
@@ -72,7 +88,9 @@ function GameMode:_OnNPCSpawned(keys)
   if npc:IsRealHero() and npc.bFirstSpawned == nil then
     npc.bFirstSpawned = true
     -- GameMode.spawnedArray = GameMode.spawnedArray or {}
-
+    if npc:GetUnitName() == "npc_dota_hero_wisp" then
+      npc:AddNewModifier(npc,nil,"modifier_tribune",{})
+    end
     -- if not GameMode.spawnedArray[npc:GetPlayerID()] then
     --   GameMode:OnHeroInGame(npc:GetPlayerID(), npc:GetTeamNumber(), npc)
     --   GameMode.spawnedArray[npc:GetPlayerID()] = true

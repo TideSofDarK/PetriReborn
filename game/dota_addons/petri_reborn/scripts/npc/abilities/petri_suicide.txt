@@ -2,7 +2,7 @@
 {
   "AbilityBehavior"       "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   "BaseClass"           "ability_datadriven"
-  "AbilityTextureName"      "custom/techies_suicide"
+  "AbilityTextureName"      "techies_suicide"
   "AbilityCastAnimation"      "ACT_DOTA_DEATH"
 
   "MaxLevel"            "1"
@@ -17,8 +17,8 @@
   {
     "FireSound"
     {
-        "EffectName"    "Hero_Techies.Suicide"
-        "Target"        "CASTER"
+      "EffectName"    "Hero_Techies.Suicide"
+      "Target"        "CASTER"
     }
     "FireEffect"
     {

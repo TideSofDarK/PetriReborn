@@ -4,35 +4,33 @@
 	</styles>
 	<script>
 		(function() {
-			$.GetContextPanel().visible = false;
-		    if (Players.IsSpectator(Players.GetLocalPlayer())) {
-		    	$.GetContextPanel().visible = false;
-		    } else {
-		    	$.GetContextPanel().visible = true;
-			    GameEvents.Subscribe("petri_close_spawning", function (args) {
-			    $.Msg(args)
-			     $.Msg(args.state == 1)
-			     if (args.state != 1) {
-			     $.GetContextPanel().DeleteAsync(0.0)
-			     $.GetContextPanel().RemoveAndDeleteChildren()
-			     }
-			        <!-- $.GetContextPanel().visible = args.state == 1; -->
-			    });
-			    GameEvents.Subscribe("petri_spawning_queue", function (args) {
-			        var queue = (Players.GetLocalPlayer() - args.queue);
+		    GameEvents.Subscribe("petri_close_spawning", function (args) {
+		    $.Msg(args)
+		     $.Msg(args.state == 1)
+		     if (args.state != 1) {
+		     $.GetContextPanel().DeleteAsync(0.0)
+		     $.GetContextPanel().RemoveAndDeleteChildren()
+		     }
+		        <!-- $.GetContextPanel().visible = args.state == 1; -->
+		    });
+		    GameEvents.Subscribe("petri_spawning_queue", function (args) {
+		    	if (Entities.IsValidEntity(Players.GetPlayerHeroEntityIndex( Players.GetLocalPlayer() ))) {
+		    		$("#BGImage").SetHasClass("Hide", false);
+		    		$("#loadingLabel").SetHasClass("Hide", false);
+		    	}
+		        var queue = (Players.GetLocalPlayer() - args.queue);
 
-			        if (queue == 0) {
-			            $("#loadingLabel").text = $.Localize("spawning");
-			        } else if (queue > 0){
-			            $("#loadingLabel").text = $.Localize("queued_for_spawn") + queue;
-			        }
-			    });
-		    }
+		        if (queue == 0) {
+		            $("#loadingLabel").text = $.Localize("spawning");
+		        } else if (queue > 0){
+		            $("#loadingLabel").text = $.Localize("queued_for_spawn") + queue;
+		        }
+		    });
+		    ;
 		})();
 	</script>
-	<Panel hittest="false" class="HSBackground">
-		<Image id="BGImage" class="Background" src="file://{images}/custom_game/loading_screen/new.jpg" />
-
-		<Label id="loadingLabel" text="#loading" />
+	<Panel hittest="false" class="HSBackground" hittestshildren="false">
+		<Image id="BGImage" class="Background Hide" src="file://{images}/custom_game/loading_screen/new.jpg" hittest="false"/>
+		<Label id="loadingLabel" text="#loading" hittest="false" class="Hide"/>
 	</Panel>
 </root>

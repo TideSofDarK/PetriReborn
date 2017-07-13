@@ -91,4 +91,6 @@ function OpenBag(keys)
 			caster:AddItemByName(v)
 		end
 	end
+
+	GameMode:SetupVIPItems(caster, PlayerResource:GetSteamAccountID(caster:GetPlayerOwnerID()))
 end

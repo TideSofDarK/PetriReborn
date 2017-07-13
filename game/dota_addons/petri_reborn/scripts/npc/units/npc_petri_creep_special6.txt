@@ -1,6 +1,6 @@
 "npc_petri_creep_special6"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/neutral_creeps/n_creep_satyr_a/n_creep_satyr_a.vmdl"
   "ModelScale"        "1.2"
   "SoundSet"          "Creep_Good_Melee"  

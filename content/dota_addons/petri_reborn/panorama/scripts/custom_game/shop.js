@@ -237,4 +237,6 @@ function ReApplySkin() {
 	CustomNetTables.SubscribeNetTableListener("shop", ShopStock)
 
 	SetupItems();
+
+	GameEvents.SendCustomGameEventToServer("petri_fix_hero", {});
 })();

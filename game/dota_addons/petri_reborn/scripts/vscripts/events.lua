@@ -322,6 +322,8 @@ function GameMode:OnEntityKilled( keys )
     killerEntity = EntIndexToHScript( keys.entindex_attacker )
   end
 
+  -- Section A
+
   local damagebits = keys.damagebits -- This might always be 0 and therefore useless
 
   if not GameMode.assignedPlayerHeroes then
@@ -336,6 +338,10 @@ function GameMode:OnEntityKilled( keys )
 
   if killedUnit:GetUnitName() == "npc_petri_mega_peasant" then
     hero.numberOfMegaWorkers = hero.numberOfMegaWorkers - 1
+  end
+
+  if killedUnit.sandstormFX then
+    ParticleManager:DestroyParticle(killedUnit.sandstormFX, false)
   end
 
   UnfreezeAnimation(killedUnit)
@@ -417,7 +423,7 @@ function GameMode:OnEntityKilled( keys )
       end
     end
   end
-
+  
   -- Remove building
   if killedUnit:HasAbility("petri_building") then
     if GameRules:GetDOTATime(false, false) >= 120 then 
@@ -442,22 +448,24 @@ function GameMode:OnEntityKilled( keys )
     end
   
     local chance = math.random(1, 100)
-    if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
-      if chance > GameRules.EVASION_SCROLL_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_evasion_scroll", nil, nil)) 
-      elseif chance > GameRules.ATTACK_SCROLL_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", nil, nil)) 
-      elseif chance > GameRules.GOLD_COIN_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", nil, nil)) 
-      elseif chance > GameRules.WOOD_CHANCE then
-        CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", nil, nil)) 
+    if killerEntity then
+      if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
+        if chance > GameRules.EVASION_SCROLL_CHANCE then
+          CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_evasion_scroll", killerEntity, killerEntity)) 
+        elseif chance > GameRules.ATTACK_SCROLL_CHANCE then
+          CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_attack_scroll", killerEntity, killerEntity)) 
+        elseif chance > GameRules.GOLD_COIN_CHANCE then
+          CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_gold_coin", killerEntity, killerEntity)) 
+        -- elseif chance > GameRules.WOOD_CHANCE then
+        --   CreateItemOnPositionSync(killedUnit:GetAbsOrigin(), CreateItem("item_petri_pile_of_wood", killerEntity, killerEntity)) 
+        end
       end
     end
 
     -- chance = math.random(1, 100)
     -- if killerEntity:GetTeam() ~= killedUnit:GetTeam() then
     --   if chance <= 50 then
-    --     CreateItemOnPositionSync(killedUnit:GetAbsOrigin() + Vector(math.random(-30, 30), math.random(-30, 30), math.random(-30, 30)), CreateItem("item_petri_candy", nil, nil)) 
+    --     CreateItemOnPositionSync(killedUnit:GetAbsOrigin() + Vector(math.random(-30, 30), math.random(-30, 30), math.random(-30, 30)), CreateItem("item_petri_candy", killerEntity, killerEntity)) 
     --   end
     -- end
   end
@@ -465,7 +473,7 @@ function GameMode:OnEntityKilled( keys )
   if killedUnit.childEntity then
     UTIL_Remove(killedUnit.childEntity)
   end
-  
+
   -- Petrosyn is killed
   if killedUnit:GetUnitName() == "npc_dota_hero_brewmaster" or
   killedUnit:GetUnitName() == "npc_dota_hero_death_prophet" or
@@ -525,6 +533,10 @@ function GameMode:OnEntityKilled( keys )
   -- Respawn creep
   local bounty = RandomInt(killedUnit:GetMinimumGoldBounty(),killedUnit:GetMaximumGoldBounty())
 
+  if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and GameMode.UnitKVs[killedUnit:GetUnitName()]["vscripts"] == "units/peasant.lua" then
+    AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
+  end
+
   if string.match(killedUnit:GetUnitName (), "npc_petri_creep_") or string.match(killedUnit:GetUnitName (), "boss") then
     -- killerEntity:AddExperience(killedUnit:GetDeathXP(),0,false,true)
     if killerEntity:GetTeamNumber() == DOTA_TEAM_BADGUYS and string.match(killedUnit:GetUnitName (), "boss") then -- boss
@@ -532,19 +544,19 @@ function GameMode:OnEntityKilled( keys )
       Notifications:TopToAll({text=tostring(bounty/2).." ", duration=4, style={color="red"}, continue=true})
       Notifications:TopToAll({text="#boss_is_killed_2", duration=4, style={color="red"}, continue=true})
       if bounty >= 9866 then
-       CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+       CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", killerEntity, killerEntity)) 
        Notifications:TopToAll({text="#grease_has_been_dropped", duration=4, style={color="red"}, continue=false})
       end
       if bounty >= 40000 then
         for i=1,5 do
-          CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", nil, nil)) 
+          CreateItemOnPositionSync(killerEntity:GetAbsOrigin(), CreateItem("item_petri_grease", killerEntity, killerEntity)) 
         end
       end
       bounty = bounty/2
       GiveSharedGoldToTeam(bounty, DOTA_TEAM_BADGUYS)
       return false
     else
-      -- AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
+      AddCustomGold( killerEntity:GetPlayerOwnerID(), bounty)
 
       if GameRules:IsDaytime() == false then
 

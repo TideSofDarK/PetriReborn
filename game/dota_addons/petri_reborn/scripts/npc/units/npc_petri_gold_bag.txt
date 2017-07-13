@@ -1,7 +1,7 @@
 "npc_petri_gold_bag"
 {
   
-  "BaseClass"         "npc_dota_base_additive"  
+  "BaseClass"         "npc_dota_creature"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -40,7 +40,7 @@
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "0"   
@@ -50,7 +50,7 @@
 "npc_petri_gold_bag2"
 {
   
-  "BaseClass"         "npc_dota_base_additive"  
+  "BaseClass"         "npc_dota_creature"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -89,7 +89,7 @@
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "0"   
@@ -99,7 +99,7 @@
 "npc_petri_gold_bag3"
 {
   
-  "BaseClass"         "npc_dota_base_additive"  
+  "BaseClass"         "npc_dota_creature"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -138,7 +138,7 @@
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "0"   
@@ -148,7 +148,7 @@
 "npc_petri_gold_bag4"
 {
   
-  "BaseClass"         "npc_dota_base_additive"  
+  "BaseClass"         "npc_dota_creature"  
   "Model"           "models/props_gameplay/gold_bag.vmdl"  
   "ModelScale"                "1.1"
   "SoundSet"          "Creep_Good_Range"          
@@ -187,7 +187,7 @@
 
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "0"   

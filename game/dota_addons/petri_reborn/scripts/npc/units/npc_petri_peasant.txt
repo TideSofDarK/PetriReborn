@@ -1,6 +1,6 @@
 "npc_petri_peasant"
 {
-  "BaseClass"     "npc_dota_base_additive"
+  "BaseClass"     "npc_dota_creature"
   "Model"      "models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee.vmdl"
   "ModelScale"    "0.8"
   "Level"      "1"
@@ -8,7 +8,7 @@
 
   "vscripts"     "units/peasant.lua"
 
-  "AbilityLayout"    "4"
+  "AbilityLayout"    "6"
   "Ability1"     "gather_lumber"
   "Ability2"     "petri_suicide"
   "Ability3"     "return_resources"

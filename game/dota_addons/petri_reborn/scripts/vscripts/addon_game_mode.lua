@@ -162,6 +162,7 @@ function Precache( context )
   PrecacheUnitByNameSync("npc_petri_gold_bag3", context)
   
   -- PARTICLES
+  PrecacheResource("particle", "particles/econ/items/wisp/wisp_ambient_ti7.vpcf", context)
   PrecacheResource("particle", "particles/units/heroes/hero_tinker/tinker_laser.vpcf", context)
   
   PrecacheResource("particle", "particles/buildinghelper/ghost_model.vpcf", context)

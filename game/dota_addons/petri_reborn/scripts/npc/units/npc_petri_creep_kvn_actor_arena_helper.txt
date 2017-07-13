@@ -1,6 +1,6 @@
 "npc_petri_creep_kvn_actor_arena_helper"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/creeps/lane_creeps/creep_radiant_melee/radiant_melee_mega.vmdl"
   "ModelScale"        "1.1"
   "Level"           "4"

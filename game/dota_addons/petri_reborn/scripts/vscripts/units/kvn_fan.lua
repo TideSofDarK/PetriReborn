@@ -192,5 +192,6 @@ function Deny(keys)
 			caster:RemoveModifierByName("modifier_hunger")
 		end
 		ApplyDamage(damageTable)
+		target:EmitSound("Hero_Techies.Suicide")
 	end
 end

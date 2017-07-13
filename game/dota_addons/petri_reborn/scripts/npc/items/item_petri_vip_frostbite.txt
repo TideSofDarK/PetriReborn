@@ -183,12 +183,23 @@
     "02"
     {
       "var_type"                  "FIELD_INTEGER"
-      "hp"                        "50000"
+      "hp"                        "1"
     }
   }
 
   "OnSpellStart"
   {
+    "FireEffect"
+    {
+      "EffectName"        "particles/units/heroes/hero_furion/furion_wrath_of_nature_cast.vpcf"
+      "EffectAttachType"  "follow_origin"
+      "Target"            "TARGET"
+      "ControlPointEntities"
+      {
+        "TARGET"    "attach_origin"
+        "TARGET"    "attach_hitloc"
+      }
+    }
     "FireSound"
     {
       "EffectName"    "Hero_Lion.Pick"

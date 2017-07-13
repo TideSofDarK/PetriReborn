@@ -62,6 +62,15 @@ function OnStartTouch(trigger)
 
 		local newPosition = thisEntity:GetAbsOrigin()
 
+		if trigger.activator:GetTeam() == 3 or trigger.activator:GetTeam() == 2 then
+			local units = FindUnitsInRadius(trigger.activator:GetTeam(),newPosition,nil,275,DOTA_UNIT_TARGET_TEAM_BOTH,DOTA_UNIT_TARGET_ALL,DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES,FIND_ANY_ORDER,false)
+			for k,v in pairs(units) do
+				if (v:HasModifier("modifier_building") or v:HasModifier("modifier_animated_tower") or v:GetUnitName() == "npc_petri_tent") and not string.match(v:GetUnitName(),"npc_petri_gold_bag") then
+					v:Kill(nil, trigger.activator)
+				end
+			end
+		end
+
 		trigger.activator.currentArea = trigger.caller
 		FindClearSpaceForUnit(trigger.activator,newPosition,true)
 
@@ -83,7 +92,6 @@ function Activate(keys)
 	if PORTAL_LEVELS[name] then
 		Timers:CreateTimer(20, function (  )
 			local number = PORTAL_LEVELS[name]
-			print("Asdasdasdasdsdas", number)
 			local unit = CreateUnitByName("npc_dummy_unit", thisEntity:GetAbsOrigin(), false, nil, nil, DOTA_TEAM_BADGUYS)
 
 			local oldPos = unit:GetAbsOrigin()
@@ -102,6 +110,7 @@ end
 
 function CheckBoss(trigger, activator)
 	local triggerName = trigger:GetName ()
+	print(triggerName)
 	if string.match(triggerName, "2portal_brewmaster_in_portalboss1") or string.match(triggerName, "2portal_death_prophet_in_portalboss1") or string.match(triggerName, "2portal_storm_spirit_in_portalboss1") then
 		if activator:GetLevel() >= 20 and (GameMode.PETRI_TRUE_TIME > 480 or GameMode.assignedPlayerHeroes[activator:GetPlayerOwnerID()].allEarnedGold > 900000000000) then 
 			return false 

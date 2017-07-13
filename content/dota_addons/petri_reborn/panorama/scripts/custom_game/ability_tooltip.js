@@ -157,6 +157,7 @@ function CreateDependencyPanel( abilityName )
   for(var name in dependencies)
   {
     var cur_panel = $.CreatePanel( "Label", mainPanel, "_dependence_" + name );
+    cur_panel.html = true;
     var upgradeLevel = dependencies[name];
     cur_panel.text = $.Localize( "#DOTA_Tooltip_ability_" + name ) + 
       (upgradeLevel > 1 ? " (" + dependencies[name] + ")" : "");
@@ -204,6 +205,7 @@ function FillDependencies( abilityID )
       all_enought = all_enought || panel.BHasClass("all_enought");
 
       var cur_panel = $.CreatePanel( "Label", dependPanel, "separator" );
+      cur_panel.html = true;
       cur_panel.text = $.Localize( "#OR" );
       cur_panel.AddClass( "SeparateLabel" );
 
@@ -231,10 +233,22 @@ function GetSpecialValuesList( abilityID, name )
   var abilityLevel = GameUI.CustomUIConfig().IsEnemySelected() ? 0 : Abilities.GetLevel( abilityID );
   var maxAbilityLevel = Abilities.GetMaxLevel( abilityID );
 
+
   var str = abilityLevel == 0
     ? roundToTwo(Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ))
-    : SetHTMLStyle( Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 ), "SpecialsLabelColor" );
+    : SetHTMLStyle( roundToTwo(Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel - 1 )), "SpecialsLabelColor" );
   var prevValue = str;
+
+  for (var k in GameUI.CustomUIConfig().specialValues[Abilities.GetAbilityName(abilityID)]) {
+    if (GameUI.CustomUIConfig().specialValues[Abilities.GetAbilityName(abilityID)][k].name == name) {
+      if (roundToTwo(GameUI.CustomUIConfig().specialValues[Abilities.GetAbilityName(abilityID)][k].value) == roundToTwo(Abilities.GetLevelSpecialValueFor( abilityID, name, abilityLevel ))) {
+        return str; 
+      }
+    }
+  }
+
+  // if ()
+
   for (var i = abilityLevel; i < maxAbilityLevel - 1; i++) 
   {
     var curValue = Abilities.GetLevelSpecialValueFor( abilityID, name, i ).toFixed(2);
@@ -262,12 +276,13 @@ function FillSpecials( abilityID )
   if (specials == undefined || Object.keys(specials).length == 0)
     return;
 
-  for(var name in specials)
+  for(var k in specials)
   {
+    var name = specials[k].name;
     var cur_panel = $.CreatePanel( "Label", specialsPanel, "_special_" + name );
     cur_panel.html = true;
-    cur_panel.text = SetHTMLStyle( $.Localize( "#DOTA_Tooltip_ability_" + abilityName + "_" + specials[name]), "SpecialsLabelName" ) + 
-      " " + GetSpecialValuesList(abilityID, specials[name]);
+    cur_panel.text = SetHTMLStyle( $.Localize( "#DOTA_Tooltip_ability_" + abilityName + "_" + name), "SpecialsLabelName" ) + 
+      " " + GetSpecialValuesList(abilityID, name);
     cur_panel.AddClass( "SpecialsLabel" );
   }
 }
@@ -290,7 +305,6 @@ function SetPositionRotation( element, position, rotation ) {
 
 function ShowTooltip( panel, abilityID )
 {
-  $.Msg((/item[1-9]/g).test(abilityID));
   if (!panel || !abilityID || (/item[1-9]/g).test(abilityID))
     return;
 

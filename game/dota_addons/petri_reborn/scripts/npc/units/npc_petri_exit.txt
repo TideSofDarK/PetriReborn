@@ -1,12 +1,12 @@
 "npc_petri_exit"
 {
   "BaseClass"         "npc_dota_base_additive"  
-  "Model"           "models/props_structures/bad_ancient001.vmdl"  
-  "ModelScale"                "0.25"
+  "Model"           "models/props_structures/tower_upgrade/tower_upgrade.vmdl"  
+  "ModelScale"                "1.0"
   "SoundSet"          "Creep_Good_Range"          
   "Level"           "1"
 
-  "AbilityLayout"       "4"
+  "AbilityLayout"    "6"
   "Ability1"         "petri_building"
   "Ability2"          "petri_exit"
   
@@ -33,7 +33,7 @@
   
   "TeamName"          "DOTA_TEAM_GOODGUYS"      
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_SOFT"
+  "CombatClassDefend"     "DOTA_COMBAT_CLASS_DEFEND_BASIC"
   "UnitRelationshipClass"   "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
   
   "VisionDaytimeRange"    "500"   

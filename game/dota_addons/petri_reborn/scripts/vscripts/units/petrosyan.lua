@@ -263,7 +263,8 @@ function BuySnares( keys )
 		caster:FindAbilityByName("petri_petrosyan_snare_1"):UpgradeAbility(false)
 		caster:SwapAbilities("petri_petrosyan_sleep", "petri_petrosyan_snare_1", false, true)
 		caster:RemoveAbility("petri_petrosyan_sleep")
-		SpendCustomGold( pID,  keys.ItemCost )
+	else
+		AddCustomGold( pID, keys.ItemCost )
 	end
 end
 
@@ -281,7 +282,8 @@ function BuyUpgradedSnares( keys )
 		caster:FindAbilityByName("petri_petrosyan_snare_2"):UpgradeAbility(false)
 		caster:SwapAbilities("petri_petrosyan_snare_1", "petri_petrosyan_snare_2", false, true)
 		caster:RemoveAbility("petri_petrosyan_snare_1")
-		SpendCustomGold( pID,  keys.ItemCost )
+	else
+		AddCustomGold( pID, keys.ItemCost )
 	end
 end
 

@@ -19,6 +19,11 @@
       "var_type"          "FIELD_INTEGER"
       "bonus_hp"  "13"
     }
+    "02"
+    {
+      "var_type"          "FIELD_FLOAT"
+      "bonus_regen"  "0.7"
+    }
   }
 
   "OnSpellStart"
@@ -68,6 +73,7 @@
       "Properties"
       {
         "MODIFIER_PROPERTY_HEALTH_BONUS" "%bonus_hp"
+        "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT" "%bonus_regen"
       }
     }
   }

@@ -1,6 +1,6 @@
 "npc_petri_creep_dark_kivin"
 {
-  "BaseClass"         "npc_dota_base_additive"
+  "BaseClass"         "npc_dota_creature"
   "Model"           "models/props_structures/tower_dragon_black.vmdl"
   "ModelScale"        "1.1"
   "SoundSet"          "Creep_Good_Range"
@@ -31,7 +31,7 @@
   "BoundsHullName"      "DOTA_HULL_SIZE_SMALL"
   "RingRadius"        "50"
   
-  "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_GROUND"
+  // "MovementCapabilities"    "DOTA_UNIT_CAP_MOVE_FLY"
   "MovementSpeed"       "310"
   "MovementTurnRate"      "0.5"
 
@@ -40,8 +40,8 @@
   "StatusMana"        "0"
   "StatusManaRegen"     "0"
 
-  "VisionDaytimeRange"    "200"
-  "VisionNighttimeRange"    "200"
+  "VisionDaytimeRange"    "2000"
+  "VisionNighttimeRange"    "2000"
 
   "TeamName"          "DOTA_TEAM_BADGUYS"
   "CombatClassAttack"     "DOTA_COMBAT_CLASS_ATTACK_BASIC"

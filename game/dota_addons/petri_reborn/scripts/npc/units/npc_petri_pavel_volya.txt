@@ -1,12 +1,12 @@
 "npc_petri_boss_pavel_volya"
 {
-  "BaseClass"     "npc_dota_base_additive"
+  "BaseClass"     "npc_dota_creature"
   "Model"      "models/heroes/antimage/antimage.vmdl"
   "ModelScale"    "1.8"
   "Level"      "1"
   "HealthBarOffset"    "240"
 
-  "AbilityLayout"    "4"
+  "AbilityLayout"    "6"
   "Ability1" "petri_magic_immune"
 
   "ArmorPhysical"    "100"

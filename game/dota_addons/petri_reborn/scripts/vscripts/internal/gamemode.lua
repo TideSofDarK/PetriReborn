@@ -136,6 +136,8 @@ function GameMode:_InitGameMode()
 
   CustomGameEventManager:RegisterListener( "petri_reapplyskin", Dynamic_Wrap(GameMode, 'ReApplySkin'))
   
+  CustomGameEventManager:RegisterListener( "petri_fix_hero", Dynamic_Wrap(GameMode, 'FixHero'))
+
   -- Grid
   CustomGameEventManager:RegisterListener( "gnv_request", Dynamic_Wrap(GNV, 'Send'))
 

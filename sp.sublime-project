@@ -2,7 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "."
+			"path": "D:\\Program Files (x86)\\Steam\\SteamApps\\common\\dota 2 beta\\content\\dota_addons\\petri_reborn"
+		},
+		{
+			"path": "D:\\Program Files (x86)\\Steam\\SteamApps\\common\\dota 2 beta\\game\\dota_addons\\petri_reborn"
 		}
 	]
 }

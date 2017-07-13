@@ -36,6 +36,9 @@ function ButtDamage( keys )
 	}
 
   	if target:HasAbility("petri_building") == true or target:GetUnitName() == "npc_petri_wall" then 
+  		if target:GetUnitName() == "npc_petri_exit" then
+  			damageTable.damage = damageTable / 2
+  		end
   		ApplyDamage(damageTable)
   	end
 end
